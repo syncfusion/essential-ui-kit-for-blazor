@@ -26,7 +26,7 @@ The [Essential UI Kit for Blazor](https://www.syncfusion.com/essential-blazor-ui
 Refer to the [Blazor system requirements documentation](https://blazor.syncfusion.com/documentation/system-requirements) to learn more about the development environments.
 
 ## Supported Blazor Versions
-The blocks are compatible with any active version of Blazor, as they are primarily developed using HTML, CSS, and TypeScript. Additionally, for using Syncfusion Blazor components, the compatible versions of Blazor and Syncfusion Blazor components are detailed in this [link](https://blazor.syncfusion.com/documentation/system-requirements#net-sdk) for your reference.
+The blocks are compatible with any active version of .NET Core, as they are primarily developed using HTML, CSS, and TypeScript. Additionally, for using Syncfusion Blazor components, the compatible versions of Blazor and Syncfusion Blazor components are detailed in this [link](https://blazor.syncfusion.com/documentation/system-requirements#net-sdk) for your reference.
 
 ## Supported Browsers
 The supported browsers are:
@@ -41,7 +41,7 @@ The blocks are built using the following CSS frameworks:
 2. Bootstrap 5.3 (Light and Dark Modes)
 
 ## Online Demo
-To view the designed blocks, please visit our online demo using the link [here](https://blazor.syncfusion.com/essential-ui-kit/blocks?utm_source=github&utm_medium=listing&utm_campaign=blazor_ui_kit_github_readme).
+To view the designed blocks, please visit our online demo using the link [here](https://blazor.syncfusion.com?utm_source=github&utm_medium=listing&utm_campaign=blazor_ui_kit_github_readme).
 
 ## Requesting Blocks & Reporting Bugs
 If you'd like to request a new block or report a bug with existing blocks, you can either raise a request directly on GitHub or submit it through our [feedback portal](https://www.syncfusion.com/feedback/blazor-components).
