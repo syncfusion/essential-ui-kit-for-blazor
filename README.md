@@ -25,7 +25,7 @@ The [Essential UI Kit for Blazor](https://www.syncfusion.com/essential-blazor-ui
 ## System Requirements
 Refer to the [Blazor system requirements documentation](https://blazor.syncfusion.com/documentation/system-requirements) to learn more about the development environments.
 
-## Supported Blazor Versions
+## Supported .NET Core Versions
 The blocks are compatible with any active version of .NET Core, as they are primarily developed using HTML, CSS, and C#. Additionally, for using Syncfusion Blazor components, the compatible versions of .NET Core and Syncfusion Blazor components are detailed in this [link](https://blazor.syncfusion.com/documentation/system-requirements#net-sdk) for your reference.
 
 ## Supported Browsers
