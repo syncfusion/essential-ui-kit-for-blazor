@@ -26,7 +26,7 @@ The [Essential UI Kit for Blazor](https://www.syncfusion.com/essential-blazor-ui
 Refer to the [Blazor system requirements documentation](https://blazor.syncfusion.com/documentation/system-requirements) to learn more about the development environments.
 
 ## Supported Blazor Versions
-The blocks are compatible with any active version of .NET Core, as they are primarily developed using HTML, CSS, and TypeScript. Additionally, for using Syncfusion Blazor components, the compatible versions of Blazor and Syncfusion Blazor components are detailed in this [link](https://blazor.syncfusion.com/documentation/system-requirements#net-sdk) for your reference.
+The blocks are compatible with any active version of .NET Core, as they are primarily developed using HTML, CSS, and C#. Additionally, for using Syncfusion Blazor components, the compatible versions of Blazor and Syncfusion Blazor components are detailed in this [link](https://blazor.syncfusion.com/documentation/system-requirements#net-sdk) for your reference.
 
 ## Supported Browsers
 The supported browsers are:
@@ -47,7 +47,7 @@ To view the designed blocks, please visit our online demo using the link [here](
 If you'd like to request a new block or report a bug with existing blocks, you can either raise a request directly on GitHub or submit it through our [feedback portal](https://www.syncfusion.com/feedback/blazor-components).
 
 ## License
-The blocks in the Blazor application are built using HTML, CSS, TypeScript, and Syncfusion Blazor Components. The blocks code is free to use, but licensing for the Syncfusion Blazor Components part is alone required to ensure smooth browsing and viewing of the blocks. For more details about Syncfusion Blazor Components licensing, please refer [here](https://blazor.syncfusion.com/documentation/getting-started/license-key/overview).
+The blocks in the Blazor application are built using HTML, CSS, C#, and Syncfusion Blazor Components. The blocks code is free to use, but licensing for the Syncfusion Blazor Components part is alone required to ensure smooth browsing and viewing of the blocks. For more details about Syncfusion Blazor Components licensing, please refer [here](https://blazor.syncfusion.com/documentation/getting-started/license-key/overview).
 
 ## About Syncfusion
 Founded in 2001 and headquartered in Research Triangle Park, N.C., Syncfusion has more than 33,000 customers and more than 1 million users, including large financial institutions, Fortune 500 companies, and global IT consultancies.
