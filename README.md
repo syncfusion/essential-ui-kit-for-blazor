@@ -5,7 +5,7 @@ The [Essential UI Kit for Blazor](https://www.syncfusion.com/essential-blazor-ui
 ## Table of Contents
 - [Key Features](#key-features)
 - [System Requirements](#system-requirements)
-- [Supported .NET Core Versions](#supported-.net-core-versions)
+- [Supported .NET Core Versions](#supported-net-core-versions)
 - [Supported Browsers](#supported-browsers)
 - [Supported CSS Frameworks](#supported-css-frameworks)
 - [Online Demo](#online-demo)
