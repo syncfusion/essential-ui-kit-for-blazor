@@ -1,0 +1,241 @@
+@page "/blocks/grid-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="mx-auto w-full py-12 sm:px-6 px-4">
+              <SfGrid DataSource="@GridData" Width="100%" Height="658" GridLines="GridLine.None" role="grid">
+                <GridColumns>
+                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
+                    <GridColumn Field="@nameof(Ticket.TicketId)" HeaderText="Ticket ID" Width="85">
+                        <Template>
+                            <a class="text-primary-700 dark:text-primary-500 font-medium" href="javascript:void(0);" aria-label="ticket ID" role="link">@((context as Ticket)?.TicketId)</a>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Ticket.Issue)" HeaderText="Issue Description" Width="230"></GridColumn>
+                    <GridColumn Field="@nameof(Ticket.Category)" HeaderText="Issue Category" Width="120"></GridColumn>
+                    <GridColumn Field="@nameof(Ticket.Estimated)" HeaderText="Estimated Time" Width="100" TextAlign="TextAlign.Right"></GridColumn>                    
+                    <GridColumn Field="@nameof(Ticket.ResponseDue)" HeaderText="Resolution Due" Width="123" Format="MM/dd/yyyy" Type="ColumnType.Date" TextAlign="TextAlign.Right"></GridColumn>                    
+                    <GridColumn Field="@nameof(Ticket.Priority)" HeaderText="Priority" Width="118">
+                        <Template>
+                            @{
+                                var ticket = (context as Ticket)!;
+                                string iconClass = ticket.Priority switch
+                                {
+                                    "High" => "e-arrow-up !text-red-700 dark:!text-red-400",
+                                    "Medium" => "e-arrow-right !text-orange-700 dark:!text-orange-500",
+                                    "Low" => "e-arrow-down !text-cyan-700 dark:!text-cyan-600",
+                                    _ => ""
+                                };
+                            }
+                            <div class="e-bigger">
+                                <span class="flex gap-1 items-center">
+                                    <span class="e-icons @iconClass"></span>@ticket.Priority
+                                </span>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Ticket.Assignee)" HeaderText="Assigned To" TextAlign="TextAlign.Left" Width="299">
+                        <Template>
+                            <div class="flex gap-3 items-center py-1.5">
+                                <div class="w-8 h-8">
+                                    @{ 
+                                        var ticket = (context as Ticket)!;
+                                        if (!string.IsNullOrEmpty(ticket.Assignee.Avatar))
+                                        {
+                                            <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url('assets/images/common/avatar/@ticket.Assignee.Avatar')"></span>
+                                        }
+                                        else if (!string.IsNullOrEmpty(ticket.Assignee.Initial))
+                                        {
+                                            <span class='e-avatar e-avatar-circle e-avatar-small @(ticket.Assignee.ColorTheme switch {
+                                         "Red" => "!bg-red-100 !text-red-700",
+                                         "Green" => "!bg-green-100 !text-green-700",
+                                         "Blue" => "!bg-cyan-100 !text-cyan-700",
+                                         "Orange" => "!bg-orange-100 !text-orange-700",
+                                         _ => ""
+                                        })'>
+                                                @ticket.Assignee.Initial
+                                            </span>
+                                        }
+                                    }
+                                </div>
+                                <div class="flex flex-col text-sm">
+                                    <p class="text-gray-900 dark:text-gray-50">@ticket.Assignee.Name</p>
+                                    <p class="text-gray-500 dark:text-gray-400">@ticket.Assignee.Email</p>
+                                </div>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Ticket.CreatedBy)" HeaderText="Created By" Width="170">
+                        <Template>
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8">
+                                    @{
+                                         var ticket = (context as Ticket)!;
+                                        if (!string.IsNullOrEmpty(ticket.CreatedBy.Avatar))
+                                        {
+                                            <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url('assets/images/common/avatar/@ticket.CreatedBy.Avatar')"></span>
+                                        }
+                                        else if (!string.IsNullOrEmpty(ticket.CreatedBy.Initial))
+                                        {
+                                            <span class='e-avatar e-avatar-circle e-avatar-small @(ticket.CreatedBy.ColorTheme switch {
+                                         "Red" => "!bg-red-100 !text-red-700",
+                                         "Green" => "!bg-green-100 !text-green-700",
+                                         "Blue" => "!bg-cyan-100 !text-cyan-700",
+                                         "Orange" => "!bg-orange-100 !text-orange-700",
+                                         _ => ""
+                                        })'>
+                                                @ticket.CreatedBy.Initial
+                                            </span>
+                                        }
+                                    }
+                                </div>
+                                <div class="text-sm text-gray-900 dark:text-gray-50">@ticket.CreatedBy.Name</div>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Ticket.Status)" HeaderText="Status" Width="134">
+                        <Template>
+                            @{
+                                var ticket = (context as Ticket)!;
+                                string statusClass = ticket.Status switch
+                                {
+                                    "Not Started" => "e-badge e-badge-danger font-medium !px-2",
+                                    "In Progress" => "e-badge e-badge-info font-medium !px-2",
+                                    "Resolved" => "e-badge e-badge-success font-medium !px-2",
+                                    _ => ""
+                                };
+                            }
+                            <div class="e-bigger">
+                                 <span class="@statusClass">@ticket.Status</span>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="w-100 py-5 px-3 px-sm-4 mx-auto">
+            <SfGrid DataSource="@GridData" Width="100%" Height="658" GridLines="GridLine.None" role="grid">
+                <GridColumns>
+                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
+                    <GridColumn Field="@nameof(Ticket.TicketId)" HeaderText="Ticket ID" Width="90">
+                        <Template>
+                            @{
+                                var ticket = (context as Ticket)!;
+                            }
+                            <a class="text-primary fw-medium text-decoration-none" href="javascript:void(0);" aria-label="ticket ID" role="link">@ticket.TicketId</a>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Ticket.Issue)" HeaderText="Issue Description" Width="233"></GridColumn>
+                    <GridColumn Field="@nameof(Ticket.Category)" HeaderText="Issue Category" Width="120"></GridColumn>
+                    <GridColumn Field="@nameof(Ticket.Estimated)" HeaderText="Estimated Time" Width="120" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="@nameof(Ticket.ResponseDue)" HeaderText="Resolution Due" Width="123" Format="MM/dd/yyyy" Type="ColumnType.Date" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="@nameof(Ticket.Priority)" HeaderText="Priority" Width="126">
+                        <Template>
+                            @{
+                                var ticket = (context as Ticket)!;
+                                string priorityClass = ticket.Priority switch
+                                {
+                                    "High" => "e-icons e-arrow-up text-success",
+                                    "Medium" => "e-icons e-arrow-right text-warning",
+                                    "Low" => "e-icons e-arrow-down text-danger",
+                                    _ => ""
+                                };
+                            }
+                            <div>
+                                <span class="d-flex align-items-center gap-1">
+                                    <span class="@priorityClass"></span>@ticket.Priority
+                                </span>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Ticket.Assignee)" HeaderText="Assigned To" TextAlign="TextAlign.Left" Width="297">
+                        <Template>
+                            @{
+                                var ticket = (context as Ticket)!;
+                            }
+                            <div class="d-flex align-items-center gap-3 py-1">
+                                <div class="rounded-circle overflow-hidden" style="width: 32px; height: 32px;">
+                                    @if (!string.IsNullOrEmpty(ticket.Assignee.Avatar))
+                                    {
+                                        <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url('assets/images/common/avatar/@ticket.Assignee.Avatar')"></span>
+                                    }
+                                    else if (!string.IsNullOrEmpty(ticket.Assignee.Initial))
+                                    {
+                                        <span class='e-avatar e-avatar-circle e-avatar-small @(ticket.Assignee.ColorTheme switch {
+                                            "Red" => "bg-danger-subtle text-danger",
+                                            "Green" => "bg-success-subtle text-success",
+                                            "Blue" => "bg-info-subtle text-info",
+                                            "Orange" => "bg-warning-subtle text-warning",
+                                            _ => ""
+                                        })'>
+                                            @ticket.Assignee.Initial
+                                        </span>
+                                    }
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <p class="text-body mb-0">@ticket.Assignee.Name</p>
+                                    <p class="text-body-secondary mb-0">@ticket.Assignee.Email</p>
+                                </div>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Ticket.CreatedBy)" HeaderText="Created By" Width="170">
+                        <Template>
+                            @{
+                                var ticket = (context as Ticket)!;
+                            }
+                            <div class="d-flex align-items-center gap-3">
+                                <div class="rounded-circle overflow-hidden" style="width: 32px; height: 32px;">
+                                    @if (!string.IsNullOrEmpty(ticket.CreatedBy.Avatar))
+                                    {
+                                        <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url('assets/images/common/avatar/@ticket.CreatedBy.Avatar')"></span>
+                                    }
+                                    else if (!string.IsNullOrEmpty(ticket.CreatedBy.Initial))
+                                    {
+                                        <span class='e-avatar e-avatar-circle e-avatar-small @(ticket.CreatedBy.ColorTheme switch {
+                                            "Red" => "bg-danger-subtle text-danger",
+                                            "Green" => "bg-success-subtle text-success",
+                                            "Blue" => "bg-info-subtle text-info",
+                                            "Orange" => "bg-warning-subtle text-warning",
+                                            _ => ""
+                                        })'>
+                                            @ticket.CreatedBy.Initial
+                                        </span>
+                                    }
+                                </div>
+                                <div class="text-body">@ticket.CreatedBy.Name</div>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Ticket.Status)" HeaderText="Status" Width="130">
+                        <Template>
+                            @{
+                                var ticket = (context as Ticket)!;
+                                string statusClass = ticket.Status switch
+                                {
+                                    "Not Started" => "e-badge e-badge-danger fw-medium px-2",
+                                    "In Progress" => "e-badge e-badge-info fw-medium px-2",
+                                    "Resolved" => "e-badge e-badge-success fw-medium px-2",
+                                    _ => ""
+                                };
+                            }
+                            <div class="e-bigger">
+                                <span class="@statusClass">@ticket.Status</span>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}

@@ -1,0 +1,95 @@
+﻿@page "/blocks/returns-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-gray-50 dark:bg-gray-950">
+		<div class="max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-5 sm:pt-20" style="min-height: 36rem;">
+			<p class="text-lg font-medium text-gray-900 dark:text-white mb-5 sm:mb-6">Product Return Request</p>
+			<div class="sm:mb-8 mb-5" style="@StepperStyle">
+				<SfStepper @ref="Stepper" Orientation="@StepperOrientation" LabelPosition="@LabelPos" ActiveStep="3">
+					<StepperSteps>
+						<StepperStep IconCss="e-icons e-circle-check" Label="My Products"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Return Reason"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Pickup Option"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Refund Choice"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Confirmation"></StepperStep>
+					</StepperSteps>
+				</SfStepper>
+			</div>
+			<p class="font-medium text-gray-900 dark:text-white mb-4 sm:mb-5">Choose the method for returning the product</p>
+			<div class="flex flex-col sm:flex-row gap-4 sm:gap-5 mb-6 e-bigger">
+				<div class="e-card pt-3 rounded-lg shadow-none border-transparent">
+					<div class="e-card-content grow !pt-1">
+						<SfRadioButton Label="I want a shop voucher" Value="I want a shop voucher" Checked="@SelectedReturnMethod" Name="RefundOptions" aria-label="i want a shop voucher" role="radio"></SfRadioButton>
+						<p class="text-sm text-gray-700 dark:text-gray-300 ml-7 mt-1">Get an immediate voucher for use on new orders.</p>
+					</div>
+				</div>
+				<div class="e-card pt-3 rounded-lg shadow-none border-transparent">
+					<div class="e-card-content grow !pt-1">
+						<SfRadioButton Label="I want my money back" Value="I want my money back" Checked="@SelectedReturnMethod" Name="RefundOptions" aria-label="i want my money back" role="radio"></SfRadioButton>
+						<p class="text-sm text-gray-700 dark:text-gray-300 ml-7 mt-1">We will refund your original method of payment. This can take up to 7 business days.</p>
+					</div>
+				</div>
+				<div class="e-card pt-3 rounded-lg shadow-none border-transparent">
+					<div class="e-card-content grow !pt-1">
+						<SfRadioButton Label="I want another product" Value="I want another product" Checked="@SelectedReturnMethod" Name="RefundOptions" aria-label="i want another product" role="radio"></SfRadioButton>
+						<p class="text-sm text-gray-700 dark:text-gray-300 ml-7 mt-1">We will exchange your product for a new one.</p>
+					</div>
+				</div>
+			</div>
+			<div class="flex justify-end gap-4 lg:gap-3">
+				<SfButton CssClass="grow sm:grow-0" Type="button" aria-label="previous" role="button">Previous</SfButton>
+				<SfButton IsPrimary="true" CssClass="grow sm:grow-0" Type="button" aria-label="submit to return" role="button">Submit to Return</SfButton>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body">
+		<div class="container-lg py-4 px-3 px-sm-4" style="min-height: 36rem; max-width: 896px;">
+			<p class="h5 fw-bold mb-3 mb-sm-4 text-body">Product Return Request</p>
+			<div class="mb-4" style="@StepperStyle">
+				<SfStepper @ref="Stepper" Orientation="@StepperOrientation" LabelPosition="@LabelPos" ActiveStep="3">
+					<StepperSteps>
+						<StepperStep IconCss="e-icons e-circle-check" Label="My Products"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Return Reason"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Pickup Option"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Refund Choice"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Confirmation"></StepperStep>
+					</StepperSteps>
+				</SfStepper>
+			</div>
+			<p class="h6 fw-bold mb-3 text-body">Choose the method for returning the product</p>
+			<div class="d-flex flex-column flex-sm-row gap-3 mb-4 e-bigger">
+				<div class="e-card rounded shadow-none">
+					<div class="e-card-content flex-grow-1">
+						<SfRadioButton Label="I want a shop voucher" Value="I want a shop voucher" Checked="@SelectedReturnMethod" Name="RefundOptions" aria-label="i want a shop voucher" role="radio"></SfRadioButton>
+						<p class="ms-4 mt-2 mb-0 ps-1 text-body-secondary">Get an immediate voucher for use on new orders.</p>
+					</div>
+				</div>
+				<div class="e-card rounded shadow-none">
+					<div class="e-card-content flex-grow-1">
+						<SfRadioButton Label="I want my money back" Value="I want my money back" Checked="@SelectedReturnMethod" Name="RefundOptions" aria-label="i want my money back" role="radio"></SfRadioButton>
+						<p class="ms-4 mt-2 mb-0 ps-1 text-body-secondary">We will refund your original method of payment. This can take up to 7 business days.</p>
+					</div>
+				</div>
+				<div class="e-card rounded shadow-none">
+					<div class="e-card-content flex-grow-1">
+						<SfRadioButton Label="I want another product" Value="I want another product" Checked="@SelectedReturnMethod" Name="RefundOptions" aria-label="i want another product" role="radio"></SfRadioButton>
+						<p class="ms-4 mt-2 mb-0 ps-1 text-body-secondary">We will exchange your product for a new one.</p>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex justify-content-end gap-1">
+				<SfButton CssClass="e-outline flex-grow-1 flex-sm-grow-0 me-2" Type="button" aria-label="previous" role="button">Previous</SfButton>
+				<SfButton IsPrimary="true" CssClass="flex-grow-1 flex-sm-grow-0" Type="button" aria-label="submit to return" role="button">Submit to Return</SfButton>
+			</div>
+		</div>
+	</section>
+}
+

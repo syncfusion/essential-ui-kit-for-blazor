@@ -1,0 +1,64 @@
+﻿@page "/blocks/signin-otp-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="flex justify-center min-h-screen">
+            <div class="w-full max-w-md rounded-lg p-4 p-md-6 py-12">
+                <div class="flex justify-center mb-6">
+                    <img class="mr-2" src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+                    <h2 class="text-center text-gray-900 dark:text-white text-xl font-semibold">Company Name</h2>
+                </div>
+                <h2 class="text-2xl font-semibold text-center text-gray-900 dark:text-white mb-2">Enter OTP</h2>
+                <p class="text-md text-center text-gray-700 dark:text-gray-300">We have sent an OTP to your mobile number</p>
+                <form action="#" class="mt-6" onsubmit="event.preventDefault();">
+                    <div class="flex justify-evenly e-bigger">
+                        <div>
+                            <SfOtpInput Type="OtpInputType.Number"></SfOtpInput>
+                        </div>
+                    </div>
+                    <div class="e-bigger mt-6">
+                        <SfButton CssClass="e-btn e-primary w-full" type="submit" aria-label="verify OTP" role="button">Verify</SfButton>
+                    </div>
+                </form>
+                <span class="flex items-center justify-center gap-2 mt-7 e-bigger">
+                    <p class="text-center text-gray-900 dark:text-white">Not yet received?</p>
+                    <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 font-medium text-base !p-0" aria-label="resend OTP" role="link">Resend OTP</a>
+                </span>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="d-flex justify-content-center bg-body min-vh-100">
+        <div class="bg-body rounded-lg p-4 py-5 w-100" style="max-width: 450px;">
+            <div class="d-flex justify-content-center align-items-center mb-4">
+                <img class="me-2" src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+                <h2 class="text-center text-body fs-5 fw-bold mb-0">Company Name</h2>
+            </div>
+            <h2 class="text-center fs-4 text-body fw-bold mb-2">Enter OTP</h2>
+            <p class="text-center text-light-emphasis mb-0">We have sent an OTP to your mobile number</p>
+            <form action="#" class="mt-4" onsubmit="event.preventDefault();">
+                <div class="d-flex justify-content-evenly e-bigger">
+                    <div>
+                        <SfOtpInput Type="OtpInputType.Number" Separator="-"></SfOtpInput>
+                    </div>
+                </div>
+                <div class="mt-4 e-bigger">
+                    <SfButton CssClass="e-btn e-block e-primary" type="submit" aria-label="verify OTP" role="button">Verify</SfButton>
+                </div>
+            </form>
+            <div class="d-flex align-items-center justify-content-center gap-2 mt-4">
+                <p class="text-center text-body mb-0">Not yet received?</p>
+                <a href="javascript:void(0);" class="text-primary p-0 text-decoration-none fs-6 fw-medium" aria-label="resend OTP" role="link">Resend OTP</a>
+            </div>
+        </div>
+    </section>
+}
+
+

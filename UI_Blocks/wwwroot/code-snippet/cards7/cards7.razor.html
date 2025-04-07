@@ -1,0 +1,115 @@
+﻿@page "/blocks/cards-7"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="px-4 py-20 sm:px-6">
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 xl:gap-10 sm:gap-8">
+                <div class="e-card rounded-lg gap-6 e-bigger">
+                    <div class="e-card-image">
+                        <img class="h-56 w-full object-cover" src="assets/images/card/image-tags-card/gem-cities.jpg" alt="gem cities" />
+                    </div>
+                    <div class="e-card-stacked grow">
+                        <div class="e-card-content grow">
+                            <h2 class="text-xl mb-3 font-semibold text-gray-950 dark:text-gray-50 line-clamp-2">Gem Cities</h2>
+                            <p class="text-base mb-1 dark:text-gray-200">Explore lesser-known cities that offer hidden treasures and unique experiences. From charming alleyways and local markets to vibrant cultural scenes and historic landmarks, get exploring!</p>
+                        </div>
+                        <div class="e-card-actions w-full leading-5">
+                            <span class="e-badge e-badge-pill">#Gem Cities</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg gap-6 e-bigger">
+                    <div class="e-card-image">
+                        <img class="h-56 w-full object-cover" src="assets/images/card/image-tags-card/natural-wonders.jpg" alt="natural wonders" />
+                    </div>
+                    <div class="e-card-stacked grow">
+                        <div class="e-card-content grow">
+                            <h2 class="text-xl mb-3 font-semibold text-gray-950 dark:text-gray-50 line-clamp-2">Natural Wonders</h2>
+                            <p class="text-base mb-1 dark:text-gray-200">Witness the awe-inspiring natural wonders that showcase the planet’s incredible diversity. From majestic waterfalls and towering mountain ranges to expansive deserts, the choice is endless.</p>
+                        </div>
+                        <div class="e-card-actions w-full leading-5">
+                            <span class="e-badge e-badge-pill">#Natural Wonders</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg gap-6 e-bigger">
+                    <div class="e-card-image">
+                        <img class="h-56 w-full object-cover" src="assets/images/card/image-tags-card/historic-landmarks.jpg" alt="historic landmarks" />
+                    </div>
+                    <div class="e-card-stacked grow">
+                        <div class="e-card-content grow">
+                            <h2 class="text-xl mb-3 font-semibold text-gray-950 dark:text-gray-50 line-clamp-2">Historic Landmarks</h2>
+                            <p class="text-base mb-1 dark:text-gray-200">Visit historic landmarks that tell the stories of the past and offer glimpses into different eras. Explore ancient ruins, grand monuments, and iconic structures that have shaped history.</p>
+                        </div>
+                        <div class="e-card-actions w-full leading-5">
+                            <span class="e-badge e-badge-pill">#Historic Landmarks</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-dark-subtle">
+        <div class="py-5 px-3 px-md-4" style="min-height: 36rem;">
+            <div class="row g-xl-5 g-4">
+                <div class="col-sm-6 col-lg-4 d-flex">
+                    <div class="e-card e-bigger rounded-3">
+                        <div class="e-card-image">
+                            <img class="object-fit-cover w-100" src="assets/images/card/image-tags-card/gem-cities.jpg" alt="gem cities" style="height: 232px;" />
+                        </div>
+                        <div class="e-card-stacked flex-grow-1">
+                            <div class="e-card-content flex-grow-1 py-4 text-body">
+                                <h4 class="mb-2 fw-bold lh-sm text-truncate">Gem Cities</h4>
+                                <p class="fs-6 mb-0">Explore lesser-known cities that offer hidden treasures and unique experiences. From charming alleyways and local markets to vibrant cultural scenes and historic landmarks, get exploring!</p>
+                            </div>
+                            <div class="e-card-actions e-bigger pb-4 w-100 lh-sm">
+                                <span class="e-badge e-badge-pill">#Gem Cities</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 d-flex">
+                    <div class="e-card e-bigger rounded-3">
+                        <div class="e-card-image">
+                            <img class="object-fit-cover w-100" src="assets/images/card/image-tags-card/natural-wonders.jpg" alt="natural wonders" style="height: 232px;" />
+                        </div>
+                        <div class="e-card-stacked flex-grow-1">
+                            <div class="e-card-content flex-grow-1 py-4 text-body">
+                                <h4 class="mb-2 fw-bold lh-sm text-truncate">Natural Wonders</h4>
+                                <p class="fs-6 mb-0">Witness the awe-inspiring natural wonders that showcase the planet’s incredible diversity. From majestic waterfalls and towering mountain ranges to expansive deserts, the choice is endless.</p>
+                            </div>
+                            <div class="e-card-actions e-bigger pb-4 w-100 lh-sm">
+                                <span class="e-badge e-badge-pill">#Natural Wonders</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 d-flex">
+                    <div class="e-card e-bigger rounded-3">
+                        <div class="e-card-image">
+                            <img class="object-fit-cover w-100" src="assets/images/card/image-tags-card/historic-landmarks.jpg" alt="historic landmarks" style="height: 232px;" />
+                        </div>
+                        <div class="e-card-stacked flex-grow-1">
+                            <div class="e-card-content flex-grow-1 py-4 text-body">
+                                <h4 class="mb-2 fw-bold lh-sm text-truncate">Historic Landmarks</h4>
+                                <p class="fs-6 mb-0">Visit historic landmarks that tell the stories of the past and offer glimpses into different eras. Explore ancient ruins, grand monuments, and iconic structures that have shaped history.</p>
+                            </div>
+                            <div class="e-card-actions e-bigger pb-4 w-100 lh-sm">
+                                <span class="e-badge e-badge-pill">#Historic Landmarks</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+

@@ -1,0 +1,186 @@
+﻿@page "/blocks/tile-view-3"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-white dark:bg-gray-900">
+		<div id="transaction-details">
+			<SfAppBar CssClass="shadow-none px-0">
+				<div class="px-4 sm:px-6 xl:px-10">
+					<div class="e-input-group w-full sm:max-w-lg">
+						<span class="e-input-group-icon e-icons e-search"></span>
+						<input class="e-input !pl-0" type="text" placeholder="Search" aria-label="search transactions" role="textbox" />
+					</div>
+					<div class="e-appbar-spacer"></div>
+					<SfButton CssClass="e-flat sf-icon-notification-bell-01 text-base ml-2" Type="button" aria-label="notification" role="button"></SfButton>
+					<span class="e-avatar e-avatar-circle e-avatar-small shrink-0 ml-3">
+						<img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
+					</span>
+				</div>
+			</SfAppBar>
+			<div class="border-t border-gray-200 dark:border-gray-600">
+				<div class="flex flex-col gap-3 p-4 sm:px-6 xl:px-10">
+					<SfBreadcrumb EnableNavigation="false">
+						<BreadcrumbItems>
+							<BreadcrumbItem IconCss="e-icons e-home" Text="Dashboard"></BreadcrumbItem>
+							<BreadcrumbItem IconCss="sf-icon-dollar" Text="Transactions"></BreadcrumbItem>
+						</BreadcrumbItems>
+						<BreadcrumbTemplates>
+							<SeparatorTemplate>
+								<span class="e-icons e-chevron-right"></span>
+							</SeparatorTemplate>
+						</BreadcrumbTemplates>
+					</SfBreadcrumb>
+					<div class="flex flex-col justify-between gap-4 mb-3 text-gray-900 dark:text-gray-50 md:flex-row">
+						<div class="flex justify-between">
+							<p class="text-xl font-medium">Transactions</p>
+							<SfButton CssClass="e-primary sm:hidden e-icons e-plus" Type="button" aria-label="add new transaction" role="button"></SfButton>
+						</div>
+						<div class="flex flex-col gap-4 sm:flex-row">
+							<div class="flex items-center gap-2 text-sm">
+								<SfSwitch Checked="false" CssClass="w-9" aria-label="show pending only" role="switch"></SfSwitch>
+								<span>Show pending only</span>
+							</div>
+							<SfDropDownButton CssClass="w-fit" Content="This week" Type="button" aria-label="choose the week" role="button">
+								<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+							</SfDropDownButton>
+							<SfButton CssClass="e-primary hidden sm:inline-block" Type="button" aria-label="add new transaction" role="button">Add New Transaction</SfButton>
+						</div>
+					</div>
+					<SfListView CssClass="!border-0 e-list-template" DataSource="@TransactionDetails" aria-label="list of transaction with details" role="list">
+						<ListViewFieldSettings Id="TransactionId" Text="Title" TValue="TransactionDetail"></ListViewFieldSettings>
+						<ListViewTemplates TValue="TransactionDetail">
+							<Template>
+								@{
+									<div class="e-card flex-row gap-1 rounded-lg sm:gap-0 p-4">
+										<span class="e-avatar e-avatar-large e-avatar-circle shrink-0 mr-2 sm:mr-4 @(context.PaymentType == "Credit Card" ? "bg-green-100 text-green-700 dark:text-green-500" : context.PaymentType == "Wire Transfer" ? "bg-indigo-100 text-indigo-600" : context.PaymentType == "Deposit" ? "bg-orange-100 text-orange-500 dark:text-orange-700" : context.PaymentType == "ACH Transfer" ? "bg-cyan-100 dark:bg-sky-100 text-cyan-700 dark:text-cyan-600" : "")">
+											<i class="sf-icon-dollar text-2xl"></i>
+										</span>
+										<div class="e-card-stacked grow sm:space-y-3">
+											<div class="e-card-header !flex-col gap-2 sm:!flex-row items-start !p-0">
+												<div class="e-card-header-title">
+													<p class="text-sm sm:text-base xl:text-lg font-medium text-gray-900 dark:text-gray-50">@context.Title</p>
+													<p class="text-xs sm:text-sm text-gray-500 mt-1 dark:text-gray-400">@context.Company</p>
+												</div>
+												<div class="e-card-sub-title !flex flex-row-reverse grow gap-2 justify-between items-center sm:flex-row sm:mr-4">
+													<span class="e-bigger e-badge e-badge-pill e-badge-success @GetStatusClass(context.Status)">@context.Status</span>
+													<p class="text-base sm:text-lg xl:text-xl font-medium text-gray-900 dark:text-gray-50">@context.Amount.ToString("C0")</p>
+												</div>
+											</div>
+											<div class="e-card-content !p-0 text-gray-700 dark:text-gray-200">
+												<div class="hidden items-center gap-x-6 gap-y-2 text-sm text-gray-500 dark:text-gray-400 sm:flex flex-wrap">
+													<p class="flex items-center gap-2">
+														Transaction ID:
+														<a class="font-medium text-primary-600 hover:underline dark:text-primary-400" href="javascript:void(0);" aria-label="transaction ID">@context.TransactionId</a>
+													</p>
+													<p class="flex gap-2">Payment Type: <span class="text-gray-700 dark:text-gray-200">@context.PaymentType</span></p>
+													<p class="flex gap-2">Category: <span class="text-gray-700 dark:text-gray-200">@context.Category</span></p>
+												</div>
+											</div>
+										</div>
+										<div class="e-card-actions self-start !p-0 leading-none">
+											<SfButton CssClass="e-round e-icons e-more-vertical-1 e-flat" Type="button" aria-label="more options" role="button"></SfButton>
+										</div>
+									</div>
+								}
+							</Template>
+						</ListViewTemplates>
+					</SfListView>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body-tertiary">
+		<div id="transaction-details">
+			<SfAppBar CssClass="px-0">
+				<div class="justify-content-between gap-4 px-3 px-sm-4 px-xl-5">
+					<div class="e-input-group" style="max-width: 514px;">
+						<span class="e-input-group-icon e-icons e-search border-0"></span>
+						<input class="e-input ps-0" type="text" placeholder="Search" aria-label="search transactions" role="textbox" />
+					</div>
+					<div class="d-flex gap-2">
+						<SfButton CssClass="e-flat sf-icon-notification-bell-01 fs-6" Type="button" aria-label="notification" role="button"></SfButton>
+						<span class="e-avatar e-avatar-circle e-avatar-small flex-shrink-0 ms-1">
+							<img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
+						</span>
+					</div>
+				</div>
+			</SfAppBar>
+			<div class="border-top border-light-subtle">
+				<div class="p-3 px-sm-4 px-xl-5">
+					<SfBreadcrumb EnableNavigation="false">
+						<BreadcrumbItems>
+							<BreadcrumbItem IconCss="e-icons e-home" Text="Dashboard"></BreadcrumbItem>
+							<BreadcrumbItem IconCss="sf-icon-dollar" Text="Transactions"></BreadcrumbItem>
+						</BreadcrumbItems>
+						<BreadcrumbTemplates>
+							<SeparatorTemplate>
+								<span class="e-icons e-chevron-right"></span>
+							</SeparatorTemplate>
+						</BreadcrumbTemplates>
+					</SfBreadcrumb>
+					<div class="d-flex flex-column justify-content-between gap-4 mt-2 pt-1 flex-md-row">
+						<div class="d-flex justify-content-between">
+							<h5 class="mb-0 fw-medium lh-base text-body">Transactions</h5>
+							<SfButton CssClass="e-primary d-sm-none e-icons e-plus" Type="button" aria-label="add new transaction" role="button"></SfButton>
+						</div>
+						<div class="d-flex flex-column align-items-start align-items-sm-center gap-3 flex-sm-row">
+							<div class="d-flex align-items-center gap-2 fs-6 text-body">
+								<SfSwitch Checked="false" CssClass="me-1 bs-switch" aria-label="show pending only" role="switch"></SfSwitch>
+								<span>Show pending only</span>
+							</div>
+							<SfDropDownButton CssClass="e-outline" Content="This week" Type="button" aria-label="choose the week" role="button">
+								<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+							</SfDropDownButton>
+							<SfButton CssClass="e-primary d-none d-sm-inline-block" Type="button" aria-label="add new transaction" role="button">Add New Transaction</SfButton>
+						</div>
+					</div>
+					<SfListView CssClass="border-0 mt-4 e-list-template" DataSource="@TransactionDetails" aria-label="list of transaction with details" role="list">
+						<ListViewFieldSettings Id="TransactionId" Text="Title" TValue="TransactionDetail"></ListViewFieldSettings>
+						<ListViewTemplates TValue="TransactionDetail">
+							<Template>
+								@{
+									<div class="e-card d-flex flex-row gap-2 gap-sm-0 lh-base px-2 py-3 rounded-3 px-sm-3">
+										<span class="e-avatar e-avatar-large e-avatar-circle flex-shrink-0 me-2 me-sm-3 @(context.PaymentType == "Credit Card" ? "bg-info-subtle text-info-emphasis" : context.PaymentType == "Wire Transfer" ? "bg-success-subtle text-success-emphasis" : context.PaymentType == "Deposit" ? "bg-warning-subtle text-warning-emphasis" : context.PaymentType == "ACH Transfer" ? "bg-primary-subtle text-primary" : "")">
+											<i class="sf-icon-dollar fs-3"></i>
+										</span>
+										<div class="e-card-stacked flex-grow-1">
+											<div class="e-card-header flex-column gap-2 flex-sm-row align-items-start p-0 mb-sm-2">
+												<div class="e-card-header-title">
+													<h6 class="fw-medium mb-0 text-body">@context.Title</h6>
+													<p class="fs-6 text-body-secondary my-1">@context.Company</p>
+												</div>
+												<div class="e-card-sub-title d-flex flex-row-reverse gap-2 justify-content-between flex-sm-row align-items-center flex-grow-1 me-sm-3">
+													<span class="e-bigger e-badge e-badge-pill @GetStatusClass(context.Status)">@context.Status</span>
+													<p class="fw-medium text-body fs-5 mb-0 lh-sm">@context.Amount.ToString("C0")</p>
+												</div>
+											</div>
+											<div class="e-card-content p-0">
+												<div class="d-none d-sm-flex align-items-center gap-4 fs-6 text-body-secondary flex-wrap row-gap-2">
+													<p class="d-flex align-items-center gap-2 mb-0">
+														Transaction ID:<a class="link-underline link-underline-opacity-0 link-underline-opacity-100-hover fw-medium" href="javascript:void(0);" aria-label="transaction ID">@context.TransactionId</a>
+													</p>
+													<p class="d-flex gap-2 mb-0">Payment Type:<span class="fw-medium">@context.PaymentType</span></p>
+													<p class="d-flex gap-2 mb-0">Category:<span class="fw-medium">@context.Category</span></p>
+												</div>
+											</div>
+										</div>
+										<div class="e-card-actions align-self-start p-0">
+											<SfButton CssClass="e-round e-icons e-more-vertical-1 e-flat" Type="button" aria-label="more options" role="button"></SfButton>
+										</div>
+									</div>
+								}
+							</Template>
+						</ListViewTemplates>
+					</SfListView>
+				</div>
+			</div>
+		</div>
+	</section>
+}

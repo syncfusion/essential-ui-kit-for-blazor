@@ -1,0 +1,128 @@
+@page "/blocks/search-1"
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900 h-full">
+        <div class="w-full pt-5 pb-4" style="height: 600px;">
+            <div id="SearchContainerParent" class="mx-auto" style="max-width: 520px;overflow: visible !important">
+                @if (Data != null)
+                {
+                    <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" DataSource="@Data" Placeholder="Search" PopupHeight="530px" Id="searchContainer" CssClass="e-bigger" ShowPopupButton="true" PopupWidth="100%" role="combobox">
+                        <AutoCompleteEvents TValue="string" TItem="SearchItem" Focus="@FocusHandlerAsync" Created="@FocusHandlerAsync"></AutoCompleteEvents>
+                        <AutoCompleteFieldSettings Value="Title" GroupBy="Category"></AutoCompleteFieldSettings>
+                        <AutoCompleteTemplates TItem="SearchItem">
+                            <ItemTemplate Context="context">
+                                @if (context != null)
+                                {
+                                    <div class="flex justify-between py-3">
+                                        <div class="flex items-center">
+                                            <div class="indent-0 shrink-0">
+                                                @if (!string.IsNullOrEmpty(context.Image))
+                                                {
+                                                    <img class="rounded-xl" src="@($"assets/images/search/{context.Image}")" alt="@($"{context.Title.ToLower()} logo")" />
+                                                }
+                                                @if (!string.IsNullOrEmpty(context.Tag))
+                                                {
+                                                    <span class="e-avatar indent-0 e-avatar-large @(context.Tag == "Automation" ? "text-green-600 bg-green-200 dark:bg-green-800 dark:text-green-200" :
+                                                          context.Tag == "Logging" ? "text-cyan-600 bg-cyan-100 dark:bg-cyan-800 dark:text-cyan-200" :
+                                                          context.Tag == "Integration" ? "text-orange-600 bg-orange-100 dark:bg-orange-800 dark:text-orange-200" : "")">
+                                                        <span class="e-icons text-2xl @(context.Tag == "Automation" ? "e-settings" :
+                                                              context.Tag == "Logging" ? "sf-icon-clock-fast-backward" :
+                                                              context.Tag == "Integration" ? "e-import-1" : "")">
+                                                        </span>
+                                                    </span>
+                                                }
+                                            </div>
+                                            <div class="text-sm indent-0 ml-2">
+                                                <p class="font-medium text-gray-900 dark:text-white">@context.Title</p>
+                                                <p class="text-gray-600 dark:text-gray-300 !text-wrap">@context.Text</p>
+                                            </div>
+                                        </div>
+                                        @if (context.Avatar != null && context.Avatar.Any())
+                                        {
+                                            <div class="w-2/5">
+                                                <div class="flex h-full items-center relative">
+                                                    @for (int i = 0; i < context.Avatar.Count; i++)
+                                                    {
+                                                        var rightPosition = $"{i * 22}px";
+                                                        <span class="absolute e-avatar e-avatar-circle overflow-hidden" style="width: 32px; height: 32px; right: @rightPosition">
+                                                            <img src="@($"assets/images/common/avatar/{context.Avatar[i]}")" class="w-100 h-100 object-cover" alt="logo" />
+                                                        </span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </ItemTemplate>
+                        </AutoCompleteTemplates>
+                    </SfAutoComplete>
+                }
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="d-flex justify-content-center align-items-center bg-body h-100">
+        <div class="w-100 pt-4 pb-3" style="height: 600px;">
+            <div id="SearchContainerParent" class="mx-auto" style="max-width: 520px">
+                @if (Data != null)
+                {
+                    <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" DataSource="@Data" Placeholder="Search" PopupHeight="530px" Id="searchContainer" CssClass="e-bigger" ShowPopupButton="true" role="combobox">
+                        <AutoCompleteEvents TValue="string" TItem="SearchItem" Focus="@FocusHandlerAsync" Created="@FocusHandlerAsync"></AutoCompleteEvents>
+                        <AutoCompleteFieldSettings Value="Title" GroupBy="Category"></AutoCompleteFieldSettings>
+                        <AutoCompleteTemplates TItem="SearchItem">
+                            <ItemTemplate Context="context">
+                                @if (context != null)
+                                {
+                                    <div class="d-flex justify-content-between py-2" style="text-indent: 0;">
+                                        <div class="d-flex align-items-center">
+                                            <div class="indent-0 shrink-0">
+                                                @if (!string.IsNullOrEmpty(context.Image))
+                                                {
+                                                    <img class="rounded-3" src="@($"assets/images/search/{context.Image}")" alt="@($"{context.Title.ToLower()} logo")" />
+                                                }
+                                                @if (!string.IsNullOrEmpty(context.Tag))
+                                                {
+                                                    <span class="e-avatar ms-0 e-avatar-large @(context.Tag == "Automation" ? "text-success-emphasis bg-success-subtle" :
+                                                          context.Tag == "Logging" ? "text-info-emphasis bg-info-subtle" :
+                                                          context.Tag == "Integration" ? "text-warning-emphasis bg-warning-subtle" : "")">
+                                                        <span class="e-icons fs-2 @(context.Tag == "Automation" ? "e-settings" :
+                                                              context.Tag == "Logging" ? "sf-icon-clock-fast-backward" :
+                                                              context.Tag == "Integration" ? "e-import-1" : "")">
+                                                        </span>
+                                                    </span>
+                                                }
+                                            </div>
+                                            <div class="mx-2">
+                                                <p class="fw-medium text-body m-0 lh-base fs-6">@context.Title</p>
+                                                <p class="text-body-secondary text-wrap m-0 lh-base fw-normal">@context.Text</p>
+                                            </div>
+                                        </div>
+                                        @if (context.Avatar != null && context.Avatar.Any())
+                                        {
+                                            <div style="width: 40%">
+                                                <div class="d-flex position-relative align-items-center h-100">
+                                                    @for (int i = 0; i < context.Avatar.Count; i++)
+                                                    {
+                                                        <span class="position-absolute e-avatar e-avatar-circle overflow-hidden" style="width: 32px; height: 32px; right: @(i * 22)px;">
+                                                            <img src="@($"assets/images/common/avatar/{context.Avatar[i]}")" class="w-100 h-100 object-cover" alt="logo" />
+                                                        </span>
+                                                    }
+                                                </div>
+                                            </div>
+                                        }
+                                    </div>
+                                }
+                            </ItemTemplate>
+                        </AutoCompleteTemplates>
+                    </SfAutoComplete>
+                }
+            </div>
+        </div>
+    </section>
+}

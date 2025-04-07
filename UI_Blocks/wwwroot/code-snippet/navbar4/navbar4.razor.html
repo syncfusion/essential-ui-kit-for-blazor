@@ -1,0 +1,150 @@
+﻿@page "/blocks/navbar-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-gray-50 dark:bg-gray-950">
+		<div>
+			<div class="border border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-700">
+				<div class="flex items-center justify-between ms-6 me-2.5 lg:me-6 py-2">
+					<div class="flex items-center">
+						<img class="mr-3 h-7" src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+						<span class="text-lg font-semibold text-gray-900 dark:text-white">Company Name</span>
+						<div class="flex pl-4 hidden lg:block">
+							<SfButton CssClass="e-flat py-2 mr-1.5" Type="button" aria-label="home" role="button">Home</SfButton>
+							<SfButton CssClass="e-flat py-2 mr-1.5" Type="button" aria-label="products" role="button">Products</SfButton>
+							<SfButton CssClass="e-flat py-2 mr-1.5" Type="button" aria-label="company" role="button">Company</SfButton>
+							<SfDropDownButton @ref="ResourcesDropdown" id="resourcesDropdown" class="py-2 mr-1.5" CssClass="e-flat" Content="Resources" Type="button" aria-label="choose a resource" role="button">
+								<DropDownButtonEvents Opened="OnResourcesDropdownOpened" Closed="OnResourcesDropdownClosed"></DropDownButtonEvents>
+								<DropDownMenuItems>
+									<DropDownMenuItem Text="Dashboard"></DropDownMenuItem>
+									<DropDownMenuItem Text="Earnings"></DropDownMenuItem>
+									<DropDownMenuItem Text="Support"></DropDownMenuItem>
+								</DropDownMenuItems>
+							</SfDropDownButton>
+							<SfButton CssClass="e-flat text-sm py-2 mr-1.5" Type="button" aria-label="contact" role="button">Contact</SfButton>
+						</div>
+					</div>
+					<div class="flex items-center">
+						<SfButton CssClass="sf-icon-notification-bell-02 leading-3 text-base hidden sm:block mr-2 e-flat" Type="button" aria-label="notification" role="button"></SfButton>
+						<div class="border border-r border-gray-200 dark:border-gray-600 hidden xl:block mr-2 h-7"></div>
+						<SfButton CssClass="e-icons e-grid-view hidden xl:block mr-2 e-flat" Type="button" aria-label="grid view" role="button"></SfButton>
+						<div class="border border-r border-gray-200 dark:border-gray-600 hidden lg:block mr-2 h-7"></div>
+						<SfDropDownButton @ref="BrandDropdown" id="brandDropdown" CssClass="e-flat me-2 hidden lg:block" Content="CompanyName.com" Type="button" aria-label="choose a brand" role="button">
+							<DropDownButtonEvents Opened="OnBrandDropdownOpened" Closed="OnBrandDropdownClosed"></DropDownButtonEvents>
+							<DropDownMenuItems>
+								<DropDownMenuItem Text="React"></DropDownMenuItem>
+								<DropDownMenuItem Text="Vue.js"></DropDownMenuItem>
+								<DropDownMenuItem Text="Angular"></DropDownMenuItem>
+							</DropDownMenuItems>
+						</SfDropDownButton>
+						<div class="border border-r border-gray-200 dark:border-gray-600 hidden sm:block h-7"></div>
+						<span class="e-avatar e-avatar-small e-avatar-circle ml-3">
+							<img src="assets/images/common/avatar/avatar-3.jpg" alt="profile picture" />
+						</span>
+						<div class="border border-r border-gray-200 dark:border-gray-600 h-7 block lg:hidden ms-3"></div>
+						<span id="menu" class="block lg:hidden">
+							<SfMenu TValue="MenuItem" HamburgerMode="true" ShowItemOnClick="true" Title="">
+								<MenuItems>
+									<MenuItem Text="Home"></MenuItem>
+									<MenuItem Text="Products"></MenuItem>
+									<MenuItem Text="Company"></MenuItem>
+									<MenuItem Text="Resources">
+										<MenuItems>
+											<MenuItem Text="Dashboard"></MenuItem>
+											<MenuItem Text="Earnings"></MenuItem>
+											<MenuItem Text="Support"></MenuItem>
+										</MenuItems>
+									</MenuItem>
+									<MenuItem Text="Contacts"></MenuItem>
+								</MenuItems>
+							</SfMenu>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="border border-t-0 border-gray-200 dark:border-gray-600 py-2 bg-gray-100 dark:bg-gray-700">
+				<div class="flex items-center w-full px-6">
+					<div class="e-input-group flex w-full lg:w-96">
+						<input class="e-input" type="text" placeholder="Search" aria-label="search" role="textbox" />
+						<span class="e-input-group-icon e-icons e-search"></span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section>
+		<div class="border border-light-subtle bg-body-tertiary">
+			<div class="d-flex align-items-center justify-content-between ps-4 pe-2 pe-lg-4 py-1">
+				<div class="d-flex align-items-center">
+					<img class="me-2" src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+					<h5 class="fw-bold text-body fs-5 mb-0">Company Name</h5>
+					<div class="d-flex ps-3 d-none d-lg-block">
+						<SfButton CssClass="e-flat py-2 me-2" Type="button" aria-label="home" role="button">Home</SfButton>
+						<SfButton CssClass="e-flat py-2 me-2" Type="button" aria-label="products" role="button">Products</SfButton>
+						<SfButton CssClass="e-flat py-2 me-2" Type="button" aria-label="company" role="button">Company</SfButton>
+						<SfDropDownButton @ref="ResourcesDropdown" id="resourcesDropdown" CssClass="e-flat me-2" Content="Resources" Type="button" aria-label="choose a resource" role="button">
+							<DropDownButtonEvents Opened="OnResourcesDropdownOpened" Closed="OnResourcesDropdownClosed"></DropDownButtonEvents>
+							<DropDownMenuItems>
+								<DropDownMenuItem Text="Dashboard"></DropDownMenuItem>
+								<DropDownMenuItem Text="Earnings"></DropDownMenuItem>
+								<DropDownMenuItem Text="Support"></DropDownMenuItem>
+							</DropDownMenuItems>
+						</SfDropDownButton>
+						<SfButton CssClass="e-flat py-2 me-2" Type="button" aria-label="contact" role="button">Contact</SfButton>
+					</div>
+				</div>
+				<div class="d-flex align-items-center">
+					<SfButton CssClass="sf-icon-notification-bell-01 fs-6 d-none d-sm-block me-3 e-flat" Type="button" aria-label="notification" role="button"></SfButton>
+					<div class="border-end border-secondary-subtle d-none d-xl-block me-3" style="height: 24px;"></div>
+					<SfButton CssClass="e-icons e-grid-view d-none d-xl-block me-3 e-medium e-flat" Type="button" aria-label="grid view" role="button"></SfButton>
+					<div class="border-end border-secondary-subtle d-none d-lg-block me-3" style="height: 24px;"></div>
+					<SfDropDownButton @ref="BrandDropdown" id="brandDropdown" CssClass="e-flat me-3 d-none d-lg-block" Content="CompanyName.com" Type="button" aria-label="choose a brand" role="button">
+						<DropDownButtonEvents Opened="OnBrandDropdownOpened" Closed="OnBrandDropdownClosed"></DropDownButtonEvents>
+						<DropDownMenuItems>
+							<DropDownMenuItem Text="React"></DropDownMenuItem>
+							<DropDownMenuItem Text="Vue.js"></DropDownMenuItem>
+							<DropDownMenuItem Text="Angular"></DropDownMenuItem>
+						</DropDownMenuItems>
+					</SfDropDownButton>
+					<div class="border-end border-secondary-subtle d-none d-sm-block" style="height: 24px;"></div>
+					<span class="e-avatar e-avatar-small e-avatar-circle ms-3">
+						<img src="assets/images/common/avatar/avatar-3.jpg" alt="profile picture" />
+					</span>
+					<div class="border-end border-secondary-subtle d-block d-lg-none ms-3" style="height: 24px;"></div>
+					<span id="menu" class="d-block d-lg-none">
+						<SfMenu TValue="MenuItem" CssClass="bg-body-tertiary" HamburgerMode="true" ShowItemOnClick="true" Title="">
+							<MenuItems>
+								<MenuItem Text="Home"></MenuItem>
+								<MenuItem Text="Products"></MenuItem>
+								<MenuItem Text="Company"></MenuItem>
+								<MenuItem Text="Resources">
+									<MenuItems>
+										<MenuItem Text="Dashboard"></MenuItem>
+										<MenuItem Text="Earnings"></MenuItem>
+										<MenuItem Text="Support"></MenuItem>
+									</MenuItems>
+								</MenuItem>
+								<MenuItem Text="Contacts"></MenuItem>
+							</MenuItems>
+						</SfMenu>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="border border-top-0 border-light py-2 border-light-subtle bg-body-tertiary">
+			<div class="d-flex align-items-center px-4 col col-lg-4">
+				<div class="e-input-group d-flex w-100">
+					<input class="e-input" type="text" placeholder="Search" aria-label="search" role="textbox" />
+					<span class="e-input-group-icon e-icons e-search border-start-0"></span>
+				</div>
+			</div>
+		</div>
+	</section>
+}

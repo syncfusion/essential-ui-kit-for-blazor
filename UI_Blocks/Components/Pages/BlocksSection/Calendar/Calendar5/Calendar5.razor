@@ -1,0 +1,102 @@
+@page "/blocks/calendar-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div style="height: 792px; width: @Width; float: right;">
+            <SfSidebar Width="@Width" class="w-full h-full flex flex-col bg-white dark:bg-gray-900" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div class="flex-none border-b border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900">
+                        <div class="flex justify-between items-center px-4 py-3 border-b border-gray-200 dark:border-gray-600">
+                            <h2 class="text-base font-semibold text-gray-900 dark:text-white">To-Do List</h2>
+                            <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" OnClick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                        </div>
+                        <div class="p-4 flex justify-center">
+                            <SfCalendar TValue="DateTime" CssClass="e-bigger shadow-none border-none"></SfCalendar>
+                        </div>
+                    </div>
+                    <div class="flex-grow overflow-y-auto bg-white dark:bg-gray-900">
+                        <p class="text-sm font-semibold text-gray-900 dark:text-white p-4 pt-6">Sep 22</p>
+                        <SfListView CssClass="!border-0 e-list-template" DataSource="@(data)" aria-label="list of to-do tasks" role="list">
+                            <ListViewFieldSettings TValue="TodoData" Id="Id" Text="Header"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="TodoData">
+                                <Template>
+                                    <div class="flex px-4 py-2">
+                                        <span>
+                                            <SfCheckBox Checked="@(context.Completed)" @onchange="@(e => HandleCheckboxChange(context.Id))"></SfCheckBox>
+                                        </span>
+                                        <div class="ml-2.5">
+                                            <p class="text-sm font-medium text-gray-700 dark:text-gray-300 @(context.Completed ? "line-through" : "")">@context.Header</p>
+                                            <p class="mt-1 text-gray-500 dark:text-gray-400 text-xs">@context.Date</p>
+                                        </div>
+                                    </div>
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </div>
+                    <div class="flex-none px-3 py-2 border-t border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800">
+                        <SfButton CssClass="e-primary e-flat text-xs" IconCss="e-icons e-plus" Content="Create New" Type="button" aria-label="create new" role="button"></SfButton>
+                    </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 absolute top-0 right-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="height: 825px; width: @Width; float: right;">
+            <SfSidebar Width="@Width" class="d-flex flex-column bg-body" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div class="bg-body">
+                        <div class="border-bottom flex-shrink-0 border-light-subtle">
+                            <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom border-light-subtle">
+                                <h2 class="mb-0 fs-6 fw-bold text-body">To-Do List</h2>
+                                <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" OnClick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                            </div>
+                            <div class="pb-0 d-flex justify-content-center align-items-center">
+                                <SfCalendar TValue="DateTime" CssClass="e-bigger shadow-none w-100 border-0"></SfCalendar>
+                            </div>
+                        </div>
+                        <div class="flex-grow-1 overflow-auto">
+                            <p class="mb-0 fw-bold text-body-emphasis p-3 pt-4">Sep 22</p>
+                            <SfListView CssClass="border-0 py-1 e-list-template" DataSource="@data" aria-label="list of to-do tasks" role="list">
+                                <ListViewFieldSettings TValue="TodoData" Id="Id" Text="Header"></ListViewFieldSettings>
+                                <ListViewTemplates TValue="TodoData">
+                                    <Template>
+                                        <div class="d-flex px-3 py-2">
+                                            <span>
+                                                <SfCheckBox Checked="@context.Completed" @onchange="@(e => HandleCheckboxChange(context.Id))"></SfCheckBox>
+                                            </span>
+                                            <div class="ms-2">
+                                                <p class="mb-1 fw-medium text-body-emphasis @(context.Completed ? "text-decoration-line-through" : "")">@context.Header</p>
+                                                <p class="mt-1 mb-0 text-body-secondary">@context.Date</p>
+                                            </div>
+                                        </div>
+                                    </Template>
+                                </ListViewTemplates>
+                            </SfListView>
+                        </div>
+                        <div class="flex-shrink-0 px-3 py-2 border-top border-light-subtle bg-body-tertiary">
+                            <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Content="Create New" Type="button" aria-label="create new" role="button"></SfButton>
+                        </div>
+                    </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 position-absolute top-0 end-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

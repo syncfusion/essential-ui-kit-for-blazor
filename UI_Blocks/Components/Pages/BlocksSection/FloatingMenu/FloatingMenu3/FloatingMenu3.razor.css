@@ -1,0 +1,11 @@
+﻿::deep #floating-contact .e-dialog .e-dlg-header-content,
+::deep #floating-contact .e-dialog .e-dlg-content,
+::deep #floating-contact .e-dialog .e-footer-content {
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+::deep #floating-contact .e-input-group.e-control-wrapper input:valid,
+::deep #floating-contact .e-input-group.e-control-wrapper textarea.e-bigger {
+    border: 0 !important;
+}

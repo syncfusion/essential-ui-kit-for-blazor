@@ -1,0 +1,204 @@
+﻿@page "/blocks/tile-view-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-white dark:bg-gray-900">
+		<div id="ticket-details">
+			<SfAppBar CssClass="shadow-none px-0">
+				<div class="w-full px-4 md:px-6 xl:px-10">
+					<span class="text-xl font-semibold text-gray-900 dark:text-gray-50">All Tickets</span>
+					<div class="e-appbar-spacer"></div>
+					<SfButton CssClass="e-primary !hidden md:!block" IconCss="e-icons e-plus e-medium" Type="button" Content="Create Ticket" aria-label="create ticket" role="button"></SfButton>
+					<SfButton CssClass="e-primary e-icons e-plus e-medium !block md:!hidden" Type="button" aria-label="create ticket" role="button"></SfButton>
+				</div>
+			</SfAppBar>
+			<div class="border-t border-gray-200 dark:border-gray-600">
+				<div class="xl:px-10 md:px-6 px-4 py-6 w-full">
+					<div class="md:flex justify-between space-y-6 md:space-y-0">
+						<div class="e-input-group md:w-72 w-full">
+							<span class="e-input-group-icon e-icons e-search border-0"></span>
+							<input class="e-input !pl-0" type="text" placeholder="Search Ticket ID" aria-label="search ticket id" role="textbox" />
+						</div>
+						<div class="flex items-center justify-between">
+							<span class="flex items-center">
+								<SfSwitch Checked="true" CssClass="w-9" aria-label="show closed tickets" role="switch"></SfSwitch>
+								<span class="text-base md:text-sm text-gray-900 dark:text-gray-50 ml-2 md:mr-4">Show Closed Tickets</span>
+							</span>
+							<SfButton CssClass="!hidden md:!block" IconCss="e-icons e-filter e-medium" Type="button" Content="Filter" aria-label="filter options" role="button"></SfButton>
+							<SfButton CssClass="e-icons e-filter e-medium !block md:!hidden" Type="button" aria-label="filter options" role="button"></SfButton>
+						</div>
+					</div>
+					<hr class="my-4 border-gray-200 dark:border-gray-600" />
+					<SfListView CssClass="!border-0 e-list-template" DataSource="@TicketDetails" aria-label="list of ticket details" role="list">
+						<ListViewFieldSettings Id="TicketId" Text="Title" TValue="TicketDetail"></ListViewFieldSettings>
+						<ListViewTemplates TValue="TicketDetail">
+							<Template>
+								@{
+									<div class="e-card">
+										<div class="e-card-stacked">
+											<div class="e-card-header items-start md:items-center">
+												<div class="flex e-card-header-title mr-1">
+													<span class="pt-0.5">
+														<SfCheckBox TChecked="Boolean" aria-label="select ticket" role="checkbox"></SfCheckBox>
+													</span>
+													<span class="text-base font-medium text-gray-900 dark:text-gray-50 ml-3">@context.Title</span>
+												</div>
+												<div class="e-card-sub-title flex items-center space-x-3 ml-auto">
+													<span class="e-small flex items-center">
+														<SfButton CssClass="e-flat" IconCss="sf-icon-message-text-01 !text-base" Type="button" Content="@context.CommentCount.ToString()" aria-label="notification count" role="button"></SfButton>
+													</span>
+													<span class="e-small">
+														<SfButton CssClass="e-flat e-icons e-more-vertical-1 !text-base" Type="button" aria-label="more options" role="button"></SfButton>
+													</span>
+												</div>
+											</div>
+											<div class="e-card-content md:flex items-center flex-col md:flex-row ml-7">
+												<span class="text-sm text-gray-700 dark:text-gray-200">&num;@context.TicketId</span>
+												<span class="text-sm hidden md:block ml-6 text-gray-700 dark:text-gray-200">@context.Category</span>
+												<div class="md:flex hidden md:block ml-6 text-gray-700 dark:text-gray-200">
+													<span class="sf-icon-user-circle text-sm"></span>
+													<span class="ml-2 text-sm">Requester: @context.Requester</span>
+												</div>
+												<div class="flex mt-4 md:mt-0 ml-0 md:ml-6 text-gray-700 dark:text-gray-200">
+													<span class="sf-icon-clock-02 text-sm"></span>
+													<span class="pl-2 text-sm">@context.CreatedTime</span>
+												</div>
+											</div>
+											<div class="e-card-separator"></div>
+											<div class="e-card-actions !py-3 !flex">
+												<span class="e-small block md:hidden ml-3">
+													<SfButton CssClass="e-flat e-icons e-grid-view !text-base" Type="button" aria-label="choose the category" role="button"></SfButton>
+													<SfButton CssClass="ml-9 e-flat sf-icon-calendar-check-01 !text-base" Type="button" aria-label="choose the date" role="button"></SfButton>
+												</span>
+												<span class="hidden md:block flex items-center">
+													<SfDropDownButton CssClass="e-flat mr-6" IconCss="e-icons e-grid-view !text-base" Type="button" Content="@context.Category" aria-label="choose the category" role="button">
+														<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+													</SfDropDownButton>
+													<SfDropDownButton CssClass="e-flat mr-6" Type="button" Content="@context.Assignee" aria-label="choose the agent" role="button">
+														<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+													</SfDropDownButton>
+													<SfDropDownButton CssClass=@($"e-flat mr-6 !hidden lg:!inline-block {GetPriorityClass(context.PriorityLevel)}") IconCss=@($"sf-icon-{GetPriorityIcon(context.PriorityLevel)} !text-base") Type="button" Content="@context.PriorityLevel" aria-label="choose the priority" role="button">
+														<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+													</SfDropDownButton>
+													<SfDropDownButton CssClass="e-flat" IconCss="sf-icon-calendar-check-01 !text-base" Type="button" Content="@context.DueDate.ToString("MM/dd/yyyy")" aria-label="choose the date" role="button">
+														<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+													</SfDropDownButton>
+												</span>
+												<SfDropDownButton CssClass=@($"e-outline w-32 ml-auto {GetStatusClass(context.Status)}") Type="button" Content="@context.Status" aria-label="choose the status" role="button">
+													<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+												</SfDropDownButton>
+											</div>
+										</div>
+									</div>
+								}
+							</Template>
+						</ListViewTemplates>
+					</SfListView>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body-tertiary">
+		<div id="ticket-details">
+			<SfAppBar CssClass="shadow-none px-0">
+				<div class="px-3 px-md-4 px-xl-5">
+					<span class="h5 mb-0 fw-bold text-body">All Tickets</span>
+					<div class="e-appbar-spacer"></div>
+					<SfButton CssClass="e-primary d-none d-md-block" IconCss="e-icons e-plus e-medium" Type="button" Content="Create Ticket" aria-label="create ticket" role="button"></SfButton>
+					<SfButton CssClass="e-primary e-icons e-plus e-medium d-block d-md-none" Type="button" aria-label="create ticket" role="button"></SfButton>
+				</div>
+			</SfAppBar>
+			<div class="border-top border-light-subtle">
+				<div class="p-3 px-md-4 px-xl-5">
+					<div class="d-md-flex justify-content-between">
+						<div class="col-12 col-md-4">
+							<div class="e-input-group">
+								<span class="e-input-group-icon e-icons e-search border-0"></span>
+								<input class="e-input" type="text" placeholder="Search Ticket ID" aria-label="search ticket id" role="textbox" />
+							</div>
+						</div>
+						<div class="d-flex align-items-center justify-content-between mt-3 mt-md-0">
+							<span class="d-flex align-items-center">
+								<SfSwitch CssClass="bs-switch" Checked="true" aria-label="show closed tickets" role="switch"></SfSwitch>
+								<span class="text-body ms-2 me-3 small">Show Closed Tickets</span>
+							</span>
+							<SfButton CssClass="d-none d-md-block e-outline" IconCss="e-icons e-filter e-medium" Type="button" Content="Filter" aria-label="filter options" role="button"></SfButton>
+							<SfButton CssClass="e-outline e-icons e-filter e-medium d-block d-md-none" Type="button" aria-label="filter options" role="button"></SfButton>
+						</div>
+					</div>
+					<hr class="border-light-subtle opacity-100 my-4" />
+					<SfListView CssClass="border-0 e-list-template" DataSource="@TicketDetails" aria-label="list of ticket details" role="list">
+						<ListViewFieldSettings Id="TicketId" Text="Title" TValue="TicketDetail"></ListViewFieldSettings>
+						<ListViewTemplates TValue="TicketDetail">
+							<Template>
+								@{
+									<div class="e-card rounded-3">
+										<div class="e-card-stacked">
+											<div class="e-card-header d-flex flex-row pt-3 px-3 align-items-start align-items-sm-center">
+												<div class="d-flex e-card-header-title me-1">
+													<span><SfCheckBox TChecked="Boolean" aria-label="select ticket" role="checkbox"></SfCheckBox></span>
+													<span class="fs-6 fw-medium text-body ms-2 ps-1 e-card-header-title">@context.Title</span>
+												</div>
+												<div class="e-card-sub-title d-flex align-items-center gap-3 ms-auto justify-content-end">
+													<span class="e-small d-flex align-items-center">
+														<SfButton CssClass="e-flat" IconCss="sf-icon-message-text-01 fs-6" Type="button" Content="@context.CommentCount.ToString()" aria-label="notification count" role="button"></SfButton>
+													</span>
+													<span class="e-small">
+														<SfButton CssClass="e-flat e-icons e-more-vertical-1 fs-6 py-1" Type="button" aria-label="more options" role="button"></SfButton>
+													</span>
+												</div>
+											</div>
+											<div class="e-card-content d-md-flex ms-4 gap-sm-5 py-2 mb-1 px-3">
+												<span class="text-body-secondary">&num;@context.TicketId</span>
+												<span class="d-none d-md-block text-body-secondary">@context.Category</span>
+												<div class="d-md-flex d-none d-md-block align-items-center">
+													<span class="sf-icon-user-circle fs-6"></span>
+													<span class="ms-2 text-body-secondary">Requester: @context.Requester</span>
+												</div>
+												<div class="d-flex mt-3 mt-md-0 align-items-center">
+													<span class="sf-icon-clock-02 fs-6"></span>
+													<span class="ms-2 text-body-secondary">@context.CreatedTime</span>
+												</div>
+											</div>
+											<div class="e-card-separator"></div>
+											<div class="e-card-actions px-3 py-2 d-flex">
+												<span class="e-small d-block d-md-none ms-3">
+													<SfButton CssClass="e-flat e-icons e-grid-view fs-6" Type="button" aria-label="choose the category" role="button"></SfButton>
+													<SfButton CssClass="ms-5 e-flat sf-icon-calendar-check-01 fs-6" Type="button" aria-label="choose the date" role="button"></SfButton>
+												</span>
+												<span class="d-none d-md-flex align-items-center gap-4">
+													<SfDropDownButton CssClass="e-flat" IconCss="e-icons e-grid-view fs-6" Type="button" Content="@context.Category" aria-label="choose the category" role="button">
+														<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+													</SfDropDownButton>
+													<SfDropDownButton CssClass="e-flat" Type="button" Content="@context.Assignee" aria-label="choose the agent" role="button">
+														<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+													</SfDropDownButton>
+													<SfDropDownButton CssClass=@($"e-flat d-none d-lg-inline-block {GetPriorityClass(context.PriorityLevel)}") IconCss=@($"sf-icon-{GetPriorityIcon(context.PriorityLevel)} fs-6") Type="button" Content="@context.PriorityLevel" aria-label="choose the priority" role="button">
+														<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+													</SfDropDownButton>
+													<SfDropDownButton CssClass="e-flat" IconCss="sf-icon-calendar-check-01 fs-6" Type="button" Content="@context.DueDate.ToString("MM/dd/yyyy")" aria-label="choose the date" role="button">
+														<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+													</SfDropDownButton>
+												</span>
+												<SfDropDownButton CssClass=@($"e-outline ms-auto {GetStatusClass(context.Status)}") Type="button" Content="@context.Status" aria-label="choose the status" role="button" style="width: 114px !important;">
+													<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+												</SfDropDownButton>
+											</div>
+										</div>
+									</div>
+								}
+							</Template>
+						</ListViewTemplates>
+					</SfListView>
+				</div>
+			</div>
+		</div>
+	</section>
+}

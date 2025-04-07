@@ -1,0 +1,88 @@
+﻿@page "/blocks/list-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@inject IJSRuntime JSRuntime
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-white dark:bg-gray-900">
+		<div class="flex items-center justify-center min-h-screen">
+			<div class="lg:max-w-xl w-full m-auto p-4 md:p-6 lg:p-8">
+				<SfListView CssClass="!border-0 e-list-template" DataSource="@TaskData" aria-label="select tasks in the to-do list" role="checkbox">
+					<ListViewFieldSettings Id="Id" Text="Header" TValue="TaskItem"></ListViewFieldSettings>
+					<ListViewTemplates TValue="TaskItem">
+						<Template>
+							@{
+								<div class="e-list-wrapper border-b border-gray-200 dark:border-gray-600 !px-1 sm:!px-3 !py-4 flex items-start">
+									<SfCheckBox CssClass="pt-1" @bind-Checked="@context.Completed" aria-label="select tasks in the to-do list" role="checkbox"></SfCheckBox>
+									<div class="ml-3">
+										<span class="e-list-item-header font-medium text-sm @((context.Completed ? "line-through text-gray-700 dark:text-gray-200" : "text-gray-900 dark:text-white"))">@context.Header</span>
+										@if (context.Id == 3)
+										{
+											<span class="e-badge e-badge-pill e-badge-success ml-2 !px-2">New</span>
+										}
+										<p class="text-xs text-gray-700 dark:text-gray-200 pt-1 !text-wrap !line-clamp-1 w-full truncate">@context.Content</p>
+										<span class="flex items-center space-x-4 mt-2">
+											<span class="flex items-center space-x-2">
+												<span class="e-icons e-day text-xs"></span>
+												<span class="text-xs font-medium text-gray-500 dark:text-gray-400">@context.Date.ToString("MMM d, yyyy")</span>
+											</span>
+											<span class="flex items-center space-x-2">
+												<span class="e-icons e-user text-xs"></span>
+												<span class="text-xs font-medium text-gray-500 dark:text-gray-400">@context.Name</span>
+											</span>
+										</span>
+									</div>
+								</div>
+							}
+						</Template>
+					</ListViewTemplates>
+				</SfListView>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body">
+		<div class="d-flex align-items-center justify-content-center min-vh-100">
+			<div class="container-lg w-100 m-auto p-3 p-md-4" style="@WidthStyle">
+				<SfListView CssClass="border-0 e-list-template" DataSource="@TaskData" aria-label="select tasks in the to-do list" role="checkbox">
+					<ListViewFieldSettings Id="Id" Text="Header" TValue="TaskItem"></ListViewFieldSettings>
+					<ListViewTemplates TValue="TaskItem">
+						<Template>
+							@{
+								<div class="e-list-wrapper px-1 px-sm-2 py-3 d-flex align-items-start">
+									<SfCheckBox CssClass="e-bigger pt-1" @bind-Checked="@context.Completed" aria-label="select tasks in the to-do list" role="checkbox"></SfCheckBox>
+									<div class="ms-2 ps-1 d-flex flex-column w-100">
+										<span>
+											<span class="e-list-item-header fw-medium @(context.Completed ? "text-decoration-line-through" : "")">@context.Header</span>
+											@if (context.Id == 3)
+											{
+												<span class="e-badge e-badge-pill e-badge-success ms-2 px-2">New</span>
+											}
+										</span>
+										<span class="mb-0 small pt-1 text-wrap overflow-hidden" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">@context.Content</span>
+										<span class="d-flex align-items-center mt-2">
+											<span class="d-flex align-items-center me-3 gap-2">
+												<span class="e-icons e-day"></span>
+												<span class="fw-medium small e-inherit">@context.Date.ToString("MMM d, yyyy")</span>
+											</span>
+											<span class="d-flex align-items-center gap-2">
+												<span class="e-icons e-user"></span>
+												<span class="fw-medium small e-inherit">@context.Name</span>
+											</span>
+										</span>
+									</div>
+								</div>
+							}
+						</Template>
+					</ListViewTemplates>
+				</SfListView>
+			</div>
+		</div>
+	</section>
+}

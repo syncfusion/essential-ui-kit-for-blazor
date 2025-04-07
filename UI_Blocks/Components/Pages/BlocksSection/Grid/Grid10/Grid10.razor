@@ -1,0 +1,122 @@
+@page "/blocks/grid-10"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="mx-auto w-full py-12 sm:px-6 px-4">
+            <SfGrid DataSource="@GridData" Width="100%" Height="498" RowHeight="48" role="grid">
+                <GridColumns>
+                    <GridColumn Field="Product" HeaderText="Product" Width="206">
+                        <Template>
+                            @{
+                                var dataItem = (context as ProductSales)!;   
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8">
+                                        <img class="rounded h-8" src="@($"assets/images/advance-grid/product-sales-table/{dataItem.ProductImage}")" width="32px" alt="product image" />
+                                    </div>
+                                    <div class="text-sm">@dataItem.Product</div>
+                                </div>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="UnitSold" HeaderText="Unit Sold" Width="96">
+                        <Template>
+                            @{
+                                var dataItem = (context as ProductSales)!; 
+                                <p>@dataItem.UnitSold.ToString("N0")</p>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="TotalRevenue" HeaderText="Total Revenue" Format="C0" Width="126" />
+                    <GridColumn Field="AverageSellingPrice" HeaderText="Average Selling Price" Format="C0" Width="158" />
+                    <GridColumn Field="PercentOfTotalSales" HeaderText="% of Total Sales" Width="128" />
+                    <GridColumn Field="TotalSalesRep" HeaderText="Sales Representative" Width="186">
+                        <Template>
+                            @{
+                                var dataItem = (context as ProductSales)!; 
+                                string themeColor = dataItem.TotalSalesRep.ColorTheme switch
+                                                {
+                                                    "Red" => "!bg-red-600",
+                                                    "Green" => "!bg-green-600",
+                                                    "Blue" => "!bg-cyan-600",
+                                                    "Orange" => "!bg-orange-600",
+                                                    "Purple" => "!bg-indigo-600",
+                                                    _ => "#ffffff"
+                                                };
+                                <div class="flex items-center gap-5">
+                                    <span class="e-avatar e-avatar-circle e-avatar-small text-white @themeColor">
+                                        @dataItem.TotalSalesRep.Initial
+                                    </span>
+                                    <p>@dataItem.TotalSalesRep.Name</p>
+                                </div>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="ReturnRate" HeaderText="Return Rate" Width="103" />
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="w-100 py-5 px-3 px-sm-4 mx-auto">
+            <SfGrid DataSource="@GridData" Width="100%" Height="498" RowHeight="48" role="grid">
+                <GridColumns>
+                    <GridColumn Field="Product" HeaderText="Product" Width="212">
+                        <Template>
+                            @{
+                                var dataItem = (context as ProductSales)!; 
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="w-8">
+                                        <img class="rounded h-8" src="@($"assets/images/advance-grid/product-sales-table/{dataItem.ProductImage}")" width="32" alt="product image" />
+                                    </div>
+                                    <div>@dataItem.Product</div>
+                                </div>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="UnitSold" HeaderText="Unit Sold" Width="96">
+                        <Template>
+                             @{
+                                var dataItem = (context as ProductSales)!; 
+                                <p class="mb-0">@dataItem.UnitSold.ToString("N0")</p>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="TotalRevenue" HeaderText="Total Revenue" Format="C0" Width="126" />
+                    <GridColumn Field="AverageSellingPrice" HeaderText="Average Selling Price" Format="C0" Width="158" />
+                    <GridColumn Field="PercentOfTotalSales" HeaderText="% of Total Sales" Width="128" />
+                    <GridColumn Field="TotalSalesRep" HeaderText="Sales Representative" Width="186">
+                        <Template>
+                            @{
+                                var dataItem = (context as ProductSales)!; 
+                                string colorTheme = dataItem.TotalSalesRep.ColorTheme switch
+                                                {
+                                                    "Red" => "bg-danger",
+                                                    "Green" => "bg-success",
+                                                    "Blue" => "bg-info",
+                                                    "Orange" => "bg-warning",
+                                                    "Purple" => "bg-primary",
+                                                    _ => ""
+                                                };
+                                <div class="d-flex align-items-center gap-3">
+                                    <span class="e-avatar e-avatar-circle e-avatar-small text-white @colorTheme">
+                                        @dataItem.TotalSalesRep.Initial
+                                    </span>
+                                    <p class="mb-0">@dataItem.TotalSalesRep.Name</p>
+                                </div>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="ReturnRate" HeaderText="Return Rate" Width="103" />
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}

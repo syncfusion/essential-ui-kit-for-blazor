@@ -1,0 +1,285 @@
+﻿@page "/blocks/checkout-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-gray-100 dark:bg-gray-900">
+		<div style="height: 1298px; width: @Width; float: Right;">
+			<SfSidebar CssClass="w-full" @bind-IsOpen="@IsSidebarOpen" Position="SidebarPosition.Right" Type="@SidebarType" Width="@Width" CloseOnDocumentClick="false" ShowBackdrop="true" role="sidebar">
+				<ChildContent>
+					<div class="p-4 md:p-6 bg-gray-100 dark:bg-gray-900">
+						<div class="flex justify-between items-center mb-5">
+							<h2 class="text-lg font-medium text-gray-900 dark:text-white">My shopping cart</h2>
+							<SfButton CssClass="e-icons e-flat text-xl" OnClick="ToggleSidebar" Type="button" aria-label="close the sidebar" role="button">
+								<i class="e-icons e-close"></i>
+							</SfButton>
+						</div>
+						<div class="rounded-lg p-3 bg-gray-200 dark:bg-gray-800">
+							<div class="grid grid-cols-1 gap-3">
+								<div class="grid grid-cols-1 gap-6">
+									<div class="flex justify-between">
+										<div class="text-base text-gray-700 dark:text-gray-300">Subtotal</div>
+										<div class="text-base font-semibold text-gray-900 dark:text-white">$8,900.00</div>
+									</div>
+									<div class="flex justify-between">
+										<div class="text-base text-gray-700 dark:text-gray-300">Savings</div>
+										<div class="text-base font-semibold text-green-700 dark:text-green-500">-$299.00</div>
+									</div>
+									<div class="flex justify-between">
+										<div class="text-base text-gray-700 dark:text-gray-300">Store pickup</div>
+										<div class="text-base font-semibold text-gray-900 dark:text-white">$99.00</div>
+									</div>
+									<div class="flex justify-between">
+										<div class="text-base text-gray-700 dark:text-gray-300">Tax</div>
+										<div class="text-base font-semibold text-gray-900 dark:text-white">$899.00</div>
+									</div>
+								</div>
+								<div>
+									<hr class="w-full border-gray-300 dark:border-gray-600" />
+								</div>
+								<div class="flex justify-between">
+									<div class="text-base font-semibold text-gray-700 dark:text-gray-300">Total</div>
+									<div class="text-base font-semibold text-gray-900 dark:text-white">$9,599.00</div>
+								</div>
+							</div>
+						</div>
+						<div class="pt-5">
+							<form action="#" onsubmit="event.preventDefault();">
+								<div class="grid gap-5">
+									<div class="grid grid-cols-1 gap-5 w-full">
+										<h5 class="mb-1 text-lg font-semibold text-gray-900 dark:text-white">Billing address</h5>
+										<div class="e-bigger">
+											<SfRadioButton Name="billingType" Value="Individual" Label="Individual" Checked="@SelectedBillingAddress" aria-label="individual" role="radio"></SfRadioButton>
+											<SfRadioButton CssClass="ml-6" Name="billingType" Value="Company" Label="Company" Checked="@SelectedBillingAddress" aria-label="company" role="radio"></SfRadioButton>
+										</div>
+										<div class="grid grid-cols-1 w-full">
+											<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Saved address</label>
+											<SfDropDownList CssClass="e-bigger" TItem="string" TValue="string" Placeholder="Saved address" aria-label="choose a saved address" role="listbox"></SfDropDownList>
+										</div>
+										<div class="flex justify-between gap-4 w-full flex-col md:flex-row lg:flex-row xl:flex-row">
+											<div class="w-full md:w-1/2 lg:w-1/2 xl:w-1/2">
+												<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">First name</label>
+												<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="First name" FloatLabelType="FloatLabelType.Never" aria-label="enter the first name" role="textbox"></SfTextBox>
+											</div>
+											<div class="w-full md:w-1/2 lg:w-1/2 xl:w-1/2">
+												<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Last name</label>
+												<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Last name" FloatLabelType="FloatLabelType.Never" aria-label="enter the last name" role="textbox"></SfTextBox>
+											</div>
+										</div>
+									</div>
+									<div class="grid grid-cols-1 gap-5 w-full">
+										<div class="w-full">
+											<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Phone number</label>
+											<div class="flex space-x-2">
+												<div class="w-2/5 sm:w-1/5 md:w-1/5 lg:1/5 xl:w-1/5">
+													<SfDropDownList TValue="string" TItem="string" CssClass="e-bigger" Placeholder="+1" aria-label="choose a country" role="listbox"></SfDropDownList>
+												</div>
+												<div class="w-3/5 sm:w-4/5 md:w-4/5 lg:w-4/5 xl:w-4/5">
+													<SfMaskedTextBox CssClass="e-bigger" Mask="9999999999" Placeholder="432 432 4321" PromptChar="' '" aria-label="enter your mobile number" role="textbox"></SfMaskedTextBox>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="grid grid-cols-1 w-full">
+										<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Shipping address</label>
+										<div class="w-full" style="height: 51px;">
+										    <SfTextArea CssClass="e-bigger" Placeholder="Shipping address" ResizeMode="Resize.Vertical" Width="100%" aria-label="enter the shipping address" role="textbox"></SfTextArea>
+										</div>
+									</div>
+									<div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+										<div>
+											<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Country</label>
+											<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="Country" aria-label="choose a country" role="listbox"></SfDropDownList>
+										</div>
+										<div>
+											<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">City</label>
+											<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="City" aria-label="choose a city" role="listbox"></SfDropDownList>
+										</div>
+									</div>
+									<div class="e-bigger">
+										<SfCheckBox TChecked="Boolean" Label="Save the data in the address list" aria-label="save the data in the address list" role="checkbox"></SfCheckBox>
+									</div>
+								</div>
+							</form>
+						</div>
+						<div class="py-6">
+							<div class="w-full">
+								<div>
+									<h6 class="font-semibold text-lg text-gray-900 dark:text-white">Delivery address</h6>
+									<div class="flex flex-col gap-4 pt-4 e-bigger">
+										<SfRadioButton Label="Delivery to the same address" Name="deliveryType" Value="Delivery to the same address" Checked="@SelectedDeliveryAddress" aria-label="delivery to the same address" role="radio"></SfRadioButton>
+										<SfRadioButton Label="Delivery to the another address" Name="deliveryType" Value="Delivery to the another address" Checked="@SelectedDeliveryAddress" aria-label="delivery to the another address" role="radio"></SfRadioButton>
+										<SfRadioButton Label="Store pickup" Name="deliveryType" Value="Store pickup" Checked="@SelectedDeliveryAddress" aria-label="store pickup" role="radio"></SfRadioButton>
+									</div>
+								</div>
+								<div class="pt-6">
+									<h6 class="font-semibold text-lg text-gray-900 dark:text-white">Payment details</h6>
+									<div class="flex flex-col gap-4 pt-4 e-bigger">
+										<SfRadioButton Label="Debit card" Name="paymentdetails" Value="Debit card" Checked="@SelectedPaymentMethod" aria-label="debit card" role="radio"></SfRadioButton>
+										<SfRadioButton Label="Credit card" Name="paymentdetails" Checked="@SelectedPaymentMethod" Value="Credit card" aria-label="credit card" role="radio"></SfRadioButton>
+										<SfRadioButton Label="Net banking" Name="paymentdetails" Checked="@SelectedPaymentMethod" Value="Net banking" aria-label="net banking" role="radio"></SfRadioButton>
+										<SfRadioButton Label="UPI transaction" Name="paymentdetails" Checked="@SelectedPaymentMethod" Value="UPI transaction" aria-label="UPI transaction" role="radio"></SfRadioButton>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="flex flex-col md:flex-row items-center justify-center gap-4 pt-2">
+							<div class="w-full md:w-1/2 e-bigger">
+								<SfButton CssClass="w-full e-primary text-lg" Type="submit" aria-label="proceed to checkout" role="button">Proceed to checkout</SfButton>
+							</div>
+							<div class="w-full md:w-1/2 e-bigger">
+								<SfButton CssClass="w-full e-outline text-lg" Type="submit" aria-label="continue shopping" role="button">Continue shopping</SfButton>
+							</div>
+						</div>
+					</div>
+				</ChildContent>
+			</SfSidebar>
+		</div>
+	</section>
+	<!-- SB Code - Start -->
+	<div class="p-3 absolute top-0 right-0">
+		<SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="OpenSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+	</div>
+	<!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-light-subtle">
+		<div class="main-sidebar-content" style="height: 1298px; width: @Width; float: Right;">
+			<SfSidebar @bind-IsOpen="@IsSidebarOpen" Position="SidebarPosition.Right" Width="@Width" Type="@SidebarType" CloseOnDocumentClick="false" ShowBackdrop="true" role="sidebar">
+				<ChildContent>
+					<div class="p-3 p-md-4 bg-light-subtle">
+						<div class="d-flex justify-content-between align-items-center mb-4">
+							<h2 class="h5 fs-5 fw-bold text-body mb-0">My shopping cart</h2>
+							<SfButton CssClass="e-icons e-flat" OnClick="ToggleSidebar" Type="button" aria-label="close the sidebar" role="button">
+								<i class="e-icons e-close"></i>
+							</SfButton>
+						</div>
+						<div class="rounded p-3 px-2 bg-body-tertiary">
+							<div class="row g-3">
+								<div class="col-12">
+									<div class="d-flex justify-content-between pb-4 px-2">
+										<div class="fs-6 text-dark-emphasis">Subtotal</div>
+										<div class="fs-6 fw-medium text-body">$8,900.00</div>
+									</div>
+									<div class="d-flex justify-content-between pb-4 px-2">
+										<div class="fs-6 text-dark-emphasis">Savings</div>
+										<div class="fs-6 fw-medium text-success">-$299.00</div>
+									</div>
+									<div class="d-flex justify-content-between pb-4 px-2">
+										<div class="fs-6 text-dark-emphasis">Store pickup</div>
+										<div class="fs-6 fw-medium text-body">$99.00</div>
+									</div>
+									<div class="d-flex justify-content-between px-2">
+										<div class="fs-6 text-dark-emphasis">Tax</div>
+										<div class="fs-6 fw-medium text-body">$899.00</div>
+									</div>
+								</div>
+								<div class="mt-0 px-3">
+									<hr class="border-secondary" />
+								</div>
+								<div class="col-12 d-flex justify-content-between mt-0 px-3">
+									<div class="fs-6 fw-medium text-dark-emphasis">Total</div>
+									<div class="fs-6 fw-medium text-body">$9,599.00</div>
+								</div>
+							</div>
+						</div>
+						<div class="pt-4">
+							<form action="#" onsubmit="event.preventDefault();">
+								<div class="mb-3">
+									<h5 class="mb-3 fs-5 fw-medium text-body">Billing address</h5>
+									<div class="mb-3 e-bigger">
+										<SfRadioButton Name="billingType" Value="Individual" Label="Individual" Checked="@SelectedBillingAddress" aria-label="individual" role="radio"></SfRadioButton>
+										<SfRadioButton CssClass="ms-3" Name="billingType" Value="Company" Label="Company" Checked="@SelectedPaymentMethod" aria-label="company" role="radio"></SfRadioButton>
+									</div>
+									<div class="mb-3">
+										<label class="fs-6 fw-medium text-dark-emphasis mb-1">Saved address</label>
+										<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="Saved address" aria-label="choose a saved address" role="listbox"></SfDropDownList>
+									</div>
+									<div class="row g-3">
+										<div class="col-md-6 pe-lg-2">
+											<label class="fs-6 fw-medium text-dark-emphasis mb-1">First name</label>
+											<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="First name" FloatLabelType="FloatLabelType.Never" aria-label="enter the first name" role="textbox"></SfTextBox>
+										</div>
+										<div class="col-md-6 ps-md-2">
+											<label class="fs-6 fw-medium text-dark-emphasis mb-1">Last name</label>
+											<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Last name" FloatLabelType="FloatLabelType.Never" aria-label="enter the last name" role="textbox"></SfTextBox>
+										</div>
+									</div>
+								</div>
+								<div class="mb-3">
+									<label class="fs-6 fw-medium text-dark-emphasis mb-1">Phone number</label>
+									<div class="row">
+										<div class="col-4 col-sm-3 pe-0">
+											<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="+1" aria-label="choose a country code" role="listbox"></SfDropDownList>
+										</div>
+										<div class="col-8 col-sm-9 ps-2">
+											<SfMaskedTextBox CssClass="e-bigger" Mask="9999999999" Placeholder="432 432 4321" PromptChar="' '" aria-label="enter your mobile number" role="textbox"></SfMaskedTextBox>
+										</div>
+									</div>
+								</div>
+								<div class="mb-3">
+									<label class="fs-6 fw-medium text-dark-emphasis d-block mb-1">Shipping address</label>
+									<div class="w-100" style="height: 52px;">
+									    <SfTextArea CssClass="e-bigger" Placeholder="Shipping address" ResizeMode="Resize.Vertical" Width="100%" aria-label="enter the shipping address" role="textbox"></SfTextArea>
+									</div>
+								</div>
+								<div class="row g-3 mb-3">
+									<div class="col-md-6 pe-md-2">
+										<label class="fs-6 fw-medium text-dark-emphasis mb-1">Country</label>
+										<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="Country" aria-label="choose a country" role="listbox"></SfDropDownList>
+									</div>
+									<div class="col-md-6 ps-md-2 pt-md-0">
+										<label class="fs-6 fw-medium text-dark-emphasis mb-1">City</label>
+										<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="City" aria-label="choose a city" role="listbox"></SfDropDownList>
+									</div>
+								</div>
+								<div class="mb-3 e-bigger">
+									<SfCheckBox TChecked="Boolean" Label="Save the data in the address list" aria-label="save the data in the address list" role="checkbox"></SfCheckBox>
+								</div>
+							</form>
+						</div>
+						<div class="py-4">
+							<div>
+								<h6 class="fs-5 fw-medium text-body mb-0">Delivery address</h6>
+								<div class="d-flex flex-column gap-3 pt-3 e-bigger">
+									<SfRadioButton Label="Delivery to the same address" Name="deliveryType" Value="Delivery to the same address" Checked="@SelectedDeliveryAddress" aria-label="delivery to the same address" role="radio"></SfRadioButton>
+									<SfRadioButton Label="Delivery to the another address" Name="deliveryType" Value="Delivery to the another address" Checked="@SelectedDeliveryAddress" aria-label="delivery to the another address" role="radio"></SfRadioButton>
+									<SfRadioButton Label="Store pickup" Name="deliveryType" Value="Store pickup" Checked="@SelectedDeliveryAddress" aria-label="store pickup" role="radio"></SfRadioButton>
+								</div>
+							</div>
+							<div class="pt-4">
+								<h6 class="fs-5 fw-medium text-body mb-0">Payment details</h6>
+								<div class="d-flex flex-column gap-3 pt-3 e-bigger">
+									<SfRadioButton Label="Debit card" Name="paymentdetails" Value="Debit card" Checked="@SelectedPaymentMethod" aria-label="debit card" role="radio"></SfRadioButton>
+									<SfRadioButton Label="Credit card" Name="paymentdetails" Checked="@SelectedPaymentMethod" Value="Credit card" aria-label="credit card" role="radio"></SfRadioButton>
+									<SfRadioButton Label="Net banking" Name="paymentdetails" Checked="@SelectedPaymentMethod" Value="Net banking" aria-label="net banking" role="radio"></SfRadioButton>
+									<SfRadioButton Label="UPI transaction" Name="paymentdetails" Checked="@SelectedPaymentMethod" Value="UPI transaction" aria-label="UPI transaction" role="radio"></SfRadioButton>
+								</div>
+							</div>
+						</div>
+						<div class="d-flex flex-column flex-md-row align-items-center justify-content-center gap-3">
+							<div class="w-100">
+								<SfButton CssClass="e-primary e-block" Type="submit" aria-label="proceed to checkout" role="button">Proceed to checkout</SfButton>
+							</div>
+							<div class="w-100">
+								<SfButton CssClass="e-secondary e-block" Type="submit" aria-label="continue shopping" role="button">Continue shopping</SfButton>
+							</div>
+						</div>
+					</div>
+				</ChildContent>
+			</SfSidebar>
+		</div>
+	</section>
+	<!-- SB Code - Start -->
+	<div class="p-3 position-absolute top-0 end-0">
+		<SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="OpenSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+	</div>
+	<!-- SB Code - End -->
+}
+
+
+

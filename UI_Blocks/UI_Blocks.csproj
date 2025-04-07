@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>UI_Blocks</RootNamespace>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="wwwroot\code-snippet\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Syncfusion.Blazor.Cards" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.Lists" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.Buttons" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.Notifications" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.Popups" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.SplitButtons" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.Layouts" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.Inputs" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.Calendars" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.Navigations" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.DropDowns" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.RichTextEditor" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.Grid" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.ProgressBar" Version="29.1.33" />
+  </ItemGroup>
+
+</Project>

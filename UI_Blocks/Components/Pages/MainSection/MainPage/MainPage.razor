@@ -1,0 +1,112 @@
+﻿@page "/"
+@page "/blocks"
+
+@using UI_Blocks.Data
+
+@layout MainLayout
+
+@inject Data DataService
+@inject NavigationManager NavigationManager
+@inject IJSRuntime JSRuntime
+
+<Header />
+
+<div class="main-container">
+    <div class="main-container-header">
+        <h1 class="main-title">Develop Apps Faster with Pre-Built Blocks</h1>
+        <p class="main-description">
+            Accelerate your web app development with 120+ responsive blocks for Blazor, fully compatible with Tailwind and Bootstrap 5.3.
+        </p>
+        <div class="button-container">
+            <a class="request-btn" href="https://www.syncfusion.com/feedback/blazor-components" target="_blank" role="button" tabindex="0" aria-label="Request a block">
+                Request a Block
+            </a>
+            <a class="figma-btn" href="https://www.figma.com/@@Syncfusion" target="_blank" role="button" tabindex="0" aria-label="Download Figma">
+                <span class="figma-img">
+                    <img src="assets/images/sample-browser/figma.svg" alt="Figma Logo" />
+                </span>
+                Download Figma
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="component-div">
+    <div class="tab-container" role="tablist">
+        <ul id="block-tab" class="tabs">
+            @foreach (var (tab, index) in Tabs.Select((tab, index) => (tab, index)))
+            {
+                <li class="tab-item @(index == ActiveTabIndex ? "active" : "")"
+                    @onclick="() => SelectTab(index)"
+                    @onkeydown="@(e => HandleKeyDown(e, index))"
+                    role="tab"
+                    aria-selected="@(index == ActiveTabIndex)"
+                    tabindex="0">
+                    @tab
+                </li>
+            }
+        </ul>
+
+        <div class="tab-content">
+            @if (Tabs.Any())
+            {
+                <div class="component-list-blocks" role="tabpanel" aria-labelledby="@($"tab-{ActiveTabIndex}")">
+                    <div class="component-list-container">
+                        <ul class="components">
+                            @foreach (BlockList listBlock in CurrentBlocks)
+                            {
+                                <li class="component-list"
+                                    @onclick="() => NavigateToDemo(listBlock.Url)"
+                                    @onkeydown="@(e => HandleKeyDown(e, listBlock.Url))"
+                                    title="@listBlock.Name"
+                                    role="button"
+                                    tabindex="0">
+                                    <div class="component-list-text">
+                                        @listBlock.Name
+                                        @if (listBlock.IsNew)
+                                        {
+                                            <span>New</span>
+                                        }
+                                    </div>
+                                    <div class="component-count">@($"{listBlock.SubBlockList.Count} Blocks")</div>
+                                </li>
+                            }
+                        </ul>
+                    </div>
+                    <div class="blocks-list">
+                        @foreach (BlockList blockDetail in CurrentBlocks)
+                        {
+                            <div class="blocks-col"
+                                 @onclick="() => NavigateToDemo(blockDetail.Url)"
+                                 @onkeydown="@(e => HandleKeyDown(e, blockDetail.Url))"
+                                 role="button"
+                                 tabindex="0">
+                                <div class="block-container">
+                                    <div class="block-content">
+                                        <img src="@($"./assets/images/sample-browser/{blockDetail.Url}.png")"
+                                             alt="@($"{blockDetail.Name} - Image")"
+                                             style="height: 100%; width: 100%;" />
+                                    </div>
+                                    <div class="block-footer" title="@blockDetail.Name">
+                                        <div class="block-title">
+                                            @blockDetail.Name
+                                            @if (blockDetail.IsNew)
+                                            {
+                                                <span>New</span>
+                                            }
+                                        </div>
+                                        <div class="block-count">
+                                            <div class="block-count-radius">@($"{blockDetail.SubBlockList.Count} Blocks")</div>
+                                        </div
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
+
+<Footer />

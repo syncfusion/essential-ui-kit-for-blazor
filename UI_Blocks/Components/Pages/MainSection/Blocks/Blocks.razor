@@ -1,0 +1,61 @@
+﻿@page "/blocks/{BlockName}"
+
+@namespace UI_Blocks.Components.Pages.MainSection
+@using UI_Blocks.Data
+
+@inject NavigationManager NavigationManager
+@inject Data DataService
+
+<Header />
+<div class="block-header-content">
+    <span class="block-header-link-text" @onclick="NavigateToMainPage" role="button" tabindex="0" aria-label="Go back to main page">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -1 20 20" fill="currentColor" height="16" width="16" style="vertical-align: top;">
+            <path d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"></path>
+        </svg>
+        @CurrentBlock.Category
+    </span>
+    <span class="block-header-icon">
+        <img src="assets/images/sample-browser/chevron-right.svg" alt="Right Chevron" />
+    </span>
+    <span class="block-header-text">@CurrentBlock.Name</span>
+</div>
+
+<div class="container">
+    <div class="block-container">
+        <span class="block-image">
+            <img src="@($"assets/images/sample-browser/{CurrentBlock.Url}.png")" alt="@($"{CurrentBlock.Name} - Image")" loading="lazy" />
+        </span>
+        <div class="block-section">
+            <div class="block-title">@CurrentBlock.Name</div>
+            <div class="block-description">@CurrentBlock.Description</div>
+        </div>
+    </div>
+
+    @if (SamplesList != null && SamplesList.Any())
+    {
+        @foreach (Block sample in SamplesList)
+        {
+            <div class="sample-title">
+                @sample.Title
+                <a class="figma-button" href="https://www.figma.com/@@Syncfusion" target="_blank" role="button" tabindex="0">
+                    <span class="figma-icon"><img src="assets/images/sample-browser/figma.svg" alt="Figma Logo" /></span>
+                    <span class="figma-text">Get Figma</span>
+                    <span class="right-arrow"><img src="assets/images/sample-browser/arrow-right.svg" alt="Go to Figma" /></span>
+                </a>
+            </div>
+            <div class="sample-description-container">
+                <div class="sample-description">@sample.Description</div>
+                <a class="figma-button" href="https://www.figma.com/Syncfusion" target="_blank" role="button" tabindex="0">
+                    <span class="figma-icon"><img src="assets/images/sample-browser/figma.svg" alt="Figma Logo" /></span>
+                    <span class="figma-text">Get Figma</span>
+                    <span class="right-arrow"><img src="assets/images/sample-browser/arrow-right.svg" alt="Go to Figma" /></span>
+                </a>
+            </div>
+            <div class="@sample.ComponentName">
+                <Demo BlockName="@sample.ComponentName" BlockUrl="@sample.Url"></Demo>
+            </div>
+        }
+    }
+</div>
+
+<Footer />

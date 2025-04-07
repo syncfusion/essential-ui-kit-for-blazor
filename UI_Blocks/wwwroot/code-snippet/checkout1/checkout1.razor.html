@@ -1,0 +1,410 @@
+﻿@page "/blocks/checkout-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-white dark:bg-gray-900">
+		<div class="flex">
+			<div class="w-full m-auto text-gray-700 dark:text-gray-300">
+				<div class="lg:flex container-lg">
+					<div class="lg:w-8/12 px-4 pt-8 pb-6 md:px-6 lg:pb-8 xl:pl-11 xl:pt-8 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800">
+						<div>
+							<div class="stepperOptional">
+								<SfStepper @ref="Stepper" ActiveStep="1">
+									<StepperSteps>
+										<StepperStep Label="Cart" IconCss="e-icons e-circle-check"></StepperStep>
+										<StepperStep Label="Checkout" IconCss="e-icons e-circle-check"></StepperStep>
+										<StepperStep Label="Order summary" IconCss="e-icons e-circle-check"></StepperStep>
+									</StepperSteps>
+								</SfStepper>
+							</div>
+						</div>
+						<form action="#" class="mt-6 xl:my-10 mb-8 md:mb-10 lg:mb-5" onsubmit="event.preventDefault();">
+							<h2 class="mb-4 font-semibold text-lg text-gray-900 dark:text-white">Delivery details</h2>
+							<div class="grid gap-5">
+								<div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+									<div>
+										<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">First name</label>
+										<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="First name" FloatLabelType="FloatLabelType.Never" aria-label="enter the first name" role="textbox"></SfTextBox>
+									</div>
+									<div>
+										<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Last name</label>
+										<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Last name" FloatLabelType="FloatLabelType.Never" aria-label="enter the last name" role="textbox"></SfTextBox>
+									</div>
+								</div>
+								<div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+									<div>
+										<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Country</label>
+										<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="Country" aria-label="choose a country" role="listbox"></SfDropDownList>
+									</div>
+									<div>
+										<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">City</label>
+										<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="City" aria-label="choose a city" role="listbox"></SfDropDownList>
+									</div>
+								</div>
+								<div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+									<div>
+										<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Phone number</label>
+										<div class="flex space-x-2">
+											<div class="w-2/5">
+												<SfDropDownList TValue="string" TItem="string" CssClass="e-bigger" Placeholder="+1" aria-label="choose a country code" role="listbox"></SfDropDownList>
+											</div>
+											<div class="w-4/5">
+												<SfMaskedTextBox CssClass="e-bigger" Mask="9999999999" Placeholder="432 432 4321" PromptChar="' '" aria-label="enter your mobile number" role="textbox"></SfMaskedTextBox>
+											</div>
+										</div>
+									</div>
+									<div>
+										<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Email</label>
+										<SfTextBox CssClass="e-bigger" Type="InputType.Email" Placeholder="Email" FloatLabelType="FloatLabelType.Never" aria-label="enter the email address" role="textbox"></SfTextBox>
+									</div>
+								</div>
+								<div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+									<div>
+										<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Company name</label>
+										<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Company name" FloatLabelType="FloatLabelType.Never" aria-label="enter the company name" role="textbox"></SfTextBox>
+									</div>
+									<div>
+										<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">VAT number</label>
+										<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="VAT number" FloatLabelType="FloatLabelType.Never" aria-label="enter the VAT number" role="textbox"></SfTextBox>
+									</div>
+								</div>
+							</div>
+							<div class="mt-5">
+								<SfButton CssClass="e-flat" Type="button" Content="Add new address" IconCss="e-icons e-plus" aria-label="add new address" role="button"></SfButton>
+							</div>
+						</form>
+						<div>
+							<h2 class="mb-4 font-semibold text-lg text-gray-900 dark:text-white">Payments</h2>
+							<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 xl:gap-4">
+								<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+									<div class="e-card-content">
+										<div class="e-bigger">
+											<SfRadioButton Label="Credit card" Name="payment" Value="Credit card" Checked="@SelectedPaymentMethod" aria-label="credit card" role="radio"></SfRadioButton>
+										</div>
+										<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">Pay with your credit card</div>
+									</div>
+									<div class="e-card-actions">
+										<SfButton CssClass="e-flat mr-3" IconCss="e-icons e-trash e-medium" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
+										<SfButton CssClass="e-flat" IconCss="e-icons e-edit e-medium" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
+									</div>
+								</div>
+								<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+									<div class="e-card-content">
+										<div class="e-bigger">
+											<SfRadioButton Label="Payment on delivery" Name="payment" Checked="@SelectedPaymentMethod" Value="Payment on delivery" aria-label="payment on delivery" role="radio"></SfRadioButton>
+										</div>
+										<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">+ $12 payment processing fee</div>
+									</div>
+									<div class="e-card-actions">
+										<SfButton CssClass="e-flat mr-3" IconCss="e-icons e-trash e-medium" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
+										<SfButton CssClass="e-flat" IconCss="e-icons e-edit e-medium" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
+									</div>
+								</div>
+								<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+									<div class="e-card-content">
+										<div class="e-bigger">
+											<SfRadioButton Label="PayPal account" Name="payment" Value="PayPal account" aria-label="paypal account" Checked="@SelectedPaymentMethod" role="radio"></SfRadioButton>
+										</div>
+										<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">Connect to your account</div>
+									</div>
+									<div class="e-card-actions">
+										<SfButton CssClass="e-flat mr-3" IconCss="e-icons e-trash e-medium" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
+										<SfButton CssClass="e-flat" IconCss="e-icons e-edit e-medium" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="mt-6 mb-5 xl:mb-8">
+							<h2 class="mb-4 font-semibold text-lg text-gray-900 dark:text-white">Delivery methods</h2>
+							<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 xl:gap-4">
+								<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+									<div class="e-card-content">
+										<div class="e-bigger">
+											<SfRadioButton Label="$15 - DHL fast delivery" Name="delivery" Value="$15 - DHL fast delivery" aria-label="$15 - DHL fast delivery" Checked="@SelectedDeliveryMethod" role="radio"></SfRadioButton>
+										</div>
+										<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">Get it by tomorrow</div>
+									</div>
+								</div>
+								<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+									<div class="e-card-content">
+										<div class="e-bigger">
+											<SfRadioButton Label="Free delivery - FedEx" Name="delivery" Value="Free delivery - FedEx" Checked="@SelectedDeliveryMethod" aria-label="FedEx free delivery" role="radio"></SfRadioButton>
+										</div>
+										<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">Get it by Friday, 13 Dec 2023</div>
+									</div>
+								</div>
+								<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+									<div class="e-card-content">
+										<div class="e-bigger">
+											<SfRadioButton Label="$49 - Express delivery" Name="delivery" Value="$49 - Express delivery" Checked="@SelectedDeliveryMethod" aria-label="$49 - express delivery" role="radio"></SfRadioButton>
+										</div>
+										<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">Get it today</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div>
+							<label class="block text-sm font-medium mb-1 text-gray-700 dark:text-gray-300">Enter a gift card, voucher or promotional code</label>
+							<div class="grid md:flex gap-4 md:gap-6 w-full">
+								<div class="lg:w-full sm:w-full md:w-11/12">
+									<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Promo Code" FloatLabelType="FloatLabelType.Never" aria-label="enter the promo code" role="textbox"></SfTextBox>
+								</div>
+								<div class="e-bigger">
+									<SfButton CssClass="w-full md:w-max e-outline" Type="button" aria-label="apply" role="button">Apply</SfButton>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="lg:w-1/3 px-4 py-5 md:px-6 lg:pt-8 xl:pl-8 xl:pr-11 bg-gray-100 dark:bg-gray-800 xl:w-1/3">
+						<div>
+							<div class="grid grid-cols-1 gap-3">
+								<div class="grid grid-cols-1 gap-6">
+									<div class="flex justify-between">
+										<div class="text-base text-gray-700 dark:text-gray-300">Subtotal</div>
+										<div class="text-base font-semibold text-gray-900 dark:text-white">$8,900.00</div>
+									</div>
+									<div class="flex justify-between">
+										<div class="text-base text-gray-700 dark:text-gray-300">Savings</div>
+										<div class="text-base font-semibold text-green-700 dark:text-green-500">-$299.00</div>
+									</div>
+									<div class="flex justify-between">
+										<div class="text-base text-gray-700 dark:text-gray-300">Store pickup</div>
+										<div class="text-base font-semibold text-gray-900 dark:text-white">$99.00</div>
+									</div>
+									<div class="flex justify-between">
+										<div class="text-base text-gray-700 dark:text-gray-300">Tax</div>
+										<div class="text-base font-semibold text-gray-900 dark:text-white">$899.00</div>
+									</div>
+								</div>
+								<div>
+									<hr class="w-full border-gray-200 dark:border-gray-600" />
+								</div>
+								<div class="flex justify-between">
+									<div class="text-base font-semibold text-gray-700 dark:text-gray-300">Total</div>
+									<div class="text-base font-semibold text-gray-900 dark:text-white">$9,599.00</div>
+								</div>
+							</div>
+							<div class="mt-6">
+								<SfButton CssClass="w-full e-primary" Type="submit" aria-label="proceed to payment" role="button">Proceed to payment</SfButton>
+							</div>
+							<p class="text-center text-sm mt-3 text-gray-500 dark:text-gray-400">
+								One or more items in your cart require an account <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 font-medium text-base p-0 underline">Sign in or Create an account now</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body">
+		<div class="d-flex">
+			<div class="w-100 mx-auto">
+				<div class="d-lg-flex">
+					<div class="col-lg-8 bg-body border-end border-light-subtle px-3 pt-5 pb-4 px-md-4 pb-lg-5 ps-xl-5">
+						<div>
+							<div>
+								<SfStepper @ref="Stepper" ActiveStep="1">
+									<StepperSteps>
+										<StepperStep Label="Cart" IconCss="e-icons e-circle-check"></StepperStep>
+										<StepperStep Label="Checkout" IconCss="e-icons e-circle-check"></StepperStep>
+										<StepperStep Label="Order summary" IconCss="e-icons e-circle-check"></StepperStep>
+									</StepperSteps>
+								</SfStepper>
+							</div>
+						</div>
+						<form action="#" class="my-4" onsubmit="event.preventDefault();">
+							<h2 class="fw-semibold fs-5 text-body mb-3">Delivery details</h2>
+							<div class="row g-3">
+								<div class="col-md-6">
+									<label class="text-dark-emphasis fw-medium small mb-1">First name</label>
+									<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="First name" FloatLabelType="FloatLabelType.Never" aria-label="enter the first name" role="textbox"></SfTextBox>
+								</div>
+								<div class="col-md-6">
+									<label class="text-dark-emphasis fw-medium small mb-1">Last name</label>
+									<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Last name" FloatLabelType="FloatLabelType.Never" aria-label="enter the last name" role="textbox"></SfTextBox>
+								</div>
+							</div>
+							<div class="row g-3 mt-0">
+								<div class="col-md-6">
+									<label class="text-dark-emphasis fw-medium small mb-1">Country</label>
+									<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="Country" aria-label="choose a country" role="listbox"></SfDropDownList>
+								</div>
+								<div class="col-md-6">
+									<label class="text-dark-emphasis fw-medium small mb-1">City</label>
+									<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="City" aria-label="choose a city" role="listbox"></SfDropDownList>
+								</div>
+							</div>
+							<div class="row g-3 mt-0">
+								<div class="col-md-6">
+									<label class="text-dark-emphasis fw-medium small mb-1">Phone number</label>
+									<div class="d-flex gap-2">
+										<div class="w-25">
+											<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="+1" aria-label="choose a country code" role="listbox"></SfDropDownList>
+										</div>
+										<div class="flex-grow-1">
+											<SfMaskedTextBox CssClass="e-bigger" Mask="9999999999" Placeholder="432 432 4321" PromptChar="' '" aria-label="enter your mobile number" role="textbox"></SfMaskedTextBox>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<label class="text-dark-emphasis fw-medium small mb-1">Email</label>
+									<SfTextBox CssClass="e-bigger" Type="InputType.Email" Placeholder="Email" FloatLabelType="FloatLabelType.Never" aria-label="enter the email address" role="textbox"></SfTextBox>
+								</div>
+							</div>
+							<div class="row g-3 mt-0">
+								<div class="col-md-6">
+									<label class="text-dark-emphasis fw-medium small mb-1">Company name</label>
+									<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Company name" FloatLabelType="FloatLabelType.Never" aria-label="enter the company name" role="textbox"></SfTextBox>
+								</div>
+								<div class="col-md-6">
+									<label class="text-dark-emphasis fw-medium small mb-1">VAT number</label>
+									<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="VAT number" FloatLabelType="FloatLabelType.Never" aria-label="enter the VAT number" role="textbox"></SfTextBox>
+								</div>
+							</div>
+							<div class="mt-3">
+								<SfButton CssClass="e-flat" Type="button" Content="Add new address" IconCss="e-icons e-plus" aria-label="add new address" role="button"></SfButton>
+							</div>
+						</form>
+						<div>
+							<h2 class="fw-medium fs-5 text-body mb-3">Payments</h2>
+							<div class="row g-3">
+								<div class="col-md-6 col-xl-4">
+									<div class="e-card h-100">
+										<div class="e-card-content pb-2">
+											<div class="e-bigger">
+												<SfRadioButton Label="Credit card" Value="Credit card" Name="payment" Checked="@SelectedPaymentMethod" aria-label="credit card" role="radio"></SfRadioButton>
+											</div>
+											<div class="text-dark-emphasis mt-1 ps-1 ms-4">Pay with your credit card</div>
+										</div>
+										<div class="e-card-actions">
+											<SfButton CssClass="e-flat me-3" IconCss="e-icons e-trash" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
+											<SfButton CssClass="e-flat" IconCss="e-icons e-edit" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-xl-4">
+									<div class="e-card h-100">
+										<div class="e-card-content pb-2">
+											<div class="e-bigger">
+												<SfRadioButton Label="Payment on delivery" Name="payment" Value="Payment on delivery" Checked="@SelectedPaymentMethod" aria-label="payment on delivery" role="radio"></SfRadioButton>
+											</div>
+											<div class="text-dark-emphasis mt-1 ms-4 ps-1">+ $12 payment processing fee</div>
+										</div>
+										<div class="e-card-actions">
+											<SfButton CssClass="e-flat me-3" IconCss="e-icons e-trash" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
+											<SfButton CssClass="e-flat" IconCss="e-icons e-edit" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-xl-4">
+									<div class="e-card h-100">
+										<div class="e-card-content pb-2">
+											<div class="e-bigger">
+												<SfRadioButton Label="PayPal account" Name="payment" Value="PayPal account" Checked="@SelectedPaymentMethod" aria-label="paypal account" role="radio"></SfRadioButton>
+											</div>
+											<div class="text-dark-emphasis mt-1 ms-4 ps-1">Connect to your account</div>
+										</div>
+										<div class="e-card-actions">
+											<SfButton CssClass="e-flat me-3" IconCss="e-icons e-trash" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
+											<SfButton CssClass="e-flat" IconCss="e-icons e-edit" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="my-4 mb-xl-5">
+							<h2 class="fw-medium fs-5 text-body mb-3">Delivery methods</h2>
+							<div class="row g-3">
+								<div class="col-md-6 col-xl-4">
+									<div class="e-card e-bigger h-100">
+										<div class="e-card-content">
+											<div class="e-bigger">
+												<SfRadioButton Label="$15 - DHL fast delivery" Value="$15 - DHL fast delivery" Name="delivery" Checked="@SelectedDeliveryMethod" aria-label="$15 - DHL fast delivery" role="radio"></SfRadioButton>
+											</div>
+											<div class="text-dark-emphasis mt-1 ms-4 ps-1">Get it by tomorrow</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-xl-4">
+									<div class="e-card e-bigger h-100">
+										<div class="e-card-content">
+											<div class="e-bigger">
+												<SfRadioButton Label="Free delivery - FedEx" Name="delivery" Value="Free delivery - FedEx" Checked="@SelectedDeliveryMethod" aria-label="FedEx free delivery" role="radio"></SfRadioButton>
+											</div>
+											<div class="text-dark-emphasis mt-1 ms-4 ps-1">Get it by Friday, 13 Dec 2023</div>
+										</div>
+									</div>
+								</div>
+								<div class="col-md-6 col-xl-4">
+									<div class="e-card e-bigger h-100">
+										<div class="e-card-content">
+											<div class="e-bigger">
+												<SfRadioButton Label="$49 - Express delivery" Value="$49 - Express delivery" Name="delivery" Checked="@SelectedDeliveryMethod" aria-label="$49 - express delivery" role="radio"></SfRadioButton>
+											</div>
+											<div class="text-dark-emphasis mt-1 ms-4 ps-1">Get it today</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div>
+							<label class="text-dark-emphasis fw-medium small mb-1">Enter a gift card, voucher or promotional code</label>
+							<div class="row g-3 d-md-flex">
+								<div class="col-md-10">
+									<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Promo Code" FloatLabelType="FloatLabelType.Never" aria-label="enter the promo code" role="textbox"></SfTextBox>
+								</div>
+								<div class="col-md-auto e-bigger">
+									<SfButton CssClass="e-secondary e-block px-4" Type="button" aria-label="apply" role="button">Apply</SfButton>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="bg-light-subtle pt-4 p-3 p-md-4 py-lg-5 pe-xl-5">
+						<div>
+							<div>
+								<div class="d-flex flex-column gap-3">
+									<div class="d-flex justify-content-between">
+										<div class="fs-6 text-dark-emphasis">Subtotal</div>
+										<div class="fs-6 fw-medium text-body">$8,900.00</div>
+									</div>
+									<div class="d-flex justify-content-between">
+										<div class="fs-6 text-dark-emphasis">Savings</div>
+										<div class="fs-6 fw-medium text-success">-$299.00</div>
+									</div>
+									<div class="d-flex justify-content-between">
+										<div class="fs-6 text-dark-emphasis">Store pickup</div>
+										<div class="fs-6 fw-medium text-body">$99.00</div>
+									</div>
+									<div class="d-flex justify-content-between">
+										<div class="fs-6 text-dark-emphasis">Tax</div>
+										<div class="fs-6 fw-medium text-body">$899.00</div>
+									</div>
+								</div>
+								<div>
+									<hr class="border-secondary" />
+								</div>
+								<div class="d-flex justify-content-between">
+									<div class="fs-6 fw-medium text-dark-emphasis">Total</div>
+									<div class="fs-6 fw-medium text-body">$9,599.00</div>
+								</div>
+							</div>
+							<div class="mt-3">
+								<SfButton CssClass="e-block e-primary" Type="submit" aria-label="proceed to payment" role="button">Proceed to payment</SfButton>
+							</div>
+							<p class="text-center text-sm text-dark-emphasis mt-3">
+								One or more items in your cart require an account <a href="javascript:void(0);" class="text-primary text-decoration-underline p-0 underline">Sign in or Create an account now</a>
+							</p>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}

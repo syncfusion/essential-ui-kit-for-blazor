@@ -1,0 +1,66 @@
+﻿@page "/blocks/signout-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="flex flex-col lg:flex-row md:min-h-screen">
+            <div class="w-full lg:w-7/12 p-0">
+                <div class="w-full h-60 lg:h-full" style="background-image: url('assets/images/authentication/split-screen/split-screen.png'); background-size: cover; background-repeat: no-repeat; background-position: center;"></div>
+            </div>
+            <div class="w-full lg:w-5/12 p-0">
+                <div class="bg-gray-50 dark:bg-gray-950 py-12">
+                    <div class="flex items-center justify-center pt-12">
+                        <img class="mr-2" src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+                        <h2 class="text-center text-xl font-semibold text-gray-900 dark:text-white">Company Name</h2>
+                    </div>
+                    <div class="flex items-center justify-center pt-20">
+                        <div class="w-full max-w-md bg-content-white rounded-lg p-6">
+                            <div>
+                                <h2 class="text-2xl font-semibold text-center mb-2 text-gray-900 dark:text-white">You have signed out!</h2>
+                                <p class="text-md text-center text-gray-700 dark:text-gray-300">Redirecting in 5 seconds</p>
+                            </div>
+                            <span class="flex items-center justify-center gap-2 mt-7">
+                                <p class="text-center text-base text-gray-900 dark:text-white">Go to</p>
+                                <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 font-medium text-base p-0" aria-label="sign in" role="link">Sign in</a>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div class="d-flex flex-column flex-lg-row min-vh-100">
+            <div class="col-12 col-lg-7 p-0">
+                <div class="w-100 h-100" style="background-image: url('assets/images/authentication/split-screen/split-screen.png'); background-size: cover; background-repeat: no-repeat; background-position: center; min-height: 240px;"></div>
+            </div>
+            <div class="col-12 col-lg-5 p-0">
+                <div class="d-flex justify-content-center bg-body py-5">
+                    <div class="max-w-md bg-body rounded-lg p-4 py-5">
+                        <div class="d-flex justify-content-center align-items-center mb-5">
+                            <img class="me-2" src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+                            <h2 class="text-center text-body fs-5 fw-bold mb-0">Company Name</h2>
+                        </div>
+                        <div class="d-flex flex-column justify-content-center align-items-center pt-5">
+                            <h2 class="text-center fs-4 text-body fw-bold mb-2">You have signed out!</h2>
+                            <p class="text-center text-light-emphasis m-0">Redirecting in 5 seconds</p>
+                            <div class="d-flex align-items-center justify-content-center gap-1 mt-4">
+                                <p class="text-body mb-0">Go to</p>
+                                <a href="javascript:void(0);" class="text-primary fs-6 p-0 text-decoration-none fw-medium" aria-label="sign in" role="link">Sign in</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+

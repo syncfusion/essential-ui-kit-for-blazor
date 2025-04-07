@@ -1,0 +1,91 @@
+﻿@page "/blocks/Sidebar-12"
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-950">
+        <div class="float-right" style="height: 600px;">
+            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-l !border-gray-200 dark:!border-gray-700" Width="256px" @bind-IsOpen="SidebarToggle" Position="SidebarPosition.Right" ShowBackdrop="true" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+                <div class="py-6 h-screen">
+                    <div class="flex justify-between items-center px-3 mb-2">
+                        <span class="text-base text-gray-600 dark:text-gray-400">Market Cap</span>
+                        <SfButton cssClass="e-medium e-icons e-more-horizontal-1 e-flat" Type="button" aria-label="more options" role="button"></SfButton>
+                    </div>
+                    <SfListView class="border-0" DataSource="@Data" aria-label="bitcoin trading listings" role="list">
+                        <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
+                        <ListViewTemplates TValue="MenuItem">
+                            <Template>
+                                <div class="e-list-wrapper flex items-center justify-between">
+                                    <div class="flex items-center">
+                                        <span class="e-avatar e-avatar-xsmall e-avatar-circle">
+                                            <img src="assets/images/side-panel/crypto-sidebar/@context.Image" alt="profile picture" />
+                                        </span>
+                                        <span class="text-base ml-2 text-gray-700 dark:text-gray-300">@context.Name</span>
+                                        <span class="ml-1.5 text-xs text-gray-500 dark:text-gray-400" style="line-height: 18px;">BTC</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-base text-gray-700 dark:text-gray-300 ml-6">@context.CurrentValue</span>
+                                        <span class="text-base ml-1.5 text-red-600 dark:text-red-400">3%</span>
+                                    </div>
+                                </div>
+                            </Template>
+                        </ListViewTemplates>
+                    </SfListView>
+                    <div class="py-4 px-3">
+                        <SfButton cssClass="e-outline" content="View More" Type="button" aria-label="view more" role="button"></SfButton>
+                    </div>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 top-0 right-0 absolute">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="float-right" style="height: 600px;">
+            <SfSidebar Width="256px" @bind-IsOpen="SidebarToggle" Position="SidebarPosition.Right" ShowBackdrop="true" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+                <div class="py-4 vh-100">
+                    <div class="d-flex justify-content-between align-items-center mb-2 px-2 ms-1">
+                        <span class="fs-6 text-body-secondary">Market Cap</span>
+                        <SfButton CssClass="e-medium e-icons e-more-horizontal-1 e-flat" Type="button" aria-label="more options" role="button"></SfButton>
+                    </div>
+                    <SfListView class="border-0 e-bigger" DataSource="@Data" aria-label="bitcoin trading listings" role="list">
+                        <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
+                        <ListViewTemplates TValue="MenuItem">
+                            <Template>
+                                <div class="e-list-wrapper d-flex justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <span class="e-avatar e-avatar-xsmall e-avatar-circle">
+                                            <img src="assets/images/side-panel/crypto-sidebar/@context.Image" alt="profile picture" />
+                                        </span>
+                                        <span class="text-body fs-6 ms-2">@context.Name</span>
+                                        <span class="ms-1 text-body-secondary !small" style="line-height: 18px;">BTC</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-body fs-6">@context.CurrentValue</span>
+                                        <span class="fs-6 ms-2 text-danger">3%</span>
+                                    </div>
+                                </div>
+                            </Template>
+                        </ListViewTemplates>
+                    </SfListView>
+                    <div class="mt-3 ms-2 ps-1">
+                        <SfButton CssClass="e-outline" Content="View More" Type="button" aria-label="view more" role="button"></SfButton>
+                    </div>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="py-3 px-1 position-absolute top-0 end-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

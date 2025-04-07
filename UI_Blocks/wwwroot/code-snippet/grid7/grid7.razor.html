@@ -1,0 +1,220 @@
+@page "/blocks/grid-7"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="mx-auto w-full py-12 sm:px-6 px-4">
+            <div class="flex flex-col-reverse sm:flex-row sm:justify-end gap-6 sm:gap-3 mb-6">
+                <div class="w-full sm:w-56">
+                    <div class="e-input-group">
+                        <span class="e-input-group-icon e-icons e-search"></span>
+                        <input class="e-input" type="text" placeholder="Search transactions" aria-label="enter transaction details" role="textbox" />
+                    </div>
+                </div>
+                <SfButton CssClass="e-primary self-end" IconCss="e-icons e-export" IconPosition="IconPosition.Left" Content="Export to CSV" Type="button" aria-label="export to CSV file format" role="button"></SfButton>
+            </div>
+            <SfGrid DataSource="@GridData" Width="100%" Height="668" AllowPaging="true" role="grid">
+                <GridColumns>
+                    <GridColumn Field="TransactionId" HeaderText="Transaction ID" Width="116">
+                        <Template>
+                            @{
+                                var data = (context as Transaction)!;
+                            }
+                            <a class="text-primary-700 dark:text-primary-500 font-medium" href="javascript:void(0);" aria-label="transaction ID">@data.TransactionId</a>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="CustomerDetails" HeaderText="Customer Name" Width="320">
+                        <Template>
+                            @{
+                                var data = (context as Transaction)!;
+                            }
+                            <div class="flex gap-3 items-center py-1.5">
+                                <div class="w-8 h-8">
+                                    <span class="@($"e-avatar e-avatar-circle e-avatar-small {(data.CustomerDetails.ColorTheme == "Red" ? "!bg-red-100 !text-red-700 dark:!text-red-400" : data.CustomerDetails.ColorTheme == "Green" ? "!bg-green-100 !text-green-700 dark:!text-green-500" : data.CustomerDetails.ColorTheme == "Blue" ? "!bg-cyan-100 !text-cyan-700 dark:!text-cyan-600" : data.CustomerDetails.ColorTheme == "Orange" ? "!bg-orange-100 !text-orange-700 dark:!text-orange-500" : data.CustomerDetails.ColorTheme == "Purple" ? "!bg-indigo-100 !text-indigo-700 dark:!bg-cyan-800 dark:!text-cyan-400" : "")}")">@data.CustomerDetails.Initial</span>
+                                </div>
+                                <div class="flex flex-col text-sm">
+                                    <p class="text-gray-900 dark:text-gray-50">@data.CustomerDetails.Name</p>
+                                    <p class="text-gray-500 dark:text-gray-400">@data.CustomerDetails.Email</p>
+                                </div>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="Date" HeaderText="Purchase Date" Width="110" Format="MM/dd/yyyy" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="Product" HeaderText="Product" Width="208">
+                        <Template>
+                            @{
+                                var data = (context as Transaction)!;
+                            }
+                            <div class="flex items-center gap-3">
+                                <div class="w-10 h-10">
+                                    <img class="rounded" src="assets/images/advance-grid/sales-transactions-table/@data.Product.Image" width="40px" alt="product image" />
+                                </div>
+                                <p>@data.Product.Name</p>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="Quantity" HeaderText="Quantity" Width="80" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="Amount" HeaderText="Amount" Width="115" Format="c2" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="PaymentMethod" HeaderText="Payment Method" Width="170"></GridColumn>
+                    <GridColumn Field="SalesRep" HeaderText="Sales Representative" Width="194">
+                        <Template>
+                            @{
+                                var data = (context as Transaction)!;
+                            }
+                            <div class="flex items-center gap-3">
+                                <div class="w-8 h-8">
+                                    <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url('assets/images/common/avatar/@data.SalesRep.Avatar')"></span>
+                                </div>
+                                <p>@data.SalesRep.Name</p>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="Status" HeaderText="Status" Width="93">
+                        <Template>
+                            @{
+                                var data = (context as Transaction)!;
+                            }
+                            <div class="e-bigger">
+                                @switch (data.Status)
+                                {
+                                    case "Completed":
+                                        <span class="e-badge e-badge-success !px-2">Completed</span>;
+                                        break;
+                                    case "Pending":
+                                        <span class="e-badge e-badge-info !px-2">Pending</span>;
+                                        break;
+                                    case "Processing":
+                                        <span class="e-badge e-badge-warning !px-2">Processing</span>;
+                                        break;
+                                    case "Failed":
+                                        <span class="e-badge e-badge-danger !px-2">Failed</span>;
+                                        break;
+                                    default:
+                                        <span>No records found.</span>;
+                                        break;
+                                }
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn HeaderText="Action" Width="82">
+                        <Template>
+                            <SfButton CssClass="e-link e-btn" Content="View" Type="button" aria-label="view sales details" role="button"></SfButton>
+                        </Template>
+                    </GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="w-100 py-5 px-3 px-sm-4 mx-auto">
+            <div class="d-flex flex-column-reverse flex-sm-row justify-content-end gap-3 mb-4">
+                <div class="row">
+                    <div class="col-12">
+                        <div class="e-input-group">
+                            <span class="e-input-group-icon e-icons e-search border-end-0"></span>
+                            <input class="e-input" type="text" placeholder="Search transactions" aria-label="enter transaction details" role="textbox" />
+                        </div>
+                    </div>
+                </div>
+                <SfButton CssClass="e-primary align-self-end" IconCss="e-icons e-export" IconPosition="IconPosition.Left" Content="Export to CSV" Type="button" aria-label="export to CSV file format" role="button"></SfButton>
+            </div>
+            <SfGrid DataSource="@GridData" Width="100%" Height="668" AllowPaging="true" role="grid">
+                <GridColumns>
+                    <GridColumn Field="TransactionId" HeaderText="Transaction ID" Width="126">
+                        <Template>
+                            @{
+                                var data = (context as Transaction)!;
+                            }
+                            <a class="text-primary fw-medium text-decoration-none" href="javascript:void(0);" aria-label="transaction ID">@data.TransactionId</a>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="CustomerDetails" HeaderText="Customer Name" TextAlign="TextAlign.Left" Width="270">
+                        <Template>
+                            @{
+                                var data = (context as Transaction)!;
+                            }
+                            <div class="d-flex gap-3 align-items-center py-1">
+                                <div style="width: 32px; height: 32px;">
+                                    <span class="@($"e-avatar e-avatar-circle e-avatar-small {(data.CustomerDetails.ColorTheme == "Red" ? "bg-danger-subtle text-danger" : data.CustomerDetails.ColorTheme == "Green" ? "bg-success-subtle text-success" : data.CustomerDetails.ColorTheme == "Blue" ? "bg-info-subtle text-info" : data.CustomerDetails.ColorTheme == "Orange" ? "bg-warning-subtle text-warning" : data.CustomerDetails.ColorTheme == "Purple" ? "bg-primary-subtle text-primary" : "")}")">@data.CustomerDetails.Initial</span>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <p class="text-body mb-0">@data.CustomerDetails.Name</p>
+                                    <p class="text-body-secondary mb-0">@data.CustomerDetails.Email</p>
+                                </div>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="Date" HeaderText="Purchase Date" Width="142" Format="MM/dd/yyyy" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="Product" HeaderText="Product" Width="219">
+                        <Template>
+                            @{
+                                var data = (context as Transaction)!;
+                            }
+                            <div class="d-flex align-items-center gap-3">
+                                <div style="width: 40px; height: 40px;">
+                                    <img class="rounded" src="assets/images/advance-grid/sales-transactions-table/@data.Product.Image" width="40px" alt="product image" />
+                                </div>
+                                <p class="mb-0">@data.Product.Name</p>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="Quantity" HeaderText="Quantity" Width="115" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="Amount" HeaderText="Amount" Width="122" Format="c2" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="PaymentMethod" HeaderText="Payment Method" Width="143"></GridColumn>
+                    <GridColumn Field="SalesRep" HeaderText="Sales Representative" Width="192">
+                        <Template>
+                            @{
+                                var data = (context as Transaction)!;
+                            }
+                            <div class="d-flex align-items-center gap-3">
+                                <div style="width: 32px; height: 32px;">
+                                    <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url('assets/images/common/avatar/@data.SalesRep.Avatar')"></span>
+                                </div>
+                                <p class="mb-0">@data.SalesRep.Name</p>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="Status" HeaderText="Status" Width="103">
+                        <Template>
+                            @{
+                                var data = (context as Transaction)!;
+                            }
+                            <div class="fs-6">
+                                @switch (data.Status)
+                                {
+                                    case "Completed":
+                                        <span class="e-badge e-badge-success">Completed</span>;
+                                        break;
+                                    case "Pending":
+                                        <span class="e-badge e-badge-info">Pending</span>;
+                                        break;
+                                    case "Processing":
+                                        <span class="e-badge e-badge-warning">Processing</span>;
+                                        break;
+                                    case "Failed":
+                                        <span class="e-badge e-badge-danger">Failed</span>;
+                                        break;
+                                    default:
+                                        <span>No records found.</span>;
+                                        break;
+                                }
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn HeaderText="Action" Width="72">
+                        <Template>
+                            <SfButton CssClass="e-link !p-0" Content="View" Type="button" aria-label="view sales details" role="button"></SfButton>
+                        </Template>
+                    </GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}

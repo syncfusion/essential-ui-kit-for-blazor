@@ -1,0 +1,7 @@
+::deep .e-timeline .e-opposite-content {
+    flex: 0 !important;
+}
+
+::deep .e-timeline .e-timeline-item.e-connector::after {
+    left: calc(var(--dot-size)* 3 / 2 - var(--connector-size));
+}

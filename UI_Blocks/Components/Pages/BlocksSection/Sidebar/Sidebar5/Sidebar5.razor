@@ -1,0 +1,177 @@
+﻿@page "/blocks/Sidebar-5"
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-950">
+        <div id="notification-sidebar" style="height: 700px;">
+            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+                <div class="h-screen">
+                    <div class="flex items-center py-4 px-3">
+                        <img src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+                        <span class="text-lg font-bold text-gray-900 dark:text-white ml-3">Company Name</span>
+                    </div>
+                    <div class="mt-1">
+                        <SfListView class="border-0" DataSource="@Data" aria-label="main navigation links" role="list">
+                            <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="MenuItem">
+                                <Template>
+                                    <div class="e-list-wrapper flex items-center justify-between pr-2">
+                                        <div class="text-base leading-6 flex items-center">
+                                            <span class="e-icons text-base @context.FontIcon"></span>
+                                            <span class="font-normal pl-4">@context.Field</span>
+                                        </div>
+                                        @if (@context.Field == "Notifications")
+                                        {
+                                            <span class="e-badge e-badge-info e-badge-pill !px-1.5 e-bigger">99+</span>
+                                        }
+                                    </div>
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </div>
+                    <hr class="border-gray-200 dark:border-gray-700 m-4" />
+                    <SfAccordion class="bg-transparent !border-0" role="button">
+                        <AccordionItems>
+                            <AccordionItem IconCss="e-icons e-file-new e-medium" CssClass="!border-0">
+                                <HeaderTemplate>
+                                    <div class="text-base font-normal pl-2">News</div>
+                                </HeaderTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons e-agenda-date-range e-medium" CssClass="!border-0">
+                                <HeaderTemplate>
+                                    <div class="text-base font-normal pl-2">Events</div>
+                                </HeaderTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons e-user e-medium" CssClass="!border-0">
+                                <HeaderTemplate>
+                                    <div class="text-base font-normal pl-2">People</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div></div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                        </AccordionItems>
+                    </SfAccordion>
+                    <div id="toastmsg" class="!absolute" style="bottom: 25%;"></div>
+                    <SfToast @ref="ToastInfo" CssClass="e-toast-info" Width="224px" ShowCloseButton="true" Timeout="0" Target="#toastmsg" NewestOnTop="true">
+                        <ToastPosition X="Left" Y="Bottom"></ToastPosition>
+                        <ToastEvents Created="@(() => CreatedHandler(ToastInfo))"></ToastEvents>
+                        <ToastTemplates>
+                            <Title>
+                                <div class="pr-2">Adaptive Tiles Meeting</div>
+                            </Title>
+                            <Content>
+                                <div>There was a problem with your network connection</div>
+                            </Content>
+                        </ToastTemplates>
+                    </SfToast>
+                    <SfToast @ref="ToastWarning" CssClass="e-toast-warning" Width="224px" ShowCloseButton="true" Timeout="0" Target="#toastmsg" NewestOnTop="true">
+                        <ToastPosition X="Left" Y="Top"></ToastPosition>
+                        <ToastEvents Created="@(() => CreatedHandler(ToastWarning))"></ToastEvents>
+                        <ToastTemplates>
+                            <Title>
+                                <div class="pr-2">Adaptive Tiles Meeting</div>
+                            </Title>
+                            <Content>
+                                <div>There was a problem with your network connection</div>
+                            </Content>
+                        </ToastTemplates>
+                    </SfToast>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 top-0 left-0 absolute">
+        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="height: 700px;">
+            <SfSidebar Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+                <div class="vh-100">
+                    <div class="d-flex align-items-center p-3">
+                        <img src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+                        <span class="fs-5 ms-2 fw-bold text-body lh-sm">Company Name</span>
+                    </div>
+                    <SfListView class="border-0 e-bigger" DataSource="@Data" aria-label="main navigation links" role="list">
+                        <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
+                        <ListViewTemplates TValue="MenuItem">
+                            <Template>
+                                <div class="e-list-wrapper px-1 d-flex justify-content-between align-items-center">
+                                    <div class="fs-6 lh-base">
+                                        <span class="e-icons fs-6 @context.FontIcon"></span>
+                                        <span class="fw-normal ps-2">@context.Field</span>
+                                    </div>
+                                    @if (context.Field == "Notifications")
+                                    {
+                                        <span class="e-badge e-badge-info e-badge-pill">99+</span>
+                                    }
+                                </div>
+                            </Template>
+                        </ListViewTemplates>
+                    </SfListView>
+                    <p class="m-3 fs-6 text-body-secondary">Others</p>
+                    <SfAccordion class="border-0 bg-transparent" role="button">
+                        <AccordionItems>
+                            <AccordionItem IconCss="e-icons e-notes e-medium" CssClass="border-0">
+                                <HeaderTemplate>
+                                    <div class="fs-6 fw-normal ps-1">News</div>
+                                </HeaderTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons sf-icon-announcement-01 fs-6" CssClass="border-0">
+                                <HeaderTemplate>
+                                    <div class="fs-6 fw-normal ps-1">Events</div>
+                                </HeaderTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons e-user e-medium" CssClass="border-0">
+                                <HeaderTemplate>
+                                    <div class="fs-6 fw-normal ps-1">People</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div></div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                        </AccordionItems>
+                    </SfAccordion>
+                    <div id="toast" class="position-absolute" style="bottom: 25%"></div>
+                    <SfToast @ref="ToastInfo" CssClass="e-toast-info" Width="224px" ShowCloseButton="true" Timeout="0" Target="#toast" NewestOnTop="true">
+                        <ToastPosition X="Left" Y="Bottom"></ToastPosition>
+                        <ToastEvents Created="@(() => CreatedHandler(ToastInfo))"></ToastEvents>
+                        <ToastTemplates>
+                            <Title>
+                                <div>Adaptive Tiles Meeting</div>
+                            </Title>
+                            <Content>
+                                <div>There was a problem with your network connection.</div>
+                            </Content>
+                        </ToastTemplates>
+                    </SfToast>
+                    <SfToast @ref="ToastWarning" CssClass="e-toast-warning" Width="224px" ShowCloseButton="true" Timeout="0" Target="#toast" NewestOnTop="true">
+                        <ToastPosition X="Left" Y="Top"></ToastPosition>
+                        <ToastEvents Created="@(() => CreatedHandler(ToastWarning))"></ToastEvents>
+                        <ToastTemplates>
+                            <Title>
+                                <div>Adaptive Tiles Meeting</div>
+                            </Title>
+                            <Content>
+                                <div>There was a problem with your network connection.</div>
+                            </Content>
+                        </ToastTemplates>
+                    </SfToast>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="py-3 px-1 position-absolute top-0 start-0">
+        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

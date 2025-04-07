@@ -1,0 +1,23 @@
+﻿::deep #ticket-details .e-list-item {
+    border-bottom: 0px !important;
+    border-radius: 8px !important;
+    margin-bottom: 16px !important;
+}
+
+::deep #ticket-details .e-btn-icon {
+    color: inherit !important;
+}
+
+::deep .bs-switch {
+    width: 36px !important;
+}
+
+::deep #ticket-details .e-btn.e-dropdown-btn .e-btn-icon.e-caret {
+    width: 2em !important;
+    margin-right: -0.5em !important;
+    line-height: 0 !important;
+}
+
+::deep .e-checkbox-wrapper .e-frame + .e-label {
+    margin-left: 0 !important;
+}

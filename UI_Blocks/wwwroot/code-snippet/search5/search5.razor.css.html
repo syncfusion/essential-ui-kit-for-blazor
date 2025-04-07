@@ -1,0 +1,25 @@
+﻿::deep .e-ddl.e-input-group.e-control-wrapper {
+    position: relative;
+}
+
+::deep .e-ddl.e-input-group.e-control-wrapper::before {
+    content: "\e754";
+    font-family: "e-icons";
+    font-size: 16px;
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    pointer-events: none;
+}
+
+::deep .e-ddl.e-input-group .e-input {
+    padding-left: 40px !important;
+}
+
+::deep .e-ddl.e-input-group .e-clear-icon {
+    right: 10px;
+}
+
+::deep .e-chip-list.e-multi-selection .e-chip::before {
+    display: none !important
+}

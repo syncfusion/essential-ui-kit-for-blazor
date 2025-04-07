@@ -1,0 +1,255 @@
+﻿@page "/blocks/pricing-card-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="max-w-screen-xl mx-auto py-20">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold text-gray-900 dark:text-white">Pricing Plans</h1>
+                <p class="mt-4 px-4 text-lg font-normal mb-8 sm:max-w-xl lg:max-w-full w-full mx-auto text-center text-gray-700 dark:text-gray-200">
+                    Get started in complete confidence. Our 30-day money-back guarantee means it’s risk-free.
+                </p>
+                <div class="flex items-center justify-center gap-3 mb-12 text-base font-medium text-gray-700 dark:text-gray-200">
+                    <p>Monthly</p>
+                    <SfSwitch Checked="true" aria-label="switch between monthly and yearly pricing plans" role="switch"></SfSwitch>
+                    <p>Yearly</p>
+                </div>
+            </div>
+            <div
+                class="grid sm:grid-cols-2 gap-6 px-4 md:px-6 w-full lg:w-9/12 xl:w-7/12 max-w-screen-2xl mx-auto box-border">
+                <div class="e-card e-bigger py-8 rounded-3xl shadow-none hover:border-primary-600 dark:hover:border-primary-400">
+                    <div class="e-card-content">
+                        <div>
+                            <div>
+                                <span class="e-avatar-xlarge e-avatar e-icons e-group-icon e-avatar-circle mb-5 text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900"></span>
+                            </div>
+                            <h1 class="text-2xl font-medium text-gray-900 dark:text-white">Single</h1>
+                            <p class="mt-2 text-gray-700 dark:text-gray-300 text-base font-normal">A great solution for beginners</p>
+                        </div>
+                        <div class="my-5 text-gray-900 dark:text-white">
+                            <div class="flex items-center gap-2 mb-1">
+                                <h2 class="text-5xl font-bold leading-tight">$69</h2>
+                                <span class="line-through text-gray-500 dark:text-gray-300 font-normal text-3xl">$199</span>
+                            </div>
+                            <p class="text-base text-gray-700 dark:text-gray-200">per month $828 billed yearly</p>
+                        </div>
+                        <p class="mb-2 text-base text-gray-700 dark:text-gray-200">Create one end product for a client, transfer that end product to your client, charge them for your services.</p>
+                    </div>
+                    <div class="e-card-actions leading-9">
+                        <SfButton CssClass="e-outline e-primary w-full text-lg" Content="Choose a plan" Type="button" aria-label="choose a plan" role="button"></SfButton>
+                    </div>
+                    <ul class="flex flex-col gap-4 px-6 text-gray-700 dark:text-gray-200 text-base">
+                        <li class="flex items-center gap-3">
+                            <span class="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                            <span>1 Website</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                            <span>~10000 visits monthly</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                            <span>50 GB SSD storage</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                            <span>200,000 files and directories</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                            <span>Free pre-built templates</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-500 dark:text-gray-300 text-base">
+                            <span class="e-icons e-circle-remove e-large text-gray-400"></span>
+                            <span>Free domain ($79.00 value)</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-500 dark:text-gray-300 text-base">
+                            <span class="e-icons e-circle-remove e-large text-gray-400"></span>
+                            <span>Free CDN</span>
+                        </li>
+                    </ul>
+                </div>
+                <div class="e-card e-bigger py-8 rounded-3xl shadow-none hover:border-primary-600 dark:hover:border-primary-400">
+                    <div class="e-card-content">
+                        <div>
+                            <div class="flex flex-wrap justify-between">
+                                <span class="e-avatar-xlarge e-avatar e-icons e-group-icon e-avatar-circle mb-5 text-primary-600 dark:text-primary-400 bg-primary-50 dark:bg-primary-900"></span>
+                                <span class="e-badge e-badge-pill e-bigger bg-orange-100 dark:bg-orange-100 text-orange-700 dark:text-orange-600">Most popular</span>
+                            </div>
+                            <h1 class="text-2xl font-medium text-gray-900 dark:text-white">Premium</h1>
+                            <p class="mt-2 text-gray-700 dark:text-gray-300 text-base font-normal">All you need to create your website</p>
+                        </div>
+                        <div class="my-5 text-gray-900 dark:text-white">
+                            <div class="flex items-center gap-2 mb-1">
+                                <h2 class="text-5xl font-bold leading-tight">$149</h2>
+                                <span class="line-through text-gray-500 dark:text-gray-300 font-normal text-3xl">$599</span>
+                            </div>
+                            <p class="text-base text-gray-700 dark:text-gray-200">per month $1,788 billed yearly</p>
+                        </div>
+                        <p class="mb-2 text-base text-gray-700 dark:text-gray-200">Create one end product for a client, transfer that end product to your client, charge them for your services.</p>
+                    </div>
+                    <div class="e-card-actions leading-9">
+                        <SfButton CssClass="e-fill e-primary w-full text-lg" Content="Choose a plan" Type="button" aria-label="choose a plan" role="button"></SfButton>
+                    </div>
+                    <ul class="flex flex-col gap-4 px-6 text-gray-700 dark:text-gray-200 text-base">
+                        <li class="flex items-center gap-3">
+                            <span class="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                            <span>1 Website</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                            <span>~10000 visits monthly</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                            <span>50 GB SSD storage</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                            <span>200,000 files and directories</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                            <span>Free pre-built templates</span>
+                        </li>
+                        <li class="flex items-center gap-3">
+                            <span class="e-icons e-circle-check e-large text-green-700 dark:text-green-500"></span>
+                            <span>Free domain ($79.00 value)</span>
+                        </li>
+                        <li class="flex items-center gap-3 text-gray-500 dark:text-gray-300 text-base">
+                            <span class="e-icons e-circle-remove e-large text-gray-400"></span>
+                            <span>Free CDN</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="container px-3 py-5">
+            <div class="text-center">
+                <h1 class="fw-bold fs-1 mb-3 text-body">Pricing Plans</h1>
+                <p class="mb-4 mx-3 px-1 px-md-5 px-lg-0 text-light-emphasis">Get started in complete confidence. Our 30-day money-back guarantee means it’s risk-free.</p>
+                <div class="d-flex justify-content-center align-items-center gap-2 mb-5 pt-2">
+                    <p class="m-0 small text-light-emphasis">Monthly</p>
+                    <SfSwitch Checked="true" aria-label="switch between monthly and yearly pricing plans" role="switch"></SfSwitch>
+                    <p class="m-0 small text-light-emphasis">Yearly</p>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12">
+                    <div class="e-card e-bigger lh-base px-2 py-4 my-4 my-md-0 rounded-4">
+                        <div class="e-card-content my-2">
+                            <div class="d-flex justify-content-between">
+                                <span class="e-avatar-xlarge e-avatar e-icons e-group-icon e-avatar-circle mb-3 text-primary-emphasis bg-body-tertiary"></span>
+                            </div>
+                            <h5 class="fs-4 fw-bold mb-1 text-body">Single</h5>
+                            <p class="m-0 text-light-emphasis fs-6">A great solution for beginners</p>
+                            <div class="my-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <h2 class="fs-1 fw-bolder mb-1 text-body">$69</h2>
+                                    <span class="fs-4 text-body-tertiary text-decoration-line-through mt-1">$199</span>
+                                </div>
+                                <p class="m-0 text-light-emphasis fs-6">per month $828 billed yearly</p>
+                            </div>
+                            <p class="mt-1 mb-0 text-light-emphasis fs-6">Create one end product for a client, transfer that end product to your client, charge them for your services.</p>
+                        </div>
+                        <div class="e-card-actions e-bigger">
+                            <SfButton CssClass="e-outline e-primary e-block" Content="Choose a plan" Type="button" aria-label="choose a plan" role="button"></SfButton>
+                        </div>
+                        <ul class="d-flex flex-column gap-3 fs-6 mt-2 mb-4 p-0 ps-3">
+                            <li class="d-flex align-items-center gap-3 m-0 text-light-emphasis">
+                                <span class="e-icons e-circle-check e-large text-success"></span>
+                                <span>1 Website</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 m-0 text-light-emphasis">
+                                <span class="e-icons e-circle-check e-large text-success"></span>
+                                <span>~10000 visits monthly</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 m-0 text-light-emphasis">
+                                <span class="e-icons e-circle-check e-large text-success"></span>
+                                <span>50 GB SSD storage</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 m-0 text-light-emphasis">
+                                <span class="e-icons e-circle-check e-large text-success"></span>
+                                <span>200,000 files and directories</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 m-0 text-light-emphasis">
+                                <span class="e-icons e-circle-check e-large text-success"></span>
+                                <span>Free pre-built templates</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 m-0 text-body-tertiary">
+                                <span class="e-icons e-circle-remove e-large text-body-tertiary"></span>
+                                <span>Free domain ($79.00 value)</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 m-0 text-body-tertiary">
+                                <span class="e-icons e-circle-remove e-large text-body-tertiary"></span>
+                                <span>Free CDN</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-xl-4 col-lg-5 col-md-6 col-sm-12 pt-4 pt-sm-0">
+                    <div class="e-card e-bigger lh-base px-2 py-4 rounded-4">
+                        <div class="e-card-content my-2">
+                            <div class="d-flex justify-content-between">
+                                <span class="e-avatar-xlarge e-avatar e-icons e-group-icon e-avatar-circle mb-3 text-primary-emphasis bg-body-tertiary"></span>
+                                <span class="e-badge e-badge-pill bg-warning-subtle text-warning-emphasis e-bigger">Most popular</span>
+                            </div>
+                            <h5 class="fs-4 fw-bold mb-1 text-body">Premium</h5>
+                            <p class="m-0 text-light-emphasis fs-6">All you need to create your website</p>
+                            <div class="my-3">
+                                <div class="d-flex align-items-center gap-2">
+                                    <h2 class="fs-1 fw-bolder mb-1 text-body">$149</h2>
+                                    <span class="fs-4 text-body-tertiary text-decoration-line-through mt-1">$599</span>
+                                </div>
+                                <p class="m-0 text-light-emphasis fs-6">per month $1,788 billed yearly</p>
+                            </div>
+                            <p class="mt-1 mb-0 text-light-emphasis fs-6">Create one end product for a client, transfer that end product to your client, charge them for your services.</p>
+                        </div>
+                        <div class="e-card-actions e-bigger">
+                            <SfButton CssClass="e-fill e-primary e-block" Content="Choose a plan" Type="button" aria-label="choose a plan" role="button"></SfButton>
+                        </div>
+                        <ul class="d-flex flex-column gap-3 fs-6 mt-2 mb-4 p-0 ps-3">
+                            <li class="d-flex align-items-center gap-3 m-0 text-light-emphasis">
+                                <span class="e-icons e-circle-check e-large text-success"></span>
+                                <span>1 Website</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 m-0 text-light-emphasis">
+                                <span class="e-icons e-circle-check e-large text-success"></span>
+                                <span>~10000 visits monthly</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 m-0 text-light-emphasis">
+                                <span class="e-icons e-circle-check e-large text-success"></span>
+                                <span>50 GB SSD storage</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 m-0 text-light-emphasis">
+                                <span class="e-icons e-circle-check e-large text-success"></span>
+                                <span>200,000 files and directories</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 m-0 text-light-emphasis">
+                                <span class="e-icons e-circle-check e-large text-success"></span>
+                                <span>Free pre-built templates</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 m-0 text-light-emphasis">
+                                <span class="e-icons e-circle-check e-large text-success"></span>
+                                <span>Free domain ($79.00 value)</span>
+                            </li>
+                            <li class="d-flex align-items-center gap-3 m-0 text-body-tertiary">
+                                <span class="e-icons e-circle-remove e-large text-body-tertiary"></span>
+                                <span>Free CDN</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

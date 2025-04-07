@@ -1,0 +1,170 @@
+@page "/blocks/grid-6"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="mx-auto w-full py-12 sm:px-6 px-4">
+            <SfGrid DataSource="@GridData" Width="100%" Height="668" AllowSorting="true" AllowFiltering="true" role="grid">
+                <GridFilterSettings Type="@Syncfusion.Blazor.Grids.FilterType.Menu" ></GridFilterSettings>
+                <GridColumns>
+                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>                    
+                    <GridColumn Field=@nameof(Transaction.TransactionId) HeaderText="Transaction ID" Width="143"></GridColumn>                    
+                    <GridColumn Field=@nameof(Transaction.CustomerDetails) HeaderText="Customer Name" TextAlign="TextAlign.Left" Width="270">
+                        <Template>
+                            @{
+                                var transaction = (context as Transaction)!;
+                            }
+                            <div class="flex gap-3 items-center py-1.5">
+                                <div class="w-8 h-8">
+                                    <span class="e-avatar e-avatar-circle e-avatar-small" 
+                                        style="background-image: url('assets/images/common/avatar/@transaction.CustomerDetails.Avatar')">
+                                    </span>
+                                </div>
+                                <div class="flex flex-col text-sm">
+                                    <p class="text-gray-900 dark:text-gray-50">@transaction.CustomerDetails.Name</p>
+                                    <p class="text-gray-500 dark:text-gray-400">@transaction.CustomerDetails.Email</p>
+                                </div>
+                            </div>
+                        </Template>
+                    </GridColumn>                    
+                    <GridColumn Field=@nameof(Transaction.InvoiceNumber) HeaderText="Invoice Number" Width="150">
+                        <Template>
+                            @{
+                                var transaction = (context as Transaction)!;
+                            }
+                            <a class="text-primary-700 dark:text-primary-500 font-medium" href="javascript:void(0);" aria-label="invoice number" role="link">@transaction.InvoiceNumber</a>
+                        </Template>
+                    </GridColumn>                    
+                    <GridColumn Field=@nameof(Transaction.Description) HeaderText="Description" Width="214"></GridColumn>
+                    <GridColumn Field=@nameof(Transaction.Amount) HeaderText="Total Amount" Width="140" Format="C2" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field=@nameof(Transaction.Date) HeaderText="Transaction Date" Width="160" Format="MM/dd/yyyy" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field=@nameof(Transaction.PaymentMethod) HeaderText="Payment Method" Width="155"></GridColumn>                    
+                    <GridColumn Field=@nameof(Transaction.Status) HeaderText="Status" Width="122">
+                        <Template>
+                            @{
+                                var transaction = (context as Transaction)!;
+                            }
+                            <div class="e-bigger">
+                                @switch(transaction.Status)
+                                {
+                                    case "Completed":
+                                        <span class="e-badge flex gap-1 items-center w-max">
+                                            <div class="w-2 h-2 rounded-full bg-green-700"></div>
+                                            Completed
+                                        </span>
+                                        break;
+                                    case "Pending":
+                                        <span class="e-badge flex gap-1 items-center w-max">
+                                            <div class="w-2 h-2 rounded-full bg-orange-700"></div>
+                                            Pending
+                                        </span>
+                                        break;
+                                    case "Cleared":
+                                        <span class="e-badge flex gap-1 items-center w-max">
+                                            <div class="w-2 h-2 rounded-full bg-cyan-700"></div>
+                                            Cleared
+                                        </span>
+                                        break;
+                                    case "Failed":
+                                        <span class="e-badge flex gap-1 items-center w-max">
+                                            <div class="w-2 h-2 rounded-full bg-red-700"></div>
+                                            Failed
+                                        </span>
+                                        break;
+                                    default:
+                                        <span>No records found.</span>
+                                        break;
+                                }
+                            </div>
+                        </Template>
+                    </GridColumn>                    
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="w-100 py-5 px-3 px-sm-4 mx-auto">
+            <SfGrid DataSource="@GridData" Width="100%" Height="668" AllowSorting="true" AllowFiltering="true" role="grid">
+                <GridFilterSettings Type="@Syncfusion.Blazor.Grids.FilterType.Menu" ></GridFilterSettings>
+                <GridColumns>
+                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
+                    <GridColumn Field="TransactionId" HeaderText="Transaction ID" Width="152"></GridColumn>
+                    <GridColumn Field="CustomerDetails" HeaderText="Customer Name" TextAlign="TextAlign.Left" Width="252">
+                        <Template>
+                            @{
+                                var data = (context as Transaction)!;
+                            }
+                            <div class="d-flex gap-3 align-items-center py-1">
+                                <div style="width: 32px; height: 32px;">
+                                    <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url('assets/images/common/avatar/@data.CustomerDetails.Avatar')"></span>
+                                </div>
+                                <div class="d-flex flex-column">
+                                    <p class="text-body mb-0">@data.CustomerDetails.Name</p>
+                                    <p class="text-body-secondary mb-0">@data.CustomerDetails.Email</p>
+                                </div>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="InvoiceNumber" HeaderText="Invoice Number" Width="165">
+                        <Template>
+                            @{
+                                var data = (context as Transaction)!;
+                            }
+                            <a class="text-primary fw-medium text-decoration-none" href="javascript:void(0);" aria-label="invoice number" role="link">@data.InvoiceNumber</a>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="Description" HeaderText="Description" Width="184"></GridColumn>
+                    <GridColumn Field="Amount" HeaderText="Total Amount" Width="165" Format="c2" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="Date" HeaderText="Transaction Date" Width="183" Format="d" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="PaymentMethod" HeaderText="Payment Method" Width="170"></GridColumn>
+                    <GridColumn Field="Status" HeaderText="Status" Width="115">
+                        <Template>
+                            @{
+                                var data = (context as Transaction)!;
+                            }
+                            <div class="fs-6">
+                                @switch (data.Status)
+                                {
+                                    case "Completed":
+                                        <span class="e-badge d-flex gap-1 align-items-center" style="width: fit-content;">
+                                            <div class="rounded-circle bg-success" style="width: 8px; height: 8px;"></div>
+                                            Completed
+                                        </span>;
+                                        break;
+                                    case "Pending":
+                                        <span class="e-badge d-flex gap-1 align-items-center" style="width: fit-content;">
+                                            <div class="rounded-circle bg-warning" style="width: 8px; height: 8px;"></div>
+                                            Pending
+                                        </span>;
+                                        break;
+                                    case "Cleared":
+                                        <span class="e-badge d-flex gap-1 align-items-center" style="width: fit-content;">
+                                            <div class="rounded-circle bg-info" style="width: 8px; height: 8px;"></div>
+                                            Cleared
+                                        </span>;
+                                        break;
+                                    case "Failed":
+                                        <span class="e-badge d-flex gap-1 align-items-center" style="width: fit-content;">
+                                            <div class="rounded-circle bg-danger" style="width: 8px; height: 8px;"></div>
+                                            Failed
+                                        </span>;
+                                        break;
+                                    default:
+                                        <span>No records found.</span>;
+                                        break;
+                                }
+                            </div>
+                        </Template>
+                    </GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}

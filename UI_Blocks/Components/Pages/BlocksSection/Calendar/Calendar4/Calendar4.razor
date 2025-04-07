@@ -1,0 +1,143 @@
+@page "/blocks/calendar-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div style="height: 685px; width: @Width; float: right;">
+            <SfSidebar Width="@Width" class="w-full bg-white dark:bg-gray-900" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div class="bg-white dark:bg-gray-900 min-h-screen">
+                        <div class="border-b border-gray-200 dark:border-gray-600">
+                            <div class="flex justify-between items-center px-4 py-3 border-b border-gray-200 dark:border-gray-600">
+                                <h2 class="text-base font-semibold text-gray-900 dark:text-white">Meetings</h2>
+                                <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" @onclick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                            </div>
+                            <div class="p-4 flex justify-center items-center">
+                                <SfCalendar TValue="DateTime" CssClass="e-bigger shadow-none border-none"></SfCalendar>
+                            </div>
+                        </div>
+                        <div class="p-4 pt-4 bg-white dark:bg-gray-900">
+                            <div class="flex items-center flex-wrap space-y-5 pt-2 rounded-lg">
+                                <div class="w-full">
+                                    <div class="flex">
+                                        <div class="w-10 py-1">
+                                            <p class="text-sm text-gray-900 dark:text-white">10:00</p>
+                                            <span class="text-xs text-gray-700 dark:text-gray-300">1 hour</span>
+                                        </div>
+                                        <div class="w-1 h-100 rounded-lg bg-cyan-500 ml-2 mr-4"></div>
+                                        <div class="py-1">
+                                            <h5 class="font-medium text-gray-700 dark:text-gray-300">Project Kickoff</h5>
+                                            <p class="text-xs text-gray-700 dark:text-gray-300">Online</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <div class="flex">
+                                        <div class="w-10 py-1">
+                                            <p class="text-sm text-gray-900 dark:text-white">11:00</p>
+                                            <span class="text-xs text-gray-700 dark:text-gray-300">1 hour</span>
+                                        </div>
+                                        <div class="w-1 h-100 rounded-lg bg-red-500 ml-2 mr-4"></div>
+                                        <div class="py-1">
+                                            <h5 class="font-medium text-gray-700 dark:text-gray-300">Marketing Strategy</h5>
+                                            <p class="text-xs text-gray-700 dark:text-gray-300">Online</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-full">
+                                    <div class="flex">
+                                        <div class="w-10 py-1">
+                                            <p class="text-sm text-gray-900 dark:text-white">12:00</p>
+                                            <span class="text-xs text-gray-700 dark:text-gray-300">1 hour</span>
+                                        </div>
+                                        <div class="w-1 h-100 rounded-lg bg-orange-500 ml-2 mr-4"></div>
+                                        <div class="py-1">
+                                            <h5 class="font-medium text-gray-700 dark:text-gray-300">Product Design Review</h5>
+                                            <p class="text-xs text-gray-700 dark:text-gray-300">Online</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 absolute top-0 right-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" @onclick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+         <div style="height: 702px; width: @Width; float: right;">
+            <SfSidebar Width="@Width" class="bg-body" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div class="bg-body">
+                        <div class="border-bottom border-light-subtle">
+                            <div class="d-flex justify-content-between align-items-center p-3 border-bottom border-light-subtle">
+                                <div class="text-body fw-bold fs-6 mb-0">Meetings</div>
+                                <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" @onclick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                            </div>
+                            <div class="p-3 pb-0 d-flex justify-content-center align-items-center">
+                                <SfCalendar TValue="DateTime" CssClass="e-bigger shadow-none border-0"></SfCalendar>
+                            </div>
+                        </div>
+                        <div class="p-3 pt-3 bg-body">
+                            <div class="row gap-4 pt-2 rounded">
+                                <div class="w-100">
+                                    <div class="d-flex">
+                                        <div class="border-end border-info border-2 pe-3">
+                                            <p class="fw-normal text-body-emphasis mb-1">10:00</p>
+                                            <span class="text-body-secondary">1 hour</span>
+                                        </div>
+                                        <div class="ms-3">
+                                            <p class="fw-medium text-body-emphasis mb-1">Project Kickoff</p>
+                                            <p class="text-body-secondary mb-0">Online</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-100">
+                                    <div class="d-flex">
+                                        <div class="border-end border-danger border-2 pe-3">
+                                            <p class="fw-normal text-body-emphasis mb-1">11:00</p>
+                                            <span class="text-body-secondary">1 hour</span>
+                                        </div>
+                                        <div class="ms-3">
+                                            <p class="fw-medium text-body-emphasis mb-1">Marketing Strategy</p>
+                                            <p class="text-body-secondary mb-0">Online</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="w-100">
+                                    <div class="d-flex">
+                                        <div class="border-end border-warning border-2 pe-3">
+                                            <p class="fw-normal text-body-emphasis mb-1">12:00</p>
+                                            <span class="text-body-secondary">1 hour</span>
+                                        </div>
+                                        <div class="ms-3">
+                                            <p class="fw-medium text-body-emphasis mb-1">Product Design Review</p>
+                                            <p class="text-body-secondary mb-0">Online</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 position-absolute top-0 end-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" @onclick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

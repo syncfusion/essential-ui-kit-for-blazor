@@ -1,0 +1,222 @@
+@page "/blocks/grid-3"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="mx-auto w-full py-12 sm:px-6 px-4">
+            <SfGrid DataSource="GridData" Width="100%" Height="658" GridLines="GridLine.None" role="grid">
+                <GridColumns>
+                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" Width="40"></GridColumn>                    
+                    <GridColumn Field="@nameof(Invoice.InvoiceId)" HeaderText="Invoice ID" Width="111">
+                        <Template>
+                            @{
+                                var invoice = (context as Invoice)!;
+                            }
+                            <a class="text-primary-700 dark:text-primary-500 font-medium" href="javascript:void(0);" aria-label="invoice ID" role="link">@invoice.InvoiceId</a>
+                        </Template>
+                    </GridColumn>                    
+                    <GridColumn Field=@nameof(Invoice.CustomerDetails) HeaderText="Customer Details" TextAlign="TextAlign.Left" Width="272">
+                        <Template>
+                            @{
+                                var invoice = (context as Invoice)!;
+                            }
+                            <div class="flex gap-3 items-center py-1.5">
+                                <div class="w-8 h-8">
+                                    <span class="e-avatar e-avatar-circle e-avatar-small" 
+                                        style="background-image: url('assets/images/common/avatar/@invoice.CustomerDetails.Avatar')">
+                                    </span>
+                                </div>
+                                <div class="flex flex-col text-sm">
+                                    <p class="text-gray-900 dark:text-gray-50">@invoice.CustomerDetails.Name</p>
+                                    <p class="text-gray-500 dark:text-gray-400">@invoice.CustomerDetails.Email</p>
+                                </div>
+                            </div>
+                        </Template>
+                    </GridColumn>                    
+                    <GridColumn Field=@nameof(Invoice.InvoiceDate) HeaderText="Invoice Date" Width="122" Format="MM/dd/yyyy" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field=@nameof(Invoice.ItemsPurchased) HeaderText="Software" Width="177"></GridColumn>
+                    <GridColumn Field=@nameof(Invoice.Quantity) HeaderText="Quantity" TextAlign="TextAlign.Right" Width="69"></GridColumn>
+                    <GridColumn Field=@nameof(Invoice.Price) HeaderText="Unit Price" Width="100" Format="c2" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field=@nameof(Invoice.Tax) HeaderText="Tax Amount" Width="100" Format="c2" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field=@nameof(Invoice.Discount) HeaderText="Discount Amount" Width="124" TextAlign="TextAlign.Right">
+                        <Template>
+                            @{
+                                var invoice = (context as Invoice)!;
+                            }
+                            <p class="text-green-700 dark:text-green-500">@invoice.Discount.ToString("C2")</p>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field=@nameof(Invoice.Total) HeaderText="Total Amount" Width="110" Format="c2" TextAlign="TextAlign.Right"></GridColumn>                    
+                    <GridColumn Field=@nameof(Invoice.Status) HeaderText="Status" Width="93">
+                        <Template>
+                            @{
+                                var invoice = (context as Invoice)!;
+                            }
+                            <div class="e-bigger">
+                                @switch(invoice.Status)
+                                {
+                                    case "Paid":
+                                        <span class="e-badge e-badge-success flex gap-1 items-center w-max">
+                                            <div class="w-2 h-2 rounded-full bg-green-700"></div>
+                                            Paid
+                                        </span>
+                                        break;
+                                    case "Pending":
+                                        <span class="e-badge e-badge-warning flex gap-1 items-center w-max">
+                                            <div class="w-2 h-2 rounded-full bg-orange-700"></div>
+                                            Pending
+                                        </span>
+                                        break;
+                                    default:
+                                        <span>No records found.</span>
+                                        break;
+                                }
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field=@nameof(Invoice.DueDate) HeaderText="Due Date" Width="112" Format="MM/dd/yyyy" Type="ColumnType.Date" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field=@nameof(Invoice.PaymentDate) HeaderText="Payment Date" TextAlign="TextAlign.Right" Width="124">
+                        <Template>
+                            @{
+                                var invoice = (context as Invoice)!;
+                            }
+                            <div class="text-sm text-gray-700 dark:text-gray-300">
+                                <p>@(invoice.PaymentDate?.ToString("MM/dd/yyyy") ?? "-")</p>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field=@nameof(Invoice.PaymentMethod) HeaderText="Payment Method" Width="130">
+                        <Template>
+                            @{
+                                var invoice = (context as Invoice)!;
+                            }
+                            <div class="text-sm text-gray-700 dark:text-gray-300">
+                                <p>@(invoice.PaymentMethod ?? "-")</p>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn HeaderText="Action" Width="102">
+                        <Template>
+                            <div class="e-small flex gap-1">
+                                <SfButton CssClass="e-flat me-1" IconCss="e-icons e-eye" Type="button" aria-label="view invoice details" role="button"></SfButton>
+                                <SfButton CssClass="e-flat" IconCss="e-icons e-print" Type="button" aria-label="print" role="button"></SfButton>
+                            </div>
+                        </Template>
+                    </GridColumn>                    
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="w-100 py-5 px-3 px-sm-4 mx-auto">
+            <SfGrid DataSource="GridData" Width="100%" Height="658" GridLines="GridLine.None" role="grid">
+                <GridColumns>
+                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>                    
+                    <GridColumn Field=@nameof(Invoice.InvoiceId) HeaderText="Invoice ID" Width="109">
+                        <Template>
+                            @{
+                                var invoice = (context as Invoice)!;
+                            }
+                            <a class="text-primary fw-medium text-decoration-none" href="javascript:void(0);" aria-label="invoice ID" role="link">@invoice.InvoiceId</a>
+                        </Template>
+                    </GridColumn>                    
+                    <GridColumn Field=@nameof(Invoice.CustomerDetails) HeaderText="Customer Details" TextAlign="TextAlign.Left" Width="252">
+                        <Template>
+                            @{
+                                var invoice = (context as Invoice)!;
+                            }
+                            <div class="d-flex gap-3 align-items-center py-1">
+                                <div class="rounded-circle overflow-hidden" style="width: 32px; height: 32px;">
+                                    <span class="e-avatar e-avatar-circle e-avatar-small" 
+                                        style="background-image: url('assets/images/common/avatar/@invoice.CustomerDetails.Avatar')">
+                                    </span>
+                                </div>
+                                <div class="d-flex flex-column text-body">
+                                    <p class="mb-0">@invoice.CustomerDetails.Name</p>
+                                    <p class="text-body-secondary mb-0">@invoice.CustomerDetails.Email</p>
+                                </div>
+                            </div>
+                        </Template>
+                    </GridColumn>                    
+                    <GridColumn Field=@nameof(Invoice.InvoiceDate) HeaderText="Invoice Date" Width="122" Format="MM/dd/yyyy" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field=@nameof(Invoice.ItemsPurchased) HeaderText="Software" Width="180"></GridColumn>
+                    <GridColumn Field=@nameof(Invoice.Quantity) HeaderText="Quantity" TextAlign="TextAlign.Right" Width="70"></GridColumn>
+                    <GridColumn Field=@nameof(Invoice.Price) HeaderText="Unit Price" Width="102" Format="C2" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field=@nameof(Invoice.Tax) HeaderText="Tax Amount" Width="102" Format="C2" TextAlign="TextAlign.Right"></GridColumn>                    
+                    <GridColumn Field=@nameof(Invoice.Discount) HeaderText="Discount Amount" Width="134" TextAlign="TextAlign.Right">
+                        <Template>
+                            @{
+                                var invoice = (context as Invoice)!;
+                            }
+                            <p class="text-success mb-0">@invoice.Discount.ToString("C2")</p>
+                        </Template>
+                    </GridColumn>                    
+                    <GridColumn Field=@nameof(Invoice.Total) HeaderText="Total Amount" Width="110" Format="C2" TextAlign="TextAlign.Right"></GridColumn>                    
+                    <GridColumn Field=@nameof(Invoice.Status) HeaderText="Status" Width="95">
+                        <Template>
+                            @{
+                                var invoice = (context as Invoice)!;
+                            }
+                            <div>
+                                @switch(invoice.Status)
+                                {
+                                    case "Paid":
+                                        <span class="e-badge e-badge-success d-flex align-items-center gap-1" style="width: fit-content;">
+                                            <div class="bg-white rounded-circle mr-1" style="width: 0.5rem; height: 0.5rem;"></div>
+                                            Paid
+                                        </span>
+                                        break;
+                                    case "Pending":
+                                        <span class="e-badge e-badge-warning d-flex align-items-center gap-1" style="width: fit-content;">
+                                            <div class="bg-dark rounded-circle" style="width: 0.5rem; height: 0.5rem;"></div>
+                                            Pending
+                                        </span>
+                                        break;
+                                    default:
+                                        <span>No records found.</span>
+                                        break;
+                                }
+                            </div>
+                        </Template>
+                    </GridColumn>                    
+                    <GridColumn Field=@nameof(Invoice.DueDate) HeaderText="Due Date" Width="108" Format="MM/dd/yyyy" Type="ColumnType.Date" TextAlign="TextAlign.Right"></GridColumn>                    
+                    <GridColumn Field=@nameof(Invoice.PaymentDate) HeaderText="Payment Date" TextAlign="TextAlign.Right" Width="124">
+                        <Template>
+                            @{
+                                var invoice = (context as Invoice)!;
+                            }
+                            <div class="text-body">
+                                <p class="m-0">@(invoice.PaymentDate?.ToString("MM/dd/yyyy") ?? "-")</p>
+                            </div>
+                        </Template>
+                    </GridColumn>                    
+                    <GridColumn Field=@nameof(Invoice.PaymentMethod) HeaderText="Payment Method" Width="142">
+                        <Template>
+                            @{
+                                var invoice = (context as Invoice)!;
+                            }
+                            <div class="text-body">
+                                <p class="m-0">@(invoice.PaymentMethod ?? "-")</p>
+                            </div>
+                        </Template>
+                    </GridColumn>                    
+                    <GridColumn HeaderText="Action" Width="100">
+                        <Template>
+                            <div class="d-flex gap-1">
+                                <SfButton CssClass="e-flat" IconCss="e-icons e-eye" Type="button" aria-label="view invoice details" role="button"></SfButton>
+                                <SfButton CssClass="e-flat" IconCss="e-icons e-print" Type="button" aria-label="print" role="button"></SfButton>
+                            </div>
+                        </Template>
+                    </GridColumn>                    
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}

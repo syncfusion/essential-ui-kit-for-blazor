@@ -1,0 +1,102 @@
+﻿@page "/blocks/cards-14"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="px-4 sm:px-6 py-20" style="min-height: 36rem;">
+            <div class="grid gap-6 lg:gap-10 lg:grid-cols-3 sm:grid-cols-2">
+                <div class="e-card rounded-lg e-bigger relative pt-6 pb-2 justify-start">
+                    <div class="e-card-content">
+                        <div>
+                            <h1 class="text-xl font-semibold text-gray-950 dark:text-gray-50 truncate">Enchanting Forests</h1>
+                            <p class="text-base mt-3 mb-5">Wander through lush, green forests where towering trees and vibrant wildlife await. Discover serene trails, picturesque streams, and the calming sounds of nature.</p>
+                        </div>
+                        <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2.5 w-max py-1 text-lg">
+                            View More
+                            <span class="e-icons e-chevron-right-double text-xl" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg e-bigger relative pt-6 pb-2 justify-start">
+                    <div class="e-card-content">
+                        <div>
+                            <h1 class="text-xl font-semibold text-gray-950 dark:text-gray-50 truncate">Cultural Capitals</h1>
+                            <p class="text-base mt-3 mb-5">Dive into the rich cultural tapestry of world-renowned cities. Explore museums, historical sites, and vibrant neighborhoods that offer a deep dive into art and history.</p>
+                        </div>
+                        <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2.5 w-max py-1 text-lg">
+                            View More
+                            <span class="e-icons e-chevron-right-double text-xl" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg e-bigger relative pt-6 pb-2 justify-start">
+                    <div class="e-card-content">
+                        <div>
+                            <h1 class="text-xl font-semibold text-gray-950 dark:text-gray-50 truncate">Sunny Islands</h1>
+                            <p class="text-base mt-3 mb-5">Escape to idyllic islands where turquoise waters and sandy beaches create a tropical paradise. Enjoy water sports, beach lounging, and local cuisine.</p>
+                        </div>
+                        <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 font-medium flex items-center gap-2.5 w-max py-1 text-lg">
+                            View More
+                            <span class="e-icons e-chevron-right-double text-xl" aria-hidden="true"></span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-dark-subtle">
+        <div class="px-3 px-sm-4 py-5" style="min-height: 36rem;">
+            <div class="row g-xl-5 g-4">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="e-card e-bigger shadow p-2 h-100 justify-content-start">
+                        <div class="e-card-header">
+                            <h1 class="fs-5 fw-bolder text-truncate m-0 w-100 lh-base">Enchanting Forests</h1>
+                        </div>
+                        <div class="e-card-content pt-2">
+                            <p class="fs-6 mb-4">Wander through lush, green forests where towering trees and vibrant wildlife await. Discover serene trails, picturesque streams, and the calming sounds of nature.</p>
+                            <a href="javascript:void(0);" class="text-decoration-none d-flex align-items-center fs-6 gap-2 fw-medium">
+                                Learn More
+                                <span class="e-icons e-chevron-right-double fs-6" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="e-card e-bigger shadow p-2 h-100 justify-content-start">
+                        <div class="e-card-header">
+                            <h1 class="fs-5 fw-bolder text-truncate m-0 w-100 lh-base">Cultural Capitals</h1>
+                        </div>
+                        <div class="e-card-content pt-2">
+                            <p class="fs-6 mb-4">Dive into the rich cultural tapestry of world-renowned cities. Explore museums, historical sites, and vibrant neighborhoods that offer a deep dive into art and history.</p>
+                            <a href="javascript:void(0);" class="text-decoration-none d-flex align-items-center fs-6 gap-2 fw-medium">
+                                Learn More
+                                <span class="e-icons e-chevron-right-double fs-6" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="e-card e-bigger shadow p-2 h-100 justify-content-start">
+                        <div class="e-card-header">
+                            <h1 class="fs-5 fw-bolder text-truncate m-0 w-100 lh-base">Sunny Islands</h1>
+                        </div>
+                        <div class="e-card-content pt-2">
+                            <p class="fs-6 mb-4">Escape to idyllic islands where turquoise waters and sandy beaches create a tropical paradise. Enjoy water sports, beach lounging, and local cuisine.</p>
+                            <a href="javascript:void(0);" class="text-decoration-none d-flex align-items-center fs-6 gap-2 fw-medium">
+                                Learn More
+                                <span class="e-icons e-chevron-right-double fs-6" aria-hidden="true"></span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,55 @@
+﻿@page "/blocks/returns-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-gray-50 dark:bg-gray-950">
+		<div class="max-w-4xl mx-auto px-4 py-6 sm:px-6 lg:px-5 sm:pt-20" style="min-height: 36rem;">
+			<p class="text-lg font-medium sm:mb-6 mb-5 text-gray-900 dark:text-white">Product Return Request</p>
+			<div class="sm:mb-8 mb-5" style="@StepperStyle">
+				<SfStepper @ref="Stepper" Orientation="@StepperOrientation" LabelPosition="@LabelPos" ActiveStep="4">
+					<StepperSteps>
+						<StepperStep IconCss="e-icons e-circle-check" Label="My Products"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Return Reason"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Pickup Option"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Refund Choice"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Confirmation"></StepperStep>
+					</StepperSteps>
+				</SfStepper>
+			</div>
+			<p class="mb-3 font-medium text-gray-900 dark:text-white">Your request has been successfully registered.</p>
+			<p class="sm:mb-6 mb-5 text-sm text-gray-700 dark:text-gray-300">We have successfully received your return request. As we process it, you can monitor the status of your order.</p>
+			<div class="flex justify-end">
+				<SfButton CssClass="w-full sm:max-w-max" Type="button" aria-label="view status" role="button">View Status</SfButton>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body">
+		<div class="container-lg py-4 px-3 px-sm-4" style="min-height: 36rem; max-width: 896px;">
+			<p class="h5 fw-bold mb-3 mb-sm-4 text-body">Product Return Request</p>
+			<div class="mb-4" style="@StepperStyle">
+				<SfStepper @ref="Stepper" Orientation="@StepperOrientation" LabelPosition="@LabelPos" ActiveStep="4">
+					<StepperSteps>
+						<StepperStep IconCss="e-icons e-circle-check" Label="My Products"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Return Reason"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Pickup Option"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Refund Choice"></StepperStep>
+						<StepperStep IconCss="e-icons e-circle-check" Label="Confirmation"></StepperStep>
+					</StepperSteps>
+				</SfStepper>
+			</div>
+			<p class="h6 mb-2 fw-bold text-body">Your request has been successfully registered.</p>
+			<p class="mb-4 mb-sm-3 text-body-emphasis">We have successfully received your return request. As we process it, you can monitor the status of your order.</p>
+			<div class="d-flex justify-content-end">
+				<SfButton CssClass="e-outline flex-grow-1 flex-sm-grow-0" Type="button" aria-label="view status" role="button">View Status</SfButton>
+			</div>
+		</div>
+	</section>
+}
+

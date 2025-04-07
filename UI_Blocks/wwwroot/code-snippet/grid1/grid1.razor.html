@@ -1,0 +1,218 @@
+@page "/blocks/grid-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="mx-auto w-full py-12 sm:px-6 px-4">
+            <SfGrid DataSource="@GridData" Width="100%" Height="658" GridLines="GridLine.None" role="grid">
+                <GridColumns>
+                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
+                    <GridColumn Field="@nameof(Lead.LeadId)" HeaderText="Lead ID" Width="60">
+                        <Template>
+                            @{
+                                var lead = (context as Lead)!;
+                                <a class="text-primary-700 dark:text-primary-500 font-medium" href="javascript:void(0);" aria-label="lead ID" role="link">@lead.LeadId</a>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn HeaderText="Name" TextAlign="TextAlign.Left" Width="300">
+                        <Template>
+                            @{
+                                var lead = (context as Lead)!;
+                                <div class="flex gap-3 items-center py-1.5">
+                                    <div class="w-8 h-8">
+                                        <span class="e-avatar e-avatar-circle e-avatar-small 
+                                        @(lead.Details.ColorTheme switch {
+                                         "Red" => "!bg-red-100 !text-red-700",
+                                         "Green" => "!bg-green-100 !text-green-700",
+                                         "Blue" => "!bg-cyan-100 !text-cyan-700",
+                                         "Orange" => "!bg-orange-100 !text-orange-700",
+                                         "Purple" => "!bg-indigo-100 !text-indigo-700",
+                                         _ => ""
+                                        })">
+                                            @lead.Details.Initial
+                                        </span>
+                                    </div>
+                                    <div class="flex flex-col text-sm">
+                                        <p class="text-gray-900 dark:text-gray-50">@lead.Details.Name</p>
+                                        <p class="text-gray-500 dark:text-gray-400">@lead.Details.Email</p>
+                                    </div>
+                                </div>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Lead.Status)" HeaderText="Lead Status" Width="105">
+                        <Template>
+                            @{
+                                var lead = (context as Lead)!;
+                                <div class="e-bigger">
+                                    <span class="e-badge e-badge-info !px-2 flex gap-1 w-max">
+                                        <span class="e-icons e-check h-3 pt-0.5"></span>
+                                        @lead.Status
+                                    </span>
+                                </div>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Lead.Interest)" HeaderText="Interest Level" Width="110">
+                        <Template>
+                            @{
+                                var lead = (context as Lead)!;
+                                <div class="e-bigger">
+                                    @switch (lead.Interest)
+                                    {
+                                        case "High":
+                                            <span class="e-badge e-badge-success !px-2 flex gap-1 w-max">
+                                                <span class="e-icons e-arrow-up !text-green-700 dark:!text-green-500 h-3 pt-0.5"></span>High
+                                            </span>
+                                            break;
+                                        case "Medium":
+                                            <span class="e-badge e-badge-warning !px-2 flex gap-1 w-max">
+                                                <span class="e-icons e-arrow-up !text-orange-700 dark:!text-orange-500 h-3 pt-0.5"></span>Medium
+                                            </span>
+                                            break;
+                                        case "Low":
+                                            <span class="e-badge e-badge-danger !px-2 flex gap-1 w-max">
+                                                <span class="e-icons e-arrow-down !text-red-700 dark:!text-red-400 h-3 pt-0.5"></span>Low
+                                            </span>
+                                            break;
+                                        default:
+                                            <span>No records found.</span>
+                                            break;
+                                    }
+                                </div>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Lead.Date)" HeaderText="Next Contact" Width="105" Format="MM/dd/yyyy" Type="ColumnType.Date"></GridColumn>
+                    <GridColumn Field="@nameof(Lead.Assignee)" HeaderText="Assigned To" Width="145">
+                        <Template>
+                            @{
+                                var lead = (context as Lead)!;
+                                <div class="flex items-center gap-3">
+                                    <div class="w-8 h-8">
+                                        <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url('@($"assets/images/common/avatar/{lead.Assignee.Avatar}")')"></span>
+                                    </div>
+                                    <div class="text-sm text-gray-900 dark:text-gray-50">@lead.Assignee.Name</div>
+                                </div>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Lead.Source)" HeaderText="Lead Source" Width="125"></GridColumn>
+                    <GridColumn Field="@nameof(Lead.Revenue)" HeaderText="Expected Revenue ($)" Width="133" Format="C0" TextAlign="TextAlign.Right"></GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="w-100 py-5 px-3 px-sm-4 mx-auto">
+            <SfGrid DataSource="@GridData" Width="100%" Height="658" GridLines="GridLine.None" Role="grid">
+                <GridColumns>
+                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
+                    <GridColumn Field="@nameof(Lead.LeadId)" HeaderText="Lead ID" TextAlign="TextAlign.Left" Width="63">
+                        <Template>
+                            @{
+                                var lead = (context as Lead)!;
+                                <a class="text-primary fw-medium text-decoration-none" href="javascript:void(0);" aria-label="lead ID" role="link">@lead.LeadId</a>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn HeaderText="Name" TextAlign="TextAlign.Left" Width="290">
+                        <Template>
+                            @{
+                                var lead = (context as Lead)!;
+                                <div class="d-flex gap-3 align-items-center py-1">
+                                    <div class="rounded-circle overflow-hidden" style="width: 32px; height: 32px;">
+                                        <span class="e-avatar e-avatar-circle e-avatar-small @(lead.Details.ColorTheme switch {
+                                            "Red" => "bg-danger-subtle text-danger",
+                                            "Green" => "bg-success-subtle text-success",
+                                            "Blue" => "bg-info-subtle text-info",
+                                            "Orange" => "bg-warning-subtle text-warning",
+                                            "Purple" => "bg-primary-subtle text-primary",
+                                            _ => ""
+                                        })">
+                                            @lead.Details.Initial
+                                        </span>
+                                    </div>
+                                    <div class="d-flex flex-column">
+                                        <p class="text-body mb-0">@lead.Details.Name</p>
+                                        <p class="text-body-secondary mb-0">@lead.Details.Email</p>
+                                    </div>
+                                </div>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Lead.Status)" HeaderText="Lead Status" Width="108">
+                        <Template>
+                            @{
+                                var lead = (context as Lead)!;
+                                <div>
+                                    <span class="e-badge e-badge-info d-flex align-items-center gap-1 px-2" style="width: fit-content;">
+                                        <span class="e-icons e-check text-dark"></span>
+                                        @lead.Status
+                                    </span>
+                                </div>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Lead.Interest)" HeaderText="Interest Level" Width="110">
+                        <Template>
+                            @{
+                                var lead = (context as Lead)!;
+                                <div>
+                                    @switch (lead.Interest)
+                                    {
+                                        case "High":
+                                            <span class="e-badge e-badge-success d-flex align-items-center gap-1 px-2" style="width: fit-content;">
+                                                <span class="e-icons e-arrow-up text-white"></span>
+                                                High
+                                            </span>
+                                            break;
+                                        case "Medium":
+                                            <span class="e-badge e-badge-warning d-flex align-items-center gap-1 px-2" style="width: fit-content;">
+                                                <span class="e-icons e-arrow-up text-dark"></span>
+                                                Medium
+                                            </span>
+                                            break;
+                                        case "Low":
+                                            <span class="e-badge e-badge-danger d-flex align-items-center gap-1 px-2" style="width: fit-content;">
+                                                <span class="e-icons e-arrow-down text-white"></span>
+                                                Low
+                                            </span>
+                                            break;
+                                        default:
+                                            <span>No records found.</span>
+                                            break;
+                                    }
+                                </div>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Lead.Date)" HeaderText="Next Contact" Width="108" Format="MM/dd/yyyy" Type="ColumnType.Date"></GridColumn>                    
+                    <GridColumn Field="@nameof(Lead.Assignee)" HeaderText="Assigned To" Width="145">
+                        <Template>
+                            @{
+                                var lead = (context as Lead)!;
+                                <div class="d-flex align-items-center gap-3">
+                                    <div class="rounded-circle overflow-hidden" style="width: 32px; height: 32px;">
+                                        <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url('@($"assets/images/common/avatar/{lead.Assignee.Avatar}")')"></span>
+                                    </div>
+                                    <div class="text-body">@lead.Assignee.Name</div>
+                                </div>
+                            }
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="@nameof(Lead.Source)" HeaderText="Lead Source" Width="120"></GridColumn>
+                    <GridColumn Field="@nameof(Lead.Revenue)" HeaderText="Expected Revenue ($)" Width="155" Format="C0" TextAlign="TextAlign.Right"></GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}

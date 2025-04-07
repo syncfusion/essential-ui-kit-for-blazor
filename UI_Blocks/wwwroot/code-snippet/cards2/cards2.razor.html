@@ -1,0 +1,105 @@
+﻿@page "/blocks/cards-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="px-4 py-20 sm:px-6">
+            <div class="grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 xl:gap-10">
+                <div class="e-card rounded-lg gap-2 pb-2 e-bigger justify-start">
+                    <div class="e-card-header">
+                        <div class="e-card-image overflow-hidden rounded-lg">
+                            <img class="h-52 w-full object-cover" src="assets/images/card/image-title-description-card/fashion-trends.jpg" alt="fashion trends" />
+                        </div>
+                    </div>
+                    <div class="e-card-content flex-1">
+                        <h2 class="text-xl font-semibold mb-3 text-gray-950 dark:text-gray-50 line-clamp-2">Fashion Trends</h2>
+                        <p class="text-base dark:text-gray-200">Discover the latest trends in spring fashion that are taking the world by storm. From vibrant floral prints to chic pastels, this season's styles will refresh your look and keep you on-trend.</p>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg gap-2 pb-2 e-bigger justify-start">
+                    <div class="e-card-header">
+                        <div class="e-card-image overflow-hidden rounded-lg">
+                            <img class="h-52 w-full object-cover" src="assets/images/card/image-title-description-card/ultimate-workouts.jpg" alt="ultimate workouts" />
+                        </div>
+                    </div>
+                    <div class="e-card-content flex-1">
+                        <h2 class="text-xl font-semibold mb-3 text-gray-950 dark:text-gray-50 line-clamp-2">Ultimate Workouts</h2>
+                        <p class="text-base dark:text-gray-200">Transform your fitness routine with our collection of ultimate workouts designed to build strength and endurance, whether you're looking for high-intensity interval training.</p>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg gap-2 pb-2 e-bigger justify-start">
+                    <div class="e-card-header">
+                        <div class="e-card-image overflow-hidden rounded-lg">
+                            <img class="h-52 w-full object-cover" src="assets/images/card/image-title-description-card/tech-innovations.jpg" alt="tech innovations" />
+                        </div>
+                    </div>
+                    <div class="e-card-content flex-1">
+                        <h2 class="text-xl font-semibold mb-3 text-gray-950 dark:text-gray-50 line-clamp-2">Tech Innovations</h2>
+                        <p class="text-base dark:text-gray-200">Explore the latest advancements in technology that are reshaping our world. From groundbreaking gadgets to revolutionary software, stay informed about the innovations.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-dark-subtle">
+        <div class="py-5 px-3 px-md-4" style="min-height: 36rem;">
+            <div class="row g-xl-5 g-4">
+                <div class="col-sm-6 col-lg-4 d-flex">
+                    <div class="e-card e-bigger rounded-3 justify-content-start">
+                        <div class="e-card-header">
+                            <div class="e-card-image rounded-3 overflow-hidden justify-content-start">
+                                <img class="object-fit-cover w-100" src="assets/images/card/image-title-description-card/fashion-trends.jpg" alt="fashion trends" style="height: 198px;" />
+                            </div>
+                        </div>
+                        <div class="e-card-stacked flex-grow-1 p-2">
+                            <div class="e-card-content flex-grow-1 text-body">
+                                <h4 class="mb-3 fw-bold lh-sm text-truncate">Fashion Trends</h4>
+                                <p class="fs-6 m-0">
+                                    Discover the latest trends in spring fashion that are taking the world by storm. From vibrant floral prints to chic pastels, this season's styles will refresh your look and keep you on-trend.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 d-flex">
+                    <div class="e-card e-bigger rounded-3 justify-content-start">
+                        <div class="e-card-header">
+                            <div class="e-card-image rounded-3 overflow-hidden justify-content-start">
+                                <img class="object-fit-cover w-100" src="assets/images/card/image-title-description-card/ultimate-workouts.jpg" alt="ultimate workouts" style="height: 198px;" />
+                            </div>
+                        </div>
+                        <div class="e-card-stacked flex-grow-1 p-2">
+                            <div class="e-card-content flex-grow-1 text-body">
+                                <h4 class="mb-3 fw-bold lh-sm text-truncate">Ultimate Workouts</h4>
+                                <p class="fs-6 m-0">Transform your fitness routine with our collection of ultimate workouts designed to build strength and endurance, whether you're looking for high-intensity interval training.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 d-flex">
+                    <div class="e-card e-bigger rounded-3 justify-content-start">
+                        <div class="e-card-header">
+                            <div class="e-card-image rounded-3 overflow-hidden justify-content-start">
+                                <img class="object-fit-cover w-100" src="assets/images/card/image-title-description-card/tech-innovations.jpg" alt="tech innovations" style="height: 198px;" />
+                            </div>
+                        </div>
+                        <div class="e-card-stacked flex-grow-1 p-2">
+                            <div class="e-card-content flex-grow-1 text-body">
+                                <h4 class="mb-3 fw-bold lh-sm text-truncate">Tech Innovations</h4>
+                                <p class="fs-6 m-0">Explore the latest advancements in technology that are reshaping our world. From groundbreaking gadgets to revolutionary software, stay informed about the innovations.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+

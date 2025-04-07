@@ -1,0 +1,52 @@
+﻿@page "/blocks/pagination-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="px-6">
+            <SfPager CssClass="border-0 bg-transparent">
+                <Template>
+                    <div
+                        class="!flex w-fit shadow text-gray-700 rounded sm:gap-3 gap-2 text-sm font-medium px-2 sm:px-3 py-1 dark:text-gray-300 bg-gray-50 dark:bg-gray-800">
+                        <SfButton CssClass="e-flat rounded-none" IconCss="e-icons e-chevron-left-double" Type="button" aria-label="go to page 1" role="button"></SfButton>
+                        <div class="border-s border-gray-200 my-1 dark:border-gray-600 leading-6"></div>
+                        <SfButton CssClass="e-flat rounded-none" IconCss="e-icons e-chevron-left" Type="button" aria-label="go to previous page" role="button"></SfButton>
+                        <div class="border-s border-gray-200 my-1 dark:border-gray-600 leading-6"></div>
+                        <span class="flex items-center my-1 px-2">1 of 999</span>
+                        <div class="border-s border-gray-200 my-1 dark:border-gray-600 leading-6"></div>
+                        <SfButton CssClass="e-flat rounded-none" IconCss="e-icons e-chevron-right" Type="button" aria-label="go to next page" role="button"></SfButton>
+                        <div class="border-s border-gray-200 my-1 dark:border-gray-600 leading-6"></div>
+                        <SfButton CssClass="e-flat rounded-none" IconCss="e-icons e-chevron-right-double" Type="button" aria-label="go to last page" role="button"></SfButton>
+                    </div>
+                </Template>
+            </SfPager>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="px-4">
+            <SfPager CssClass="border-0">
+                <Template>
+                    <div class="d-flex shadow rounded gap-2 fs-6 p-1 text-body bg-body-tertiary"
+                        style="width: fit-content;">
+                        <SfButton CssClass="e-flat rounded-0" IconCss="e-icons e-chevron-left-double" Type="button" aria-label="go to page 1" role="button"></SfButton>
+                        <div class="mx-0 mx-sm-1 my-2 border border-light-subtle"></div>
+                        <SfButton CssClass="e-flat rounded-0" IconCss="e-icons e-chevron-left" Type="button" aria-label="go to previous page" role="button"></SfButton>
+                        <div class="mx-0 mx-sm-1 my-2 border border-light-subtle"></div>
+                        <span class="d-flex align-items-center px-2">1 of 999</span>
+                        <div class="mx-0 mx-sm-1 my-2 border border-light-subtle"></div>
+                        <SfButton CssClass="e-flat rounded-0" IconCss="e-icons e-chevron-right" Type="button" aria-label="go to next page" role="button"></SfButton>
+                        <div class="mx-0 mx-sm-1 my-2 border border-light-subtle"></div>
+                        <SfButton CssClass="e-flat rounded-0" IconCss="e-icons e-chevron-right-double" Type="button" aria-label="go to last page" role="button"></SfButton>
+                    </div>
+                </Template>
+            </SfPager>
+        </div>
+    </section>
+}

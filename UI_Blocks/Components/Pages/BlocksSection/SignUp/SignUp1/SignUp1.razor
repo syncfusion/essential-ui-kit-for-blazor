@@ -1,0 +1,174 @@
+﻿@page "/blocks/signup-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="flex items-center justify-center min-h-screen">
+            <div class="w-full max-w-md rounded-lg p-4 p-md-6 py-12">
+                <div class="flex justify-center mb-6">
+                    <img class="mr-2" src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+                    <h2 class="text-center text-xl font-semibold text-gray-900 dark:text-white">Company Name</h2>
+                </div>
+                <h2 class="text-2xl font-semibold text-center mb-2 text-gray-900 dark:text-white">Sign up</h2>
+                <p class="text-md text-center text-gray-700 dark:text-gray-300">Enter your information to sign up</p>
+                <div class="mt-6">
+                    <form action="#" class="mb-6" onsubmit="event.preventDefault();">
+                        <div class="mb-4">
+                            <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">Name</label>
+                            <SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Name"
+                                FloatLabelType="FloatLabelType.Never" aria-label="enter your name" role="textbox">
+                            </SfTextBox>
+                        </div>
+                        <div class="mb-4">
+                            <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">Email</label>
+                            <SfTextBox CssClass="e-bigger" Type="InputType.Email" Placeholder="Email"
+                                FloatLabelType="FloatLabelType.Never" aria-label="enter your email address" role="textbox">
+                            </SfTextBox>
+                        </div>
+                        <div class="mb-4 relative">
+                            <label class="block mb-1 text-sm font-medium text-gray-700 dark:text-gray-300">Password</label>
+                            <SfTextBox CssClass="e-bigger" Type="InputType.Password" Placeholder="Password"
+                                FloatLabelType="FloatLabelType.Never" aria-label="enter your email password" role="textbox">
+                            </SfTextBox>
+                        </div>
+                        <div class="flex items-start md:items-center justify-start mb-6">
+                            <SfCheckBox TChecked="Boolean" CssClass="e-bigger md:mt-0 mt-1"
+                                aria-label="agree with terms and privacy policy" role="checkbox"></SfCheckBox>
+                            <span class="text-base text-gray-900 dark:text-white">
+                                I agree with <a href="javascript:void(0);"
+                                    class="text-primary-600 dark:text-primary-400 font-medium text-base p-0"
+                                    aria-label="read the terms" role="link">terms</a> and
+                                <a href="javascript:void(0);"
+                                    class="text-primary-600 dark:text-primary-400 font-medium text-base p-0"
+                                    aria-label="read the privacy policy" role="link">privacy policy</a>
+                            </span>
+                        </div>
+                        <div class="e-bigger">
+                            <SfButton CssClass="w-full text-base e-primary e-btn" type="submit" aria-label="sign up"
+                                role="button">Sign up</SfButton>
+                        </div>
+                    </form>
+                </div>
+                <div class="mt-10">
+                    <div class="relative flex justify-center items-center">
+                        <span class="bg-gray-50 dark:bg-gray-950 px-2 z-10 absolute text-gray-700 dark:text-gray-300 text-sm">Or sign up with</span>
+                        <hr class="w-full absolute border-gray-200 dark:border-gray-600" />
+                    </div>
+                    <div class="flex items-center justify-center pt-10 space-x-4">
+                        <SfButton CssClass="flex items-center justify-center px-4 py-2" type="submit"
+                            aria-label="sign in with google account" role="button">
+                            <img class="w-5" src="assets/images/common/brand-logos/png/google.png" alt="google logo" />
+                        </SfButton>
+                        <SfButton CssClass="flex items-center justify-center px-4 py-2" type="submit"
+                            aria-label="sign in with facebook account" role="button">
+                            <img class="w-5" src="assets/images/common/brand-logos/png/facebook.png" alt="facebook logo" />
+                        </SfButton>
+                        <SfButton CssClass="flex items-center justify-center px-4 py-2" type="submit"
+                            aria-label="sign in with twitter account" role="button">
+                            <svg class="svg-icon" width="20" height="20" viewBox="0 0 16 16" fill="currentColor"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M0 0.617188L5.81975 8.93442L0.302812 15.3829H2.26965L6.70223 10.1918L10.3302 15.3829H16L9.81975 6.53788L14.8724 0.617188H12.9373L8.94593 5.28337L5.68709 0.617188H0ZM2.75415 2.07645H4.94881L13.2632 13.9236H11.0541L2.75415 2.07645Z" />
+                            </svg>
+                        </SfButton>
+                        <SfButton CssClass="flex items-center justify-center px-4 py-2" type="submit"
+                            aria-label="sign in with microsoft account" role="button">
+                            <img class="w-5" src="assets/images/common/brand-logos/png/microsoft.png"
+                                alt="microsoft logo" />
+                        </SfButton>
+                    </div>
+                    <span class="flex items-center justify-center gap-2 mt-5">
+                        <p class="text-center text-base text-gray-900 dark:text-white">Already have an account?</p>
+                        <a href="javascript:void(0);"
+                            class="text-primary-600 dark:text-primary-400 font-medium text-base p-0" aria-label="sign in"
+                            role="link">Sign in</a>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="d-flex justify-content-center align-items-center bg-body min-vh-100">
+        <div class="bg-body rounded-lg p-4 py-5 w-100" style="max-width: 450px;">
+            <div class="d-flex justify-content-center align-items-center mb-4">
+                <img class="me-2" src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+                <h5 class="text-center text-body fw-bold mb-0 fs-5">Company Name</h5>
+            </div>
+            <h4 class="fw-bold text-body text-center mb-2 fs-4">Sign up</h4>
+            <p class="text-center text-light-emphasis m-0">Enter your information to sign up</p>
+            <form action="#" class="mt-4 mb-4" onsubmit="event.preventDefault();">
+                <div class="mb-3">
+                    <label class="mb-1 fw-medium text-dark-emphasis small">Name</label>
+                    <SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Name"
+                        FloatLabelType="FloatLabelType.Never" aria-label="enter your name" role="textbox"></SfTextBox>
+                </div>
+                <div class="mb-3">
+                    <label class="mb-1 fw-medium text-dark-emphasis small">Email</label>
+                    <SfTextBox CssClass="e-bigger" Type="InputType.Email" Placeholder="Email"
+                        FloatLabelType="FloatLabelType.Never" aria-label="enter your email address" role="textbox">
+                    </SfTextBox>
+                </div>
+                <div class="mb-3">
+                    <label class="mb-1 fw-medium text-dark-emphasis small">Password</label>
+                    <SfTextBox CssClass="e-bigger" Type="InputType.Password" Placeholder="Password"
+                        FloatLabelType="FloatLabelType.Never" aria-label="enter your email password" role="textbox">
+                    </SfTextBox>
+                </div>
+                <div class="mb-4 e-bigger">
+                    <SfCheckBox TChecked="Boolean" CssClass="e-bigger" aria-label="agree with terms and privacy policy"
+                        role="checkbox"></SfCheckBox>
+                    <span class="text-body">
+                        I agree with <a href="javascript:void(0);" class="text-primary fs-6 px-0 text-decoration-none"
+                            style="padding-top: 1px !important;" aria-label="read the terms" role="link">terms</a> and
+                        <a href="javascript:void(0);" class="text-primary fs-6 px-0 text-decoration-none"
+                            style="padding-top: 1px !important;" aria-label="read the privacy policy" role="link">privacy
+                            policy</a>
+                    </span>
+                </div>
+                <div class="e-bigger">
+                    <SfButton CssClass="e-btn e-block e-primary" type="submit" aria-label="sign up" role="button">Sign up
+                    </SfButton>
+                </div>
+            </form>
+            <div>
+                <div class="d-flex justify-content-center align-items-center position-relative mt-4">
+                    <span class="bg-body px-2 z-1 position-absolute text-light-emphasis small">Or sign up with</span>
+                    <hr class="w-100 border-light-subtle opacity-100" />
+                </div>
+                <div class="d-flex justify-content-center mt-3 gap-3">
+                    <SfButton CssClass="e-btn e-outline d-flex align-items-center" type="submit"
+                        aria-label="sign in with google account" role="button">
+                        <img src="assets/images/common/brand-logos/png/google.png" width="24px" alt="google logo" />
+                    </SfButton>
+                    <SfButton CssClass="e-btn e-outline d-flex align-items-center" type="submit"
+                        aria-label="sign in with facebook account" role="button">
+                        <img src="assets/images/common/brand-logos/png/facebook.png" width="24px" alt="facebook logo" />
+                    </SfButton>
+                    <SfButton CssClass="e-btn e-outline d-flex align-items-center" type="submit"
+                        aria-label="sign in with twitter account" role="button">
+                        <svg class="svg-icon" width="24" height="24" viewBox="0 0 16 16" fill="currentColor"
+                            xmlns="http://www.w3.org/2000/svg">
+                            <path
+                                d="M0 0.617188L5.81975 8.93442L0.302812 15.3829H2.26965L6.70223 10.1918L10.3302 15.3829H16L9.81975 6.53788L14.8724 0.617188H12.9373L8.94593 5.28337L5.68709 0.617188H0ZM2.75415 2.07645H4.94881L13.2632 13.9236H11.0541L2.75415 2.07645Z" />
+                        </svg>
+                    </SfButton>
+                    <SfButton CssClass="e-btn e-outline d-flex align-items-center" type="submit"
+                        aria-label="sign in with microsoft account" role="button">
+                        <img src="assets/images/common/brand-logos/png/microsoft.png" width="24px" alt="microsoft logo" />
+                    </SfButton>
+                </div>
+                <span class="d-flex align-items-center justify-content-center gap-1 mt-3">
+                    <p class="text-center justify-center text-body mb-0">Already have an account?</p>
+                    <a href="javascript:void(0);" class="text-primary py-0 text-decoration-none fs-6 fw-medium"
+                        style="padding: 0px !important;" aria-label="sign in" role="link">Sign in</a>
+                </span>
+            </div>
+        </div>
+    </section>
+}
