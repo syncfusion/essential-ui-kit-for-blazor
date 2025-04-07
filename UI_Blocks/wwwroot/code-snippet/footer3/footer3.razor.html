@@ -1,0 +1,54 @@
+﻿@page "/blocks/footer-3"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+	
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <footer class="xl:px-10 sm:px-6 px-4 py-4">
+            <div class="flex lg:flex-row flex-col gap-6 justify-between pb-8 sm:pt-4">
+                <div>
+                    <p class="text-lg sm:text-2xl font-semibold text-gray-900 dark:text-gray-50">Join our newsletter</p>
+                    <p class="text-sm sm:text-base mt-2 text-gray-500 dark:text-gray-400">Never miss out on the latest trends, offers, and expert advice</p>
+                </div>
+                <div class="flex sm:flex-row flex-col items-center e-bigger gap-4 lg:w-96 md:w-4/5">
+                    <SfTextBox CssClass="e-bigger w-full" Type="InputType.Text" Placeholder="Enter your email" FloatLabelType="FloatLabelType.Never" aria-label="enter your email address" role="textbox"></SfTextBox>
+                    <SfButton CssClass="w-full sm:w-28 text-base e-primary" Type="button" Content="Subscribe" aria-label="click to subscribe" role="button"></SfButton>
+                </div>
+            </div>
+            <div class="flex sm:flex-row flex-col gap-3 justify-between items-center pt-4 sm:py-7 border-t border-gray-200 dark:border-gray-600">
+                <div class="flex items-center gap-2.5">
+                    <img class="size-7" src="assets/images/common/brand-logos/png/shopnezt.png" alt="company logo" />
+                    <p class="font-semibold text-lg text-gray-900 dark:text-gray-50">ShopNezt</p>
+                </div>
+                <p class="text-gray-500 dark:text-gray-400">© 2024 ShopNezt. All rights reserved.</p>
+            </div>
+        </footer>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <footer class="p-3 px-sm-4 px-xl-5 d-flex flex-column gap-4 gap-sm-3">
+            <div class="d-flex flex-lg-row flex-column gap-4 justify-content-between py-sm-3">
+                <div>
+                    <h4 class="mb-2 fw-bold text-body">Join our newsletter</h4>
+                    <p class="mb-0 text-body-secondary">Never miss out on the latest trends, offers, and expert advice</p>
+                </div>
+                <div class="e-bigger d-flex flex-column flex-sm-row align-items-lg-center gap-3 col-md-8 col-lg-4">
+                    <SfTextBox CssClass="flex-grow-1" Type="InputType.Text" FloatLabelType="FloatLabelType.Never" Placeholder="Enter your email" aria-label="enter your email address" role="textbox"></SfTextBox>
+                    <SfButton CssClass="flex-grow-1 flex-sm-grow-0 e-primary" Content="Subscribe" Type="button" aria-label="click to subscribe" role="button"></SfButton>
+                </div>
+            </div>
+            <div class="d-flex flex-column flex-sm-row justify-content-between align-items-center gap-2 border-top border-light-subtle pt-3 mt-2 mt-sm-0 pb-sm-3">
+                <div class="d-flex align-items-center gap-2 mb-1 mb-sm-0">
+                    <img class="img-fluid" src="assets/images/common/brand-logos/png/shopnezt.png" alt="company logo" />
+                    <h5 class="mb-0 text-body">ShopNezt</h5>
+                </div>
+                <p class="mb-0 text-body-secondary">© 2024 ShopNezt. All rights reserved.</p>
+            </div>
+        </footer>
+    </section>
+}

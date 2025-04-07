@@ -1,0 +1,175 @@
+﻿@page "/blocks/tile-view-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-white dark:bg-gray-900">
+		<div id="bus-details">
+			<SfAppBar CssClass="shadow-none px-0">
+				<div class="px-6 xl:px-10">
+					<SfBreadcrumb EnableNavigation="false">
+						<BreadcrumbItems>
+							<BreadcrumbItem IconCss="e-icons e-home" Text="Home"></BreadcrumbItem>
+							<BreadcrumbItem Text="Buses"></BreadcrumbItem>
+						</BreadcrumbItems>
+						<BreadcrumbTemplates>
+							<SeparatorTemplate>
+								<span class="e-icons e-chevron-right"></span>
+							</SeparatorTemplate>
+						</BreadcrumbTemplates>
+					</SfBreadcrumb>
+					<div class="e-appbar-spacer"></div>
+					<SfButton CssClass="e-flat sf-icon-notification-bell-ring-03 text-base" Type="button" aria-label="notification" role="button"></SfButton>
+					<span class="e-avatar e-avatar-circle e-avatar-small shrink-0 ml-6">
+						<img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
+					</span>
+				</div>
+			</SfAppBar>
+			<div class="shadow-md border-y border-gray-200 dark:border-gray-600">
+				<div class="flex flex-col justify-between gap-4 p-4 sm:px-6 md:flex-row md:items-center xl:px-10">
+					<p class="text-xl font-semibold dark:text-gray-50">NYC - Washington DC Buses</p>
+					<div class="flex gap-3">
+						<div class="e-input-group w-full md:w-72">
+							<span class="e-input-group-icon e-icons e-search"></span>
+							<input class="e-input !pl-0" type="text" placeholder="Search Buses" aria-label="search buses" role="textbox" />
+						</div>
+						<SfButton CssClass="hidden sm:inline-block" IconCss="e-icons e-filter" Content="Filter" Type="button" aria-label="filter" role="button"></SfButton>
+						<SfButton CssClass="sm:hidden e-icons e-filter" Type="button" aria-label="filter" role="button"></SfButton>
+					</div>
+				</div>
+			</div>
+			<div class="flex flex-col gap-4 py-6 px-4 sm:px-6 xl:px-10">
+				<p class="text-xl font-semibold text-gray-900 dark:text-gray-50">@BusDetails.Count Buses Found</p>
+				<SfListView CssClass="!border-0 e-list-template" DataSource="@BusDetails" aria-label="list of bus with details" role="list">
+					<ListViewFieldSettings Id="BusId" Text="Company" TValue="BusDetail"></ListViewFieldSettings>
+					<ListViewTemplates TValue="BusDetail">
+						<Template>
+							@{
+								<div class="e-card flex-col gap-3 p-6 rounded-2xl sm:flex-row">
+									<span class="e-avatar e-avatar-xlarge e-avatar-circle shrink-0">
+										<img src="assets/images/tile-view/travels/@context.Logo" alt="company logo" />
+									</span>
+									<div class="e-card-stacked !justify-normal !flex-col gap-2 w-full">
+										<div class="e-card-header gap-1 !flex-col !p-0">
+											<div class="e-card-header-title">
+												<p class="text-lg font-semibold text-wrap sm:w-11/12 text-gray-900 dark:text-gray-50">@context.Company</p>
+											</div>
+											<div class="e-card-sub-title text-nowrap">
+												<p class="text-sm text-gray-500 dark:text-gray-400">@context.Type</p>
+											</div>
+										</div>
+										<div class="e-card-content !p-0 flex items-center flex-wrap gap-4 text-gray-500 dark:text-gray-400 !overflow-visible">
+											<div class="flex items-center gap-2">
+												<SfRating CssClass="e-small" Value="@context.Rating" Precision="PrecisionType.Exact"></SfRating>
+												<span>@context.Reviews reviews</span>
+											</div>
+											<span class="e-bigger e-badge e-badge-pill e-badge-success">Free date change</span>
+										</div>
+									</div>
+									<div class="e-card-actions !p-0 !flex flex-col shrink-0 text-gray-500 mt-1 dark:text-gray-400 sm:text-end sm:basis-44 sm:mt-0">
+										<p class="text-xl font-medium mb-1.5"><span class="font-semibold text-gray-900 dark:text-gray-50">@context.DepartureTime</span> - @context.ArrivalTime</p>
+										<div class="flex text-sm mb-2 gap-1.5 sm:justify-end">
+											<p>@context.Duration hrs</p>
+											<div class="border-s border-gray-500 dark:border-gray-400"></div>
+											<p>@context.Seats seats</p>
+										</div>
+										<p class="text-base mb-4 sm:mb-3">Starting at <span class="text-2xl font-semibold text-gray-900 dark:text-gray-50">@context.Price.ToString("C")</span></p>
+										<SfButton CssClass="e-primary e-block" Type="button" aria-label="show seats" role="button">Show seats</SfButton>
+									</div>
+								</div>
+							}
+						</Template>
+					</ListViewTemplates>
+				</SfListView>
+			</div>
+		</div>
+	</section>
+
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body-tertiary">
+		<div id="bus-details">
+			<SfAppBar CssClass="px-0">
+				<div class="px-3 px-sm-4 px-xl-5">
+					<SfBreadcrumb EnableNavigation="false">
+						<BreadcrumbItems>
+							<BreadcrumbItem IconCss="e-icons e-home" Text="Home"></BreadcrumbItem>
+							<BreadcrumbItem Text="Buses"></BreadcrumbItem>
+						</BreadcrumbItems>
+						<BreadcrumbTemplates>
+							<SeparatorTemplate>
+								<span class="e-icons e-chevron-right"></span>
+							</SeparatorTemplate>
+						</BreadcrumbTemplates>
+					</SfBreadcrumb>
+					<div class="e-appbar-spacer"></div>
+					<SfButton CssClass="e-flat sf-icon-notification-bell-ring-03 fs-6" Type="button" aria-label="notification" role="button"></SfButton>
+					<span class="e-avatar e-avatar-circle e-avatar-small flex-shrink-0 ms-4">
+						<img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
+					</span>
+				</div>
+			</SfAppBar>
+			<div class="shadow border-top border-bottom border-light-subtle bg-body">
+				<div class="d-flex flex-column justify-content-between gap-3 flex-md-row p-3 px-sm-4 px-xl-5">
+					<h5 class="fw-bold mb-0 lh-base text-body">NYC - Washington DC Buses</h5>
+					<div class="d-flex gap-2">
+						<div class="e-input-group me-1 flex-grow-1 felx-sm-grow-0">
+							<span class="e-input-group-icon e-icons e-search border-0"></span>
+							<input class="e-input ps-0" type="text" placeholder="Search Buses" aria-label="search buses" role="textbox" />
+						</div>
+						<SfButton CssClass="e-outline d-none d-sm-inline-block" IconCss="e-icons e-filter" Content="Filter" Type="button" aria-label="filter" role="button"></SfButton>
+						<SfButton CssClass="e-outline d-sm-none e-icons e-filter" Type="button" aria-label="filter" role="button"></SfButton>
+					</div>
+				</div>
+			</div>
+			<div class="d-flex flex-column gap-3 py-4 px-3 px-sm-4 px-xl-5">
+				<h5 class="fw-bold mb-0 text-body">@BusDetails.Count Buses Found</h5>
+				<SfListView CssClass="border-0 e-list-template" DataSource="@BusDetails" aria-label="list of bus with details" role="list">
+					<ListViewFieldSettings Id="BusId" Text="Company" TValue="BusDetail"></ListViewFieldSettings>
+					<ListViewTemplates TValue="BusDetail">
+						<Template>
+							@{
+								<div class="e-card d-flex flex-column gap-3 p-4 rounded-4 flex-sm-row">
+									<span class="e-avatar e-avatar-xlarge e-avatar-circle flex-shrink-0">
+										<img src="assets/images/tile-view/travels/@context.Logo" alt="company logo" />
+									</span>
+									<div class="e-card-stacked flex-column flex-grow-1 justify-content-start">
+										<div class="e-card-header p-0 flex-column">
+											<div class="e-card-header-title">
+												<h6 class="mb-1 fw-bold text-body">@context.Company</h6>
+											</div>
+											<div class="e-card-sub-title text-body-secondary">
+												<p class="mb-2">@context.Type</p>
+											</div>
+										</div>
+										<div class="e-card-content p-0 d-flex align-items-center flex-wrap gap-3 overflow-visible">
+											<div class="d-flex align-items-center gap-2">
+												<SfRating CssClass="e-small" Value="@context.Rating" Precision="PrecisionType.Exact"></SfRating>
+												<span class="text-body-secondary">@context.Reviews reviews</span>
+											</div>
+											<span class="e-bigger e-badge e-badge-pill e-badge-success">Free date change</span>
+										</div>
+									</div>
+									<div class="e-card-actions p-0 d-flex flex-column lh-base text-sm-end flex-sm-shrink-0 col-md-3 col-lg-2">
+										<p class="mb-1 fs-5 fw-medium text-body-secondary"><span class="text-body">@context.DepartureTime</span> - @context.ArrivalTime</p>
+										<div class="d-flex mb-2 gap-2 small text-body-secondary justify-content-sm-end">
+											<p class="mb-0">@context.Duration hrs</p>
+											<div class="border-start border-light-subtle"></div>
+											<p class="mb-0">@context.Seats seats</p>
+										</div>
+										<p class="mb-2 pb-1 fs-6 fw-medium text-body-secondary">Starting at <span class="fs-5 fw-bold lh-sm text-body">@context.Price.ToString("C")</span></p>
+										<SfButton CssClass="e-primary e-block" Type="button" aria-label="show seats" role="button">Show seats</SfButton>
+									</div>
+								</div>
+							}
+						</Template>
+					</ListViewTemplates>
+				</SfListView>
+			</div>
+		</div>
+	</section>
+}

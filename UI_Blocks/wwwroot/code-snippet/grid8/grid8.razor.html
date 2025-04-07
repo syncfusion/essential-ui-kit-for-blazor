@@ -1,0 +1,175 @@
+@page "/blocks/grid-8"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="mx-auto w-full py-12 sm:px-6 px-4">
+            <SfGrid DataSource="@GridData" RowHeight="44" Width="100%" Height="440" AllowGrouping="true" role="grid">
+                <GridGroupSettings ShowDropArea="true"></GridGroupSettings>
+                <GridColumns>
+                    <GridColumn Field="Name" HeaderText="Sales Representative" Width="156">
+                        <Template>
+                            @{
+                                var data = (context as SalesData)!;
+                            }
+                            <span>@data.Name</span>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="TotalSales" HeaderText="Total Revenue" Width="124" Format="c2" TextAlign="TextAlign.Right">
+                        <Template>
+                            @{
+                                var data = (context as SalesData)!;
+                            }
+                            <div class="flex items-center justify-end">
+                                <span>@(data.TotalSales.ToString("C0"))</span>
+                                @if (data.Trend == "up")
+                                {
+                                    <span class="e-icons e-arrow-up ms-2 !text-green-500"></span>
+                                }
+                                else if (data.Trend == "down")
+                                {
+                                    <span class="e-icons e-arrow-down ms-2 !text-red-600"></span>
+                                }
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="DealsClosed" HeaderText="Deals Won" Width="96" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="Target" HeaderText="Target" Format="c2" Width="106">
+                        <Template>
+                            @{
+                                var data = (context as SalesData)!;
+                            }
+                            <div class="e-bigger">
+                                <span class="e-badge e-badge-info">@data.Target.ToString("C0")</span>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="ProgressBar" HeaderText="% of Target" Width="196">
+                        <Template>
+                            @{
+                                var data = (context as SalesData)!;
+                            }
+                            <div class="flex flex-col justify-center w-48 pr-2.5">
+                                <SfProgressBar Id="@data.ProgressBar.Id" Type="ProgressType.Linear" CornerRadius="CornerType.Square" ProgressThickness="8" TrackThickness="8" Value="@data.ProgressBar.Value" Width="182" Height="30" ProgressColor="@(data.ProgressBar.Value == 100 ? "#15803D" : "#4F46E5")"></SfProgressBar>
+                                <p class="text-xs text-end">@(data.ProgressBar.Value % 1 == 0 ? data.ProgressBar.Value.ToString("N0") : data.ProgressBar.Value.ToString("N1"))%</p>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="AvgDealSize" HeaderText="Average Deal Size" Format="c0" Width="135" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="WinPercent" HeaderText="Win Rate" Width="80">
+                        <Template>
+                            @{
+                                var data = (context as SalesData)!;
+                            }
+                            <div class="e-bigger">
+                                <span class="e-badge !px-2 @(data.WinRate < 70 ? "e-badge-warning" : data.WinRate >= 70 && data.WinRate < 80 ? "e-badge-info" : data.WinRate >= 80 ? "e-badge-success" : "e-badge-light")">
+                                    @(data.WinRate + "%")
+                                </span>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="CallsMade" HeaderText="Calls Made" Width="100" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="Meetings" HeaderText="Meetings Scheduled" Width="150" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="PipelineValue" HeaderText="Pipeline Value" Width="115" Format="c0" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="Performance" HeaderText="Performance Score" Width="145" TextAlign="TextAlign.Right">
+                        <Template>
+                            @{
+                                var data = (context as SalesData)!;
+                            }
+                            <div class="e-bigger flex gap-2 items-center justify-end">
+                                <span class="sf-icon-gauge text-lg @(data.WinRate < 70 ? "!text-orange-700" : data.WinRate >= 70 && data.WinRate < 80 ? "!text-cyan-700" : data.WinRate >= 80 ? "!text-green-700" : "")"></span>
+                                <p>@data.Performance</p>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="py-5 px-3 px-sm-4 mx-auto">
+            <SfGrid DataSource="@GridData" RowHeight="44" Width="100%" Height="440" AllowGrouping="true" role="grid">
+                <GridColumns>
+                    <GridColumn Field="Name" HeaderText="Sales Representative" Width="165">
+                        <Template>
+                            @{
+                                var data = (context as SalesData)!;
+                            }
+                            <span>@data.Name</span>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="TotalSales" HeaderText="Total Revenue" Width="124" Format="c2" TextAlign="TextAlign.Right">
+                        <Template>
+                            @{
+                                var data = (context as SalesData)!;
+                            }
+                            <div class="d-flex align-items-center justify-content-end">
+                                <span>@(data.TotalSales.ToString("C0"))</span>
+                                @if (data.Trend == "up")
+                                {
+                                    <span class="e-icons e-arrow-up ms-2 text-success"></span>
+                                }
+                                else if (data.Trend == "down")
+                                {
+                                    <span class="e-icons e-arrow-down ms-2 text-danger"></span>
+                                }
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="DealsClosed" HeaderText="Deals Won" Width="126" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="Target" HeaderText="Target" Format="c2" Width="135">
+                        <Template>
+                            @{
+                                var data = (context as SalesData)!;
+                            }
+                            <span class="e-badge e-badge-info">@($"{data.Target:C0}")</span>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="ProgressBar" HeaderText="% of Target" Width="210">
+                        <Template>
+                            @{
+                                var data = (context as SalesData)!;
+                            }
+                            <div class="d-flex flex-column w-48 pe-3">
+                                <SfProgressBar Type="ProgressType.Linear" CornerRadius="CornerType.Square" ProgressThickness="8" TrackThickness="8" Value="@data.ProgressBar.Value" Width="182" Height="30" ProgressColor="@(data.ProgressBar.Value == 100 ? "#15803D" : "#4F46E5")"></SfProgressBar>
+                                <p class="text-end small">@(data.ProgressBar.Value % 1 == 0 ? data.ProgressBar.Value.ToString("N0") : data.ProgressBar.Value.ToString("N1"))%</p>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="AvgDealSize" HeaderText="Average Deal Size" Format="c0" Width="160" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="WinPercent" HeaderText="Win Rate" Width="125">
+                        <Template>
+                            @{
+                                var data = (context as SalesData)!;
+                            }
+                            <span class="e-badge px-2 @(data.WinRate < 70 ? "e-badge-warning" : data.WinRate >= 70 && data.WinRate < 80 ? "e-badge-info" : data.WinRate >= 80 ? "e-badge-success" : "e-badge-light")">
+                                @(data.WinRate + "%")
+                            </span>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn Field="CallsMade" HeaderText="Calls Made" Width="105" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="Meetings" HeaderText="Meetings Scheduled" Width="165" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="PipelineValue" HeaderText="Pipeline Value" Width="125" Format="c0" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="Performance" HeaderText="Performance Score" Width="155" TextAlign="TextAlign.Right">
+                        <Template>
+                            @{
+                                var data = (context as SalesData)!;
+                            }
+                            <div class="d-flex align-items-center justify-content-end gap-1">
+                                <span class="sf-icon-gauge fs-5 @(data.WinRate < 70 ? "text-warning" : data.WinRate >= 70 && data.WinRate < 80 ? "text-info" : "text-success")"></span>
+                                <p class="mb-0">@data.Performance</p>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}

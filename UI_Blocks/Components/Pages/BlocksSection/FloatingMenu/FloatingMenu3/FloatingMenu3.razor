@@ -1,0 +1,92 @@
+﻿@page "/blocks/floating-menu-3"
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+@inject IJSRuntime JSRuntime
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div id="floating-contact" class="sm:pt-4 sm:pr-4" style="height: @(IsMobileView ? "625px" : "740px")">
+            <div id="target" class="w-full" >
+                <SfDialog @ref="Dialog" CssClass="sm:!rounded-t !rounded-none overflow-hidden !border-0" Target="#target" ShowCloseIcon="false" Width="400px" MinHeight="625px" Height="625px" aria-label="contact form for assistance" role="dialog">
+                    <DialogTemplates>
+                        <Header>
+                            <div class="flex flex-col justify-between items-center bg-primary-100 dark:bg-primary-800 py-12 px-6">
+                                <span class="sf-icon-message-chat-circle text-3xl text-gray-500 dark:text-white"></span>
+                                <div class="text-center mt-3">
+                                    <p class="text-xl font-semibold dark:text-gray-50">Contact Us</p>
+                                    <p class="text-sm text-gray-500 dark:text-gray-200 mt-2">Reach out to us for any inquiry</p>
+                                </div>
+                            </div>
+                        </Header>
+                        <Content>
+                            <div class="sm:px-6 px-4 pt-6 flex flex-col gap-4">
+                                <SfTextBox CssClass="e-bigger w-full" placeholder="Name" Type="InputType.Text" floatLabelType="FloatLabelType.Never" aria-label="enter the name" role="textbox"></SfTextBox>
+                                <SfTextBox CssClass="e-bigger w-full" placeholder="Email" Type="InputType.Text" floatLabelType="FloatLabelType.Never" aria-label="enter the email address" role="textbox"></SfTextBox>
+                                <div style="height: 108px;">
+                                    <SfTextArea CssClass="e-bigger w-full" placeholder="Your message" ResizeMode="Resize.None" RowCount="5" ColumnCount="100" aria-label="enter the message" role="textbox"></SfTextArea>
+                                </div>
+                                <div class="w-full flex flex-col gap-1.5">
+                                     <SfUploader></SfUploader>
+                                     <p class="text-xs text-gray-900 dark:text-gray-50">Supported formats: Docs / PDF</p>
+                                </div>
+                            </div>
+                        </Content>
+                        <FooterTemplate>
+                            <div class="e-bigger sm:px-6 px-4 py-6">
+                                <SfButton class="e-primary w-full !ml-0" content="Send" Type="submit" aria-label="send the message" role="button"></SfButton>
+                            </div>
+                        </FooterTemplate>
+                    </DialogTemplates>
+                    <DialogPositionData X="@XValue.ToString()" Y="@YValue.ToString()"></DialogPositionData>
+                    <DialogEvents Created="@CreatedHandler" Opened="@onOpen"></DialogEvents>
+                </SfDialog>
+                <SfFab class="e-primary e-bigger e-round !hidden sm:!block" iconCss="@(_toggleState ? "sf-icon-message-chat-circle !text-2xl" : "e-icons e-close !text-2xl")" Position="FabPosition.BottomRight" Type="button" OnClick="ToggleDialogAsync" aria-label="show/hide form" role="button"></SfFab>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div id="floating-contact" class="pt-sm-3 pe-sm-3" style="height: @(IsMobileView ? "625px" : "740px")">
+            <div id="target" class="w-100" >
+                <SfDialog @ref="Dialog" CssClass="rounded-1 border-0 overflow-hidden" Target="#target" ShowCloseIcon="false" Width="400px" MinHeight="625px" Height="625px" aria-label="contact form for assistance" role="dialog">
+                    <DialogTemplates>
+                        <Header>
+                            <div class="d-flex flex-column justify-content-between align-items-center bg-primary-subtle py-5 px-4">
+                                <span class="sf-icon-message-chat-circle fs-4 text-secondary"></span>
+                                <div class="text-center mt-3">
+                                    <p class="fs-5 fw-semibold lh-sm text-body m-0">Contact Us</p>
+                                    <p class="mt-2 mb-0 text-body">Reach out to us for any inquiry</p>
+                                </div>
+                            </div>
+                        </Header>
+                        <Content>
+                            <div class="py-4 px-3 px-sm-4 pb-0 d-flex flex-column gap-3">
+                                <SfTextBox CssClass="e-bigger w-100" placeholder="Name" Type="InputType.Text" floatLabelType="FloatLabelType.Never" aria-label="enter the name" role="textbox"></SfTextBox>
+                                <SfTextBox CssClass="e-bigger w-100" placeholder="Email" Type="InputType.Text" floatLabelType="FloatLabelType.Never" aria-label="enter the email address" role="textbox"></SfTextBox>
+                                <div style="height: 109px;">
+                                    <SfTextArea CssClass="e-bigger w-100" placeholder="Your message" ResizeMode="Resize.None" RowCount="5" ColumnCount="100" aria-label="enter the message" role="textbox"></SfTextArea>
+                                </div>
+                                <div>
+                                    <SfUploader></SfUploader>
+                                    <p class="small m-0 mt-1 text-body-secondary">Supported formats: Docs / PDF</p>
+                                </div>
+                            </div>
+                        </Content>
+                        <FooterTemplate>
+                            <div class="e-bigger py-4 px-3 px-sm-4">
+                                <SfButton class="e-primary w-100 m-0" content="Send" Type="submit" aria-label="send the message" role="button"></SfButton>
+                            </div>
+                        </FooterTemplate>
+                    </DialogTemplates>
+                        <DialogPositionData X="@XValue.ToString()" Y="@YValue.ToString()"></DialogPositionData>
+                        <DialogEvents Created="@CreatedHandler" Opened="@onOpen"></DialogEvents>
+                </SfDialog>
+                <SfFab class="e-primary e-bigger e-round d-none d-sm-block" iconCss="@(_toggleState ? "sf-icon-message-chat-circle !text-2xl" : "e-icons e-close !text-2xl")" Position="FabPosition.BottomRight" Type="button" @onclick="ToggleDialogAsync" aria-label="show/hide form" role="button"></SfFab>
+            </div>
+        </div>
+    </section>
+}

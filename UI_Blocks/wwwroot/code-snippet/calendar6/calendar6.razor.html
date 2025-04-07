@@ -1,0 +1,262 @@
+@page "/blocks/calendar-6"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div style="height: 912px; width: @Width; float: right;">
+            <SfSidebar class="w-full bg-white dark:bg-gray-900" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div>
+                        <div class="flex justify-between items-center px-4 py-3">
+                            <div class="w-32">
+                                <label class="text-sm text-gray-900 dark:text-white">CALENDAR</label>
+                                <SfDatePicker TValue="DateTime?" Start="CalendarView.Decade" Depth="CalendarView.Decade" Format="yyyy"></SfDatePicker>
+                            </div>
+                            <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" OnClick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                        </div>
+                    </div>
+                    <div class="flex px-4 py-2 border-y border-gray-200 dark:border-gray-600 justify-between">
+                        <SfButton CssClass="e-primary e-outline" Content="Request time off" IconCss="e-icons e-plus" Type="button" aria-label="request time off" role="button"></SfButton>
+                        <div class="my-auto">
+                            <SfDropDownButton Items="@MenuItems" CssClass="e-flat background-none !border-none e-caret-hide" IconCss="e-icons e-more-vertical-2" Type="button" aria-label="select the leave options" role="button">
+                                <DropDownButtonEvents ItemSelected="LeaveOptions"></DropDownButtonEvents>
+                            </SfDropDownButton>
+                        </div>
+                    </div>
+                    <div class="p-4">
+                        @if (SelectedItem == "Holiday")
+                        {
+                            <div style="height: 756px;">
+                                <SfTimeline>
+                                    <TimelineItems>
+                                        @foreach (var item in TimelineData)
+                                        {
+                                            <TimelineItem>
+                                                <Content>
+                                                    <div class="content-container">
+                                                        <div class="flex justify-between pb-1">
+                                                            <div class="text-body small font-medium">@item.Title</div>
+                                                            @if (UniqueMonthsDescription.Contains(item.Description))
+                                                            {
+                                                                <SfChip>
+                                                                    <ChipItems>
+                                                                        <ChipItem Text="@GetMonthAbbreviation(item.Description).ToUpper()" CssClass="!text-xs !m-0 !bg-cyan-100 !text-cyan-600 dark:!bg-cyan-900 dark:!text-cyan-300"></ChipItem>
+                                                                    </ChipItems>
+                                                                </SfChip>
+                                                            }
+                                                        </div>
+                                                        <span class="e-badge e-badge-pill border border-gray-200 dark:border-gray-600 e-bigger e-badge-secondary">@item.Description</span>
+                                                    </div>
+                                                </Content>
+                                            </TimelineItem>
+                                        }
+                                    </TimelineItems>
+                                </SfTimeline>
+                            </div>
+                        }
+                        else if (SelectedItem == "My PTO")
+                        {
+                            <div class="grid gap-3">
+                                <div class="grid gap-2">
+                                    <p class="m-0 text-gray-700 dark:text-gray-300">September 2024</p>
+                                    <div class="e-card shadow-none pt-3 border-gray-200 dark:border-gray-600 flex-row justify-between">
+                                        <div class="e-card-stacked">
+                                            <div class="e-card-content">
+                                                <div class="font-normal text-xs text-gray-500 mb-0.5">3 day request</div>
+                                                <div class="text-xs font-semibold mb-2">24 Sep - 26 Sep</div>
+                                                <span class="e-badge e-badge-pill e-bigger e-badge-secondary border border-gray-200 dark:border-gray-600">Casual</span>
+                                            </div>
+                                        </div>
+                                        <span class="e-badge e-badge-pill mr-3 e-bigger e-badge-danger">Declined</span>
+                                    </div>
+                                    <div class="e-card shadow-none pt-3 border-gray-200 dark:border-gray-600 flex-row justify-between">
+                                        <div class="e-card-stacked">
+                                            <div class="e-card-content">
+                                                <div class="font-normal text-xs text-gray-500 mb-0.5">Half day request</div>
+                                                <div class="text-xs font-semibold mb-2">04 Sep</div>
+                                                <span class="e-badge e-badge-pill e-bigger e-badge-info">Sick</span>
+                                            </div>
+                                        </div>
+                                        <span class="e-badge e-badge-pill mr-3 e-bigger e-badge-warning">Awaiting</span>
+                                    </div>
+                                </div>
+                                <div class="grid gap-2">
+                                    <p class="m-0 text-gray-700 dark:text-gray-300">July 2024</p>
+                                    <div class="e-card shadow-none pt-3 border-gray-200 dark:border-gray-600 flex-row justify-between">
+                                        <div class="e-card-stacked">
+                                            <div class="e-card-content">
+                                                <div class="font-normal text-xs text-gray-500 mb-0.5">2 day request</div>
+                                                <div class="text-xs font-semibold mb-2">23 Jul - 24 Jul</div>
+                                                <span class="e-badge e-badge-pill e-bigger e-badge-secondary border border-gray-200 dark:border-gray-600">Casual</span>
+                                            </div>
+                                        </div>
+                                        <span class="e-badge e-badge-pill mr-3 e-bigger e-badge-success">Approved</span>
+                                    </div>
+                                    <div class="e-card shadow-none pt-3 border-gray-200 dark:border-gray-600 flex-row justify-between">
+                                        <div class="e-card-stacked">
+                                            <div class="e-card-content">
+                                                <div class="font-normal text-xs text-gray-500 mb-0.5">Full day request</div>
+                                                <div class="text-xs font-semibold mb-2">03 Jul</div>
+                                                <span class="e-badge e-badge-pill e-bigger e-badge-info">Sick</span>
+                                            </div>
+                                        </div>
+                                        <span class="e-badge e-badge-pill mr-3 e-bigger e-badge-success">Approved</span>
+                                    </div>
+                                </div>
+                                <div class="grid gap-2">
+                                    <p class="m-0 text-gray-700 dark:text-gray-300">June 2024</p>
+                                    <div class="e-card shadow-none pt-3 border-gray-200 dark:border-gray-600 flex-row justify-between">
+                                        <div class="e-card-stacked">
+                                            <div class="e-card-content">
+                                                <div class="font-normal text-xs text-gray-500 mb-0.5">5 days request</div>
+                                                <div class="text-xs font-semibold mb-2">11 Jun - 15 Jun</div>
+                                                <span class="e-badge e-badge-pill e-bigger e-badge-secondary border border-gray-200 dark:border-gray-600">Casual</span>
+                                            </div>
+                                        </div>
+                                        <span class="e-badge e-badge-pill e-bigger mr-3 e-badge-success">Approved</span>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 absolute top-0 right-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-light">
+        <div style="height: 940px; width: @Width; float: right;">
+            <SfSidebar class="bg-body" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center p-3">
+                            <div class="w-50">
+                                <label class="fs-6 text-body-secondary">CALENDAR</label>
+                                <SfDatePicker TValue="DateTime?" Start="CalendarView.Decade" Depth="CalendarView.Decade" Format="yyyy"></SfDatePicker>
+                            </div>
+                            <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" OnClick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                        </div>
+                    </div>
+                    <div class="d-flex p-3 border-bottom border-top border-light-subtle justify-content-between">
+                        <SfButton CssClass="e-primary e-outline" Content="Request time off" IconCss="e-icons e-plus" Type="button" aria-label="request time off" role="button"></SfButton>
+                        <div class="my-auto">
+                            <SfDropDownButton Items="@MenuItems" CssClass="e-flat border-0 e-caret-hide" IconCss="e-icons e-more-vertical-2" Type="button" aria-label="select the leave options" role="button">
+                                <DropDownButtonEvents ItemSelected="LeaveOptions"></DropDownButtonEvents>
+                            </SfDropDownButton>
+                        </div>
+                    </div>
+                    @if (SelectedItem == "Holiday")
+                    {
+                        <div class="p-4 bg-body" style="height: 730px;">
+                            <SfTimeline>
+                                <TimelineItems>
+                                    @foreach (var item in TimelineData)
+                                    {
+                                        <TimelineItem>
+                                            <Content>
+                                                <div class="content-container">
+                                                    <div class="d-flex justify-content-between pb-1">
+                                                        <div class="text-body text-sm font-weight-medium">@item.Title</div>
+                                                        @if (UniqueMonthsDescription.Contains(item.Description))
+                                                        {
+                                                            <SfChip>
+                                                                <ChipItems>
+                                                                    <ChipItem Text="@GetMonthAbbreviation(item.Description).ToUpper()" CssClass="e-info m-0 small"></ChipItem>
+                                                                </ChipItems>
+                                                            </SfChip>
+                                                        }
+                                                    </div>
+                                                    <span class="e-badge e-badge-pill border border-light-subtle e-badge-secondary px-2 lh-sm fw-normal">@item.Description</span>
+                                                </div>
+                                            </Content>
+                                        </TimelineItem>
+                                    }
+                                </TimelineItems>
+                            </SfTimeline>
+                        </div>
+                    }
+                    else if (SelectedItem == "My PTO")
+                    {
+                        <div class="p-4">
+                            <div>
+                                <p class="m-0 text-body-secondary">September 2024</p>
+                                <div class="e-card border border-light-subtle shadow-none my-2">
+                                    <div class="e-card-content d-flex justify-content-between">
+                                        <div>
+                                            <div class="text-body-secondary fs-sm m-0">3 day request</div>
+                                            <div class="text-small fw-bold mt-1 m-0 mb-2">24 Sep - 26 Sep</div>
+                                            <span class="e-badge e-badge-pill e-badge-secondary border border-light-subtle lh-sm fw-normal">Casual</span>
+                                        </div>
+                                        <span class="e-badge e-badge-pill e-badge-danger">Declined</span>
+                                    </div>
+                                </div>
+                                <div class="e-card border border-light-subtle shadow-none">
+                                    <div class="e-card-content d-flex justify-content-between">
+                                        <div>
+                                            <div class="text-body-secondary fs-sm m-0">Half day request</div>
+                                            <div class="text-small fw-bold mt-1 m-0 mb-2">04 Aug</div>
+                                            <span class="e-badge e-badge-pill e-badge-info">Sick</span>
+                                        </div>
+                                        <span class="e-badge e-badge-pill e-badge-warning">Awaiting</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="my-3">
+                                <p class="m-0 text-body-secondary">July 2024</p>
+                                <div class="e-card border border-light-subtle shadow-none my-2">
+                                    <div class="e-card-content d-flex justify-content-between">
+                                        <div>
+                                            <div class="text-body-secondary fs-sm m-0">2 day request</div>
+                                            <div class="text-small fw-bold mt-1 m-0 mb-2">23 Jul - 24 Jul</div>
+                                            <span class="e-badge e-badge-pill border e-badge-secondary border-light-subtle lh-sm fw-normal">Casual</span>
+                                        </div>
+                                        <span class="e-badge e-badge-pill e-badge-success">Approved</span>
+                                    </div>
+                                </div>
+                                <div class="e-card border border-light-subtle shadow-none my-2">
+                                    <div class="e-card-content d-flex justify-content-between">
+                                        <div>
+                                            <div class="text-body-secondary fs-sm m-0">Full day request</div>
+                                            <div class="text-small fw-bold mt-1 m-0 mb-2">03 Jul</div>
+                                            <span class="e-badge e-badge-pill e-badge-info">Sick</span>
+                                        </div>
+                                        <span class="e-badge e-badge-pill e-bigger e-badge-success">Approved</span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div>
+                                <p class="m-0 text-body-secondary">November 2024</p>
+                                <div class="e-card border border-light-subtle shadow-none mt-2">
+                                    <div class="e-card-content d-flex justify-content-between">
+                                        <div>
+                                            <div class="text-body-secondary fs-sm m-0">5 days request</div>
+                                            <div class="text-small fw-bold mt-1 m-0 mb-2">11 Jun - 15 Jun</div>
+                                            <span class="e-badge e-badge-pill e-badge-secondary border border-light-subtle lh-sm fw-normal">Casual</span>
+                                        </div>
+                                        <span class="e-badge e-badge-pill e-badge-success">Approved</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 position-absolute top-0 end-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

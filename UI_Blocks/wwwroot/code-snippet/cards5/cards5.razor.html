@@ -1,0 +1,165 @@
+﻿@page "/blocks/cards-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="py-20 px-4 sm:px-6" style="min-height: 36rem;">
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-10">
+                <div class="e-card e-bigger rounded-lg justify-start">
+                    <div class="e-card-header items-center">
+                        <span class="e-avatar e-avatar-circle e-avatar-large"
+                            style="background-image: url(assets/images/common/avatar/avatar-13.jpg);"></span>
+                        <div class="e-card-header-caption !pl-3">
+                            <div class="e-card-header-title">
+                                <p class="text-lg font-semibold text-gray-900 dark:text-white truncate">Kristin Watson</p>
+                            </div>
+                            <div class="e-card-sub-title">
+                                <p class="text-sm text-gray-700 dark:text-gray-300 truncate">Content Creator</p>
+                            </div>
+                        </div>
+                        <SfButton CssClass="e-round e-flat e-icons e-edit" Type="button" aria-label="edit" role="button">
+                        </SfButton>
+                    </div>
+                    <div class="e-card-content">
+                        <h2 class="pt-2 text-xl font-semibold text-gray-900 dark:text-white truncate">Travel Destinations
+                        </h2>
+                        <p class="mt-3 pb-2 text-base">
+                            Discover the most exciting travel destinations around the globe. From picturesque beaches to
+                            bustling cities, our curated list of must-visit locations will help you plan your perfect
+                            getaway.
+                        </p>
+                    </div>
+                </div>
+                <div class="e-card e-bigger rounded-lg justify-start">
+                    <div class="e-card-header items-center">
+                        <span class="e-avatar e-avatar-circle e-avatar-large"
+                            style="background-image: url(assets/images/common/avatar/avatar-4.jpg);"></span>
+                        <div class="e-card-header-caption !pl-3">
+                            <div class="e-card-header-title">
+                                <p class="text-lg font-semibold text-gray-900 dark:text-white truncate">Brooklyn Simmons</p>
+                            </div>
+                            <div class="e-card-sub-title">
+                                <p class="text-sm text-gray-700 dark:text-gray-300 truncate">Story Writer</p>
+                            </div>
+                        </div>
+                        <SfButton CssClass="e-round e-flat e-icons e-edit" Type="button" aria-label="edit" role="button">
+                        </SfButton>
+                    </div>
+                    <div class="e-card-content">
+                        <h2 class="pt-2 text-xl font-semibold text-gray-900 dark:text-white truncate">Healthy Lifestyle</h2>
+                        <p class="mt-3 pb-2 text-base">Embrace a healthier lifestyle with our easy-to-follow tips and
+                            advice. From nutritious meal ideas to effective exercise routines, find practical strategies to
+                            improve life.</p>
+                    </div>
+                </div>
+                <div class="e-card e-bigger rounded-lg justify-start">
+                    <div class="e-card-header items-center">
+                        <span class="e-avatar e-avatar-circle e-avatar-large"
+                            style="background-image: url(assets/images/common/avatar/avatar-12.jpg);"></span>
+                        <div class="e-card-header-caption !pl-3">
+                            <div class="e-card-header-title">
+                                <p class="text-lg font-semibold text-gray-900 dark:text-white truncate">Annie Amber</p>
+                            </div>
+                            <div class="e-card-sub-title">
+                                <p class="text-sm text-gray-700 dark:text-gray-300 truncate">Script Writer</p>
+                            </div>
+                        </div>
+                        <SfButton CssClass="e-round e-flat e-icons e-edit" Type="button" aria-label="edit" role="button">
+                        </SfButton>
+                    </div>
+                    <div class="e-card-content">
+                        <h2 class="pt-2 text-xl font-semibold text-gray-900 dark:text-white truncate">Tech Gadget</h2>
+                        <p class="mt-3 pb-2 text-base">Stay up-to-date with the latest tech gadgets and innovations. Our
+                            in-depth reviews and comparisons will help you make informed decisions on the best devices for
+                            your needs.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-dark-subtle">
+        <div class="px-3 px-sm-4 py-5" style="min-height: 36rem;">
+            <div class="row g-xl-5 g-4">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="e-card shadow p-2 e-bigger h-100 justify-content-start">
+                        <div class="e-card-header align-items-center mb-2">
+                            <span class="e-avatar e-avatar-large e-avatar-circle"
+                                style="background-image: url(assets/images/common/avatar/avatar-13.jpg);"></span>
+                            <div class="e-card-header-caption">
+                                <div class="e-card-header-title text-body">
+                                    <p class="h6 fw-bold mb-0 text-truncate">Kristin Watson</p>
+                                </div>
+                                <div class="e-card-sub-title text-body-secondary pt-0">
+                                    <p class="small mb-0 text-truncate">Content Creator</p>
+                                </div>
+                            </div>
+                            <SfButton CssClass="e-round e-flat e-icons e-edit" Type="button" aria-label="edit"
+                                role="button"></SfButton>
+                        </div>
+                        <div class="e-card-content text-body">
+                            <h2 class="fs-5 fw-bolder mb-2 text-truncate">Travel Destinations</h2>
+                            <p class="fs-6 m-0">Discover the most exciting travel destinations around the globe. From
+                                picturesque beaches to bustling cities, our curated list of must-visit locations will help
+                                you plan your perfect getaway.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="e-card shadow p-2 e-bigger h-100 justify-content-start">
+                        <div class="e-card-header align-items-center mb-2">
+                            <span class="e-avatar e-avatar-large e-avatar-circle"
+                                style="background-image: url(assets/images/common/avatar/avatar-4.jpg);"></span>
+                            <div class="e-card-header-caption">
+                                <div class="e-card-header-title text-body">
+                                    <p class="h6 fw-bold mb-0 text-truncate">Brooklyn Simmons</p>
+                                </div>
+                                <div class="e-card-sub-title text-body-secondary pt-0">
+                                    <p class="small mb-0 text-truncate">Story Writer</p>
+                                </div>
+                            </div>
+                            <SfButton CssClass="e-round e-flat e-icons e-edit" Type="button" aria-label="edit"
+                                role="button"></SfButton>
+                        </div>
+                        <div class="e-card-content text-body">
+                            <h2 class="fs-5 fw-bolder mb-2 text-truncate">Healthy Lifestyle</h2>
+                            <p class="fs-6 m-0">Embrace a healthier lifestyle with our easy-to-follow tips and advice. From
+                                nutritious meal ideas to effective exercise routines, find practical strategies to improve
+                                life.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="e-card shadow p-2 e-bigger h-100 justify-content-start">
+                        <div class="e-card-header align-items-center mb-2">
+                            <span class="e-avatar e-avatar-large e-avatar-circle"
+                                style="background-image: url(assets/images/common/avatar/avatar-12.jpg);"></span>
+                            <div class="e-card-header-caption">
+                                <div class="e-card-header-title text-body">
+                                    <p class="h6 fw-bold mb-0 text-truncate">Annie Amber</p>
+                                </div>
+                                <div class="e-card-sub-title text-body-secondary pt-0">
+                                    <p class="small mb-0 text-truncate">Script Writer</p>
+                                </div>
+                            </div>
+                            <SfButton CssClass="e-round e-flat e-icons e-edit" Type="button" aria-label="edit"
+                                role="button"></SfButton>
+                        </div>
+                        <div class="e-card-content text-body">
+                            <h2 class="fs-5 fw-bolder mb-2 text-truncate">Tech Gadget</h2>
+                            <p class="fs-6 m-0">Stay up-to-date with the latest tech gadgets and innovations. Our in-depth
+                                reviews and comparisons will help you make informed decisions on the best devices for your
+                                needs.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

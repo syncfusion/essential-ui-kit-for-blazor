@@ -1,0 +1,9 @@
+﻿::deep #custom-field-list .e-listbox-container {
+    border: 0px !important;
+}
+
+::deep #custom-field-list .e-list-item {
+    border: 1px solid #E5E7EB !important;
+    border-radius: 8px !important;
+    margin-bottom: 8px !important;
+}

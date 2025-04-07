@@ -1,0 +1,189 @@
+﻿@page "/blocks/sidebar-1"
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-950">
+        <div id="simple-sidebar" style="height: 710px;">
+            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+                <div class="h-screen">
+                    <div class="flex items-center py-4 px-3">
+                        <img src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+                        <span class="text-lg font-bold text-gray-900 dark:text-white ml-3">Company Name</span>
+                    </div>
+                    <div class="mt-1">
+                        <SfListView CssClass="border-0" DataSource="@Data" aria-label="main navigation links" role="list">
+                            <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="MenuItem">
+                                <Template>
+                                    <div class="e-list-wrapper flex items-center justify-between pr-2">
+                                        <span class="flex items-center">
+                                            <span class="e-icons @context.FontIcon text-base"></span>
+                                            <span class="text-base font-normal pl-4">@context.Field</span>
+                                        </span>
+                                        @if (context.Field == "Notifications")
+                                        {
+                                            <span class="e-badge e-badge-info e-badge-pill e-bigger !px-1.5">99+</span>
+                                        }
+                                    </div>
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </div>
+                    <hr class="border-gray-200 dark:border-gray-700 m-4" />
+                    <SfAccordion class="!border-0 bg-transparent" ExpandMode="ExpandMode.Single" role="button">
+                        <AccordionItems>
+                            <AccordionItem IconCss="e-icons e-notes e-medium" CssClass="!border-0">
+                                <HeaderTemplate>
+                                    <div class="text-base font-normal pl-2">News</div>
+                                </HeaderTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons sf-icon-announcement-01 text-base" CssClass="!border-0">
+                                <HeaderTemplate>
+                                    <div class="text-base font-normal pl-2">Events</div>
+                                </HeaderTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons e-user e-medium" CssClass="!border-0">
+                                <HeaderTemplate>
+                                    <div class="text-base font-normal pl-2">People</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div></div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons e-people e-medium" CssClass="!border-0">
+                                <HeaderTemplate>
+                                    <div class="text-base font-normal pl-2">Groups</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div></div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                            <AccordionItem Expanded="true" IconCss="e-icons sf-icon-sandglass text-base" CssClass="!border-0">
+                                <HeaderTemplate>
+                                    <div class="text-base font-normal pl-2">Resources</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div>
+                                        <ul>
+                                            <li class="text-base pb-3 pl-8">Cards</li>
+                                            <li class="text-base pb-3 pl-8">Widgets</li>
+                                            <li class="text-base pl-8">Components</li>
+                                        </ul>
+                                    </div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons sf-icon-laptop-01 text-base" CssClass="!border-0">
+                                <HeaderTemplate>
+                                    <div class="text-base font-normal pl-2">Office</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div></div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                        </AccordionItems>
+                    </SfAccordion>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 top-0 left-0 absolute">
+        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div id="simple-sidebar" style="height: 710px;">
+            <SfSidebar Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+                <div class="min-vh-100">
+                    <div class="d-flex align-items-center p-3">
+                        <img src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+                        <span class="fs-5 ms-2 fw-bold text-body lh-sm">Company Name</span>
+                    </div>
+                    <div class="mt-1">
+                        <SfListView CssClass="border-0 e-bigger" DataSource="@Data" aria-label="main navigation links" role="list">
+                            <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="MenuItem">
+                                <Template>
+                                    <div class="e-list-wrapper px-1 d-flex justify-content-between align-items-center">
+                                        <span class="d-flex align-items-center">
+                                            <span class="e-icons @context.FontIcon fs-6"></span>
+                                            <span class="fs-6 fw-normal ps-2 ms-1">@context.Field</span>
+                                        </span>
+                                        @if (context.Field == "Notifications")
+                                        {
+                                            <span class="e-badge e-badge-info e-badge-pill">99+</span>
+                                        }
+                                    </div>
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </div>
+                    <p class="m-3 fs-6 text-body-secondary">Others</p>
+                    <SfAccordion class="bg-transparent border-0" ExpandMode="ExpandMode.Single" role="button">
+                        <AccordionItems>
+                            <AccordionItem IconCss="e-icons e-notes e-medium" CssClass="border-0">
+                                <HeaderTemplate>
+                                    <div class="fs-6 fw-normal ps-1">News</div>
+                                </HeaderTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons sf-icon-announcement-01 fs-6" CssClass="border-0">
+                                <HeaderTemplate>
+                                    <div class="fs-6 fw-normal ps-1">Events</div>
+                                </HeaderTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons e-user e-medium" CssClass="border-0">
+                                <HeaderTemplate>
+                                    <div class="fs-6 fw-normal ps-1">People</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div></div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons e-people e-medium" CssClass="border-0">
+                                <HeaderTemplate>
+                                    <div class="fs-6 fw-normal ps-1">Groups</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div></div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                            <AccordionItem Expanded="true" IconCss="e-icons sf-icon-sandglass fs-6" CssClass="border-0">
+                                <HeaderTemplate>
+                                    <div class="fs-6 fw-normal ps-1">Resources</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div>
+                                        <ul class="list-unstyled" style="margin-bottom: 0;">
+                                            <li class="fs-6 ps-4 ms-2 pb-3">Cards</li>
+                                            <li class="fs-6 ps-4 ms-2 pb-3">Widgets</li>
+                                            <li class="fs-6 ps-4 ms-2">Components</li>
+                                        </ul>
+                                    </div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons sf-icon-laptop-01 fs-6" CssClass="border-0">
+                                <HeaderTemplate>
+                                    <div class="fs-6 fw-normal ps-1">Office</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div></div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                        </AccordionItems>
+                    </SfAccordion>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="py-3 px-1 position-absolute top-0 start-0">
+        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

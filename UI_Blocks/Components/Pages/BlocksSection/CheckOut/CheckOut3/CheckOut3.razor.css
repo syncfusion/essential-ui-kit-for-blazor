@@ -1,0 +1,3 @@
+::deep .e-grid.e-default .e-rowcell.e-lastrowcell:not(.e-xlsel-bottom-border) {
+    border: none !important;
+}

@@ -1,0 +1,102 @@
+@page "/blocks/grid-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="mx-auto w-full py-12 sm:px-6 px-4">
+            <SfGrid DataSource="GridData" Width="100%" Height="560" GridLines="GridLine.None" role="grid">
+                <GridColumns>
+                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>                    
+                    <GridColumn Field=@nameof(Asset.AssetId) HeaderText="Asset ID" Width="90">
+                        <Template>
+                            @{
+                                var asset = (context as Asset)!;
+                            }
+                            <a class="text-primary-700 dark:text-primary-500 font-medium" href="javascript:void(0);" aria-label="asset ID">@asset.AssetId</a>
+                        </Template>
+                    </GridColumn>                    
+                    <GridColumn Field=@nameof(Asset.Hardware) HeaderText="Hardware" Width="155"></GridColumn>
+                    <GridColumn Field=@nameof(Asset.Category) HeaderText="Category" Width="124"></GridColumn>
+                    <GridColumn Field=@nameof(Asset.SerialNum) HeaderText="Serial Number" Width="136"></GridColumn>
+                    <GridColumn Field=@nameof(Asset.Invoice) HeaderText="Invoice" Width="94"></GridColumn>                    
+                    <GridColumn Field=@nameof(Asset.PurchaseDate) HeaderText="Purchase Date" Width="100" Format="MM/dd/yyyy" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field=@nameof(Asset.WarrantyEndDate) HeaderText="Warranty Ends On" Width="130" Format="MM/dd/yyyy" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field=@nameof(Asset.Status) HeaderText="Status" Width="100"></GridColumn>                    
+                    <GridColumn Field=@nameof(Asset.Assigned) HeaderText="Assigned" Width="136" TextAlign="TextAlign.Center">
+                        <Template>
+                            @{
+                                var asset = (context as Asset)!;
+                            }
+                            <div class="text-sm text-gray-700 dark:text-gray-300">
+                                <p>@(asset.Assigned ?? "-")</p>
+                            </div>
+                        </Template>
+                    </GridColumn>
+                    <GridColumn HeaderText="Action" Width="90" TextAlign="TextAlign.Right">
+                        <Template>
+                            @{
+                                var asset = (context as Asset)!;
+                            }
+                            <div class="e-small py-2">
+                                <SfButton CssClass="e-flat me-1" IconCss="e-icons e-edit" Type="button" aria-label="edit details" role="button"></SfButton>
+                                <SfButton CssClass="e-flat" IconCss="e-icons e-trash" Type="button" aria-label="delete details" role="button"></SfButton>
+                            </div>
+                        </Template>
+                    </GridColumn>                    
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="w-100 py-5 px-3 px-sm-4 mx-auto">
+            <SfGrid DataSource="GridData" Width="100%" Height="560" GridLines="GridLine.None" role="grid">
+                <GridColumns>
+                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>                    
+                    <GridColumn Field=@nameof(Asset.AssetId) HeaderText="Asset ID" Width="85">
+                        <Template>
+                            @{
+                                var asset = (context as Asset)!;
+                            }
+                            <a class="text-primary fw-medium text-decoration-none" href="javascript:void(0);" aria-label="asset ID">@asset.AssetId</a>
+                        </Template>
+                    </GridColumn>                    
+                    <GridColumn Field=@nameof(Asset.Hardware) HeaderText="Hardware" Width="157"></GridColumn>
+                    <GridColumn Field=@nameof(Asset.Category) HeaderText="Category" Width="146"></GridColumn>
+                    <GridColumn Field=@nameof(Asset.SerialNum) HeaderText="Serial Number" Width="116"></GridColumn>
+                    <GridColumn Field=@nameof(Asset.Invoice) HeaderText="Invoice" Width="114"></GridColumn>                    
+                    <GridColumn Field=@nameof(Asset.PurchaseDate) HeaderText="Purchase Date" Width="108" Format="MM/dd/yyyy" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field=@nameof(Asset.WarrantyEndDate) HeaderText="Warranty Ends On" Width="150" Format="MM/dd/yyyy" TextAlign="TextAlign.Right"></GridColumn>                    
+                    <GridColumn Field=@nameof(Asset.Status) HeaderText="Status" Width="97"></GridColumn>                    
+                    <GridColumn Field=@nameof(Asset.Assigned) HeaderText="Assigned" Width="128" TextAlign="TextAlign.Center">
+                        <Template>
+                            @{
+                                var asset = (context as Asset)!;
+                            }
+                            <div class="text-body">
+                                <p class="mb-0">@(asset.Assigned ?? "-")</p>
+                            </div>
+                        </Template>
+                    </GridColumn>                    
+                    <GridColumn HeaderText="Action" Width="140" TextAlign="TextAlign.Right">
+                        <Template>
+                            @{
+                                var asset = (context as Asset)!;
+                            }
+                            <div class="e-small py-2">
+                                <SfButton CssClass="e-flat me-1" IconCss="e-icons e-edit" Type="button" aria-label="edit details" role="button"></SfButton>
+                                <SfButton CssClass="e-flat" IconCss="e-icons e-trash" Type="button" aria-label="delete details" role="button"></SfButton>
+                            </div>
+                        </Template>
+                    </GridColumn>                    
+                </GridColumns>
+            </SfGrid>
+        </div>
+    </section>
+}

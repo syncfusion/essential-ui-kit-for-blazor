@@ -1,0 +1,114 @@
+﻿@page "/blocks/email-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-gray-50 dark:bg-gray-900">
+		<div class="lg:flex lg:justify-center lg:items-center">
+			<div class="py-10 px-3 md:px-6 md:py-14 xl:px-11 xl:py-6 w-full">
+				<form action="#" onsubmit="@(() => {})">
+					<div class="mb-3 flex items-center ml-4">
+						<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-3">From:</label>
+						<SfTextBox Cssclass="w-full e-bigger" Type="InputType.Email" Value="Peterson (peterson@example.com)" Placeholder="Email" FloatLabelType="FloatLabelType.Never" aria-label="enter your email address" role="textbox"></SfTextBox>
+					</div>
+					<div class="mb-3 flex items-center ml-8 relative">
+						<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-3">To:</label>
+						<SfMultiSelect TValue="string[]" TItem="string" DataSource="@(new[] { "Thomas" , "Henry" } )" Value="@(new[] { "Thomas" })" Mode="VisualMode.Box" CssClass="e-bigger pl-1" class="w-full" aria-label="select the email recipients" role="listbox">
+							<MultiSelectFieldSettings Text="Text" Value="Text"></MultiSelectFieldSettings>
+						</SfMultiSelect>
+						<div class="absolute right-12" style="bottom: 8px;">
+							<a href="javascript:void(0);" class="mr-4 text-sm font-medium text-gray-700 dark:text-white" role="link">Cc</a>
+							<a href="javascript:void(0);" class="text-sm font-medium text-gray-700 dark:text-white" role="link">Bcc</a>
+						</div>
+					</div>
+					<div class="mb-4 flex items-center">
+						<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-3">Subject:</label>
+						<SfTextBox Cssclass="w-full e-bigger" Type="InputType.Text" Value="Issue with Online Banking App - Transactions Not Completing" Placeholder="Enter the subject" FloatLabelType="FloatLabelType.Never" aria-label="enter the subject" role="textbox"></SfTextBox>
+					</div>
+					<div class="mb-4">
+						<SfRichTextEditor ariaLabel="enter and format your text message" role="application" style="max-height: 500px; overflow-y: auto;">
+							<RichTextEditorToolbarSettings Type="ToolbarType.MultiRow" Items="@ToolbarItems"></RichTextEditorToolbarSettings>
+							<p>Dear Support Team,</p>
+							<p class="!mb-0">I am having trouble completing transactions in the Online Banking App. The app freezes at the confirmation screen every time I attempt to transfer money.</p>
+							<ul class="list-disc ml-6">
+								<li class="!mb-0">Error Message: None, the app freezes.</li>
+								<li class="!mb-0">Occurrence: Since September 28, 2024, 3:00 PM.</li>
+								<li class="!mb-0">Account Number: 123456789.</li>
+							</ul>
+							<p>Please assist with resolving this issue as soon as possible. Let me know if you need any further details.</p>
+							<p class="!mb-0">Best regards,</p>
+							<p class="font-bold !mb-0">Peterson</p>
+							<p class="!mb-0"><a href="javascript:void(0);" role="link">peterson&#64;email.com</a></p>
+						</SfRichTextEditor>
+					</div>
+					<div class="mb-6">
+						<SfUploader aria-label="upload files" role="button">
+							<UploaderAsyncSettings SaveUrl="https://blazor.syncfusion.com/services/production/api/FileUploader/Save" RemoveUrl="https://blazor.syncfusion.com/services/production/api/FileUploader/Remove"></UploaderAsyncSettings>
+						</SfUploader>
+					</div>
+					<div class="flex justify-end space-x-4">
+						<SfButton CssClass="e-outline" Type="button" Content="Discard" aria-label="discard this email" role="button"></SfButton>
+						<SfButton CssClass="e-primary" Type="submit" Content="Send" aria-label="send this email" role="button"></SfButton>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body">
+		<div class="d-lg-flex justify-content-lg-center align-items-lg-center p-0 w-100">
+			<div class="px-3 px-md-4 py-5 w-100">
+				<form action="#" onsubmit="@(()=>{})">
+					<div class="mb-3 d-flex align-items-center ms-3">
+						<label class="form-label small me-3 text-body-secondary mb-0">From:</label>
+						<SfTextBox Cssclass="w-100 e-bigger" Type="InputType.Email" Value="Peterson (peterson@example.com)" Placeholder="Email" FloatLabelType="FloatLabelType.Never" aria-label="enter your email address" role="textbox"></SfTextBox>
+					</div>
+					<div class="mb-3 d-flex align-items-center ms-4 ps-1 position-relative">
+						<label class="form-label small text-body-secondary ps-1 pe-3 mb-0">To:</label>
+						<SfMultiSelect TValue="string[]" TItem="string" CssClass="e-bigger ps-1" DataSource="@(new[] { "Thomas" , "Henry" } )" Value="@(new[] { "Thomas" })" Mode="VisualMode.Box" class="w-100" aria-label="select the email recipients" role="listbox">
+							<MultiSelectFieldSettings Text="text" Value="text"></MultiSelectFieldSettings>
+						</SfMultiSelect>
+						<div class="position-absolute d-flex align-items-center end-0 me-4 pe-3" style="bottom: 8px;">
+							<a href="javascript:void(0);" class="me-3 small text-body-secondary text-decoration-none fw-medium" role="link">Cc</a>
+							<a href="javascript:void(0);" class="small text-body-secondary text-decoration-none fw-medium" role="link">Bcc</a>
+						</div>
+					</div>
+					<div class="mb-3 d-flex align-items-center">
+						<label class="form-label small text-body-secondary me-3 mb-0">Subject:</label>
+						<SfTextBox Cssclass="w-100 e-bigger" Type="InputType.Text" Value="Issue with Online Banking App - Transactions Not Completing" Placeholder="Enter the subject" FloatLabelType="FloatLabelType.Never" aria-label="enter the subject" role="textbox"></SfTextBox>
+					</div>
+					<div class="mb-3 me-1 me-sm-0">
+						<SfRichTextEditor aria-label="enter and format your text message" role="application" style="max-height: 600px; overflow-y: auto;">
+							<RichTextEditorToolbarSettings Type="ToolbarType.MultiRow" Items="@ToolbarItems"></RichTextEditorToolbarSettings>
+							<p>Dear Support Team,</p>
+							<p class="mb-0">I am having trouble completing transactions in the Online Banking App. The app freezes at the confirmation screen every time I attempt to transfer money.</p>
+							<ul class="list-disc ms-6 mb-0">
+								<li class="mb-0">Error Message: None, the app freezes.</li>
+								<li class="mb-0">Occurrence: Since September 28, 2024, 3:00 PM.</li>
+								<li class="mb-0"> Account Number: 123456789.</li>
+							</ul>
+							<p>Please assist with resolving this issue as soon as possible. Let me know if you need any further details.</p>
+							<p class="mb-0">Best regards,</p>
+							<p class="fw-bold mb-0">Peterson</p>
+							<p class="mb-0"><a href="javascript:void(0);" role="link">peterson&#64;email.com</a></p>
+						</SfRichTextEditor>
+					</div>
+					<div class="mb-4">
+						<SfUploader aria-label="upload files" role="button">
+							<UploaderAsyncSettings SaveUrl="https://blazor.syncfusion.com/services/production/api/FileUploader/Save" RemoveUrl="https://blazor.syncfusion.com/services/production/api/FileUploader/Remove"></UploaderAsyncSettings>
+						</SfUploader>
+					</div>
+					<div class="d-flex justify-content-end gap-3">
+						<SfButton CssClass="e-outline" Type="button" Content="Discard" aria-label="discard this email" role="button"></SfButton>
+						<SfButton CssClass="e-primary" Type="submit" Content="Send" aria-label="send this email" role="button"></SfButton>
+					</div>
+				</form>
+			</div>
+		</div>
+	</section>
+} 

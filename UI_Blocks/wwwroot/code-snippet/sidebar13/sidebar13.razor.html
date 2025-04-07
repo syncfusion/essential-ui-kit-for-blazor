@@ -1,0 +1,192 @@
+﻿@page "/blocks/Sidebar-13"
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-950">
+        <div style="height: 600px;">
+            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-l !border-gray-200 dark:!border-gray-700" Width="328px" @bind-IsOpen="SidebarToggle" Position="SidebarPosition.Right" ShowBackdrop="true" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary" >
+                <div class="flex h-screen">
+                    <div class="py-6" style="width: 72px;">
+                        <div class="flex justify-center items-center px-3 mb-2">
+                            <img src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+                        </div>
+                        <SfListView DataSource="@Data" class="border-0 e-bigger" aria-label="quick navigation links" role="list">
+                            <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="MenuItem">
+                                <Template>
+                                    <div class="e-list-wrapper flex justify-center items-center">
+                                        <span class="e-icons e-large @context.FontIcon"></span>
+                                    </div>
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </div>
+                    <div class="pt-6 border-l h-full px-4 border-gray-200 dark:border-gray-700" style="width: 256px;">
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <span class="e-avatar e-avatar-circle e-avatar-small">
+                                    <img src="assets/images/common/avatar/avatar-2.jpg" alt="profile picture" />
+                                </span>
+                                <div class="ml-3">
+                                    <div class="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
+                                    <p class="mb-0 text-gray-900 dark:text-white">johnwick&#64;123.com</p>
+                                </div>
+                            </div>
+                            <SfButton CssClass="e-icons e-chevron-down-double e-flat e-large" Type="button" aria-label="view additional profile settings" role="button"></SfButton>
+                        </div>
+                        <div class="mt-4">
+                            <div class="flex justify-between">
+                                <SfButton IconCss="e-icons e-plus e-medium" CssClass="e-flat e-primary" Type="button" content="Add Task" aria-label="add task" role="button"></SfButton>
+                                <SfButton CssClass="e-medium e-icons e-more-horizontal-1 e-flat" Type="button" aria-label="more options" role="button"></SfButton>
+                            </div>
+                            <div class="mt-4 flex">
+                                <span class="pt-0.5">
+                                    <SfCheckBox @bind-Checked="HasResolvedInquiries" CssClass="e-bigger" aria-label="task 1" role="checkbox"></SfCheckBox>
+                                </span>
+                                <p class="text-base text-gray-900 dark:text-white ml-2 @(HasResolvedInquiries ? "line-through text-decoration-line-through" : "")">Effortlessly resolve 70% of customer inquiries with our all-in-one platform.</p>
+                            </div>
+                            <div class="mt-4 flex">
+                                <span class="pt-0.5">
+                                    <SfCheckBox @bind-Checked="IsCustomerServiceToolEnabled" CssClass="e-bigger" aria-label="task 2" role="checkbox"></SfCheckBox>
+                                </span>
+                                <p class="text-base text-gray-900 dark:text-white ml-2 @(IsCustomerServiceToolEnabled ? "line-through text-decoration-line-through" : "")">Online customer service tool used to operations.</p>
+                            </div>
+                            <div class="mt-4 flex">
+                                <span class="pt-0.5">
+                                    <SfCheckBox @bind-Checked="SupportsManagement" CssClass="e-bigger" aria-label="task 3" role="checkbox"></SfCheckBox>
+                                </span>
+                                <p class="text-base text-gray-900 dark:text-white ml-2 @(SupportsManagement ? "line-through" : "")">Managing and tracking client support.</p>
+                            </div>
+                        </div>
+                        <hr class="my-4 border-gray-200 dark:border-gray-700" />
+                        <div class="flex justify-between items-center">
+                            <span class="text-base text-gray-900 dark:text-white">Completed</span>
+                            <SfButton CssClass="e-medium e-icons e-more-horizontal-1 e-flat" Type="button" aria-label="more options" role="button"></SfButton>
+                        </div>
+                        <div class="mt-4 flex">
+                            <span class="pt-0.5">
+                                <SfCheckBox CssClass="e-bigger" @bind-Checked="ShouldAutoResolveInquiries" aria-label="task 4" role="checkbox"></SfCheckBox>
+                            </span>
+                            <p class="text-base text-gray-900 dark:text-white ml-2 @(ShouldAutoResolveInquiries ? "line-through" : "")">Effortlessly resolve 70% of customer inquiries with our all-in-one platform.</p>
+                        </div>
+                        <div id="toast" class="!absolute bottom-0 right-0"></div>
+                        <SfToast @ref="ToastInfo" CssClass="e-toast-info" Width="224" ShowCloseButton="true" Timeout="0" Target="#toast" NewestOnTop="true">
+                            <ToastPosition X="Right" Y="Bottom"></ToastPosition>
+                            <ToastEvents Created="@(() => CreatedHandler(ToastInfo))"></ToastEvents>
+                            <ToastTemplates>
+                                <Title>
+                                    <div class="pr-2">Adaptive Tiles Meeting</div>
+                                </Title>
+                                <Content>
+                                    <div>There was a problem with your network connection</div>
+                                </Content>
+                            </ToastTemplates>
+                        </SfToast>
+                    </div>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 top-0 right-0 absolute">
+        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="height: 600px;">
+            <SfSidebar Width="328px" @bind-IsOpen="SidebarToggle" Position="SidebarPosition.Right" ShowBackdrop="true" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+                <div class="d-flex vh-100">
+                    <div class="py-4 d-flex flex-column align-items-center" style="width: 72px;">
+                        <div class="d-flex justify-content-center align-items-center px-3 mb-2">
+                            <img src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+                        </div>
+                        <SfListView class="border-0 e-bigger" DataSource="@Data" aria-label="quick navigation links" role="list">
+                            <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="MenuItem">
+                                <Template>
+                                    <div class="e-list-wrapper d-flex justify-content-center align-items-center">
+                                        <span class="e-icons e-large @context.FontIcon"></span>
+                                    </div>
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </div>
+                    <div class="p-3 border-start border-light-subtle opacity-100" style="width: 256px;">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <div class="d-flex align-items-center">
+                                <span class="e-avatar e-avatar-circle e-avatar-small">
+                                    <img src="assets/images/common/avatar/avatar-2.jpg" alt="profile picture" />
+                                </span>
+                                <div class="ms-3">
+                                    <div class="text-body fs-6 fw-medium">John Wick</div>
+                                    <p class="mb-0 text-body-secondary">johnwick&#64;123.com</p>
+                                </div>
+                            </div>
+                            <SfButton CssClass="e-icons e-chevron-down-double e-flat" Type="button" aria-label="view additional profile settings" role="button"></SfButton>
+                        </div>
+                        <hr class="border-light-subtle opacity-100" />
+                        <div>
+                            <div class="d-flex justify-content-between">
+                                <SfButton CssClass="e-flat e-primary" IconCss="e-icons e-plus e-medium" Type="button" Content="Add Task" aria-label="add task" role="button"></SfButton>
+                                <SfButton CssClass="e-medium e-icons e-more-horizontal-1 e-flat" Type="button" aria-label="more options" role="button"></SfButton>
+                            </div>
+                            <div class="mt-2 d-flex">
+                                <span class="pt-1">
+                                    <SfCheckBox @bind-Checked="HasResolvedInquiries" CssClass="e-bigger" aria-label="task 4" role="checkbox"></SfCheckBox>
+                                </span>
+                                <p class="fs-6 text-body ms-2 ps-1 mb-0 @(HasResolvedInquiries ? "text-decoration-line-through" : "")">Effortlessly resolve 70% of customer inquiries with our all-in-one platform.</p>
+                            </div>
+                            <div class="mt-2 d-flex">
+                                <span class="pt-1">
+                                    <SfCheckBox @bind-Checked="IsCustomerServiceToolEnabled" CssClass="e-bigger" aria-label="task 2" role="checkbox"></SfCheckBox>
+                                </span>
+                                <p class="fs-6 text-body ms-2 ps-1 mb-0 @(IsCustomerServiceToolEnabled ? "text-decoration-line-through" : "")">Online customer service tool used to operations.</p>
+                            </div>
+                            <div class="mt-2 d-flex">
+                                <span class="pt-1">
+                                    <SfCheckBox @bind-Checked="SupportsManagement" CssClass="e-bigger" aria-label="task 3" role="checkbox"></SfCheckBox>
+                                </span>
+                                <p class="fs-6 text-body ms-2 ps-1 mb-0 @(SupportsManagement ? "text-decoration-line-through" : "")">Managing and tracking client support.</p>
+                            </div>
+                        </div>
+                        <hr class="border-light-subtle opacity-100" />
+                        <div class="d-flex justify-content-between align-items-center">
+                            <span class="fs-6 text-body-secondary">Completed</span>
+                            <SfButton CssClass="e-medium e-icons e-more-horizontal-1 e-flat" Type="button" aria-label="more options" role="button"></SfButton>
+                        </div>
+                        <div class="mt-3 d-flex">
+                            <span class="pt-1">
+                                <SfCheckBox CssClass="e-bigger" @bind-Checked="ShouldAutoResolveInquiries" aria-label="task 4" role="checkbox"></SfCheckBox>
+                            </span>
+                            <p class="fs-6 text-body ms-2 ps-1 mb-0 @(ShouldAutoResolveInquiries ? "text-decoration-line-through" : "")">Effortlessly resolve 70% of customer inquiries with our all-in-one platform.</p>
+                        </div>
+                        <div id="toast" class="position-absolute bottom-0 end-0"></div>
+                        <SfToast @ref="ToastInfo" CssClass="e-toast-info" Width="224px" ShowCloseButton="true" Timeout="0" Target="#toast" NewestOnTop="true">
+                            <ToastPosition X="Right" Y="Bottom"></ToastPosition>
+                            <ToastEvents Created="@(() => CreatedHandler(ToastInfo))"></ToastEvents>
+                            <ToastTemplates>
+                                <Title>
+                                    <div>Adaptive Tiles Meeting</div>
+                                </Title>
+                                <Content>
+                                    <div>There was a problem with your network connection.</div>
+                                </Content>
+                            </ToastTemplates>
+                        </SfToast>
+                    </div>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="py-3 px-1 position-absolute top-0 end-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

@@ -1,0 +1,151 @@
+﻿@page "/blocks/cards-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="px-4 py-20 sm:px-6">
+            <div class="grid gap-6 sm:grid-cols-2 sm:gap-8 lg:grid-cols-3 xl:gap-10">
+                <div class="e-card e-bigger rounded-lg pb-2 justify-start">
+                    <div class="e-card-header items-center">
+                        <span class="e-avatar e-avatar-circle e-avatar-large" style="background-image: url(assets/images/common/avatar/avatar-5.jpg);"></span>
+                        <div class="e-card-header-caption !pl-3">
+                            <div class="e-card-header-title">
+                                <p class="text-lg font-semibold text-gray-950 dark:text-gray-50 truncate">John Wick</p>
+                            </div>
+                            <div class="e-card-sub-title">
+                                <p class="text-sm text-gray-700 dark:text-gray-200 truncate">Content Writer</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="e-card-content flex-1">
+                        <div class="e-card-image mb-6 overflow-hidden rounded-lg">
+                            <img class="h-52 w-full object-cover" src="assets/images/card/author-highlight-card/local-gems.jpg" alt="local gems" />
+                        </div>
+                        <h1 class="mb-3 text-xl font-semibold text-gray-950 dark:text-gray-50 line-clamp-2">Local Gems</h1>
+                        <p class="text-base dark:text-gray-200">Uncover the best-kept secrets in your area with our guide to local hotspots. Whether it's a cozy cafe, a charming bookstore, or a hidden park, find new places to explore and enjoy.</p>
+                    </div>
+                </div>
+                <div class="e-card e-bigger rounded-lg pb-2 justify-start">
+                    <div class="e-card-header items-center">
+                        <span class="e-avatar e-avatar-circle e-avatar-large" style="background-image: url(assets/images/common/avatar/avatar-3.jpg);"></span>
+                        <div class="e-card-header-caption !pl-3">
+                            <div class="e-card-header-title">
+                                <p class="text-lg font-semibold text-gray-950 dark:text-gray-50 truncate">Anthony Star</p>
+                            </div>
+                            <div class="e-card-sub-title">
+                                <p class="text-sm text-gray-700 dark:text-gray-200 truncate">Traveler</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="e-card-content flex-1">
+                        <div class="e-card-image mb-6 overflow-hidden rounded-lg">
+                            <img class="h-52 w-full object-cover" src="assets/images/card/author-highlight-card/quick-recipes.jpg" alt="quick recipes" />
+                        </div>
+                        <h1 class="mb-3 text-xl font-semibold text-gray-950 dark:text-gray-50 line-clamp-2">Quick Recipes</h1>
+                        <p class="text-base dark:text-gray-200">Whip up tasty meals with minimal effort using our quick and easy recipes. Ideal for busy weeknights or last-minute dinners, these recipes feature simple ingredients.</p>
+                    </div>
+                </div>
+                <div class="e-card e-bigger rounded-lg pb-2 justify-start">
+                    <div class="e-card-header items-center">
+                        <span class="e-avatar e-avatar-circle e-avatar-large" style="background-image: url(assets/images/common/avatar/avatar-4.jpg);"></span>
+                        <div class="e-card-header-caption !pl-3">
+                            <div class="e-card-header-title">
+                                <p class="text-lg font-semibold text-gray-950 dark:text-gray-50 truncate">Patrick Mullan</p>
+                            </div>
+                            <div class="e-card-sub-title">
+                                <p class="text-sm text-gray-700 dark:text-gray-200 truncate">Professor</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="e-card-content flex-1">
+                        <div class="e-card-image mb-6 overflow-hidden rounded-lg">
+                            <img class="h-52 w-full object-cover" src="assets/images/card/author-highlight-card/effective-study.jpg" alt="effective study" />
+                        </div>
+                        <h1 class="mb-3 text-xl font-semibold text-gray-950 dark:text-gray-50 line-clamp-2">Effective Study</h1>
+                        <p class="text-base dark:text-gray-200">Enhance your study sessions with proven strategies to improve focus and retention. Learn time management techniques and active learning methods.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-dark-subtle">
+        <div class="py-5 px-3 px-md-4" style="min-height: 36rem;">
+            <div class="row g-xl-5 g-4">
+                <div class="col-sm-6 col-lg-4 d-flex">
+                    <div class="e-card e-bigger rounded-3">
+                        <div class="e-card-header align-items-center mb-2">
+                            <span class="e-avatar e-avatar-large e-avatar-circle" style="background-image: url(assets/images/common/avatar/avatar-5.jpg);"></span>
+                            <div class="e-card-header-caption">
+                                <div class="e-card-header-title text-body">
+                                    <p class="h6 fw-bold mb-0 text-truncate">John Wick</p>
+                                </div>
+                                <div class="e-card-sub-title text-body-secondary pt-0">
+                                    <p class="small mb-0 text-truncate">Content Creator</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="e-card-content flex-grow-1 text-body">
+                            <div class="e-card-image mb-4 rounded-3 overflow-hidden">
+                                <img class="object-fit-cover w-100" src="assets/images/card/author-highlight-card/local-gems.jpg" alt="local gems" style="height: 198px;" />
+                            </div>
+                            <h4 class="fw-bold mb-2 px-2 lh-sm text-truncate">Local Gems</h4>
+                            <p class="fs-6 mb-2 px-2">Uncover the best-kept secrets in your area with our guide to local hotspots. Whether it's a cozy cafe, a charming bookstore, or a hidden park, find new places to explore and enjoy.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 d-flex">
+                    <div class="e-card e-bigger rounded-3">
+                        <div class="e-card-header align-items-center mb-2">
+                            <span class="e-avatar e-avatar-large e-avatar-circle" style="background-image: url(assets/images/common/avatar/avatar-3.jpg);"></span>
+                            <div class="e-card-header-caption">
+                                <div class="e-card-header-title text-body">
+                                    <p class="h6 fw-bold mb-0 text-truncate">Anthony Star</p>
+                                </div>
+                                <div class="e-card-sub-title text-body-secondary pt-0">
+                                    <p class="small mb-0 text-truncate">Traveler</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="e-card-content flex-grow-1 text-body">
+                            <div class="e-card-image mb-4 rounded-3 overflow-hidden">
+                                <img class="object-fit-cover w-100" src="assets/images/card/author-highlight-card/quick-recipes.jpg" alt="quick recipes" style="height: 198px;" />
+                            </div>
+                            <h4 class="fw-bold mb-2 px-2 lh-sm text-truncate">Quick Recipes</h4>
+                            <p class="fs-6 mb-2 px-2">Whip up tasty meals with minimal effort using our quick and easy recipes. Ideal for busy weeknights or last-minute dinners, these recipes feature simple ingredients.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4 d-flex">
+                    <div class="e-card e-bigger rounded-3">
+                        <div class="e-card-header align-items-center mb-2">
+                            <span class="e-avatar e-avatar-large e-avatar-circle" style="background-image: url(assets/images/common/avatar/avatar-4.jpg);"></span>
+                            <div class="e-card-header-caption">
+                                <div class="e-card-header-title text-body">
+                                    <p class="h6 fw-bold mb-0 text-truncate">Patrick Mullan</p>
+                                </div>
+                                <div class="e-card-sub-title text-body-secondary pt-0">
+                                    <p class="small mb-0 text-truncate">Professor</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="e-card-content flex-grow-1 text-body">
+                            <div class="e-card-image mb-4 rounded-3 overflow-hidden">
+                                <img class="object-fit-cover w-100" src="assets/images/card/author-highlight-card/effective-study.jpg" alt="effective study" style="height: 198px;" />
+                            </div>
+                            <h4 class="fw-bold mb-2 px-2 lh-sm text-truncate">Effective Study</h4>
+                            <p class="fs-6 mb-2 px-2">Enhance your study sessions with proven strategies to improve focus and retention. Learn time management techniques and active learning methods.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+

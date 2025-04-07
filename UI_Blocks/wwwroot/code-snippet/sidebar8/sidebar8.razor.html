@@ -1,0 +1,155 @@
+﻿@page "/blocks/Sidebar-8"
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-950">
+        <div id="user-contact-sidebar" style="height: 680px;">
+            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+                <div class="flex items-center p-3 justify-between">
+                    <div class="flex items-center">
+                        <span class="e-avatar e-avatar-circle e-avatar-small">
+                            <img src="assets/images/common/avatar/avatar-2.jpg" alt="profile picture" />
+                        </span>
+                        <div class="ml-3">
+                            <div class="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
+                            <p class="mb-0 text-gray-900 dark:text-white">johnwick&#64;123.com</p>
+                        </div>
+                    </div>
+                    <SfButton CssClass="e-icons e-chevron-down-double e-flat e-large px-1" Type="button" aria-label="view additional profile settings" role="button"></SfButton>
+                </div>
+                <div>
+                    <SfAccordion class="bg-transparent !border-0" role="button">
+                        <AccordionItems>
+                            <AccordionItem iconCss="e-icons e-notes e-medium" CssClass="!border-0">
+                                <HeaderTemplate>
+                                    <div class="text-base font-normal pl-2">News</div>
+                                </HeaderTemplate>
+                            </AccordionItem>
+                            <AccordionItem iconCss="e-icons sf-icon-announcement-01 text-base" CssClass="!border-0">
+                                <HeaderTemplate>
+                                    <div class="text-base font-normal pl-2">Events</div>
+                                </HeaderTemplate>
+                            </AccordionItem>
+                            <AccordionItem iconCss="e-icons e-user e-medium" CssClass="!border-0">
+                                <HeaderTemplate>
+                                    <div class="text-base font-normal pl-2">People</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div></div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                            <AccordionItem iconCss="e-icons sf-icon-user-group-01 text-base" CssClass="!border-0">
+                                <HeaderTemplate>
+                                    <div class="text-base font-normal pl-2">Groups</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div></div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                        </AccordionItems>
+                    </SfAccordion>
+                </div>
+                <hr class="my-4 mx-3 border-gray-200 dark:border-gray-700" />
+                <p class="text-base text-gray-900 dark:text-white pb-3 px-3">Active Contacts</p>
+                <SfListView CssClass="border-0" DataSource="@ContactList" aria-label="view active contacts" role="list">
+                    <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
+                    <ListViewTemplates TValue="MenuItem">
+                        <Template>
+                            <div class="e-list-wrapper flex items-center">
+                                <span class="flex items-center">
+                                    <span class="e-avatar e-avatar-xsmall e-avatar-circle">
+                                        <img src="assets/images/common/avatar/@context.ProfileImage" alt="profile picture" />
+                                    </span>
+                                    <span class="text-base text-gray-700 dark:text-gray-300 ml-3">@context.Name</span>
+                                </span>
+                            </div>
+                        </Template>
+                    </ListViewTemplates>
+                </SfListView>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 top-0 left-0 absolute">
+        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div id="user-contact-sidebar" style="height: 700px;">
+            <SfSidebar Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+                <div class="d-flex justify-content-between align-items-center px-3 pb-3 mt-4">
+                    <div class="d-flex align-items-center">
+                        <span class="e-avatar e-avatar-small e-avatar-circle">
+                            <img src="assets/images/common/avatar/avatar-2.jpg" alt="profile picture" />
+                        </span>
+                        <div class="ms-2">
+                            <div class="fs-6 fw-medium text-body">John Wick</div>
+                            <p class="mb-0 text-body-secondary">johnwick&#64;123.com</p>
+                        </div>
+                    </div>
+                    <SfButton CssClass="e-icons e-chevron-down-double e-flat" Type="button" aria-label="view additional profile settings" role="button"></SfButton>
+                </div>
+                <div>
+                    <SfAccordion class="border-0 bg-transparent" role="button">
+                        <AccordionItems>
+                            <AccordionItem IconCss="e-icons e-notes e-medium" CssClass="border-0">
+                                <HeaderTemplate>
+                                    <div class="fs-6 fw-normal ps-1">News</div>
+                                </HeaderTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons sf-icon-announcement-01 fs-6" CssClass="border-0">
+                                <HeaderTemplate>
+                                    <div class="fs-6 fw-normal ps-1">Events</div>
+                                </HeaderTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons e-user e-medium" CssClass="border-0">
+                                <HeaderTemplate>
+                                    <div class="fs-6 fw-normal ps-1">People</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div></div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                            <AccordionItem IconCss="e-icons sf-icon-user-group-01 fs-6" CssClass="border-0">
+                                <HeaderTemplate>
+                                    <div class="fs-6 fw-normal ps-1">Groups</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div></div>
+                                </ContentTemplate>
+                            </AccordionItem>
+                        </AccordionItems>
+                    </SfAccordion>
+                </div>
+                <hr class="mx-3 opacity-100 border-light-subtle" />
+                <p class="fs-6 text-body-secondary m-3">Active Contacts</p>
+                <SfListView DataSource="ContactList" class="border-0 e-bigger" aria-label="view active contacts" role="list">
+                    <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
+                    <ListViewTemplates TValue="MenuItem">
+                        <Template>
+                            <div class="e-list-wrapper d-flex justify-content-between align-items-center ps-1">
+                                <span class="d-flex align-items-center">
+                                    <span class="e-avatar e-avatar-xsmall e-avatar-circle">
+                                        <img src="assets/images/common/avatar/@context.ProfileImage" alt="profile picture" />
+                                    </span>
+                                    <span class="fs-6 fw-normal ps-2 ms-1">@context.Name</span>
+                                </span>
+                            </div>
+                        </Template>
+                    </ListViewTemplates>
+                </SfListView>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="py-3 px-1 position-absolute top-0 start-0">
+        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

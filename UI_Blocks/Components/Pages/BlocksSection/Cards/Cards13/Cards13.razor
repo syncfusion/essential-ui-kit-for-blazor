@@ -1,0 +1,144 @@
+﻿@page "/blocks/cards-13"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+	
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="px-4 py-20 sm:px-6">
+            <div class="grid gap-8 lg:grid-cols-2 xl:gap-10">
+                <div class="e-card rounded-lg sm:flex-row-reverse e-bigger">
+                    <img class="sm:w-52 h-52 sm:h-auto object-cover" src="assets/images/card/highlighted-feature-card/urban-oasis.jpg" alt="urban oasis" />
+                    <div class="e-card-stacked pb-2">
+                        <div class="e-card-header">
+                            <div class="e-card-header-caption">
+                                <p class="text-sm mb-2 text-primary-600 !truncate">Corporate Template</p>
+                                <h1 class="text-xl font-semibold text-gray-950 dark:text-gray-50 !truncate">Urban Oasis</h1>
+                            </div>
+                        </div>
+                        <div class="e-card-content grow">
+                            <p class="text-base dark:text-gray-200">Discover tranquil retreats right in the middle of bustling cityscapes. Enjoy peaceful parks, serene rooftop gardens, and cozy spots that offer a calm escape from urban life.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg sm:flex-row-reverse e-bigger">
+                    <img class="sm:w-52 h-52 sm:h-auto object-cover" src="assets/images/card/highlighted-feature-card/exotic-wildlife.jpg" alt="exotic wildlife safaris" />
+                    <div class="e-card-stacked pb-2">
+                        <div class="e-card-header">
+                            <div class="e-card-header-caption">
+                                <p class="text-sm mb-2 text-primary-600 !truncate">Nature Template</p>
+                                <h1 class="text-xl font-semibold text-gray-950 dark:text-gray-50 !truncate">Exotic Wildlife Safaris</h1>
+                            </div>
+                        </div>
+                        <div class="e-card-content grow">
+                            <p class="text-base dark:text-gray-200">Embark on thrilling safaris to witness exotic wildlife in their natural habitats. Experience close encounters with majestic animals and stunning landscapes.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg sm:flex-row-reverse e-bigger">
+                    <img class="sm:w-52 h-52 sm:h-auto object-cover" src="assets/images/card/highlighted-feature-card/island-getaways.jpg" alt="island getaways" />
+                    <div class="e-card-stacked pb-2">
+                        <div class="e-card-header">
+                            <div class="e-card-header-caption">
+                                <p class="text-sm mb-2 text-primary-600 !truncate">Nature Template</p>
+                                <h1 class="text-xl font-semibold text-gray-950 dark:text-gray-50 !truncate">Island Getaways</h1>
+                            </div>
+                        </div>
+                        <div class="e-card-content grow">
+                            <p class="text-base dark:text-gray-200">Relish the beauty of idyllic islands with pristine beaches, clear blue waters, and luxurious resorts. Perfect for relaxation, adventure, and exploring vibrant marine life.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg sm:flex-row-reverse e-bigger">
+                    <img class="sm:w-52 h-52 sm:h-auto object-cover" src="assets/images/card/highlighted-feature-card/boutique-hotels.jpg" alt="boutique hotels" />
+                    <div class="e-card-stacked pb-2">
+                        <div class="e-card-header">
+                            <div class="e-card-header-caption">
+                                <p class="text-sm mb-2 text-primary-600 !truncate">Corporate Template</p>
+                                <h1 class="text-xl font-semibold text-gray-950 dark:text-gray-50 !truncate">Boutique Hotels</h1>
+                            </div>
+                        </div>
+                        <div class="e-card-content grow">
+                            <p class="text-base dark:text-gray-200">Enjoy a unique lodging experience at boutique hotels known for their distinctive charm and personalized service. Each hotel offers stylish rooms and exclusive amenities.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-dark-subtle">
+        <div class="py-5 px-3 px-md-4">
+            <div class="row g-xl-5 g-4">
+                <div class="col-lg-6 d-flex">
+                    <div class="e-card e-bigger rounded-3 d-flex flex-sm-row-reverse flex-col">
+                        <img class="col-sm-3 object-fit-cover" src="assets/images/card/highlighted-feature-card/urban-oasis.jpg" alt="urban oasis" style="min-width: 266px; min-height: 266px;" />
+                        <div class="e-card-stacked p-2">
+                            <div class="e-card-header">
+                                <div class="e-card-header-caption">
+                                    <p class="small fw-bold text-primary m-0 text-truncate">Corporate Template</p>
+                                </div>
+                            </div>
+                            <div class="e-card-content flex-grow-1 text-body">
+                                <h5 class="mb-2 fw-bold lh-sm text-truncate">Urban Oasis</h5>
+                                <p class="fs-6 mb-0">Discover tranquil retreats right in the middle of bustling cityscapes. Enjoy peaceful parks, serene rooftop gardens, and cozy spots that offer a calm escape from urban life.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex">
+                    <div class="e-card e-bigger rounded-3 d-flex flex-sm-row-reverse flex-col">
+                        <img class="col-sm-3 object-fit-cover" src="assets/images/card/highlighted-feature-card/exotic-wildlife.jpg" alt="exotic wildlife safaris" style="min-width: 266px; min-height: 266px;" />
+                        <div class="e-card-stacked p-2">
+                            <div class="e-card-header">
+                                <div class="e-card-header-caption">
+                                    <p class="small fw-bold text-primary m-0 text-truncate">Nature Template</p>
+                                </div>
+                            </div>
+                            <div class="e-card-content flex-grow-1 text-body">
+                                <h5 class="mb-2 fw-bold lh-sm text-truncate">Exotic Wildlife Safaris</h5>
+                                <p class="fs-6 mb-0">Embark on thrilling safaris to witness exotic wildlife in their natural habitats. Experience close encounters with majestic animals, stunning landscapes.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex">
+                    <div class="e-card e-bigger rounded-3 d-flex flex-sm-row-reverse flex-col">
+                        <img class="col-sm-3 object-fit-cover" src="assets/images/card/highlighted-feature-card/island-getaways.jpg" alt="island getaways" style="min-width: 266px; min-height: 266px;" />
+                        <div class="e-card-stacked p-2">
+                            <div class="e-card-header">
+                                <div class="e-card-header-caption">
+                                    <p class="small fw-bold text-primary m-0 text-truncate">Nature Template</p>
+                                </div>
+                            </div>
+                            <div class="e-card-content flex-grow-1 text-body">
+                                <h5 class="mb-2 fw-bold lh-sm text-truncate">Island Getaways</h5>
+                                <p class="fs-6 mb-0">Relish the beauty of idyllic islands with pristine beaches, clear blue waters, and luxurious resorts. Perfect for relaxation, adventure, and exploring vibrant marine life.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 d-flex">
+                    <div class="e-card e-bigger rounded-3 d-flex flex-sm-row-reverse flex-col">
+                        <img class="col-sm-3 object-fit-cover" src="assets/images/card/highlighted-feature-card/boutique-hotels.jpg" alt="boutique hotels" style="min-width: 266px; min-height: 266px;" />
+                        <div class="e-card-stacked p-2">
+                            <div class="e-card-header">
+                                <div class="e-card-header-caption">
+                                    <p class="small fw-bold text-primary m-0 text-truncate">Corporate Template</p>
+                                </div>
+                            </div>
+                            <div class="e-card-content flex-grow-1 text-body">
+                                <h5 class="mb-2 fw-bold lh-sm text-truncate">Boutique Hotels</h5>
+                                <p class="fs-6 mb-0">Enjoy a unique lodging experience at boutique hotels known for their distinctive charm and personalized service. Each hotel offers stylish rooms, exclusive amenities.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

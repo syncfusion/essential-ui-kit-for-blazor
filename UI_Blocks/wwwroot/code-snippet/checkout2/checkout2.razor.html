@@ -1,0 +1,252 @@
+﻿@page "/blocks/checkout-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-gray-50 dark:bg-gray-950">
+		<div id="checkout-accordion" class="container-lg px-4 md:px-6 text-gray-700 dark:text-gray-300 py-20" style="min-height: 1145px;">
+			<div class="m-auto w-full max-w-3xl">
+				<h2 class="font-semibold text-xl">Checkout</h2>
+				<div class="e-bigger mt-4 mb-6">
+					<SfAccordion class="border-t-0 border-l-0 border-r-0 border-b border-gray-200 dark:border-gray-600" ExpandMode="ExpandMode.Single" role="button">
+						<AccordionItems>
+							<AccordionItem Expanded="true">
+								<HeaderTemplate>
+									<div class="font-normal">Delivery information</div>
+								</HeaderTemplate>
+								<ContentTemplate>
+									<div>
+										<div class="e-card pt-3 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+											<div class="e-card-content !pt-1 !px-4">
+												<div class="e-bigger">
+													<SfRadioButton Label="Trig Yellow - (+1) 432 434 2345" Name="delivery" Value="Trig Yellow - (+1) 432 434 2345" Checked="@SelectedDeliveryInfo" AriaLabel="trig yellow - (+1) 432 434 2345" role="radio"></SfRadioButton>
+												</div>
+												<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">68 Dakota St, San Francisco, California 94107.</div>
+											</div>
+										</div>
+										<div class="e-card pt-3 mt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+											<div class="e-card-content !pt-1 !px-4">
+												<div class="e-bigger">
+													<SfRadioButton Label="G8 - (+1) 432 000 2245" Name="delivery" Value="G8 - (+1) 432 000 2245" Checked="@SelectedDeliveryInfo" AriaLabel="g8 - (+1) 432 000 2245" role="radio"></SfRadioButton>
+												</div>
+												<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">1 Dakota St, San Francisco, California 94107.</div>
+											</div>
+										</div>
+										<div class="e-bigger mt-5">
+											<SfButton CssClass="e-flat m-1" Content="Add new delivery information" IconCss="e-icons e-plus" Type="button" AriaLabel="add new delivery information" role="button"></SfButton>
+										</div>
+									</div>
+								</ContentTemplate>
+							</AccordionItem>
+						</AccordionItems>
+					</SfAccordion>
+				</div>
+				<form action="#" onsubmit="event.preventDefault();">
+					<div class="grid gap-5">
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+							<div>
+								<label class="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300">First name</label>
+								<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="First name" FloatLabelType="FloatLabelType.Never" aria-label="enter the first name" role="textbox"></SfTextBox>
+							</div>
+							<div>
+								<label class="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300">Last name</label>
+								<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Last name" FloatLabelType="FloatLabelType.Never" aria-label="enter the last name" role="textbox"></SfTextBox>
+							</div>
+						</div>
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+							<div>
+								<label class="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300">Country</label>
+								<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="Country" aria-label="choose a country" role="listbox"></SfDropDownList>
+							</div>
+							<div>
+								<label class="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300">City</label>
+								<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="City" aria-label="choose a city" role="listbox"></SfDropDownList>
+							</div>
+						</div>
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+							<div>
+								<label class="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300">Phone number</label>
+								<div class="flex space-x-2">
+									<div class="w-2/5">
+										<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="+1" aria-label="choose a country code" role="listbox"></SfDropDownList>
+									</div>
+									<div class="w-4/5">
+										<SfMaskedTextBox CssClass="e-bigger" Mask="9999999999" Placeholder="432 432 4321" PromptChar="' '" aria-label="enter your mobile number" role="textbox"></SfMaskedTextBox>
+									</div>
+								</div>
+							</div>
+							<div>
+								<label class="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300">Email</label>
+								<SfTextBox CssClass="e-bigger" Type="InputType.Email" Placeholder="Email" FloatLabelType="FloatLabelType.Never" aria-label="enter the email address" role="textbox"></SfTextBox>
+							</div>
+						</div>
+						<div class="grid grid-cols-1 md:grid-cols-2 gap-5 w-full">
+							<div>
+								<label class="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300">Company name</label>
+								<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Company name" FloatLabelType="FloatLabelType.Never" aria-label="enter the company name" role="textbox"></SfTextBox>
+							</div>
+							<div>
+								<label class="block text-sm font-semibold mb-1 text-gray-700 dark:text-gray-300">VAT number</label>
+								<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="VAT number" FloatLabelType="FloatLabelType.Never" aria-label="enter the VAT number" role="textbox"></SfTextBox>
+							</div>
+						</div>
+					</div>
+					<div class="e-bigger mt-5">
+						<label class="block text-sm mb-1">Additional info</label>
+						<SfTextArea CssClass="e-bigger" Placeholder="Enter additional information here" FloatLabelType="FloatLabelType.Never" ResizeMode="Resize.Vertical" Width="100%" aria-label="enter the additional information" role="textbox"></SfTextArea>
+					</div>
+					<div class="mt-5">
+						<SfButton CssClass="w-full border-gray-300 dark:border-gray-500" Type="button" Content="Add new info" IconCss="e-icons e-plus" aria-label="add new info" role="button"></SfButton>
+					</div>
+				</form>
+				<div class="e-bigger mt-8">
+					<SfAccordion class="border-t-0 border-l-0 border-r-0 border-b border-gray-200 dark:border-gray-600" role="button">
+						<AccordionItems>
+							<AccordionItem>
+								<HeaderTemplate>
+									<div class="font-normal">Payment methods</div>
+								</HeaderTemplate>
+								<ContentTemplate>
+									<div></div>
+								</ContentTemplate>
+							</AccordionItem>
+							<AccordionItem>
+								<HeaderTemplate>
+									<div>Product</div>
+								</HeaderTemplate>
+								<ContentTemplate>
+									<div></div>
+								</ContentTemplate>
+							</AccordionItem>
+						</AccordionItems>
+					</SfAccordion>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body">
+		<div id="checkout-accordion" class="mx-auto row px-3 px-md-4 py-5" style="min-height: 1076px;">
+			<div class="mx-auto px-0 col-md-12 col-xl-6 col-lg-9">
+				<h2 class="fw-semibold fs-4">Checkout</h2>
+				<div class="e-bigger my-4">
+					<SfAccordion class="border-0 border-bottom rounded-0 border-light-subtle" ExpandMode="ExpandMode.Single" role="button">
+						<AccordionItems>
+							<AccordionItem Expanded="true">
+								<HeaderTemplate>
+									<div class="content-text-color">Delivery information</div>
+								</HeaderTemplate>
+								<ContentTemplate>
+									<div>
+										<div class="e-card">
+											<div class="e-card-content">
+												<div class="e-bigger">
+													<SfRadioButton Label="Trig Yellow - (+1) 432 434 2345" Value="Trig Yellow - (+1) 432 434 2345" Name="delivery" Checked="@SelectedDeliveryInfo" aria-label="trig yellow - (+1) 432 434 2345" role="radio"></SfRadioButton>
+												</div>
+												<div class="mt-1 ms-4 text-light-emphasis">68 Dakota St, San Francisco, California 94107.</div>
+											</div>
+										</div>
+										<div class="e-card mt-3">
+											<div class="e-card-content">
+												<div class="e-bigger">
+													<SfRadioButton Label="G8 - (+1) 432 000 2245" Name="delivery" Value="G8 - (+1) 432 000 2245" Checked="@SelectedDeliveryInfo" aria-label="g8 - (+1) 432 000 2245" role="radio"></SfRadioButton>
+												</div>
+												<div class="mt-1 ms-4 B5 text-light-emphasis">1 Dakota St, San Francisco, California 94107.</div>
+											</div>
+										</div>
+										<div class="e-bigger mt-3">
+											<SfButton CssClass="e-flat" Type="button" Content="Add new delivery information" IconCss="e-icons e-plus" aria-label="add new delivery information" role="button"></SfButton>
+										</div>
+									</div>
+								</ContentTemplate>
+							</AccordionItem>
+						</AccordionItems>
+					</SfAccordion>
+				</div>
+				<form action="#" onsubmit="event.preventDefault();">
+					<div class="row g-3">
+						<div class="col-md-6">
+							<label class="text-dark-emphasis fw-medium mb-1">First name</label>
+							<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="First name" FloatLabelType="FloatLabelType.Never" aria-label="enter the first name" role="textbox"></SfTextBox>
+						</div>
+						<div class="col-md-6">
+							<label class="text-dark-emphasis fw-medium mb-1">Last name</label>
+							<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Last name" FloatLabelType="FloatLabelType.Never" aria-label="enter the last name" role="textbox"></SfTextBox>
+						</div>
+					</div>
+					<div class="row g-3 mt-0">
+						<div class="col-md-6">
+							<label class="text-dark-emphasis fw-medium mb-1">Country</label>
+							<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="Country" aria-label="choose a country" role="listbox"></SfDropDownList>
+						</div>
+						<div class="col-md-6">
+							<label class="text-dark-emphasis fw-medium mb-1">City</label>
+							<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="City" aria-label="choose a city" role="listbox"></SfDropDownList>
+						</div>
+					</div>
+					<div class="row g-3 mt-0">
+						<div class="col-md-6">
+							<label class="text-dark-emphasis fw-medium mb-1">Phone number</label>
+							<div class="row">
+								<div class="col-4 px-2">
+									<SfDropDownList CssClass="e-bigger" TValue="string" TItem="string" Placeholder="+1" aria-label="choose a country code" role="listbox"></SfDropDownList>
+								</div>
+								<div class="col-8 ps-0">
+									<SfMaskedTextBox CssClass="e-bigger" Mask="9999999999" Placeholder="432 432 4321" PromptChar="' '" aria-label="enter your mobile number" role="textbox"></SfMaskedTextBox>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-6">
+							<label class="text-dark-emphasis fw-medium mb-1">Email</label>
+							<SfTextBox CssClass="e-bigger" Type="InputType.Email" Placeholder="Email" FloatLabelType="FloatLabelType.Never" aria-label="enter the email address" role="textbox"></SfTextBox>
+						</div>
+					</div>
+					<div class="row g-3 mt-0">
+						<div class="col-md-6">
+							<label class="text-dark-emphasis fw-medium mb-1">Company name</label>
+							<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Company name" FloatLabelType="FloatLabelType.Never" aria-label="enter the company name" role="textbox"></SfTextBox>
+						</div>
+						<div class="col-md-6">
+							<label class="text-dark-emphasis fw-medium mb-1">VAT number</label>
+							<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="VAT number" FloatLabelType="FloatLabelType.Never" aria-label="enter the VAT number" role="textbox"></SfTextBox>
+						</div>
+					</div>
+					<div class="e-bigger mt-3">
+						<label class="text-dark-emphasis fw-medium d-block mb-1">Additional info</label>
+						<SfTextArea CssClass="e-bigger" ResizeMode="Resize.Vertical" Width="100%" Placeholder="Enter additional information here" FloatLabelType="FloatLabelType.Never" aria-label="enter the additional information" role="textbox"></SfTextArea>
+					</div>
+					<div class="mt-3" cssClass="border-bottom">
+						<SfButton CssClass="e-block e-secondary" Type="button" Content="Add new info" IconCss="e-icons e-plus" aria-label="add new info" role="button"></SfButton>
+					</div>
+				</form>
+				<div class="e-bigger mt-4">
+					<SfAccordion class="border-0 border-bottom rounded-0 border-light-subtle" role="button">
+						<AccordionItems>
+							<AccordionItem>
+								<HeaderTemplate>
+									<div>Payment methods</div>
+								</HeaderTemplate>
+								<ContentTemplate>
+									<div></div>
+								</ContentTemplate>
+							</AccordionItem>
+							<AccordionItem>
+								<HeaderTemplate>
+									<div>Product</div>
+								</HeaderTemplate>
+								<ContentTemplate>
+									<div></div>
+								</ContentTemplate>
+							</AccordionItem>
+						</AccordionItems>
+					</SfAccordion>
+				</div>
+			</div>
+		</div>
+	</section>
+}

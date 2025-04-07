@@ -1,0 +1,222 @@
+@page "/blocks/navbar-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-gray-50 dark:bg-gray-950">
+		<div>
+			<div class="border border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-700">
+				<div class="flex items-center justify-between py-2 ms-6 me-1 sm:me-2.5 lg:me-6">
+					<div class="flex items-center">
+						<img class="mr-3 h-7" src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+						<span class="text-lg font-semibold text-gray-900 dark:text-white">Company Name</span>
+					</div>
+					<div class="flex items-center">
+						<div class="hidden lg:block mr-4">
+							<div class="e-input-group flex">
+								<input class="e-input" type="text" placeholder="Search" aria-label="search" role="textbox" />
+								<span class="e-input-group-icon e-icons e-search"></span>
+							</div>
+						</div>
+						<SfButton CssClass="sf-icon-notification-bell-02 leading-3 text-base e-flat mr-1 sm:mr-2" Type="button" aria-label="notification" role="button"></SfButton>
+						<div class="border border-r border-gray-200 dark:border-gray-600 hidden sm:block mr-2 h-7"></div>
+						<SfButton CssClass="e-icons e-grid-view e-flat hidden sm:block mr-2" Type="button" aria-label="grid view" role="button"></SfButton>
+						<div class="border border-r border-gray-200 dark:border-gray-600 hidden sm:block mr-1 h-7"></div>
+						<span class="e-avatar e-avatar-small e-avatar-circle hidden sm:block ml-2 mr-2 lg:mr-0">
+							<img src="assets/images/common/avatar/avatar-3.jpg" alt="profile picture" />
+						</span>
+						<div class="border border-r border-gray-200 dark:border-gray-600 block lg:hidden ms-1 h-7"></div>
+						<span id="menu" class="block lg:hidden">
+							<SfMenu TValue="MenuItem" HamburgerMode="true" ShowItemOnClick="true" Title="">
+								<MenuItems>
+									<MenuItem Text="Builders"></MenuItem>
+									<MenuItem Text="Features"></MenuItem>
+									<MenuItem Text="Websites"></MenuItem>
+									<MenuItem Text="Elements"></MenuItem>
+									<MenuItem Text="Pricing"></MenuItem>
+								</MenuItems>
+							</SfMenu>
+						</span>
+					</div>
+				</div>
+			</div>
+			<div class="border border-t-0 border-gray-200 dark:border-gray-600 bg-gray-100 dark:bg-gray-700 block sm:h-auto mx-auto">
+				<div class="flex flex-col sm:flex-row justify-between px-0 sm:px-6 py-2.5">
+					<div class="flex items-center sm:col-span-8 md:col-span-8 lg:col-span-10 xl:col-span-10 self-start px-6 sm:px-0">
+						<SfBreadcrumb @ref="Breadcrumb" ItemClicked="OnBreadcrumbItemClicked" CssClass="e-breadcrumb-chips flex items-center" OverflowMode="BreadcrumbOverflowMode.None">
+							<BreadcrumbItems>
+								<BreadcrumbItem Text="Personal" aria-label="personal breadcrumb items"></BreadcrumbItem>
+								<BreadcrumbItem Text="CompanyName.com" aria-label="company-oriented breadcrumb items"></BreadcrumbItem>
+							</BreadcrumbItems>
+							<BreadcrumbTemplates>
+								<SeparatorTemplate>
+									<span class="text-base e-icons e-chevron-right"></span>
+								</SeparatorTemplate>
+								<ItemTemplate>
+									<div class="flex items-center">
+										@if (context.Text == "Personal")
+										{
+											<span class="e-avatar e-avatar-xsmall e-avatar-circle mr-1">
+												<img src="assets/images/common/avatar/avatar-3.jpg" alt="profile picture" />
+											</span>
+										}
+									</div>
+									@if (context.Text == "Personal")
+									{
+										<SfDropDownButton @ref="MainDropdown" CssClass="e-flat" Content="@context.Text" Type="Button" aria-label="choose an item" role="button">
+											<DropDownButtonEvents Opened="OnMainOptionsOpened" Closed="OnMainOptionsClosed" ItemSelected="OnMenuItemSelected"></DropDownButtonEvents>
+											<DropDownMenuItems>
+												<DropDownMenuItem Text="CompanyName.com" Id="item1" />
+											</DropDownMenuItems>
+										</SfDropDownButton>
+									}
+									@if (context.Text == "CompanyName.com")
+									{
+										<SfButton CssClass="e-flat" Content="@context.Text" Type="Button" aria-label="open company name website" role="button"></SfButton>
+									}
+								</ItemTemplate>
+							</BreadcrumbTemplates>
+						</SfBreadcrumb>
+					</div>
+					<div class="flex items-center gap-2 w-full sm:w-max px-6 sm:px-0">
+						<div class="w-1/2 mt-3 sm:mt-0">
+							<SfButton CssClass="e-primary w-full" Type="button" aria-label="open app" role="button">Open App</SfButton>
+						</div>
+						<div class="w-1/2 md:w-full mt-3 sm:mt-0 p-0">
+							<SfDropDownButton @ref="MoreOptionsDropdown" CssClass="e-outline e-primary w-full" Content="More" id="moreOptionsDropdown" Type="button" aria-label="choose from more options" role="button">
+								<DropDownButtonEvents Opened="OnMoreOptionsOpened" Closed="OnMoreOptionsClosed"></DropDownButtonEvents>
+								<DropDownMenuItems>
+									<DropDownMenuItem Text="Create new app" IconCss="e-icons e-folder" />
+									<DropDownMenuItem Text="Inbox" IconCss="e-icons e-folder" />
+									<DropDownMenuItem Text="App info" IconCss="e-icons e-folder" />
+									<DropDownMenuItem Text="Edit app" IconCss="e-icons e-folder" />
+								</DropDownMenuItems>
+							</SfDropDownButton>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="hidden lg:flex px-4 py-1 bg-gray-100 dark:bg-gray-700 border border-t-0 border-gray-200 dark:border-gray-600">
+				<SfMenu TValue="MenuItem">
+					<MenuItems>
+						<MenuItem Text="Builders"></MenuItem>
+						<MenuItem Text="Features"></MenuItem>
+						<MenuItem Text="Websites"></MenuItem>
+						<MenuItem Text="Elements"></MenuItem>
+						<MenuItem Text="Pricing"></MenuItem>
+					</MenuItems>
+				</SfMenu>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section>
+		<div class="border border-light-subtle bg-body-tertiary py-2 ps-4 pe-2 pe-lg-4">
+			<div class="d-flex align-items-center justify-content-between">
+				<div class="d-flex align-items-center">
+					<img class="me-2" src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
+					<h5 class="fw-bold text-body fs-5 mb-0">Company Name</h5>
+				</div>
+				<div class="d-flex align-items-center">
+					<div class="d-none d-lg-block me-3">
+						<div class="e-input-group d-flex">
+							<input class="e-input" type="text" placeholder="Search" aria-label="search" role="textbox" />
+							<span class="e-input-group-icon e-icons e-search border-start-0"></span>
+						</div>
+					</div>
+					<SfButton CssClass="sf-icon-notification-bell-01 fs-6 e-flat me-0 me-sm-3" Type="button" aria-label="notification" role="button"></SfButton>
+					<div class="border-end border-secondary-subtle d-none d-sm-block me-3" style="height: 24px;"></div>
+					<SfButton CssClass="e-icons e-grid-view e-flat d-none d-sm-block me-3 e-medium" Type="button" aria-label="grid view" role="button"></SfButton>
+					<div class="border-end border-secondary-subtle d-none d-sm-block" style="height: 24px;"></div>
+					<span class="e-avatar e-avatar-small e-avatar-circle d-none d-sm-block ms-3">
+						<img src="assets/images/common/avatar/avatar-3.jpg" alt="profile picture" />
+					</span>
+					<div class="border-end border-secondary-subtle d-block d-lg-none ms-2 ms-sm-3" style="height: 24px;"></div>
+					<span id="menu" class="d-block d-lg-none">
+						<SfMenu TValue="MenuItem" CssClass="bg-body-tertiary" HamburgerMode="true" ShowItemOnClick="true" Title="">
+							<MenuItems>
+								<MenuItem Text="Builders"></MenuItem>
+								<MenuItem Text="Features"></MenuItem>
+								<MenuItem Text="Websites"></MenuItem>
+								<MenuItem Text="Elements"></MenuItem>
+								<MenuItem Text="Pricing"></MenuItem>
+							</MenuItems>
+						</SfMenu>
+					</span>
+				</div>
+			</div>
+		</div>
+		<div class="border border-light-subtle bg-body-tertiary border-top-0 d-block mx-auto">
+			<div class="px-4 py-3 d-flex m-0 row justify-content-between">
+				<div class="d-flex align-items-center justify-content-sm-start col-sm-8 col-md-8 col-lg-10 col-xl-10 m-0 p-0">
+					<SfBreadcrumb @ref="Breadcrumb" CssClass="e-breadcrumb-chips d-flex align-items-center" ItemClicked="OnBreadcrumbItemClicked" OverflowMode="BreadcrumbOverflowMode.None">
+						<BreadcrumbItems>
+							<BreadcrumbItem Text="Personal" aria-label="personal breadcrumb items"></BreadcrumbItem>
+							<BreadcrumbItem Text="CompanyName.com" aria-label="company-oriented breadcrumb items"></BreadcrumbItem>
+						</BreadcrumbItems>
+						<BreadcrumbTemplates>
+							<SeparatorTemplate>
+								<span class="text-base e-icons e-chevron-right"></span>
+							</SeparatorTemplate>
+							<ItemTemplate>
+								<div class="d-flex align-items-center">
+									@if (context.Text == "Personal")
+									{
+										<span class="e-avatar e-avatar-small e-avatar-circle me-2">
+											<img src="assets/images/common/avatar/avatar-3.jpg" alt="profile picture" />
+										</span>
+									}
+								</div>
+								@if (context.Text == "Personal")
+								{
+									<SfDropDownButton @ref="MainDropdown" CssClass="e-flat" Content="@context.Text" Type="Button" aria-label="choose an item" role="button">
+										<DropDownButtonEvents Opened="OnMainOptionsOpened" Closed="OnMainOptionsClosed" ItemSelected="OnMenuItemSelected"></DropDownButtonEvents>
+										<DropDownMenuItems>
+											<DropDownMenuItem Text="CompanyName.com" Id="item1" />
+										</DropDownMenuItems>
+									</SfDropDownButton>
+								}
+								@if (context.Text == "CompanyName.com")
+								{
+									<SfButton CssClass="e-flat" Content="@context.Text" Type="Button" aria-label="open company name website" role="button"></SfButton>
+								}
+							</ItemTemplate>
+						</BreadcrumbTemplates>
+					</SfBreadcrumb>
+				</div>
+				<div class="d-flex p-0 pe-2 pe-md-2 gap-2 col-sm-4 col-md-4 col-lg-2 col-xl-2 m-0">
+					<div class="col-6 mt-3 mt-sm-0">
+						<SfButton CssClass="e-primary p-lg-1 px-2 w-100" Type="button" aria-label="open app" role="button">Open App</SfButton>
+					</div>
+					<div class="p-0 col-6 mt-3 mt-sm-0">
+						<SfDropDownButton @ref="MoreOptionsDropdown" id="moreOptionsDropdown" class="e-outline e-primary w-100" Content="More" Type="button" aria-label="choose from more options" role="button">
+							<DropDownButtonEvents Opened="OnMoreOptionsOpened" Closed="OnMoreOptionsClosed"></DropDownButtonEvents>
+							<DropDownMenuItems>
+								<DropDownMenuItem Text="Create new app" IconCss="e-icons e-folder" />
+								<DropDownMenuItem Text="Inbox" IconCss="e-icons e-folder" />
+								<DropDownMenuItem Text="App info" IconCss="e-icons e-folder" />
+								<DropDownMenuItem Text="Edit app" IconCss="e-icons e-folder" />
+							</DropDownMenuItems>
+						</SfDropDownButton>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="d-none d-lg-flex ps-3 pe-4 bg-body-tertiary border border-top-0 border-light-subtle bg-body-tertiary" style="height: 40px; display: flex; align-items: center;">
+			<SfMenu TValue="MenuItem">
+				<MenuItems>
+					<MenuItem Text="Builders"></MenuItem>
+					<MenuItem Text="Features"></MenuItem>
+					<MenuItem Text="Websites"></MenuItem>
+					<MenuItem Text="Elements"></MenuItem>
+					<MenuItem Text="Pricing"></MenuItem>
+				</MenuItems>
+			</SfMenu>
+		</div>
+	</section>
+}
