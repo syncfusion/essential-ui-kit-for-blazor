@@ -1,0 +1,20 @@
+::deep #dialog-container .e-dialog .e-dlg-content {
+    border: inherit;
+    border-inline: none;
+    border-radius: 0;
+}
+
+::deep #dialog-container .e-accordion .e-acrdn-item {
+    border: inherit;
+}
+
+::deep #dialog-container .e-accordion .e-acrdn-item .e-acrdn-header .e-toggle-icon {
+    margin-top: 33px;
+    transform: translate(25%, -50%)
+}
+
+::deep #dialog-container .e-stepper .e-step-container .e-step,
+::deep #dialog-container .e-stepper .e-step-container .e-indicator {
+    min-width: 10px;
+    min-height: 10px;
+}

@@ -1,0 +1,208 @@
+@page "/blocks/filter-panel-8"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div style="height: 1440px; width: @Width; float: right;">
+            <SfSidebar class="flex flex-col bg-white dark:bg-gray-800" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div>
+                        <div class="flex justify-between items-center p-4">
+                            <h2 class="text-base font-semibold text-gray-900 dark:text-white">Knowledge Base</h2>
+                        </div>
+                        <div class="pt-0 p-4">
+                            <SfAccordion class="bg-transparent mt-2 mb-3 rounded-sm" ExpandMode="ExpandMode.Single" role="accordion">
+                                <AccordionItems>
+                                    <AccordionItem Expanded="true">
+                                        <HeaderTemplate>
+                                            <div class="font-medium text-gray-900 dark:text-white">Getting Started</div>
+                                        </HeaderTemplate>
+                                        <ContentTemplate>
+                                            <div class="flex flex-col gap-5 px-1 pb-1">
+                                                <h6 class="text-sm font-medium text-gray-900 dark:text-white">Topics</h6>
+                                                <SfCheckBox TChecked="bool" Label="Platform basics" Checked="true" aria-label="platform basics" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Account setup" Checked="true" aria-label="account setup" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Quick start" aria-label="quick start" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Best practices" aria-label="best practices" role="checkbox"></SfCheckBox>
+                                                <div class="flex items-center justify-between py-2">
+                                                    <h6 class="text-sm font-medium text-gray-900 dark:text-white">Recently updated only</h6>
+                                                    <SfSwitch TChecked="bool" CssClass="mr-2" Checked="true" aria-label="recently updated" role="switch"></SfSwitch>
+                                                </div>
+                                                <SfRadioButton Label="Welcome guide" Name="guidelines" Checked="@SelectedTopics" Value="welcome-guide" aria-label="welcome guide" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Creating your first project" Name="guidelines" Checked="@SelectedTopics" Value="creating-project" aria-label="creating your first project" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Understanding the dashboard" Name="guidelines" Checked="@SelectedTopics" Value="understanding-dashboard" aria-label="understanding the dashboard" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Basic configuration steps" Name="guidelines" Checked="@SelectedTopics" Value="basic-configuration" aria-label="basic configuration steps" role="radio"></SfRadioButton>
+                                            </div>
+                                        </ContentTemplate>
+                                    </AccordionItem>
+                                </AccordionItems>
+                            </SfAccordion>
+                            <SfAccordion class="bg-transparent my-3 rounded-sm" ExpandMode="ExpandMode.Single" role="accordion">
+                                <AccordionItems>
+                                    <AccordionItem Expanded="true">
+                                        <HeaderTemplate>
+                                            <div class="font-medium text-gray-900 dark:text-white">Billing</div>
+                                        </HeaderTemplate>
+                                        <ContentTemplate>
+                                            <div class="flex flex-col gap-5 px-1 pb-1">
+                                                <h6 class="text-sm font-medium text-gray-900 dark:text-white">Topics</h6>
+                                                <SfCheckBox TChecked="bool" Label="Subscriptions" Checked="true" aria-label="subscriptions" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Invoices" Checked="true" aria-label="invoices" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Payment methods" aria-label="payment methods" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Usage plan" aria-label="usage plans" role="checkbox"></SfCheckBox>
+                                                <div class="flex items-center justify-between py-2">
+                                                    <h6 class="text-sm font-medium text-gray-900 dark:text-white">Recently updated only</h6>
+                                                    <SfSwitch TChecked="bool" CssClass="mr-2" Checked="true" aria-label="recently updated" role="switch"></SfSwitch>
+                                                </div>
+                                                <SfRadioButton Label="Subscription overview" Name="billing" Checked="@SelectedBilling" Value="subscription-overview" aria-label="subscription overview" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Managing payment method" Name="billing" Checked="@SelectedBilling" Value="managing-payment" aria-label="managing payment method" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Understanding your invoice" Name="billing" Checked="@SelectedBilling" Value="understanding-invoice" aria-label="understanding your invoice" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Usage calculations" Name="billing" Checked="@SelectedBilling" Value="usage-calculations" aria-label="usage calculations" role="radio"></SfRadioButton>
+                                            </div>
+                                        </ContentTemplate>
+                                    </AccordionItem>
+                                </AccordionItems>
+                            </SfAccordion>
+                            <SfAccordion class="bg-transparent my-3 rounded-sm" ExpandMode="ExpandMode.Single" role="accordion">
+                                <AccordionItems>
+                                    <AccordionItem Expanded="true">
+                                        <HeaderTemplate>
+                                            <div class="font-medium text-gray-900 dark:text-white">Technical Support</div>
+                                        </HeaderTemplate>
+                                        <ContentTemplate>
+                                            <div class="flex flex-col gap-5 px-1 pb-1">
+                                                <h6 class="text-sm font-medium text-gray-900 dark:text-white">Topics</h6>
+                                                <SfCheckBox TChecked="bool" Label="API" Checked="true" aria-label="API" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Integration" Checked="true" aria-label="integration" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Troubleshooting" aria-label="troubleshooting" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Security" aria-label="security" role="checkbox"></SfCheckBox>
+                                                <div class="flex items-center justify-between py-2">
+                                                    <h6 class="text-sm font-medium text-gray-900 dark:text-white">Recently updated only</h6>
+                                                    <SfSwitch TChecked="bool" CssClass="mr-2" Checked="true" aria-label="recently updated" role="switch"></SfSwitch>
+                                                </div>
+                                                <SfRadioButton Label="API documentation" Name="support" Checked="@SelectedTechnical" Value="API-documentation" aria-label="API documentation" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Common error codes" Name="support" Checked="@SelectedTechnical" Value="common-error" aria-label="common error codes" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Integration guide" Name="support" Checked="@SelectedTechnical" Value="integration-guide" aria-label="integration guide" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Security best practices" Name="support" Checked="@SelectedTechnical" Value="security-practices" aria-label="security best practices" role="radio"></SfRadioButton>
+                                            </div>
+                                        </ContentTemplate>
+                                    </AccordionItem>
+                                </AccordionItems>
+                            </SfAccordion>
+                        </div>
+                    </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 absolute top-0 right-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="height: 1440px; width: @Width; float: right;">
+            <SfSidebar class="d-flex flex-column bg-body" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center p-3">
+                            <h2 class="h6 mb-0 fw-bold text-body">Knowledge Base</h2>
+                        </div>
+                        <div class="p-3 pt-0">
+                            <SfAccordion class="bg-transparent mt-2 mb-3 border-bottom border-light-subtle rounded-1" ExpandMode="ExpandMode.Single" role="accordion">
+                                <AccordionItems>
+                                    <AccordionItem Expanded="true">
+                                        <HeaderTemplate>
+                                            <div class="fw-medium fs-6 text-body">Getting Started</div>
+                                        </HeaderTemplate>
+                                        <ContentTemplate>
+                                            <div class="d-flex flex-column gap-3 px-1 pb-1">
+                                                <h6 class="fs-6 fw-medium text-body">Topics</h6>
+                                                <SfCheckBox TChecked="bool" Label="Platform basics" Checked="true" aria-label="platform basics" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Account setup" Checked="true" aria-label="account setup" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Quick start" aria-label="quick start" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Best practices" aria-label="best practices" role="checkbox"></SfCheckBox>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <h6 class="mb-0 fw-medium text-body">Recently updated only</h6>
+                                                    <SfSwitch TChecked="bool" CssClass="me-2" Checked="true" aria-label="recently updated" role="switch"></SfSwitch>
+                                                </div>
+                                                <SfRadioButton Label="Welcome guide" Name="guidelines" Checked="@SelectedTopics" Value="welcome-guide" aria-label="welcome guide" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Creating your first project" Name="guidelines" Checked="@SelectedTopics" Value="creating-project" aria-label="creating your first project" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Understanding the dashboard" Name="guidelines" Checked="@SelectedTopics" Value="understanding-dashboard" aria-label="understanding the dashboard" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Basic configuration steps" Name="guidelines" Checked="@SelectedTopics" Value="basic-configuration" aria-label="basic configuration steps" role="radio"></SfRadioButton>
+                                            </div>
+                                        </ContentTemplate>
+                                    </AccordionItem>
+                                </AccordionItems>
+                            </SfAccordion>
+                            <SfAccordion class="bg-transparent my-3 rounded-1" ExpandMode="ExpandMode.Single" role="accordion">
+                                <AccordionItems>
+                                    <AccordionItem Expanded="true">
+                                        <HeaderTemplate>
+                                            <div class="fw-medium fs-6 text-body">Billing</div>
+                                        </HeaderTemplate>
+                                        <ContentTemplate>
+                                            <div class="d-flex flex-column gap-3 px-1 pb-1">
+                                                <h6 class="fs-6 fw-medium text-body">Topics</h6>
+                                                <SfCheckBox TChecked="bool" Label="Subscriptions" Checked="true" aria-label="subscriptions" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Invoices" Checked="true" aria-label="invoices" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Payment methods" aria-label="payment methods" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Usage plan" aria-label="usage plans" role="checkbox"></SfCheckBox>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <h6 class="mb-0 fw-medium text-body">Recently updated only</h6>
+                                                    <SfSwitch TChecked="bool" CssClass="mr-2" Checked="true" aria-label="recently updated" role="switch"></SfSwitch>
+                                                </div>
+                                                <SfRadioButton Label="Subscription overview" Name="billing" Checked="@SelectedBilling" Value="subscription-overview" aria-label="subscription overview" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Managing payment method" Name="billing" Checked="@SelectedBilling" Value="managing-payment" aria-label="managing payment method" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Understanding your invoice" Name="billing" Checked="@SelectedBilling" Value="understanding-invoice" aria-label="understanding your invoice" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Usage calculations" Name="billing" Checked="@SelectedBilling" Value="usage-calculations" aria-label="usage calculations" role="radio"></SfRadioButton>
+                                            </div>
+                                        </ContentTemplate>
+                                    </AccordionItem>
+                                </AccordionItems>
+                            </SfAccordion>
+                            <SfAccordion class="bg-transparent my-3 rounded-1" ExpandMode="ExpandMode.Single" role="accordion">
+                                <AccordionItems>
+                                    <AccordionItem Expanded="true">
+                                        <HeaderTemplate>
+                                            <div class="fw-medium fs-6 text-body">Technical Support</div>
+                                        </HeaderTemplate>
+                                        <ContentTemplate>
+                                            <div class="d-flex flex-column gap-3 px-1 pb-1">
+                                                <h6 class="fs-6 fw-medium text-body">Topics</h6>
+                                                <SfCheckBox TChecked="bool" Label="API" Checked="true" aria-label="API" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Integration" Checked="true" aria-label="integration" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Troubleshooting" aria-label="troubleshooting" role="checkbox"></SfCheckBox>
+                                                <SfCheckBox TChecked="bool" Label="Security" aria-label="security" role="checkbox"></SfCheckBox>
+                                                <div class="d-flex justify-content-between align-items-center py-2">
+                                                    <h6 class="mb-0 fw-medium text-body">Recently updated only</h6>
+                                                    <SfSwitch TChecked="bool" CssClass="me-2" Checked="true" aria-label="recently updated" role="switch"></SfSwitch>
+                                                </div>
+                                                <SfRadioButton Label="API documentation" Name="support" Checked="@SelectedTechnical" Value="API-documentation" aria-label="API documentation" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Common error codes" Name="support" Checked="@SelectedTechnical" Value="common-error" aria-label="common error codes" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Integration guide" Name="support" Checked="@SelectedTechnical" Value="integration-guide" aria-label="integration guide" role="radio"></SfRadioButton>
+                                                <SfRadioButton Label="Security best practices" Name="support" Checked="@SelectedTechnical" Value="security-practices" aria-label="security best practices" role="radio"></SfRadioButton>
+                                            </div>
+                                        </ContentTemplate>
+                                    </AccordionItem>
+                                </AccordionItems>
+                            </SfAccordion>
+                        </div>
+                    </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start --> 
+    <div class="p-3 position-absolute top-0 end-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

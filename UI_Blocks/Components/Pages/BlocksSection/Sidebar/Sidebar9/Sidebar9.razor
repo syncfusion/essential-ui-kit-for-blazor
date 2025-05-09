@@ -13,7 +13,7 @@
                         <div class="flex justify-center items-center px-3 mb-2">
                             <img src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
                         </div>
-                        <SfListView class="border-0 e-bigger" DataSource="@IconMenuItems" aria-label="quick navigation links" role="list">
+                        <SfListView class="border-0 e-bigger" DataSource="@NavigationMenu" aria-label="quick navigation links" role="list">
                             <ListViewFieldSettings TValue="IconMenuItem"></ListViewFieldSettings>
                             <ListViewTemplates TValue="IconMenuItem">
                                 <Template>
@@ -84,7 +84,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         <div class="d-flex justify-content-center align-items-center px-3 mb-2">
                             <img src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
                         </div>
-                        <SfListView DataSource="IconMenuItems" class="border-0 e-bigger" aria-label="quick navigation links" role="list">
+                        <SfListView DataSource="NavigationMenu" class="border-0 e-bigger" aria-label="quick navigation links" role="list">
                             <ListViewFieldSettings TValue="IconMenuItem"></ListViewFieldSettings>
                             <ListViewTemplates TValue="IconMenuItem">
                                 <Template>

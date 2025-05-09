@@ -1,0 +1,222 @@
+﻿@page "/blocks/notification-6"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div id="notification" style="height: 793px; width: @Width; float: right;">
+            <SfSidebar @ref="Sidebar" class="flex flex-col bg-white dark:bg-gray-900" Position="SidebarPosition.Right" IsOpen="@IsSidebarToggle" Type="SidebarType.Push" Width="@Width" ShowBackdrop="true" role="sidebar">
+                <div class="flex-none bg-white dark:bg-gray-900">
+                    <div class="flex justify-between items-center px-3 py-2">
+                        <div class="flex items-center">
+                            <div class="flex items-center gap-1">
+                                <p class="text-base font-medium text-gray-900 dark:text-white">Notifications</p>
+                                <span class="e-bigger e-badge e-badge-warning ml-1">Beta</span>
+                                <SfButton CssClass="e-round e-flat hidden sm:block ml-1" IconCss="e-icons e-refresh text-base" Type="button" aria-label="refresh" role="button"></SfButton>
+                            </div>
+                        </div>
+                        <div class="flex gap-1.5">
+                            <SfButton CssClass="e-round e-flat font-semibold block sm:hidden" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
+                            <SfButton CssClass="e-round e-flat font-semibold hidden sm:block" IconCss="e-icons e-settings" Type="button" aria-label="settings" role="button"></SfButton>
+                            <SfButton CssClass="e-round e-flat" IconCss="e-icons e-close" OnClick="@(() => IsSidebarToggle = !IsSidebarToggle)" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                        </div>
+                    </div>
+                    <div class="mt-3">
+                        <SfTab Width="100%" OverflowMode="@OverflowMode">
+                            <TabEvents Created="@OnTabCreated" Selected="@OnTabSelectAsync"></TabEvents>
+                            <TabItems>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>All (1)</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Focused (1)</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Others</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>&commat; Mentioned</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Watching</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                            </TabItems>
+                        </SfTab>
+                        <div>
+                            <div class="flex justify-between p-3">
+                                <SfDropDownButton CssClass="e-flat" Content="All Modules" Type="button" aria-label="choose modules" role="button"></SfDropDownButton>
+                                <div class="flex items-center flex-wrap gap-2 text-sm text-gray-500 dark:text-gray-400">
+                                    <div class="hidden sm:block">
+                                        <SfCheckBox Checked="false" Label="Unread" aria-label="unread" role="checkbox"></SfCheckBox>
+                                    </div>
+                                    <div class="border-e border-s hidden sm:block px-2 border-gray-200 dark:border-gray-600 leading-6">
+                                        <SfButton CssClass="e-primary e-flat" Content="Mark all as read" Type="button" aria-label="mark all as read" role="button"></SfButton>
+                                    </div>
+                                    <SfButton CssClass="e-flat" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
+                                </div>
+                            </div>
+                            <div class="flex-grow overflow-y-auto bg-white dark:bg-gray-900">
+                                <p class="text-sm text-gray-700 dark:text-gray-200 pl-4 sm:pl-6 pb-4 font-medium">Notification for the last 30 days</p>
+                            </div>
+                        </div>
+                        <div id="list">
+                            <SfListView DataSource="@TicketData" CssClass="!border-0 e-list-template" aria-label="recent notification" role="list">
+                                <ListViewFieldSettings TValue="NotificationItem"></ListViewFieldSettings>
+                                <ListViewTemplates TValue="NotificationItem">
+                                    <Template>
+                                        @{
+                                            var item = (NotificationItem)context;
+                                            var tagClass = item.Tag switch
+                                            {
+                                                "warning" => "bg-orange-100 dark:bg-orange-800 text-orange-700 dark:text-orange-300",
+                                                "danger" => "bg-red-100 dark:bg-red-800 dark:text-red-300 text-red-600",
+                                                _ => ""
+                                            };
+                                            <div class="flex items-start gap-3 sm:gap-2 !p-4 !pr-13 sm:!px-6 sm:!pr-6 !py-3 border-b border-gray-200 dark:border-gray-600">
+                                                <span class="@($"e-avatar e-avatar-circle shrink-0 {tagClass}")">@item.Avatar</span>
+                                                <span class="flex flex-col items-start gap-2 sm:gap-1">
+                                                    <div class="text-sm font-medium text-gray-900 dark:text-white">@item.Title</div>
+                                                    <div class="text-sm">
+                                                        <a class="text-primary-600 dark:text-primary-400">#@item.Id</a>
+                                                        <span class="text-gray-900 dark:text-white"> - @item.Content</span>
+                                                    </div>
+                                                    <span class="text-sm text-gray-500 dark:text-gray-400">@item.Date.ToString("MMM d, yyyy HH:mm")</span>
+                                                </span>
+                                            </div>
+                                        }
+                                    </Template>
+                                </ListViewTemplates>
+                            </SfListView>
+                        </div>
+                    </div>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 absolute top-0 right-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" IsToggle="true" OnClick="@(() => IsSidebarToggle = !IsSidebarToggle)" Type="button" aria-label="show sidebar" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div id="notification" style="@($"height: 765px; float: right; width: {Width};")">
+            <SfSidebar @ref="@Sidebar" class="bg-body d-flex flex-column border-0" Position="SidebarPosition.Right" IsOpen="@IsSidebarToggle" Type="SidebarType.Push" Width="@Width" ShowBackdrop="true" role="sidebar">
+                <div class="flex-shrink-0">
+                    <div class="d-flex justify-content-between align-items-center px-3 py-2">
+                        <div class="d-flex align-items-center gap-1">
+                            <div class="d-flex align-items-center gap-1">
+                                <p class="fs-6 fw-medium text-body m-0">Notifications</p>
+                                <span class="e-bigger e-badge e-badge-warning ms-1">Beta</span>
+                                <SfButton CssClass="e-round e-flat d-none d-sm-inline-block ms-1" IconCss="e-icons e-refresh text-base" Type="button" aria-label="refresh" role="button"></SfButton>
+                            </div>
+                        </div>
+                        <div class="d-flex gap-2">
+                            <SfButton CssClass="e-round e-flat fw-semibold d-block d-sm-none" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
+                            <SfButton CssClass="e-round e-flat fw-semibold d-none d-sm-block" IconCss="e-icons e-settings" Type="button" aria-label="settings" role="button"></SfButton>
+                            <SfButton CssClass="e-round e-flat" IconCss="e-icons e-close" OnClick="@(() => IsSidebarToggle = !IsSidebarToggle)" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                        </div>
+                    </div>
+                    <div class="mt-2">
+                        <SfTab Width="100%" OverflowMode="@OverflowMode">
+                            <TabEvents Created="@OnTabCreated" Selected="@OnTabSelectAsync"></TabEvents>
+                            <TabItems>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>All (1)</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Focused (1)</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Others</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>&commat; Mentioned</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Watching</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                            </TabItems>
+                        </SfTab>
+                        <div>
+                            <div class="d-flex justify-content-between p-3 pe-2">
+                                <SfDropDownButton CssClass="e-flat" Content="All Modules" Type="button" aria-label="choose modules" role="button"></SfDropDownButton>
+                                <div class="d-flex flex-wrap align-items-center gap-2 text-secondary">
+                                    <div class="d-none d-sm-block">
+                                        <SfCheckBox Checked="false" Label="Unread" aria-label="unread" role="checkbox"></SfCheckBox>
+                                    </div>
+                                    <div class="border-start border-end d-none d-sm-block px-2">
+                                        <SfButton CssClass="e-primary e-flat" Content="Mark all as read" Type="button" aria-label="mark all as read" role="button"></SfButton>
+                                    </div>
+                                    <SfButton CssClass="e-flat" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
+                                </div>
+                            </div>
+                            <div class="flex-grow-1 overflow-auto">
+                                <p class="text-body-secondary ps-3 pb-2 m-0 fw-medium">Notification for the last 30 days</p>
+                            </div>
+                        </div>
+                        <div id="list">
+                            <SfListView id="list-bs" DataSource="@TicketData" CssClass="border-0 rounded-0" aria-label="recent notification" role="list">
+                                <ListViewFieldSettings TValue="NotificationItem"></ListViewFieldSettings>
+                                <ListViewTemplates TValue="NotificationItem">
+                                    <Template>
+                                        @{
+                                            var item = (NotificationItem)context;
+                                            var tagClass = item.Tag switch
+                                            {
+                                                "warning" => "bg-warning-subtle text-warning-emphasis",
+                                                "danger" => "bg-danger-subtle text-danger",
+                                                _ => ""
+                                            };
+                                            <div class="px-4 py-2 my-1 d-flex align-items-start gap-3 gap-sm-2">
+                                                <span class="@($"e-avatar e-avatar-circle flex-shrink-0 {tagClass}")">@item.Avatar</span>
+                                                <span class="d-flex flex-column align-items-start gap-1 lh-base">
+                                                    <div class="fw-medium">@item.Title</div>
+                                                    <div class="text-sm">
+                                                        <a class="fw-medium text-decoration-none">#@item.Id</a>
+                                                        <span> - @item.Content</span>
+                                                    </div>
+                                                    <span>@item.Date.ToString("MMM d, yyyy HH:mm")</span>
+                                                </span>
+                                            </div>
+                                        }
+                                    </Template>
+                                </ListViewTemplates>
+                            </SfListView>
+                        </div>
+                    </div>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 position-absolute top-0 end-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" IsToggle="true" OnClick="@(() => IsSidebarToggle = !IsSidebarToggle)" Type="button" aria-label="show sidebar" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

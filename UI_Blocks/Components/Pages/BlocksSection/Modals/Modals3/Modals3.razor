@@ -1,0 +1,384 @@
+@page "/blocks/modals-3"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" class="relative flex justify-center" style="min-height: 600px;">
+            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="add team member" role="button">Add Team Member</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="545px" aria-label="add a new team member" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="mb-0.5 font-semibold leading-normal">Add Team Member</p>
+                        <p class="text-xs leading-normal text-gray-500 dark:text-gray-400 text-wrap">Complete all sections to add a new team member.</p>
+                    </Header>
+                    <Content>
+                        <div class="space-y-5 sm:space-y-4">
+                            <div class="py-2" style="@StepperStyle">
+                                <SfStepper @ref="Stepper" CssClass="e-small" Orientation="@CurrentStepperOrientation" LabelPosition="@LabelPos" StepChanged="@(args => ExpandedIndex = args.ActiveStep)">
+                                    <StepperSteps>
+                                        <StepperStep IconCss="e-icons" Label="User Information"></StepperStep>
+                                        <StepperStep IconCss="e-icons" Label="Workspace Access"></StepperStep>
+                                        <StepperStep IconCss="e-icons" Label="Security Settings"></StepperStep>
+                                        <StepperStep IconCss="e-icons" Label="Resource Access"></StepperStep>
+                                    </StepperSteps>
+                                </SfStepper>
+                            </div>
+                            <div class="sm:overflow-y-scroll" style="height: 298px; scrollbar-width: none;">
+                                <SfAccordion class="border-0" ExpandMode="ExpandMode.Single" role="button">
+                                    <AccordionEvents Expanding="@(args => { ExpandedIndex = args.Index; Stepper.ActiveStep = ExpandedIndex; })"></AccordionEvents>
+                                    <AccordionItems>
+                                        <AccordionItem CssClass="mb-3 !border !rounded-lg" Expanded="@(ExpandedIndex == 0)">
+                                            <HeaderTemplate>
+                                                <div class="flex gap-2.5 items-center mr-4">
+                                                    <span class="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i class="e-icons sf-icon-users text-xl"></i></span>
+                                                    <div class="flex flex-col gap-0.5">
+                                                        <p class="text-base">User Information</p>
+                                                        <p class="text-gray-500 font-normal dark:text-gray-400 text-wrap line-clamp-1">Basic details about the team member</p>
+                                                    </div>
+                                                </div>
+                                            </HeaderTemplate>
+                                            <ContentTemplate>
+                                                <div class="flex flex-col gap-3 p-1 pt-3">
+                                                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                                                        <div class="flex flex-col gap-1">
+                                                            <label class="text-xs font-medium text-gray-700 dark:text-gray-200">First Name <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
+                                                            <SfTextBox Type="InputType.Text" Placeholder="Enter first name" aria-label="enter your first name" role="textbox"></SfTextBox>
+                                                        </div>
+                                                        <div class="flex flex-col gap-1">
+                                                            <label class="text-xs font-medium text-gray-700 dark:text-gray-200">Last Name <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
+                                                            <SfTextBox Type="InputType.Text" Placeholder="Enter last name" aria-label="enter your last name" role="textbox"></SfTextBox>
+                                                        </div>
+                                                    </div>
+                                                    <div class="flex flex-col gap-1">
+                                                        <label class="text-xs font-medium text-gray-700 dark:text-gray-200">Work Email <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
+                                                        <SfTextBox Type="InputType.Email" Placeholder="name@company.com" aria-label="enter your work email address" role="textbox"></SfTextBox>
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
+                                        </AccordionItem>
+                                        <AccordionItem CssClass="mb-3 !border !rounded-lg" Expanded="@(ExpandedIndex == 1)">
+                                            <HeaderTemplate>
+                                                <div class="flex gap-2.5 items-center mr-4">
+                                                    <span class="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i class="e-icons sf-icon-building-03 text-xl"></i></span>
+                                                    <div class="flex flex-col gap-0.5">
+                                                        <p class="text-base">Workspace Access</p>
+                                                        <p class="text-gray-500 font-normal dark:text-gray-400 text-wrap line-clamp-1">Workspace and role assignment</p>
+                                                    </div>
+                                                </div>
+                                            </HeaderTemplate>
+                                            <ContentTemplate>
+                                                <div class="grid grid-cols-1 gap-3 p-1 pt-3">
+                                                    <div class="flex flex-col gap-1">
+                                                        <label class="text-xs font-medium text-gray-700 dark:text-gray-200">Workspace <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
+                                                        <SfDropDownList TValue="string" TItem="string" Placeholder="Select a workspace" aria-label="choose a workspace" role="listbox"></SfDropDownList>
+                                                    </div>
+                                                    <div class="flex flex-col gap-1">
+                                                        <label class="text-xs font-medium text-gray-700 dark:text-gray-200">Role <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
+                                                        <SfDropDownList TValue="string" TItem="string" DataSource="@(new List<string> { "Select role" })" Value="@("Select role")" aria-label="choose a role" role="listbox"></SfDropDownList>
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
+                                        </AccordionItem>
+                                        <AccordionItem CssClass="mb-3 !border !rounded-lg" Expanded="@(ExpandedIndex == 2)">
+                                            <HeaderTemplate>
+                                                <div class="flex gap-2.5 items-center mr-4">
+                                                    <span class="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i class="e-icons sf-icon-shield text-xl"></i></span>
+                                                    <div class="flex flex-col gap-0.5">
+                                                        <p class="text-base">Security Settings</p>
+                                                        <p class="text-gray-500 font-normal dark:text-gray-400 text-wrap line-clamp-1">Configure security and authentication</p>
+                                                    </div>
+                                                </div>
+                                            </HeaderTemplate>
+                                            <ContentTemplate>
+                                                <div class="p-1 pt-1.5 space-y-5">
+                                                    <div class="flex items-center justify-between gap-4">
+                                                        <div>
+                                                            <p class="font-medium mb-1">SSO Authentication</p>
+                                                            <p class="text-gray-500 dark:text-gray-400">Enable single sign-on access</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="w-10 shrink-0" Checked="true" aria-label="enable SSO authentication" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="flex items-center justify-between gap-4">
+                                                        <div>
+                                                            <p class="font-medium mb-1">Two-Factor Authentication</p>
+                                                            <p class="text-gray-500 dark:text-gray-400">Require 2FA for account access</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="w-10 shrink-0" Checked="true" aria-label="enable two-factor authentication" role="switch"></SfSwitch>
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
+                                        </AccordionItem>
+                                        <AccordionItem CssClass="!border !rounded-lg" Expanded="@(ExpandedIndex == 3)">
+                                            <HeaderTemplate>
+                                                <div class="flex gap-2.5 items-center mr-4">
+                                                    <span class="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i class="e-icons sf-icon-laptop-01 text-xl"></i></span>
+                                                    <div class="flex flex-col gap-0.5">
+                                                        <p class="text-base">Resource Access</p>
+                                                        <p class="text-gray-500 font-normal dark:text-gray-400 text-wrap line-clamp-1">Configure access to various tools</p>
+                                                    </div>
+                                                </div>
+                                            </HeaderTemplate>
+                                            <ContentTemplate>
+                                                <div class="p-1 pt-1.5 space-y-5">
+                                                    <div class="flex items-center justify-between gap-4">
+                                                        <div>
+                                                            <p class="font-medium mb-1">GitHub Access</p>
+                                                            <p class="text-gray-500 dark:text-gray-400">Access to code repositories and version control.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="w-10 shrink-0" Checked="false" aria-label="enable github access" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="flex items-center justify-between gap-4">
+                                                        <div>
+                                                            <p class="font-medium mb-1">AWS Console</p>
+                                                            <p class="text-gray-500 dark:text-gray-400">Access to cloud computing services and resources.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="w-10 shrink-0" Checked="false" aria-label="enable AWS console access" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="flex items-center justify-between gap-4">
+                                                        <div>
+                                                            <p class="font-medium mb-1">Slack Access</p>
+                                                            <p class="text-gray-500 dark:text-gray-400">Access to team communication and collaboration tools.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="w-10 shrink-0" Checked="false" aria-label="enable slack access" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="flex items-center justify-between gap-4">
+                                                        <div>
+                                                            <p class="font-medium mb-1">JIRA Access</p>
+                                                            <p class="text-gray-500 dark:text-gray-400">Access to project management and issue tracking.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="w-10 shrink-0" Checked="false" aria-label="enable JIRA access" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="flex items-center justify-between gap-4">
+                                                        <div>
+                                                            <p class="font-medium mb-1">Google Drive Access</p>
+                                                            <p class="text-gray-500 dark:text-gray-400">Access to cloud storage and shared documents.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="w-10 shrink-0" Checked="false" aria-label="enable google drive access" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="flex items-center justify-between gap-4">
+                                                        <div>
+                                                            <p class="font-medium mb-1">Salesforce Access</p>
+                                                            <p class="text-gray-500 dark:text-gray-400">Access to customer relationship management tools.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="w-10 shrink-0" Checked="false" aria-label="enable salesforce access" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="flex items-center justify-between gap-4">
+                                                        <div>
+                                                            <p class="font-medium mb-1">VPN Access</p>
+                                                            <p class="text-gray-500 dark:text-gray-400">Access to secure internal networks.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="w-10 shrink-0" Checked="false" aria-label="enable VPN access" role="switch"></SfSwitch>
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
+                                        </AccordionItem>
+                                    </AccordionItems>
+                                </SfAccordion>
+                            </div>
+                        </div>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="flex justify-end gap-2 sm:gap-1 py-2">
+                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="button" aria-label="add member" role="button">Add Member</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 600px;">
+            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="add team member" role="button">Add Team Member</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="545px" aria-label="add a new team member" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="fw-bold text-body mb-0">Add Team Member</p>
+                        <p class="small fw-normal text-body text-opacity-50 text-wrap mb-0">Complete all sections to add a new team member.</p>
+                    </Header>
+                    <Content>
+                        <div class="d-flex flex-column gap-4 mt-2">
+                            <div class="mt-sm-1 mb-2 mb-sm-0 mb-md-3" style="@StepperStyle">
+                                <SfStepper @ref="Stepper" CssClass="e-small" Orientation="@CurrentStepperOrientation" LabelPosition="@LabelPos" StepChanged="@(args => ExpandedIndex = args.ActiveStep)">
+                                    <StepperSteps>
+                                        <StepperStep IconCss="e-icons" Label="User Information"></StepperStep>
+                                        <StepperStep IconCss="e-icons" Label="Workspace Access"></StepperStep>
+                                        <StepperStep IconCss="e-icons" Label="Security Settings"></StepperStep>
+                                        <StepperStep IconCss="e-icons" Label="Resource Access"></StepperStep>
+                                    </StepperSteps>
+                                </SfStepper>
+                            </div>
+                            <div class="overflow-auto" style="height: 298px; scrollbar-width: none;">
+                                <SfAccordion class="border-0" ExpandMode="ExpandMode.Single" role="button">
+                                    <AccordionEvents Expanding="@(args => { ExpandedIndex = args.Index; Stepper.ActiveStep = ExpandedIndex; })"></AccordionEvents>
+                                    <AccordionItems>
+                                        <AccordionItem CssClass="mb-3 border rounded-3 overflow-hidden" Expanded="@(ExpandedIndex == 0)">
+                                            <HeaderTemplate>
+                                                <div class="d-flex gap-2 align-items-center me-3">
+                                                    <span class="e-avatar rounded-3 border bg-body-secondary"><i class="e-icons sf-icon-users fs-4"></i></span>
+                                                    <div class="d-flex flex-column ms-1">
+                                                        <p class="fs-6 fw-medium mb-0">User Information</p>
+                                                        <p class="text-body text-wrap text-opacity-50 text-truncate mb-0" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">Basic details about the team member</p>
+                                                    </div>
+                                                </div>
+                                            </HeaderTemplate>
+                                            <ContentTemplate>
+                                                <div class="d-flex flex-column gap-2 p-1 mt-1 small text-body-secondary">
+                                                    <div class="row gap-1 gap-sm-0 gy-2 gy-sm-0 gx-3">
+                                                        <div class="col-sm-6 d-flex flex-column gap-1">
+                                                            <label>First Name <span class="text-danger">*</span></label>
+                                                            <SfTextBox Type="InputType.Text" Placeholder="Enter first name" aria-label="enter your first name" role="textbox"></SfTextBox>
+                                                        </div>
+                                                        <div class="col-sm-6 d-flex flex-column gap-1">
+                                                            <label>Last Name <span class="text-danger">*</span></label>
+                                                            <SfTextBox Type="InputType.Text" Placeholder="Enter last name" aria-label="enter your last name" role="textbox"></SfTextBox>
+                                                        </div>
+                                                    </div>
+                                                    <div class="d-flex flex-column gap-1 mt-1">
+                                                        <label>Work Email <span class="text-danger">*</span></label>
+                                                        <SfTextBox Type="InputType.Email" Placeholder="name@company.com" aria-label="enter your work email address" role="textbox"></SfTextBox>
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
+                                        </AccordionItem>
+                                        <AccordionItem CssClass="mb-3 border rounded-3 overflow-hidden" Expanded="@(ExpandedIndex == 1)">
+                                            <HeaderTemplate>
+                                                <div class="d-flex gap-2 align-items-center me-3">
+                                                    <span class="e-avatar rounded-3 border bg-body-secondary"><i class="e-icons sf-icon-building-03 fs-4"></i></span>
+                                                    <div class="d-flex flex-column ms-1">
+                                                        <p class="fs-6 fw-medium mb-0">Workspace Access</p>
+                                                        <p class="text-body text-wrap text-opacity-50 text-truncate mb-0" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">Workspace and role assignment</p>
+                                                    </div>
+                                                </div>
+                                            </HeaderTemplate>
+                                            <ContentTemplate>
+                                                <div class="d-flex flex-column gap-2 p-1 mt-1 small text-body-secondary">
+                                                    <div class="d-flex flex-column gap-1 mt-1">
+                                                        <label>Workspace <span class="text-danger">*</span></label>
+                                                        <SfDropDownList TValue="string" TItem="string" Placeholder="Select a workspace" aria-label="choose a workspace" role="listbox"></SfDropDownList>
+                                                    </div>
+                                                    <div class="d-flex flex-column gap-1 mt-1">
+                                                        <label>Role <span class="text-danger">*</span></label>
+                                                        <SfDropDownList TValue="string" TItem="string" DataSource="@(new List<string> { "Select role" })" Value="@("Select role")" aria-label="choose a role" role="listbox"></SfDropDownList>
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
+                                        </AccordionItem>
+                                        <AccordionItem CssClass="mb-3 border rounded-3 overflow-hidden" Expanded="@(ExpandedIndex == 2)">
+                                            <HeaderTemplate>
+                                                <div class="d-flex gap-2 align-items-center me-3">
+                                                    <span class="e-avatar rounded-3 border bg-body-secondary"><i class="e-icons sf-icon-shield fs-4"></i></span>
+                                                    <div class="d-flex flex-column ms-1">
+                                                        <p class="fs-6 fw-medium mb-0">Security Settings</p>
+                                                        <p class="text-body text-wrap text-opacity-50 text-truncate mb-0" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">Configure security and authentication</p>
+                                                    </div>
+                                                </div>
+                                            </HeaderTemplate>
+                                            <ContentTemplate>
+                                                <div class="d-flex flex-column gap-3 p-1 mt-1">
+                                                    <div class="d-flex align-items-center justify-content-between gap-3">
+                                                        <div>
+                                                            <p class="fw-medium text-body mb-1">SSO Authentication</p>
+                                                            <p class="text-body-secondary mb-0">Enable single sign-on access</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="flex-shrink-0" Checked="true" aria-label="enable SSO authentication" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-between gap-3">
+                                                        <div>
+                                                            <p class="fw-medium text-body mb-1">Two-Factor Authentication</p>
+                                                            <p class="text-body-secondary mb-0">Require 2FA for account access</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="flex-shrink-0" Checked="true" aria-label="enable two-factor authentication" role="switch"></SfSwitch>
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
+                                        </AccordionItem>
+                                        <AccordionItem CssClass="border rounded-3 overflow-hidden" Expanded="@(ExpandedIndex == 3)">
+                                            <HeaderTemplate>
+                                                <div class="d-flex gap-2 align-items-center me-3">
+                                                    <span class="e-avatar rounded-3 border bg-body-secondary"><i class="e-icons sf-icon-laptop-01 fs-4"></i></span>
+                                                    <div class="d-flex flex-column ms-1">
+                                                        <p class="fs-6 fw-medium mb-0">Resource Access</p>
+                                                        <p class="text-body text-wrap text-opacity-50 text-truncate mb-0" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">Configure access to various tools</p>
+                                                    </div>
+                                                </div>
+                                            </HeaderTemplate>
+                                            <ContentTemplate>
+                                                <div class="d-flex flex-column gap-3 p-1 mt-1">
+                                                    <div class="d-flex align-items-center justify-content-between gap-3">
+                                                        <div>
+                                                            <p class="fw-medium text-body mb-1">GitHub Access</p>
+                                                            <p class="text-body-secondary mb-0">Access to code repositories and version control.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="flex-shrink-0" Checked="false" aria-label="enable github access" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-between gap-3">
+                                                        <div>
+                                                            <p class="fw-medium text-body mb-1">AWS Console</p>
+                                                            <p class="text-body-secondary mb-0">Access to cloud computing services and resources.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="flex-shrink-0" Checked="false" aria-label="enable AWS console access" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-between gap-3">
+                                                        <div>
+                                                            <p class="fw-medium text-body mb-1">Slack Access</p>
+                                                            <p class="text-body-secondary mb-0">Access to team communication and collaboration tools.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="flex-shrink-0" Checked="false" aria-label="enable slack access" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-between gap-3">
+                                                        <div>
+                                                            <p class="fw-medium text-body mb-1">JIRA Access</p>
+                                                            <p class="text-body-secondary mb-0">Access to project management and issue tracking.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="flex-shrink-0" Checked="false" aria-label="enable JIRA access" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-between gap-3">
+                                                        <div>
+                                                            <p class="fw-medium text-body mb-1">Google Drive Access</p>
+                                                            <p class="text-body-secondary mb-0">Access to cloud storage and shared documents.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="flex-shrink-0" Checked="false" aria-label="enable google drive access" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-between gap-3">
+                                                        <div>
+                                                            <p class="fw-medium text-body mb-1">Salesforce Access</p>
+                                                            <p class="text-body-secondary mb-0">Access to customer relationship management tools.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="flex-shrink-0" Checked="false" aria-label="enable salesforce access" role="switch"></SfSwitch>
+                                                    </div>
+                                                    <div class="d-flex align-items-center justify-content-between gap-3">
+                                                        <div>
+                                                            <p class="fw-medium text-body mb-1">VPN Access</p>
+                                                            <p class="text-body-secondary mb-0">Access to secure internal networks.</p>
+                                                        </div>
+                                                        <SfSwitch CssClass="flex-shrink-0" Checked="false" aria-label="enable VPN access" role="switch"></SfSwitch>
+                                                    </div>
+                                                </div>
+                                            </ContentTemplate>
+                                        </AccordionItem>
+                                    </AccordionItems>
+                                </SfAccordion>
+                            </div>
+                        </div>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="d-flex justify-content-end gap-2 py-1">
+                            <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary col col-sm-auto" Type="button" aria-label="add member" role="button">Add Member</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}

@@ -1,0 +1,128 @@
+@page "/blocks/header-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div style="min-height: 36rem;">
+            <div class="mx-4 sm:mx-6 py-2 sm:py-0 border-b sm:border-b-0 border-gray-200 dark:border-gray-600">
+                <div class="flex items-center">
+                    <div class="flex items-center flex-shrink-0 py-0 sm:py-2 pe-4 border-b-0 sm:border-b border-gray-200 dark:border-gray-600">
+                        <span class="e-avatar e-avatar-circle e-avatar-small flex-shrink-0 text-gray-700 dark:text-white">DM</span>
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white ml-3 hidden sm:block">David Miller</h3>
+                    </div>
+                    <div class="pt-2.5 hidden sm:block w-full relative">
+                        <SfTab HeightAdjustMode="Auto">
+                            <TabItems>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Messages</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Project Files</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                            </TabItems>
+                        </SfTab>
+                    </div>
+                </div>
+                <div class="flex gap-3 py-2.5 sm:py-2 absolute top-0 end-0 me-6">
+                    <SfDropDownButton CssClass="hidden lg:block e-outline" IconCss="e-icons e-video !text-base" Type="button" Content="Meeting" aria-label="choose the meeting type" role="button">
+                        <DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+                    </SfDropDownButton>
+                    <SfDropDownButton CssClass="block lg:hidden e-outline" IconCss="e-icons e-video !text-base" Type="button" aria-label="choose the meeting type" role="button">
+                        <DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+                    </SfDropDownButton>
+                    <div class="border-l border-gray-200 dark:border-gray-600 h-5 self-center"></div>
+                    <SfButton CssClass="hidden sm:block e-outline" IconCss="sf-icon-share-arrow-02" Type="button" aria-label="share" role="button"></SfButton>
+                    <SfButton CssClass="hidden sm:block e-outline" IconCss="sf-icon-table-layout" Type="button" aria-label="layout" role="button"></SfButton>
+                    <SfButton CssClass="block sm:hidden" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more" role="button"></SfButton>
+                </div>
+            </div>
+            <div class="mx-4 sm:mx-6 block sm:hidden">
+                <SfTab HeightAdjustMode="Auto" Width="100%" OverFlowMode="@OverflowMode">
+                    <TabItems>
+                        <TabItem>
+                            <HeaderTemplate>
+                                <div>Messages</div>
+                            </HeaderTemplate>
+                        </TabItem>
+                        <TabItem>
+                            <HeaderTemplate>
+                                <div>Project Files</div>
+                            </HeaderTemplate>
+                        </TabItem>
+                    </TabItems>
+                </SfTab>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="min-height: 36rem;">
+            <div class="px-3 px-sm-4 pt-2 pt-sm-0">
+                <div class="d-flex align-items-center">
+                    <div class="d-none d-sm-flex align-items-center flex-shrink-0 py-2 my-1 pe-4 border-bottom">
+                        <span class="e-avatar e-avatar-circle e-avatar-small flex-shrink-0 text-body">DM</span>
+                        <h3 class="fs-6 fw-bold text-body ms-3 mb-0 d-none d-sm-block">David Miller</h3>
+                    </div>
+                    <div class="d-block d-sm-none">
+                        <span class="e-avatar e-avatar-circle e-avatar-small flex-shrink-0 text-body">DM</span>
+                    </div>
+                    <div class="pt-3 d-none d-sm-block w-100 position-relative">
+                        <SfTab HeightAdjustMode="Auto">
+                            <TabItems>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Messages</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Project Files</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                            </TabItems>
+                        </SfTab>
+                    </div>
+                </div>
+                <div class="border-bottom d-block d-sm-none pt-2"></div>
+                <div class="position-absolute top-0 end-0 translate-middle-y d-flex align-items-center gap-3 mt-3 mt-sm-4 pt-3 pt-sm-2 pe-4">
+                    <SfDropDownButton CssClass="e-outline d-none d-lg-block" IconCss="e-icons e-video fs-6" Content="Meeting" Type="button" aria-label="choose the meeting type" role="button">
+                        <DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+                    </SfDropDownButton>
+                    <SfDropDownButton CssClass="e-outline d-block d-lg-none" IconCss="e-icons e-video fs-6" Type="button" aria-label="choose the meeting type" role="button">
+                        <DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+                    </SfDropDownButton>
+                    <div class="border-start" style="height: 16px;"></div>
+                    <SfButton CssClass="e-outline d-none d-sm-block" IconCss="sf-icon-share-arrow-02" Type="button" aria-label="share" role="button"></SfButton>
+                    <SfButton CssClass="e-outline d-none d-sm-block" IconCss="sf-icon-table-layout" Type="button" aria-label="layout" role="button"></SfButton>
+                    <SfButton CssClass="e-outline d-block d-sm-none" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more" role="button"></SfButton>
+                </div>
+            </div>
+            <div class="px-3 px-sm-4 pt-3 d-block d-sm-none">
+                <SfTab HeightAdjustMode="Auto" Width="100%" OverFlowMode="@OverflowMode">
+                    <TabItems>
+                        <TabItem>
+                            <HeaderTemplate>
+                                <div>Messages</div>
+                            </HeaderTemplate>
+                        </TabItem>
+                        <TabItem>
+                            <HeaderTemplate>
+                                <div>Project Files</div>
+                            </HeaderTemplate>
+                        </TabItem>
+                    </TabItems>
+                </SfTab>
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,25 @@
+::deep .e-query-builder,
+::deep .e-query-builder .e-rule-list> ::after,
+::deep .e-query-builder .e-rule-list> ::before,
+::deep .e-query-builder .e-rule-container {
+    border: none;
+}
+
+::deep .e-query-builder .e-group-header {
+    display: none;
+}
+
+::deep .e-query-builder .e-group-body {
+    padding-left: 0 !important;
+}
+
+::deep .e-query-builder .e-group-container,
+::deep .e-query-builder .e-rule-list {
+    padding: 0 !important;
+}
+
+::deep .e-dialog,
+::deep .e-dialog .e-dlg-header-content,
+::deep .e-dialog .e-footer-content {
+    border-radius: 0 !important;
+}

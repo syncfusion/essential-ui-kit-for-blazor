@@ -1,0 +1,80 @@
+@page "/blocks/statistics-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="px-4 sm:px-6 xl:px-11 py-12">
+            <div class="grid sm:grid-cols-2 gap-6 lg:gap-4 lg:grid-cols-4">
+                @foreach (var data in MetricsData)
+                {
+                    <div class="e-card pt-6 rounded-lg shadow-none">
+                        <div class="e-card-stacked">
+                            <div class="e-card-header !py-0 !justify-between mb-4 !px-6">
+                                <div class="e-card-header-caption !flex-row !item-center">
+                                    <img class="h-6 w-6" src="assets/images/stats/activity-wellness-metrics/@data.MetricAssets" alt="healthcare image" />
+                                    <div class="e-card-header-title">
+                                        <h3 class="text-base font-medium text-gray-900 dark:text-white ml-2 text-wrap">@data.MetricName</h3>
+                                    </div>
+                                </div>
+                                <span class="gap-1 flex items-center text-xs @(data.Trend == "up" ? "text-green-700 dark:text-green-500" : "text-red-600 dark:text-red-400")">
+                                    @(data.CurrentPercentage > 0 ? "+" : "")@data.CurrentPercentage&#37;
+                                    <span class="e-icons @(data.Trend == "up" ? "e-arrow-up" : "e-arrow-down")"></span>
+                                </span>
+                            </div>
+                            <div class="e-card-content !px-6 !pb-6">
+                                <span class="text-2xl font-semibold text-gray-900 dark:text-white">@data.CurrentValue</span>
+                                <span class="text-sm font-medium text-gray-500 dark:text-gray-400 ml-1">@data.Unit</span>
+                            </div>
+                            <div class="e-card-separator"></div>
+                            <div class="e-card-actions !px-4 !py-2">
+                                <SfButton CssClass="e-flat e-primary" IconCss="e-icons e-chevron-right" IconPosition="IconPosition.Right" Type="button" Content="View Details" aria-label="view details" role="button"></SfButton>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="px-3 px-sm-4 px-xl-5 py-5">
+            <div class="row g-4 g-lg-3">
+                @foreach (var data in MetricsData)
+                {
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="e-card pt-4 rounded-3">
+                            <div class="e-card-stacked">
+                                <div class="e-card-header d-flex justify-content-between align-items-center mb-3 py-0 px-4">
+                                <div class="e-card-header-caption flex-row align-items-center">
+                                        <img class="me-2" src="assets/images/stats/activity-wellness-metrics/@data.MetricAssets" width="24" height="24" alt="healthcare image" />
+                                        <div class="e-card-header-title">
+                                            <h3 class="fs-6 lh-base fw-medium text-body text-wrap mb-0">@data.MetricName</h3>
+                                        </div>
+                                    </div>
+                                    <span class="d-flex align-items-center gap-1 @(data.Trend == "up" ? "text-success" : "text-danger")">
+                                        @(data.CurrentPercentage > 0 ? "+" : "")@data.CurrentPercentage&#37;
+                                        <span class="e-icons @(data.Trend == "up" ? "e-arrow-up" : "e-arrow-down")"></span>
+                                    </span>
+                                </div>
+                                <div class="e-card-content px-4 pb-4 pt-0">
+                                    <span class="lh-sm fs-4 fw-bold text-body">@data.CurrentValue</span>
+                                    <span class="fw-medium text-body text-opacity-50 ms-1">@data.Unit</span>
+                                </div>
+                                <div class="e-card-separator"></div>
+                                <div class="e-card-actions px-3 py-2">
+                                    <SfButton CssClass="e-flat e-primary" IconCss="e-icons e-chevron-right" IconPosition="IconPosition.Right" Type="button" Content="View Details" aria-label="view details" role="button"></SfButton>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

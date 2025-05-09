@@ -1,0 +1,3 @@
+::deep .e-chip.e-active::before {
+    display: none !important;
+}

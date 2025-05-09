@@ -1,0 +1,17 @@
+::deep .e-ddl.e-input-group.e-control-wrapper {
+    position: relative;
+}
+
+::deep .e-ddl.e-input-group.e-control-wrapper::before {
+    content: "\e754";
+    font-family: "e-icons";
+    font-size: 14px;
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    pointer-events: none;
+}
+
+::deep .e-input-group.e-control-wrapper input {
+    padding-left: 36px !important;
+}

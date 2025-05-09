@@ -1,0 +1,124 @@
+@page "/blocks/filter-panel-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div style="height: 730px; width: @Width; float: right;">
+            <SfSidebar class="flex flex-col bg-white dark:bg-gray-800" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div>
+                        <div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-600">
+                            <h2 class="text-base font-semibold text-gray-900 dark:text-white">Filters</h2>
+                            <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" OnClick="@ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                        </div>
+                        <div class="p-4">
+                            <div class="border-b border-gray-200 dark:border-gray-600 pb-4">
+                                <h6 class="mb-3 text-sm font-medium text-gray-900 dark:text-white">Active Users</h6>
+                                <div class="flex items-center space-x-2">
+                                    <SfSwitch TChecked="bool" aria-label="switch to show only active users" role="switch"></SfSwitch>
+                                    <p class="text-sm text-gray-900 dark:text-white">Only show active users</p>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-4 py-4 border-b border-gray-200 dark:border-gray-600">
+                                <h6 class="text-sm mb-1 font-medium text-gray-900 dark:text-white">Features Set</h6>
+                                <SfCheckBox TChecked="bool" Label="Project Management" Checked="true" aria-label="project management" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Label="CRM" Checked="true" aria-label="CRM" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Label="Analytics" aria-label="analytics" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Label="HR tools" aria-label="HR tools" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Label="Marketing" aria-label="marketing" role="checkbox"></SfCheckBox>
+                            </div>
+                            <div class="flex flex-col gap-4 py-4 border-b border-gray-200 dark:border-gray-600">
+                                <h6 class="text-sm mb-1 font-medium text-gray-900 dark:text-white">Subscription Type</h6>
+                                <SfRadioButton Label="Free" Name="subscriptiontype" Value="free" Checked="@SelectedPaymentMethod" aria-label="free" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="Basic" Name="subscriptiontype" Value="basic" Checked="@SelectedPaymentMethod" aria-label="basic" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="Premium" Name="subscriptiontype" Value="premium" Checked="@SelectedPaymentMethod" aria-label="premium" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="Enterprise" Name="subscriptiontype" Value="enterprise" Checked="@SelectedPaymentMethod" aria-label="enterprise" role="radio"></SfRadioButton>
+                            </div>
+                            <div class="my-4">
+                                <label class="text-sm font-medium text-gray-900 dark:text-white">User Ratings</label>
+                                <div class="px-3 ml-1">
+                                    <SfSlider Value="@Range" Min="0" Max="5" Step="1" Type="SliderType.Range" Width="256px">
+                                        <SliderTicks Placement="Placement.After" LargeStep="5"></SliderTicks>
+                                        <SliderTooltip IsVisible="true" ShowOn="TooltipShowOn.Hover" Placement="TooltipPlacement.Before"></SliderTooltip>
+                                    </SfSlider>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flex justify-end gap-3 w-full p-4 border-t border-gray-200 dark:border-gray-600">
+                            <SfButton CssClass="e-outline" Content="Clear" Type="button" aria-label="clear" role="button"></SfButton>
+                            <SfButton CssClass="e-primary" Content="Apply" Type="button" aria-label="apply" role="button"></SfButton>
+                        </div>
+                    </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 absolute top-0 right-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="height:750px; width: @Width; float:right;">
+            <SfSidebar class="d-flex flex-column bg-body" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+                            <h2 class="h6 mb-0 fw-bold">Filters</h2>
+                            <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" OnClick="@ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                        </div>
+                        <div class="p-3">
+                            <div class="border-bottom pb-3">
+                                <h6 class="mb-3 text-body fw-medium">Active Users</h6>
+                                <div class="d-flex align-items-center gap-2">
+                                    <SfSwitch TChecked="bool" aria-label="switch to show only active users" role="switch"></SfSwitch>
+                                    <p class="text-body mb-0 fs-6">Only show active users</p>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column gap-3 py-3 border-bottom">
+                                <h6 class="text-body fw-medium">Features Set</h6>
+                                <SfCheckBox TChecked="bool" Label="Project Management" Checked="true" aria-label="project management" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Label="CRM" Checked="true" aria-label="CRM" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Label="Analytics" aria-label="analytics" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Label="HR tools" aria-label="HR tools" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Label="Marketing" aria-label="marketing" role="checkbox"></SfCheckBox>
+                            </div>
+                            <div class="d-flex flex-column gap-3 py-3 border-bottom">
+                                <h6 class="text-body fw-medium">Subscription Type</h6>
+                                <SfRadioButton Label="Free" Name="subscriptiontype" Value="free" Checked="@SelectedPaymentMethod" aria-label="free" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="Basic" Name="subscriptiontype" Value="basic" Checked="@SelectedPaymentMethod" aria-label="basic" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="Premium" Name="subscriptiontype" Value="premium" Checked="@SelectedPaymentMethod" aria-label="premium" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="Enterprise" Name="subscriptiontype" Value="enterprise" Checked="@SelectedPaymentMethod" aria-label="enterprise" role="radio"></SfRadioButton>
+                            </div>
+                            <div class="my-3">
+                                <label class="text-body fs-6 fw-medium">User Ratings</label>
+                                <div class="px-2">
+                                    <SfSlider Value="@Range" Min="0" Max="5" Step="1" Type="SliderType.Range" Width="256px">
+                                        <SliderTicks Placement="Placement.After" LargeStep="5"></SliderTicks>
+                                        <SliderTooltip IsVisible="true" ShowOn="TooltipShowOn.Hover" Placement="TooltipPlacement.Before"></SliderTooltip>
+                                    </SfSlider>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-flex justify-content-end gap-2 p-3 border-top">
+                            <SfButton CssClass="e-outline" Content="Clear" Type="button" aria-label="clear" role="button"></SfButton>
+                            <SfButton CssClass="e-primary" Content="Apply" Type="button" aria-label="apply" role="button"></SfButton>
+                        </div>
+                    </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 position-absolute top-0 end-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

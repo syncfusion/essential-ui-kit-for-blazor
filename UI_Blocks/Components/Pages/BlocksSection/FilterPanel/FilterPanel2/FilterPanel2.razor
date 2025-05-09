@@ -1,0 +1,167 @@
+@page "/blocks/filter-panel-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div id="dialog" class="relative dialog-target" style="min-height:800px">
+            <SfDialog @ref="Dialog" CssClass="absolute border-b-0 border-t-0" Width="810px" MinHeight="800px" IsModal="true" ShowCloseIcon="true" Target="#dialog" aria-label="advanced filter" role="dialog">
+                <DialogPositionData X="@XValue"></DialogPositionData>
+                <DialogEvents Created="@(args => XValue = "right")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <div>
+                            <p class="mb-2 font-semibold text-base">Advanced Filters</p>
+                            <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 text-sm font-semibold">Switch to basic filter</a>
+                        </div>
+                    </Header>
+                    <Content>
+                        <div class="dialog-content">
+                            <p class="text-sm text-gray-500 dark:text-gray-400 pb-4">Apply this rule to the tickets that meet 
+                                <span class="text-gray-900 dark:text-white font-medium">All</span> of these conditions
+                            </p>
+                            <div class="border border-gray-200 dark:border-gray-600 rounded-lg @(RecordLength != 0 ? "pt-1" : "")">
+                                <SfQueryBuilder @ref="QueryBuilder1" TValue="RuleModel">
+                                    <QueryBuilderEvents TValue="RuleModel" RuleChanged="@(args => RecordLength = QueryBuilder1?.GetRules()?.Rules?.Count ?? 0)" Created="@(args => RecordLength = QueryBuilder1?.GetRules()?.Rules?.Count ?? 0)"></QueryBuilderEvents>
+                                    <QueryBuilderRule Condition="or" Rules="@Rules1"></QueryBuilderRule>
+                                    <QueryBuilderColumns>
+                                        <QueryBuilderColumn Field="Tickets" Label="Tickets" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="Agent Reply Count" Label="Agent Reply Count" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="CCs" Label="CCs" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="Watchers" Label="Watchers" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="Status Category" Label="Status Category" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                    </QueryBuilderColumns>
+                                </SfQueryBuilder>
+                                <div class="@(RecordLength != 0 ? "border-t " : "")py-3 px-5 border-gray-200 dark:border-gray-600 rounded-b-lg">
+                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Type="button" Content="Add New" OnClick="@AddNewRulePrimaryAsync" aria-label="add new" role="button"></SfButton>
+                                </div>
+                            </div>
+                            <div class="flex items-center my-4">
+                                <div class="border-t border-gray-200 dark:border-gray-600 w-full"></div>
+                                <p class="text-gray-700 dark:text-white border border-gray-200 dark:border-gray-600 rounded px-3 py-1">AND</p>
+                                <div class="border-t border-gray-200 dark:border-gray-600 w-full"></div>
+                            </div>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 pb-4">Apply this rule to the tickets that meet
+                                <span class="text-gray-900 dark:text-white font-medium">Any</span> of these conditions
+                            </p>
+                            <div class="@(RecordData != 0 ? "pt-1 " : "")border border-gray-200 dark:border-gray-600 rounded-lg">
+                                <SfQueryBuilder @ref="QueryBuilder2" TValue="RuleModel">
+                                    <QueryBuilderEvents TValue="RuleModel" RuleChanged="@(args => RecordData = QueryBuilder2?.GetRules()?.Rules?.Count ?? 0)" Created="@(args => RecordData = QueryBuilder2?.GetRules()?.Rules?.Count ?? 0)"></QueryBuilderEvents>
+                                    <QueryBuilderRule Condition="or" Rules="@Rules2"></QueryBuilderRule>
+                                    <QueryBuilderColumns>
+                                        <QueryBuilderColumn Field="Tickets" Label="Tickets" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="Agent Reply Count" Label="Agent Reply Count" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="CCs" Label="CCs" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="Watchers" Label="Watchers" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="Status Category" Label="Status Category" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                    </QueryBuilderColumns>
+                                </SfQueryBuilder>
+                                <div class="@(RecordData != 0 ? "border-t " : "")py-3 px-5 border-gray-200 dark:border-gray-600 rounded-b-lg">
+                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Type="button" Content="Add New" OnClick="@AddNewRuleSecondaryAsync" aria-label="add new" role="button"></SfButton>
+                                </div>
+                            </div>
+                        </div>
+                    </Content>
+                    <FooterTemplate>
+                        <hr class="border-gray-200 dark:border-gray-700" />
+                        <div class="flex flex-col-reverse sm:flex-row justify-between items-center w-full sm:pt-4 sm:pb-2">
+                            <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 pt-4 sm:pt-0 text-sm hover:underline">Learn more</a>
+                            <div class="flex flex-col sm:flex-row w-full sm:w-auto !ml-0 sm:ml-auto gap-3 mt-2 sm:mt-0">
+                                <SfButton CssClass="e-outline e-primary" class="border-0 w-full !ml-0 sm:!ml-auto sm:w-auto" Type="button" Content="Save filter" aria-label="save filter" role="button"></SfButton>
+                                <SfButton CssClass="e-primary" class="w-full sm:w-auto !ml-0 sm:!ml-auto" Type="button" Content="Apply" aria-label="apply" role="button"></SfButton>
+                            </div>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 absolute top-0 right-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@OpenDialogAync" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div id="dialog" class="position-relative" style="min-height:800px">
+            <SfDialog @ref="Dialog" CssClass="absolute border-b-0 border-t-0" Width="810px" MinHeight="800px" IsModal="true" ShowCloseIcon="true" Target="#dialog" aria-label="advanced filter" role="dialog">
+                <DialogPositionData X="@XValue"></DialogPositionData>
+                <DialogEvents Created="@(args => XValue = "right")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <div>
+                            <p class="mb-2 fw-bold fs-6 text-body lh-sm">Advanced Filters</p>
+                            <a href="javascript:void(0);" class="text-primary fw-bold small text-decoration-none lh-sm">Switch to basic filter</a>
+                        </div>
+                    </Header>
+                    <Content>
+                        <div class="dialog-content">
+                            <p class="text-body-secondary fs-6">Apply this rule to the tickets that meet 
+                                <span class="fw-medium">All</span> of these conditions
+                            </p>
+                            <div class="border rounded-3 @(RecordLength != 0 ? "pt-1" : "")">
+                                <SfQueryBuilder @ref="QueryBuilder1" TValue="RuleModel">
+                                    <QueryBuilderEvents TValue="RuleModel" RuleChanged="@(args => RecordLength = QueryBuilder1?.GetRules()?.Rules?.Count ?? 0)" Created="@(args => RecordLength = QueryBuilder1?.GetRules()?.Rules?.Count ?? 0)"></QueryBuilderEvents>
+                                    <QueryBuilderRule Condition="or" Rules="@Rules1"></QueryBuilderRule>
+                                    <QueryBuilderColumns>
+                                        <QueryBuilderColumn Field="Tickets" Label="Tickets" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="Agent Reply Count" Label="Agent Reply Count" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="CCs" Label="CCs" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="Watchers" Label="Watchers" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="Status Category" Label="Status Category" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                    </QueryBuilderColumns>
+                                </SfQueryBuilder>
+                                <div class="@(RecordLength != 0 ? "border-top" : "") p-3 rounded-bottom-3">
+                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Type="button" Content="Add New" OnClick="@AddNewRulePrimaryAsync" aria-label="add new" role="button"></SfButton>
+                                </div>
+                            </div>
+                            <div class="d-flex align-items-center my-3">
+                                <div class="border-top w-100"></div>
+                                <p class="text-secondary border border-secondary rounded-1 px-2 py-1 mb-0">AND</p>
+                                <div class="border-top w-100"></div>
+                            </div>
+                            <p class="fs-6 text-body text-opacity-50">Apply this rule to the tickets that meet 
+                                <span class="fw-medium text-body-secondary">Any</span> of these conditions
+                            </p>
+                            <div class="border rounded-3 @(RecordData != 0 ? "pt-1" : "")">
+                                <SfQueryBuilder @ref="QueryBuilder2" TValue="RuleModel">
+                                    <QueryBuilderEvents TValue="RuleModel" RuleChanged="@(args => RecordData = QueryBuilder2?.GetRules()?.Rules?.Count ?? 0)" Created="@(args => RecordData = QueryBuilder2?.GetRules()?.Rules?.Count ?? 0)"></QueryBuilderEvents>
+                                    <QueryBuilderRule Condition="or" Rules="@Rules2"></QueryBuilderRule>
+                                    <QueryBuilderColumns>
+                                        <QueryBuilderColumn Field="Tickets" Label="Tickets" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="Agent Reply Count" Label="Agent Reply Count" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="CCs" Label="CCs" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="Watchers" Label="Watchers" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                        <QueryBuilderColumn Field="Status Category" Label="Status Category" Type="Syncfusion.Blazor.QueryBuilder.ColumnType.String" Operators="@FilterOperators"></QueryBuilderColumn>
+                                    </QueryBuilderColumns>
+                                </SfQueryBuilder>
+                                <div class="@(RecordData != 0 ? "border-top" : "") p-3 rounded-bottom-3">
+                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Type="button" Content="Add New" OnClick="@AddNewRuleSecondaryAsync" aria-label="add new" role="button"></SfButton>
+                                </div>
+                            </div>
+                        </div>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="d-flex justify-content-between align-items-sm-center flex-column-reverse flex-sm-row py-1 px-3">
+                            <a href="javascript:void(0);" class="text-primary fs-6 text-center pt-3 pt-sm-0 text-decoration-none">Learn more</a>
+                            <div class="d-flex flex-column flex-sm-row w-sm-auto ms-0 ms-sm-auto gap-2">
+                                <SfButton CssClass="e-outline e-primary border-0 ms-0 flex-grow-1 flex-sm-grow-0" Type="button" Content="Save filter" aria-label="save filter" role="button"></SfButton>
+                                <SfButton CssClass="e-primary ms-0 flex-grow-1 flex-sm-grow-0 mt-2 mt-sm-0" Type="button" Content="Apply" aria-label="save filter" role="button"></SfButton>
+                            </div>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 position-absolute top-0 end-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@OpenDialogAync" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

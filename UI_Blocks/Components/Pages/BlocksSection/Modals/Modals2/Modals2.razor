@@ -1,0 +1,98 @@
+@page "/blocks/modals-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" class="relative flex justify-center" style="min-height: 580px;">
+            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="personal information" role="button">Personal Information</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Visible="true" Width="400px" aria-label="update personal information" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="font-semibold leading-normal">Personal Information</p>
+                    </Header>
+                    <Content>
+                        <form action="#" class="space-y-4 text-xs font-medium leading-normal text-gray-700 dark:text-gray-200 sm:space-y-3">
+                            <div class="flex flex-col gap-1">
+                                <label>Full Name <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
+                                <SfTextBox Type="InputType.Text" Placeholder="Enter your full name" aria-label="enter your full name" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label>Email Address <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
+                                <SfTextBox Type="InputType.Email" Placeholder="Enter a valid email address" aria-label="enter a valid email address" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label>Phone Number (Optional)</label>
+                                <SfTextBox Type="InputType.Tel" Placeholder="Enter your phone number" aria-label="enter your phone number" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label>Job Title</label>
+                                <SfDropDownList TValue="string" TItem="string" Placeholder="Select your job title" aria-label="choose a job title" role="listbox"></SfDropDownList>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label>Department (Optional)</label>
+                                <SfTextBox Type="InputType.Text" Placeholder="Enter the department" aria-label="enter the department name" role="textbox"></SfTextBox>
+                            </div>
+                        </form>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="flex flex-row justify-end gap-2 sm:gap-1 mt-1 mb-2">
+                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="submit" aria-label="submit" role="button">Submit</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 580px;">
+            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="personal information" role="button">Personal Information</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Visible="true" Width="400px" aria-label="update personal information" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="fw-bold mb-0 text-body">Personal Information</p>
+                    </Header>
+                    <Content>
+                        <form action="#" class="row gap-3 gap-sm-2 gy-sm-1 text-body-secondary fw-normal small">
+                            <div class="d-flex flex-column gap-1 mt-0">
+                                <label>Full Name <span class="text-danger">*</span></label>
+                                <SfTextBox Type="InputType.Text" Placeholder="Enter your full name" aria-label="enter your full name" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="d-flex flex-column gap-1">
+                                <label>Email Address <span class="text-danger">*</span></label>
+                                <SfTextBox Type="InputType.Email" Placeholder="Enter a valid email address" aria-label="enter a valid email address" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="d-flex flex-column gap-1">
+                                <label>Phone Number (Optional)</label>
+                                <SfTextBox Type="InputType.Tel" Placeholder="Enter your phone number" aria-label="enter your phone number" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="d-flex flex-column gap-1">
+                                <label>Job Title</label>
+                                <SfDropDownList TValue="string" TItem="string" Placeholder="Select your job title" aria-label="choose a job title" role="listbox"></SfDropDownList>
+                            </div>
+                            <div class="d-flex flex-column gap-1">
+                                <label>Department (Optional)</label>
+                                <SfTextBox Type="InputType.Text" Placeholder="Enter the department" aria-label="enter the department name" role="textbox"></SfTextBox>
+                            </div>
+                        </form>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="d-flex justify-content-end gap-2 gap-sm-1 py-1">
+                            <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary col col-sm-auto" Type="submit" aria-label="submit" role="button">Submit</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}

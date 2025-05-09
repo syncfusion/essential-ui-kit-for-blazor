@@ -55,10 +55,10 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 					<ListViewTemplates TValue="TaskItem">
 						<Template>
 							@{
-								<div class="e-list-wrapper px-1 px-sm-2 py-3 d-flex align-items-start">
+								<div class="e-list-wrapper e-list-multi-line px-1 px-sm-2 py-3 d-flex align-items-start">
 									<SfCheckBox CssClass="e-bigger pt-1" @bind-Checked="@context.Completed" aria-label="select tasks in the to-do list" role="checkbox"></SfCheckBox>
 									<div class="ms-2 ps-1 d-flex flex-column w-100">
-										<span>
+										<span class="d-flex">
 											<span class="e-list-item-header fw-medium @(context.Completed ? "text-decoration-line-through" : "")">@context.Header</span>
 											@if (context.Id == 3)
 											{

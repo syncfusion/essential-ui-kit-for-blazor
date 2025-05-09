@@ -1,0 +1,88 @@
+@page "/blocks/filter-panel-1" 
+ 
+@inherits UI_Blocks.Components.Pages.MainSection.Demo 
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div style="height: 576px; width: @Width; float: right;">
+            <SfSidebar class="flex flex-col bg-white dark:bg-gray-800" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div>
+                        <div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-600">
+                            <h2 class="text-base font-semibold text-gray-900 dark:text-white">Apply Filter</h2>
+                            <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" OnClick="@ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                        </div>
+                        <div class="flex-grow overflow-y-auto p-4" style="min-height: 442px;">
+                            <div class="grid grid-cols-1 gap-4">
+                                <div>
+                                    <label class="block mb-1 text-sm font-semibold text-gray-900 dark:text-white">Location</label>
+                                    <SfDropDownList TValue="string" TItem="string" DataSource="@Location" Placeholder="Select location" aria-label="choose a location" role="listbox"></SfDropDownList>
+                                </div>
+                                <div>
+                                    <label class="block mb-1 text-sm font-semibold text-gray-900 dark:text-white">Department</label>
+                                    <SfDropDownList TValue="string" TItem="string" DataSource="@Department" Placeholder="Select department" aria-label="choose a department" role="listbox"></SfDropDownList>
+                                </div>
+                                <div>
+                                    <label class="block mb-1 text-sm font-semibold text-gray-900 dark:text-white">User Role</label>
+                                    <SfDropDownList TValue="string" TItem="string" DataSource="@Role" Placeholder="Select role" aria-label="choose a role" role="listbox"></SfDropDownList>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-full p-4 border-t border-gray-200 dark:border-gray-600">
+                            <SfButton CssClass="w-full text-sm e-primary" Content="Apply" Type="button" aria-label="apply" role="button"></SfButton>
+                        </div>
+                    </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 absolute top-0 right-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="height: 576px; width: @Width; float: right;">
+            <SfSidebar class="d-flex flex-column bg-body" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+                            <h2 class="h6 mb-0 fw-bold text-body">Apply Filter</h2>
+                            <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" OnClick="@ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                        </div>
+                        <div class="flex-grow overflow-auto p-3" style="min-height: 442px;">
+                            <div class="row g-3">
+                                <div class="col-12">
+                                    <label class="fs-6 mb-1 fw-medium text-body">Location</label>
+                                    <SfDropDownList TValue="string" TItem="string" DataSource="@Location" Placeholder="Select location" aria-label="choose a location" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="col-12">
+                                    <label class="fs-6 mb-1 fw-medium text-body">Department</label>
+                                    <SfDropDownList TValue="string" TItem="string" DataSource="@Department" Placeholder="Select department" aria-label="choose a department" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="col-12">
+                                    <label class="fs-6 mb-1 fw-medium text-body">User role</label>
+                                    <SfDropDownList TValue="string" TItem="string" DataSource="@Role" Placeholder="Select role" aria-label="choose a role" role="listbox"></SfDropDownList>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="w-100 p-3 border-top">
+                            <SfButton CssClass="w-100 e-primary e-block" Content="Apply" Type="button" aria-label="apply" role="button"></SfButton>
+                        </div>
+                    </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 position-absolute top-0 end-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

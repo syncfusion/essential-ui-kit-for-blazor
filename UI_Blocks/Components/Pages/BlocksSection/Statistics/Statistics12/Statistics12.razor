@@ -1,0 +1,68 @@
+@page "/blocks/statistics-12"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="px-4 sm:px-6 xl:px-11 py-12">
+            <div class="grid sm:grid-cols-2 gap-6 lg:gap-4 lg:grid-cols-4">
+                @foreach (var data in MetricsData)
+                {
+                    <div class="e-card e-bigger rounded-lg shadow-none">
+                        <div class="e-card-stacked">
+                            <div class="e-card-header !flex-col !pb-1">
+                                <span class="e-avatar e-avatar-circle @(data.MetricName == "Laptop" ? "bg-red-100 dark:bg-red-800 text-red-600 dark:text-red-400" : data.MetricName == "House Savings" ? "bg-orange-100 dark:bg-orange-800 text-orange-700 dark:text-orange-500" : data.MetricName == "Motorcycle" ? "bg-cyan-100 dark:bg-sky-800 text-cyan-700 dark:text-sky-400" : data.MetricName == "Dream Car" ? "bg-primary-100 text-primary-600 dark:bg-primary-600 dark:text-primary-400" : "")">
+                                    <span class="text-lg @(data.MetricName == "Laptop" ? "sf-icon-laptop-01" : data.MetricName == "House Savings" ? "e-icons e-home" : data.MetricName == "Motorcycle" ? "sf-icon-motor-bike" : data.MetricName == "Dream Car" ? "e-icons e-travel-and-places" : "")"></span>
+                                </span>
+                                <div class="e-card-header-title">
+                                    <h3 class="text-base font-medium text-gray-700 dark:text-gray-200 mt-3">@data.MetricName</h3>
+                                </div>
+                            </div>
+                            <div class="e-card-content !pb-6">
+                                <p class="text-sm text-gray-700 dark:text-gray-200">@($"{data.CurrentValue:C0} of {data.Goal:C0}")</p>
+                                <div id="@data.Id" class="mt-4 w-full bg-gray-200 dark:bg-gray-600 rounded-full h-1 overflow-hidden">
+                                    <div class="h-full rounded-full transition-all @(data.MetricName == "Dream Car" ? "bg-primary-600 dark:bg-primary-400" : data.MetricName == "House Savings" ? "bg-orange-700 dark:bg-orange-500" : data.MetricName == "Motorcycle" ? "bg-cyan-700 dark:bg-sky-400" : data.MetricName == "Laptop" ? "bg-red-600 dark:bg-red-400" : "")" style="width:@($"{(data.CurrentValue > 0 && data.Goal > 0 ? (data.CurrentValue * 100 / data.Goal) : 0)}%")"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="px-3 px-sm-4 px-xl-5 py-5">
+            <div class="row g-4 g-lg-3">
+                @foreach (var data in MetricsData)
+                {
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="e-card rounded-3">
+                            <div class="e-card-stacked">
+                                <div class="e-card-header d-flex flex-column pb-1 px-4 pt-4">
+                                    <span class="e-avatar e-avatar-circle @(data.MetricName == "Laptop" ? "bg-danger-subtle text-danger" : data.MetricName == "House Savings" ? "bg-warning-subtle text-warning-emphasis" : data.MetricName == "Motorcycle" ? "bg-info-subtle text-info-emphasis" : data.MetricName == "Dream Car" ? "bg-primary-subtle text-primary" : "")">
+                                        <span class="fs-6 @(data.MetricName == "Laptop" ? "sf-icon-laptop-01" : data.MetricName == "House Savings" ? "e-icons e-home" : data.MetricName == "Motorcycle" ? "sf-icon-motor-bike" : data.MetricName == "Dream Car" ? "e-icons e-travel-and-places" : "")"></span>
+                                    </span>
+                                    <div class="e-card-header-title">
+                                        <h3 class="fs-6 fw-medium text-body mt-3 mb-0 lh-base">@data.MetricName</h3>
+                                    </div>
+                                </div>
+                                <div class="e-card-content pt-0 px-4 pb-4">
+                                    <p class="text-body-secondary">@($"{data.CurrentValue:C0} of {data.Goal:C0}")</p>
+                                    <div id="@data.Id" class="mt-3 w-100 bg-body-secondary rounded overflow-hidden" style="height: 4px;">
+                                        <div class="h-100 rounded transition-all @(data.MetricName == "Dream Car" ? "bg-primary" : data.MetricName == "House Savings" ? "bg-warning" : data.MetricName == "Motorcycle" ? "bg-info" : data.MetricName == "Laptop" ? "bg-danger" : "")" style="width:@($"{(data.CurrentValue > 0 && data.Goal > 0 ? (data.CurrentValue * 100 / data.Goal) : 0)}%")"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,78 @@
+@page "/blocks/header-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div class="pt-4 sm:pt-6" style="min-height: 36rem;">
+            <div class="flex justify-between">
+                <div class="flex items-center">
+                    <h1 class="text-lg font-semibold text-gray-900 dark:text-white ms-4 sm:ms-6">Notification</h1>
+                </div>
+                <div class="flex items-center me-4 sm:me-6">
+                    <SfButton CssClass="e-flat e-icons e-settings" Type="button" aria-label="settings" role="button"></SfButton>
+                </div>
+            </div>
+            <div class="flex mt-3 px-4 sm:px-6 w-full justify-between items-center">
+                <SfTab HeightAdjustMode="Auto" Width="100%" OverFlowMode="@OverflowMode">
+                    <TabItems>
+                        <TabItem>
+                            <HeaderTemplate>
+                                <div>Overview</div>
+                            </HeaderTemplate>
+                        </TabItem>
+                        <TabItem>
+                            <HeaderTemplate>
+                                <div>Shared</div>
+                            </HeaderTemplate>
+                        </TabItem>
+                        <TabItem>
+                            <HeaderTemplate>
+                                <div>Comments</div>
+                            </HeaderTemplate>
+                        </TabItem>
+                    </TabItems>
+                </SfTab>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="pt-3 pt-sm-4" style="min-height: 36rem;">
+            <div class="d-flex justify-content-between">
+                <div class="d-flex align-items-center">
+                    <h1 class="fs-6 fw-bold text-body ms-3 ms-sm-4 mb-0">Notification</h1>
+                </div>
+                <div class="d-flex align-items-center me-3 me-sm-4">
+                    <SfButton CssClass="e-flat e-icons e-settings" Type="button" aria-label="settings" role="button"></SfButton>
+                </div>
+            </div>
+            <div class="d-flex mt-3 px-3 px-sm-4 w-100 justify-content-between align-items-center">
+                <SfTab HeightAdjustMode="Auto" Width="100%" OverFlowMode="@OverflowMode">
+                    <TabItems>
+                        <TabItem>
+                            <HeaderTemplate>
+                                <div>Overview</div>
+                            </HeaderTemplate>
+                        </TabItem>
+                        <TabItem>
+                            <HeaderTemplate>
+                                <div>Shared</div>
+                            </HeaderTemplate>
+                        </TabItem>
+                        <TabItem>
+                            <HeaderTemplate>
+                                <div>Comments</div>
+                            </HeaderTemplate>
+                        </TabItem>
+                    </TabItems>
+                </SfTab>
+            </div>
+        </div>
+    </section>
+}

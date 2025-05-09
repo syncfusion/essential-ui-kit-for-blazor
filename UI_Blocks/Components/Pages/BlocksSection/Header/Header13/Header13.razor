@@ -1,0 +1,120 @@
+@page "/blocks/header-13"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div style="min-height: 36rem;">
+            <div class="pt-4 sm:pt-6">
+                <div class="px-4 sm:px-6">
+                    <SfPager CssClass="border-0 bg-transparent !p-0">
+                        <Template>
+                            <SfButton CssClass="e-flat" IconCss="e-icons e-chevron-left !text-base" Type="button" aria-label="go to previous page" role="button"></SfButton>
+                            <SfButton CssClass="e-flat" IconCss="e-icons e-chevron-right !text-base" Type="button" aria-label="go to next page" role="button"></SfButton>
+                        </Template>
+                    </SfPager>
+                </div>
+                <div class="flex justify-between py-3 px-4 sm:px-6">
+                    <div class="flex items-center">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Sales Activity</h3>
+                    </div>
+                    <div class="flex gap-4">
+                        <SfButton Type="button" aria-label="download" role="button">
+                            <div class="flex items-center gap-1">
+                                <span class="e-icons e-download text-base"></span>
+                                <span class="ml-1 hidden md:block">Download</span>
+                            </div>
+                        </SfButton>
+                        <SfButton CssClass="block lg:hidden" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more" role="button"></SfButton>
+                    </div>
+                </div>
+            </div>
+            <div class="border-b border-gray-200 dark:border-gray-600"></div>
+            <div class="hidden lg:flex items-center gap-3 mt-3 px-6">
+                <span>
+                    <SfTextBox CssClass="w-40" Type="InputType.Text" Placeholder="Enter email ID" aria-label="enter email id" role="textbox"></SfTextBox>
+                </span>
+                <span class="w-44">
+                    <SfDropDownList TValue="string" TItem="string" DataSource="@Periods" Placeholder="Period: Custom" aria-label="choose the period" role="listbox">
+                        <DropDownListFieldSettings Text="Text"></DropDownListFieldSettings>
+                    </SfDropDownList>
+                </span>
+                <span class="w-64">
+                    <SfDateRangePicker TValue="DateTime ?" Placeholder="MM/DD/YYYY - MM/DD/YYYY" aria-label="select a date here" role="combobox"></SfDateRangePicker>
+                </span>
+                <span class="w-44">
+                    <SfDropDownList TValue="string" TItem="string" DataSource="@Products" Placeholder="Product: All" aria-label="choose the product" role="listbox">
+                        <DropDownListFieldSettings Text="Text"></DropDownListFieldSettings>
+                    </SfDropDownList>
+                </span>
+                <span class="w-44">
+                    <SfDropDownList TValue="string" TItem="string" DataSource="@Regions" Placeholder="Region: All" aria-label="choose the region" role="listbox">
+                        <DropDownListFieldSettings Text="Text"></DropDownListFieldSettings>
+                    </SfDropDownList>
+                </span>
+                <div class="h-5 border-l border-gray-200 dark:border-gray-600"></div>
+                <SfButton Content="Reset" Type="button" aria-label="reset" role="button"></SfButton>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="min-height: 36rem;">
+            <div class="pt-3 pt-sm-4">
+                <div class="px-3 px-sm-4">
+                    <SfPager CssClass="border-0 p-0">
+                        <Template>
+                            <SfButton CssClass="e-flat" IconCss="e-icons e-chevron-left fs-6" Type="button" aria-label="go to previous page" role="button"></SfButton>
+                            <SfButton CssClass="e-flat" IconCss="e-icons e-chevron-right fs-6" Type="button" aria-label="go to next page" role="button"></SfButton>
+                        </Template>
+                    </SfPager>
+                </div>
+                <div class="d-flex justify-content-between py-2 my-1 px-3 px-sm-4">
+                    <div class="d-flex align-items-center">
+                        <h3 class="fs-5 fw-bold text-body mb-0">Sales Activity</h3>
+                    </div>
+                    <div class="d-flex gap-3">
+                        <SfButton CssClass="e-outline" Type="button" aria-label="download" role="button">
+                            <div class="d-flex align-items-center gap-1">
+                                <span class="e-icons e-download fs-5"></span>
+                                <span class="ms-1 d-none d-md-block">Download</span>
+                            </div>
+                        </SfButton>
+                        <SfButton CssClass="e-outline d-block d-lg-none" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more" role="button"></SfButton>
+                    </div>
+                </div>
+            </div>
+            <div class="border-bottom"></div>
+            <div class="d-none d-lg-flex align-items-center gap-3 mt-3 px-4">
+                <span Style="width: 150px;">
+                    <SfTextBox Type="InputType.Text" Placeholder="Enter email ID" aria-label="enter email id" role="textbox"></SfTextBox>
+                </span>
+                <span>
+                    <SfDropDownList TValue="string" TItem="string" DataSource="@Periods" Placeholder="Period: Custom" aria-label="choose the period" role="listbox">
+                        <DropDownListFieldSettings Text="Text"></DropDownListFieldSettings>
+                    </SfDropDownList>
+                </span>
+                <span style="width: 242px;">
+                    <SfDateRangePicker TValue="DateTime ?" Placeholder="MM/DD/YYYY - MM/DD/YYYY" aria-label="select a date here" role="combobox"></SfDateRangePicker>
+                </span>
+                <span>
+                    <SfDropDownList TValue="string" TItem="string" DataSource="@Products" Placeholder="Product: All" aria-label="choose the product" role="listbox">
+                        <DropDownListFieldSettings Text="Text"></DropDownListFieldSettings>
+                    </SfDropDownList>
+                </span>
+                <span>
+                    <SfDropDownList TValue="string" TItem="string" DataSource="@Regions" Placeholder="Region: All" aria-label="choose the region" role="listbox">
+                        <DropDownListFieldSettings Text="Text"></DropDownListFieldSettings>
+                    </SfDropDownList>
+                </span>
+                <div class="border-start border-secondary" style="height: 16px;"></div>
+                <SfButton CssClass="e-outline" Content="Reset" Type="button" aria-label="reset" role="button"></SfButton>
+            </div>
+        </div>
+    </section>
+}

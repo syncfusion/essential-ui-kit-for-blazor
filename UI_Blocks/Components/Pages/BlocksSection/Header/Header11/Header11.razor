@@ -1,0 +1,108 @@
+@page "/blocks/header-11"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div class="pt-4 sm:pt-6" style="min-height: 36rem;">
+            <h1 class="text-lg font-semibold text-gray-900 dark:text-white ms-4 sm:ms-6">API Reference Builder</h1>
+            <div class="flex items-center justify-between">
+                <div class="mx-4 sm:mx-6 w-full">
+                    <div id="breadcrumb" class="pt-2 pb-3">
+                        <SfBreadcrumb EnableNavigation="false" OverFlowMode="@BreadcrumbOverflowMode" MaxItems="@MaxItems">
+                            <BreadcrumbItems>
+                                <BreadcrumbItem Text="Documentation"></BreadcrumbItem>
+                                <BreadcrumbItem Text="API Reference Builder"></BreadcrumbItem>
+                            </BreadcrumbItems>
+                            <BreadcrumbTemplates>
+                                <SeparatorTemplate>
+                                    <span class="e-icons e-chevron-right"></span>
+                                </SeparatorTemplate>
+                            </BreadcrumbTemplates>
+                        </SfBreadcrumb>
+                    </div>
+                    <div class="w-full">
+                        <SfTab HeightAdjustMode="Auto" Width="100%" OverFlowMode="@TabOverflowMode">
+                            <TabItems>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Settings</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Parameters</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Examples</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Preview</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                            </TabItems>
+                        </SfTab>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="pt-3 pt-sm-4" style="min-height: 36rem;">
+            <h1 class="fs-5 fw-bold text-body ms-3 ms-sm-4 mb-1">API Reference Builder</h1>
+            <div class="d-flex align-items-center justify-content-between">
+                <div class="mx-3 mx-sm-4 w-100">
+                    <div class="pt-2 pb-3">
+                        <SfBreadcrumb EnableNavigation="false" OverFlowMode="@BreadcrumbOverflowMode" MaxItems="@MaxItems">
+                            <BreadcrumbItems>
+                                <BreadcrumbItem Text="Documentation"></BreadcrumbItem>
+                                <BreadcrumbItem Text="API Reference Builder"></BreadcrumbItem>
+                            </BreadcrumbItems>
+                            <BreadcrumbTemplates>
+                                <SeparatorTemplate>
+                                    <span class="e-icons e-chevron-right"></span>
+                                </SeparatorTemplate>
+                            </BreadcrumbTemplates>
+                        </SfBreadcrumb>
+                    </div>
+                    <div class="w-100">
+                        <SfTab HeightAdjustMode="Auto" Width="100%" OverFlowMode="@TabOverflowMode">
+                            <TabItems>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Settings</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Parameters</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Examples</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div>Preview</div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                            </TabItems>
+                        </SfTab>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,116 @@
+@page "/blocks/header-9"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div style="min-height: 36rem;">
+            <div class="py-3 px-4 sm:px-6 flex justify-between border-b border-gray-200 dark:border-gray-600">
+                <div class="flex items-center">
+                    <div id="breadcrumb">
+                        <SfBreadcrumb EnableNavigation="false" OverFlowMode="@OverflowMode" MaxItems="@MaxItems">
+                            <BreadcrumbItems>
+                                <BreadcrumbItem Text="Learning Portal"></BreadcrumbItem>
+                                <BreadcrumbItem Text="Current Term"></BreadcrumbItem>
+                            </BreadcrumbItems>
+                            <BreadcrumbTemplates>
+                                <SeparatorTemplate>
+                                    <span class="text-base e-icons e-chevron-right"></span>
+                                </SeparatorTemplate>
+                            </BreadcrumbTemplates>
+                        </SfBreadcrumb>
+                    </div>
+                    <SfButton class="ml-1" Type="button" aria-label="filter" role="button">
+                        <div class="flex items-center gap-1">
+                            <span class="e-icons e-filter e-medium"></span>
+                            <span class="ml-1 hidden lg:block">Filter</span>
+                        </div>
+                    </SfButton>
+                </div>
+                <div class="flex gap-3">
+                    <div class="hidden sm:flex">
+                        <span class="hidden md:block">
+                            <SfSplitButton @ref="NewCourseDropdown" IconCss="e-icons e-plus" Content="New Course" aria-label="choose the new course" role="button">
+                                <SplitButtonEvents Opened="OnNewCourseDropdownOpened" Closed="OnNewCourseDropdownClosed"></SplitButtonEvents>
+                                <DropDownMenuItems>
+                                    <DropDownMenuItem Text="Create Course"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="Import Course"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="Course Template"></DropDownMenuItem>
+                                </DropDownMenuItems>
+                            </SfSplitButton>
+                        </span>
+                        <SfButton class="ml-3" CssClass="e-flat" IconCss="e-icons e-settings" Type="button" aria-label="settings" role="button"></SfButton>
+                    </div>
+                    <SfDropDownButton @ref="AdditionalOptionDropdown" class="block sm:hidden" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                        <DropDownButtonEvents Opened="OnAdditionalOptionDropdownOpened" Closed="OnAdditionalOptionDropdownClosed"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="New Course"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Create Course"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Import Course"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Course Template"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Settings"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="min-height: 36rem;">
+            <div class="py-2 px-3 px-sm-4 d-flex justify-content-between border-bottom">
+                <div class="d-flex align-items-center">
+                    <div>
+                        <SfBreadcrumb class="d-flex align-items-center" EnableNavigation="false" OverFlowMode="@OverflowMode" MaxItems="@MaxItems">
+                            <BreadcrumbItems>
+                                <BreadcrumbItem Text="Learning Portal"></BreadcrumbItem>
+                                <BreadcrumbItem Text="Current Term"></BreadcrumbItem>
+                            </BreadcrumbItems>
+                            <BreadcrumbTemplates>
+                                <SeparatorTemplate>
+                                    <span class="fs-6 e-icons e-chevron-right px-2"></span>
+                                </SeparatorTemplate>
+                            </BreadcrumbTemplates>
+                        </SfBreadcrumb>
+                    </div>
+                    <SfButton class="ms-3" CssClass="e-outline" Type="button" aria-label="filter" role="button">
+                        <div class="d-flex align-items-center gap-1">
+                            <span class="e-icons e-filter e-medium"></span>
+                            <span class="ms-1 d-none d-lg-block">Filter</span>
+                        </div>
+                    </SfButton>
+                </div>
+                <div class="d-flex gap-3">
+                    <div class="d-none d-sm-flex">
+                        <span class="d-none d-sm-block">
+                            <SfSplitButton @ref="NewCourseDropdown" IconCss="e-icons e-plus" Content="New Course" aria-label="choose the new course" role="button">
+                                <SplitButtonEvents Opened="OnNewCourseDropdownOpened" Closed="OnNewCourseDropdownClosed"></SplitButtonEvents>
+                                <DropDownMenuItems>
+                                    <DropDownMenuItem Text="Create Course"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="Import Course"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="Course Template"></DropDownMenuItem>
+                                </DropDownMenuItems>
+                            </SfSplitButton>
+                        </span>
+                        <SfButton class="ms-3" CssClass="e-flat" IconCss="e-icons e-settings" Type="button" aria-label="settings" role="button"></SfButton>
+                    </div>
+                    <SfDropDownButton @ref="AdditionalOptionDropdown" class="block d-sm-none" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                        <DropDownButtonEvents Opened="OnAdditionalOptionDropdownOpened" Closed="OnAdditionalOptionDropdownClosed"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="New Course"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Create Course"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Import Course"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Course Template"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Settings"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}

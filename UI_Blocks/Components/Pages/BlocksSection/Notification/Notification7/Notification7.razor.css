@@ -1,0 +1,7 @@
+﻿::deep #list .e-list-item {
+    border-bottom: 0px;
+    border-radius: 8px;
+    margin-bottom: 16px;
+    height: auto !important;
+    padding: 0 !important;
+}

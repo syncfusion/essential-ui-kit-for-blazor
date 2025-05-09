@@ -34,16 +34,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Search.Search4
                 await Search.ShowPopupAsync();
             }
         }
-        private string GetAvatarClass(string ColorTheme)
-        {
-            return ColorTheme switch
-            {
-                "Orange" => "bg-orange-100 dark:bg-orange-800 dark:text-orange-300 text-orange-700 text-warning-emphasis bg-warning-subtle",
-                "Blue" => "bg-cyan-100 dark:bg-cyan-800 dark:text-cyan-200 text-cyan-700 text-info-emphasis bg-info-subtle",
-                "Red" => "bg-red-100 dark:bg-red-800 dark:text-red-300 text-red-600 text-danger-emphasis bg-danger-subtle",
-                _ => ""
-            };
-        }
+        
         public class SearchItem
         {
             public int Id { get; set; }

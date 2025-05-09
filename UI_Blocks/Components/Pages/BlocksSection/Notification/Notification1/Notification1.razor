@@ -1,0 +1,189 @@
+﻿@page "/blocks/notification-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="w-full flex justify-end p-4 mx-auto" id="target" style="min-height: 680px; max-width: 480px;">
+            <div class="relative w-8 h-8">
+                <SfButton CssClass="e-outline e-round" IconCss="sf-icon-notification-bell-02" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                <span class="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 mr-2">4</span>
+            </div>
+        </div>
+        <SfDialog @ref="Dialog" Target="#target" ID="notification" CssClass="!bg-white dark:!bg-gray-800 rounded-lg overflow-hidden !border" Visible="@IsDialogVisible" Width="@DialogWidth" aria-label="notification" role="dialog">
+            <DialogTemplates>
+                <Header>
+                    <div class="flex justify-between items-center p-4 md:px-3 md:py-2">
+                        <h1 class="text-base md:text-lg text-gray-900 dark:text-white font-medium">Notifications</h1>
+                        <div class="flex items-center gap-3">
+                            <SfButton CssClass="e-flat e-small block sm:hidden" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more menu" role="button"></SfButton>
+                            <SfButton CssClass="e-flat e-small e-round" IconCss="e-icons e-close" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                        </div>
+                    </div>
+                </Header>
+                <Content>
+                    <div id="tab" class="relative">
+                        <SfButton CssClass="e-link !text-gray-700 dark:!text-white absolute right-3 top-1 z-50 hidden sm:block" Content="Mark all as read" Type="button" aria-label="mark all as read" role="button"></SfButton>
+                        <SfTab>
+                            <TabItems>
+                                <TabEvents Created="@OnTabCreated" Selected="@OnTabSelectedAsync"></TabEvents>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div class="flex items-center gap-2">
+                                            <p>All</p>
+                                            <span class="e-badge e-badge-circle @(SelectedTabIndex == 0 ? "e-badge-primary" : "")">2</span>
+                                        </div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div><p>Following</p></div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div><p>Archive</p></div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                            </TabItems>
+                        </SfTab>
+                        <SfListView CssClass="border-0 e-list-template" DataSource="@MessageData" aria-label="recent notification" role="list">
+                            <ListViewFieldSettings Id="Id" Text="Content" TValue="NotificationItem"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="NotificationItem">
+                                <Template>
+                                    @{
+                                        <div class="flex gap-2 p-4 sm:p-3 sm:!pr-5 border-b border-gray-200 dark:border-gray-600">
+                                            <div class="shrink-0">
+                                                @if (!string.IsNullOrEmpty(context.Avatar))
+                                                {
+                                                    <span class="e-avatar e-avatar-circle" style="background-image: url('assets/images/common/avatar/@context.Avatar')"></span>
+                                                }
+                                                @if (!string.IsNullOrEmpty(context.Initial))
+                                                {
+                                                    <span class="e-avatar e-avatar-circle @(context.ColorTheme == "Green" ? "!bg-green-100 !text-green-700 dark:!text-green-500" : context.ColorTheme == "Orange" ? "!bg-orange-100 !text-orange-700 dark:!text-orange-500" : "")">@context.Initial</span>
+                                                }
+                                            </div>
+                                            <div class="flex flex-col gap-1">
+                                                <p class="text-gray-900 dark:text-white"><span class="font-medium">@context.Name</span> @((context.Content.Length > 36) ? context.Content.Substring(0, 36) + "..." : context.Content)</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400">@context.Time</p>
+                                                @if (context.Id == 1 || context.Id == 2)
+                                                {
+                                                    <div class="flex gap-4 items-center mt-1">
+                                                        <SfButton CssClass="e-primary" Content="Accept" Type="button" aria-label="accept" role="button"></SfButton>
+                                                        <SfButton CssClass="e-outline" Content="Deny" Type="button" aria-label="deny" role="button"></SfButton>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </div>
+                </Content>
+                <FooterTemplate>
+                    <div class="py-3 sm:py-2.5 flex justify-center bg-gray-200 dark:bg-gray-700">
+                        <SfButton CssClass="e-flat w-max !ml-0" Content="View all notification" Type="button" aria-label="view all notification" role="button"></SfButton>
+                    </div>
+                </FooterTemplate>
+            </DialogTemplates>
+            <DialogPositionData X="center" Y="top"></DialogPositionData>
+            <DialogEvents Opened="@(args=> args.PreventFocus = true)"></DialogEvents>
+        </SfDialog>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="w-100 d-flex justify-content-end p-3 mx-auto" id="target" style="min-height: 680px; max-width: 480px;">
+            <div class="position-relative" style="width: 32px; height: 32px;">
+                <SfButton CssClass="e-outline e-round" IconCss="sf-icon-notification-bell-02" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                <span class="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 me-2">4</span>
+            </div>
+        </div>
+        <SfDialog @ref="Dialog" Target="#target" ID="notification" CssClass="bg-body rounded overflow-hidden border" Visible="@IsDialogVisible" Width="@DialogWidth" aria-label="notification" role="dialog">
+            <DialogTemplates>
+                <Header>
+                    <div class="d-flex justify-content-between align-items-center p-3">
+                        <h1 class="fs-5 text-body fw-medium m-0">Notifications</h1>
+                        <div class="d-flex align-items-center gap-3">
+                            <SfButton CssClass="e-flat e-small d-block d-sm-none" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more menu" role="button"></SfButton>
+                            <SfButton CssClass="e-flat e-small e-round e-inherit" IconCss="e-icons e-close" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                        </div>
+                    </div>
+                </Header>
+                <Content>
+                    <div id="tab" class="position-relative mt-1">
+                        <SfButton CssClass="e-link position-absolute top-0 end-0 z-1 d-none d-sm-block me-2 text-secondary" Content="Mark all as read" Type="button" aria-label="mark all as read" role="button"></SfButton>
+                        <SfTab>
+                            <TabItems>
+                                <TabEvents Created="@OnTabCreated" Selected="@OnTabSelectedAsync"></TabEvents>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <p class="mb-0">All</p>
+                                            <span class="e-badge e-badge-circle @(SelectedTabIndex == 0 ? "e-badge-primary" : "")">2</span>
+                                        </div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div><p class="mb-0">Following</p></div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div><p class="mb-0">Archive</p></div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                            </TabItems>
+                        </SfTab>
+                        <SfListView CssClass="border-0 rounded-0 e-list-template" DataSource="@MessageData" aria-label="recent notification" role="list">
+                            <ListViewFieldSettings Id="Id" Text="Content" TValue="NotificationItem"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="NotificationItem">
+                                <Template>
+                                    @{
+                                        <div class="d-flex gap-2 p-3 pe-sm-4">
+                                            <div class="flex-shrink-0">
+                                                @if (!string.IsNullOrEmpty(context.Avatar))
+                                                {
+                                                    <span class="e-avatar e-avatar-circle" style="background-image: url('assets/images/common/avatar/@context.Avatar')"></span>
+                                                }
+                                                @if (!string.IsNullOrEmpty(context.Initial))
+                                                {
+                                                    <span class="e-avatar e-avatar-circle @(context.ColorTheme == "Green" ? "bg-success-subtle text-success" : context.ColorTheme == "Orange" ? "bg-warning-subtle text-warning" : "")">@context.Initial</span>
+                                                }
+                                            </div>
+                                            <div class="d-flex flex-column gap-1">
+                                                <p class="m-0"><span class="fw-medium">@context.Name</span> @((context.Content.Length > 36) ? context.Content.Substring(0, 36) + "..." : context.Content)</p>
+                                                <p class="small m-0">@context.Time</p>
+                                                @if (context.Id == 1 || context.Id == 2)
+                                                {
+                                                    <div class="d-flex gap-2 align-items-center mt-1">
+                                                        <SfButton CssClass="e-primary" Content="Accept" Type="button" aria-label="accept" role="button"></SfButton>
+                                                        <SfButton CssClass="e-outline e-inherit" Content="Deny" Type="button" aria-label="deny" role="button"></SfButton>
+                                                    </div>
+                                                }
+                                            </div>
+                                        </div>
+                                    }
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </div>
+                </Content>
+                <FooterTemplate>
+                    <div class="py-3 d-flex justify-content-center bg-body-tertiary">
+                        <SfButton CssClass="e-outline w-auto ms-0" Content="View all notification" Type="button" aria-label="view all notification" role="button"></SfButton>
+                    </div>
+                </FooterTemplate>
+            </DialogTemplates>
+            <DialogPositionData X="center" Y="top"></DialogPositionData>
+            <DialogEvents Opened="@(args=> args.PreventFocus = true)"></DialogEvents>
+        </SfDialog>
+    </section>
+}
+

@@ -1,0 +1,104 @@
+@page "/blocks/header-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div class="pt-4 sm:pt-6" style="min-height: 36rem;">
+            <div class="ms-4 sm:ms-6">
+                <p class="text-xs font-semibold text-gray-500 dark:text-gray-400">My Workspace</p>
+            </div>
+            <div class="flex justify-between mt-3 mb-3 sm:mb-2">
+                <div class="flex items-center">
+                    <h1 class="ms-4 sm:ms-6 text-lg font-semibold text-gray-900 dark:text-white">Documents</h1>
+                </div>
+                <div class="gap-4 hidden sm:flex me-6">
+                    <SfButton Content="New folder" Type="button" aria-label="new folder" role="button"></SfButton>
+                    <SfButton CssClass="e-primary" Content="Upload" Type="button" aria-label="upload" role="button"></SfButton>
+                </div>
+                <div class="gap-4 flex sm:hidden me-4">
+                    <SfButton IconCss="e-icons e-plus" Type="button" aria-label="new folder" role="button"></SfButton>
+                    <SfButton CssClass="e-primary" IconCss="e-icons e-upload-1" Type="button" aria-label="upload" role="button"></SfButton>
+                </div>
+            </div>
+            <div class="flex justify-between items-center px-4 sm:px-6 relative">
+                <div class="w-full">
+                    <SfTab HeightAdjustMode="Auto" Width="100%" OverFlowMode="@OverflowMode">
+                        <TabItems>
+                            <TabItem>
+                                <HeaderTemplate>
+                                    <div>All files</div>
+                                </HeaderTemplate>
+                            </TabItem>
+                            <TabItem>
+                                <HeaderTemplate>
+                                    <div>Starred</div>
+                                </HeaderTemplate>
+                            </TabItem>
+                            <TabItem>
+                                <HeaderTemplate>
+                                    <div>Recently Edited</div>
+                                </HeaderTemplate>
+                            </TabItem>
+                        </TabItems>
+                    </SfTab>
+                </div>
+                <div class="relative pb-4">
+                    <span class="e-badge e-bigger hidden sm:flex items-center justify-center absolute top-0 end-0" style="width: 95px;">85 documents</span>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="pt-3 pt-sm-4" style="min-height: 36rem;">
+            <div class="ms-3 ms-sm-4">
+                <p class="small fw-bold text-body-tertiary text-opacity-50 mb-1">My Workspace</p>
+            </div>
+            <div class="d-flex justify-content-between mt-2 mb-2 mb-sm-2">
+                <div class="d-flex align-items-center">
+                    <h1 class="ms-3 ms-sm-4 mb-0 fs-5 fw-bold text-body">Documents</h1>
+                </div>
+                <div class="gap-3 d-none d-sm-flex me-4">
+                    <SfButton CssClass="e-outline" Content="New folder" Type="button" aria-label="new folder" role="button"></SfButton>
+                    <SfButton CssClass="e-primary" Content="Upload" Type="button" aria-label="upload" role="button"></SfButton>
+                </div>
+                <div class="gap-3 d-flex d-sm-none me-3">
+                    <SfButton CssClass="e-outline" IconCss="e-icons e-plus" Type="button" aria-label="new folder" role="button"></SfButton>
+                    <SfButton CssClass="e-primary" IconCss="e-icons e-upload-1" Type="button" aria-label="upload" role="button"></SfButton>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between align-items-center pt-1 px-3 px-sm-4 position-relative">
+                <div class="w-100">
+                    <SfTab HeightAdjustMode="Auto" Width="100%" OverFlowMode="@OverflowMode">
+                        <TabItems>
+                            <TabItem>
+                                <HeaderTemplate>
+                                    <div>All files</div>
+                                </HeaderTemplate>
+                            </TabItem>
+                            <TabItem>
+                                <HeaderTemplate>
+                                    <div>Starred</div>
+                                </HeaderTemplate>
+                            </TabItem>
+                            <TabItem>
+                                <HeaderTemplate>
+                                    <div>Recently Edited</div>
+                                </HeaderTemplate>
+                            </TabItem>
+                        </TabItems>
+                    </SfTab>
+                </div>
+                <div class="position-relative">
+                    <span class="e-badge e-bigger d-none d-sm-flex align-items-center justify-content-center position-absolute top-0 end-0 translate-middle-y" style="width: 95px;">85 documents</span>
+                </div>
+            </div>
+        </div>
+    </section>
+}

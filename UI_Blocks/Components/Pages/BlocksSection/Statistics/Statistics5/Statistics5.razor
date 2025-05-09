@@ -1,0 +1,138 @@
+@page "/blocks/statistics-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="px-4 sm:px-6 xl:px-11 py-12">
+            <div class="grid sm:grid-cols-2 gap-6 lg:gap-4 xl:grid-cols-4">
+                @foreach (var data in MetricsData)
+                {
+                    <div class="e-card e-bigger rounded-lg shadow-none">
+                        <div class="e-card-stacked">
+                            <div class="e-card-header !justify-between !pb-0">
+                                <div class="flex gap-2 items-center">
+                                    <span class="text-base text-gray-500 dark:text-gray-300 @(data.MetricName == "Patients" ? "sf-icon-users" : data.MetricName == "New This Week" ? "sf-icon-user-plus-01" : data.MetricName == "Critical Alerts" ? "sf-icon-notification-bell-02" : data.MetricName == "Appointments" ? "e-icons e-day" : "")"></span>
+                                    <p class="text-sm font-medium text-gray-700 dark:text-gray-200">@data.MetricName</p>
+                                </div>
+                                <div style="width:92px; height:30px;">
+                                    <SfChart Width="92px" Height="30px" Background="transparent">
+                                        <ChartMargin Left="0" Right="0" Top="0" Bottom="0"></ChartMargin>
+                                        <ChartArea Border="@ChartAreaBorderSettings"></ChartArea>
+                                        <ChartPrimaryXAxis Visible="false">
+                                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                        </ChartPrimaryXAxis>
+                                        <ChartPrimaryYAxis Visible="false" Minimum="@GetYMinimum(data.MetricPoints)" Maximum="@GetYMaximum(data.MetricPoints)" Interval="100">
+                                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                        </ChartPrimaryYAxis>
+                                        <ChartSeriesCollection>
+                                            <ChartSeries DataSource="@data.MetricPoints" XName="X" YName="Y" Type="ChartSeriesType.SplineArea" Fill="@GetGradientFill(data.Trend)">
+                                                <ChartSeriesBorder Color="@(data.Trend == "up" ? "#16A34A" : "#DC2626")" Width="2"></ChartSeriesBorder>
+                                            </ChartSeries>
+                                        </ChartSeriesCollection>
+                                    </SfChart>
+                                    <svg style="height: 0">
+                                        <defs>
+                                            <linearGradient id="gradient-up" x1="0" y1="0" x2="0" y2="1">
+                                                <stop offset="0%" stop-color="#22c55e" stop-opacity="0.3" />
+                                                <stop offset="100%" stop-color="#34d399" stop-opacity="0.1" />
+                                            </linearGradient>
+                                            <linearGradient id="gradient-down" x1="0" y1="0" x2="0" y2="1">
+                                                <stop offset="0%" stop-color="#ef4444" stop-opacity="0.3" />
+                                                <stop offset="100%" stop-color="#f43f5e" stop-opacity="0.1" />
+                                            </linearGradient>
+                                        </defs>
+                                    </svg>
+                                </div>
+                            </div>
+                            <div class="e-card-content flex-col !pb-6">
+                                <p class="text-xl mb-2 !leading-7 font-semibold text-gray-800 dark:text-gray-300 mt-1">@String.Format("{0:N0}", data.CurrentValue)</p>
+                                <div class="flex justify-between">
+                                    <p class="text-sm text-gray-700 dark:text-gray-200">Since last week</p>
+                                    <div class="flex gap-1 items-center font-semibold @(data.Trend == "up" ? "text-green-700 dark:text-green-500" : "text-red-600 dark:text-red-400")">
+                                        <p class="text-sm">@data.CurrentPercentage&#37;</p>
+                                        <span class="@(data.Trend == "up" ? "e-icons e-chevron-up-fill e-medium" : "e-icons e-chevron-down-fill e-medium")"></span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="px-3 px-sm-4 px-xl-5 py-5">
+            <div class="row g-4 g-lg-3">
+                @foreach (var data in MetricsData)
+                {
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="e-card rounded-3 e-bigger">
+                            <div class="e-card-stacked">
+                                <div class="e-card-header d-flex justify-content-between pb-0 pt-4 px-4">
+                                    <div class="d-flex gap-2 align-items-center">
+                                        <span class="fs-6 text-secondary @(data.MetricName == "Patients" ? "sf-icon-users" : data.MetricName == "New This Week" ? "sf-icon-user-plus-01" : data.MetricName == "Critical Alerts" ? "sf-icon-notification-bell-02" : data.MetricName == "Appointments" ? "e-icons e-day" : "")"></span>
+                                        <p class="fw-medium text-body-secondary lh-base mb-0">@data.MetricName</p>
+                                    </div>
+                                    <div style="width:92px; height:30px;">
+                                        <SfChart Width="92" Height="30" Background="transparent">
+                                            <ChartMargin Left="0" Right="0" Top="0" Bottom="0"></ChartMargin>
+                                            <ChartArea Border="@ChartAreaBorderSettings"></ChartArea> 
+                                            <ChartPrimaryXAxis Visible="false">
+                                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                            </ChartPrimaryXAxis>
+                                            <ChartPrimaryYAxis Visible="false" Minimum="@GetYMinimum(data.MetricPoints)" Maximum="@GetYMaximum(data.MetricPoints)" Interval="100">
+                                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                            </ChartPrimaryYAxis>
+                                            <ChartSeriesCollection>
+                                                <ChartSeries DataSource="@data.MetricPoints" XName="X" YName="Y" Type="ChartSeriesType.SplineArea" Fill="@GetGradientFill(data.Trend)">
+                                                    <ChartSeriesBorder Color="@(data.Trend == "up" ? "#198754" : "#DC3545")" Width="2"></ChartSeriesBorder>
+                                                </ChartSeries>
+                                            </ChartSeriesCollection>
+                                        </SfChart>
+                                        <svg style="height: 0">
+                                            <defs>
+                                                <linearGradient id="gradient-up" x1="0" y1="0" x2="0" y2="1">
+                                                    <stop offset="0%" stop-color="#22c55e" stop-opacity="0.3" />
+                                                    <stop offset="100%" stop-color="#34d399" stop-opacity="0.1" />
+                                                </linearGradient>
+                                                <linearGradient id="gradient-down" x1="0" y1="0" x2="0" y2="1">
+                                                    <stop offset="0%" stop-color="#ef4444" stop-opacity="0.3" />
+                                                    <stop offset="100%" stop-color="#f43f5e" stop-opacity="0.1" />
+                                                </linearGradient>
+                                            </defs>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="e-card-content d-flex flex-column pb-4 px-4 pt-0">
+                                    <p class="fs-5 lh-sm mb-2 fw-bold text-body-secondary mt-1">@String.Format("{0:N0}", data.CurrentValue)</p>
+                                    <div class="d-flex justify-content-between">
+                                        <p class="text-body-secondary mb-0">Since last week</p>
+                                        <div class="d-flex gap-1 align-items-center fw-bold @(data.Trend == "up" ? "text-success" : "text-danger")">
+                                            <p class="mb-0 lh-sm">@data.CurrentPercentage&#37;</p>
+                                            <span class="@(data.Trend == "up" ? "e-icons e-chevron-up-fill e-medium" : "e-icons e-chevron-down-fill e-medium")"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

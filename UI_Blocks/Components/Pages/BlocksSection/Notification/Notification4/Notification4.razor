@@ -1,0 +1,66 @@
+﻿@page "/blocks/notification-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950 w-full">
+        <div id="toast" class="h-screen flex justify-center items-center mx-4 sm:mx-auto" style="max-width: 520px;">
+            <SfToast @ref="ToastInfo" CssClass="!w-full" Width="100%" Timeout="0" Target="#toast" NewestOnTop="true">
+                <ToastPosition X="Center" Y="Top"></ToastPosition>
+                <ToastEvents Created="@(async () => await ToastInfo?.ShowAsync())"></ToastEvents>
+                <ToastTemplates>
+                    <Content>
+                        <div class="flex gap-4">
+                            <div class="w-12 sm:w-2/6 shrink-0">
+                                <img class="w-full rounded" src="assets/images/notification/feature.jpg" alt="banner-image" />
+                            </div>
+                            <div class="flex flex-col justify-between w-auto sm:w-4/6">
+                                <div class="flex flex-col gap-2 text-gray-900 dark:text-white">
+                                    <h1 class="text-sm sm:text-xl font-semibold">Hey! Did you see new features?</h1>
+                                    <p class="leading-5">Check out the latest updates to enhance your experience. Explore them now or view them later.</p>
+                                </div>
+                                <div class="flex justify-end sm:justify-start gap-2.5 pb-1 pr-1 mt-3 sm:mt-0">
+                                    <SfButton CssClass="e-primary e-flat" Content="Let’s see" Type="button" aria-label="let’s see" role="button"></SfButton>
+                                    <SfButton CssClass="e-flat" Content="Not now" Type="button" aria-label="not now" role="button"></SfButton>
+                                </div>
+                            </div>
+                        </div>
+                    </Content>
+                </ToastTemplates>
+            </SfToast>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body w-100">
+        <div id="toast" class="d-flex justify-content-center align-items-center mx-3 mx-sm-auto vh-100" style="max-width: 522px;">
+            <SfToast @ref="ToastInfo" CssClass="w-100" Width="100%" TimeOut="0" Target="#toast" NewestOnTop="true">
+                <ToastPosition X="Center" Y="Top"></ToastPosition>
+                <ToastEvents Created="@(async () => await ToastInfo?.ShowAsync())"></ToastEvents>
+                <ToastTemplates>
+                    <Content>
+                        <div class="d-flex gap-3 p-1">
+                            <div class="col-2 col-sm-4 flex-shrink-0">
+                                <img class="rounded w-100" src="assets/images/notification/feature.jpg" alt="banner-image" />
+                            </div>
+                            <div class="d-flex flex-column justify-content-between col-9 col-sm-8">
+                                <div class="d-flex flex-column gap-2 text-body">
+                                    <h1 class="fs-6 fw-bold m-0">Hey! Did you see new features?</h1>
+                                    <p class="lh-base m-0">Check out the latest updates to enhance your experience. Explore them now or view them later.</p>
+                                </div>
+                                <div class="d-flex justify-content-end justify-content-sm-start gap-3 gap-sm-2 mt-3 mt-sm-0">
+                                    <SfButton CssClass="e-primary e-flat" Content="Let’s see" Type="button" aria-label="let’s see" role="button"></SfButton>
+                                    <SfButton CssClass="e-flat ms-sm-1" Content="Not now" Type="button" aria-label="not now" role="button"></SfButton>
+                                </div>
+                            </div>
+                        </div>
+                    </Content>
+                </ToastTemplates>
+            </SfToast>
+        </div>
+    </section>
+}

@@ -1,0 +1,17 @@
+::deep #dialog-container .e-dialog .e-dlg-content {
+    padding: 0;
+}
+
+::deep #dialog-container .e-listview .e-list-group-item {
+    height: auto;
+    background-color: transparent;
+    border: 0;
+}
+
+::deep #dialog-container .e-message .e-msg-content {
+    padding: 0;
+}
+
+::deep #dialog-container .e-listview .e-list-item {
+    border: 0;
+}

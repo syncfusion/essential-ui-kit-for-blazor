@@ -1,0 +1,84 @@
+@page "/blocks/header-8"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div style="min-height: 36rem;">
+            <div class="py-3 px-4 sm:px-6">
+                <div id="breadcrumb">
+                    <SfBreadcrumb EnableNavigation="false" OverFlowMode="@OverflowMode" MaxItems="@MaxItems">
+                        <BreadcrumbItems>
+                            <BreadcrumbItem Text="Workflows"></BreadcrumbItem>
+                            <BreadcrumbItem Text="Row Event: Created Employee"></BreadcrumbItem>
+                        </BreadcrumbItems>
+                        <BreadcrumbTemplates>
+                            <SeparatorTemplate>
+                                <span class="e-icons e-chevron-right"></span>
+                            </SeparatorTemplate>
+                        </BreadcrumbTemplates>
+                    </SfBreadcrumb>
+                </div>
+            </div>
+            <div class="flex justify-between px-4 sm:px-6 py-2 border-b border-gray-200 dark:border-gray-600">
+                <div class="flex gap-2 items-center">
+                    <SfSwitch CssClass="e-bigger" Checked="false" aria-label="switch to draft mode" role="switch"></SfSwitch>
+                    <SfChip>
+                        <ChipItems>
+                            <ChipItem CssClass="e-outline !rounded" Text="Draft"></ChipItem>
+                        </ChipItems>
+                    </SfChip>
+                </div>
+                <div class="hidden sm:flex gap-3 items-center">
+                    <SfButton Content="View all executions" Type="button" aria-label="view all executions" role="button"></SfButton>
+                    <SfButton Content="Run" Type="button" aria-label="run" role="button"></SfButton>
+                </div>
+                <div class="block sm:hidden">
+                    <SfButton CssClass="block sm:hidden" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more" role="button"></SfButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="min-height: 36rem;">
+            <div class="py-3 px-3 px-sm-4">
+                <div>
+                    <SfBreadcrumb EnableNavigation="false" OverFlowMode="@OverflowMode" MaxItems="@MaxItems">
+                        <BreadcrumbItems>
+                            <BreadcrumbItem Text="Workflows"></BreadcrumbItem>
+                            <BreadcrumbItem Text="Row Event: Created Employee"></BreadcrumbItem>
+                        </BreadcrumbItems>
+                        <BreadcrumbTemplates>
+                            <SeparatorTemplate>
+                                <span class="e-icons e-chevron-right"></span>
+                            </SeparatorTemplate>
+                        </BreadcrumbTemplates>
+                    </SfBreadcrumb>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between px-3 px-sm-4 py-2 border-bottom border-light-subtle">
+                <div class="d-flex gap-2 align-items-center">
+                    <SfSwitch CssClass="e-bigger" Checked="false" aria-label="switch to draft mode" role="switch"></SfSwitch>
+                    <SfChip>
+                        <ChipItems>
+                            <ChipItem CssClass="e-outline rounded" Text="Draft"></ChipItem>
+                        </ChipItems>
+                    </SfChip>
+                </div>
+                <div class="d-none d-sm-flex gap-3 align-items-center">
+                    <SfButton CssClass="e-outline" Content="View all executions" Type="button" aria-label="view all executions" role="button"></SfButton>
+                    <SfButton CssClass="e-outline" Content="Run" Type="button" aria-label="run" role="button"></SfButton>
+                </div>
+                <div class="d-block d-sm-none">
+                    <SfButton class="d-block d-sm-none" CssClass="e-outline" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more" role="button"></SfButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}

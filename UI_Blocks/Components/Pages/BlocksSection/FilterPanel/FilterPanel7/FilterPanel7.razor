@@ -1,0 +1,164 @@
+@page "/blocks/filter-panel-7" 
+ 
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks 
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div style="height: 962px; width: @Width; float: right;">
+            <SfSidebar class="flex flex-col bg-white dark:bg-gray-800" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div>
+                        <div class="flex justify-between items-center p-4 border-b border-gray-200 dark:border-gray-600">
+                            <div>
+                                <h2 class="text-base font-semibold text-gray-900 dark:text-white">Job Filters</h2>
+                                <p class="text-xs mt-0.5 text-gray-500 dark:text-gray-300">Refine job listings</p>
+                            </div>
+                            <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" OnClick="@ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                        </div>
+                        <div class="p-4 border-b border-gray-200 dark:border-gray-600">
+                            <SfChip TItem="string" Selection="Syncfusion.Blazor.Buttons.SelectionType.Multiple" SelectedChips="@SelectedJobTypes" SelectedChipsChanged="@((values) => SelectedJobTypes = values)">
+                                <ChipItems>
+                                    @foreach (var chip in JobTypeChips)
+                                    {
+                                        var chipClass = SelectedJobTypes.Contains(chip) ? "e-primary e-active !rounded-2xl" : "!rounded-2xl";
+                                        <ChipItem Text="@chip" Value="@chip" CssClass="@chipClass"></ChipItem>
+                                    }
+                                </ChipItems>
+                            </SfChip>
+                        </div>
+                        <div class="p-4">
+                            <p class="font-medium text-sm text-gray-900 dark:text-white mb-3">Required Skills</p>
+                            <SfChip TItem="string" Selection="Syncfusion.Blazor.Buttons.SelectionType.Multiple" SelectedChips="@SelectedSkills" SelectedChipsChanged="@((values) => SelectedSkills = values)">
+                                <ChipItems>
+                                    @foreach (var chip in SkillChips)
+                                    {
+                                        var chipClass = SelectedSkills.Contains(chip) ? "e-primary e-active !rounded" : "!rounded";
+                                        <ChipItem Text="@chip" Value="@chip" CssClass="@chipClass"></ChipItem>
+                                    }
+                                </ChipItems>
+                            </SfChip>
+                            <hr class="border-gray-200 dark:border-gray-600 my-4" />
+                            <p class="font-medium text-sm text-gray-900 dark:text-white mb-5">Experience Level</p>
+                            <div class="flex flex-col gap-5 px-3 mb-6">
+                                <SfRadioButton Label="Entry level" Name="skills" Value="entry-level" Checked="@SelectedExperienceLevel" aria-label="entry level" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="Mid level" Name="skills" Value="mid-level" Checked="@SelectedExperienceLevel" aria-label="mid level" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="Senior" Name="skills" Value="senior" Checked="@SelectedExperienceLevel" aria-label="senior level" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="Lead" Name="skills" Value="lead" Checked="@SelectedExperienceLevel" aria-label="lead level" role="radio"></SfRadioButton>
+                            </div>
+                            <hr class="border-gray-200 dark:border-gray-600 mb-4" />
+                            <p class="font-medium text-sm text-gray-900 dark:text-white mb-5">Salary Range</p>
+                            <div class="flex flex-col gap-5 px-3 mb-6">
+                                <SfRadioButton Label="$0 - $50k" Name="salary-range" Value="$0-$50k" Checked="@SelectedSalaryRange" aria-label="select salary range 0 to 50k" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="$50k - $100k" Name="salary-range" Value="$50k-$100k" Checked="@SelectedSalaryRange" aria-label="select salary range 50 to 100k" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="$100k - $150K" Name="salary-range" Value="$100k-$150K" Checked="@SelectedSalaryRange" aria-label="select salary range 100 to 150k" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="$150k+" Name="salary-range" Value="$150k+" Checked="@SelectedSalaryRange" aria-label="select salary range above 150k" role="radio"></SfRadioButton>
+                            </div>
+                            <hr class="border-gray-200 dark:border-gray-600 mb-4" />
+                            <p class="font-medium text-sm text-gray-900 dark:text-white mb-5">Location</p>
+                            <div class="flex justify-between">
+                                <p class="font-medium text-sm text-gray-800 dark:text-gray-100">Remote</p>
+                                <SfSwitch Checked="true" aria-label="remote users" role="switch"></SfSwitch>
+                            </div>
+                            <hr class="border-gray-200 dark:border-gray-600 my-4" />
+                            <p class="font-medium text-sm text-gray-900 dark:text-white mb-5">Company Rating</p>
+                            <div class="space-x-3 flex items-center mb-2">
+                                <SfRating CssClass="e-small" Value="4" Precision="PrecisionType.Exact"></SfRating>
+                                <span class="text-gray-900 dark:text-white text-sm">4+ stars</span>
+                            </div>
+                        </div>
+                        <hr class="border-gray-200 dark:border-gray-600" />
+                        <div class="p-4 flex justify-end gap-3">
+                            <SfButton CssClass="e-outline text-sm" Content="Clear" Type="button" aria-label="clear" role="button"></SfButton>
+                            <SfButton CssClass="e-primary text-sm" Content="Show jobs" Type="button" aria-label="show jobs" role="button"></SfButton>
+                        </div>
+                    </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 absolute top-0 right-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="height: 962px; width: @Width; float: right;">
+            <SfSidebar class="d-flex flex-column bg-body" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+                <ChildContent>
+                    <div>
+                        <div class="d-flex justify-content-between align-items-center p-3 border-bottom">
+                            <div>
+                                <h2 class="fs-6 fw-bold text-body lh-sm mb-0">Job filters</h2>
+                                <p class="mt-1 text-body-secondary mb-0">Refine job listings</p>
+                            </div>
+                            <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" OnClick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                        </div>
+                        <div class="p-3 border-bottom">
+                            <SfChip TItem="string" Selection="Syncfusion.Blazor.Buttons.SelectionType.Multiple" SelectedChips="@SelectedJobTypes" SelectedChipsChanged="@((values) => SelectedJobTypes = values)">
+                                <ChipItems>
+                                    @foreach (var chip in JobTypeChips) { var chipClass = SelectedJobTypes.Contains(chip) ? "e-primary e-active rounded-pill" : "rounded-pill";
+                                    <ChipItem Text="@chip" Value="@chip" CssClass="@chipClass"></ChipItem>
+                                    }
+                                </ChipItems>
+                            </SfChip>
+                        </div>
+                        <div class="p-3">
+                            <p class="fw-medium text-body fs-6">Required Skills</p>
+                            <SfChip TItem="string" Selection="Syncfusion.Blazor.Buttons.SelectionType.Multiple" SelectedChips="@SelectedSkills" SelectedChipsChanged="@((values) => SelectedSkills = values)">
+                                <ChipItems>
+                                    @foreach (var chip in SkillChips) { var chipClass = SelectedSkills.Contains(chip) ? "e-primary e-active rounded" : "rounded";
+                                    <ChipItem Text="@chip" Value="@chip" CssClass="@chipClass"></ChipItem>
+                                    }
+                                </ChipItems>
+                            </SfChip>
+                            <hr class="border-top opacity-100" />
+                            <p class="fw-medium text-body fs-6">Experience Level</p>
+                            <div class="d-flex flex-column gap-3 px-3 mb-4">
+                                <SfRadioButton Label="Entry level" Name="skills" Value="entry-level" Checked="@SelectedExperienceLevel" aria-label="entry level" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="Mid level" Name="skills" Value="mid-level" Checked="@SelectedExperienceLevel" aria-label="mid level" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="Senior" Name="skills" Value="senior" Checked="@SelectedExperienceLevel" aria-label="senior level" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="Lead" Name="skills" Value="lead" Checked="@SelectedExperienceLevel" aria-label="lead level" role="radio"></SfRadioButton>
+                            </div>
+                            <hr class="mt-0 border-top opacity-100" />
+                            <p class="fw-medium text-body fs-6">Salary Range</p>
+                            <div class="d-flex flex-column gap-3 px-3 mb-4">
+                                <SfRadioButton Label="$0 - $50k" Name="salary-range" Value="$0-$50k" Checked="@SelectedSalaryRange" aria-label="select salary range 0 to 50k" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="$50k - $100k" Name="salary-range" Value="$50k-$100k" Checked="@SelectedSalaryRange" aria-label="select salary range 50 to 100k" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="$100k - $150K" Name="salary-range" Value="$100k-$150K" Checked="@SelectedSalaryRange" aria-label="select salary range 100 to 150k" role="radio"></SfRadioButton>
+                                <SfRadioButton Label="$150k+" Name="salary-range" Value="$150k+" Checked="@SelectedSalaryRange" aria-label="select salary range above 150k" role="radio"></SfRadioButton>
+                            </div>
+                            <hr class="mt-0 border-top opacity-100" />
+                            <p class="fw-medium text-body fs-6">Location</p>
+                            <div class="d-flex justify-content-between">
+                                <p class="fw-medium fs-6 text-body-secondary mb-0">Remote</p>
+                                <SfSwitch Checked="true" aria-label="remote users" role="switch"></SfSwitch>
+                            </div>
+                            <hr class="border-top opacity-100" />
+                            <p class="fw-medium text-body fs-6">Company Rating</p>
+                            <div class="d-flex align-items-center gap-2 mb-2">
+                                <SfRating CssClass="e-small" Value="4" Precision="PrecisionType.Exact"></SfRating>
+                                <span class="text-body fs-6">4+ stars</span>
+                            </div>
+                        </div>
+                        <hr class="my-0 border-top opacity-100" />
+                        <div class="p-3 d-flex justify-content-end gap-2">
+                            <SfButton CssClass="e-outline" Content="Clear" Type="button" aria-label="clear" role="button"></SfButton>
+                            <SfButton CssClass="e-primary" Content="Show jobs" Type="button" aria-label="show jobs" role="button"></SfButton>
+                        </div>
+                    </div>
+                </ChildContent>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 position-absolute top-0 end-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

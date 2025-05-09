@@ -10,13 +10,13 @@
 {
 	<section class="bg-white dark:bg-gray-900">
 		<div class="flex items-center justify-center min-h-screen">
-			<div class="max-w-none lg:max-w-2xl w-full m-auto p-4 md:py-8 lg:px-24">
+			<div id="task-list" class="max-w-none lg:max-w-2xl w-full m-auto p-4 md:py-8 lg:px-24">
 				<SfListView CssClass="!border-0 e-list-template" DataSource=@Data aria-label="list of tasks" role="list">
 					<ListViewFieldSettings Id="Id" Text="Content" TValue="TaskItem"></ListViewFieldSettings>
 					<ListViewTemplates TValue="TaskItem">
 						<Template>
 							@{
-								<div class="border border-gray-200 dark:border-gray-600 !py-4 px-4 my-4">
+								<div class="border border-gray-200 dark:border-gray-600 !py-4 px-4 my-4" style= "border-radius: 8px;">
 									<div class="flex justify-between">
 										<div class="flex w-full">
 											<span class="shrink-0"><img class="rounded-md" src="assets/images/listview/task-management/@context.Logo" width="48px" height="48px" alt="brand logo" /></span>
@@ -48,13 +48,13 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
 	<section class="bg-body">
 		<div class="d-flex align-items-center justify-content-center min-vh-100">
-			<div class="container-xl w-100 m-auto p-3 p-md-4" style="@WidthStyle">
-				<SfListView CssClass="e-list-template" DataSource=@Data aria-label="list of tasks" role="list">
+			<div id="task-list" class="container-xl w-100 m-auto p-3 p-md-4" style="@WidthStyle">
+				<SfListView CssClass="e-list-template" DataSource=@Data aria-label="list of tasks" role="list" style= "border-width: 0px;">
 					<ListViewFieldSettings Id="Id" Text="Content" TValue="TaskItem"></ListViewFieldSettings>
 					<ListViewTemplates TValue="TaskItem">
 						<Template>
 							@{
-								<div class="e-list-wrapper e-list-multi-line py-3 px-2 px-sm-3">
+								<div class="e-list-wrapper e-list-multi-line border px-2 px-sm-3 py-3 mt-3" style= "border-radius: 8px;">
 									<div class="d-flex justify-content-between">
 										<span class="flex-shrink-0"><img class="rounded-2" src="assets/images/listview/task-management/@context.Logo" width="48px" height="48px" alt="brand logo" /></span>
 										<div class="flex-grow-1">

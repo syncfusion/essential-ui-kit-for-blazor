@@ -1,0 +1,122 @@
+﻿@page "/blocks/notification-7"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div style="height: 875px; width: @Width; float:right;">
+            <SfSidebar @ref="Sidebar" class="bg-white dark:bg-gray-800" Position="SidebarPosition.Right" Type="SidebarType.Push" Width="@Width" IsOpen="true" ShowBackdrop="true" role="sidebar">
+                <div>
+                    <div class="flex items-center gap-3 px-4 sm:px-3 py-2 border-b border-gray-200 dark:border-gray-600">
+                        <span class="e-icons e-arrow-left !text-2xl !leading-6 !text-gray-500 dark:!text-gray-300"></span>
+                        <h2 class="text-lg font-medium text-gray-900 dark:text-white">Notifications</h2>
+                    </div>
+                    <div class="flex justify-between items-center p-4">
+                        <p class="text-base font-semibold text-gray-900 dark:text-white">Today</p>
+                        <SfDropDownButton @ref="Dropdown" CssClass="e-primary" Content="Transactions" Type="button" aria-label="transactions" role="button">
+                            <DropDownButtonEvents Opened="@(() => { IsDropdownVisible = true; })" Closed="@(() => { IsDropdownVisible = false; })"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="All Transactions"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Successful Transactions"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Pending Transactions"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Refunds and Reversals"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                    </div>
+                </div>
+                <div id="list">
+                    <SfListView CssClass="!border-0 px-4 h-full" DataSource="@TransactionData" aria-label="recent notification" role="list">
+                        <ListViewFieldSettings TValue="NotificationItem"></ListViewFieldSettings>
+                        <ListViewTemplates TValue="NotificationItem">
+                            <Template Context="data">
+                                <div class="e-card shadow-none rounded-lg flex-row !p-4 !pb-2 sm:!pb-1 flex items-start">
+                                    <span class="e-avatar e-avatar-circle shrink-0"
+                                          style="background-image: url('assets/images/common/avatar/@data.Avatar'); background-size: cover;">
+                                    </span>
+                                    <div class="e-card-stacked">
+                                        <span class="flex flex-col items-start ml-3 text-gray-900 dark:text-white">
+                                            <span class="text-sm font-medium">@data.Name</span>
+                                            <span class="!text-xs !mt-1">@data.Content</span>
+                                            <div class="text-xs sm:hidden flex items-center gap-3 mt-2">
+                                                <span>@data.Date.ToString("dd/MM/yyyy")</span>
+                                                <span>@data.Date.ToString("HH:mm:ss")</span>
+                                            </div>
+                                            <div class="w-full flex justify-between items-center mt-3 pt-2 border-t border-gray-200 dark:border-gray-600 p-1">
+                                                <span class="text-xs hidden sm:flex items-center gap-3">
+                                                    <span>@data.Date.ToString("dd/MM/yyyy")</span>
+                                                    <span>@data.Date.ToString("HH:mm:ss")</span>
+                                                </span>
+                                                <SfButton CssClass="e-primary e-flat" Content="View details" IconCss="e-icons e-chevron-right text-xl" IconPosition="IconPosition.Right" Type="button" aria-label="view details" role="button"></SfButton>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </Template>
+                        </ListViewTemplates>
+                    </SfListView>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="height: 875px; width: @Width; float:right;">
+            <SfSidebar @ref="@Sidebar" class="d-flex flex-column" Position="SidebarPosition.Right" Type="SidebarType.Push" Width="@Width" IsOpen="true" ShowBackdrop="true" role="sidebar">
+                <div class="flex-shrink-0">
+                    <div class="d-flex align-items-center gap-2 p-3 border-bottom">
+                        <span class="e-icons e-arrow-left fs-5 text-secondary"></span>
+                        <h2 class="fs-5 fw-medium text-body m-0">Notifications</h2>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center p-3 pb-4">
+                        <p class="fs-6 fw-bold text-body m-0">Today</p>
+                        <SfDropDownButton @ref="Dropdown" CssClass="e-primary" Content="Transactions" Type="button" aria-label="transactions" role="button">
+                            <DropDownButtonEvents Opened="@(() => { IsDropdownVisible = true; })" Closed="@(() => { IsDropdownVisible = false; })"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="All Transactions"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Successful Transactions"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Pending Transactions"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Refunds and Reversals"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                    </div>
+                </div>
+                <div id="list">
+                    <SfListView CssClass="border-0 px-3" DataSource="@TransactionData" aria-label="recent notification" role="list">
+                        <ListViewFieldSettings TValue="NotificationItem"></ListViewFieldSettings>
+                        <ListViewTemplates TValue="NotificationItem">
+                            <Template Context="data">
+                                <div class="e-card rounded-3 lh-base p-3 pb-2 d-flex flex-row align-items-start">
+                                    <span class="e-avatar e-avatar-circle flex-shrink-0"
+                                          style="background-image: url('assets/images/common/avatar/@data.Avatar'); background-size: cover;">
+                                    </span>
+                                    <div class="e-card-stacked">
+                                        <span class="d-flex flex-column align-items-start ms-2">
+                                            <span class="fw-medium">@data.Name</span>
+                                            <span class="small mt-1">@data.Content</span>
+                                            <div class="small d-sm-none d-flex align-items-center gap-2 mt-2">
+                                                <span>@data.Date.ToString("dd/MM/yyyy")</span>
+                                                <span class="ms-1">@data.Date.ToString("HH:mm:ss")</span>
+                                            </div>
+                                            <div class="w-100 d-flex justify-content-between align-items-center mt-2 pt-2 border-top">
+                                                <span class="small d-none d-sm-flex align-items-center gap-2">
+                                                    <span>@data.Date.ToString("dd/MM/yyyy")</span>
+                                                    <span class="ms-1">@data.Date.ToString("HH:mm:ss")</span>
+                                                </span>
+                                                <SfButton CssClass="e-primary e-flat" Content="View details" IconCss="e-icons e-chevron-right text-xl" IconPosition="IconPosition.Right" Type="button" aria-label="view details" role="button"></SfButton>
+                                            </div>
+                                        </span>
+                                    </div>
+                                </div>
+                            </Template>
+                        </ListViewTemplates>
+                    </SfListView>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+}

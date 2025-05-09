@@ -11,7 +11,7 @@
 	<section class="bg-white dark:bg-gray-900">
 		<div id="custom-field-list" class="lg:max-w-md w-full mx-auto px-4 pt-8 pb-4 min-h-screen">
 			<p class="text-sm text-gray-700 dark:text-gray-200 mb-4">Increase the amount of data that you collect re-order the fields.</p>
-			<SfListBox CssClass="e-bigger" TValue="int[]" TItem="DataItem" DataSource="@GetData" AllowDragAndDrop="true" aria-label="list of fields" role="list">
+			<SfListBox CssClass="e-bigger" TValue="int[]" TItem="DataItem" DataSource="@FieldData" AllowDragAndDrop="true" aria-label="list of fields" role="list">
 				<ListBoxFieldSettings Value="Id" Text="Field" IconCss="FontIcon"></ListBoxFieldSettings>
 				<ListBoxTemplates TItem="DataItem">
 					<ItemTemplate>
@@ -32,7 +32,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 	<section class="bg-body">
 		<div id="custom-field-list" class="container-lg w-100 mx-auto px-3 py-5 min-vh-100" style="@WidthStyle">
 			<p class="small">Increase the amount of data that you collect re-order the fields.</p>
-			<SfListBox CssClass="e-bigger" TValue="int[]" TItem="DataItem" DataSource="@GetData" AllowDragAndDrop="true" aria-label="list of fields" role="list">
+			<SfListBox CssClass="e-bigger" TValue="int[]" TItem="DataItem" DataSource="@FieldData" AllowDragAndDrop="true" aria-label="list of fields" role="list">
 				<ListBoxFieldSettings Value="Id" Text="Field" IconCss="FontIcon"></ListBoxFieldSettings>
 				<ListBoxTemplates TItem="DataItem">
 					<ItemTemplate>

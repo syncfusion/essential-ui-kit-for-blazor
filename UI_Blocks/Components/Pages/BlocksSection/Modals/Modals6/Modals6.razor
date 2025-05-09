@@ -1,0 +1,144 @@
+@page "/blocks/modals-6"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" class="relative flex justify-center" style="min-height: 764px;">
+            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="transaction details" role="button">Transaction Details</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg overflow-hidden sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="835px" aria-label="view transaction details" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="font-semibold leading-normal">Transaction Details</p>
+                    </Header>
+                    <Content>
+                        <div class="flex flex-col sm:flex-row justify-between gap-4 sm:items-center mb-5 sm:mb-6">
+                            <SfCheckBox Label="Export time fields in minutes formats" TChecked="bool" aria-label="export time fields in minutes format" role="checkbox"></SfCheckBox>
+                            <div class="flex flex-row justify-end gap-3">
+                                <SfButton CssClass="w-1/2 sm:w-fit e-outline" IconCss="e-icons e-export" Type="button" aria-label="export" role="button">Export</SfButton>
+                                <SfDropDownButton CssClass="w-1/2 sm:w-fit e-outline" IconCss="e-icons e-user" Type="button" aria-label="choose a contact" role="button">Contact</SfDropDownButton>
+                            </div>
+                        </div>
+                        <SfGrid class="e-bigger mb-1.5" DataSource="@Data" Width="100%" AllowSorting="true" AllowFiltering="true" GridLines="GridLine.None" RowHeight="44" role="grid">
+                            <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+                            <GridColumns>
+                                <GridColumn Field="TransactionId" HeaderText="Transaction ID" Width="165">
+                                    <Template>
+                                        @{
+                                            var data = (TransactionData)context;
+                                        }
+                                        <p class="text-sm text-gray-700 dark:text-gray-200">@data.TransactionId</p>
+                                    </Template>
+                                </GridColumn>
+                                <GridColumn Field="CustomerDetails" HeaderText="Customer Name" Width="260" AllowSorting="false" AllowFiltering="false">
+                                    <Template>
+                                        @{
+                                            var data = (TransactionData)context;
+                                        }
+                                        <div class="flex gap-2 items-center py-1.5">
+                                            <div class="w-8 h-8">
+                                                <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url('assets/images/common/avatar/@data.CustomerDetails.Avatar');"></span>
+                                            </div>
+                                            <div class="flex flex-col text-sm">
+                                                <p class="text-gray-900 dark:text-white">@data.CustomerDetails.Name</p>
+                                                <p class="text-gray-700 dark:text-gray-200">@data.CustomerDetails.Email</p>
+                                            </div>
+                                        </div>
+                                    </Template>
+                                </GridColumn>
+                                <GridColumn Field="InvoiceNumber" HeaderText="Invoice Number" Width="170">
+                                    <Template>
+                                        @{
+                                            var data = (TransactionData)context;
+                                        }
+                                        <a class="text-sm text-primary-700 dark:text-primary-500 font-medium underline" href="javascript:void(0);" aria-label="invoice number" role="link">@data.InvoiceNumber</a>
+                                    </Template>
+                                </GridColumn>
+                                <GridColumn Field="Description" HeaderText="Description" Width="190">
+                                    <Template>
+                                        @{
+                                            var data = (TransactionData)context;
+                                        }
+                                        <p class="text-sm text-gray-700 dark:text-gray-200">@data.Description</p>
+                                    </Template>
+                                </GridColumn>
+                            </GridColumns>
+                        </SfGrid>
+                    </Content>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 764px;">
+            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="transaction details" role="button">Transaction Details</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2 overflow-hidden" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="865px" aria-label="view transaction details" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="fw-bold text-body mb-0 lh-sm">Transaction Details</p>
+                    </Header>
+                    <Content>
+                        <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 align-items-sm-center mb-4 mb-sm-3">
+                            <SfCheckBox Label="Export time fields in minutes formats" TChecked="bool" aria-label="export time fields in minutes format" role="checkbox"></SfCheckBox>
+                            <div class="d-flex flex-row justify-content-end gap-3 gap-sm-2">
+                                <SfButton CssClass="col col-sm-auto e-outline" IconCss="e-icons e-export" Type="button" aria-label="export" role="button">Export</SfButton>
+                                <SfDropDownButton CssClass="col col-sm-auto e-outline ms-sm-1" IconCss="e-icons e-user" Type="button" aria-label="choose a contact" role="button">Contact</SfDropDownButton>
+                            </div>
+                        </div>
+                        <SfGrid class="e-bigger mb-1" DataSource="@Data" Width="100%" AllowSorting="true" AllowFiltering="true" GridLines="GridLine.None" RowHeight="44" role="grid">
+                            <GridFilterSettings Type="Syncfusion.Blazor.Grids.FilterType.Menu"></GridFilterSettings>
+                            <GridColumns>
+                                <GridColumn Field="TransactionId" HeaderText="Transaction ID" Width="168">
+                                    <Template>
+                                        @{
+                                            var data = (TransactionData)context;
+                                        }
+                                        <p class="text-body mb-0">@data.TransactionId</p>
+                                    </Template>
+                                </GridColumn>
+                                <GridColumn Field="CustomerDetails" HeaderText="Customer Name" Width="260" AllowSorting="false" AllowFiltering="false">
+                                    <Template>
+                                        @{
+                                            var data = (TransactionData)context;
+                                        }
+                                        <div class="d-flex gap-2 align-items-center py-1">
+                                            <span class="e-avatar e-avatar-circle e-avatar-small flex-shrink-0" style="background-image: url('assets/images/common/avatar/@data.CustomerDetails.Avatar');"></span>
+                                            <div class="small ms-1 lh-base">
+                                                <p class="text-body mb-0">@data.CustomerDetails.Name</p>
+                                                <p class="text-body-secondary mb-0">@data.CustomerDetails.Email</p>
+                                            </div>
+                                        </div>
+                                    </Template>
+                                </GridColumn>
+                                <GridColumn Field="InvoiceNumber" HeaderText="Invoice Number" Width="186">
+                                    <Template>
+                                        @{
+                                            var data = (TransactionData)context;
+                                        }
+                                        <a class="small text-primary fw-medium text-decoration-underline" href="javascript:void(0);" aria-label="invoice number" role="link">@data.InvoiceNumber</a>
+                                    </Template>
+                                </GridColumn>
+                                <GridColumn Field="Description" HeaderText="Description" Width="200">
+                                    <Template>
+                                        @{
+                                            var data = (TransactionData)context;
+                                        }
+                                        <p class="text-body mb-0">@data.Description</p>
+                                    </Template>
+                                </GridColumn>
+                            </GridColumns>
+                        </SfGrid>
+                    </Content>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}

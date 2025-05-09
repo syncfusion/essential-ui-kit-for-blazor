@@ -10,7 +10,7 @@
         <div class="mx-auto w-full py-12 sm:px-6 px-4">
             <SfGrid DataSource="GridData" Width="100%" Height="560" GridLines="GridLine.None" role="grid">
                 <GridColumns>
-                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>                    
+                    <GridColumn Type="Syncfusion.Blazor.Grids.ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>                    
                     <GridColumn Field=@nameof(Asset.AssetId) HeaderText="Asset ID" Width="90">
                         <Template>
                             @{
@@ -58,7 +58,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
         <div class="w-100 py-5 px-3 px-sm-4 mx-auto">
             <SfGrid DataSource="GridData" Width="100%" Height="560" GridLines="GridLine.None" role="grid">
                 <GridColumns>
-                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>                    
+                    <GridColumn Type="Syncfusion.Blazor.Grids.ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>                    
                     <GridColumn Field=@nameof(Asset.AssetId) HeaderText="Asset ID" Width="85">
                         <Template>
                             @{

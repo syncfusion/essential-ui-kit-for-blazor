@@ -1,0 +1,186 @@
+﻿@page "/blocks/notification-3"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="w-full flex justify-end p-4 mx-auto" id="target" style="min-height: 730px; max-width: 480px;">
+            <div class="relative w-8 h-8">
+                <SfButton CssClass="e-outline e-round" IconCss="sf-icon-notification-bell-02" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                <span class="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 mr-2">4</span>
+            </div>
+        </div>
+        <SfDialog @ref="Dialog" Id="notification" Target="#target" CssClass="!bg-white dark:!bg-gray-800 rounded-lg overflow-hidden" Width="@DialogWidth" Visible="@IsDialogVisible" aria-label="chat notification" role="dialog">
+            <DialogTemplates>
+                <Header>
+                    <div class="flex justify-between items-center p-4">
+                        <div class="flex items-center gap-2 h-6">
+                            <span class="e-icons e-arrow-left !text-2xl !text-gray-500 dark:!text-gray-300"></span>
+                            <h1 class="text-base md:text-lg text-gray-900 dark:text-white font-medium">Notifications</h1>
+                        </div>
+                        <SfDropDownButton @ref="Dropdown" CssClass="e-flat e-small e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="notification options" role="button" style="padding-left: 12px !important;">
+                            <DropDownButtonEvents Opened="@(() => { IsDropdownOpened = true; })" Closed="@(() => { IsDropdownOpened = false; })"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="Mark all as read" IconCss="e-icons e-link" />
+                                <DropDownMenuItem Text="Notification settings" IconCss="e-icons e-settings" />
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                    </div>
+                </Header>
+                <Content>
+                    <SfTab>
+                        <TabItems>
+                            <TabItem>
+                                <HeaderTemplate>
+                                    <div class="w-full">Messages</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div class="px-3 py-2 mt-2 border-b border-gray-200 dark:border-gray-600">
+                                        <SfChip class="flex items-center gap-2" Selection="Syncfusion.Blazor.Buttons.SelectionType.Single" SelectedChips="@ChoiceSelected">
+                                            <ChipItems>
+                                                <ChipItem Text="All" CssClass="e-outline !rounded !m-0"></ChipItem>
+                                                <ChipItem Text="Unread" CssClass="e-outline !rounded !m-0"></ChipItem>
+                                                <ChipItem Text="&#64;mentions" CssClass="e-outline !rounded !m-0"></ChipItem>
+                                            </ChipItems>
+                                        </SfChip>
+                                    </div>
+                                    <div class="p-3 sm:py-2">
+                                        <p class="text-sm md:text-xs font-medium text-gray-900 dark:text-white">Important</p>
+                                    </div>
+                                    <SfListView CssClass="border-0 e-list-template" DataSource="@ChatData" Height="445px" aria-label="recent notification" role="list">
+                                        <ListViewFieldSettings Id="Id" Text="Content" TValue="Message"></ListViewFieldSettings>
+                                        <ListViewTemplates TValue="Message">
+                                            <Template>
+                                                @{
+                                                    <div class="flex gap-2 py-3 px-4 sm:px-3 border-b border-gray-200 dark:border-gray-600">
+                                                        <div class="shrink-0">
+                                                            @if (!string.IsNullOrEmpty(context.Initial))
+                                                            {
+                                                                <span class="e-avatar e-avatar-circle @(context.ColorTheme == "Red" ? "!bg-red-100 !text-red-700 dark:!text-red-400" : context.ColorTheme == "Green" ? "!bg-green-100 !text-green-700 dark:!text-green-500" : context.ColorTheme == "Blue" ? "!bg-cyan-100 !text-cyan-700 dark:!text-cyan-600" : context.ColorTheme == "Orange" ? "!bg-orange-100 !text-orange-700 dark:!text-orange-500" : "")">@context.Initial</span>
+                                                            }
+                                                        </div>
+                                                        <div class="w-full flex justify-between">
+                                                            <div class="flex flex-col gap-0.5 text-sm text-gray-900 dark:text-white">
+                                                                <p><span class="font-medium">@context.Sender</span> messaged you</p>
+                                                                <p>@context.Content</p>
+                                                                <p>In chat with you.</p>
+                                                            </div>
+                                                            <p class="text-xs text-gray-500 dark:text-gray-400 text-end w-14 shrink-0">@context.Time</p>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </Template>
+                                        </ListViewTemplates>
+                                    </SfListView>
+                                </ContentTemplate>
+                            </TabItem>
+                            <TabItem>
+                                <HeaderTemplate>
+                                    <div class="w-full">Calls</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div class="text-center py-6" style="min-height: 340px">No records found</div>
+                                </ContentTemplate>
+                            </TabItem>
+                        </TabItems>
+                    </SfTab>
+                </Content>
+            </DialogTemplates>
+            <DialogPositionData X="center" Y="top"></DialogPositionData>
+            <DialogEvents Opened="@(args=> args.PreventFocus = true)"></DialogEvents>
+        </SfDialog>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="w-100 d-flex justify-content-end p-3 mx-auto" id="target" style="min-height: 830px; max-width: 480px;">
+            <div class="position-relative" style="width: 32px; height: 32px;">
+                <SfButton CssClass="e-outline e-round" IconCss="sf-icon-notification-bell-02" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                <span class="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 me-2">4</span>
+            </div>
+        </div>
+        <SfDialog @ref="Dialog" Id="notification" Target="#target" CssClass="bg-body rounded overflow-hidden border" Width="@DialogWidth" Visible="@IsDialogVisible" aria-label="chat notification" role="dialog">
+            <DialogTemplates>
+                <Header>
+                    <div class="d-flex justify-content-between align-items-center p-3">
+                        <div class="d-flex align-items-center gap-2">
+                            <span class="e-icons e-arrow-left fs-5 text-body-secondary"></span>
+                            <h1 class="fs-6 text-body fw-medium m-0">Notifications</h1>
+                        </div>
+                        <SfDropDownButton @ref="Dropdown" CssClass="e-flat e-small e-inherit e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="notification options" role="button" style="padding-left: 12px !important;">
+                            <DropDownButtonEvents Opened="@(() => { IsDropdownOpened = true; })" Closed="@(() => { IsDropdownOpened = false; })"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="Mark all as read" IconCss="e-icons e-link" />
+                                <DropDownMenuItem Text="Notification settings" IconCss="e-icons e-settings" />
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                    </div>
+                </Header>
+                <Content>
+                    <SfTab Id="tab" CssClass="mt-3">
+                        <TabItems>
+                            <TabItem>
+                                <HeaderTemplate>
+                                    <div class="w-100">Messages</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div class="px-3 py-2 mt-3">
+                                        <SfChip class="d-flex align-items-center gap-2" Selection="Syncfusion.Blazor.Buttons.SelectionType.Single" SelectedChips="@ChoiceSelected">
+                                            <ChipItems>
+                                                <ChipItem Text="All" CssClass="e-outline rounded m-0"></ChipItem>
+                                                <ChipItem Text="Unread" CssClass="e-outline rounded m-0"></ChipItem>
+                                                <ChipItem Text="&#64;mentions" CssClass="e-outline rounded m-0"></ChipItem>
+                                            </ChipItems>
+                                        </SfChip>
+                                    </div>
+                                    <div class="px-3 py-2">
+                                        <p class="small fw-medium text-body m-0">Important</p>
+                                    </div>
+                                    <SfListView CssClass="border-0 rounded-0 e-list-template" DataSource="@ChatData" Height="520px" aria-label="recent notification" role="list">
+                                        <ListViewFieldSettings Id="Id" Text="Content" TValue="Message"></ListViewFieldSettings>
+                                        <ListViewTemplates TValue="Message">
+                                            <Template>
+                                                @{
+                                                    <div class="d-flex gap-2 p-3">
+                                                        <div class="flex-shrink-0">
+                                                            @if (!string.IsNullOrEmpty(context.Initial))
+                                                            {
+                                                                <span class="e-avatar e-avatar-circle @(context.ColorTheme == "Red" ? " bg-danger-subtle text-danger" : context.ColorTheme == "Green" ? " bg-success-subtle text-success" : context.ColorTheme == "Blue" ? " bg-info-subtle text-info" : context.ColorTheme == "Orange" ? " bg-warning-subtle text-warning-emphasis" : "")">@context.Initial</span>
+                                                            }
+                                                        </div>
+                                                        <div class="w-100 d-flex justify-content-between">
+                                                            <div class="d-flex flex-column gap-1 lh-base">
+                                                                <p class="m-0"><span class="fw-medium">@context.Sender</span> messaged you</p>
+                                                                <p class="m-0">@context.Content</p>
+                                                                <p class="m-0">In chat with you.</p>
+                                                            </div>
+                                                            <p class="small text-end flex-shrink-0 m-0">@context.Time</p>
+                                                        </div>
+                                                    </div>
+                                                }
+                                            </Template>
+                                        </ListViewTemplates>
+                                    </SfListView>
+                                </ContentTemplate>
+                            </TabItem>
+                            <TabItem>
+                                <HeaderTemplate>
+                                    <div class="w-100">Calls</div>
+                                </HeaderTemplate>
+                                <ContentTemplate>
+                                    <div class="text-center py-4" style="min-height: 340px">No records found</div>
+                                </ContentTemplate>
+                            </TabItem>
+                        </TabItems>
+                    </SfTab>
+                </Content>
+            </DialogTemplates>
+            <DialogPositionData X="center" Y="top"></DialogPositionData>
+            <DialogEvents Opened="@(args=> args.PreventFocus = true)"></DialogEvents>
+        </SfDialog>
+    </section>
+}

@@ -10,7 +10,7 @@
         <div class="mx-auto w-full py-12 sm:px-6 px-4">
               <SfGrid DataSource="@GridData" Width="100%" Height="658" GridLines="GridLine.None" role="grid">
                 <GridColumns>
-                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
+                    <GridColumn Type="Syncfusion.Blazor.Grids.ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
                     <GridColumn Field="@nameof(Ticket.TicketId)" HeaderText="Ticket ID" Width="85">
                         <Template>
                             <a class="text-primary-700 dark:text-primary-500 font-medium" href="javascript:void(0);" aria-label="ticket ID" role="link">@((context as Ticket)?.TicketId)</a>
@@ -19,7 +19,7 @@
                     <GridColumn Field="@nameof(Ticket.Issue)" HeaderText="Issue Description" Width="230"></GridColumn>
                     <GridColumn Field="@nameof(Ticket.Category)" HeaderText="Issue Category" Width="120"></GridColumn>
                     <GridColumn Field="@nameof(Ticket.Estimated)" HeaderText="Estimated Time" Width="100" TextAlign="TextAlign.Right"></GridColumn>                    
-                    <GridColumn Field="@nameof(Ticket.ResponseDue)" HeaderText="Resolution Due" Width="123" Format="MM/dd/yyyy" Type="ColumnType.Date" TextAlign="TextAlign.Right"></GridColumn>                    
+                    <GridColumn Field="@nameof(Ticket.ResponseDue)" HeaderText="Resolution Due" Width="123" Format="MM/dd/yyyy" Type="Syncfusion.Blazor.Grids.ColumnType.Date" TextAlign="TextAlign.Right"></GridColumn>                    
                     <GridColumn Field="@nameof(Ticket.Priority)" HeaderText="Priority" Width="118">
                         <Template>
                             @{
@@ -126,7 +126,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
         <div class="w-100 py-5 px-3 px-sm-4 mx-auto">
             <SfGrid DataSource="@GridData" Width="100%" Height="658" GridLines="GridLine.None" role="grid">
                 <GridColumns>
-                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
+                    <GridColumn Type="Syncfusion.Blazor.Grids.ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
                     <GridColumn Field="@nameof(Ticket.TicketId)" HeaderText="Ticket ID" Width="90">
                         <Template>
                             @{
@@ -138,7 +138,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     <GridColumn Field="@nameof(Ticket.Issue)" HeaderText="Issue Description" Width="233"></GridColumn>
                     <GridColumn Field="@nameof(Ticket.Category)" HeaderText="Issue Category" Width="120"></GridColumn>
                     <GridColumn Field="@nameof(Ticket.Estimated)" HeaderText="Estimated Time" Width="120" TextAlign="TextAlign.Right"></GridColumn>
-                    <GridColumn Field="@nameof(Ticket.ResponseDue)" HeaderText="Resolution Due" Width="123" Format="MM/dd/yyyy" Type="ColumnType.Date" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field="@nameof(Ticket.ResponseDue)" HeaderText="Resolution Due" Width="123" Format="MM/dd/yyyy" Type="Syncfusion.Blazor.Grids.ColumnType.Date" TextAlign="TextAlign.Right"></GridColumn>
                     <GridColumn Field="@nameof(Ticket.Priority)" HeaderText="Priority" Width="126">
                         <Template>
                             @{
