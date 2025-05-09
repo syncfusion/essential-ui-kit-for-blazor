@@ -1,0 +1,79 @@
+@page "/blocks/statistics-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="px-4 sm:px-6 xl:px-11 py-12">
+            <div class="e-card rounded-lg grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-5 shadow-none">
+                @for (int i = 0; i < MetricsData.Count; i++)
+                {
+                    var position = GetIsLastRowAndColumn(i, MetricsData.Count);
+                    var borderClass = $"{(position.IsLastRow ? "" : "border-b")} {(position.IsLastColumn ? "" : "sm:border-r")}".Trim();
+                    <div class="border-gray-200 dark:border-gray-600 @borderClass">
+                        <div class="py-6 md:py-5">
+                            <div class="e-card-stacked">
+                                <div class="e-card-header !justify-start !pt-0 !pb-2 space-x-1 !px-4 items-center">
+                                    <h3 class="text-sm font-medium text-gray-500 dark:text-gray-300">@MetricsData[i].MetricName
+                                    </h3>
+                                    @if (!string.IsNullOrEmpty(MetricsData[i].ContextInfo))
+                                    {
+                                        <SfTooltip id="tooltip1" Width="210px" Content="@MetricsData[i].ContextInfo" OpensOn="Hover" aria-label="get more context on this metric" role="tooltip" style="height: 16px;">
+                                            <span class="e-icons e-circle-info e-medium text-gray-500 dark:text-gray-300"></span>
+                                        </SfTooltip>
+                                    }
+                                </div>
+                                <div class="e-card-content !px-4 !pb-0">
+                                    <p class="text-xl !leading-7 font-semibold text-gray-900 dark:text-white">@MetricsData[i].CurrentValue</p>
+                                    <div class="text-sm text-gray-500 dark:text-gray-300 mt-3">@MetricsData[i].CurrentPercentage of Total:
+                                        <span class="font-medium text-gray-900 dark:text-white ml-1">@MetricsData[i].Total</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="px-3 px-sm-4 px-xl-5 py-5">
+            <div class="e-card rounded-3">
+                <div class="row g-0 justify-content-start">
+                    @for (int i = 0; i < MetricsData.Count; i++)
+                    {
+                        var position = GetIsLastRowAndColumn(i, MetricsData.Count);
+                        var borderClass = $"{(position.IsLastRow ? "" : "border-bottom")} {(position.IsLastColumn ? "" : "border-end")}".Trim();
+                        <div class="col-12 col-sm-4 col-lg-auto flex-lg-grow-1 @borderClass">
+                            <div class="p-4">
+                                <div class="e-card-stacked">
+                                    <div class="e-card-header d-flex align-items-center justify-content-start pt-0 pb-2 px-0 gap-1">
+                                        <h3 class="small fw-medium text-body-secondary mb-0 lh-base">@MetricsData[i].MetricName</h3>
+                                        @if (!string.IsNullOrEmpty(MetricsData[i].ContextInfo))
+                                        {
+                                            <SfTooltip id="tooltip1" Width="210px" Content="@MetricsData[i].ContextInfo" OpensOn="Hover" aria-label="get more context on this metric" role="tooltip" style="height: 16px;">
+                                                <span class="e-icons e-circle-info e-medium text-secondary"></span>
+                                            </SfTooltip>
+                                        }
+                                    </div>
+                                    <div class="e-card-content px-0 pb-0 pt-0">
+                                        <p class="fs-5 fw-bold text-body mb-2 lh-sm">@MetricsData[i].CurrentValue</p>
+                                        <div class="text-body text-opacity-50">@MetricsData[i].CurrentPercentage of Total:
+                                            <span class="fw-medium text-body text-opacity-100 ms-1">@MetricsData[i].Total</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}

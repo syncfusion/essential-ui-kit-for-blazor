@@ -1,0 +1,150 @@
+﻿@page "/blocks/notification-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="w-full flex justify-end p-4 mx-auto" id="target" style="min-height: 580px; max-width: 480px;">
+            <div class="relative w-8 h-8">
+                <SfButton CssClass="e-outline e-round" IconCss="sf-icon-notification-bell-02" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                <span class="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 mr-2">4</span>
+            </div>
+        </div>
+        <SfDialog @ref="Dialog" Id="notification" Target="#target" CssClass="!bg-white dark:!bg-gray-800 rounded-lg overflow-hidden !border" Width="@DialogWidth" Visible="@IsDialogVisible" aria-label="notification" role="dialog">
+            <DialogEvents Opened="@AfterOpen"></DialogEvents>
+            <DialogTemplates>
+                <Header>
+                    <div class="flex justify-between items-center p-4">
+                        <p class="text-base md:text-lg text-gray-900 dark:text-white font-medium">Notifications</p>
+                        <SfButton CssClass="e-flat e-small e-round" IconCss="e-icons e-close" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                    </div>
+                </Header>
+                <Content>
+                    <div class="flex gap-3 p-3 sm:p-3 sm:pr-6 border-b border-gray-200 dark:border-gray-600">
+                        <span class="e-icons e-file-document text-2xl !text-gray-500 dark:!text-gray-300"></span>
+                        <div class="flex flex-col gap-1 mt-0.5" style="width: calc(100% - 36px);">
+                            <p class="font-semibold text-gray-900 dark:text-white leading-5">Uploading 'Image 123-Finalbatch.exe'</p>
+                            <p class="text-xs text-gray-900 dark:text-white">Please wait while we are uploading your file</p>
+                            <div class="pt-2.5 w-full">
+                                <SfProgressBar @ref="ProgressBar" Type="ProgressType.Linear" Width="100%" Height="2px" Value="50" ProgressColor="#4F46E5">
+                                    <ProgressBarAnimation Enable="true" Duration="2000" Delay="0"></ProgressBarAnimation>
+                                    <ProgressBarMargin Left="0" Right="0" Top="0" Bottom="0"></ProgressBarMargin>
+                                </SfProgressBar>
+                                <p class="text-xs text-gray-900 dark:text-white ml-auto mt-1 mr-3 w-max">50% uploaded..</p>
+                            </div>
+                            <div class="flex gap-3">
+                                <SfButton CssClass="e-flat" Content="Cancel" Type="button" aria-label="cancel" role="button"></SfButton>
+                                <SfButton CssClass="e-primary e-flat" Content="Upload Another" Type="button" aria-label="upload another" role="button"></SfButton>
+                            </div>
+                        </div>
+                    </div>
+                    <SfListView CssClass="border-0 e-list-template" DataSource="@NotificationData" aria-label="recent notification" role="list">
+                        <ListViewFieldSettings Id="Id" Text="Content" TValue="Notification"></ListViewFieldSettings>
+                        <ListViewTemplates TValue="Notification">
+                            <Template>
+                                @{
+                                    <div class="flex gap-2 p-4 sm:p-3 border-b border-gray-200 dark:border-gray-600">
+                                        <div class="shrink-0">
+                                            @if (!string.IsNullOrEmpty(context.Avatar))
+                                            {
+                                                <span class="e-avatar e-avatar-circle" style="background-image: url('assets/images/common/avatar/@context.Avatar')"></span>
+                                            }
+                                        </div>
+                                        <div class="flex justify-between w-full">
+                                            <div class="flex flex-col gap-1 pr-3">
+                                                <p class="text-gray-900 dark:text-white font-medium">@context.Sender</p>
+                                                <p class="text-xs text-gray-500 dark:text-gray-400">@context.Content</p>
+                                            </div>
+                                            <p class="text-xs text-gray-500 dark:text-gray-400 text-end w-10 shrink-0">@context.Time</p>
+                                        </div>
+                                    </div>
+                                }
+                            </Template>
+                        </ListViewTemplates>
+                    </SfListView>
+                </Content>
+                <FooterTemplate>
+                    <div class="py-3 sm:py-2.5 flex justify-center bg-gray-200 dark:bg-gray-700">
+                        <SfButton CssClass="e-outline e-primary border-0 !ml-0" Content="View all notification" Type="button" aria-label="view all notification" role="button"></SfButton>
+                    </div>
+                </FooterTemplate>
+            </DialogTemplates>
+            <DialogPositionData X="center" Y="top"></DialogPositionData>
+        </SfDialog>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="w-100 d-flex justify-content-end p-3 mx-auto" id="target" style="min-height: 580px; max-width: 480px;">
+            <div class="position-relative" style="width: 32px; height: 32px;">
+                <SfButton CssClass="e-outline e-round" IconCss="sf-icon-notification-bell-02" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                <span class="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 me-2">4</span>
+            </div>
+        </div>
+        <SfDialog @ref="Dialog" Id="notification" Target="#target" CssClass="bg-body rounded overflow-hidden border" Width="@DialogWidth" Visible="@IsDialogVisible" aria-label="notification" role="dialog">
+            <DialogEvents Opened="@AfterOpen"></DialogEvents>
+            <DialogTemplates>
+                <Header>
+                    <div class="d-flex justify-content-between align-items-center px-3 py-2 my-1 border-bottom border-light-subtle">
+                        <p class="text-body fs-5 lh-base fw-medium mb-0">Notifications</p>
+                        <SfButton CssClass="e-flat e-small e-round e-inherit" IconCss="e-icons e-close" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                    </div>
+                </Header>
+                <Content>
+                    <div class="d-flex gap-2 p-3 p-sm-3 pe-sm-4 border-bottom">
+                        <span class="e-icons e-file-document fs-4 text-body-secondary"></span>
+                        <div class="d-flex flex-column gap-1" style="width: calc(100% - 36px);">
+                            <p class="fw-semibold text-body m-0">Uploading 'Image 123-Finalbatch.exe'</p>
+                            <p class="small text-body-secondary m-0">Please wait while we are uploading your file</p>
+                            <div class="pt-2 w-100">
+                                <SfProgressBar @ref="ProgressBar" Type="ProgressType.Linear" Width="100%" Height="6px" TrackThickness="12" ProgressThickness="12" Value="50" ProgressColor="#0D6EFD">
+                                    <ProgressBarAnimation Enable="true" Duration="2000" Delay="0"></ProgressBarAnimation>
+                                    <ProgressBarMargin Left="0" Right="0" Top="0" Bottom="0"></ProgressBarMargin>
+                                </SfProgressBar>
+                                <p class="small ms-auto mt-1 me-3 mb-0 text-body-secondary" style="width: fit-content;">50% uploaded..</p>
+                            </div>
+                            <div class="d-flex gap-3">
+                                <SfButton CssClass="e-flat" Content="Cancel" Type="button" aria-label="cancel" role="button"></SfButton>
+                                <SfButton CssClass="e-primary e-flat" Content="Upload Another" Type="button" aria-label="upload another" role="button"></SfButton>
+                            </div>
+                        </div>
+                    </div>
+                    <SfListView CssClass="border-0 rounded-0 e-list-template" DataSource="@NotificationData" aria-label="recent notification" role="list">
+                        <ListViewFieldSettings Id="Id" Text="Content" TValue="Notification"></ListViewFieldSettings>
+                        <ListViewTemplates TValue="Notification">
+                            <Template>
+                                @{
+                                    <div class="d-flex gap-2 p-3">
+                                        <div class="flex-shrink-0">
+                                            @if (!string.IsNullOrEmpty(context.Avatar))
+                                            {
+                                                <span class="e-avatar e-avatar-circle" style="background-image: url('assets/images/common/avatar/@context.Avatar')"></span>
+                                            }
+                                        </div>
+                                        <div class="d-flex justify-content-between w-100">
+                                            <div class="d-flex flex-column gap-1 pe-3">
+                                                <p class="fw-medium m-0">@context.Sender</p>
+                                                <p class="small m-0">@context.Content</p>
+                                            </div>
+                                            <p class="small text-end flex-shrink-0 m-0">@context.Time</p>
+                                        </div>
+                                    </div>
+                                }
+                            </Template>
+                        </ListViewTemplates>
+                    </SfListView>
+                </Content>
+                <FooterTemplate>
+                    <div class="py-3 d-flex justify-content-center bg-body-tertiary">
+                        <SfButton CssClass="e-outline e-primary border-0 ms-0" Content="View all notification" Type="button" aria-label="view all notification" role="button"></SfButton>
+                    </div>
+                </FooterTemplate>
+            </DialogTemplates>
+            <DialogPositionData X="center" Y="top"></DialogPositionData>
+        </SfDialog>
+    </section>
+}

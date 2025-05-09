@@ -31,18 +31,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Search.Search5
                 await Search.ShowPopupAsync();
             }
         }
-        private string GetColorThemeClass(string ColorTheme)
-        {
-            return ColorTheme switch
-            {
-                "Green" => "bg-success-subtle text-success bg-green-100 text-green-600 dark:bg-green-800 dark:text-green-300",
-                "Orange" => "bg-warning-subtle text-warning-emphasis bg-orange-50 text-orange-500 dark:bg-orange-800 dark:text-orange-300",
-                "Blue" => "bg-info-subtle text-info-emphasis bg-cyan-50 text-cyan-500 dark:bg-cyan-800 dark:text-cyan-300",
-                "Red" => "bg-danger-subtle text-danger-emphasis bg-red-50 text-red-500 dark:bg-red-800 dark:text-red-300",
-                "Indigo" => "bg-primary-subtle text-primary bg-indigo-50 text-indigo-600 dark:bg-indigo-800 dark:text-indigo-300",
-                _ => ""
-            };
-        }
+        
         public class SearchItem
         {
             public string? Id { get; set; } 

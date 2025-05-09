@@ -1,0 +1,11 @@
+::deep #upload-template .e-file-select-wrap {
+    padding: 0;
+}
+
+::deep #upload-template .e-upload {
+    border: none;
+}
+
+::deep #upload-template .e-upload .e-file-select-wrap .e-file-drop {
+    display: none;
+}

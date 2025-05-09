@@ -1,0 +1,126 @@
+@page "/blocks/header-7"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div style="min-height: 36rem;">
+            <div class="flex justify-between items-center px-4 sm:px-6 py-3 border-b border-gray-200 dark:border-gray-600">
+                <div id="breadcrumb">
+                    <SfBreadcrumb EnableNavigation="false" OverFlowMode="@OverflowMode" MaxItems="@MaxItems">
+                        <BreadcrumbItems>
+                            <BreadcrumbItem IconCss="e-icons e-folder" Text="Reports"></BreadcrumbItem>
+                            <BreadcrumbItem Text="Business Metrics"></BreadcrumbItem>
+                        </BreadcrumbItems>
+                    </SfBreadcrumb>
+                </div>
+                <div class="flex gap-2">
+                    <div class="flex items-center -space-x-3 mr-1">
+                        <span class="e-avatar e-avatar-small e-avatar-circle z-30"><img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" /></span>
+                        <span class="e-avatar e-avatar-small e-avatar-circle z-20 hidden sm:block"><img src="assets/images/common/avatar/avatar-2.jpg" alt="profile picture" /></span>
+                        <span class="e-avatar e-avatar-small e-avatar-circle z-10 hidden sm:block"><img src="assets/images/common/avatar/avatar-3.jpg" alt="profile picture" /></span>
+                        <span class="e-avatar e-avatar-small e-avatar-circle z-0 block sm:hidden text-sm bg-gray-700 dark:bg-gray-200 text-white dark:text-black pl-1">+ 2</span>
+                    </div>
+                    <div class="flex gap-1">
+                        <SfButton CssClass="e-flat hidden sm:block" Type="button" aria-label="share" role="button">
+                            <div class="flex items-center gap-1">
+                                <span class="sf-icon-share-arrow-04 text-base"></span>
+                                <span class="ml-1 hidden lg:block">Share</span>
+                            </div>
+                        </SfButton>
+                        <SfButton CssClass="e-flat mx-2 hidden sm:block" IconCss="e-icons e-comment-show !text-sm" Type="button" aria-label="message" role="button"></SfButton>
+                        <SfButton CssClass="e-flat" IconCss="e-icons e-more-vertical-1 !text-sm" Type="button" aria-label="more" role="button"></SfButton>
+                    </div>
+                </div>
+            </div>
+            <div class="px-4 sm:px-6 py-4 sm:py-3">
+                <div class="flex justify-between gap-3 sm:gap-6">
+                    <div class="block">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Business Metrics</h3>
+                        <p class="mt-1 text-sm text-gray-700 dark:text-gray-300">Overview of our sales pipeline, customer demographics, product subscriptions, and more.</p>
+                    </div>
+                    <div class="flex items-start space-x-3">
+                        <SfButton Type="button" aria-label="refresh data" role="button">
+                            <div class="flex items-center gap-1">
+                                <span class="e-icons e-refresh e-medium"></span>
+                                <span class="ml-1 hidden lg:block">Refresh data</span>
+                            </div>
+                        </SfButton>
+                        <SfButton CssClass="e-primary" Type="button" aria-label="add report" role="button">
+                            <div class="flex items-center gap-1">
+                                <span class="e-icons e-plus e-medium"></span>
+                                <span class="ml-1 hidden lg:block">Add Report</span>
+                            </div>
+                        </SfButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="min-height: 36rem;">
+            <div class="d-flex justify-content-between align-items-center px-3 px-sm-4 py-2 border-bottom">
+                <div>
+                    <SfBreadcrumb EnableNavigation="false" OverFlowMode="@OverflowMode" MaxItems="@MaxItems">
+                        <BreadcrumbItems>
+                            <BreadcrumbItem IconCss="e-icons e-folder" Text="Reports"></BreadcrumbItem>
+                            <BreadcrumbItem Text="Business Metrics"></BreadcrumbItem>
+                        </BreadcrumbItems>
+                    </SfBreadcrumb>
+                </div>
+                <div class="d-flex justify-content-end my-1 col-6 col-sm-auto">
+                    <div class="d-flex align-items-center position-relative mx-3 mx-sm-0 px-4 px-sm-5" style="margin-bottom: 32px;">
+                        <span class="e-avatar e-avatar-small e-avatar-circle position-absolute start-0 top-0 ms-4 d-block d-sm-none fs-6 fw-normal bg-secondary text-white ps-1">+2</span>
+                        <span class="e-avatar e-avatar-small e-avatar-circle position-absolute start-0 top-0 ms-2 ms-sm-5 d-none d-sm-block">
+                            <img src="assets/images/common/avatar/avatar-3.jpg" alt="profile picture" />
+                        </span>
+                        <span class="e-avatar e-avatar-small e-avatar-circle position-absolute start-0 top-0 ms-4 d-none d-sm-block">
+                            <img src="assets/images/common/avatar/avatar-2.jpg" alt="profile picture" />
+                        </span>
+                        <span class="e-avatar e-avatar-small e-avatar-circle position-absolute start-0 top-0 ms-2">
+                            <img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
+                        </span>
+                    </div>
+                    <div class="d-flex gap-1">
+                        <SfButton CssClass="d-none d-sm-block e-flat" Type="button" aria-label="share" role="button">
+                            <div class="d-flex align-items-center gap-1">
+                                <span class="sf-icon-share-arrow-04 fs-6"></span>
+                                <span class="ms-1 d-none d-lg-block">Share</span>
+                            </div>
+                        </SfButton>
+                        <SfButton CssClass="e-flat mx-2 d-none d-sm-block" IconCss="e-icons e-comment-show small" Type="button" aria-label="message" role="button"></SfButton>
+                        <SfButton CssClass="e-flat" IconCss="e-icons e-more-vertical-1 small" Type="button" aria-label="more" role="button"></SfButton>
+                    </div>
+                </div>
+            </div>
+            <div class="px-3 px-sm-4 py-3">
+                <div class="d-flex justify-content-between gap-3 gap-sm-5">
+                    <div class="d-block">
+                        <h3 class="fs-6 fw-bold text-body mb-0">Business Metrics</h3>
+                        <p class="mt-1 mb-0 small text-body">Overview of our sales pipeline, customer demographics, product subscriptions, and more.</p>
+                    </div>
+                    <div class="d-flex align-items-start gap-3">
+                        <SfButton CssClass="e-outline" Type="button" aria-label="refresh data" role="button">
+                            <div class="d-flex align-items-center gap-1">
+                                <span class="e-icons e-refresh e-medium"></span>
+                                <span class="ms-1 d-none d-lg-block">Refresh data</span>
+                            </div>
+                        </SfButton>
+                        <SfButton CssClass="e-primary" Type="button" aria-label="add report" role="button">
+                            <div class="d-flex align-items-center gap-1">
+                                <span class="e-icons e-plus e-medium"></span>
+                                <span class="ms-1 d-none d-lg-block">Add Report</span>
+                            </div>
+                        </SfButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

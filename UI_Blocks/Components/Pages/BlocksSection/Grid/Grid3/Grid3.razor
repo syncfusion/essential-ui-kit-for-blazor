@@ -10,7 +10,7 @@
         <div class="mx-auto w-full py-12 sm:px-6 px-4">
             <SfGrid DataSource="GridData" Width="100%" Height="658" GridLines="GridLine.None" role="grid">
                 <GridColumns>
-                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" Width="40"></GridColumn>                    
+                    <GridColumn Type="Syncfusion.Blazor.Grids.ColumnType.CheckBox" IsPrimaryKey="true" Width="40"></GridColumn>                    
                     <GridColumn Field="@nameof(Invoice.InvoiceId)" HeaderText="Invoice ID" Width="111">
                         <Template>
                             @{
@@ -78,7 +78,7 @@
                             </div>
                         </Template>
                     </GridColumn>
-                    <GridColumn Field=@nameof(Invoice.DueDate) HeaderText="Due Date" Width="112" Format="MM/dd/yyyy" Type="ColumnType.Date" TextAlign="TextAlign.Right"></GridColumn>
+                    <GridColumn Field=@nameof(Invoice.DueDate) HeaderText="Due Date" Width="112" Format="MM/dd/yyyy" Type="Syncfusion.Blazor.Grids.ColumnType.Date" TextAlign="TextAlign.Right"></GridColumn>
                     <GridColumn Field=@nameof(Invoice.PaymentDate) HeaderText="Payment Date" TextAlign="TextAlign.Right" Width="124">
                         <Template>
                             @{
@@ -118,7 +118,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
         <div class="w-100 py-5 px-3 px-sm-4 mx-auto">
             <SfGrid DataSource="GridData" Width="100%" Height="658" GridLines="GridLine.None" role="grid">
                 <GridColumns>
-                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>                    
+                    <GridColumn Type="Syncfusion.Blazor.Grids.ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>                    
                     <GridColumn Field=@nameof(Invoice.InvoiceId) HeaderText="Invoice ID" Width="109">
                         <Template>
                             @{
@@ -186,7 +186,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             </div>
                         </Template>
                     </GridColumn>                    
-                    <GridColumn Field=@nameof(Invoice.DueDate) HeaderText="Due Date" Width="108" Format="MM/dd/yyyy" Type="ColumnType.Date" TextAlign="TextAlign.Right"></GridColumn>                    
+                    <GridColumn Field=@nameof(Invoice.DueDate) HeaderText="Due Date" Width="108" Format="MM/dd/yyyy" Type="Syncfusion.Blazor.Grids.ColumnType.Date" TextAlign="TextAlign.Right"></GridColumn>                    
                     <GridColumn Field=@nameof(Invoice.PaymentDate) HeaderText="Payment Date" TextAlign="TextAlign.Right" Width="124">
                         <Template>
                             @{

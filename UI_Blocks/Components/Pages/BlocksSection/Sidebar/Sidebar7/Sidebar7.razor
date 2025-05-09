@@ -40,7 +40,7 @@
                         </div>
                         <hr class="m-4 border-gray-200 dark:border-gray-700" />
                         <div>
-                            <SfListView CssClass="border-0" DataSource="@SupportMenuItems" aria-label="other navigation links" role="list">
+                            <SfListView CssClass="border-0" DataSource="@SupportMenu" aria-label="other navigation links" role="list">
                                 <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
                                 <ListViewTemplates TValue="MenuItem">
                                     <Template>
@@ -112,7 +112,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         </div>
                         <p class="m-3 fs-6 text-body-secondary">Others</p>
                         <div>
-                            <SfListView CssClass="border-0 e-bigger" DataSource="@SupportMenuItems" aria-label="other navigation links" role="list">
+                            <SfListView CssClass="border-0 e-bigger" DataSource="@SupportMenu" aria-label="other navigation links" role="list">
                                 <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
                                 <ListViewTemplates TValue="MenuItem">
                                     <Template>

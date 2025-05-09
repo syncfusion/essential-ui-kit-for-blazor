@@ -1,0 +1,148 @@
+@page "/blocks/modals-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" class="relative flex justify-center" style="min-height: 700px;">
+            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="add experience" role="button">Add Experience</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="548px" aria-label="add experience to your profile" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <div class="flex gap-3">
+                            <span class="e-avatar shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg"><i class="e-icons e-flags text-xl text-gray-500 dark:text-gray-300"></i></span>
+                            <div>
+                                <p class="font-semibold leading-normal mb-0.5">Add Experience</p>
+                                <p class="text-xs leading-normal text-gray-500 dark:text-gray-400 text-wrap">Share where you've worked on your profile.</p>
+                            </div>
+                        </div>
+                    </Header>
+                    <Content>
+                        <form action="#" class="grid grid-cols-1 gap-4 sm:gap-3 text-xs font-medium leading-normal text-gray-700 dark:text-gray-200">
+                            <div class="flex flex-col gap-1">
+                                <label>Designation <span class="text-red-600 dark:text-red-400 font-normal">*</span></label>
+                                <SfTextBox Type="InputType.Text" Placeholder="Enter the job title" aria-label="enter the job title" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex flex-col gap-1 order-1 sm:order-none">
+                                    <label>Company <span class="text-red-600 dark:text-red-400 font-normal">*</span></label>
+                                    <SfTextBox @ref="CompanyNameTextbox" Type="InputType.Text" Placeholder="Enter the company name" Created="@(async args => { if (CompanyNameTextbox != null) await CompanyNameTextbox.AddIconAsync("prepend", "e-icons e-search !pr-0"); })" aria-label="enter the company name" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label>Website</label>
+                                    <SfTextBox Type="InputType.URL" Placeholder="https://www.example.com" aria-label="enter the website" role="textbox"></SfTextBox>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex flex-col gap-1 order-1 sm:order-none">
+                                    <label>Location <span class="text-red-600 dark:text-red-400 font-normal">*</span></label>
+                                    <SfTextBox @ref="LocationTextbox" Type="InputType.Text" Placeholder="Enter the city or state" Created="@(async args => { if (LocationTextbox != null) await LocationTextbox.AddIconAsync("prepend", "e-icons e-location !pr-0"); })" aria-label="enter the city or state" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label>Employment type <span class="text-red-600 dark:text-red-400 font-normal">*</span></label>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select the employment type" aria-label="choose an employment type" role="listbox"></SfDropDownList>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label>Description</label>
+                                <SfTextArea Placeholder="Provide a brief overview of your role" ResizeMode='Resize.None' Rows="5" aria-label="enter a brief overview of your role" role="textbox"></SfTextArea>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                <div class="flex flex-col gap-1">
+                                    <label>Start Date</label>
+                                    <SfDatePicker TValue="DateTime?" Placeholder="MM/DD/YYYY" aria-label="enter a start date here" role="combobox"></SfDatePicker>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label>End Date</label>
+                                    <SfDatePicker TValue="DateTime?" Placeholder="MM/DD/YYYY" aria-label="enter an end date here" role="combobox"></SfDatePicker>
+                                </div>
+                            </div>
+                            <SfCheckBox Label="I currently work here" TChecked="bool" aria-label="i currently work here" role="checkbox"></SfCheckBox>
+                        </form>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="flex justify-end gap-2 sm:gap-1 py-2">
+                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="discard" role="button">Discard</SfButton>
+                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="button" aria-label="save" role="button">Save</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 700px;">
+            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="add experience" role="button">Add Experience</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="548px" aria-label="add experience to your profile" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <div class="d-flex gap-2">
+                            <span class="e-avatar flex-shrink-0 rounded-3 bg-body-secondary"><i class="e-icons e-flags fs-5 text-body-secondary"></i></span>
+                            <div class="ms-1">
+                                <p class="fw-bold mb-0 text-body">Add Experience</p>
+                                <p class="small fw-normal text-wrap text-body text-opacity-50 mb-0">Share where you've worked on your profile.</p>
+                            </div>
+                        </div>
+                    </Header>
+                    <Content>
+                        <form action="#" class="d-flex flex-column gap-3 gap-sm-2 text-body-secondary small">
+                            <div class="d-flex flex-column gap-1">
+                                <label>Designation <span class="text-danger">*</span></label>
+                                <SfTextBox Type="InputType.Text" Placeholder="Enter the job title" aria-label="enter the job title" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="row flex-column-reverse flex-sm-row gap-3 gap-sm-0 gx-3 mt-sm-1">
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>Company <span class="text-danger">*</span></label>
+                                    <SfTextBox @ref="CompanyNameTextbox" Type="InputType.Text" Placeholder="Enter the company name" Created="@(async args => { if (CompanyNameTextbox != null) await CompanyNameTextbox.AddIconAsync("prepend", "e-icons e-search"); })" aria-label="enter the company name" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>Website</label>
+                                    <SfTextBox Type="InputType.URL" Placeholder="https://www.example.com" aria-label="enter the website" role="textbox"></SfTextBox>
+                                </div>
+                            </div>
+                            <div class="row flex-column-reverse flex-sm-row gap-3 gap-sm-0 gx-3 mt-sm-1">
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>Location <span class="text-danger">*</span></label>
+                                    <SfTextBox @ref="LocationTextbox" Type="InputType.Text" Placeholder="Enter the city or state" Created="@(async args => { if (LocationTextbox != null) await LocationTextbox.AddIconAsync("prepend", "e-icons e-location"); })" aria-label="enter the city or state" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>Employment type <span class="text-danger">*</span></label>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select the employment type" aria-label="choose an employment type" role="listbox"></SfDropDownList>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column gap-1 mt-sm-1">
+                                <label>Description</label>
+                                <SfTextArea Placeholder="Provide a brief overview of your role" ResizeMode='Resize.None' Rows="5" aria-label="enter a brief overview of your role" role="textbox"></SfTextArea>
+                            </div>
+                            <div class="row gap-3 gap-sm-0 gx-3 mt-sm-1">
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>Start Date</label>
+                                    <SfDatePicker TValue="DateTime?" Placeholder="MM/DD/YYYY" aria-label="enter a start date here" role="combobox"></SfDatePicker>
+                                </div>
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>End Date</label>
+                                    <SfDatePicker TValue="DateTime?" Placeholder="MM/DD/YYYY" aria-label="enter an end date here" role="combobox"></SfDatePicker>
+                                </div>
+                            </div>
+                            <SfCheckBox CssClass="mt-sm-2" Label="I currently work here" TChecked="bool" aria-label="i currently work here" role="checkbox"></SfCheckBox>
+                        </form>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="d-flex justify-content-end gap-2 gap-sm-1 py-1">
+                            <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="discard" role="button">Discard</SfButton>
+                            <SfButton CssClass="e-primary col col-sm-auto" Type="button" aria-label="save" role="button">Save</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}

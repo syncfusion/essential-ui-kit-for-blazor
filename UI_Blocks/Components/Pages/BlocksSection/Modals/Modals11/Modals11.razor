@@ -1,0 +1,66 @@
+@page "/blocks/modals-11"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" class="relative flex justify-center" style="min-height: 580px;">
+            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="submit feedback" role="button">Submit Feedback</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="660px" aria-label="submit feedback" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="font-semibold leading-normal">Submit Feedback</p>
+                    </Header>
+                    <Content>
+                        <form action="#" class="flex flex-col gap-1 text-xs font-medium leading-normal text-gray-700 dark:text-gray-200 h-full">
+                            <label>Comments <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
+                            <SfRichTextEditor @ref="Rte" Placeholder="Enter your comments" ShowCharCount="true" MaxLength="500" Height="@RteHeight" aria-label="enter and format your comments" role="application">
+                                <RichTextEditorToolbarSettings Items="@ToolbarItems"></RichTextEditorToolbarSettings>
+                            </SfRichTextEditor>
+                        </form>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="flex flex-col-reverse sm:flex-row justify-end gap-4 sm:gap-3 mb-2">
+                            <SfButton CssClass="grow sm:grow-0 !ml-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary grow sm:grow-0 !ml-0" Type="submit" aria-label="submit feedback" role="button">Submit Feedback</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 580px;">
+            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="submit feedback" role="button">Submit Feedback</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="660px" aria-label="submit feedback" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="fw-bold mb-0 text-body">Submit Feedback</p>
+                    </Header>
+                    <Content>
+                        <form action="#" class="d-flex flex-column gap-1 text-body-secondary small h-100">
+                            <label>Comments <span class="text-danger">*</span></label>
+                            <SfRichTextEditor @ref="Rte" Placeholder="Enter your comments" ShowCharCount="true" MaxLength="500" Height="@RteHeight" aria-label="enter and format your comments" role="application">
+                                <RichTextEditorToolbarSettings Items="@ToolbarItems"></RichTextEditorToolbarSettings>
+                            </SfRichTextEditor>
+                        </form>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="d-flex flex-column-reverse flex-sm-row justify-content-end gap-3 gap-sm-1 py-1">
+                            <SfButton CssClass="flex-grow-1 flex-sm-grow-0 ms-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary flex-grow-1 flex-sm-grow-0 ms-0 ms-sm-2" Type="submit" aria-label="submit feedback" role="button">Submit Feedback</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}

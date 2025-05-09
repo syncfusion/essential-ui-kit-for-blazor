@@ -11,7 +11,7 @@
             new() { Id = 3, Field = "Bookmarks", FontIcon = "e-bookmark" },
             new() { Id = 4, Field = "Issues", FontIcon = "sf-icon-info-octagon" }
         };
-        private List<MenuItem> SupportMenuItems = new()
+        private List<MenuItem> SupportMenu = new()
         {
             new() { Id = 1, Field = "Docs", FontIcon = "e-file-new" },
             new() { Id = 2, Field = "Component", FontIcon = "e-send-to-back" },

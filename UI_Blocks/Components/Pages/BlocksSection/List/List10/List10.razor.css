@@ -1,0 +1,8 @@
+::deep #task-list .e-listview .e-list-item.e-focused,
+::deep #task-list .e-listview .e-list-item:hover {
+    border-radius: 8px;
+}
+
+::deep #task-list .e-listview .e-list-item {
+    border-bottom: 0px;
+}

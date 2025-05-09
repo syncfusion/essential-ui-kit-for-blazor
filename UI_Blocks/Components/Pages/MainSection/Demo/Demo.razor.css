@@ -148,10 +148,22 @@
 }
 
 .preview-container {
-    min-width: 100%;
     min-height: 36rem;
     border: none;
     overflow: hidden;
+    transition: height 0.25s ease-in;
+
+    &.desktop-view {
+        min-width: 100%;
+    }
+
+    &.tablet-view {
+        min-width: 48rem;
+    }
+
+    &.mobile-view {
+        min-width: 22.5rem;
+    }
 }
 
 .preview-code-container {

@@ -1,0 +1,192 @@
+@page "/blocks/modals-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" class="relative flex justify-center" style="min-height: 826px;">
+            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="contact information" role="button">Contact Information</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="548px" aria-label="add or update contact information" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <div class="font-semibold leading-normal mb-0.5">Contact Information</div>
+                        <div class="text-xs leading-normal text-gray-500 dark:text-gray-400">Add or update contact information</div>
+                    </Header>
+                    <Content>
+                        <div class="mb-5">
+                            <p class="text-sm font-medium mb-3">Profile Photo</p>
+                            <div class="flex items-center gap-4">
+                                <span class="e-avatar e-avatar-circle size-20 shrink-0">
+                                    <i class="e-icons e-user text-4xl text-gray-500 dark:text-gray-300"></i>
+                                </span>
+                                <div id="upload-template">
+                                    <SfUploader AllowMultiple="false" AllowedExtensions="image/*" MaxFileSize="2000000">
+                                        <UploaderButtons Browse="Upload Photo"></UploaderButtons>
+                                        <UploaderEvents FileSelected="@(args => args.Cancel = true)"></UploaderEvents>
+                                    </SfUploader>
+                                    <p class="text-xs font-medium text-wrap line-clamp-1 text-gray-500 dark:text-gray-400 mt-2">SVG, JPG, PNG or GIF (Maximum: 2 MB)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <form action="#" class="grid grid-cols-1 gap-4 text-xs font-medium leading-normal text-gray-700 dark:text-gray-200">
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-y-3">
+                                <div class="flex flex-col gap-1">
+                                    <label>Full Name</label>
+                                    <SfTextBox Type="InputType.Text" Placeholder="Enter your full name" aria-label="enter your full name" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label>Email Address <span class="text-red-600 dark:text-red-400 font-normal">*</span></label>
+                                    <SfTextBox Type="InputType.Email" Placeholder="Enter a valid email address" aria-label="enter a valid email address" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label>Company Name</label>
+                                    <SfTextBox Type="InputType.Text" Placeholder="Enter the company name" aria-label="enter the company name" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label>Job Profile</label>
+                                    <SfDropDownList TItem="string" TValue="string" Placeholder="Select a job title" aria-label="choose a job title" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label>Location</label>
+                                    <SfDropDownList TItem="string" TValue="string" Placeholder="Select a city or state" aria-label="choose a city or state" role="listbox"></SfDropDownList>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="text-sm text-gray-900 dark:text-white">Communication Preferences</label>
+                                <div class="flex gap-5 sm:gap-8 mt-2">
+                                    <SfCheckBox Label="Email" Checked="true" aria-label="email communication preference" role="checkbox"></SfCheckBox>
+                                    <SfCheckBox Label="Phone" Checked="true" aria-label="phone communication preference" role="checkbox"></SfCheckBox>
+                                </div>
+                            </div>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-y-3">
+                                <div class="flex flex-col gap-1">
+                                    <label>Lead Source <span class="text-red-600 dark:text-red-400 font-normal">*</span></label>
+                                    <SfTextBox Type="InputType.Text" Placeholder="Enter the lead source" aria-label="enter the lead source" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label>Status</label>
+                                    <SfDropDownList TItem="string" TValue="string" Placeholder="Active" aria-label="choose a status" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label>Date Added</label>
+                                    <SfDatePicker TValue="DateTime?" Placeholder="MM/DD/YYYY" aria-label="enter the date added here" role="combobox"></SfDatePicker>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label>Tags/Labels</label>
+                                    <SfDropDownList TItem="string" TValue="string" Placeholder="Select keywords or tags" aria-label="choose keywords or tags" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="flex flex-col gap-1">
+                                    <label>Time Zone</label>
+                                    <SfDropDownList TItem="string" TValue="string" Placeholder="Select your time zone" aria-label="choose a time zone" role="listbox"></SfDropDownList>
+                                </div>
+                            </div>
+                        </form>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="flex justify-end gap-2 sm:gap-1 mt-1 mb-2">
+                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="button" aria-label="save contact" role="button">Save Contact</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 826px;">
+            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="contact information" role="button">Contact Information</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="548px" aria-label="add or update contact information" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <div class="fw-bold text-body">Contact Information</div>
+                        <div class="small text-body text-opacity-50">Add or update contact information</div>
+                    </Header>
+                    <Content>
+                        <div class="mb-3 px-1">
+                            <p class="fw-medium mb-2 text-body">Profile Photo</p>
+                            <div class="d-flex align-items-center gap-3 pt-1">
+                                <span class="e-avatar e-avatar-circle" style="width: 80px; height: 80px;">
+                                    <i class="e-icons e-user fs-2"></i>
+                                </span>
+                                <div id="upload-template">
+                                    <SfUploader AllowMultiple="false" AllowedExtensions="image/*" MaxFileSize="2000000">
+                                        <UploaderButtons Browse="Upload Photo"></UploaderButtons>
+                                        <UploaderEvents FileSelected="@(args => args.Cancel = true)"></UploaderEvents>
+                                    </SfUploader>
+                                    <p class="small fw-medium text-wrap text-body text-opacity-50 mt-2 mb-0" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">SVG, JPG, PNG or GIF (Maximum: 2 MB)</p>
+                                </div>
+                            </div>
+                        </div>
+                        <form action="#" class="d-flex flex-column gap-3 text-body-secondary small">
+                            <div class="row gx-3 gy-sm-1 row-gap-3 row-gap-sm-2">
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>Full Name</label>
+                                    <SfTextBox Type="InputType.Text" Placeholder="Enter your full name" aria-label="enter your full name" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>Email Address <span class="text-danger">*</span></label>
+                                    <SfTextBox Type="InputType.Email" Placeholder="Enter a valid email address" aria-label="enter a valid email address" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>Company Name</label>
+                                    <SfTextBox Type="InputType.Text" Placeholder="Enter the company name" aria-label="enter the company name" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>Job Profile</label>
+                                    <SfDropDownList TItem="string" TValue="string" Placeholder="Select a job title" aria-label="choose a job title" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>Location</label>
+                                    <SfDropDownList TItem="string" TValue="string" Placeholder="Select a city or state" aria-label="choose a city or state" role="listbox"></SfDropDownList>
+                                </div>
+                            </div>
+                            <div>
+                                <label class="fs-6 fw-medium text-body">Communication Preferences</label>
+                                <div class="d-flex gap-4 mt-2">
+                                    <SfCheckBox CssClass="me-md-2" Label="Email" Checked="true" aria-label="email communication preference" role="checkbox"></SfCheckBox>
+                                    <SfCheckBox Label="Phone" Checked="true" aria-label="phone communication preference" role="checkbox"></SfCheckBox>
+                                </div>
+                            </div>
+                            <div class="row gx-3 gy-sm-1 row-gap-3 row-gap-sm-2">
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1 mt-0">
+                                    <label>Lead Source <span class="text-danger">*</span></label>
+                                    <SfTextBox Type="InputType.Text" Placeholder="Enter the lead source" aria-label="enter the lead source" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1 mt-0">
+                                    <label>Status</label>
+                                    <SfDropDownList TItem="string" TValue="string" Placeholder="Active" aria-label="choose a status" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>Date Added</label>
+                                    <SfDatePicker TValue="DateTime?" Placeholder="MM/DD/YYYY" aria-label="enter the date added here" role="combobox"></SfDatePicker>
+                                </div>
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>Tags/Labels</label>
+                                    <SfDropDownList TItem="string" TValue="string" Placeholder="Select keywords or tags" aria-label="choose keywords or tags" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                    <label>Time Zone</label>
+                                    <SfDropDownList TItem="string" TValue="string" Placeholder="Select your time zone" aria-label="choose a time zone" role="listbox"></SfDropDownList>
+                                </div>
+                            </div>
+                        </form>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="d-flex justify-content-end gap-2 gap-sm-1 py-1">
+                            <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary col col-sm-auto" Type="button" aria-label="save contact" role="button">Save Contact</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}

@@ -1,0 +1,66 @@
+﻿@page "/blocks/notification-8"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="w-full px-4 sm:px-0 h-screen">
+            <div id="toast" class="mx-auto" style="max-width: 420px;">
+                <SfToast @ref="ToastInfo" CssClass="!w-full !m-0 !p-0" Width="100%" TimeOut="0" Target="#toast">
+                    <ToastEvents Created="@(async () => await ToastInfo?.ShowAsync())"></ToastEvents>
+                    <ToastPosition X="Center" Y="Top"></ToastPosition>
+                    <ToastTemplates>
+                        <Template>
+                            <div class="flex justify-between items-center px-4 py-3 w-full">
+                                <div class="flex items-center">
+                                    <span class="text-green-700 dark:text-green-500 e-icons e-circle-check e-medium"></span>
+                                    <span class="text-gray-900 dark:text-white text-base font-medium ml-2">Message sent</span>
+                                </div>
+                                <div class="flex items-center gap-2 sm:gap-3">
+                                    <div class="flex items-center gap-2">
+                                        <SfButton CssClass="e-flat !px-2" Content="View" Type="button" aria-label="view" role="button"></SfButton>
+                                        <SfButton CssClass="e-flat !px-2" Content="Undo" Type="button" aria-label="undo" role="button"></SfButton>
+                                    </div>
+                                    <SfButton CssClass="e-flat e-round" IconCss="e-icons e-close !text-base !leading-4" Type="button" aria-label="hide alert" role="button"></SfButton>
+                                </div>
+                            </div>
+                        </Template>
+                    </ToastTemplates>
+                </SfToast>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="w-100 px-3 px-sm-0 vh-100">
+            <div id="toast" class="mx-auto" style="max-width: 420px;">
+                <SfToast @ref="ToastInfo" CssClass="w-100 m-0 p-0" Width="100%" TimeOut="0" Target="#toast">
+                    <ToastEvents Created="@(async () => await ToastInfo?.ShowAsync())"></ToastEvents>
+                    <ToastPosition X="Center" Y="Top"></ToastPosition>
+                    <ToastTemplates>
+                        <Template>
+                            <div class="d-flex justify-content-between align-items-center px-3 py-2 my-1 w-100">
+                                <div class="d-flex align-items-center">
+                                    <span class="text-success e-icons e-circle-check e-medium"></span>
+                                    <span class="text-body fs-6 fw-medium ms-2">Message sent</span>
+                                </div>
+                                <div class="d-flex align-items-center gap-2">
+                                    <div class="d-flex align-items-center gap-2">
+                                        <SfButton CssClass="e-flat px-2" Content="View" Type="button" aria-label="view" role="button"></SfButton>
+                                        <SfButton CssClass="e-flat px-2" Content="Undo" Type="button" aria-label="undo" role="button"></SfButton>
+                                    </div>
+                                    <SfButton CssClass="e-flat e-round ms-sm-1" IconCss="e-icons e-close" Type="button" aria-label="hide alert" role="button"></SfButton>
+                                </div>
+                            </div>
+                        </Template>
+                    </ToastTemplates>
+                </SfToast>
+            </div>
+        </div>
+    </section>
+}

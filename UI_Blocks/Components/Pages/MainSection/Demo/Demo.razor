@@ -85,8 +85,8 @@
             }
             @if (IsPreviewMode)
             {
-                <object @ref="PreviewBlock" class="preview-container" data="@($"{NavigationManager.BaseUri}blocks/{BlockUrl}?CurrentTheme={CurrentTheme}")"
-                        style="@(PreviewStyle + (!IsPreviewMode ? "display: none;" : ""))" title="Preview Content"
+                <object @ref="PreviewBlock" class="preview-container @(CurrentView.ToString().ToLower())-view" data="@($"{NavigationManager.BaseUri}blocks/{BlockUrl}?CurrentTheme={CurrentTheme}")"
+                        style="@(!IsPreviewMode ? "display: none;" : "")" title="Preview Content"
                         @onload="@(async () => await OnPreviewLoad())">
                 </object>
             }

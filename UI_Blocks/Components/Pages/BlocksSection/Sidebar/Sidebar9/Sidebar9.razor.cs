@@ -4,7 +4,7 @@
     {
         private bool SidebarToggle { get; set; } = true;
 
-        private List<IconMenuItem> IconMenuItems = new()
+        private List<IconMenuItem> NavigationMenu = new()
         {
             new() { Id = 1, FontIcon = "e-home" },
             new() { Id = 2, FontIcon = "e-user" },

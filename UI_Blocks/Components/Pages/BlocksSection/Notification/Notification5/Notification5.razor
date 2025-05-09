@@ -1,0 +1,68 @@
+﻿@page "/blocks/notification-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950 w-full">
+        <div id="toast" class="h-screen flex justify-center items-center mx-4 sm:mx-auto" style="max-width: 379px;">
+            <SfToast @ref="ToastInfo" CssClass="!w-full sm:!m-0 !p-0" Width="100%" TimeOut="0" Target="#toast" NewestOnTop="true">
+                <ToastPosition X="Center" Y="Top"></ToastPosition>
+                <ToastEvents Created="@(async () => await ToastInfo?.ShowAsync())"></ToastEvents>
+                <ToastTemplates>
+                    <Title>
+                        <div class="flex justify-between items-center p-4 pb-2 sm:pb-1">
+                            <div class="flex items-center gap-2">
+                                <span class="sf-icon-clock-02 text-2xl !leading-6 !text-gray-500 dark:!text-gray-300"></span>
+                                <h1 class="text-sm text-gray-900 dark:text-white font-bold">Trial Ending Soon</h1>
+                            </div>
+                            <SfButton CssClass="e-flat e-small e-round" IconCss="e-icons e-close" Type="button" aria-label="hide alert" role="button"></SfButton>
+                        </div>
+                    </Title>
+                    <Content>
+                        <div class="e-bigger flex flex-col gap-2 p-4 pt-0">
+                            <p class="text-gray-700 dark:text-gray-300 leading-5 mb-1">Your free trial will end in two days. Upgrade now to keep your premium features!</p>
+                            <div class="h-32">
+                                <img class="w-full h-full object-cover rounded" src="assets/images/notification/feature.jpg" alt="banner-image" />
+                            </div>
+                            <SfButton CssClass="e-primary w-max ml-auto" Content="Upgrade Now" Type="button" aria-label="upgrade now" role="button"></SfButton>
+                        </div>
+                    </Content>
+                </ToastTemplates>
+            </SfToast>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body w-100">
+        <div id="toast" class="d-flex justify-content-center align-items-center mx-3 mx-sm-auto vh-100" style="max-width: 379px;">
+            <SfToast @ref="ToastInfo" CssClass="w-100 m-0 p-0" Width="100%" TimeOut="0" Target="#toast" NewestOnTop="true">
+                <ToastPosition X="Center" Y="Top"></ToastPosition>
+                <ToastEvents Created="@(async () => await ToastInfo?.ShowAsync())"></ToastEvents>
+                <ToastTemplates>
+                    <Title>
+                        <div class="d-flex justify-content-between align-items-center p-1 pb-0">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="sf-icon-clock-02 fs-4 text-secondary"></span>
+                                <h1 class="fs-6 text-body fw-bold m-0">Trial Ending Soon</h1>
+                            </div>
+                            <SfButton CssClass="e-flat e-small e-round" IconCss="e-icons e-close" Type="button" aria-label="hide alert" role="button"></SfButton>
+                        </div>
+                    </Title>
+                    <Content>
+                        <div class="e-bigger d-flex flex-column gap-2 p-1 pt-0">
+                            <p class="text-body m-0">Your free trial will end in two days. Upgrade now to keep your premium features!</p>
+                            <div style="height: 132px;">
+                                <img class="w-100 h-100 rounded" src="assets/images/notification/feature.jpg" style="object-fit: cover;" alt="banner-image" />
+                            </div>
+                            <SfButton CssClass="e-primary w-auto ms-auto mt-3 mt-sm-2" Content="Upgrade Now" Type="button" aria-label="upgrade now" role="button"></SfButton>
+                        </div>
+                    </Content>
+                </ToastTemplates>
+            </SfToast>
+        </div>
+    </section>
+}

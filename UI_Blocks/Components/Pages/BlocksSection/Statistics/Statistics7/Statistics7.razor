@@ -1,0 +1,56 @@
+@page "/blocks/statistics-7"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="px-4 sm:px-6 xl:px-11 py-12">
+            <div class="grid sm:grid-cols-2 gap-6 lg:gap-4 lg:grid-cols-4">
+                @foreach (var data in MetricsData)
+                {
+                    <div class="e-card pt-6 e-bigger rounded-lg shadow-none">
+                        <div class="e-card-stacked">
+                            <div class="e-card-header !py-0 !justify-between items-center">
+                                <h4 class="text-base text-gray-700 dark:text-gray-200 font-medium">@data.MetricName</h4>
+                                <span class="text-2xl !leading-none @(data.MetricName == "Total Revenue" ? "text-green-700 dark:text-green-500 sf-icon-arrow-missed-right" : data.MetricName == "Market Breadth" ? "text-orange-700 dark:text-orange-500 sf-icon-pie-chart" : data.MetricName == "Trending Volume" ? "text-indigo-600 dark:text-indigo-400 e-chart e-icons" : data.MetricName == "VIX" ? "text-gray-500 dark:text-gray-300 e-critical-path e-icons" : "")"></span>
+                            </div>
+                            <div class="e-card-content !pb-6">
+                                <p class="mt-2 text-xl !leading-7 font-semibold text-gray-900 dark:text-white">@data.CurrentValue.ToString("0.##")</p>
+                                <p class="mt-1 font-medium @(data.MetricName == "Total Revenue" ? "text-green-700 dark:text-green-500" : data.MetricName == "VIX" ? "text-red-600 dark:text-red-400" : data.MetricName == "Market Breadth" || data.MetricName == "Trending Volume" ? "text-gray-700 dark:text-gray-200" : "")">@data.ValueDescription</p>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="px-3 px-sm-4 px-xl-5 py-5">
+            <div class="row g-4 g-lg-3">
+                @foreach (var data in MetricsData)
+                {
+                    <div class="col-12 col-sm-6 col-lg-3">
+                        <div class="e-card rounded-3 e-bigger pt-4">
+                            <div class="e-card-stacked">
+                                <div class="e-card-header py-0 px-4 d-flex justify-content-between align-items-center">
+                                    <h4 class="fs-6 text-body-secondary lh-base fw-medium mb-0">@data.MetricName</h4>
+                                    <span class="fs-4 @(data.MetricName == "Total Revenue" ? "text-success sf-icon-arrow-missed-right" : data.MetricName == "Market Breadth" ? "text-warning sf-icon-pie-chart" : data.MetricName == "Trending Volume" ? "text-primary e-chart e-icons" : data.MetricName == "VIX" ? "text-secondary e-critical-path e-icons" : "")"></span>
+                                </div>
+                                <div class="e-card-content pb-4 pt-0 px-4">
+                                    <p class="mt-2 fs-5 lh-sm fw-bold text-body mb-1">@data.CurrentValue.ToString("0.##")</p>
+                                    <p class="fw-medium mb-0 lh-base @(data.MetricName == "Total Revenue" ? "text-success" : data.MetricName == "VIX" ? "text-danger" : data.MetricName == "Market Breadth" || data.MetricName == "Trending Volume" ? "text-body-secondary" : "")">@data.ValueDescription</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

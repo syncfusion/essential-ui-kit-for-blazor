@@ -120,7 +120,9 @@ window.debounce = function (func, wait, previewElement) {
 }
 
 window.onResize = function (previewElement) {
-    previewElement.contentWindow.postMessage({ type: "resizeAction" });
+    if (previewElement && previewElement.contentWindow) {
+        previewElement.contentWindow.postMessage({ type: "resizeAction" });
+    }
 }
 
 window.initializeiFrameMessageListener = (dotNetRef) => {

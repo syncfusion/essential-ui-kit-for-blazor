@@ -6,7 +6,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.List.List6
     {
         private string WidthStyle { get; set; } = "max-width:452px";
 
-        public List<DataItem> GetData { get; set; } = new List<DataItem>
+        public List<DataItem> FieldData { get; set; } = new List<DataItem>
         {
             new DataItem { Id = 1, Field = "Full Name", FontIcon = "e-icons e-user" },
             new DataItem { Id = 2, Field = "Email Address", FontIcon = "sf-icon-mail-02" },

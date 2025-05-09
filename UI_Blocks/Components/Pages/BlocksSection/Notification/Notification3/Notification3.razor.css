@@ -1,0 +1,27 @@
+﻿::deep #notification .e-tab .e-tab-header .e-toolbar-item {
+    width: 100% !important;
+}
+
+::deep #notification .e-tab .e-tab-header .e-toolbar-items {
+    width: 50% !important;
+    text-align: center !important;
+}
+
+::deep #notification.e-dialog {
+    max-height: fit-content !important;
+    top: 52px !important;
+}
+
+::deep #notification .e-dlg-header-content,
+::deep #notification .e-dlg-content,
+::deep #notification .e-footer-content {
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+}
+
+::deep #notification .e-list-item {
+    height: auto !important;
+    padding: 0 !important;
+}

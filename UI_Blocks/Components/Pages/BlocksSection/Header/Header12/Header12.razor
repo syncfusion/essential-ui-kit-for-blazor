@@ -1,0 +1,90 @@
+@page "/blocks/header-12"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div style="min-height: 36rem;">
+            <div class="border-b border-gray-200 dark:border-gray-600">
+                <div class="px-4 sm:px-6 py-4 sm:py-3 flex items-center justify-between">
+                    <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Employee Attendance</h3>
+                    <div class="flex gap-2">
+                        <SfButton Type="button" aria-label="export PDF" role="button">
+                            <div class="flex items-center gap-1">
+                                <span class="e-icons e-export-pdf e-medium"></span>
+                                <span class="ml-1 hidden sm:flex">Export PDF</span>
+                            </div>
+                        </SfButton>
+                        <SfButton CssClass="block lg:hidden" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more" role="button"></SfButton>
+                    </div>
+                </div>
+            </div>
+            <div class="px-6 py-3 space-x-4 hidden lg:flex items-center">
+                <span class="w-48">
+                    <SfDatePicker TValue="DateTime?" Placeholder="Start date" aria-label="select a start date here" role="combobox"></SfDatePicker>
+                </span>
+                <span class="text-sm font-normal text-gray-900 dark:text-white">to</span>
+                <span class="w-48">
+                    <SfDatePicker TValue="DateTime?" Placeholder="End date" aria-label="select an end date here" role="combobox"></SfDatePicker>
+                </span>
+                <div class="flex gap-3 items-center">
+                    <div class="space-x-2 flex items-center">
+                        <label class="text-sm font-normal text-gray-900 dark:text-white text-nowrap">Select Range:</label>
+                        <span class="w-44">
+                            <SfDropDownList TValue="string" TItem="string" DataSource="@Range" Placeholder="Select range" aria-label="choose the range" role="listbox">
+                                <DropDownListFieldSettings Text="Text"></DropDownListFieldSettings>
+                            </SfDropDownList>
+                        </span>
+                    </div>
+                    <div class="h-5 border-l border-gray-200 dark:border-gray-600"></div>
+                    <SfButton Content="Generate report" Type="button" aria-label="generate report" role="button"></SfButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="min-height: 36rem;">
+            <div class="border-bottom">
+                <div class="px-3 px-sm-4 py-2 d-flex align-items-center justify-content-between">
+                    <h3 class="fs-5 fw-bold text-body mb-0">Employee Attendance</h3>
+                    <div class="d-flex gap-2">
+                        <SfButton CssClass="e-outline" Type="button" aria-label="export PDF" role="button">
+                            <div class="d-flex align-items-center gap-1">
+                                <span class="e-icons e-export-pdf e-medium"></span>
+                                <span class="ms-1 d-none d-md-flex">Export PDF</span>
+                            </div>
+                        </SfButton>
+                        <SfButton CssClass="e-outline d-block d-lg-none" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more" role="button"></SfButton>
+                    </div>
+                </div>
+            </div>
+            <div class="px-4 py-3 d-none d-lg-flex align-items-center gap-3">
+                <span style="width: 200px;">
+                    <SfDatePicker TValue="DateTime?" Placeholder="Start date" aria-label="select a start date here" role="combobox"></SfDatePicker>
+                </span>
+                <span class="fs-6 fw-normal text-body">to</span>
+                <span style="width: 200px;">
+                    <SfDatePicker TValue="DateTime?" Placeholder="End date" aria-label="select an end date here" role="combobox"></SfDatePicker>
+                </span>
+                <div class="d-flex align-items-center gap-3">
+                    <div class="d-flex align-items-center gap-2">
+                        <label class="fs-6 fw-normal text-body text-nowrap">Select Range:</label>
+                        <span style="width: 182px;">
+                            <SfDropDownList TValue="string" TItem="string" DataSource="@Range" Placeholder="Select range" aria-label="choose the range" role="listbox">
+                                <DropDownListFieldSettings Text="Text"></DropDownListFieldSettings>
+                            </SfDropDownList>
+                        </span>
+                    </div>
+                    <div class="border-start" style="height: 16px;"></div>
+                    <SfButton CssClass="e-outline" Content="Generate report" Type="button" aria-label="generate report" role="button"></SfButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}

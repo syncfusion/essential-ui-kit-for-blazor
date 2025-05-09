@@ -1,0 +1,46 @@
+::deep #upload-template .e-file-select-wrap {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+::deep #upload-template .e-upload {
+    border: none;
+}
+
+::deep #upload-template .e-upload .e-file-select-wrap .e-file-drop {
+    display: none;
+}
+
+::deep #upload-template .e-upload .e-upload-files .e-upload-file-list {
+    border-bottom: 0;
+}
+
+::deep #dialog-container .e-richtexteditor .e-rte-character-count {
+    margin-right: 6px;
+}
+
+::deep #assign-dropdown-section .e-ddl.e-input-group.e-control-wrapper::before {
+    font-family: "e-icons";
+    font-size: 16px;
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    pointer-events: none;
+    line-height: 1.2;
+    content: "\e7b4";
+}
+
+::deep #assign-dropdown-section .e-ddl.e-input-group .e-input {
+    padding-left: 38px !important;
+}
+
+::deep #dialog-container .e-richtexteditor .e-rte-content .e-content ol {
+    list-style: auto;
+    margin-left: 24px;
+}
+
+::deep #dialog-container .e-richtexteditor .e-rte-content .e-content ul {
+    list-style: disc;
+    margin-left: 24px;
+}

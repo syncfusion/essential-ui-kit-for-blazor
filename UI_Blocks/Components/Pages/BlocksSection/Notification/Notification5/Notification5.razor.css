@@ -1,0 +1,4 @@
+﻿::deep #toast .e-toast-title {
+    border-bottom: none !important;
+    padding-bottom: 0px !important;
+}

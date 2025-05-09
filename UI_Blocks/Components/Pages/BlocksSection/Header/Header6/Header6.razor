@@ -1,0 +1,192 @@
+@page "/blocks/header-6"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div class="pt-2 sm:pt-4" style="min-height: 36rem;">
+            <div class="px-4 sm:px-6">
+                <div class="flex justify-between relative">
+                    <div class="pt-2 w-full">
+                        <SfTab HeightAdjustMode="Auto" Width="100%" SelectedItem="1" OverFlowMode="@OverflowMode">
+                            <TabItems>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div class="space-x-2 flex items-center">
+                                            <p>New <span>(@HeaderData["New"])</span></p>
+                                        </div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div class="space-x-2 flex items-center">
+                                            <p>Verification Due <span>(@HeaderData["VerificationDue"])</span></p>
+                                        </div>
+                                    </HeaderTemplate>
+                                    <ContentTemplate>
+                                        <div class="flex lg:hidden items-center mt-4">
+                                            <div class="e-input-group w-60 me-3">
+                                                <input class="e-input" type="text" placeholder="Search..." aria-label="search" role="textbox" />
+                                                <span class="e-input-group-icon e-icons e-search border-start-0"></span>
+                                            </div>
+                                            <div class="border-l border-gray-200 dark:border-gray-600 h-5 me-2"></div>
+                                            <SfDropDownButton @ref="Dropdown" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                                                <DropDownButtonEvents Opened="OnDropdownOpened" Closed="OnDropdownClosed"></DropDownButtonEvents>
+                                                <DropDownMenuItems>
+                                                    <DropDownMenuItem Text="Review Today"></DropDownMenuItem>
+                                                    <DropDownMenuItem Text="Expired"></DropDownMenuItem>
+                                                    <DropDownMenuItem Text="Upcoming"></DropDownMenuItem>
+                                                    <DropDownMenuItem Text="Unassigned"></DropDownMenuItem>
+                                                </DropDownMenuItems>
+                                            </SfDropDownButton>
+                                        </div>
+                                        <div class="border-b border-gray-200 mt-4 dark:border-gray-600 block sm:hidden"></div>
+                                        <div class="hidden lg:flex py-3 items-center">
+                                            <div class="e-input-group w-60 me-3">
+                                                <input class="e-input" type="text" placeholder="Search..." aria-label="search" role="textbox" />
+                                                <span class="e-input-group-icon e-icons e-search border-start-0"></span>
+                                            </div>
+                                            <div class="border-l border-gray-200 dark:border-gray-600 h-5 me-2"></div>
+                                            <SfChip>
+                                                <ChipItems>
+                                                    <ChipItem CssClass="e-outline !rounded-2xl" Text="Review Today"></ChipItem>
+                                                    <ChipItem CssClass="e-outline !rounded-2xl" Text="Expired"></ChipItem>
+                                                    <ChipItem CssClass="e-outline !rounded-2xl" Text="Upcoming"></ChipItem>
+                                                    <ChipItem CssClass="e-outline !rounded-2xl" Text="Unassigned"></ChipItem>
+                                                </ChipItems>
+                                            </SfChip>
+                                        </div>
+                                    </ContentTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div class="space-x-2 flex items-center">
+                                            <p>Approval Due <span>(@HeaderData["ApprovalDue"])</span></p>
+                                        </div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div class="space-x-2 flex items-center">
+                                            <p>Processed</p>
+                                        </div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                            </TabItems>
+                        </SfTab>
+                    </div>
+                    <div class="absolute top-0 end-0">
+                        <div class="hidden lg:flex items-center gap-3 pt-2">
+                            <SfButton IconCss="e-icons e-filter" Content="Filter" Type="button" aria-label="filter" role="button"></SfButton>
+                            <SfDropDownButton IconCss="e-icons e-table" Content="Columns" Type="button" aria-label="choose the columns" role="button">
+                                <DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+                            </SfDropDownButton>
+                        </div>
+                        <div class="hidden md:flex lg:hidden items-center gap-3 pt-2">
+                            <SfButton IconCss="e-icons e-filter" Type="button" aria-label="filter" role="button"></SfButton>
+                            <SfDropDownButton IconCss="e-icons e-table" Type="button" aria-label="choose the columns" role="button">
+                                <DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+                            </SfDropDownButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="pt-3 pt-sm-4" style="min-height: 36rem;">
+            <div class="px-3 px-sm-4">
+                <div class="d-flex justify-content-between position-relative">
+                    <div class="w-100">
+                        <SfTab HeightAdjustMode="Auto" Width="100%" SelectedItem="1" OverFlowMode="@OverflowMode">
+                            <TabItems>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <p class="mb-0">New <span>(@HeaderData["New"])</span></p>
+                                        </div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <p class="mb-0">Verification Due <span>(@HeaderData["VerificationDue"])</span></p>
+                                        </div>
+                                    </HeaderTemplate>
+                                    <ContentTemplate>
+                                        <div class="d-flex d-lg-none align-items-center mt-3">
+                                            <div class="e-input-group me-3" style="width: 240px;">
+                                                <input class="e-input" type="text" placeholder="Search..." aria-label="search" role="textbox" />
+                                                <span class="e-input-group-icon e-icons e-search border-start-0"></span>
+                                            </div>
+                                            <div class="border-start me-2" style="height: 16px;"></div>
+                                            <SfDropDownButton @ref="Dropdown" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                                                <DropDownButtonEvents Opened="OnDropdownOpened" Closed="OnDropdownClosed"></DropDownButtonEvents>
+                                                <DropDownMenuItems>
+                                                    <DropDownMenuItem Text="Review Today"></DropDownMenuItem>
+                                                    <DropDownMenuItem Text="Expired"></DropDownMenuItem>
+                                                    <DropDownMenuItem Text="Upcoming"></DropDownMenuItem>
+                                                    <DropDownMenuItem Text="Unassigned"></DropDownMenuItem>
+                                                </DropDownMenuItems>
+                                            </SfDropDownButton>
+                                        </div>
+                                        <div class="border-bottom px-3 mt-3 d-block d-sm-none"></div>
+                                        <div class="d-none d-lg-flex py-3 align-items-center">
+                                            <div class="e-input-group me-3" style="width: 240px;">
+                                                <input class="e-input" type="text" placeholder="Search..." aria-label="search" role="textbox" />
+                                                <span class="e-input-group-icon e-icons e-search border-start-0"></span>
+                                            </div>
+                                            <div class="border-start me-2" style="height: 16px;"></div>
+                                            <SfChip>
+                                                <ChipItems>
+                                                    <ChipItem CssClass="e-outline rounded-pill" Text="Review Today"></ChipItem>
+                                                    <ChipItem CssClass="e-outline rounded-pill" Text="Expired"></ChipItem>
+                                                    <ChipItem CssClass="e-outline rounded-pill" Text="Upcoming"></ChipItem>
+                                                    <ChipItem CssClass="e-outline rounded-pill" Text="Unassigned"></ChipItem>
+                                                </ChipItems>
+                                            </SfChip>
+                                        </div>
+                                    </ContentTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <p class="mb-0">Approval Due <span>(@HeaderData["ApprovalDue"])</span></p>
+                                        </div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>
+                                        <div class="d-flex align-items-center gap-2">
+                                            <p class="mb-0">Processed</p>
+                                        </div>
+                                    </HeaderTemplate>
+                                </TabItem>
+                            </TabItems>
+                        </SfTab>
+                    </div>
+                    <div class="position-absolute top-0 end-0 translate-middle-y">
+                        <div class="d-flex align-items-center mt-3 d-none d-lg-block">
+                            <SfButton CssClass="me-3 e-outline" IconCss="e-icons e-filter e-medium" Content="Filter" Type="button" aria-label="filter" role="button"></SfButton>
+                            <SfDropDownButton CssClass="e-outline" IconCss="e-icons e-table" Content="Columns" Type="button" aria-label="choose the columns" role="button">
+                                <DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+                            </SfDropDownButton>
+                        </div>
+                        <div class="d-flex align-items-center mt-3 d-none d-md-block d-lg-none">
+                            <SfButton CssClass="me-3 e-outline" IconCss="e-icons e-filter e-medium" Type="button" aria-label="filter" role="button"></SfButton>
+                            <SfDropDownButton CssClass="e-outline" IconCss="e-icons e-table" Type="button" aria-label="choose the columns" role="button">
+                                <DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
+                            </SfDropDownButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

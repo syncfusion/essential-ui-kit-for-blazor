@@ -11,7 +11,7 @@
             <SfGrid DataSource="@GridData" Width="100%" Height="668" AllowSorting="true" AllowFiltering="true" role="grid">
                 <GridFilterSettings Type="@Syncfusion.Blazor.Grids.FilterType.Menu" ></GridFilterSettings>
                 <GridColumns>
-                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>                    
+                    <GridColumn Type="Syncfusion.Blazor.Grids.ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>                    
                     <GridColumn Field="TransactionId" HeaderText="Transaction ID" Width="143"></GridColumn>                    
                     <GridColumn Field="CustomerDetails.Name" HeaderText="Customer Name" TextAlign="TextAlign.Left" Width="270">
                         <Template>
@@ -94,7 +94,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
             <SfGrid DataSource="@GridData" Width="100%" Height="668" AllowSorting="true" AllowFiltering="true" role="grid">
                 <GridFilterSettings Type="@Syncfusion.Blazor.Grids.FilterType.Menu" ></GridFilterSettings>
                 <GridColumns>
-                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
+                    <GridColumn Type="Syncfusion.Blazor.Grids.ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
                     <GridColumn Field="TransactionId" HeaderText="Transaction ID" Width="152"></GridColumn>
                     <GridColumn Field="CustomerDetails.Name" HeaderText="Customer Name" TextAlign="TextAlign.Left" Width="252">
                         <Template>

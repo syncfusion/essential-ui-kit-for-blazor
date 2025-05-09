@@ -1,0 +1,122 @@
+@page "/blocks/header-10"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div style="min-height: 36rem;">
+            <div class="py-3 px-4 sm:px-6 flex justify-between border-b border-gray-200 dark:border-gray-600">
+                <div id="breadcrumb">
+                    <SfBreadcrumb EnableNavigation="false" OverFlowMode="@OverflowMode" MaxItems="@MaxItems">
+                        <BreadcrumbItems>
+                            <BreadcrumbItem Text="Analytics Hub"></BreadcrumbItem>
+                            <BreadcrumbItem Text="Metrics"></BreadcrumbItem>
+                            <BreadcrumbItem Text="Performance Monitor"></BreadcrumbItem>
+                        </BreadcrumbItems>
+                        <BreadcrumbTemplates>
+                            <SeparatorTemplate>
+                                <span class="text-base e-icons e-chevron-right"></span>
+                            </SeparatorTemplate>
+                        </BreadcrumbTemplates>
+                    </SfBreadcrumb>
+                </div>
+                <div>
+                    <div class="hidden sm:flex gap-3">
+                        <SfButton CssClass="e-flat" Type="button" aria-label="API documentation" role="button">
+                            <div class="flex items-center gap-1">
+                                <span class="sf-icon-api-document text-base"></span>
+                                <span class="ml-1 hidden lg:block">API Documentation</span>
+                            </div>
+                        </SfButton>
+                        <SfButton CssClass="e-flat" Type="button" aria-label="feedback" role="button">
+                            <div class="flex items-center gap-1">
+                                <span class="e-icons e-comment-show e-medium"></span>
+                                <span class="ml-1 hidden lg:block">Feedback</span>
+                            </div>
+                        </SfButton>
+                    </div>
+                    <SfDropDownButton @ref="Dropdown" class="block sm:hidden" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                        <DropDownButtonEvents Opened="OnDropdownOpened" Closed="OnDropdownClosed"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="API Documentation"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Feedback"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+            </div>
+            <div class="flex justify-between gap-3 px-4 sm:px-6 py-4 sm:py-3">
+                <div class="flex items-center">
+                    <h1 class="text-lg font-semibold text-gray-900 dark:text-white">
+                        Performance Monitor:
+                        <span class="text-gray-700 dark:text-gray-300">User_engagement</span>
+                    </h1>
+                </div>
+                <div class="flex gap-3 items-center">
+                    <SfButton class="hidden sm:block" Content="View report history" Type="button" aria-label="view report history" role="button"></SfButton>
+                    <SfButton class="block sm:hidden" CssClass="e-flat" IconCss="sf-icon-clock-fast-backward" Type="button" aria-label="view report history" role="button"></SfButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div style="min-height: 36rem;">
+            <div class="py-2 px-3 px-sm-4 d-flex justify-content-between align-items-center border-bottom">
+                <div>
+                    <SfBreadcrumb EnableNavigation="false" OverFlowMode="@OverflowMode" MaxItems="@MaxItems">
+                        <BreadcrumbItems>
+                            <BreadcrumbItem Text="Analytics Hub"></BreadcrumbItem>
+                            <BreadcrumbItem Text="Metrics"></BreadcrumbItem>
+                            <BreadcrumbItem Text="Performance Monitor"></BreadcrumbItem>
+                        </BreadcrumbItems>
+                        <BreadcrumbTemplates>
+                            <SeparatorTemplate>
+                                <span class="e-icons e-chevron-right"></span>
+                            </SeparatorTemplate>
+                        </BreadcrumbTemplates>
+                    </SfBreadcrumb>
+                </div>
+                <div>
+                    <div class="d-none d-sm-flex gap-3">
+                        <SfButton CssClass="e-flat" Type="button" aria-label="API documentation" role="button">
+                            <div class="d-flex align-items-center gap-1">
+                                <span class="sf-icon-api-document fs-6"></span>
+                                <span class="ms-1 d-none d-lg-block">API Documentation</span>
+                            </div>
+                        </SfButton>
+                        <SfButton CssClass="e-flat" Type="button" aria-label="feedback" role="button">
+                            <div class="d-flex align-items-center gap-1">
+                                <span class="e-icons e-comment-show e-medium"></span>
+                                <span class="ms-1 d-none d-lg-block">Feedback</span>
+                            </div>
+                        </SfButton>
+                    </div>
+                    <SfDropDownButton @ref="Dropdown" class="d-block d-sm-none" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                        <DropDownButtonEvents Opened="OnDropdownOpened" Closed="OnDropdownClosed"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="API Documentation"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Feedback"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+            </div>
+            <div class="d-flex justify-content-between gap-3 px-3 px-sm-4 py-3">
+                <div class="d-flex align-items-center">
+                    <h1 class="fs-6 fw-bold text-body mb-0">
+                        Performance Monitor:
+                        <span class="text-body-tertiary text-opacity-50">User_engagement</span>
+                    </h1>
+                </div>
+                <div class="d-flex gap-3 align-items-center">
+                    <SfButton class="d-none d-sm-block" CssClass="e-outline" Content="View report history" Type="button" aria-label="view report history" role="button"></SfButton>
+                    <SfButton class="d-block d-sm-none" CssClass="e-flat" IconCss="sf-icon-clock-fast-backward" Type="button" aria-label="view report history" role="button"></SfButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}

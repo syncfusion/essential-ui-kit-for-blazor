@@ -1,0 +1,156 @@
+@page "/blocks/modals-7"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" class="relative flex justify-center" style="min-height: 724px;">
+            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="track new feature" role="button">Track New Feature</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="515px" aria-label="track new feature" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="font-semibold leading-normal">Track New Feature</p>
+                    </Header>
+                    <Content>
+                        <form action="#" class="flex flex-col gap-4">
+                            <div class="flex flex-col gap-4 sm:gap-3">
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-1">
+                                    <label class="w-44 text-sm font-medium shrink-0">Feature Name</label>
+                                    <SfTextBox Type="InputType.Text" Placeholder="Enter the feature name" aria-label="enter the feature name" role="textbox"></SfTextBox>
+                                </div>
+                                <div id="views-dropdown-section" class="flex flex-col sm:flex-row sm:items-center gap-1">
+                                    <label class="flex items-center gap-1 w-44 text-sm font-medium shrink-0">No Views<span class="e-icons e-circle-info text-gray-500 dark:text-gray-300"></span></label>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select the number of views" aria-label="choose a number of views" role="listbox"></SfDropDownList>
+                                </div>
+                            </div>
+                            <p class="text-sm font-semibold px-2 py-1.5 bg-gray-100 rounded-md dark:bg-gray-700">Tracking Criteria</p>
+                            <div class="flex flex-col gap-4 sm:gap-3">
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-1">
+                                    <label class="flex items-center gap-1 w-44 text-sm font-medium shrink-0">Source<span class="e-icons e-circle-info text-gray-500 dark:text-gray-300"></span></label>
+                                    <div class="border rounded shadow-sm flex grow border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-800">
+                                        <span class="flex items-center border-r border-gray-300 dark:border-gray-500 pl-3 pr-1.5">
+                                            <SfCheckBox Label="Event" LabelPosition="Syncfusion.Blazor.Buttons.LabelPosition.Before" Checked="true" aria-label="select event" role="checkbox"></SfCheckBox>
+                                        </span>
+                                        <SfTextBox Type="InputType.Text" CssClass="!border-none" Placeholder="Company attributes" aria-label="enter the company attributes" role="textbox"></SfTextBox>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-1">
+                                    <label class="w-44 text-sm font-medium shrink-0">Event Name</label>
+                                    <SfTextBox Type="InputType.Text" Placeholder="Enter the event name" aria-label="enter the event name" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-1">
+                                    <label class="w-44 text-sm font-medium shrink-0">Target Segment</label>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select the target audience" aria-label="choose a target audience" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="flex flex-row items-center justify-between sm:justify-normal gap-1">
+                                    <label class="w-44 text-sm font-medium shrink-0">Event Attributes</label>
+                                    <SfButton CssClass="e-primary e-outline" Type="button" aria-label="add filter" role="button">Add filter</SfButton>
+                                </div>
+                            </div>
+                            <p class="text-sm font-semibold px-2 py-1.5 bg-gray-100 rounded-md dark:bg-gray-700">Workflow</p>
+                            <div class="flex flex-col gap-4 sm:gap-3">
+                                <div id="status-dropdown-section" class="flex flex-col sm:flex-row sm:items-center gap-1">
+                                    <label class="flex items-center gap-1 w-44 text-sm font-medium shrink-0">Status<span class="e-icons e-circle-info text-gray-500 dark:text-gray-300"></span></label>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Evaluating" aria-label="choose an evaluating option" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-1">
+                                    <label class="w-44 text-sm font-medium shrink-0">Evaluation Period</label>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select the evaluation timeframe" aria-label="choose an evaluation timeframe" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="flex flex-col sm:flex-row sm:items-center gap-1">
+                                    <label class="w-44 text-sm font-medium shrink-0">Release Date</label>
+                                    <SfDatePicker TValue="DateTime?" Placeholder="MM/DD/YYYY" aria-label="enter a release date here" role="combobox"></SfDatePicker>
+                                </div>
+                            </div>
+                        </form>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="flex justify-end gap-2 sm:gap-1 mt-1 sm:mt-0 mb-2">
+                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="button" aria-label="save feature" role="button">Save Feature</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 724px;">
+            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="track new feature" role="button">Track New Feature</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="515px" aria-label="track new feature" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="fw-bold mb-0 text-body">Track New Feature</p>
+                    </Header>
+                    <Content>
+                        <form action="#" class="d-flex flex-column gap-3 pt-1 text-body">
+                            <div class="row gap-3 gap-sm-2 gy-sm-1">
+                                <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-1 mt-0">
+                                    <label class="fw-medium flex-shrink-0" style="width: 175px;">Feature Name</label>
+                                    <SfTextBox CssClass="w-100" Type="InputType.Text" Placeholder="Enter the feature name" aria-label="enter the feature name" role="textbox"></SfTextBox>
+                                </div>
+                                <div id="views-dropdown-section" class="d-flex flex-column flex-sm-row align-items-sm-center gap-1">
+                                    <label class="d-flex align-items-center gap-1 fw-medium flex-shrink-0" style="width: 175px;">No Views<span class="e-icons e-circle-info text-body-secondary"></span></label>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select the number of views" aria-label="choose a number of views" role="listbox"></SfDropDownList>
+                                </div>
+                            </div>
+                            <p class="fw-bold px-2 py-1 bg-body-secondary rounded mb-0">Tracking Criteria</p>
+                            <div class="row gap-3 gap-sm-2 gy-sm-1 mt-0">
+                                <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-1">
+                                    <label class="d-flex align-items-center gap-1 fw-medium flex-shrink-0" style="width: 175px;">Source<span class="e-icons e-circle-info text-body-secondary"></span></label>
+                                    <div class="d-flex border rounded-1 flex-grow-1">
+                                        <span class="d-flex align-items-center border-end px-2">
+                                            <SfCheckBox Label="Event" LabelPosition="Syncfusion.Blazor.Buttons.LabelPosition.Before" Checked="true" aria-label="select event" role="checkbox"></SfCheckBox>
+                                        </span>
+                                        <SfTextBox Type="InputType.Text" CssClass="border-0" Placeholder="Company attributes" aria-label="enter the company attributes" role="textbox"></SfTextBox>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-1">
+                                    <label class="fw-medium flex-shrink-0" style="width: 175px;">Event Name</label>
+                                    <SfTextBox CssClass="w-100" Type="InputType.Text" Placeholder="Enter the event name" aria-label="enter the event name" role="textbox"></SfTextBox>
+                                </div>
+                                <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-1">
+                                    <label class="fw-medium flex-shrink-0" style="width: 175px;">Target Segment</label>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select the target audience" aria-label="choose a target audience" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="d-flex flex-row align-items-center justify-content-between justify-content-sm-start gap-1">
+                                    <label class="fw-medium flex-shrink-0" style="width: 175px;">Event Attributes</label>
+                                    <SfButton CssClass="e-primary e-outline" Type="button" aria-label="add filter" role="button">Add filter</SfButton>
+                                </div>
+                            </div>
+                            <p class="fw-bold px-2 py-1 bg-body-secondary rounded mb-0">Workflow</p>
+                            <div class="row gap-3 gap-sm-2 gy-sm-1 mt-0">
+                                <div id="status-dropdown-section" class="d-flex flex-column flex-sm-row align-items-sm-center gap-1">
+                                    <label class="d-flex align-items-center gap-1 fw-medium flex-shrink-0" style="width: 175px;">Status<span class="e-icons e-circle-info text-body-secondary"></span></label>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Evaluating" aria-label="choose an evaluating option" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-1">
+                                    <label class="fw-medium flex-shrink-0" style="width: 175px;">Evaluation Period</label>
+                                    <SfDropDownList TValue="string" TItem="string" Placeholder="Select the evaluation timeframe" aria-label="choose an evaluation timeframe" role="listbox"></SfDropDownList>
+                                </div>
+                                <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-1">
+                                    <label class="fw-medium flex-shrink-0" style="width: 175px;">Release Date</label>
+                                    <SfDatePicker TValue="DateTime?" Placeholder="MM/DD/YYYY" aria-label="enter a release date here" role="combobox"></SfDatePicker>
+                                </div>
+                            </div>
+                        </form>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="d-flex justify-content-end gap-2 gap-sm-1 py-1">
+                            <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary col col-sm-auto" Type="button" aria-label="save feature" role="button">Save Feature</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}

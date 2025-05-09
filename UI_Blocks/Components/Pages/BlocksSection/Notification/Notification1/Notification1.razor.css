@@ -1,0 +1,17 @@
+﻿::deep #notification .e-dlg-header-content,
+::deep #notification .e-dlg-content,
+::deep #notification .e-footer-content {
+    border: 0 !important;
+    border-radius: 0 !important;
+    padding: 0 !important;
+    background-color: transparent !important;
+}
+
+::deep #notification.e-dialog {
+    top: 52px !important;
+}
+
+::deep #notification .e-list-item {
+    height: auto !important;
+    padding: 0 !important;
+}

@@ -1,0 +1,532 @@
+@page "/blocks/modals-8"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" class="relative flex justify-center" style="min-height: 750px;">
+            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="my settings" role="button">My Settings</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="644px" Height="645px" aria-label="manage my settings" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="font-semibold leading-normal">My Settings</p>
+                    </Header>
+                    <Content>
+                        <SfTab @ref="Tab">
+                            <TabItems>
+                                <TabItem>
+                                    <HeaderTemplate>Profile</HeaderTemplate>
+                                    <ContentTemplate>
+                                        <div class="pt-5">
+                                            <h3 class="text-sm font-medium mb-1">Your photo</h3>
+                                            <div class="flex items-center gap-4 mb-6 sm:mb-5">
+                                                <span class="e-avatar e-avatar-large e-avatar-circle shrink-0 border border-gray-200 bg-gray-100 dark:border-gray-600 dark:bg-gray-700">
+                                                    <i class="e-icons e-user text-3xl dark:text-gray-300"></i>
+                                                </span>
+                                                <div id="upload-template" class="grow">
+                                                    <SfUploader CssClass="e-small" Multiple="false" AllowedExtensions="image/*" MaxFileSize="2000000">
+                                                        <UploaderButtons Browse="Choose a profile image"></UploaderButtons>
+                                                        <UploaderEvents FileSelected="@(args => args.Cancel = true)"></UploaderEvents>
+                                                    </SfUploader>
+                                                    <p class="text-xs text-gray-700 dark:text-gray-200 mt-1">Choose a high-quality photo to help teammates recognize you.</p>
+                                                </div>
+                                            </div>
+                                            <form action="#" class="flex flex-col gap-4 sm:gap-3 text-xs font-medium leading-normal text-gray-700 dark:text-gray-200">
+                                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                                                    <div class="flex flex-col gap-1">
+                                                        <label>First Name</label>
+                                                        <SfTextBox Placeholder="Enter your first name" Type="InputType.Text" aria-label="enter your first name" role="textbox"></SfTextBox>
+                                                    </div>
+                                                    <div class="flex flex-col gap-1">
+                                                        <label>Last Name</label>
+                                                        <SfTextBox Placeholder="Enter your last name" Type="InputType.Text" aria-label="enter your last name" role="textbox"></SfTextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-y-3">
+                                                    <div class="flex flex-col gap-1">
+                                                        <label>Job Title</label>
+                                                        <SfTextBox Placeholder="Enter your designation" Type="InputType.Text" aria-label="enter your designation" role="textbox"></SfTextBox>
+                                                    </div>
+                                                    <div class="flex flex-col gap-1">
+                                                        <label>Team Name</label>
+                                                        <SfTextBox Placeholder="Enter your team name" Type="InputType.Text" aria-label="enter your team name" role="textbox"></SfTextBox>
+                                                    </div>
+                                                    <div class="flex flex-col gap-1">
+                                                        <label>Email Address</label>
+                                                        <SfTextBox Placeholder="Enter your email address" Type="InputType.Email" aria-label="enter your email address" role="textbox"></SfTextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="flex flex-col gap-1 col-span-2">
+                                                    <label>Details</label>
+                                                    <SfTextArea Placeholder="Enter your details" Width="100%" Rows="4" ResizeMode="Resize.None" aria-label="enter your details" role="textbox"></SfTextArea>
+                                                </div>
+                                                <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 sm:gap-2 font-medium">
+                                                    <div class="flex gap-3 sm:gap-2">
+                                                        <SfSwitch CssClass="w-10" Checked="false" aria-label="set out of office" role="switch"></SfSwitch>
+                                                        <label class="text-sm font-normal text-gray-900 dark:text-white">Enable or disable the feature</label>
+                                                    </div>
+                                                    <div class="flex flex-col sm:flex-row sm:items-center gap-1">
+                                                        <label>Out of Office Date</label>
+                                                        <span class="sm:w-44">
+                                                            <SfDatePicker TValue="DateTime?" Placeholder="MM/DD/YYYY" aria-label="enter an out-of-office date here" role="combobox"></SfDatePicker>
+                                                        </span>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </ContentTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>Notifications</HeaderTemplate>
+                                    <ContentTemplate>
+                                    <div class="flex flex-col gap-3 pt-6">
+                                            <div class="flex items-center justify-between gap-3 py-1.5">
+                                                <div>
+                                                    <p class="font-medium mb-0.5">Comments</p>
+                                                    <p class="text-xs text-gray-700 dark:text-gray-300">Get notified when someone comments on your posts or replies to your comments</p>
+                                                </div>
+                                                <SfSwitch CssClass="w-10 shrink-0" Checked="false" aria-label="enable comment notifications" role="switch"></SfSwitch>
+                                            </div>
+                                            <div class="flex items-center justify-between gap-3 py-1.5">
+                                                <div>
+                                                    <p class="font-medium mb-0.5">Mentions</p>
+                                                    <p class="text-xs text-gray-700 dark:text-gray-300">Receive alerts when someone mentions you in a post or comment</p>
+                                                </div>
+                                                <SfSwitch CssClass="w-10 shrink-0" Checked="true" aria-label="enable mentions notifications" role="switch"></SfSwitch>
+                                            </div>
+                                            <div class="flex items-center justify-between gap-3 py-1.5">
+                                                <div>
+                                                    <p class="font-medium mb-0.5">Follows</p>
+                                                    <p class="text-xs text-gray-700 dark:text-gray-300">Be notified when someone starts following your profile</p>
+                                                </div>
+                                                <SfSwitch CssClass="w-10 shrink-0" Checked="false" aria-label="enable follow notifications" role="switch"></SfSwitch>
+                                            </div>
+                                            <div class="flex items-center justify-between gap-3 py-1.5">
+                                                <div>
+                                                    <p class="font-medium mb-0.5">Direct messages</p>
+                                                    <p class="text-xs text-gray-700 dark:text-gray-300">Get instant notifications for new direct messages</p>
+                                                </div>
+                                                <SfSwitch CssClass="w-10 shrink-0" Checked="true" aria-label="enable direct message notifications" role="switch"></SfSwitch>
+                                            </div>
+                                            <div class="flex items-center justify-between gap-3 py-1.5">
+                                                <div>
+                                                    <p class="font-medium mb-0.5">Newsletter</p>
+                                                    <p class="text-xs text-gray-700 dark:text-gray-300">Weekly digest of the best content, features, and updates</p>
+                                                </div>
+                                                <SfSwitch CssClass="w-10 shrink-0" Checked="false" aria-label="enable newsletter notifications" role="switch"></SfSwitch>
+                                            </div>
+                                            <div class="flex items-center justify-between gap-3 py-1.5">
+                                                <div>
+                                                    <p class="font-medium mb-0.5">Account updates</p>
+                                                    <p class="text-xs text-gray-700 dark:text-gray-300">Important notifications about your account, security, and privacy</p>
+                                                </div>
+                                                <SfSwitch CssClass="w-10 shrink-0" Checked="false" aria-label="enable account update notifications" role="switch"></SfSwitch>
+                                            </div>
+                                            <div class="flex items-center justify-between gap-3 py-1.5">
+                                                <div>
+                                                    <p class="font-medium mb-0.5">Product updates</p>
+                                                    <p class="text-xs text-gray-700 dark:text-gray-300">Be the first to know about new features, improvements, and tips</p>
+                                                </div>
+                                                <SfSwitch CssClass="w-10 shrink-0" Checked="false" aria-label="enable product update notifications" role="switch"></SfSwitch>
+                                            </div>
+                                        </div>
+                                    </ContentTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>Email forwarding</HeaderTemplate>
+                                    <ContentTemplate>
+                                        <div class="mb-5 pt-4">
+                                            <p class="font-medium mb-2">Email Forwarding</p>
+                                            <p class="text-xs text-gray-700 dark:text-gray-300">Configure your email preferences and setup your email forwarding to other addresses.</p>
+                                        </div>
+                                        <div class="e-card p-3 shadow-none mb-4">
+                                            <div class="e-card-header-title !px-1 !py-1">
+                                                <p class="font-medium">Primary email</p>
+                                            </div>
+                                            <div class="e-card-content !px-1 !pb-1 !pt-0">
+                                                <p class="text-xs text-gray-700 dark:text-gray-300 mb-3">Your main email address for receiving forwarded message</p>
+                                                <SfTextBox Value="james@company.com" Type="InputType.Email" aria-label="enter your email address" role="textbox"></SfTextBox>
+                                            </div>
+                                        </div>
+                                        <div class="e-card p-3 shadow-none">
+                                            <div class="e-card-header-title !flex !justify-between gap-2 !px-1 !py-1">
+                                                <p class="font-medium">Forwarding emails</p>
+                                                <span class="e-badge e-badge-pill e-badge-info">2/5</span>
+                                            </div>
+                                            <div class="e-card-content !px-1 !pb-1 !pt-0">
+                                                <p class="text-xs text-gray-700 dark:text-gray-300 mb-4">Add upto 5 email address to forwarding</p>
+                                                <div class="flex flex-col sm:flex-row gap-4 sm:gap-3">
+                                                    <SfTextBox CssClass="grow" Placeholder="Add forwarding emails" Type="InputType.Email" aria-label="enter forwarding email addresses" role="textbox"></SfTextBox>
+                                                    <SfButton CssClass="w-fit" IconCss="e-icons e-plus" Type="button" aria-label="add" role="button">Add</SfButton>
+                                                </div>
+                                                <div class="border-t border-gray-200 dark:border-gray-600 mt-4 md:mt-3 pt-4 md:pt-3">
+                                                    <div class="flex gap-3 items-center py-1.5">
+                                                        <div class="text-gray-900 dark:text-white grow">john.wick&#64;company.com</div>
+                                                        <SfButton CssClass="e-danger e-flat e-small" IconCss="e-icons e-trash" Type="button" aria-label="delete" role="button"></SfButton>
+                                                    </div>
+                                                    <div class="flex gap-3 items-center py-1.5">
+                                                        <div class="text-gray-900 dark:text-white grow">charles.kri&#64;company.com</div>
+                                                        <SfButton CssClass="e-danger e-flat e-small" IconCss="e-icons e-trash" Type="button" aria-label="delete" role="button"></SfButton>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ContentTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>Account</HeaderTemplate>
+                                    <ContentTemplate>
+                                        <h2 class="font-medium text-base mt-6 mb-3">Security</h2>
+                                        <div class="e-card shadow-none px-4 py-2 mb-4">
+                                            <div class="e-card-content flex flex-col sm:flex-row gap-3 justify-between sm:items-center !p-0 !py-1">
+                                                <div class="flex gap-3 items-center">
+                                                    <span class="text-base e-icons e-eye text-gray-500 dark:text-gray-300"></span>
+                                                    <div>
+                                                        <p class="text-sm font-medium text-gray-900 dark:text-white mb-0.5">Change password</p>
+                                                        <p class="text-xs text-wrap text-gray-700 dark:text-gray-300">Update your password regularly to maintain account security</p>
+                                                    </div>
+                                                </div>
+                                                <SfButton CssClass="w-fit ml-7 sm:ml-0 mr-1" Type="button" aria-label="update" role="button">Update</SfButton>
+                                            </div>
+                                        </div>
+                                        <div class="e-card shadow-none px-4 py-2 mb-6">
+                                            <div class="e-card-content flex flex-col sm:flex-row gap-3 justify-between sm:items-center !p-0 !py-1">
+                                                <div class="flex gap-3 items-center">
+                                                    <span class="text-base sf-icon-mobile-01 text-gray-500 dark:text-gray-300"></span>
+                                                    <div>
+                                                        <p class="text-sm font-medium text-gray-900 dark:text-white mb-0.5">Two-Factor Authentication</p>
+                                                        <p class="text-xs text-wrap text-gray-700 dark:text-gray-300">Add an extra layer of security to your account</p>
+                                                    </div>
+                                                </div>
+                                                <SfButton CssClass="w-fit ml-7 sm:ml-0 mr-1" Type="button" aria-label="enable" role="button">Enable</SfButton>
+                                            </div>
+                                        </div>
+                                        <h2 class="font-medium text-base mb-3">Accounts</h2>
+                                        <div class="e-card shadow-none px-4 py-2 mb-4">
+                                            <div class="e-card-content flex items-start sm:items-center !p-0 !py-1">
+                                                <img class="w-6 shrink-0 mr-3 mt-2 sm:mt-0" src="assets/images/common/brand-logos/svg/microsoft.svg" alt="microsoft logo" />
+                                                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3 grow">
+                                                    <div>
+                                                        <p class="text-sm font-medium text-gray-900 dark:text-white mb-0.5">Microsoft</p>
+                                                        <p class="text-xs text-wrap text-gray-700 dark:text-gray-300">Access Microsoft services and single sign-on</p>
+                                                    </div>
+                                                    <SfButton CssClass="w-fit mr-1" Type="button" aria-label="disconnect" role="button">Disconnect</SfButton>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="e-card shadow-none px-4 py-2 mb-5">
+                                            <div class="e-card-content flex items-start sm:items-center !p-0 !py-1">
+                                                <img class="w-6 shrink-0 mr-3 mt-2 sm:mt-0" src="assets/images/common/brand-logos/svg/twitter.svg" alt="twitter logo" />
+                                                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3 grow">
+                                                    <div>
+                                                        <p class="text-sm font-medium text-gray-900 dark:text-white mb-0.5">Twitter</p>
+                                                        <p class="text-xs text-wrap text-gray-700 dark:text-gray-300">Connect to share updates and manage social features</p>
+                                                    </div>
+                                                    <SfButton CssClass="w-fit mr-1" Type="button" aria-label="connect" role="button">Connect</SfButton>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <SfButton CssClass="e-danger e-outline" Type="button" aria-label="delete account" role="button">Delete Account</SfButton>
+                                    </ContentTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>Display</HeaderTemplate>
+                                    <ContentTemplate>
+                                        <div class="flex flex-col gap-4 pt-6">
+                                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                                <div>
+                                                    <p class="font-medium mb-0.5">Theme</p>
+                                                    <p class="text-xs text-gray-700 dark:text-gray-300">Choose your preferred system theme</p>
+                                                </div>
+                                                <SfDropDownButton TValue="string" TItem="string" CssClass="w-fit" Content="System Theme" Type="button" aria-label="choose a system theme" role="button"></SfDropDownButton>
+                                            </div>
+                                            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+                                                <div>
+                                                    <p class="font-medium mb-0.5">Layout</p>
+                                                    <p class="text-xs text-gray-700 dark:text-gray-300">Select a layout that suits your preference</p>
+                                                </div>
+                                                <SfDropDownButton TValue="string" TItem="string" CssClass="w-fit" Content="Compact" Type="button" aria-label="choose a layout" role="button"></SfDropDownButton>
+                                            </div>
+                                        </div>
+                                    </ContentTemplate>
+                                </TabItem>
+                            </TabItems>
+                        </SfTab>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="flex justify-end gap-2 sm:gap-1 py-2">
+                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="discard" role="button">Discard</SfButton>
+                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="button" aria-label="save changes" role="button">Save Changes</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 750px;">
+            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="my settings" role="button">My Settings</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="644px" Height="660px" aria-label="manage my settings" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="fw-bold text-body mb-0 lh-sm">My Settings</p>
+                    </Header>
+                    <Content>
+                        <SfTab @ref="Tab">
+                            <TabItems>
+                                <TabItem>
+                                    <HeaderTemplate>Profile</HeaderTemplate>
+                                    <ContentTemplate>
+                                        <div class="pt-3">
+                                            <h3 class="fs-6 fw-medium mb-1 text-body lh-base">Your photo</h3>
+                                            <div class="d-flex align-items-center gap-3 mb-4">
+                                                <span class="e-avatar e-avatar-large e-avatar-circle flex-shrink-0 bg-body-secondary">
+                                                    <i class="e-icons e-user fs-3"></i>
+                                                </span>
+                                                <div id="upload-template" class="flex-grow-1">
+                                                    <SfUploader CssClass="e-small" Multiple="false" AllowedExtensions="image/*" MaxFileSize="2000000">
+                                                        <UploaderButtons Browse="Choose a profile image"></UploaderButtons>
+                                                        <UploaderEvents FileSelected="@(args => args.Cancel = true)"></UploaderEvents>
+                                                    </SfUploader>
+                                                    <p class="text-body-secondary mt-1 mb-0">Choose a high-quality photo to help teammates recognize you.</p>
+                                                </div>
+                                            </div>
+                                            <form action="#" class="small d-flex flex-column gap-3 gap-sm-2 text-body-secondary">
+                                                <div class="row gx-3 gy-sm-1 row-gap-3 row-gap-sm-2">
+                                                    <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                                        <label>First Name</label>
+                                                        <SfTextBox Placeholder="Enter your first name" Type="InputType.Text" aria-label="enter your first name" role="textbox"></SfTextBox>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                                        <label>Last Name</label>
+                                                        <SfTextBox Placeholder="Enter your last name" Type="InputType.Text" aria-label="enter your last name" role="textbox"></SfTextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="row gx-3 gy-sm-1 row-gap-3 row-gap-sm-2 mt-sm-1">
+                                                    <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                                        <label>Job Title</label>
+                                                        <SfTextBox Placeholder="Enter your designation" Type="InputType.Text" aria-label="enter your designation" role="textbox"></SfTextBox>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                                        <label>Team Name</label>
+                                                        <SfTextBox Placeholder="Enter your team name" Type="InputType.Text" aria-label="enter your team name" role="textbox"></SfTextBox>
+                                                    </div>
+                                                    <div class="col-12 col-sm-6 d-flex flex-column gap-1">
+                                                        <label>Email Address</label>
+                                                        <SfTextBox Placeholder="Enter your email address" Type="InputType.Email" aria-label="enter your email address" role="textbox"></SfTextBox>
+                                                    </div>
+                                                </div>
+                                                <div class="d-flex flex-column gap-1 mt-sm-1">
+                                                    <label>Details</label>
+                                                    <SfTextArea Placeholder="Enter your details" Width="100%" Rows="4" ResizeMode="Resize.None" aria-label="enter your details" role="textbox"></SfTextArea>
+                                                </div>
+                                                <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-3 mt-sm-2">
+                                                    <div class="d-flex align-items-center gap-2">
+                                                        <SfSwitch CssClass="flex-shrink-0" Checked="false" aria-label="set out of office" role="switch"></SfSwitch>
+                                                        <label class="fs-6 text-body ms-1">Enable or disable the feature</label>
+                                                    </div>
+                                                    <div class="d-flex flex-column flex-sm-row align-items-sm-center gap-1">
+                                                        <label>Out of Office Date</label>
+                                                        <SfDatePicker TValue="DateTime?" CssClass="w-auto" Placeholder="MM/DD/YYYY" aria-label="enter an out-of-office date here" role="combobox"></SfDatePicker>
+                                                    </div>
+                                                </div>
+                                            </form>
+                                        </div>
+                                    </ContentTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>Notifications</HeaderTemplate>
+                                    <ContentTemplate>
+                                        <div class="d-flex flex-column gap-3 pt-3">
+                                            <div class="d-flex align-items-center justify-content-between gap-3 py-1">
+                                                <div>
+                                                    <p class="fw-medium mb-1 text-body">Comments</p>
+                                                    <p class="text-body-secondary mb-0 small">Get notified when someone comments on your posts or replies to your comments</p>
+                                                </div>
+                                                <SfSwitch CssClass="flex-shrink-0" Checked="false" aria-label="enable comment notifications" role="switch"></SfSwitch>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between gap-3 py-1">
+                                                <div>
+                                                    <p class="fw-medium mb-1 text-body">Mentions</p>
+                                                    <p class="text-body-secondary mb-0 small">Receive alerts when someone mentions you in a post or comment</p>
+                                                </div>
+                                                <SfSwitch CssClass="flex-shrink-0" Checked="true" aria-label="enable mentions notifications" role="switch"></SfSwitch>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between gap-3 py-1">
+                                                <div>
+                                                    <p class="fw-medium mb-1 text-body">Follows</p>
+                                                    <p class="text-body-secondary mb-0 small">Be notified when someone starts following your profile</p>
+                                                </div>
+                                                <SfSwitch CssClass="flex-shrink-0" Checked="false" aria-label="enable follow notifications" role="switch"></SfSwitch>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between gap-3 py-1">
+                                                <div>
+                                                    <p class="fw-medium mb-1 text-body">Direct messages</p>
+                                                    <p class="text-body-secondary mb-0 small">Get instant notifications for new direct messages</p>
+                                                </div>
+                                                <SfSwitch CssClass="flex-shrink-0" Checked="true" aria-label="enable direct message notifications" role="switch"></SfSwitch>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between gap-3 py-1">
+                                                <div>
+                                                    <p class="fw-medium mb-1 text-body">Newsletter</p>
+                                                    <p class="text-body-secondary mb-0 small">Weekly digest of the best content, features, and updates</p>
+                                                </div>
+                                                <SfSwitch CssClass="flex-shrink-0" Checked="false" aria-label="enable newsletter notifications" role="switch"></SfSwitch>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between gap-3 py-1">
+                                                <div>
+                                                    <p class="fw-medium mb-1 text-body">Account updates</p>
+                                                    <p class="text-body-secondary mb-0 small">Important notifications about your account, security, and privacy</p>
+                                                </div>
+                                                <SfSwitch CssClass="flex-shrink-0" Checked="false" aria-label="enable account update notifications" role="switch"></SfSwitch>
+                                            </div>
+                                            <div class="d-flex align-items-center justify-content-between gap-3 py-1">
+                                                <div>
+                                                    <p class="fw-medium mb-1 text-body">Product updates</p>
+                                                    <p class="text-body-secondary mb-0 small">Be the first to know about new features, improvements, and tips</p>
+                                                </div>
+                                                <SfSwitch CssClass="flex-shrink-0" Checked="false" aria-label="enable product update notifications" role="switch"></SfSwitch>
+                                            </div>
+                                        </div>
+                                    </ContentTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>Email forwarding</HeaderTemplate>
+                                    <ContentTemplate>
+                                        <div class="py-4">
+                                            <p class="fw-medium mb-1 text-body">Email Forwarding</p>
+                                            <p class="text-body-secondary small mb-0">Configure your email preferences and setup your email forwarding to other addresses.</p>
+                                        </div>
+                                        <div class="e-card rounded-2 p-3 mb-3">
+                                            <div class="e-card-header-title p-0">
+                                                <p class="fw-medium text-body mb-1">Primary email</p>
+                                            </div>
+                                            <div class="e-card-content p-1">
+                                                <p class="text-body-secondary small mb-2 pb-1">Your main email address for receiving forwarded message</p>
+                                                <SfTextBox Value="james@company.com" Type="InputType.Email" aria-label="enter your email address" role="textbox"></SfTextBox>
+                                            </div>
+                                        </div>
+                                        <div class="e-card rounded-2 p-3">
+                                            <div class="e-card-header-title d-flex justify-content-between gap-2 p-0">
+                                                <p class="fw-medium mb-0">Forwarding emails</p>
+                                                <span class="e-badge e-badge-pill e-badge-info">2/5</span>
+                                            </div>
+                                            <div class="e-card-content p-0">
+                                                <p class="text-muted small pt-1">Add up to 5 email addresses to forwarding</p>
+                                                <div class="d-flex flex-column flex-sm-row gap-3 mx-1">
+                                                    <SfTextBox Placeholder="Add forwarding emails" Type="InputType.Email" aria-label="enter forwarding email addresses" role="textbox"></SfTextBox>
+                                                    <SfButton IconCss="e-icons e-plus" Type="button" aria-label="add" role="button" style="width: fit-content;">Add</SfButton>
+                                                </div>
+                                                <div class="border-top mt-3 pt-3">
+                                                    <div class="d-flex gap-3 align-items-center py-1">
+                                                        <div class="text-body fw-medium flex-grow-1">john.wick&#64;company.com</div>
+                                                        <SfButton CssClass="e-danger e-flat e-small" IconCss="e-icons e-trash" Type="button" aria-label="delete" role="button"></SfButton>
+                                                    </div>
+                                                    <div class="d-flex gap-3 align-items-center py-1">
+                                                        <div class="text-body fw-medium flex-grow-1">charles.kri&#64;company.com</div>
+                                                        <SfButton CssClass="e-danger e-flat e-small" IconCss="e-icons e-trash" Type="button" aria-label="delete" role="button"></SfButton>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </ContentTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>Account</HeaderTemplate>
+                                    <ContentTemplate>
+                                        <h2 class="fw-medium fs-6 mt-4 mb-2">Security</h2>
+                                        <div class="e-card px-3 py-2 mb-3">
+                                            <div class="e-card-content d-flex flex-column flex-sm-row gap-3 justify-content-between align-items-start align-items-sm-center p-0">
+                                                <div class="d-flex gap-2 align-items-center">
+                                                    <span class="fs-6 e-icons e-eye text-secondary"></span>
+                                                    <div class="ms-1">
+                                                        <div class="fw-medium text-body">Change password</div>
+                                                        <div class="small text-body-secondary">Update your password regularly to maintain account security</div>
+                                                    </div>
+                                                </div>
+                                                <SfButton CssClass="ms-4 sm:ms-0" Type="button" aria-label="update" role="button">Update</SfButton>
+                                            </div>
+                                        </div>
+                                        <div class="e-card px-3 py-2 mb-4">
+                                            <div class="e-card-content d-flex flex-column flex-sm-row gap-3 justify-content-between align-items-start align-items-sm-center p-0">
+                                                <div class="d-flex gap-2 align-items-center">
+                                                    <span class="fs-6 sf-icon-mobile-01 text-secondary"></span>
+                                                    <div class="ms-1">
+                                                        <div class="fw-medium text-body">Two-Factor Authentication</div>
+                                                        <div class="small text-body-secondary">Add an extra layer of security to your account</div>
+                                                    </div>
+                                                </div>
+                                                <SfButton CssClass="ms-4 sm:ms-0" Type="button" aria-label="enable" role="button">Enable</SfButton>
+                                            </div>
+                                        </div>
+                                        <h2 class="fw-medium fs-6 mb-2">Accounts</h2>
+                                        <div class="e-card px-3 py-2 mb-3">
+                                            <div class="e-card-content d-flex align-items-start align-items-sm-center gap-2 p-0">
+                                                <img class="flex-shrink-0 mt-2 mt-sm-0 me-3" src="assets/images/common/brand-logos/svg/microsoft.svg" width="24" height="24" alt="microsoft logo" />
+                                                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 flex-grow-1 ms-1">
+                                                    <div>
+                                                        <div class="d-flex align-items-center fs-6 text-body">Microsoft</div>
+                                                        <div class="d-flex align-items-center text-wrap small text-body-secondary">Access Microsoft services and single sign-on</div>
+                                                    </div>
+                                                    <SfButton Type="button" aria-label="disconnect" role="button">Disconnect</SfButton>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="e-card px-3 py-2 mb-4">
+                                            <div class="e-card-content d-flex align-items-start align-items-sm-center gap-2 p-0">
+                                                <img class="flex-shrink-0 mt-2 mt-sm-0 me-3" src="assets/images/common/brand-logos/svg/twitter.svg" width="24" height="24" alt="twitter logo" />
+                                                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3 flex-grow-1 ms-1">
+                                                    <div>
+                                                        <div class="d-flex align-items-center fs-6 text-body">Twitter</div>
+                                                        <div class="d-flex align-items-center text-wrap small text-body-secondary">Connect to share updates and manage social features</div>
+                                                    </div>
+                                                    <SfButton Type="button" aria-label="connect" role="button">Connect</SfButton>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <SfButton CssClass="e-danger e-outline" Type="button" aria-label="delete account" role="button">Delete Account</SfButton>
+                                    </ContentTemplate>
+                                </TabItem>
+                                <TabItem>
+                                    <HeaderTemplate>Display</HeaderTemplate>
+                                    <ContentTemplate>
+                                        <div class="d-flex flex-column gap-3 pt-4">
+                                            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2">
+                                                <div class="mb-1 mb-sm-0">
+                                                    <p class="fw-medium mb-1 text-body">Theme</p>
+                                                    <p class="small text-body-secondary mb-0">Choose your preferred system theme</p>
+                                                </div>
+                                                <SfDropDownButton Content="System Theme" Type="button" aria-label="choose a system theme" role="button" style="width: fit-content;"></SfDropDownButton>
+                                            </div>
+                                            <div class="d-flex flex-column flex-sm-row align-items-sm-center justify-content-between gap-2">
+                                                <div class="mb-1 mb-sm-0">
+                                                    <p class="fw-medium mb-1 text-body">Layout</p>
+                                                    <p class="small mb-0 text-body-secondary">Select a layout that suits your preference</p>
+                                                </div>
+                                                <SfDropDownButton Content="Compact" Type="button" aria-label="choose a layout" role="button" style="width: fit-content;"></SfDropDownButton>
+                                            </div>
+                                        </div>
+                                    </ContentTemplate>
+                                </TabItem>
+                            </TabItems>
+                        </SfTab>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="d-flex justify-content-end gap-2 gap-sm-1 py-1">
+                            <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="discard" role="button">Discard</SfButton>
+                            <SfButton CssClass="e-primary col col-sm-auto" Type="button" aria-label="save changes" role="button">Save Changes</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}

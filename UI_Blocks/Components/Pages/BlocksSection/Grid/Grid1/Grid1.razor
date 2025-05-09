@@ -10,7 +10,7 @@
         <div class="mx-auto w-full py-12 sm:px-6 px-4">
             <SfGrid DataSource="@GridData" Width="100%" Height="658" GridLines="GridLine.None" role="grid">
                 <GridColumns>
-                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
+                    <GridColumn Type="Syncfusion.Blazor.Grids.ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
                     <GridColumn Field="@nameof(Lead.LeadId)" HeaderText="Lead ID" Width="60">
                         <Template>
                             @{
@@ -88,7 +88,7 @@
                             }
                         </Template>
                     </GridColumn>
-                    <GridColumn Field="@nameof(Lead.Date)" HeaderText="Next Contact" Width="105" Format="MM/dd/yyyy" Type="ColumnType.Date"></GridColumn>
+                    <GridColumn Field="@nameof(Lead.Date)" HeaderText="Next Contact" Width="105" Format="MM/dd/yyyy" Type="Syncfusion.Blazor.Grids.ColumnType.Date"></GridColumn>
                     <GridColumn Field="@nameof(Lead.Assignee)" HeaderText="Assigned To" Width="145">
                         <Template>
                             @{
@@ -115,7 +115,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
         <div class="w-100 py-5 px-3 px-sm-4 mx-auto">
             <SfGrid DataSource="@GridData" Width="100%" Height="658" GridLines="GridLine.None" Role="grid">
                 <GridColumns>
-                    <GridColumn Type="ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
+                    <GridColumn Type="Syncfusion.Blazor.Grids.ColumnType.CheckBox" IsPrimaryKey="true" TextAlign="TextAlign.Center" Width="40"></GridColumn>
                     <GridColumn Field="@nameof(Lead.LeadId)" HeaderText="Lead ID" TextAlign="TextAlign.Left" Width="63">
                         <Template>
                             @{
@@ -195,7 +195,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             }
                         </Template>
                     </GridColumn>
-                    <GridColumn Field="@nameof(Lead.Date)" HeaderText="Next Contact" Width="108" Format="MM/dd/yyyy" Type="ColumnType.Date"></GridColumn>                    
+                    <GridColumn Field="@nameof(Lead.Date)" HeaderText="Next Contact" Width="108" Format="MM/dd/yyyy" Type="Syncfusion.Blazor.Grids.ColumnType.Date"></GridColumn>                    
                     <GridColumn Field="@nameof(Lead.Assignee)" HeaderText="Assigned To" Width="145">
                         <Template>
                             @{

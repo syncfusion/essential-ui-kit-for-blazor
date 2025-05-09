@@ -1,0 +1,28 @@
+::deep #dialog-container .e-dialog .e-dlg-header-content+.e-dlg-content {
+    border: inherit;
+    border-inline: none;
+    border-radius: 0;
+}
+
+::deep #dialog-container .e-listview .e-list-item.e-focused,
+::deep #dialog-container .e-listview .e-list-item.e-focused.e-active.e-checklist,
+::deep #dialog-container .e-listview .e-list-item.e-hover {
+    background: transparent;
+}
+
+::deep #dialog-container .e-checkbox-wrapper .e-label {
+    font-weight: 500;
+}
+
+::deep #dialog-container .e-listview .e-list-item {
+    border: 0;
+}
+
+::deep #dialog-container .e-listview .e-checkbox-wrapper {
+    margin-top: 28px;
+    vertical-align: top;
+}
+
+::deep #dialog-container .e-listview .e-text-content.e-checkbox .e-list-text {
+    width: calc(100% - 20px);
+}

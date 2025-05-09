@@ -1,0 +1,70 @@
+@page "/blocks/statistics-9"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="px-4 sm:px-6 xl:px-11 py-12">
+            <div class="grid sm:grid-cols-2 gap-6 lg:gap-4 xl:grid-cols-4">
+                @foreach (var data in MetricsData)
+                {
+                    <div class="e-card pt-6 e-bigger rounded-lg shadow-none">
+                        <div class="e-card-stacked">
+                            <div class="e-card-header !py-0 !justify-between items-center">
+                                <div class="flex items-center">
+                                    <span class="e-avatar e-avatar-small e-avatar-circle @(data.MetricName == "Impressions" ? "bg-orange-100 dark:bg-orange-800 text-orange-700 dark:text-orange-500" : data.MetricName == "Active Users" ? "bg-indigo-100 dark:bg-indigo-800 text-indigo-600 dark:text-indigo-300" : data.MetricName == "User Engagements" ? "bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-500" : data.MetricName == "Total Orders" ? "bg-cyan-100 dark:bg-sky-800 text-cyan-700 dark:text-sky-400" : "")">
+                                        <span class="text-base @(data.MetricName == "Impressions" ? "e-icons e-critical-path" : data.MetricName == "Active Users" ? "sf-icon-users" : data.MetricName == "User Engagements" ? "e-chart e-icons" : data.MetricName == "Total Orders" ? "sf-icon-cart" : "")"></span>
+                                    </span>
+                                    <h4 class="text-base font-medium text-gray-700 dark:text-gray-200 ml-3">@data.MetricName</h4>
+                                </div>
+                                <span class="gap-1 flex items-center @(data.CurrentPercentage > 0 ? "text-green-700 dark:text-green-500" : "text-red-600 dark:text-red-400")">
+                                    <span class="e-icons e-medium @(data.CurrentPercentage > 0 ? "e-arrow-up" : "e-arrow-down")"></span>@(data.CurrentPercentage > 0 ? "+" : "")@data.CurrentPercentage&#37;
+                                </span>
+                            </div>
+                            <div class="e-card-content !pb-6 !pt-4 flex items-center md:items-start lg:items-center md:flex-col lg:flex-row gap-2 md:gap-1 lg:gap-2">
+                                <span class="text-xl font-semibold text-gray-900 dark:text-white">@data.CurrentValue</span>
+                                <span class="text-gray-500 dark:text-gray-400">vs last 7 days</span>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="px-3 px-sm-4 px-xl-5 py-5">
+            <div class="row g-4 g-lg-3">
+                @foreach (var data in MetricsData)
+                {
+                    <div class="col-12 col-sm-6 col-xl-3">
+                        <div class="e-card rounded-3 e-bigger pt-4">
+                            <div class="e-card-stacked">
+                                <div class="e-card-header py-0 px-4 justify-content-between align-items-center">
+                                    <div class="d-flex align-items-center">
+                                        <span class="e-avatar e-avatar-small rounded-circle d-flex align-items-center justify-content-center @(data.MetricName == "Impressions" ? "bg-warning-subtle text-warning-emphasis" : data.MetricName == "Active Users" ? "bg-primary-subtle text-primary" : data.MetricName == "User Engagements" ? "bg-success-subtle text-success" : data.MetricName == "Total Orders" ? "bg-info-subtle text-info-emphasis" : "")">
+                                            <span class="fs-6 @(data.MetricName == "Impressions" ? "e-icons e-critical-path" : data.MetricName == "Active Users" ? "sf-icon-users" : data.MetricName == "User Engagements" ? "e-chart e-icons" : data.MetricName == "Total Orders" ? "sf-icon-cart" : "")"></span>
+                                        </span>
+                                        <h4 class="fs-6 lh-base fw-medium text-body-secondary ms-2 ps-1 mb-0">@data.MetricName</h4>
+                                    </div>
+                                    <span class="d-flex align-items-center gap-1 @(data.CurrentPercentage > 0 ? "text-success" : "text-danger")">
+                                        <span class="e-icons e-medium @(data.CurrentPercentage > 0 ? "e-arrow-up" : "e-arrow-down")"></span>@(data.CurrentPercentage > 0 ? "+" : "")@data.CurrentPercentage&#37;
+                                    </span>
+                                </div>
+                                <div class="e-card-content pb-4 px-4 pt-3 d-flex align-items-center align-items-md-start align-items-lg-center flex-md-column flex-lg-row gap-2 gap-md-1 gap-lg-2">
+                                    <span class="fs-5 lh-sm fw-bold text-body">@data.CurrentValue</span>
+                                    <span class="text-body text-opacity-50">vs last 7 days</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,5 @@
+::deep #dialog-container .e-dialog .e-dlg-header-content+.e-dlg-content {
+    border: inherit;
+    border-inline: none;
+    border-radius: 0;
+}

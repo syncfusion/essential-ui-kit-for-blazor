@@ -1,0 +1,114 @@
+@page "/blocks/modals-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" class="relative flex justify-center" style="min-height: 660px;">
+            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="manage access" role="button">Manage Access</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Visible="true" Width="540px" aria-label="manage team member access" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <h3 class="font-semibold leading-normal mb-0.5">Manage Access</h3>
+                        <p class="text-xs leading-normal text-gray-500 dark:text-gray-400">Update team member permissions.</p>
+                    </Header>
+                    <Content>
+                        <div class="e-input-group mb-6">
+                            <input class="e-input" type="text" placeholder="Search by name or email address" aria-label="search by name or email address" role="textbox" />
+                            <span class="e-input-group-icon e-icons e-search border-0"></span>
+                        </div>
+                        <SfCheckBox CssClass="mb-2.5" Label="Select all" ValueChange="@OnSelectAllChangedAsync" TChecked="bool" aria-label="select all" role="checkbox"></SfCheckBox>
+                        <SfListView @ref="ListView" class="!border-0" CssClass="e-list-template" DataSource="@DataSource" ShowCheckBox="true" aria-label="list of team members" role="list">
+                            <ListViewFieldSettings TValue="TeamMember"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="TeamMember">
+                                <Template>
+                                @{
+                                    <div class="e-list-wrapper e-list-multi-line flex gap-1 sm:items-center !px-0 !py-5 sm:!py-3 w-full"> 
+                                        <div class="e-list-content !flex flex-col sm:flex-row sm:items-center grow gap-4 !pl-2">
+                                            <div class="!flex items-center justify-between gap-4 grow">
+                                                <div class="text-sm !flex flex-col">
+                                                    <div class="e-list-item-header">@context.Name</div>
+                                                    <div>@context.Email</div>
+                                                </div>
+                                                <span class="e-badge e-badge-pill @(context.Status == "Active" ? "e-badge-success" : "e-badge-warning")">@context.Status</span>
+                                            </div>
+                                            <SfDropDownButton CssClass="m-1 e-outline" Content="@context.Role" Type="button" style="width: 100px;" aria-label="choose a role" role="button"></SfDropDownButton>
+                                        </div>
+                                    </div>
+                                }
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 sm:gap-1 py-2">
+                            <p class="text-left text-sm text-gray-500 dark:text-gray-400">Changes will be logged for audit purposes</p>
+                            <div class="flex gap-2 sm:gap-1">
+                                <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                                <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="button" aria-label="apply changes" role="button">Apply Changes</SfButton>
+                            </div>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 660px;">
+            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="manage access" role="button">Manage Access</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Visible="true" Width="540px" aria-label="manage team member access" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <h3 class="fw-bold mb-0 text-body">Manage Access</h3>
+                        <p class="small fw-normal text-body text-opacity-50 mb-0">Update team member permissions.</p>
+                    </Header>
+                    <Content>
+                        <div class="e-input-group mb-4">
+                            <input class="e-input" type="text" placeholder="Search by name or email address" aria-label="search by name or email address" role="textbox" />
+                            <span class="e-input-group-icon e-icons e-search border-0"></span>
+                        </div>
+                        <SfCheckBox CssClass="mb-3" Label="Select all" ValueChange="@OnSelectAllChangedAsync" TChecked="bool" aria-label="select all" role="checkbox"></SfCheckBox>
+                        <SfListView @ref="ListView" class="border-0" CssClass="e-list-template" DataSource="@DataSource" ShowCheckBox="true" aria-label="list of team members" role="list">
+                            <ListViewFieldSettings TValue="TeamMember"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="TeamMember">
+                                <Template>
+                                @{
+                                    <div class="e-list-wrapper e-list-multi-line d-flex align-items-sm-center px-0 py-3 py-sm-2 mb-2 mb-sm-1">
+                                        <div class="e-list-content d-flex flex-column flex-sm-row align-items-sm-center flex-grow-1 gap-3 ps-1">
+                                            <div class="d-flex align-items-center justify-content-between gap-3 flex-grow-1">
+                                                <div class="d-flex flex-column">
+                                                    <div class="e-list-item-header text-body fw-medium">@context.Name</div>
+                                                    <div class="text-body text-opacity-50">@context.Email</div>
+                                                </div>
+                                                <span class="e-badge e-badge-pill @(context.Status == "Active" ? "e-badge-success" : "e-badge-warning")">@context.Status</span>
+                                            </div>
+                                            <SfDropDownButton CssClass="m-1 m-sm-0 me-sm-1 e-outline" Content="@context.Role" Type="button" style="width: 100px;" aria-label="choose a role" role="button"></SfDropDownButton>
+                                        </div>
+                                    </div>
+                                }
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 py-1">
+                            <p class="text-body text-opacity-50 text-start mb-0">Changes will be logged for audit purposes</p>
+                            <div class="d-flex justify-content-end gap-2 gap-sm-1">
+                                <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                                <SfButton CssClass="e-primary col col-sm-auto" Type="button" aria-label="apply changes" role="button">Apply Changes</SfButton>
+                            </div>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}

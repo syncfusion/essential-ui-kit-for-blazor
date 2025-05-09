@@ -9,15 +9,9 @@ namespace UI_Blocks.Components.Pages.MainSection
 {
     public partial class Demo : ComponentBase, IDisposable
     {
-        private DotNetObjectReference<Demo> _dotNetObjectReference;
+        private DotNetObjectReference<Demo>? _dotNetObjectReference;
         private bool _switchingMode;
         private string _selectedTab = "html";
-        private readonly Dictionary<ViewMode, string> _widths = new()
-        {
-            { ViewMode.Desktop, "100%" },
-            { ViewMode.Tablet, "48rem" },
-            { ViewMode.Mobile, "22.5rem" }
-        };
         private readonly List<string> _availableThemes = new() { "tailwind", "bootstrap5.3" };
         private readonly List<string> _tabs = new() { "html", "css", "csharp" };
         private record ThemeDetails(string SyncfusionStyleUrl, string FrameworkStyleUrl, string FrameworkSupportStyleUrl, string FontIconsUrl, string ThemeMode);
@@ -35,7 +29,6 @@ namespace UI_Blocks.Components.Pages.MainSection
         public bool ShowLoadingIndicator { get; set; } = true;
         public bool IsDropdownOpen { get; set; } = false;
         public ViewMode CurrentView { get; private set; } = ViewMode.Desktop;
-        public string PreviewStyle { get; private set; } = "min-width: 100%;";
         public enum ViewMode { Desktop, Tablet, Mobile }
         public string HtmlContent { get; set; } = string.Empty;
         public string CssContent { get; set; } = string.Empty;
@@ -71,8 +64,13 @@ namespace UI_Blocks.Components.Pages.MainSection
             }
             else if (_switchingMode)
             {
+                _switchingMode = false;
                 ThemeDetails themeDetails = GetThemeDetails();
-                await JSRuntime.InvokeAsync<bool>("updateStyleSheet", PreviewBlock, CurrentTheme, themeDetails.ThemeMode);
+                if (await JSRuntime.InvokeAsync<bool>("updateStyleSheet", PreviewBlock, CurrentTheme, themeDetails.ThemeMode))
+                {
+                    ShowLoadingIndicator = false;
+                    StateHasChanged();
+                }
             }
         }
 
@@ -186,7 +184,6 @@ namespace UI_Blocks.Components.Pages.MainSection
         {
             ShowLoadingIndicator = true;
             CurrentView = mode;
-            PreviewStyle = $"min-width: {_widths[mode]};";
             _switchingMode = true;
             await Task.CompletedTask;
         }
@@ -391,11 +388,6 @@ namespace UI_Blocks.Components.Pages.MainSection
         [JSInvokable]
         public void ToggleLoadingIndicator(bool show)
         {
-            if (_switchingMode)
-            {
-                _switchingMode = false;
-                Thread.Sleep(1500);
-            }
             ShowLoadingIndicator = show;
             StateHasChanged();
         }

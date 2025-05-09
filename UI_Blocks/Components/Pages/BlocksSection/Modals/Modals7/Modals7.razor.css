@@ -1,0 +1,30 @@
+::deep #dialog-container .e-dialog .e-dlg-header-content+.e-dlg-content {
+    border: inherit;
+    border-inline: none;
+    border-bottom: none;
+    border-radius: 0;
+}
+
+::deep #views-dropdown-section .e-ddl.e-input-group.e-control-wrapper::before,
+::deep #status-dropdown-section .e-ddl.e-input-group.e-control-wrapper::before {
+    font-family: "e-icons";
+    font-size: 16px;
+    position: absolute;
+    left: 10px;
+    top: 5px;
+    pointer-events: none;
+    line-height: 1.2;
+}
+
+::deep #views-dropdown-section .e-ddl.e-input-group.e-control-wrapper::before {
+    content: "\e82d";
+}
+
+::deep #status-dropdown-section .e-ddl.e-input-group.e-control-wrapper::before {
+    content: "\e8a0";
+}
+
+::deep #views-dropdown-section .e-ddl.e-input-group .e-input,
+::deep #status-dropdown-section .e-ddl.e-input-group .e-input {
+    padding-left: 38px !important;
+}

@@ -1,0 +1,138 @@
+@page "/blocks/modals-9"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" class="relative flex justify-center" style="min-height: 890px;">
+            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="create ticket" role="button">Create Ticket</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="492px" aria-label="create a new ticket" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="font-semibold leading-normal">Create Ticket</p>
+                    </Header>
+                    <Content>
+                        <form action="#" class="flex flex-col gap-4 sm:gap-3 text-xs font-medium leading-normal text-gray-700 dark:text-gray-200">
+                            <div class="flex flex-col gap-1">
+                                <label>Reported By <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
+                                <SfDropDownList TItem="string" TValue="string" Placeholder="Select a reporter name" aria-label="choose a reporter name" role="listbox"></SfDropDownList>
+                            </div>
+                            <div id="assign-dropdown-section" class="flex flex-col gap-1">
+                                <label>Assign to</label>
+                                <SfDropDownList TItem="string" TValue="string" Placeholder="Select a team or individual responsible for this ticket" aria-label="choose a team" role="listbox"></SfDropDownList>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label>Subject <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
+                                <SfTextBox Type="InputType.Text" Placeholder="Enter a title here" aria-label="enter a title here" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label>Description <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
+                                <SfRichTextEditor @ref="Rte" ShowCharCount="true" MaxLength="500" Height="160" aria-label="enter and format your text message" role="application">
+                                    <RichTextEditorToolbarSettings Items="@ToolbarItems"></RichTextEditorToolbarSettings>
+                                </SfRichTextEditor>
+                            </div>
+                            <div id="upload-template" class="flex flex-col border border-dashed border-gray-300 dark:border-gray-500 rounded-md bg-gray-50 dark:bg-gray-700">
+                                <div class="flex flex-col items-center text-sm font-normal text-gray-500 dark:text-gray-400 mx-auto py-4 my-0.5">
+                                    <span class="hidden sm:inline">Drag and drop (PDF, JPG, PNG) files here, or </span>
+                                    <span class="sm:hidden">(PDF, JPG, PNG)</span>
+                                    <SfUploader CssClass="e-small mt-1 flex flex-col gap-1" DropArea="#upload-template" Multiple="false" AllowedExtensions="image/*" MaxFileSize="2000000">
+                                        <UploaderButtons Browse="Browse"></UploaderButtons>
+                                    </SfUploader>
+                                </div>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label>Priority <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
+                                <SfDropDownList TItem="string" TValue="string" DataSource="@(new List<string> { "Normal" })" Value="@("Normal")" aria-label="choose a priority" role="listbox"></SfDropDownList>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label>Due Date <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
+                                <SfDatePicker TValue="DateTime?" Placeholder="MM/DD/YYYY" aria-label="enter due date here" role="combobox"></SfDatePicker>
+                            </div>
+                            <div class="flex flex-col gap-1">
+                                <label>Tags</label>
+                                <SfDropDownList TItem="string" TValue="string" Placeholder="Select the relevant tags" aria-label="choose relevant tags" role="listbox"></SfDropDownList>
+                            </div>
+                        </form>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="flex flex-row justify-end gap-2 sm:gap-1 mt-1 mb-2">
+                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="button" aria-label="create ticket" role="button">Create Ticket</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 890px;">
+            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="create ticket" role="button">Create Ticket</SfButton>
+            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="492px" aria-label="create a new ticket" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <p class="fw-bold mb-0 text-body">Create Ticket</p>
+                    </Header>
+                    <Content>
+                        <form action="#" class="row gap-3 gap-sm-2 gy-sm-1 text-body-secondary">
+                            <div class="d-flex flex-column gap-1 small mt-0">
+                                <label>Reported By <span class="text-danger">*</span></label>
+                                <SfDropDownList TItem="string" TValue="string" Placeholder="Select a reporter name" aria-label="choose a reporter name" role="listbox"></SfDropDownList>
+                            </div>
+                            <div id="assign-dropdown-section" class="d-flex flex-column gap-1 small">
+                                <label>Assign to</label>
+                                <SfDropDownList TItem="string" TValue="string" Placeholder="Select a team or individual responsible for this ticket" aria-label="choose a team" role="listbox"></SfDropDownList>
+                            </div>
+                            <div class="d-flex flex-column gap-1 small">
+                                <label>Subject <span class="text-danger">*</span></label>
+                                <SfTextBox Type="InputType.Text" Placeholder="Enter a title here" aria-label="enter a title here" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="d-flex flex-column gap-1 small">
+                                <label>Description <span class="text-danger">*</span></label>
+                                <SfRichTextEditor @ref="Rte" ShowCharCount="true" MaxLength="500" Height="165" aria-label="enter and format your text message" role="application">
+                                    <RichTextEditorToolbarSettings Items="@ToolbarItems"></RichTextEditorToolbarSettings>
+                                </SfRichTextEditor>
+                            </div>
+                            <div>
+                                <div id="upload-template" class="d-flex flex-column border rounded bg-body-tertiary" style="border-style: dashed !important;">
+                                    <div class="d-flex flex-column align-items-center fw-medium text-body text-opacity-50 mx-auto py-3 mb-0">
+                                        <span class="d-none d-sm-inline">Drag and drop (PDF, JPG, PNG) files here, or </span>
+                                        <span class="d-sm-none"> (PDF, JPG, PNG)</span>
+                                        <SfUploader CssClass="e-small mt-1 d-flex flex-column gap-1" DropArea="#upload-template" Multiple="false" AllowedExtensions="image/*" MaxFileSize="2000000">
+                                            <UploaderButtons Browse="Browse"></UploaderButtons>
+                                        </SfUploader>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="d-flex flex-column gap-1 small">
+                                <label>Priority <span class="text-danger">*</span></label>
+                                <SfDropDownList TItem="string" TValue="string" DataSource="@(new List<string> { "Normal" })" Value="@("Normal")" aria-label="choose a priority" role="listbox"></SfDropDownList>
+                            </div>
+                            <div class="d-flex flex-column gap-1 small">
+                                <label>Due Date <span class="text-danger">*</span></label>
+                                <SfDatePicker TValue="DateTime?" Placeholder="MM/DD/YYYY" aria-label="enter due date here" role="combobox"></SfDatePicker>
+                            </div>
+                            <div class="d-flex flex-column gap-1 small">
+                                <label>Tags</label>
+                                <SfDropDownList TItem="string" TValue="string" Placeholder="Select the relevant tags" aria-label="choose relevant tags" role="listbox"></SfDropDownList>
+                            </div>
+                        </form>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="d-flex justify-content-end gap-2 gap-sm-1 py-1">
+                            <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary col col-sm-auto" Type="button" aria-label="create ticket" role="button">Create Ticket</SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}
