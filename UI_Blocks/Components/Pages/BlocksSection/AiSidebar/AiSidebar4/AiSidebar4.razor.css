@@ -1,0 +1,19 @@
+::deep #interactive-sidebar .e-list-item {
+    border-bottom: none !important;
+    border-radius: 8px;
+}
+
+::deep #interactive-sidebar .e-listview .e-list-group-item:first-child {
+    display: none;
+}
+
+::deep #interactive-sidebar .e-listview .e-list-group-item {
+    background-color: inherit;
+    border-bottom: 0px;
+    height: 40px;
+    margin-top: 10px;
+}
+
+::deep #interactive-sidebar .hover-group:hover .context-menu {
+    display: inline-block !important;
+}

@@ -1,0 +1,248 @@
+﻿@page "/blocks/ai-card-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="px-4 sm:px-6 lg:px-36 py-20" style="min-height: 36rem;">
+            <div class="grid sm:grid-cols-2 gap-6 lg:gap-5 xl:grid-cols-4">
+                <div class="e-card rounded-lg py-3 shadow-md">
+                    <div class="e-card-image px-3 overflow-hidden !min-h-0">
+                        <img class="w-full object-cover h-44 lg:h-28 rounded-lg" src="assets/images/ai/card/information-display-card/3d-animation.jpg" alt="3D animation guidelines" />
+                    </div>
+                    <div class="e-card-stacked">
+                        <div class="e-card-header !pt-3 !pb-1 !px-3">
+                            <div class="e-card-header-caption">
+                                <h2 class="text-xs font-medium text-gray-900 dark:text-white">3D animation guidelines</h2>
+                            </div>
+                        </div>
+                        <div class="e-card-content !px-3 !pb-2">
+                            <p class="text-xs text-gray-700 dark:text-gray-300 !line-clamp-3">
+                                Animation should be direct and purposeful, meaning they only last as long as necessary to convey the intended message or interaction. Overuse or unnecessary complexity can distract users and reduce clarity.
+                            </p>
+                        </div>
+                        <div class="e-card-actions !flex !justify-between !px-3 !pb-1">
+                            <div class="flex items-center">
+                                <div class="flex items-center -space-x-3 mr-1">
+                                    <span class="e-avatar e-avatar-xsmall e-avatar-circle z-20" style="background-image: url(assets/images/common/avatar/avatar-11.jpg);"></span>
+                                    <span class="e-avatar e-avatar-xsmall e-avatar-circle z-30" style="background-image: url(assets/images/common/avatar/avatar-2.jpg);"></span>
+                                </div>
+                                <p class="text-xs font-medium text-gray-700 dark:text-gray-300">Edited 24 hrs ago</p>
+                            </div>
+                            <SfButton CssClass="e-flat e-round" IconCss="e-icons e-bookmark" Type="button" aria-label="bookmark" role="button"></SfButton>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg py-3 shadow-md">
+                    <div class="e-card-image px-3 overflow-hidden !min-h-0">
+                        <img class="w-full object-cover h-44 lg:h-28 rounded-lg" src="assets/images/ai/card/information-display-card/brand-guidelines.jpg" alt="brand guidelines" />
+                    </div>
+                    <div class="e-card-stacked">
+                        <div class="e-card-header !pt-3 !pb-1 !px-3">
+                            <div class="e-card-header-caption">
+                                <h2 class="text-xs font-medium text-gray-900 dark:text-white">Brand guidelines</h2>
+                            </div>
+                        </div>
+                        <div class="e-card-content !px-3 !pb-2">
+                            <p class="text-xs text-gray-700 dark:text-gray-300 !line-clamp-3">
+                                Brand guidelines for animation are a set of rules and standards designed to ensure consistency and coherence in how animations are used across all brand-related content. These guidelines help maintain a unified visual identity.
+                            </p>
+                        </div>
+                        <div class="e-card-actions !flex !justify-between !px-3 !pb-1">
+                            <div class="flex items-center">
+                                <div class="flex items-center -space-x-3 mr-1">
+                                    <span class="e-avatar e-avatar-xsmall e-avatar-circle z-20" style="background-image: url(assets/images/common/avatar/avatar-11.jpg);"></span>
+                                    <span class="e-avatar e-avatar-xsmall e-avatar-circle z-30" style="background-image: url(assets/images/common/avatar/avatar-2.jpg);"></span>
+                                </div>
+                                <p class="text-xs font-medium text-gray-700 dark:text-gray-300">Edited 24 hrs ago</p>
+                            </div>
+                            <SfButton CssClass="e-flat e-round" IconCss="e-icons e-bookmark" Type="button" aria-label="bookmark" role="button"></SfButton>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg py-3 shadow-md">
+                    <div class="e-card-image px-3 overflow-hidden !min-h-0">
+                        <img class="w-full object-cover h-44 lg:h-28 rounded-lg" src="assets/images/ai/card/information-display-card/designers-hiring.jpg" alt="designers hiring" />
+                    </div>
+                    <div class="e-card-stacked">         
+                        <div class="e-card-header !pt-3 !pb-1 !px-3">
+                            <div class="e-card-header-caption">
+                                <h2 class="text-xs font-medium text-gray-900 dark:text-white">Designers hiring posts</h2>
+                            </div>
+                        </div>
+                        <div class="e-card-content !px-3 !pb-2">
+                            <p class="text-xs text-gray-700 dark:text-gray-300 !line-clamp-3">
+                                Hiring posts for designers are announcements created by companies to attract talent by showcasing job roles, responsibilities, and company culture. These posts often include visuals and clear messaging to appeal to creative professionals.
+                            </p>
+                        </div>
+                        <div class="e-card-actions !flex !justify-between !px-3 !pb-1">
+                            <div class="flex items-center">
+                                <div class="flex items-center -space-x-3 mr-1">
+                                    <span class="e-avatar e-avatar-xsmall e-avatar-circle z-20" style="background-image: url(assets/images/common/avatar/avatar-11.jpg);"></span>
+                                    <span class="e-avatar e-avatar-xsmall e-avatar-circle z-30" style="background-image: url(assets/images/common/avatar/avatar-2.jpg);"></span>
+                                </div>
+                                <p class="text-xs font-medium text-gray-700 dark:text-gray-300">Edited 24 hrs ago</p>
+                            </div>
+                            <SfButton CssClass="e-flat e-round" IconCss="e-icons e-bookmark" Type="button" aria-label="bookmark" role="button"></SfButton>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg py-3 shadow-md">
+                    <div class="e-card-image px-3 overflow-hidden !min-h-0">
+                        <img class="w-full object-cover h-44 lg:h-28 rounded-lg" src="assets/images/ai/card/information-display-card/motion-design.jpg" alt="motion design guidelines" />
+                    </div>
+                    <div class="e-card-stacked">
+                        <div class="e-card-header !pt-3 !pb-1 !px-3">
+                            <div class="e-card-header-caption">
+                                <h2 class="text-xs font-medium text-gray-900 dark:text-white">Motion design guidelines</h2>
+                            </div>
+                        </div>
+                        <div class="e-card-content !px-3 !pb-2">
+                            <p class="text-xs text-gray-700 dark:text-gray-300 !line-clamp-3">
+                                Motion design guidelines are a set of standards that outline the principles and practices for creating animations that enhance user experience, communicate effectively, and align with the brand's visual language.
+                            </p>
+                        </div>
+                        <div class="e-card-actions !flex !justify-between !px-3 !pb-1">
+                            <div class="flex items-center">
+                                <div class="flex items-center -space-x-3 mr-1">
+                                    <span class="e-avatar e-avatar-xsmall e-avatar-circle z-20" style="background-image: url(assets/images/common/avatar/avatar-11.jpg);"></span>
+                                    <span class="e-avatar e-avatar-xsmall e-avatar-circle z-30" style="background-image: url(assets/images/common/avatar/avatar-2.jpg);"></span>
+                                </div>
+                                <p class="text-xs font-medium text-gray-700 dark:text-gray-300">Edited 24 hrs ago</p>
+                            </div>
+                            <SfButton CssClass="e-flat e-round" IconCss="e-icons e-bookmark" Type="button" aria-label="bookmark" role="button"></SfButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="mx-auto px-3 px-sm-4 py-5" style="min-height: 36rem; max-width: 70rem;">
+            <div class="row g-4 mx-lg-2">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="e-card shadow-lg rounded-3 py-3 d-flex justify-content-start flex-column">
+                        <div class="e-card-image px-3 overflow-hidden min-vh-0">
+                            <img class="w-100 object-fit-cover rounded-3" style="height: 130px;" src="assets/images/ai/card/information-display-card/3d-animation.jpg" alt="3D animation guidelines" />
+                        </div>
+                        <div class="e-card-stacked">
+                            <div class="e-card-header px-3 pt-3">
+                                <div class="e-card-header-caption">
+                                    <h2 class="small fw-medium text-body mb-0">3D animation guidelines</h2>
+                                </div>
+                            </div>
+                            <div class="e-card-content px-3 pb-2 pt-1">
+                                <p class="small text-body-secondary mb-0" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">Animation should be direct and purposeful, meaning they only last as long as necessary to convey the intended message or interaction. Overuse or unnecessary complexity can distract users and reduce clarity.</p>
+                            </div>
+                            <div class="e-card-actions pb-0">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex">
+                                        <div class="d-flex align-items-center position-relative">
+                                            <span class="e-avatar e-avatar-circle e-avatar-xsmall position-absolute" style="background-image: url(assets/images/common/avatar/avatar-11.jpg);"></span>
+                                            <span class="e-avatar e-avatar-circle e-avatar-xsmall position-absolute ms-3" style="background-image: url(assets/images/common/avatar/avatar-2.jpg);"></span>
+                                        </div>
+                                        <p class="small fw-medium text-body mb-0 ms-5">Edited 24 hrs ago</p>
+                                    </div>
+                                    <SfButton CssClass="e-icons e-round e-bookmark e-flat" Type="button" aria-label="bookmark" role="button"></SfButton>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="e-card shadow-lg rounded-3 py-3 d-flex justify-content-start flex-column">
+                        <div class="e-card-image px-3 overflow-hidden min-vh-0">
+                            <img class="w-100 object-fit-cover rounded-3" style="height: 130px;" src="assets/images/ai/card/information-display-card/brand-guidelines.jpg" alt="brand guidelines" />
+                        </div>
+                        <div class="e-card-stacked">
+                            <div class="e-card-header px-3 pt-3">
+                                <div class="e-card-header-caption">
+                                    <h2 class="small fw-medium text-body mb-0">Brand guidelines</h2>
+                                </div>
+                            </div>
+                            <div class="e-card-content px-3 pb-2 pt-1">
+                                <p class="small text-body-secondary mb-0" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">Brand guidelines for animation are a set of rules and standards designed to ensure consistency and coherence in how animations are used across all brand-related content. These guidelines help maintain a unified visual identity.</p>
+                            </div>
+                            <div class="e-card-actions pb-0">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex">
+                                        <div class="d-flex align-items-center position-relative">
+                                            <span class="e-avatar e-avatar-circle e-avatar-xsmall position-absolute" style="background-image: url(assets/images/common/avatar/avatar-11.jpg);"></span>
+                                            <span class="e-avatar e-avatar-circle e-avatar-xsmall position-absolute ms-3" style="background-image: url(assets/images/common/avatar/avatar-2.jpg);"></span>
+                                        </div>
+                                        <p class="small fw-medium text-body mb-0 ms-5">Edited 24 hrs ago</p>
+                                    </div>
+                                    <SfButton CssClass="e-icons e-round e-bookmark e-flat" Type="Button" aria-label="bookmark" role="button"></SfButton>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="e-card shadow-lg rounded-3 py-3 d-flex justify-content-start flex-column">
+                        <div class="e-card-image px-3 overflow-hidden min-vh-0">
+                            <img class="w-100 object-fit-cover rounded-3" style="height: 130px;" src="assets/images/ai/card/information-display-card/designers-hiring.jpg" alt="designers hiring" />
+                        </div>
+                        <div class="e-card-stacked">
+                            <div class="e-card-header px-3 pt-3">
+                                <div class="e-card-header-caption">
+                                    <h2 class="small fw-medium text-body mb-0">Designers hiring posts</h2>
+                                </div>
+                            </div>
+                            <div class="e-card-content px-3 pb-2 pt-1">
+                                <p class="small text-body-secondary mb-0" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">Hiring posts for designers are announcements created by companies to attract talent by showcasing job roles, responsibilities, and company culture. These posts often include visuals and clear messaging to appeal to creative professionals.</p>
+                            </div>
+                            <div class="e-card-actions pb-0">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex">
+                                        <div class="d-flex align-items-center position-relative">
+                                            <span class="e-avatar e-avatar-circle e-avatar-xsmall position-absolute" style="background-image: url(assets/images/common/avatar/avatar-11.jpg);"></span>
+                                            <span class="e-avatar e-avatar-circle e-avatar-xsmall position-absolute ms-3" style="background-image: url(assets/images/common/avatar/avatar-2.jpg);"></span>
+                                        </div>
+                                        <p class="small fw-medium text-body mb-0 ms-5">Edited 24 hrs ago</p>
+                                    </div>
+                                    <SfButton CssClass="e-icons e-round e-bookmark e-flat" Type="Button" aria-label="bookmark" role="button"></SfButton>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="e-card shadow-lg rounded-3 py-3 d-flex justify-content-start flex-column">
+                        <div class="e-card-image px-3 overflow-hidden min-vh-0">
+                            <img class="w-100 object-fit-cover rounded-3" style="height: 130px;" src="assets/images/ai/card/information-display-card/motion-design.jpg" alt="motion design guidelines" />
+                        </div>
+                        <div class="e-card-stacked">
+                            <div class="e-card-header px-3 pt-3">
+                                <div class="e-card-header-caption">
+                                    <h2 class="small fw-medium text-body mb-0">Motion design guidelines</h2>
+                                </div>
+                            </div>
+                            <div class="e-card-content px-3 pb-2 pt-1">
+                                <p class="small text-body-secondary mb-0" style="display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical;">Motion design guidelines are a set of standards that outline the principles and practices for creating animations that enhance user experience, communicate effectively, and align with the brand's visual language.</p>
+                            </div>
+                            <div class="e-card-actions pb-0">
+                                <div class="d-flex justify-content-between">
+                                    <div class="d-flex">
+                                        <div class="d-flex align-items-center position-relative">
+                                            <span class="e-avatar e-avatar-circle e-avatar-xsmall position-absolute" style="background-image: url(assets/images/common/avatar/avatar-11.jpg);"></span>
+                                            <span class="e-avatar e-avatar-circle e-avatar-xsmall position-absolute ms-3" style="background-image: url(assets/images/common/avatar/avatar-2.jpg);"></span>
+                                        </div>
+                                        <p class="small fw-medium text-body mb-0 ms-5">Edited 24 hrs ago</p>
+                                    </div>
+                                    <SfButton CssClass="e-icons e-round e-bookmark e-flat" Type="Button" aria-label="bookmark" role="button"></SfButton>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

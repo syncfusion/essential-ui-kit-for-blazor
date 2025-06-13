@@ -1,0 +1,130 @@
+﻿@page "/blocks/ai-login-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-primary-600 dark:bg-primary-400 relative overflow-hidden">
+        <div class="absolute pointer-events-none" style="background-image: url('assets/images/ai/login/ai-login/ai-circles.png'); background-size: 70%; background-position: left top; background-repeat: no-repeat; height: 100%; width: 100%;"></div>
+        <div class="w-full p-4 sm:p-6 lg:p-2 text-white flex items-center">
+            <div class="flex flex-wrap mx-0 w-full">
+                <div class="w-full lg:w-2/5 pt-12 sm:pt-10 lg:pt-14 pl-2 sm:pl-0 lg:pl-14 dark:text-black">
+                    <h1 class="w-80 font-semibold text-4xl">Unlock the power of AI</h1>
+                    <p class="w-80 text-lg font-normal pt-8 pb-12">Experience the power of AI with us.</p>
+                </div>
+                <div class="w-full lg:w-3/5 relative">
+                    <div class="bg-white dark:bg-gray-800 rounded-xl">
+                        <div class="flex items-center justify-center">
+                            <div class="w-full max-w-md rounded-lg px-3 py-8 md:px-6 md:py-20">
+                                <div class="flex justify-center gap-3 mb-8">
+                                    <i class="e-icons e-ai-chat text-2xl text-primary-600 dark:text-primary-400"></i>
+                                    <h2 class="text-center font-semibold text-gray-900 dark:text-white text-2xl">Fusion AI</h2>
+                                </div>
+                                <form action="#" class="mt-6" onsubmit="event.preventDefault();">
+                                    <div class="w-full border border-gray-200 dark:border-gray-600 rounded-lg p-1 flex gap-3">
+                                        <SfButton CssClass="w-1/2 bg-gray-200 dark:bg-gray-600 text-xs font-normal border-0" Content="Sign in" Type="button" aria-label="sign in" role="button"></SfButton>
+                                        <SfButton CssClass="e-flat w-1/2 text-xs font-normal border-0" Content="Create account" Type="button" aria-label="create account" role="button"></SfButton>
+                                    </div>
+                                    <div class="flex items-center justify-center pt-6 gap-3 flex-col">
+                                        <SfButton CssClass="w-full flex items-center justify-center px-4 py-1 e-outline e-normal" Type="submit" aria-label="sign in with google account" role="button">
+                                            <img class="w-4" src="assets/images/common/brand-logos/png/google.png" alt="google logo" />
+                                            <span class="text-sm font-medium pl-1.5">Continue with Google</span>
+                                        </SfButton>
+                                        <SfButton CssClass="w-full flex items-center justify-center px-4 py-1 e-outline e-normal" Type="submit" aria-label="sign in with apple account" role="button">
+                                            <img class="w-4" src="assets/images/common/brand-logos/png/apple-2.png" alt="apple logo" />
+                                            <span class="text-sm font-medium pl-1.5">Continue with Apple</span>
+                                        </SfButton>
+                                    </div>
+                                    <div class="relative flex justify-center items-center mt-6">
+                                        <span class="bg-gray-50 dark:bg-gray-800 px-2.5 z-10 absolute text-sm text-gray-700 dark:text-gray-300">Or</span>
+                                        <hr class="w-full absolute border-gray-200 dark:border-gray-600" />
+                                    </div>
+                                    <div class="mt-6 mb-4">
+                                        <SfTextBox @ref="UserName" CssClass="e-normal !border-0 shadow-sm dark:bg-gray-700" Type="InputType.Email" Placeholder="Username or email" FloatLabelType="FloatLabelType.Never" Created="@(args => UserName?.AddIconAsync("prepend", "e-icons e-user e-small"))" aria-label="enter your email address" role="textbox"></SfTextBox>
+                                    </div>
+                                    <div class="mb-6 relative">
+                                        <SfTextBox @ref="Password" CssClass="e-normal !border-0 shadow-sm bg-none dark:bg-gray-700" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" Created="@(args => Password?.AddIconAsync("prepend", "e-icons e-lock e-small"))" aria-label="enter your email password" role="textbox"></SfTextBox>
+                                    </div>
+                                    <div class="mb-4">
+                                        <SfButton CssClass="e-normal w-full e-primary e-btn" Type="submit" aria-label="sign in with fusion AI" role="button">Sign in with Fusion AI</SfButton>
+                                    </div>
+                                </form>
+                                <div>
+                                    <p class="w-80 sm:w-96 text-xs font-normal text-center text-gray-700 dark:text-gray-300">
+                                        By creating an account, you agree to our <span class="font-medium text-gray-900 dark:text-white">terms of service</span> and
+                                        <span class="font-medium text-gray-900 dark:text-white">privacy & cookie statement</span>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-primary position-relative overflow-hidden">
+        <div class="position-absolute pointer-events-none" style="background-image: url('assets/images/ai/login/ai-login/ai-circles.png'); background-size: 70%; background-position: left top; background-repeat: no-repeat; height: 100%; width: 100%;"></div>
+        <div class="w-100 p-3 p-lg-2 text-white d-flex align-items-center">
+            <div class="d-flex flex-wrap mx-0 w-100">
+                <div class="col-12 col-lg-5 pt-5 ps-2 ps-sm-0 ps-lg-5">
+                    <h1 class="fs-2 fw-semibold mt-lg-2" style="max-width: 275px; font-size: 32px;">Unlock the power of AI</h1>
+                    <p class="fw-normal pt-4 pb-5 mb-0" style="max-width: 275px;">Experience the power of AI with us.</p>
+                </div>
+                <div class="col-12 col-lg-7 position-relative">
+                    <div class="bg-body rounded-3">
+                        <div class="d-flex align-items-center justify-content-center">
+                            <div class="w-100 rounded-lg px-3 py-5 px-md-4 px-md-5" style="max-width: 448px;">
+                                <div class="d-flex justify-content-center gap-2 mb-4">
+                                    <i class="e-icons e-ai-chat fs-4 text-primary"></i>
+                                    <h2 class="text-center fw-semibold text-body fs-4">Fusion AI</h2>
+                                </div>
+                                <form action="#" class="mt-4" onsubmit="event.preventDefault();">
+                                    <div class="w-100 border border-light-subtle dark:border-secondary rounded-3 p-1 d-flex gap-3">
+                                        <SfButton CssClass="w-50 bg-secondary small fw-normal border-0" Content="Sign in" Type="button" aria-label="sign in" role="button"></SfButton>
+                                        <SfButton CssClass="e-flat w-50 small fw-normal border-0" Content="Create account" Type="button" aria-label="create account" role="button"></SfButton>
+                                    </div>
+                                    <div class="d-flex align-items-center justify-content-center pt-4 gap-3 flex-column">
+                                        <SfButton CssClass="w-100 d-flex align-items-center justify-content-center px-3 py-1 e-outline" Type="submit" aria-label="sign in with google account" role="button">
+                                            <img src="assets/images/common/brand-logos/png/google.png" width="18px" alt="google logo" />
+                                            <span class="fw-normal ps-1">Continue with Google</span>
+                                        </SfButton>
+                                        <SfButton CssClass="w-100 d-flex align-items-center justify-content-center px-3 py-1 e-outline" Type="submit" aria-label="sign in with apple account" role="button">
+                                            <img src="assets/images/common/brand-logos/png/apple-2.png" width="18px" alt="apple logo" />
+                                            <span class="fw-normal ps-1">Continue with Apple</span>
+                                        </SfButton>
+                                    </div>
+                                    <div class="d-flex justify-content-center align-items-center position-relative mt-4">
+                                        <span class="bg-body px-2 z-1 position-absolute text-light-emphasis small">Or</span>
+                                        <hr class="w-100 border-light-subtle opacity-100" />
+                                    </div>
+                                    <div class="mt-4 mb-3">
+                                        <SfTextBox @ref="UserName" CssClass="e-normal small text-secondary border-0 shadow-sm bg-body-tertiary" Type="InputType.Email" Placeholder="Username or email" FloatLabelType="FloatLabelType.Never" Created="@(args => UserName?.AddIconAsync("prepend", "e-icons e-user e-small"))" aria-label="enter your email address" role="textbox"></SfTextBox>
+                                    </div>
+                                    <div class="mb-4 position-relative">
+                                        <SfTextBox @ref="Password" CssClass="e-normal small text-secondary border-0 shadow-sm bg-body-tertiary" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" Created="@(args => Password?.AddIconAsync("prepend", "e-icons e-lock e-small"))" aria-label="enter your email password" role="textbox"></SfTextBox>
+                                    </div>
+                                    <div class="mb-3">
+                                        <SfButton CssClass="e-normal w-100 e-primary e-btn" Type="submit" aria-label="sign in" role="button">Sign in with Fusion AI</SfButton>
+                                    </div>
+                                </form>
+                                <div>
+                                    <p class="w-100 small fw-normal text-center text-body-secondary">
+                                        By creating an account, you agree to our <span class="fw-medium text-body">terms of service</span> and
+                                        <span class="fw-medium text-body">privacy & cookie statement</span>.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+
+

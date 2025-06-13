@@ -1,0 +1,129 @@
+﻿@page "/blocks/bar-chart-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 1110px;">
+                <div class="flex justify-between flex-col md:flex-row md:items-center md:justify-between gap-5">
+                    <h1 class="text-base font-medium text-gray-900 dark:text-white">Total Sales Variance by FiscalMonth and District Manager</h1>
+                    <div class="flex items-center justify-between gap-2 sm:gap-4 mb-1">
+                        <SfDropDownButton @ref="DropDownButton" Content="2024" Type="button" aria-label="choose a year" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="2024"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2023"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2022"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2021"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2020"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                        <SfButton Content="Download Report" CssClass="hidden lg:block" Type="button" aria-label="download report" role="button"></SfButton>
+                        <SfButton CssClass="block lg:hidden" IconCss="e-icons e-download" Type="button" aria-label="download report" role="button"></SfButton>
+                    </div>
+                </div>
+                <div>
+                    <SfChart Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)" Width="100%" Height="350px">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelRotation="@XAxisLabelRotation">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Maximum="4" Minimum="0" Interval="1" LabelFormat="${value}M">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartAxes>
+                            <ChartAxis Name="YAxisRight" OpposedPosition="true" Interval="20" Maximum="80" Minimum="-20" LabelFormat="{value}%">
+                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            </ChartAxis>
+                        </ChartAxes>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@BarChartData" XName="XAxis" YName="YAxis1" Type="ChartSeriesType.StackingColumn" Fill="#01A8B5" Name="This Year Sales" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Circle"></ChartSeries>
+                            <ChartSeries DataSource="@BarChartData" XName="XAxis" YName="YAxis2" YAxisName="YAxisRight" Type="ChartSeriesType.Line" Width="2" Fill="@(CurrentTheme == "tailwind-dark" ? "#FFFFFF" : "#1F2937")" Name="Total Sales Var%" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Circle"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near" Padding="30" Width="340"></ChartLegendSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center p-4 p-sm-6">
+            <div class="w-100" style="max-width: 1110px;">
+                <div class="d-flex justify-content-between flex-column flex-md-row align-items-md-center justify-content-md-between gap-5">
+                    <h1 class="fs-6 fw-medium">Total Sales Variance by FiscalMonth and District Manager</h1>
+                    <div class="d-flex align-items-center justify-content-between gap-2 gap-sm-4 mb-1">
+                        <SfDropDownButton @ref="DropDownButton" CssClass="e-outline" Content="2024" Type="button" aria-label="choose a year" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="2024"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2023"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2022"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2021"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2020"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                        <SfButton Content="Download Report" CssClass="d-none d-lg-block e-outline" Type="button" aria-label="download report" role="button"></SfButton>
+                        <SfButton CssClass="d-lg-none e-outline" IconCss="e-icons e-download" Type="button" aria-label="download report" role="button"></SfButton>
+                    </div>
+                </div>
+                <div>
+                    <SfChart Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)" Width="100%" Height="350px">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelRotation="@XAxisLabelRotation">
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Maximum="4" Minimum="0" Interval="1" LabelFormat="${value}M">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartAxes>
+                            <ChartAxis Name="YAxisRight" OpposedPosition="true" Interval="20" Maximum="80" Minimum="-20" LabelFormat="{value}%">
+                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            </ChartAxis>
+                        </ChartAxes>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@BarChartData" XName="XAxis" YName="YAxis1" Type="ChartSeriesType.StackingColumn" Fill="#006EEF" Name="This Year Sales" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Circle"></ChartSeries>
+                            <ChartSeries DataSource="@BarChartData" XName="XAxis" YName="YAxis2" YAxisName="YAxisRight" Type="ChartSeriesType.Line" Width="2" Fill="@(CurrentTheme == "bootstrap5.3-dark" ? "#FFFFFF" : "#1F2937")" Name="Total Sales Var%" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Circle"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near" Padding="30" Width="340"></ChartLegendSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}

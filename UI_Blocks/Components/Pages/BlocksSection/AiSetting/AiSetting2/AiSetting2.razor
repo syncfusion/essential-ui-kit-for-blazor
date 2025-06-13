@@ -1,0 +1,156 @@
+﻿@page "/blocks/ai-setting-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div class="h-screen flex">
+            <div class="hidden sm:block h-full w-16 lg:w-60 border-r border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700"></div>
+            <div class="flex flex-col grow">
+                <div class="p-4 border-b border-gray-200 dark:border-gray-600">
+                    <h3 class="text-base font-semibold text-gray-900 dark:text-white">Settings</h3>
+                </div>
+                <div class="p-4 flex flex-col gap-6 text-gray-700 dark:text-gray-300 lg:max-w-3xl">
+                    <div class="flex flex-col gap-8">
+                        <div class="flex items-center justify-between gap-1 sm:justify-normal">
+                            <div class="flex flex-col gap-1 sm:w-72">
+                                <p class="text-sm font-medium text-gray-900 dark:text-white">Your photo</p>
+                                <p class="text-xs font-normal">This will be displayed on your profile.</p>
+                            </div>
+                            <div class="relative flex">
+                                <span class="e-avatar e-avatar-large e-avatar-circle">
+                                    <img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
+                                </span>
+                                <span class="e-badge e-badge-circle absolute bottom-0 right-0 bg-gray-100 dark:bg-gray-700"><i class="e-icons e-edit text-gray-500 dark:text-gray-200"></i></span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-6 sm:gap-4 text-sm font-medium text-gray-900 dark:text-white">
+                            <div class="flex flex-col sm:flex-row gap-2 sm:gap-1">
+                                <label class="sm:w-72 shrink-0">Username</label>
+                                <SfTextBox @ref="UsernameTextbox" CssClass="w-full" Value="Bob Johnson" Type="InputType.Text" Created="@(async args => { if (UsernameTextbox != null) await UsernameTextbox.AddIconAsync("prepend", "e-icons e-user !pr-0"); })" aria-label="enter the username" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-2 sm:gap-1">
+                                <label class="sm:w-72 shrink-0">Email</label>
+                                <SfTextBox @ref="EmailTextbox" CssClass="w-full" Value="bobjohnson@example.com" Type="InputType.Email" Created="@(async args => { if (EmailTextbox != null) await EmailTextbox.AddIconAsync("prepend", "e-icons e-edit !pr-0"); })" aria-label="enter the email address" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-2 sm:gap-1">
+                                <label class="sm:w-72 shrink-0">Location</label>
+                                <SfTextBox @ref="LocationTextbox" CssClass="w-full" Value="Sai Gon, Vietnam" Type="InputType.Text" Created="@(async args => { if (LocationTextbox != null) await LocationTextbox.AddIconAsync("prepend", "e-icons e-location !pr-0"); })" aria-label="enter the location" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="flex flex-col sm:flex-row gap-2 sm:gap-1">
+                                <label class="sm:w-72 shrink-0">Bio</label>
+                                <SfTextBox @ref="BioTextbox" CssClass="w-full" Placeholder="Short bio" Type="InputType.Text" Created="@(async args => { if (BioTextbox != null) await BioTextbox.AddIconAsync("prepend", "e-icons e-rename !pr-0"); })" aria-label="enter a short bio" role="textbox"></SfTextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200 dark:border-gray-600"></div>
+                    <div class="flex flex-col sm:flex-row gap-6 text-xs font-normal sm:gap-1">
+                        <div class="flex flex-col gap-1 sm:w-72">
+                            <p class="flex items-center gap-1 text-sm font-medium text-gray-900 dark:text-white">Editor view options <span class="e-icons e-circle-info text-xs text-gray-500 dark:text-gray-200"></span></p>
+                            <p class="sm:w-56">Manage visibility and error detection in the editor.</p>
+                        </div>
+                        <div class="flex flex-col gap-4">
+                            <div class="flex flex-col gap-1 w-11/12 sm:auto">
+                                <SfCheckBox Checked="true" Label="Truncate long transactions in the editor" aria-label="truncate long transactions in the editor" role="checkbox"></SfCheckBox>
+                                <p class="ml-7">Shorten lengthy records for better readability.</p>
+                            </div>
+                            <div class="flex flex-col gap-1 w-11/12 sm:w-auto">
+                                <SfCheckBox Checked="true" Label="Show spelling and grammar errors in the editor" aria-label="show spelling and grammar errors in the editor" role="checkbox"></SfCheckBox>
+                                <p class="ml-7">Detect and highlight mistakes automatically.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-t border-gray-200 dark:border-gray-600"></div>
+                    <div class="flex flex-col gap-12 sm:gap-8">
+                        <div class="flex justify-between gap-1 sm:justify-normal">
+                            <p class="text-sm font-medium sm:w-72 shrink-0 text-gray-900 dark:text-white">Translation view options</p>
+                            <SfSwitch Checked="true" aria-label="enable translation view" role="switch"></SfSwitch>
+                        </div>
+                        <div class="flex gap-3 self-end">
+                            <SfButton Type="button" Disabled="true" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary" Type="button" aria-label="save changes" role="button">Save changes</SfButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="row vh-100 d-flex g-0">
+            <div class="d-none d-sm-block h-100 border-end border-light-subtle bg-body-tertiary col-1 col-lg-3" style="min-width: 62px; max-width: 248px;"></div>
+            <div class="d-flex flex-column flex-grow-1 col">
+                <div class="p-3 border-bottom border-light-subtle">
+                    <h3 class="fs-6 fw-bold text-body mb-0">Settings</h3>
+                </div>
+                <div class="p-3 d-flex flex-column gap-4 text-body-secondary" style="max-width: 768px;">
+                    <div class="d-flex flex-column gap-4">
+                        <div class="d-flex align-items-center justify-content-between gap-1 justify-content-sm-start">
+                            <div class="d-flex flex-column gap-1 small" style="width: 18rem;">
+                                <p class="mb-0 fw-medium text-body">Your photo</p>
+                                <p class="mb-0 small">This will be displayed on your profile.</p>
+                            </div>
+                            <div class="position-relative d-flex">
+                                <span class="e-avatar e-avatar-large e-avatar-circle">
+                                    <img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
+                                </span>
+                                <span class="e-badge e-badge-circle position-absolute bottom-0 end-0 bg-body-secondary"><i class="e-icons e-edit small text-body-secondary"></i></span>
+                            </div>
+                        </div>
+                        <div class="d-flex flex-column gap-3 fs-6 fw-medium text-body mt-2">
+                            <div class="small d-flex flex-column flex-sm-row gap-2 gap-sm-1">
+                                <label class="flex-shrink-0" style="width: 18rem;">Username</label>
+                                <SfTextBox @ref="UsernameTextbox" CssClass="w-100" Value="Bob Johnson" Type="InputType.Text" Created="@(async args => { if (UsernameTextbox != null) await UsernameTextbox.AddIconAsync("prepend", "e-icons e-user border-0"); })" aria-label="enter the username" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="small d-flex flex-column flex-sm-row gap-2 gap-sm-1">
+                                <label class="flex-shrink-0" style="width: 18rem;">Email</label>
+                                <SfTextBox @ref="EmailTextbox" CssClass="w-100" Value="bobjohnson@example.com" Type="InputType.Email" Created="@(async args => { if (EmailTextbox != null) await EmailTextbox.AddIconAsync("prepend", "e-icons e-edit border-0"); })" aria-label="enter the email address" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="small d-flex flex-column flex-sm-row gap-2 gap-sm-1">
+                                <label class="flex-shrink-0" style="width: 18rem;">Location</label>
+                                <SfTextBox @ref="LocationTextbox" CssClass="w-100" Value="Sai Gon, Vietnam" Type="InputType.Text" Created="@(async args => { if (LocationTextbox != null) await LocationTextbox.AddIconAsync("prepend", "e-icons e-location border-0"); })" aria-label="enter the location" role="textbox"></SfTextBox>
+                            </div>
+                            <div class="small d-flex flex-column flex-sm-row gap-2 gap-sm-1">
+                                <label class="flex-shrink-0" style="width: 18rem;">Bio</label>
+                                <SfTextBox @ref="BioTextbox" CssClass="w-100" Placeholder="Short bio" Type="InputType.Text" Created="@(async args => { if (BioTextbox != null) await BioTextbox.AddIconAsync("prepend", "e-icons e-rename border-0"); })" aria-label="enter a short bio" role="textbox"></SfTextBox>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-top border-light-subtle"></div>
+                    <div class="d-flex flex-column flex-sm-row gap-4 gap-sm-1 fw-normal">
+                        <div class="d-flex flex-column gap-1 small" style="width: 18rem;">
+                            <p class="d-flex align-items-center gap-1 fw-medium text-body mb-0">Editor view options <span class="e-icons e-circle-info text-body-secondary small"></span></p>
+                            <p class="mb-0 small col col-sm-9">Manage visibility and error detection in the editor.</p>
+                        </div>
+                        <div class="d-flex flex-column gap-3">
+                            <div class="small d-flex flex-column gap-1 w-100">
+                                <SfCheckBox Checked="true" Label="Truncate long transactions in the editor" aria-label="truncate long transactions in the editor" role="checkbox"></SfCheckBox>
+                                <p class="small ms-4 mb-0">Shorten lengthy records for better readability.</p>
+                            </div>
+                            <div class="small d-flex flex-column gap-1 w-100">
+                                <SfCheckBox Checked="true" Label="Show spelling and grammar errors in the editor" aria-label="show spelling and grammar errors in the editor" role="checkbox"></SfCheckBox>
+                                <p class="small ms-4 mb-0">Detect and highlight mistakes automatically.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="border-top border-light-subtle"></div>
+                    <div class="d-flex flex-column gap-5 gap-sm-4">
+                        <div class="d-flex justify-content-between gap-1 justify-content-sm-start align-items-center">
+                            <p class="small fw-medium flex-shrink-1 text-body mb-0" style="width: 18rem;">Translation view options</p>
+                            <SfSwitch CssClass="e-small" Checked="true" aria-label="enable translation view" role="switch"></SfSwitch>
+                        </div>
+                        <div class="d-flex gap-3 align-self-end">
+                            <SfButton CssClass="e-outline" Type="button" Disabled="true" aria-label="cancel" role="button">Cancel</SfButton>
+                            <SfButton CssClass="e-primary" Type="button" aria-label="save changes" role="button">Save changes</SfButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

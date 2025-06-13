@@ -1,0 +1,94 @@
+﻿@page "/blocks/rating-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="pt-4" style="min-height:36rem">
+            <div class="w-full sm:max-w-sm mx-auto p-6 mt-4 border-0 sm:!rounded-lg sm:!border rounded-none bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500">
+                <div class="flex items-center gap-3">
+                    <div class="bg-indigo-100 dark:bg-sky-600 h-8 w-8 rounded-full flex items-center justify-center"><span class="e-icons e-star-filled text-primary-600 dark:text-primary-400"></span></div>
+                    <div class="text-lg font-semibold text-gray-900 dark:text-white">How was your experience?</div>
+                </div>
+                    <p class="text-sm mt-4 text-gray-700 dark:text-gray-100">Let us know how our platform is working for you.Your feedback helps us enhance features, improve performance and provide a better experience!</p>
+                    <div class="flex justify-center mt-2">
+                        <SfRating EnableSingleSelection="true" ItemsCount="5" EnableAnimation=false>
+                            <EmptyTemplate Context="context">
+                                <div class="mx-2">
+                                    @switch (context.Index)
+                                    {
+                                        case 0:
+                                            <span class="e-avatar e-avatar-circle text-sm bg-red-100 text-gray-800 dark:bg-red-800 dark:text-white">1</span>;
+                                            break;
+                                        case 1:
+                                            <span class="e-avatar e-avatar-circle text-sm bg-red-50 text-gray-800 dark:bg-red-900 dark:text-white">2</span>;
+                                            break;
+                                        case 2:
+                                            <span class="e-avatar e-avatar-circle text-sm bg-orange-100 text-gray-800 dark:bg-orange-800 dark:text-white">3</span>;
+                                            break;
+                                        case 3:
+                                            <span class="e-avatar e-avatar-circle text-sm bg-green-100 text-gray-800 dark:bg-green-800 dark:text-white">4</span>;
+                                            break;
+                                        case 4:
+                                            <span class="e-avatar e-avatar-circle text-sm bg-green-300 text-gray-800 dark:bg-green-700 dark:text-white">5</span>;
+                                            break;
+                                    }
+                                </div>
+                            </EmptyTemplate>
+                        </SfRating>
+                    </div>
+                    <div class="mt-4">
+                        <SfButton CssClass="e-primary e-block" Content="Submit" Type="submit" aria-label="submit your feedback" role="button"></SfButton>
+                    </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="mx-auto border p-4 rounded-3 bg-body" style="max-width: 384px;">
+                <div class="d-flex align-items-center">
+                    <div class="bg-primary-subtle text-primary rounded-circle d-flex align-items-center justify-content-center" style="width: 32px; height: 32px;">
+                        <span class="e-icons e-star-filled text-primary"></span>
+                    </div>
+                    <div class="fs-5 fw-semibold text-body ms-3">How was your experience?</div>
+                </div>
+                <p class="small text-body-secondary mt-3 mb-1">Let us know how our platform is working for you. Your feedback helps us enhance features, improve performance and provide a better experience!</p>
+                <div class="d-flex justify-content-center mt-2">
+                    <SfRating EnableSingleSelection="true" ItemsCount="5" EnableAnimation=false>
+                        <EmptyTemplate Context="context">
+                            <div class="mx-2">
+                                @switch (context.Index)
+                                {
+                                    case 0:
+                                        <span class="e-avatar e-avatar-circle bg-danger-subtle text-danger-emphasis">1</span>;
+                                        break;
+                                    case 1:
+                                        <span class="e-avatar e-avatar-circle bg-danger-subtle text-danger-emphasis">2</span>;
+                                        break;
+                                    case 2:
+                                        <span class="e-avatar e-avatar-circle bg-warning-subtle text-warning-emphasis">3</span>;
+                                        break;
+                                    case 3:
+                                        <span class="e-avatar e-avatar-circle bg-success-subtle text-success-emphasis">4</span>;
+                                        break;
+                                    case 4:
+                                        <span class="e-avatar e-avatar-circle bg-success-subtle text-success-emphasis">5</span>;
+                                        break;
+                                }
+                            </div>
+                        </EmptyTemplate>
+                    </SfRating>
+                </div>
+                <div class="mt-3">
+                    <SfButton CssClass="e-primary e-block" Content="Submit" Type="submit" aria-label="submit your feedback" role="button"></SfButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}

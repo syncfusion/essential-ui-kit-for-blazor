@@ -1,0 +1,54 @@
+﻿@page "/blocks/rating-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="pt-4" style="min-height:36rem">
+            <div class="mx-auto max-w-sm p-4 sm:!rounded-lg sm:!border rounded-none border-0 border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-800 text-center">
+                <h3 class="text-base font-semibold text-gray-900 dark:text-white">Customer reviews</h3>
+                <div class="group hover:shadow-md">
+                    <SfRating Value="4.0" ShowLabel=true>
+                        <EmptyTemplate>
+                            <span class="sf-icon-star-filled-01 text-2xl text-gray-300 dark:text-gray-500"></span>
+                        </EmptyTemplate>
+                        <FullTemplate>
+                            <span class="sf-icon-star-filled-01 text-2xl text-amber-300"></span>
+                        </FullTemplate>
+                        <LabelTemplate Context="data">
+                            <p class="!text-gray-900 dark:!text-white text-sm font-medium">@($"{data} / 5")</p>
+                        </LabelTemplate>
+                    </SfRating>
+                </div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">based on 135 ratings</p>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="pt-3" style="min-height: 36rem;">
+            <div class="container">
+                <div class="mx-auto py-3 rounded-3 text-center border bg-body" style="max-width: 384px;">
+                   <h3 class="fs-6 fw-semibold text-body">Customer reviews</h3>
+                    <SfRating Value="4.0" ShowLabel="true">
+                        <EmptyTemplate>
+                            <span class="sf-icon-star-02 fs-4 text-body-secondary"></span>
+                        </EmptyTemplate>
+                        <FullTemplate>
+                            <span class="sf-icon-star-filled-01 fs-4 text-warning"></span>
+                        </FullTemplate>
+                        <LabelTemplate Context="data">
+                            <p class="fw-medium text-body mb-1">@($"{data} / 5")</p>
+                        </LabelTemplate>
+                    </SfRating>
+                    <p class="text-body-secondary small mb-0">based on 135 ratings</p>
+                </div>
+            </div>
+        </div>
+    </section>
+}

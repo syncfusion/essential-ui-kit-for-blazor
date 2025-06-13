@@ -1,0 +1,27 @@
+﻿::deep #dialog-container .e-dialog .e-dlg-header-content {
+    border-bottom-width: 0;
+}
+
+::deep #dialog-container .e-dialog .e-footer-content {
+    border-top: inherit;
+    border-top-width: 1px;
+}
+
+::deep #dialog-container .e-file-select-wrap {
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+::deep #dialog-container .e-upload {
+    border: none;
+}
+
+::deep #dialog-container .e-file-drop {
+    display: flex !important;
+    align-items: center !important;
+}
+
+::deep #dialog-container .e-upload .e-upload-files .e-upload-file-list {
+    border-bottom: 0px !important;
+}

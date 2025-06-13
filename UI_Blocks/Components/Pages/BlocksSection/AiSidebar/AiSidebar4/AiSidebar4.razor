@@ -1,0 +1,150 @@
+﻿@page "/blocks/ai-sidebar-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div id="interactive-sidebar" style="height: 861px;">
+            <SfSidebar @key="IsMobileView" class="bg-gray-50 dark:bg-gray-700" Width="256px" IsOpen="@IsSidebarOpen" Type="SidebarType.Push" CloseOnDocumentClick="false" ShowBackdrop="@IsBackdropVisible" role="complementary">
+                <div class="flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex items-center px-4 py-3">
+                            <span class="e-avatar e-avatar-circle e-avatar-small bg-primary-600 dark:bg-primary-400">
+                                <span class="e-icons e-ai-chat e-medium !text-white dark:!text-black"></span>
+                            </span>
+                            <span class="ml-3 text-sm font-semibold text-gray-900 dark:text-white">Fusion AI</span>
+                        </div>
+                        <div class="mt-1 px-3">
+                            <div class="e-input-group">
+                                <input class="e-input" type="text" placeholder="Search..." aria-label="search" role="textbox" />
+                                <span class="e-input-group-icon e-icons e-search"></span>
+                            </div>
+                        </div>
+                        <div class="px-3 mt-3">
+                            <SfListView CssClass="e-list-template border-0" DataSource="@ChatHistory" aria-label="chat history list" role="list">
+                                <ListViewFieldSettings TValue="ChatItem" GroupBy="Category"></ListViewFieldSettings>
+                                <ListViewTemplates TValue="ChatItem">
+                                    <Template Context="data">
+                                        <div class="group e-list-wrapper flex items-center justify-between !px-3 !h-10">
+                                            @if (string.IsNullOrEmpty(data.Category))
+                                            {
+                                                <div class="flex items-center gap-3">
+                                                    <span class="e-icons @data.FontIcon text-base"></span>
+                                                    <span class="text-base lg:text-xs">@data.Message</span>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <span class="flex-1 truncate text-base lg:text-xs" title="@data.Message">@data.Message</span>
+                                                <div class="relative">
+                                                    <span id="target" class="e-icons e-more-horizontal-1 e-medium hidden group-hover:block ml-3" @onclick="@(args => ContextMenu.Open(args.ClientX, args.ClientY))"></span>
+                                                </div>
+                                                <SfContextMenu @ref="ContextMenu" Target="#target" TValue="MenuItem" aria-label="message options menu" role="menu">
+                                                    <MenuItems>
+                                                        <MenuItem Text="Pin" IconCss="sf-icon-push-pin"></MenuItem>
+                                                        <MenuItem Text="Delete" IconCss="e-icons e-trash"></MenuItem>
+                                                    </MenuItems>
+                                                </SfContextMenu>
+                                            }
+                                        </div>
+                                    </Template>
+                                    <GroupTemplate Context="data">
+                                        @if (!string.IsNullOrEmpty(data.Items[0].Category))
+                                        {
+                                            <div class="flex items-center gap-3 font-medium text-gray-700 dark:text-gray-300">
+                                                <span class="e-icons @data.Items[0].FontIcon text-base"></span>
+                                                <span>@data.Items[0].Category.ToUpper()</span>
+                                            </div>
+                                        }
+                                    </GroupTemplate>
+                                </ListViewTemplates>
+                            </SfListView>
+                        </div>
+                    </div>
+                    <div class="pb-4 px-3">
+                        <SfButton CssClass="e-primary w-full" IconCss="e-icons e-plus e-medium" Type="button" Content="Start new chat" aria-label="start new chat" role="button"></SfButton>
+                    </div>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 top-0 left-0 absolute">
+        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div id="interactive-sidebar" style="height: 861px;">
+            <SfSidebar @key="IsMobileView" class="bg-body border-light-subtle" Width="256px" IsOpen="@IsSidebarOpen" Type="SidebarType.Push" CloseOnDocumentClick="false" ShowBackdrop="@IsBackdropVisible" role="complementary">
+                <div class="d-flex flex-column justify-content-between h-100">
+                    <div>
+                        <div class="d-flex align-items-center p-3 fs-6">
+                            <span class="e-avatar e-avatar-circle e-avatar-small bg-primary">
+                                <span class="e-icons e-ai-chat e-medium text-white"></span>
+                            </span>
+                            <span class="ms-2 ps-1 small fw-bold text-body">Fusion AI</span>
+                        </div>
+                        <div class="px-3">
+                            <div class="e-input-group">
+                                <input class="e-input" type="text" placeholder="Search..." aria-label="search" role="textbox" />
+                                <span class="e-input-group-icon e-icons e-search border-0"></span>
+                            </div>
+                        </div>
+                        <div class="px-3 mt-3">
+                            <SfListView CssClass="e-list-template border-0" DataSource="@ChatHistory" aria-label="chat history list" role="list">
+                                <ListViewFieldSettings TValue="ChatItem" GroupBy="Category"></ListViewFieldSettings>
+                                <ListViewTemplates TValue="ChatItem">
+                                    <Template Context="data">
+                                        <div class="e-list-wrapper d-flex align-items-center justify-content-between px-3 py-2 hover-group">
+                                            @if (string.IsNullOrEmpty(data.Category))
+                                            {
+                                                <div class="d-flex align-items-center gap-2 fs-6">
+                                                    <span class="e-icons @data.FontIcon fs-6"></span>
+                                                    <span class="small ps-1">@data.Message</span>
+                                                </div>
+                                            }
+                                            else
+                                            {
+                                                <span class="text-truncate flex-grow-1 w-100" title="@data.Message">@data.Message</span>
+                                                <span id="target" class="e-icons e-more-horizontal-1 d-none context-menu fs-6 ms-1" @onclick="@(args => ContextMenu.Open(args.ClientX, args.ClientY))"></span>
+                                                <SfContextMenu @ref="ContextMenu" Target="#target" TValue="MenuItem" aria-label="message options menu" role="menu">
+                                                    <MenuItems>
+                                                        <MenuItem Text="Pin" IconCss="sf-icon-push-pin"></MenuItem>
+                                                        <MenuItem Text="Delete" IconCss="e-icons e-trash"></MenuItem>
+                                                    </MenuItems>
+                                                </SfContextMenu>
+                                            }
+                                        </div>
+                                    </Template>
+                                    <GroupTemplate Context="data">
+                                        @if (!string.IsNullOrEmpty(data.Items[0].Category))
+                                        {
+                                            <div class="d-flex align-items-center gap-2 fs-6 px-1">
+                                                <span class="e-icons @data.Items[0].FontIcon fs-6 text-secondary"></span>
+                                                <span class="small ps-1 text-body-secondary fw-normal">@data.Items[0].Category.ToUpper()</span>
+                                            </div>
+                                        }
+                                    </GroupTemplate>
+                                </ListViewTemplates>
+                            </SfListView>
+                        </div>
+                    </div>
+                    <div class="pb-3 px-3">
+                        <SfButton CssClass="e-primary w-100" IconCss="e-icons e-plus e-medium" Type="button" Content="Start new chat" aria-label="start new chat" role="button"></SfButton>
+                    </div>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 position-absolute top-0 start-0">
+        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

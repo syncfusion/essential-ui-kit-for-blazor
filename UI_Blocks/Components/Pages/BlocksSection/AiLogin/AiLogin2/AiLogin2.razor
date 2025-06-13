@@ -1,0 +1,89 @@
+﻿@page "/blocks/ai-login-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="relative flex items-center justify-center h-screen">
+            <div class="absolute top-0 left-0" style="background-image: url('assets/images/ai/login/ai-login/top-curve.svg'); background-size: contain; background-repeat: no-repeat; height: 28%; width: 100%;"></div>
+            <div class="w-full max-w-md rounded-lg px-4 py-14 md:px-6 md:py-20">
+                <div class="flex justify-center mb-4">
+                    <h2 class="text-center text-gray-900 dark:text-white text-2xl font-semibold">Login</h2>
+                </div>
+                <p class="text-base text-center font-normal text-gray-900 dark:text-white">Please enter your login Id and password</p>
+                <form action="#" class="mt-4 mb-6" onsubmit="event.preventDefault();">
+                    <div class="mb-4">
+                        <SfTextBox @ref="UserName" CssClass="e-normal text-base text-gray-500 !border-0 shadow-sm dark:bg-gray-700" Type="InputType.Email" Placeholder="Username or email" FloatLabelType="FloatLabelType.Never" Created="@(args => UserName?.AddIconAsync("prepend", "e-icons e-user e-small"))" aria-label="enter your email address" role="textbox"></SfTextBox>
+                    </div>
+                    <div class="mb-3 relative">
+                        <SfTextBox @ref="Password" CssClass="e-normal text-base text-gray-500 !border-0 shadow-sm bg-none dark:bg-gray-700" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" Created="@(args => Password?.AddIconAsync("prepend", "e-icons e-lock e-small"))" aria-label="enter your email password" role="textbox"></SfTextBox>
+                    </div>
+                    <div class="flex items-center justify-end mb-6">
+                        <a href="javascript:void(0);" class="font-normal text-xs text-primary-600 dark:text-primary-400" aria-label="forgot password?" role="link">Forgot password?</a>
+                    </div>
+                    <div class="mt-6">
+                        <SfButton CssClass="w-full e-primary e-btn" Onclick="@((MouseEventArgs args) => { })" Type="submit" aria-label="login" role="button">Login</SfButton>
+                    </div>
+                </form>
+                <div class="flex items-center justify-center gap-4 flex-col">
+                    <SfButton CssClass="w-full flex items-center justify-center px-4 py-1 e-outline" Type="submit" aria-label="sign in with google account" role="button">
+                        <img class="w-4" src="assets/images/common/brand-logos/png/google.png" alt="google logo" />
+                        <span class="text-sm font-medium pl-1.5">Continue with Google</span>
+                    </SfButton>
+                </div>
+                <div>
+                    <span class="flex items-center justify-center gap-1 font-normal text-xs mt-4">
+                        <p class="text-center text-gray-900 dark:text-white">Not a member yet?</p>
+                        <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400" aria-label="register" role="link">Register</a>
+                    </span>
+                </div>
+            </div>
+            <div class="absolute bottom-0 right-0" style="background-image: url('assets/images/ai/login/ai-login/bottom-curve.svg'); background-position: bottom right; background-size: contain; background-repeat: no-repeat; height: 28%; width: 100%;"> </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="position-relative d-flex justify-content-center align-items-center min-vh-100">
+            <div class="position-absolute top-0 start-0" style="background-image: url('assets/images/ai/login/ai-login/top-curve.svg'); background-size: contain; background-repeat: no-repeat; height: 28%; width: 100%;"></div>
+            <div class="w-100 rounded-lg px-3 py-5 py-md-5" style="max-width: 448px;">
+                <div class="d-flex justify-content-center mb-3">
+                    <h2 class="text-center text-body fs-4 fw-bold">Login</h2>
+                </div>
+                <p class="fs-6 text-center fw-normal text-body">Please enter your login Id and password</p>
+                <form action="#" class="mt-3 mb-3" onsubmit="event.preventDefault();">
+                    <div class="mb-3">
+                        <SfTextBox @ref="UserName" CssClass="e-normal small text-secondary !border-0 shadow-sm bg-body-tertiary" Type="InputType.Email" Placeholder="Username or email" FloatLabelType="FloatLabelType.Never" Created="@(args => UserName?.AddIconAsync("prepend", "e-icons e-user e-small"))" aria-label="enter your email address" role="textbox"></SfTextBox>
+                    </div>
+                    <div class="mb-2 position-relative">
+                        <SfTextBox @ref="Password" CssClass="e-normal small text-secondary !border-0 shadow-sm bg-body-tertiary" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" Created="@(args => Password?.AddIconAsync("prepend", "e-icons e-lock e-small"))" aria-label="enter your email password" role="textbox"></SfTextBox>
+                    </div>
+                    <div class="d-flex align-items-center justify-content-end mb-3">
+                        <a href="javascript:void(0);" class="fw-normal small text-primary text-decoration-none" aria-label="forgot password?" role="link">Forgot password?</a>
+                    </div>
+                    <div class="mt-3">
+                        <SfButton CssClass="w-100 e-primary e-btn" Onclick="@((MouseEventArgs args) => { })" Type="submit" aria-label="login" role="button">Login</SfButton>
+                    </div>
+                </form>
+                <div class="d-flex align-items-center justify-content-center gap-3 flex-column">
+                    <SfButton CssClass="w-100 d-flex align-items-center justify-content-center px-3 py-1 e-outline" Type="submit" aria-label="sign in with google account" role="button">
+                        <img src="assets/images/common/brand-logos/png/google.png" width="18px" alt="google logo" />
+                        <span class="fw-normal ps-1">Continue with Google</span>
+                    </SfButton>
+                </div>
+                <div>
+                    <span class="d-flex align-items-center justify-content-center gap-1 fw-normal small mt-3">
+                        <p class="text-center text-body mb-0">Not a member yet?</p>
+                        <a href="javascript:void(0);" class="text-primary text-decoration-none" aria-label="register" role="link">Register</a>
+                    </span>
+                </div>
+            </div>
+            <div class="position-absolute bottom-0 end-0" style="background-image: url('assets/images/ai/login/ai-login/bottom-curve.svg'); background-position: bottom right; background-size: contain; background-repeat: no-repeat; height: 28%; width: 100%;"></div>
+        </div>
+    </section>
+}
+

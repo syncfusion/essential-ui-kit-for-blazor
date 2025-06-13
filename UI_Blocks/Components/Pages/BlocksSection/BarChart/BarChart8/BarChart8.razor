@@ -1,0 +1,188 @@
+﻿@page "/blocks/bar-chart-8"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 476px;">
+                <div class="flex justify-between items-center pl-4">
+                    <div>
+                        <h1 class="text-base font-medium mb-2 dark:text-white">Stock Report</h1>
+                        <p class="text-sm font-normal text-gray-500">Assets you have in your account</p>
+                    </div>
+                    <SfButton CssClass="hidden sm:block" Content="View Report" type="button" aria-label="view report" role="button"></SfButton>
+                    <SfButton CssClass="block sm:hidden e-outline" IconCss="e-icons e-notes" type="button" aria-label="view report" role="button"></SfButton>
+                </div>
+                <div class="flex items-center justify-between mt-4 mb-3">
+                    <h1 class="text-xl pl-4 font-semibold dark:text-white">$178,975</h1>
+                    <div class="flex items-center gap-2.5">
+                        <div class="flex items-center gap-1 text-green-700 text-xs font-medium"><span class="e-icons e-arrow-up"></span>6.75%</div>
+                        <p class="text-xs font-normal text-gray-500">This Month</p>
+                    </div>
+                </div>
+                <div>
+                    <SfChart Width="100%" Height="80px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartBorder Width="0"></ChartBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                            <ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@BarChartData" XName="Month" YName="MoneyMarket" Type="ChartSeriesType.StackingBar100" Fill="#267DDA" Width="3" ColumnWidth="1" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle">
+                                <ChartSeriesBorder Width="3" Color="@(CurrentTheme == "tailwind-dark" ? "black" : "#ffffff")"></ChartSeriesBorder>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@BarChartData" XName="Month" YName="Stocks" Type="ChartSeriesType.StackingBar100" Fill="#01A8B5" Width="3" ColumnWidth="1" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle">
+                                <ChartSeriesBorder Width="3" Color="@(CurrentTheme == "tailwind-dark" ? "black" : "#ffffff")"></ChartSeriesBorder>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@BarChartData" XName="Month" YName="Bonds" Type="ChartSeriesType.StackingBar100" Fill="#FFB900" Width="2" ColumnWidth="1" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle">
+                                <ChartSeriesBorder Width="2" Color="@(CurrentTheme == "tailwind-dark" ? "black" : "#ffffff")"></ChartSeriesBorder>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartLegendSettings Visible="true" EnableHighlight="true" ShapeHeight="9" ShapeWidth="9"></ChartLegendSettings>
+                    </SfChart>
+                </div>
+                <div class="flex flex-col gap-4 pl-4">
+                    <div class="flex justify-between items-center text-gray-500">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full" style="background-color: #267DDA;"></span>
+                            <p class="text-sm font-normal">Money Market</p>
+                        </div>
+                        <div class="flex items-center gap-8">
+                            <p class="text-sm font-medium">$71,590</p>
+                            <span class="e-badge e-badge-primary">40%</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-gray-500">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full" style="background-color: #01A8B5;"></span>
+                            <p class="text-sm font-normal">Stocks</p>
+                        </div>
+                        <div class="flex items-center gap-8">
+                            <p class="text-sm font-medium">$50,113</p>
+                            <span class="e-badge e-badge-info">28%</span>
+                        </div>
+                    </div>
+                    <div class="flex justify-between items-center text-gray-500">
+                        <div class="flex items-center gap-2">
+                            <span class="w-2 h-2 rounded-full" style="background-color: #FFB900;"></span>
+                            <p class="text-sm font-normal">Bonds</p>
+                        </div>
+                        <div class="flex items-center gap-8">
+                            <p class="text-sm font-medium">$57,272</p>
+                            <span class="e-badge e-badge-warning">32%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center p-4 p-sm-6">
+            <div class="w-100" style="max-width: 476px;">
+                <div class="d-flex justify-content-between align-items-center ps-4">
+                    <div>
+                        <h1 class="fs-6 fw-medium mb-2">Stock Report</h1>
+                        <p class="small text-body-secondary">Assets you have in your account</p>
+                    </div>
+                    <SfButton CssClass="e-outline d-none d-sm-block" Content="View Report" type="button" aria-label="view report" role="button"></SfButton>
+                    <SfButton CssClass="d-sm-none e-outline" IconCss="e-icons e-description" type="button" aria-label="view report" role="button"></SfButton>
+                </div>
+                <div class="d-flex align-items-center justify-content-between mt-4 mb-3">
+                    <h1 class="fs-5 ps-4 fw-semibold">$178,975</h1>
+                    <div class="d-flex align-items-center gap-2.5">
+                        <div class="d-flex align-items-center me-2 text-success small"><span class="e-icons e-arrow-up"></span>6.75%</div>
+                        <span class="small text-body-secondary">This Month</span>
+                    </div>
+                </div>
+                <div>
+                    <SfChart Width="100%" Height="80px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <ChartArea>
+                            <ChartBorder Width="0"></ChartBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                            <ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@BarChartData" XName="Month" YName="MoneyMarket" Type="ChartSeriesType.StackingBar100" Fill="#267DDA" Width="3" ColumnWidth="1" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle">
+                                <ChartSeriesBorder Width="3" Color="@(CurrentTheme == "bootstrap5.3-dark" ? "black" : "#ffffff")"></ChartSeriesBorder>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@BarChartData" XName="Month" YName="Stocks" Type="ChartSeriesType.StackingBar100" Fill="#01A8B5" Width="3" ColumnWidth="1" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle">
+                                <ChartSeriesBorder Width="3" Color="@(CurrentTheme == "bootstrap5.3-dark" ? "black" : "#ffffff")"></ChartSeriesBorder>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@BarChartData" XName="Month" YName="Bonds" Type="ChartSeriesType.StackingBar100" Fill="#FFB900" Width="2" ColumnWidth="1" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle">
+                                <ChartSeriesBorder Width="2" Color="@(CurrentTheme == "bootstrap5.3-dark" ? "black" : "#ffffff")"></ChartSeriesBorder>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartLegendSettings Visible="true" EnableHighlight="true" ShapeHeight="9" ShapeWidth="9"></ChartLegendSettings>
+                    </SfChart>
+                </div>
+                <div class="d-flex flex-column gap-3 ps-4">
+                    <div class="d-flex justify-content-between align-items-center text-body-secondary">
+                        <div class="d-flex align-items-center gap-2">
+                            <span style="background-color: #267DDA; width: 10px; height: 10px; border-radius: 50%;"></span>
+                            <span class="small">Money Market</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-4">
+                            <span class="small fw-medium">$71,590</span>
+                            <span class="e-badge e-badge-primary">40%</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center text-body-secondary">
+                        <div class="d-flex align-items-center gap-2">
+                            <span style="background-color: #01A8B5; width: 10px; height: 10px; border-radius: 50%;"></span>
+                            <span class="small">Stocks</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-4">
+                            <span class="small fw-medium">$50,113</span>
+                            <span class="e-badge e-badge-info">28%</span>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-between align-items-center text-body-secondary">
+                        <div class="d-flex align-items-center gap-2">
+                            <span style="background-color: #FFB900; width: 10px; height: 10px; border-radius: 50%;"></span>
+                            <span class="small">Bonds</span>
+                        </div>
+                        <div class="d-flex align-items-center gap-4">
+                            <span class="small fw-medium">$57,272</span>
+                            <span class="e-badge e-badge-warning">32%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

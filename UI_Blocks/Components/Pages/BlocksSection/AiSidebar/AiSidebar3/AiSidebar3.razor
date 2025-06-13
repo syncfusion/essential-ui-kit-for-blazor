@@ -1,0 +1,110 @@
+﻿@page "/blocks/ai-sidebar-3"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div id="chat-sidebar" style="height: 766px;">
+            <SfSidebar @key="IsMobileView" class="bg-gray-50 dark:bg-gray-700" Width="@Width" IsOpen="@IsSidebarOpen" Type="SidebarType.Push" CloseOnDocumentClick="false" ShowBackdrop="@IsBackdropVisible" EnableDock="true" role="complementary">
+                <div class="flex h-full">
+                    <div class="px-2 py-6 flex flex-col items-center h-full border-r border-gray-200 dark:border-gray-600" style="width:@DockWidth">
+                        <img src="assets/images/ai/sidebar/two-columns-sidebar/logo.svg" alt="logo" />
+                        <div class="flex flex-col gap-4 mt-6">
+                            <SfButton CssClass="e-icons e-comment-add e-medium e-flat px-2" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="add comment" role="button"></SfButton>
+                            <SfButton CssClass="e-icons e-user e-medium e-flat px-2" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="user profile" role="button"></SfButton>
+                            <SfButton CssClass="e-icons e-comment-show e-medium e-flat px-2 e-active" Type="button" OnClick="() => IsSidebarOpen = true" aria-label="message" role="button"></SfButton>
+                            <SfButton CssClass="e-icons e-search e-medium e-flat px-2" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="search" role="button"></SfButton>
+                            <SfButton CssClass="e-icons e-settings e-medium e-flat px-2" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="settings" role="button"></SfButton>
+                        </div>
+                    </div>
+                    @if (IsSidebarOpen)
+                    {
+                        <div class="flex flex-col w-64 pt-8 h-full">
+                            <div class="flex items-center px-5 gap-3">
+                                <h4 class="text-base lg:text-sm font-semibold text-gray-900 dark:text-white">Chats</h4>
+                                <span class="e-badge e-badge-pill e-badge-primary !px-1">24</span>
+                            </div>
+                            <div class="px-5 pt-5 pb-4">
+                                <div class="e-input-group">
+                                    <input class="e-input" type="text" placeholder="Search" aria-label="search" role="textbox" />
+                                    <span class="e-input-group-icon e-icons e-search"></span>
+                                </div>
+                            </div>
+                            <SfListView CssClass="border-0 e-list-template" DataSource="@ChatHistory" aria-label="chat history list" role="list">
+                                <ListViewFieldSettings TValue="ChatItem" Text="Message"></ListViewFieldSettings>
+                                <ListViewTemplates TValue="ChatItem">
+                                    <Template Context="data">
+                                        <div class="e-list-wrapper !px-5 !py-3">
+                                            <div class="font-medium text-gray-900 dark:text-white text-sm">@data.Message</div>
+                                            <div class="text-xs text-gray-700 dark:text-gray-300 mt-2">@data.Date</div>
+                                        </div>
+                                    </Template>
+                                </ListViewTemplates>
+                            </SfListView>
+                        </div>
+                    }
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 top-0 left-0 absolute">
+        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div id="chat-sidebar" style="height: 766px;">
+            <SfSidebar @key="IsMobileView" class="bg-body border-light-subtle" Width="@Width" IsOpen="@IsSidebarOpen" Type="SidebarType.Push" CloseOnDocumentClick="false" ShowBackdrop="@IsBackdropVisible" EnableDock="true" role="complementary">
+                <div class="d-flex h-100">
+                    <div class="px-2 py-4 d-flex flex-column align-items-center" style="width: @DockWidth">
+                        <img src="assets/images/ai/sidebar/two-columns-sidebar/logo.svg" alt="logo" />
+                        <div class="d-flex flex-column gap-2 mt-2">
+                            <SfButton CssClass="e-icons e-comment-add e-medium e-flat" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="add comment" role="button"></SfButton>
+                            <SfButton CssClass="e-icons e-user e-medium e-flat" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="user profile" role="button"></SfButton>
+                            <SfButton CssClass="e-icons e-comment-show e-medium e-flat e-active" Type="button" OnClick="() => IsSidebarOpen = true" aria-label="message" role="button"></SfButton>
+                            <SfButton CssClass="e-icons e-search e-medium e-flat" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="search" role="button"></SfButton>
+                            <SfButton CssClass="e-icons e-settings e-medium e-flat" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="settings" role="button"></SfButton>
+                        </div>
+                    </div>
+                    @if (IsSidebarOpen)
+                    {
+                        <div class="d-flex flex-column pt-4 border-start border-light-subtle" style="width: 256px;">
+                            <div class="d-flex align-items-center px-3 gap-2 my-1">
+                                <h4 class="fs-5 mb-0 fw-medium text-body">Chats</h4>
+                                <span class="e-badge e-badge-pill e-badge-primary px-1">24</span>
+                            </div>
+                            <div class="px-3 py-3">
+                                <div class="e-input-group">
+                                    <input class="e-input" type="text" placeholder="Search" aria-label="search" role="textbox" />
+                                    <span class="e-input-group-icon e-icons e-search border-0"></span>
+                                </div>
+                            </div>
+                            <SfListView CssClass="border-0 e-list-template rounded-0" DataSource="@ChatHistory" aria-label="chat history list" role="list">
+                                <ListViewFieldSettings TValue="ChatItem" Text="Message"></ListViewFieldSettings>
+                                <ListViewTemplates TValue="ChatItem">
+                                    <Template Context="data">
+                                        <div class="e-list-wrapper">
+                                            <div class="fw-medium">@data.Message</div>
+                                            <div class="small mt-2">@data.Date</div>
+                                        </div>
+                                    </Template>
+                                </ListViewTemplates>
+                            </SfListView>
+                        </div>
+                    }
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 position-absolute top-0 start-0">
+        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

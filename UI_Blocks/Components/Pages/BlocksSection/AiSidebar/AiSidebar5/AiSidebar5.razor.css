@@ -1,0 +1,4 @@
+::deep #search-history .e-list-item {
+    border-bottom: none !important;
+    border-radius: 12px;
+}

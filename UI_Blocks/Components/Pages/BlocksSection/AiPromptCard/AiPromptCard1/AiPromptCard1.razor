@@ -1,0 +1,120 @@
+﻿@page "/blocks/ai-prompt-card-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-gray-50 dark:bg-gray-900">
+		<div class="py-20 px-4 sm:px-0 m-auto" style="max-width: 572px;">
+			<div class="grid gap-6 sm:grid-cols-2 sm:gap-3">
+				<div class="e-card e-card-horizontal rounded-2xl gap-3 shadow-none">
+					<div class="e-card-content flex items-center justify-between !pt-3 !px-4 text-center">
+						<div class="flex items-center">
+							<span class="e-avatar indent-0 rounded-lg mr-4 text-orange-700 bg-orange-50 dark:bg-orange-900 dark:text-orange-500">
+								<span class="e-icons text-xl e-image"></span>
+							</span>
+							<h2 class="text-gray-900 text-base font-semibold dark:text-white">Image generation</h2>
+						</div>
+						<SfButton CssClass="e-flat" IconCss="e-icons e-arrow-right" aria-label="go to next" role="button"></SfButton>
+					</div>
+				</div>
+				<div class="e-card e-card-horizontal rounded-2xl gap-3 shadow-none">
+					<div class="e-card-content flex items-center justify-between !pt-3 !px-4 text-center">
+						<div class="flex items-center">
+							<span class="e-avatar indent-0 rounded-lg mr-4 text-red-600 bg-red-50 dark:bg-red-900 dark:text-red-400">
+								<span class="e-icons text-xl e-video"></span>
+							</span>
+							<h2 class="text-gray-900 text-base font-semibold dark:text-white">Video generation</h2>
+						</div>
+						<SfButton CssClass="e-flat" IconCss="e-icons e-arrow-right" aria-label="go to next" role="button"></SfButton>
+					</div>
+				</div>
+				<div class="e-card e-card-horizontal rounded-2xl gap-3 shadow-none">
+					<div class="e-card-content flex items-center justify-between !pt-3 !px-4 text-center">
+						<div class="flex items-center">
+							<span class="e-avatar indent-0 rounded-lg mr-4 text-cyan-700 bg-cyan-50 dark:bg-cyan-900 dark:text-sky-400">
+								<span class="e-icons text-xl e-audio"></span>
+							</span>
+							<h2 class="text-gray-900 text-base font-semibold dark:text-white">Audio generation</h2>
+						</div>
+						<SfButton CssClass="e-flat" IconCss="e-icons e-arrow-right" aria-label="go to next" role="button"></SfButton>
+					</div>
+				</div>
+				<div class="e-card e-card-horizontal rounded-2xl gap-3 shadow-none">
+					<div class="e-card-content flex items-center justify-between !pt-3 !px-4 text-center">
+						<div class="flex items-center">
+							<span class="e-avatar indent-0 rounded-lg mr-4 text-green-700 bg-green-50 dark:bg-green-900 dark:text-green-500">
+								<span class="e-icons text-xl e-volume"></span>
+							</span>
+							<h2 class="text-gray-900 text-base font-semibold dark:text-white">Code generation</h2>
+						</div>
+						<SfButton CssClass="e-flat" IconCss="e-icons e-arrow-right" aria-label="go to next" role="button"></SfButton>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body-tertiary">
+		<div class="py-5 px-3 mx-auto" style="max-width: 572px;">
+			<div class="row g-3">
+				<div class="col-sm-6">
+					<div class="e-card e-card-horizontal rounded-4 gap-3 shadow-none">
+						<div class="e-card-content d-flex align-items-center justify-content-between text-center">
+							<div class="d-flex align-items-center">
+								<span class="e-avatar rounded-3 text-warning bg-warning-subtle me-3">
+									<span class="e-icons fs-4 e-image"></span>
+								</span>
+								<h2 class="text-body-secondary fs-6 fw-semibold mb-0">Image generation</h2>
+							</div>
+							<SfButton CssClass="e-flat" IconCss="e-icons e-arrow-right" aria-label="go to next" role="button"></SfButton>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="e-card e-card-horizontal rounded-4 gap-3 shadow-none">
+						<div class="e-card-content d-flex align-items-center justify-content-between text-center">
+							<div class="d-flex align-items-center">
+								<span class="e-avatar rounded-3 text-danger bg-danger-subtle me-3">
+									<span class="e-icons fs-4 e-video"></span>
+								</span>
+								<h2 class="text-body-secondary fs-6 fw-semibold mb-0">Video generation</h2>
+							</div>
+							<SfButton CssClass="e-flat" IconCss="e-icons e-arrow-right" aria-label="go to next" role="button"></SfButton>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="e-card e-card-horizontal rounded-4 gap-3 shadow-none">
+						<div class="e-card-content d-flex align-items-center justify-content-between text-center">
+							<div class="d-flex align-items-center">
+								<span class="e-avatar text-info bg-info-subtle me-3">
+									<span class="e-icons fs-4 e-audio"></span>
+								</span>
+								<h2 class="text-body-secondary fs-6 fw-semibold mb-0">Audio generation</h2>
+							</div>
+							<SfButton CssClass="e-flat" IconCss="e-icons e-arrow-right" aria-label="go to next" role="button"></SfButton>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="e-card e-card-horizontal rounded-4 gap-3 shadow-none">
+						<div class="e-card-content d-flex align-items-center justify-content-between text-center">
+							<div class="d-flex align-items-center">
+								<span class="e-avatar rounded-3 text-success bg-success-subtle me-3">
+									<span class="e-icons fs-4 e-volume"></span>
+								</span>
+								<h2 class="text-body-secondary fs-6 fw-semibold mb-0">Code generation</h2>
+							</div>
+							<SfButton CssClass="e-flat" IconCss="e-icons e-arrow-right" aria-label="go to next" role="button"></SfButton>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}

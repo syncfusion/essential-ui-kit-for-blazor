@@ -1,0 +1,13 @@
+::deep #sidebar-navigation .e-list-item {
+    border-bottom: none !important;
+}
+
+::deep #nav-list .e-list-item.e-focused .e-badge {
+    background-color: #CFE2FF;
+    color: #0D6EFD;
+}
+
+::deep #support-list .e-list-item.e-focused .e-avatar {
+    background-color: #ffff !important;
+    color: #0D6EFD !important;
+}

@@ -1,0 +1,102 @@
+﻿@page "/blocks/bar-chart-6"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 790px;">
+                <div class="flex justify-between flex-col md:flex-row md:items-center md:justify-between gap-4">
+                    <h1 class="text-base font-medium text-gray-900 dark:text-white">Ticket Activity Overview</h1>
+                    <div class="flex flex-col sm:flex-row gap-4 items-start">
+                        <SfDropDownButton IconCss="e-icons e-day" Content="01/12/2024 - 07/12/2024" Type="button" aria-label="choose a date" role="button"></SfDropDownButton>
+                        <SfDropDownButton @ref="DropDownButton" Content="All Tickets" Type="button" aria-label="choose a ticket type" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="All Tickets"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Drafts"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Processed"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <SfChart Width="100%" Height="300px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelRotation="@XAxisLabelRotation">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Maximum="40" Interval="10">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@BarChartData" XName="Date" YName="DraftTickets" Name="Total Draft Tickets" Type="ChartSeriesType.Column" Fill="#9CA3AF" Width="2" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" ColumnSpacing="0.2"></ChartSeries>
+                            <ChartSeries DataSource="@BarChartData" XName="Date" YName="ProcessedTickets" Name="Tickets Processed" Type="ChartSeriesType.Column" Fill="#267DDA" Width="2" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" ColumnSpacing="0.2"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartLegendSettings Visible="true" EnableHighlight="true"></ChartLegendSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+     <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center p-4 p-sm-6">
+            <div class="w-100" style="max-width: 790px;">
+                <div class="d-flex justify-content-between flex-column flex-md-row align-items-md-center justify-content-md-between gap-3">
+                    <h1 class="fs-6 fw-medium">Ticket Activity Overview</h1>
+                    <div class="d-flex flex-column flex-sm-row gap-3 align-items-start mb-3">
+                        <SfDropDownButton CssClass="e-outline" IconCss="e-icons e-day" Content="01/12/2024 - 07/12/2024" Type="button" aria-label="choose a date" role="button"></SfDropDownButton>
+                        <SfDropDownButton @ref="DropDownButton" CssClass="e-outline" Content="All Tickets" Type="button" aria-label="choose a ticket type" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="All Tickets"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Drafts"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Processed"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <SfChart Width="100%" Height="300px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelRotation="@XAxisLabelRotation">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Maximum="40" Interval="10">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@BarChartData" XName="Date" YName="DraftTickets" Name="Draft Tickets" Type="ChartSeriesType.Column" Fill="#9CA3AF" Width="2" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" ColumnSpacing="0.2"></ChartSeries>
+                            <ChartSeries DataSource="@BarChartData" XName="Date" YName="ProcessedTickets" Name="Tickets Processed" Type="ChartSeriesType.Column" Fill="#267DDA" Width="2" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" ColumnSpacing="0.2"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartLegendSettings Visible="true" EnableHighlight="true"></ChartLegendSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>    
+}

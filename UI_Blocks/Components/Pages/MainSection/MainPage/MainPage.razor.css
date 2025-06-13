@@ -11,7 +11,7 @@
 .main-container-header {
     padding: 32px 35px;
     justify-content: space-between;
-    background: url("../../assets/images/sample-browser/main-banner.png") no-repeat 45% 100% / cover;
+    background: url("assets/images/sample-browser/main-banner.png") no-repeat 45% 100% / cover;
 }
 
 .figma-img {
@@ -159,7 +159,7 @@
 }
 
 .component-list-text {
-    margin: 9px 16px;
+    margin: 9px 8px 9px 16px;
     font-size: 16px;
     white-space: nowrap;
     overflow: hidden;
@@ -244,7 +244,7 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    width: 60%;    
+    width: 65%;    
     display: flex;
     align-items: center;
 }
@@ -252,7 +252,7 @@
 .block-count {
     color: #6b7280;
     text-align: end;
-    width: 40%;
+    width: 35%;
     display: flex;
     justify-content: flex-end;
 }
@@ -279,6 +279,14 @@
     .component-div {
         max-width: 1440px;
         margin: 0 auto;
+    }
+}
+
+@media (max-width: 1280px) {
+    .blocks-list {
+        grid-template-columns: repeat(2, 1fr);
+        flex: 0 0 73%;
+        max-width: 73%;
     }
 }
 

@@ -1,0 +1,58 @@
+﻿@page "/blocks/ai-notification-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div class="w-full px-4 sm:px-0 h-screen">
+            <div id="notification" class="mx-auto" style="max-width: 327px;">
+                <SfToast @ref="ToastInfo" CssClass="!w-full !m-0 !p-0" Width="100%" TimeOut="0" Target="#notification">
+                    <ToastEvents Created="@(async () => await ToastInfo?.ShowAsync())"></ToastEvents>
+                    <ToastPosition X="Center" Y="Top"></ToastPosition>
+                    <ToastTemplates>
+                        <Template>
+                            <div class="flex items-center gap-4 px-4 py-3">
+                                <div class="w-10 h-10 flex justify-center items-center rounded-full bg-green-100 dark:bg-green-600">
+                                    <span class="e-icons e-check !text-xl !text-green-600 dark:!text-green-200"></span>
+                                </div>
+                                <div class="flex flex-col gap-2 text-gray-700 dark:text-gray-300">
+                                    <p class="text-sm font-semibold">File uploaded</p>
+                                    <p class="text-xs">Your file has been successfully uploaded.</p>
+                                </div>
+                            </div>
+                        </Template>
+                    </ToastTemplates>
+                </SfToast>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="w-100 px-3 px-sm-0 vh-100">
+            <div id="notification" class="mx-auto" style="max-width: 327px;">
+                <SfToast @ref="ToastInfo" CssClass="w-100 m-0 p-0" Width="100%" TimeOut="0" Target="#notification">
+                    <ToastEvents Created="@(async () => await ToastInfo?.ShowAsync())"></ToastEvents>
+                    <ToastPosition X="Center" Y="Top"></ToastPosition>
+                    <ToastTemplates>
+                        <Template>
+                            <div class="d-flex align-items-center gap-3 px-3 py-2 my-1 w-100">
+                                <div class="d-flex justify-content-center align-items-center rounded-circle bg-success-subtle" style="width: 40px; height: 40px;">
+                                    <span class="e-icons e-check fs-5 text-success"></span>
+                                </div>
+                                <div class="d-flex flex-column gap-1 text-body-secondary">
+                                    <p class="fw-semibold mb-0">File uploaded</p>
+                                    <p class="small mb-0">Your file has been successfully uploaded.</p>
+                                </div>
+                            </div>
+                        </Template>
+                    </ToastTemplates>
+                </SfToast>
+            </div>
+        </div>
+    </section>
+}

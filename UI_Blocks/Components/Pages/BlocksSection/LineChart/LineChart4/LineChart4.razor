@@ -1,0 +1,104 @@
+﻿@page "/blocks/line-chart-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center items-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 665px;">
+                <div class="flex justify-between items-center sm:mb-3">
+                    <h2 class="text-base font-semibold text-gray-900 dark:text-white">Transaction Activity</h2>
+                    <div class="flex gap-3">
+                        <SfButton class="e-outline hidden sm:block" Content="Select Date" IconCss="e-icons e-day" IconPosition="IconPosition.Right"></SfButton>
+                        <SfButton class="e-icons e-more-vertical-1 e-outline border-0" aria-label="more options" role="button"></SfButton>
+                    </div>
+                </div>
+                <SfButton class="e-outline block sm:hidden my-3" Content="Select Date" IconCss="e-icons e-day" IconPosition="IconPosition.Right"></SfButton>
+                <div>
+                    <SfChart Width="100%" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Minimum="0" Maximum="1200" Interval="200" LabelFormat="{value}">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@LineChartData" Type="ChartSeriesType.Spline" XName="Month" YName="YAxis1" Name="Total Transaction" Width="3" Fill="#fbbf24" LegendShape="LegendShape.Rectangle" EnableTooltip="true"></ChartSeries>
+                            <ChartSeries DataSource="@LineChartData" Type="ChartSeriesType.Spline" XName="Month" YName="YAxis2" Name="Success Transaction" Width="3" fill="#84cc16" legendShape="LegendShape.Rectangle" EnableTooltip="true"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true" Shared="true" Format="${series.name}: ${point.y}" Header="${point.x}"></ChartTooltipSettings>
+                        <ChartCrosshairSettings Enable="true" LineType="LineType.Vertical" SnapToData="true" DashArray="2"></ChartCrosshairSettings>
+                        <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Alignment.Center" ShapeHeight="10" ShapeWidth="10" Padding="12">
+                            <ChartLegendTextStyle Size="13px"></ChartLegendTextStyle>
+                        </ChartLegendSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center p-4 p-sm-6">
+            <div class="w-100" style="max-width: 665px;">
+                <div class="d-flex justify-content-between align-items-center mb-sm-3">
+                    <h2 class="fs-6 fw-medium">Transaction Activity</h2>
+                    <div class="d-flex gap-3">
+                        <SfButton CssClass="e-outline" class="e-outline d-none d-sm-block" Content="Select Date" IconCss="e-icons e-day" IconPosition="IconPosition.Right"></SfButton>
+                        <SfButton CssClass="e-outline" class="e-icons e-more-vertical-1 e-outline border-0" aria-label="more options" role="button"></SfButton>
+                    </div>
+                </div>
+                <SfButton class="e-outline d-sm-none my-3" Content="Select Date" IconCss="e-icons e-day" IconPosition="IconPosition.Right"></SfButton>
+                <div>
+                    <SfChart Width="100%" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Minimum="0" Maximum="1200" Interval="200" LabelFormat="{value}">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@LineChartData" Type="ChartSeriesType.Spline" XName="Month" YName="YAxis1" Name="Total Transaction" Width="3" Fill="#F42929" LegendShape="LegendShape.Rectangle" EnableTooltip="true"></ChartSeries>
+                            <ChartSeries DataSource="@LineChartData" Type="ChartSeriesType.Spline" XName="Month" YName="YAxis2" Name="Success Transaction" Width="3" fill="#0EAB44" legendShape="LegendShape.Rectangle" EnableTooltip="true"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true" Shared="true" Format="${series.name}: ${point.y}" Header="${point.x}"></ChartTooltipSettings>
+                        <ChartCrosshairSettings Enable="true" LineType="LineType.Vertical" SnapToData="true" DashArray="2"></ChartCrosshairSettings>
+                        <ChartLegendSettings Visible="true" Position="LegendPosition.Top" Alignment="Alignment.Center" ShapeHeight="10" ShapeWidth="10" Padding="16">
+                            <ChartLegendTextStyle Size="13px"></ChartLegendTextStyle>
+                        </ChartLegendSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}

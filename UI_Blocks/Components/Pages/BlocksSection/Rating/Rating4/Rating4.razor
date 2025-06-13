@@ -1,0 +1,68 @@
+﻿@page "/blocks/rating-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="pt-4" style="min-height:36rem">
+            <div class="p-6 max-w-sm text-center mt-3 mx-auto border-0 sm:!rounded-lg sm:!border rounded-none border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-800">
+                <h3 class="text-lg font-semibold text-gray-900 dark:text-white">Please rate your experience</h3>
+                <p class="text-sm mt-3 text-gray-700 dark:text-gray-100">to help us serve you better</p>
+                <SfRating Value="4.0">
+                    <EmptyTemplate>
+                        <span class="sf-icon-star-filled-01 text-2xl text-gray-300 dark:text-gray-500"></span>
+                    </EmptyTemplate>
+                    <FullTemplate>
+                        <span class="sf-icon-star-filled-01 text-2xl text-amber-300"></span>
+                    </FullTemplate>
+                </SfRating>
+                <div class="flex gap-6 items-center justify-center pt-3 mx-1 border-t border-gray-200 dark:border-gray-600">
+                    <a href="javascript:void(0);">
+                        <img class="w-5 h-5" src="assets/images/common/brand-logos/png/facebook.png" alt="facebook" />
+                    </a>
+                    <a href="javascript:void(0);">
+                        <img class="w-5 h-5" src="assets/images/common/brand-logos/png/google.png" alt="google" />
+                    </a>
+                    <a href="javascript:void(0);" class="text-gray-900 dark:text-white">
+                        <svg class="svg-icon" width="20" height="20" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg"><path d="M0 0.617188L5.81975 8.93442L0.302812 15.3829H2.26965L6.70223 10.1918L10.3302 15.3829H16L9.81975 6.53788L14.8724 0.617188H12.9373L8.94593 5.28337L5.68709 0.617188H0ZM2.75415 2.07645H4.94881L13.2632 13.9236H11.0541L2.75415 2.07645Z" /></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="p-4 mt-3 mx-auto text-center border rounded-3 bg-body" style="max-width: 384px;">
+                <h3 class="fs-5 fw-semibold text-body">Please rate your experience</h3>
+                <p class="text-body-secondary small mb-0 mt-3">to help us serve you better</p>
+                <SfRating Value="4.0">
+                    <EmptyTemplate>
+                        <span class="sf-icon-star-02 fs-4 text-body-secondary"></span>
+                    </EmptyTemplate>
+                    <FullTemplate>
+                        <span class="sf-icon-star-filled-01 fs-4 text-warning"></span>
+                    </FullTemplate>
+                </SfRating>
+                <div class="d-flex justify-content-center align-items-center border-top pt-3 mx-1 gap-4">
+                    <a href="javascript:void(0);">
+                        <img src="assets/images/common/brand-logos/png/facebook.png" alt="facebook" style="width: 20px; height: 20px;" />
+                    </a>
+                    <a href="javascript:void(0);">
+                        <img src="assets/images/common/brand-logos/png/google.png" alt="google" style="width: 20px; height: 20px;" />
+                    </a>
+                    <a href="javascript:void(0);" class="text-body">
+                        <svg width="20" height="20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M0 0.617188L5.81975 8.93442L0.302812 15.3829H2.26965L6.70223 10.1918L10.3302 15.3829H16L9.81975 6.53788L14.8724 0.617188H12.9373L8.94593 5.28337L5.68709 0.617188H0ZM2.75415 2.07645H4.94881L13.2632 13.9236H11.0541L2.75415 2.07645Z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+}

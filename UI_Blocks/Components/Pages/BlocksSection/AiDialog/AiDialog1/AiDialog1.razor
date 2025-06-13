@@ -1,0 +1,88 @@
+﻿@page "/blocks/ai-dialog-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" style="min-height: 580px;">
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg overflow-hidden" Target="#dialog-container" IsModal="true" Width="357px" aria-label="AI design generator" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(async args => { args.PreventFocus = true; if (Stepper != null) await Stepper.RefreshProgressbarAsync(); })"></DialogEvents>
+                <DialogTemplates>
+                    <Content>
+                        <div class="flex flex-col h-full">
+                            <div class="border-b py-6 dark:border-gray-600">
+                                <SfStepper @ref="Stepper" CssClass="e-small mx-auto" LabelPosition="StepperLabelPosition.End" ActiveStep="1" style="max-width: 256px;">
+                                    <StepperSteps>
+                                        <StepperStep IconCss="e-icons e-check-small" Label="Basic info"></StepperStep>
+                                        <StepperStep Text="2" Label="AI prompt"></StepperStep>
+                                    </StepperSteps>
+                                </SfStepper>
+                            </div>
+                            <div class="flex flex-col gap-6 grow px-4 py-6 sm:pt-4">
+                                <div class="flex flex-col gap-1 text-xs">
+                                    <label class="font-medium">Upload image reference</label>
+                                    <div id="upload-template" class="flex flex-col items-center text-gray-500 dark:text-gray-400 bg-gray-50 dark:bg-gray-700 border border-dashed border-gray-300 dark:border-gray-500 rounded-lg pt-6">
+                                        <p>Drag & drop or <a href="javascript:void(0);" class="font-medium underline text-primary-600 dark:text-primary-400">choose file</a> to upload.</p>
+                                        <p class="mb-2 md:mb-3">Image format: JPG, PNG, & SVG, Max 5.0MB</p>
+                                        <SfUploader CssClass="e-small mt-1 flex flex-col gap-2 mb-6" DropArea="#upload-template">
+                                            <UploaderButtons Browse="Choose File"></UploaderButtons>
+                                        </SfUploader>
+                                    </div>
+                                </div>
+                                <div class="flex flex-col gap-1 grow text-xs">
+                                    <label class="font-medium">Describe to AI</label>
+                                    <SfTextArea Value="I want to have modern and clean looking workspace with minimal and bright accent colors. Completed with natural wood color and beige furniture." ResizeMode="Resize.None" Rows="5" aria-label="describe your request to AI" role="textbox" style="height: 112px;"></SfTextArea>
+                                </div>
+                                <SfButton CssClass="e-primary sm:self-center" IconCss="e-icons e-ai-chat" Type="button" aria-label="generate design" role="button">Generate design</SfButton>
+                            </div>
+                        </div>
+                    </Content>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" style="min-height: 580px;">
+            <SfDialog @ref="Dialog" class="rounded-2" Target="#dialog-container" IsModal="true" Width="357px" aria-label="AI design generator" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(async args => { args.PreventFocus = true; if (Stepper != null) await Stepper.RefreshProgressbarAsync(); })"></DialogEvents>
+                <DialogTemplates>
+                    <Content>
+                        <div class="d-flex flex-column h-100">
+                            <div class="border-bottom py-4 border-light-subtle">
+                                <SfStepper @ref="Stepper" CssClass="e-small mx-auto" LabelPosition="StepperLabelPosition.End" ActiveStep="1" style="max-width: 256px;">
+                                    <StepperSteps>
+                                        <StepperStep IconCss="e-icons e-check-small" Label="Basic info"></StepperStep>
+                                        <StepperStep Text="2" Label="AI prompt"></StepperStep>
+                                    </StepperSteps>
+                                </SfStepper>
+                            </div>
+                            <div class="d-flex flex-column gap-4 flex-grow-1 px-3 py-4 pt-sm-3">
+                                <div class="d-flex flex-column gap-1">
+                                    <label class="fw-medium small">Upload image reference</label>
+                                    <div id="upload-template" class="d-flex flex-column align-items-center small text-body-tertiary bg-body-tertiary border border-dashed rounded-1 pt-4" style="border-style: dashed !important;">
+                                        <p class="mb-0">Drag & drop or <a href="javascript:void(0);" class="fw-medium text-primary">choose file</a> to upload.</p>
+                                        <p class="mb-2 mb-md-3">Image format: JPG, PNG, & SVG, Max 5.0MB</p>
+                                        <SfUploader CssClass="e-small mt-1 d-flex flex-column gap-1 mb-4" DropArea="#upload-template">
+                                            <UploaderButtons Browse="Choose File"></UploaderButtons>
+                                        </SfUploader>
+                                    </div>
+                                </div>
+                                <div class="d-flex flex-column gap-1 flex-grow-1">
+                                    <label class="fw-medium small">Describe to AI</label>
+                                    <SfTextArea Value="I want to have modern and clean looking workspace with minimal and bright accent colors. Completed with natural wood color and beige furniture." ResizeMode="Resize.None" Rows="5" aria-label="describe your request to AI" role="textbox" style="height: 112px;"></SfTextArea>
+                                </div>
+                                <SfButton CssClass="e-primary align-self-sm-center" IconCss="e-icons e-ai-chat" Type="button" aria-label="generate design" role="button">Generate design</SfButton>
+                            </div>
+                        </div>
+                    </Content>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+}

@@ -1,0 +1,183 @@
+﻿@page "/blocks/ai-chat-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="chat-header" class="flex flex-col items-center max-w-4xl mx-auto pb-6 rounded-xl overflow-hidden bg-gray-50 dark:bg-gray-700" style="max-height: 850px; min-height: 36rem; max-width: 680px;">
+            <div class="flex items-center flex-col py-5">
+                <SfListView DataSource="@PromptDetail" CssClass="!border-0 px-2 py-4" Width="100%" Height="100%" aria-label="chat conversation" role="list">
+                    <ListViewFieldSettings TValue="PromptData"></ListViewFieldSettings>
+                    <ListViewTemplates TValue="PromptData">
+                        <Template Context="Data">
+                            @if (Data.Category != "reply")
+                            {
+                                <div class="flex justify-start gap-3 items-start w-full">
+                                    <div class="flex justify-between w-full py-1 rounded-lg">
+                                        <div class="flex flex-1">
+                                            <div>
+                                                <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url(assets/images/common/avatar/avatar-3.jpg);"></span>
+                                            </div>
+                                            <div class="pl-3">
+                                                <p class="text-sm text-gray-900 mb-1 dark:text-white">@Data.Name
+                                                    <span class="pl-1 text-xs text-gray-500 dark:text-gray-400">@Data.Time</span>
+                                                </p>
+                                                <div class="text-sm text-gray-900 dark:text-white">@Data.Text</div>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-center">
+                                            <SfButton CssClass="e-outline hidden sm:inline !text-gray-500 dark:!text-gray-200 pr-1" IconCss="e-icons e-edit" Type="button" aria-label="edit" role="button" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="flex flex-col justify-start gap-3 items-start w-full">
+                                    <div class="p-2 px-3 rounded-lg shadow bg-white dark:bg-gray-800 w-full">
+                                        <div class="flex items-center justify-between py-1">
+                                            <div class="flex items-center">
+                                                <div>
+                                                    <span class="e-avatar e-avatar-circle e-avatar-small !text-xl !text-black dark:!text-white e-icons e-ai-chat bg-gray-100 dark:bg-gray-700"></span>
+                                                </div>
+                                                <div class="pl-3">
+                                                    <p class="text-sm font-medium text-gray-900 dark:text-white">AI chat
+                                                        <span class="pl-1 text-xs text-gray-500 dark:text-gray-400">15m</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="inline-flex items-center border border-gray-300 dark:border-gray-600 rounded-lg overflow-hidden">
+                                                <span class="e-icons e-thumbs-up px-2 py-1 text-base !text-gray-500 dark:!text-gray-200 cursor-pointer"></span>
+                                                <span class="border border-gray-200 dark:border-gray-600 h-5 m-1"></span>
+                                                <span class="e-icons e-thumbs-down px-2 py-1 text-base !text-gray-500 dark:!text-gray-200 cursor-pointer"></span>
+                                            </div>
+                                        </div>
+                                        @if (Data.IsList)
+                                        {
+                                            <SfListView DataSource="@ResourceDetail" CssClass="!border-0 pl-8" ShowIcon="false" aria-label="chat conversation" role="list">
+                                                <ListViewFieldSettings TValue="ResourceData"></ListViewFieldSettings>
+                                                <ListViewTemplates TValue="ResourceData">
+                                                    <Template Context="Resource">
+                                                        <div class="pt-0">
+                                                            <div class="pb-3">
+                                                                <img class="rounded-lg" src="assets/images/ai/chat/visual-ai-chat/chat-interface.jpg" alt="@Resource.Text" />
+                                                            </div>
+                                                            <div class="text-sm text-gray-900 dark:text-white">@Resource.Description</div>
+                                                        </div>
+                                                    </Template>
+                                                </ListViewTemplates>
+                                            </SfListView>
+                                        }
+                                    </div>
+                                    <div class="flex justify-between w-full gap-3">
+                                        <div>
+                                            <SfButton CssClass="e-outline sm:hidden inline" IconCss="e-icons e-edit" Type="button" aria-label="edit" role="button"></SfButton>
+                                        </div>
+                                        <div class="flex justify-between gap-3">
+                                            <SfButton CssClass="e-outline sm:hidden" IconCss="e-icons e-download" Type="button" aria-label="download chat" role="button"></SfButton>
+                                            <SfButton CssClass="e-outline sm:hidden" IconCss="e-icons e-repeat" Type="button" aria-label="regenerate" role="button"></SfButton>
+                                            <SfButton CssClass="e-outline hidden sm:inline" IconCss="e-icons e-download" Content="Download chat" Type="button" aria-label="download chat" role="button"></SfButton>
+                                            <SfButton CssClass="e-outline hidden sm:inline" IconCss="e-icons e-repeat" Content="Regenerate" Type="button" aria-label="regenerate" role="button"></SfButton>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </Template>
+                    </ListViewTemplates>
+                </SfListView>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="chat-header" class="d-flex flex-column align-items-center mx-auto pb-4 rounded-lg overflow-hidden bg-body-tertiary" style="max-height: 850px; min-height: 36rem; max-width: 680px;">
+            <div class="d-flex align-items-center flex-column py-5">
+                <SfListView DataSource="@PromptDetail" CssClass="!border-0 px-2 py-4" Width="100%" Height="100%" aria-label="chat conversation" role="list">
+                    <ListViewFieldSettings TValue="PromptData"></ListViewFieldSettings>
+                    <ListViewTemplates TValue="PromptData">
+                        <Template Context="Data">
+                            @if (Data.Category != "reply")
+                            {
+                                <div class="d-flex justify-content-start gap-3 align-items-start w-100">
+                                    <div class="d-flex justify-content-between w-100 py-1 rounded">
+                                        <div class="d-flex flex-grow-1">
+                                            <div>
+                                                <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url(assets/images/common/avatar/avatar-3.jpg);"></span>
+                                            </div>
+                                            <div class="ps-3">
+                                                <p class="fs-6 mb-1 text-body">@Data.Name
+                                                    <span class="ps-1 text-muted small">@Data.Time</span>
+                                                </p>
+                                                <div class="fs-6 text-body">@Data.Text</div>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex align-items-center justify-content-center">
+                                            <SfButton CssClass="e-outline d-none d-sm-inline" IconCss="e-icons e-edit" Type="button" aria-label="edit" role="button" />
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="d-flex flex-column justify-content-start gap-3 align-items-start w-100">
+                                    <div class="p-2 px-3 rounded bg-body w-100">
+                                        <div class="d-flex align-items-center justify-content-between py-1">
+                                            <div class="d-flex align-items-center">
+                                                <div>
+                                                    <span class="e-avatar e-avatar-circle e-avatar-small fs-5 text-secondary e-icons e-ai-chat bg-body-secondary"></span>
+                                                </div>
+                                                <div class="ps-3">
+                                                    <p class="fs-6 mb-0 fw-medium text-body">AI chat
+                                                        <span class="ps-1 text-muted small">15m</span>
+                                                    </p>
+                                                </div>
+                                            </div>
+                                            <div class="p-1 d-inline-flex align-items-center border border-secondary rounded overflow-hidden">
+                                                <span class="e-icons e-thumbs-up px-2 py-1 fs-6 text-muted cursor-pointer"></span>
+                                                <span class="border border-light-subtle mx-1" style="height: 16px;"></span>
+                                                <span class="e-icons e-thumbs-down px-2 py-1 fs-6 text-muted cursor-pointer"></span>
+                                            </div>
+                                        </div>
+                                        @if (Data.IsList)
+                                        {
+                                            <SfListView DataSource="@ResourceDetail" CssClass="!border-0 ps-4" ShowIcon="false" aria-label="chat conversation" role="list">
+                                                <ListViewFieldSettings TValue="ResourceData"></ListViewFieldSettings>
+                                                <ListViewTemplates TValue="ResourceData">
+                                                    <Template Context="Resource">
+                                                        <div class="pt-0 ps-3">
+                                                            <div class="pb-3">
+                                                                <img class="rounded" src="assets/images/ai/chat/visual-ai-chat/chat-interface.jpg" alt="@Resource.Text" />
+                                                            </div>
+                                                            <div class="fs-6 text-body">@Resource.Description</div>
+                                                        </div>
+                                                    </Template>
+                                                </ListViewTemplates>
+                                            </SfListView>
+                                        }
+                                    </div>
+                                    <div class="d-flex justify-content-between w-100 gap-3">
+                                        <div>
+                                            <SfButton CssClass="e-outline d-sm-none d-inline" IconCss="e-icons e-edit" Type="button" aria-label="edit" role="button"></SfButton>
+                                        </div>
+                                        <div class="d-flex justify-content-between gap-3">
+                                            <SfButton CssClass="e-outline d-sm-none" IconCss="e-icons e-download" Type="button" aria-label="download chat" role="button"></SfButton>
+                                            <SfButton CssClass="e-outline d-sm-none" IconCss="e-icons e-repeat" Type="button" aria-label="regenerate" role="button"></SfButton>
+                                            <SfButton CssClass="e-outline d-none d-sm-inline" IconCss="e-icons e-download" Content="Download chat" Type="button" aria-label="download chat" role="button"></SfButton>
+                                            <SfButton CssClass="e-outline d-none d-sm-inline" IconCss="e-icons e-repeat" Content="Regenerate" Type="button" aria-label="regenerate" role="button"></SfButton>
+                                        </div>
+                                    </div>
+                                </div>
+                            }
+                        </Template>
+                    </ListViewTemplates>
+                </SfListView>
+            </div>
+        </div>
+    </section>
+
+}

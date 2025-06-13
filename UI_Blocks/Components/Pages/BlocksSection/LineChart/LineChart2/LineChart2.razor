@@ -1,0 +1,115 @@
+﻿@page "/blocks/line-chart-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 640px;">
+                <div class="flex justify-between items-start">
+                    <div>
+                        <h1 class="text-base font-medium text-gray-900 dark:text-white mb-2">Rainfall History</h1>
+                        <p class="text-xs text-gray-500 dark:text-gray-400">Location: <span class="font-medium">California, US</span></p>
+                    </div>
+                    <SfButton CssClass="e-outline sm:inline-block hidden">Download Report</SfButton>
+                    <SfButton CssClass="e-outline block sm:hidden" IconCss="e-icons e-download" />
+                </div>
+                <div class="flex items-center gap-4 mt-2">
+                    <h1 class="text-sm text-gray-700 dark:text-gray-300">Measuring Units:</h1>
+                    <SfDropDownButton @ref="DropDownButton" Content="Inch" Items="@UnitOptions" Type="button" aria-label="choose a units" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                    </SfDropDownButton>
+                </div>
+                <div class="mt-4">
+                    <SfChart @ref="Chart" Width="90%" Height="250px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)" Palettes="@Palettes">
+                        <ChartTitleStyle TextOverflow="TextOverflow.Wrap"></ChartTitleStyle>
+                        <ChartSubTitleStyle TextOverflow="TextOverflow.Wrap"></ChartSubTitleStyle>
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" IntervalType="IntervalType.Years" Interval="1" EdgeLabelPlacement="EdgeLabelPlacement.Shift" LabelRotation="@XAxisLabelRotation">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis RangePadding="ChartRangePadding.None" Minimum="10" Maximum="30" Interval="5" LabelFormat="{value}">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartTooltipSettings Header="<b>Rainfall" Format="<b>${point.x} : ${point.y} in</b>" Enable="true" EnableAnimation="false" ShowNearestTooltip="true"></ChartTooltipSettings>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis" PointColorMapping="Color" Width="1" Type="ChartSeriesType.MultiColoredLine">
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center p-4 p-sm-6">
+            <div class="w-100" style="max-width: 640px;">
+                <div class="d-flex justify-content-between align-items-start">
+                    <div>
+                        <h1 class="fs-6 fw-medium mb-2">Rainfall History</h1>
+                        <div class="small text-body-secondary">Location: <span class="fw-medium">California, US</span></div>
+                    </div>
+                    <SfButton CssClass="e-outline d-none d-sm-block">Download Report</SfButton>
+                    <SfButton CssClass="e-outline d-sm-none" IconCss="e-icons e-download" />
+                </div>
+                <div class="d-flex align-items-center gap-3 mt-2">
+                    <h1 class="small text-body-secondary">Measuring Units:</h1>
+                    <SfDropDownButton @ref="DropDownButton" CssClass="e-outline" Content="Inch" Items="@UnitOptions" Type="button" aria-label="choose a units" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                    </SfDropDownButton>
+                </div>
+                <div class="mt-4">
+                    <SfChart @ref="Chart" Width="90%" Height="250px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)" Palettes="@Palettes">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartTitleStyle TextOverflow="TextOverflow.Wrap"></ChartTitleStyle>
+                        <ChartSubTitleStyle TextOverflow="TextOverflow.Wrap"></ChartSubTitleStyle>
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" IntervalType="IntervalType.Years" Interval="1" EdgeLabelPlacement="EdgeLabelPlacement.Shift" LabelRotation="@XAxisLabelRotation">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis RangePadding="ChartRangePadding.None" Minimum="10" Maximum="30" Interval="5" LabelFormat="{value}">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartTooltipSettings Header="<b>Rainfall" Format="<b>${point.x} : ${point.y} in</b>" Enable="true" EnableAnimation="false" ShowNearestTooltip="true"></ChartTooltipSettings>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis" PointColorMapping="Color" Width="1" Type="ChartSeriesType.MultiColoredLine">
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}

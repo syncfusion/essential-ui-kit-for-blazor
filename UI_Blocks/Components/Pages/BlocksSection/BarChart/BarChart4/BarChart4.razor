@@ -1,0 +1,118 @@
+﻿@page "/blocks/bar-chart-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 640px;">
+                <div class="flex justify-between items-center">
+                    <div>
+                        <h1 class="text-base font-medium mb-2 text-gray-900 dark:text-white">Revenue</h1>
+                        <p class="text-sm text-gray-500">Sales from 01 - 06 Dec, 2024</p>
+                    </div>
+                    <SfButton CssClass="hidden sm:block" Content="View Report" type="button" aria-label="view report" role="button"></SfButton>
+                    <SfButton CssClass="block sm:hidden e-outline" IconCss="e-icons e-description" type="button" aria-label="view report" role="button"></SfButton>
+                </div>
+                <div class="mt-6">
+                    <h1 class="text-xl font-semibold mb-2 text-gray-900 dark:text-white">$1,278.45</h1>
+                    <div class="flex items-center justify-between text-xs">
+                        <div class="flex items-center gap-2">
+                            <p class="text-green-700"><span class="e-icons e-arrow-up mr-1"></span>2.1%</p>
+                            <p class="text-gray-500">vs last week</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <SfChart Width="100%" Height="300px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelIntersectAction="Syncfusion.Blazor.Charts.LabelIntersectAction.Rotate45">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Maximum="400" Interval="100">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="1"></ChartAxisMinorGridLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@BarChartData" XName="Date" YName="Income" Name="Income" Type="ChartSeriesType.Column" Fill="#267DDA" Width="2" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Circle" ColumnWidth="1" ColumnSpacing="0.2"></ChartSeries>
+                            <ChartSeries DataSource="@BarChartData" XName="Date" YName="Expense" Name="Expense" Type="ChartSeriesType.Column" Fill="#01A8B5" Width="2" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Circle" ColumnWidth="1" ColumnSpacing="0.2"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true" Header="" EnableMarker="false" Format="Income  $${point.x}<br>Expense  $${point.y}">
+                        </ChartTooltipSettings>
+                        <ChartLegendSettings Visible="true" Position="@LegendPosition" Alignment="Alignment.Far"></ChartLegendSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="nh-100 d-flex justify-content-center p-4 p-sm-6">
+            <div class="w-100" style="max-width: 640px;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div>
+                        <h1 class="fs-6 fw-medium mb-2">Revenue</h1>
+                        <p class="small text-body-secondary">Sales from 01 - 06 Dec, 2024</p>
+                    </div>
+                    <SfButton CssClass="d-none d-sm-block e-outline" Content="View Report" type="button" aria-label="view report" role="button"></SfButton>
+                    <SfButton CssClass="block d-sm-none e-outline" IconCss="e-icons e-description" type="button" aria-label="view report" role="button"></SfButton>
+                </div>
+                <div class="mt-6">
+                    <h1 class="lead fw-semibold mb-2">$1,278.45</h1>
+                    <div class="d-flex align-items-center justify-content-between text-xs">
+                        <div class="d-flex align-items-center gap-2">
+                            <p class="text-success d-flex align-items-center mb-0"><span class="e-icons e-arrow-up me-1"></span>2.1%</p>
+                            <p class="text-body-secondary mb-0">vs last week</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-8">
+                    <SfChart Width="100%" Height="300px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelIntersectAction="Syncfusion.Blazor.Charts.LabelIntersectAction.Rotate45">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Maximum="400" Interval="100">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="1"></ChartAxisMinorGridLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@BarChartData" XName="Date" YName="Income" Name="Income" Type="ChartSeriesType.Column" Fill="#006EEF" Width="2" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Circle" ColumnWidth="1" ColumnSpacing="0.2"></ChartSeries>
+                            <ChartSeries DataSource="@BarChartData" XName="Date" YName="Expense" Name="Expense" Type="ChartSeriesType.Column" Fill="#EF6400" Width="2" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Circle" ColumnWidth="1" ColumnSpacing="0.2"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true" Header="" EnableMarker="false" Format="Income  $${point.x}<br>Expense  $${point.y}">
+                        </ChartTooltipSettings>
+                        <ChartLegendSettings Visible="true" Position="@LegendPosition" Alignment="Alignment.Far"></ChartLegendSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
