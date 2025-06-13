@@ -1,0 +1,192 @@
+﻿@page "/blocks/ai-card-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="px-4 sm:px-6 lg:px-36 py-20" style="min-height: 36rem;">
+            <div class="grid sm:grid-cols-2 gap-6 xl:grid-cols-4 grow">
+                <div class="e-card border-0 rounded-lg gap-4 shadow-md">
+                    <div class="e-card-image">
+                        <img class="h-56 w-full object-cover rounded-lg" src="assets/images/ai/card/visual-profile-card/michigan-avenue.jpg" alt="michigan avenue" />
+                    </div>
+                    <div class="e-card-stacked !flex !justify-between !flex-row px-4">
+                        <div class="pb-4">
+                            <div class="e-card-header !px-0 !pt-0 !pb-2">
+                                <div class="e-card-header-caption">
+                                    <h2 class="text-base font-medium text-gray-900 dark:text-white line-clamp-1">Michigan Avenue</h2>
+                                </div>
+                            </div>
+                            <div class="e-card-content !px-0 !pb-0">
+                                <p class="text-sm text-gray-700 dark:text-gray-300">Chicago</p>
+                            </div>
+                        </div>
+                        <div class="e-card-actions !px-0 !pt-0 !flex items-center">
+                            <SfButton CssClass="e-flat" IconCss="e-icons e-more-vertical-1 !text-base" Type="button" aria-label="more" role="button"></SfButton>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card border-0 rounded-lg gap-4 shadow-md">
+                    <div class="e-card-image">
+                        <img class="h-56 w-full object-cover rounded-lg" src="assets/images/ai/card/visual-profile-card/burj-khalifa.jpg" alt="burj khalifa" />
+                    </div>
+                    <div class="e-card-stacked !flex !justify-between !flex-row px-4">
+                        <div class="pb-4">
+                            <div class="e-card-header !px-0 !pt-0 !pb-2">
+                                <div class="e-card-header-caption">
+                                    <h2 class="text-base font-medium text-gray-900 dark:text-white line-clamp-1">Burj Khalifa</h2>
+                                </div>
+                            </div>
+                            <div class="e-card-content !px-0 !pb-0">
+                                <p class="text-sm text-gray-700 dark:text-gray-300">Dubai</p>
+                            </div>
+                        </div>
+                        <div class="e-card-actions !px-0 !pt-0 !flex items-center">
+                            <SfButton CssClass="e-flat" IconCss="e-icons e-more-vertical-1 !text-base" Type="button" aria-label="more" role="button"></SfButton>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card border-0 rounded-lg gap-4 shadow-md">
+                    <div class="e-card-image">
+                        <img class="h-56 w-full object-cover rounded-lg" src="assets/images/ai/card/visual-profile-card/gooderham.jpg" alt="gooderham" />
+                    </div>
+                    <div class="e-card-stacked !flex !justify-between !flex-row px-4">
+                        <div class="pb-4">
+                            <div class="e-card-header !px-0 !pt-0 !pb-2">
+                                <div class="e-card-header-caption">
+                                    <h2 class="text-base font-medium text-gray-900 dark:text-white line-clamp-1">Gooderham</h2>
+                                </div>
+                            </div>
+                            <div class="e-card-content !px-0 !pb-0">
+                                <p class="text-sm text-gray-700 dark:text-gray-300">Toronto</p>
+                            </div>
+                        </div>
+                        <div class="e-card-actions !px-0 !pt-0 !flex items-center">
+                            <SfButton CssClass="e-flat" IconCss="e-icons e-more-vertical-1 !text-base" Type="button" aria-label="more" role="button"></SfButton>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card border-0 rounded-lg gap-4 shadow-md">
+                    <div class="e-card-image">
+                        <img class="h-56 w-full object-cover rounded-lg" src="assets/images/ai/card/visual-profile-card/dubai-marina.jpg" alt="dubai marina" />
+                    </div>
+                    <div class="e-card-stacked !flex !justify-between !flex-row px-4">
+                        <div class="pb-4">
+                            <div class="e-card-header !px-0 !pt-0 !pb-2">
+                                <div class="e-card-header-caption">
+                                    <h2 class="text-base font-medium text-gray-900 dark:text-white line-clamp-1">Dubai Marina</h2>
+                                </div>
+                            </div>
+                            <div class="e-card-content !px-0 !pb-0">
+                                <p class="text-sm text-gray-700 dark:text-gray-300">Dubai</p>
+                            </div>
+                        </div>
+                        <div class="e-card-actions !px-0 !pt-0 !flex items-center">
+                            <SfButton CssClass="e-flat" IconCss="e-icons e-more-vertical-1 !text-base" Type="button" aria-label="more" role="button"></SfButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="mx-auto px-3 px-sm-4 py-5" style="min-height: 36rem; max-width: 70rem;">
+            <div class="row g-4 mx-lg-2">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="e-card border-0 rounded-4 shadow-lg d-flex flex-column gap-3">
+                        <div class="e-card-image">
+                            <img class="w-100 rounded-4" src="assets/images/ai/card/visual-profile-card/michigan-avenue.jpg" alt="michigan avenue" style="height: 14rem; object-fit: cover;" />
+                        </div>
+                        <div class="e-card-stacked d-flex justify-content-between flex-row px-3">
+                            <div class="pb-3">
+                                <div class="e-card-header px-0 pt-0">
+                                    <div class="e-card-header-caption">
+                                        <h2 class="h6 fw-medium text-body mb-0" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">Michigan Avenue</h2>
+                                    </div>
+                                </div>
+                                <div class="e-card-content pb-0 px-0 pt-2">
+                                    <p class="text-body-secondary mb-0">Chicago</p>
+                                </div>
+                            </div>
+                            <div class="e-card-actions px-0 pt-0 d-flex align-items-center">
+                                <SfButton CssClass="e-flat py-2" IconCss="e-icons e-more-vertical-1 fs-6" Type="Button" aria-label="more" role="button"></SfButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="e-card border-0 rounded-4 shadow-lg d-flex flex-column gap-3">
+                        <div class="e-card-image">
+                            <img class="w-100 rounded-4" src="assets/images/ai/card/visual-profile-card/burj-khalifa.jpg" alt="burj khalifa" style="height: 14rem; object-fit: cover;" />
+                        </div>
+                        <div class="e-card-stacked d-flex justify-content-between flex-row px-3">
+                            <div class="pb-3">
+                                <div class="e-card-header px-0 pt-0">
+                                    <div class="e-card-header-caption">
+                                        <h2 class="h6 fw-medium text-body mb-0" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">Burj Khalifa</h2>
+                                    </div>
+                                </div>
+                                <div class="e-card-content pb-0 px-0 pt-2">
+                                    <p class="text-body-secondary mb-0">Dubai</p>
+                                </div>
+                            </div>
+                            <div class="e-card-actions px-0 pt-0 d-flex align-items-center">
+                                <SfButton CssClass="e-flat py-2" IconCss="e-icons e-more-vertical-1 fs-6" Type="Button" aria-label="more" role="button"></SfButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="e-card border-0 rounded-4 shadow-lg d-flex flex-column gap-3">
+                        <div class="e-card-image">
+                            <img class="w-100 rounded-4" src="assets/images/ai/card/visual-profile-card/gooderham.jpg" alt="gooderham" style="height: 14rem; object-fit: cover;" />
+                        </div>
+                        <div class="e-card-stacked d-flex justify-content-between flex-row px-3">
+                            <div class="pb-3">
+                                <div class="e-card-header px-0 pt-0">
+                                    <div class="e-card-header-caption">
+                                        <h2 class="h6 fw-medium text-body mb-0" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">Gooderham</h2>
+                                    </div>
+                                </div>
+                                <div class="e-card-content pb-0 px-0 pt-2">
+                                    <p class="text-body-secondary mb-0">Toronto</p>
+                                </div>
+                            </div>
+                            <div class="e-card-actions px-0 pt-0 d-flex align-items-center">
+                                <SfButton CssClass="e-flat py-2" IconCss="e-icons e-more-vertical-1 fs-6" Type="Button" aria-label="more" role="button"></SfButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="e-card border-0 rounded-4 shadow-lg d-flex flex-column gap-3">
+                        <div class="e-card-image">
+                            <img class="w-100 rounded-4" src="assets/images/ai/card/visual-profile-card/dubai-marina.jpg" alt="dubai marina" style="height: 14rem; object-fit: cover;" />
+                        </div>
+                        <div class="e-card-stacked d-flex justify-content-between flex-row px-3">
+                            <div class="pb-3">
+                                <div class="e-card-header px-0 pt-0">
+                                    <div class="e-card-header-caption">
+                                        <h2 class="h6 fw-medium text-body mb-0" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">Dubai Marina</h2>
+                                    </div>
+                                </div>
+                                <div class="e-card-content pb-0 px-0 pt-2">
+                                    <p class="text-body-secondary mb-0">Dubai</p>
+                                </div>
+                            </div>
+                            <div class="e-card-actions px-0 pt-0 d-flex align-items-center">
+                                <SfButton CssClass="e-flat py-2" IconCss="e-icons e-more-vertical-1 fs-6" Type="Button" aria-label="more" role="button"></SfButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

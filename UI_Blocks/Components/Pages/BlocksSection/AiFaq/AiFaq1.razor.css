@@ -1,0 +1,7 @@
+::deep #FAQ .e-accordion .e-acrdn-item .e-acrdn-panel .e-acrdn-content {
+    padding: 0px !important;
+}
+
+::deep #FAQ .e-accordion .e-acrdn-item .e-acrdn-header {
+    white-space: wrap !important;
+}

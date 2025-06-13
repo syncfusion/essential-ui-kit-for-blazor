@@ -29,6 +29,7 @@
     <PackageReference Include="Syncfusion.Blazor.ProgressBar" Version="29.1.33" />
     <PackageReference Include="Syncfusion.Blazor.Charts" Version="29.1.33" />
     <PackageReference Include="Syncfusion.Blazor.QueryBuilder" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.InteractiveChat" Version="29.1.33" />
   </ItemGroup>
 
 </Project>

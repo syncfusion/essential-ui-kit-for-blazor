@@ -1,0 +1,166 @@
+﻿@page "/blocks/ai-sidebar-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div id="sidebar-navigation" style="height: 766px;">
+            <SfSidebar @key="IsMobileView" class="bg-gray-50 dark:bg-gray-700" Width="256px" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="@IsBackdropVisible" role="complementary">
+                <div class="flex flex-col justify-between h-full">
+                    <div>
+                        <div class="flex items-center px-3 py-2 mt-1">
+                            <span class="e-avatar e-avatar-circle e-avatar-small shrink-0">
+                                <img src="assets/images/common/avatar/avatar-2.jpg" alt="profile picture" />
+                            </span>
+                            <div class="ml-2">
+                                <div class="text-base font-medium text-gray-900 dark:text-white">Bob Johnson</div>
+                                <p class="text-sm mt-1 text-gray-700 dark:text-gray-300">bobjohnson&#64;example.com</p>
+                            </div>
+                        </div>
+                        <hr class="border-gray-200 dark:border-gray-600 m-4" />
+                        <SfListView CssClass="border-0 e-list-template" DataSource="@NavigationMenu" aria-label="main navigation links" role="list">
+                            <ListViewFieldSettings TValue="MenuItem" Text="Field" IconCss="FontIcon"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="MenuItem">
+                                <Template Context="data">
+                                    <div class="e-list-wrapper flex items-center justify-between !px-3">
+                                        <div class="flex items-center gap-3">
+                                            <span class="e-icons @data.FontIcon text-base"></span>
+                                            <span class="text-base lg:text-sm">@data.Field</span>
+                                        </div>
+                                        @if (data.Id == 4)
+                                        {
+                                            <span class="e-badge e-badge-pill e-badge-primary !px-2">9</span>
+                                        }
+                                    </div>
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                        <hr class="border-gray-200 dark:border-gray-600 m-4" />
+                        <SfListView CssClass="border-0 e-list-template" DataSource="@SupportMenu" aria-label="other navigation links" role="list">
+                            <ListViewFieldSettings TValue="MenuItem" Text="Field" IconCss="FontIcon"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="MenuItem">
+                                <Template Context="data">
+                                    <div class="e-list-wrapper !px-3 @(data.Id == 3 ? "mt-3" : "")">
+                                        @if (data.Field == "Upgrade Plan")
+                                        {
+                                            <div class="flex items-center justify-between">
+                                                <div class="flex items-center gap-2">
+                                                    <span class="e-avatar e-avatar-circle e-avatar-small bg-primary-600 dark:bg-primary-400">
+                                                        <span class="e-icons e-ai-chat e-medium !text-white dark:!text-black"></span>
+                                                    </span>
+                                                    <span class="font-medium text-base lg:text-sm">@data.Field</span>
+                                                </div>
+                                                <span class="e-icons @data.FontIcon e-medium"></span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="flex items-center gap-3">
+                                                <span class="e-icons @data.FontIcon text-base"></span>
+                                                <span class="text-base lg:text-sm">@data.Field</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <div class="bg-white dark:bg-gray-800 mb-6 p-1 w-fit border border-gray-200 dark:border-gray-600 rounded-lg">
+                            <SfButton CssClass="rounded-lg e-primary" IconCss="e-icons e-brightness" Type="button" Content="Light" aria-label="switch to light theme" role="button"></SfButton>
+                            <SfButton CssClass="rounded-lg e-flat" IconCss="e-icons e-contrast" Type="button" Content="Dark" aria-label="switch to dark theme" role="button"></SfButton>
+                        </div>
+                    </div>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 top-0 left-0 absolute">
+        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div id="sidebar-navigation" style="height: 766px;">
+            <SfSidebar @key="IsMobileView" class="bg-body border-light-subtle" Width="256px" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="@IsBackdropVisible" role="complementary">
+                <div class="d-flex flex-column justify-content-between h-100">
+                    <div>
+                        <div class="d-flex align-items-center px-3 py-2 my-1">
+                            <span class="e-avatar e-avatar-circle e-avatar-small flex-shrink-0">
+                                <img src="assets/images/common/avatar/avatar-2.jpg" alt="profile picture" />
+                            </span>
+                            <div class="ms-2">
+                                <div class="fs-6 fw-medium text-body">Bob Johnson</div>
+                                <p class="mt-1 mb-0 text-body-secondary">bobjohnson&#64;example.com</p>
+                            </div>
+                        </div>
+                        <hr class="border-light-subtle opacity-100 mx-3" />
+                        <SfListView id="nav-list" CssClass="border-0 e-list-template rounded-0" DataSource="@NavigationMenu" aria-label="main navigation links" role="list">
+                            <ListViewFieldSettings TValue="MenuItem" Text="Field" IconCss="FontIcon"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="MenuItem">
+                                <Template Context="data">
+                                    <div class="e-list-wrapper d-flex align-items-center justify-content-between px-3 py-2">
+                                        <div class="d-flex align-items-center gap-2 fs-6">
+                                            <span class="e-icons @data.FontIcon small"></span>
+                                            <span class="small">@data.Field</span>
+                                        </div>
+                                        @if (data.Id == 4)
+                                        {
+                                            <span class="e-badge e-badge-pill e-badge-primary">9</span>
+                                        }
+                                    </div>
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                        <hr class="border-light-subtle opacity-100 mx-3" />
+                        <SfListView id="support-list" CssClass="border-0 e-list-template rounded-0" DataSource="@SupportMenu" aria-label="other navigation links" role="list">
+                            <ListViewFieldSettings TValue="MenuItem" Text="Field" IconCss="FontIcon"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="MenuItem">
+                                <Template Context="data">
+                                    <div class="e-list-wrapper px-3 py-2 @(data.Id == 3 ? "mt-2" : "")">
+                                        @if (data.Field == "Upgrade Plan")
+                                        {
+                                            <div class="d-flex align-items-center justify-content-between fs-6">
+                                                <div class="d-flex align-items-center gap-2">
+                                                    <span class="e-avatar e-avatar-circle e-avatar-small bg-primary text-white">
+                                                        <span class="e-icons e-ai-chat e-medium"></span>
+                                                    </span>
+                                                    <span class="fw-medium small">@data.Field</span>
+                                                </div>
+                                                <span class="e-icons @data.FontIcon fs-5"></span>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="d-flex align-items-center gap-2 fs-6">
+                                                <span class="e-icons @data.FontIcon small"></span>
+                                                <span class="small">@data.Field</span>
+                                            </div>
+                                        }
+                                    </div>
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </div>
+                    <div class="d-flex justify-content-center">
+                        <div class="bg-body mb-4 p-1 border border-light-subtle rounded-3">
+                            <SfButton CssClass="rounded-3 e-primary" IconCss="e-icons e-brightness" Type="button" Content="Light" aria-label="switch to light theme" role="button"></SfButton>
+                            <SfButton CssClass="rounded-3 e-flat" IconCss="e-icons e-contrast" Type="button" Content="Dark" aria-label="switch to dark theme" role="button"></SfButton>
+                        </div>
+                    </div>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 position-absolute top-0 start-0">
+        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

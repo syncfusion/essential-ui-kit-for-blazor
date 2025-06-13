@@ -1,0 +1,76 @@
+﻿@page "/blocks/ai-prompt-card-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="py-20 w-full px-4 lg:max-w-4xl mx-auto sm:px-6" style="min-height: 49rem;">
+            <div class="grid gap-6 grid-cols-1 sm:grid-cols-2 lg:gap-10">
+                <div class="flex flex-col items-center">
+                    <div>
+                        <img class="rounded-lg" src="assets/images/ai/prompt-card/visual-prompt-card/mid-journey.jpg" alt="mid journey" />
+                    </div>
+                    <div class="e-card rounded-lg justify-center w-10/12" style="bottom: 10%;">
+                        <div class="e-card-header !w-full !px-4 !pb-2 !pt-4">
+                            <h2 class="text-sm font-medium text-gray-900 dark:text-white">Midjourney</h2>
+                        </div>
+                        <div class="e-card-content !px-4 !pb-4">
+                            <p class="text-xs truncate">Enraged warrior, monsterlike armor, living armor, chaotic energy, glowing eyes, cinematic lighting, ultra-detailed, concept art style.</p>
+                        </div>
+                    </div>
+                </div>
+            <div class="flex flex-col items-center">
+                    <div >
+                        <img class="rounded-lg" src="assets/images/ai/prompt-card/visual-prompt-card/alien-fish.jpg" alt="alien fish" />
+                    </div>
+                    <div class="e-card rounded-lg justify-center w-10/12" style="bottom: 10%;">
+                        <div class="e-card-header !w-full !px-4 !pb-2 !pt-4">
+                            <h2 class="text-sm font-medium text-gray-900 dark:text-white">DALL-E</h2>
+                        </div>
+                        <div class="e-card-content !px-4 !pb-4">
+                            <p class="text-xs truncate">Photo of an extremely cute alien fish swimming in shallow water, with a soft pink body, starfish-like limbs, and a curious expression.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="py-5 w-100 px-3 mx-auto" style="min-height: 49rem; max-width: 826px;">
+            <div class="row g-3 g-lg-5">
+                <div class="col-sm-6 d-flex flex-column align-items-center">
+                    <div>
+                        <img class="rounded object-fit-cover w-100 h-100" src="assets/images/ai/prompt-card/visual-prompt-card/mid-journey.jpg" alt="mid journey" />
+                    </div>
+                    <div class="e-card border-0 shadow-lg rounded-3 bg-body d-flex justify-content-center position-relative" style="bottom: 10%; width: 90%;">
+                        <div class="e-card-header w-100 px-3 pt-3 pb-2 border-0 bg-transparent">
+                            <h2 class="small mb-0 fw-medium text-body">Midjourney</h2>
+                        </div>
+                        <div class="e-card-content px-3 pb-3 pt-0">
+                            <p class="text-body-secondary small text-truncate mb-0">Enraged warrior, monsterlike armor, living armor, chaotic energy, glowing eyes, cinematic lighting, ultra-detailed, concept art style.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 d-flex flex-column align-items-center">
+                    <div>
+                        <img class="rounded object-fit-cover w-100 h-100" src="assets/images/ai/prompt-card/visual-prompt-card/alien-fish.jpg" alt="alien fish" />
+                    </div>
+                    <div class="e-card border-0 shadow-lg rounded-3 bg-body d-flex justify-content-center position-relative" style="bottom: 10%; width: 90%;">
+                        <div class="e-card-header w-100 px-3 pt-3 pb-2 border-0 bg-transparent">
+                            <h2 class="small mb-0 fw-medium text-body">DALL-E</h2>
+                        </div>
+                        <div class="e-card-content px-3 pb-3 pt-0">
+                            <p class="text-body-secondary small text-truncate mb-0">Photo of an extremely cute alien fish swimming in shallow water, with a soft pink body, starfish-like limbs, and a curious expression.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

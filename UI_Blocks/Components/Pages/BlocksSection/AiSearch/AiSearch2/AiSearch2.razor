@@ -1,0 +1,150 @@
+﻿@page "/blocks/ai-search-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900 h-100">
+        <div class="w-full pt-5 pb-4 h-screen">
+            <div class="px-4 mx-auto lg:px-0" style="max-width: 537px">
+                <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" DataSource="@FilteredData" Placeholder="Search" PopupHeight="750px" CssClass="e-bigger" role="combobox">
+                    <AutoCompleteEvents TValue="string" TItem="SearchItem" Focus="@FocusHandlerAsync" OnClose="@(args => { if (IsTabSwitch) args.Cancel = true; })" Created="@FocusHandlerAsync"></AutoCompleteEvents>
+                    <AutoCompleteFieldSettings Value="Name"></AutoCompleteFieldSettings>
+                    <AutoCompleteTemplates TItem="SearchItem">
+                        <HeaderTemplate>
+                            <SfTab OverFlowMode="@OverflowMode">
+                                <TabEvents Created="@(args => FilteredData = AllData.Take(6).ToList())" Selected="@TabSelectedAsync"></TabEvents>
+                                <TabItems>
+                                    <TabItem>
+                                        <HeaderTemplate>
+                                            <div class="flex items-center gap-2">
+                                                <p>All results</p>
+                                                <span class="e-badge e-badge-circle">6</span>
+                                            </div>
+                                        </HeaderTemplate>
+                                    </TabItem>
+                                    <TabItem>
+                                        <HeaderTemplate>
+                                            <div class="flex items-center gap-2">
+                                                <p>Team</p>
+                                                <span class="e-badge e-badge-circle">1</span>
+                                            </div>
+                                        </HeaderTemplate>
+                                    </TabItem>
+                                    <TabItem>
+                                        <HeaderTemplate>
+                                            <div class="flex items-center gap-2">
+                                                <p>Files</p>
+                                                <span class="e-badge e-badge-circle">3</span>
+                                            </div>
+                                        </HeaderTemplate>
+                                    </TabItem>
+                                    <TabItem>
+                                        <HeaderTemplate>
+                                            <div class="flex items-center gap-2">
+                                                <p>Project</p>
+                                                <span class="e-badge e-badge-circle">2</span>
+                                            </div>
+                                        </HeaderTemplate>
+                                    </TabItem>
+                                </TabItems>
+                            </SfTab>
+                        </HeaderTemplate>
+                        <ItemTemplate Context="context">
+                            <div class="flex gap-3 px-5 py-2" @onclick="@SelectItem">
+                                <span class="indent-0 e-avatar e-avatar-medium e-avatar-circle shrink-0">
+                                    @if (!string.IsNullOrEmpty(context.Image))
+                                    {
+                                        <img src="assets/images/common/avatar/@context.Image" class="w-100 h-100 object-fit-cover" alt="logo" />
+                                    }
+                                    else
+                                    {
+                                        <span class="e-icons e-file-document text-lg"></span>
+                                    }
+                                </span>
+                                <div class="w-full indent-0">
+                                    <div class="text-sm !font-medium flex items-center !text-wrap text-gray-900 dark:text-white mb-0.5">@context.Name</div>
+                                    <div class="text-gray-700 font-normal flex items-center !text-wrap dark:text-gray-300 text-sm">@context.Status</div>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </AutoCompleteTemplates>
+                </SfAutoComplete>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body h-100">
+        <div class="w-100 pt-3 pb-3 h-100">
+            <div class="px-3 mx-auto" style="max-width: 537px">
+                <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" DataSource="@FilteredData" Placeholder="Search" PopupHeight="750px" CssClass="e-bigger" role="combobox">
+                    <AutoCompleteEvents TValue="string" TItem="SearchItem" Focus="@FocusHandlerAsync" OnClose="@(args => { if (IsTabSwitch) args.Cancel = true; })" Created="@FocusHandlerAsync"></AutoCompleteEvents>
+                    <AutoCompleteFieldSettings Value="Name"></AutoCompleteFieldSettings>
+                    <AutoCompleteTemplates TItem="SearchItem">
+                        <HeaderTemplate>
+                            <SfTab @ref="Tab" OverFlowMode="@OverflowMode">
+                                <TabEvents Created="@(args => FilteredData = AllData.Take(6).ToList())" Selected="@TabSelectedAsync"></TabEvents>
+                                <TabItems>
+                                    <TabItem>
+                                        <HeaderTemplate>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span>All results</span>
+                                                <span class="e-badge e-badge-circle">6</span>
+                                            </div>
+                                        </HeaderTemplate>
+                                    </TabItem>
+                                    <TabItem>
+                                        <HeaderTemplate>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span>Team</span>
+                                                <span class="e-badge e-badge-circle">1</span>
+                                            </div>
+                                        </HeaderTemplate>
+                                    </TabItem>
+                                    <TabItem>
+                                        <HeaderTemplate>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span>Files</span>
+                                                <span class="e-badge e-badge-circle">3</span>
+                                            </div>
+                                        </HeaderTemplate>
+                                    </TabItem>
+                                    <TabItem>
+                                        <HeaderTemplate>
+                                            <div class="d-flex align-items-center gap-2">
+                                                <span>Project</span>
+                                                <span class="e-badge e-badge-circle">2</span>
+                                            </div>
+                                        </HeaderTemplate>
+                                    </TabItem>
+                                </TabItems>
+                            </SfTab>
+                        </HeaderTemplate>
+                        <ItemTemplate Context="context">
+                            <div class="d-flex gap-3 px-3 py-2" @onclick="@SelectItem" style="text-indent: 0;">
+                                <span class="e-avatar e-avatar-medium e-avatar-circle flex-shrink-0">
+                                    @if (!string.IsNullOrEmpty(context.Image))
+                                    {
+                                        <img src="assets/images/common/avatar/@context.Image" class="w-100 h-100 object-fit-cover" alt="logo" />
+                                    }
+                                    else
+                                    {
+                                        <span class="e-icons e-file-document fs-5"></span>
+                                    }
+                                </span>
+                                <div class="w-100 fs-6">
+                                    <div class="small lh-base fw-medium d-flex align-items-center text-body mb-1">@context.Name</div>
+                                    <div class="text-body-secondary lh-base fw-normal text-wrap d-flex align-items-center small">@context.Status</div>
+                                </div>
+                            </div>
+                        </ItemTemplate>
+                    </AutoCompleteTemplates>
+                </SfAutoComplete>
+            </div>
+        </div>
+    </section>
+}

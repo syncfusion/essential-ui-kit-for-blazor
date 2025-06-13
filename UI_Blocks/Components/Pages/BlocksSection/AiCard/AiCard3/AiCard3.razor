@@ -1,0 +1,104 @@
+﻿@page "/blocks/ai-card-3"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="px-4 sm:px-6 lg:px-32 py-20" style="min-height: 36rem;">
+            <div class="grid sm:grid-cols-2 gap-6 lg:gap-5 xl:grid-cols-4">
+                <div class="e-card rounded-md border-0 h-72 shadow-md">
+                    <div class="e-card-content">
+                        <div class="flex flex-col items-center">
+                            <span class="e-avatar e-avatar-circle e-icons e-paste text-3xl bg-cyan-100 dark:bg-sky-800 text-cyan-700 dark:text-sky-400" style="width: 76px; height: 76px;"></span>
+                            <h2 class="text-sm font-medium pt-6 text-gray-900 dark:text-white">Project management</h2>
+                            <p class="text-xs text-center pt-4 px-7 lg:px-0 w-11/12 text-gray-700 dark:text-gray-300">Create tasks, track time, and update progress all in one place.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card rounded-md border-0 h-72 shadow-md">
+                    <div class="e-card-content">
+                        <div class="flex flex-col items-center">
+                            <span class="e-avatar e-avatar-circle e-icons e-clock text-3xl bg-orange-100 text-orange-700 dark:bg-orange-800 dark:text-orange-500" style="width: 76px; height: 76px;"></span>
+                            <h2 class="text-sm font-medium pt-6 text-gray-900 dark:text-white">Time tracking</h2>
+                            <p class="text-xs text-center pt-4 px-7 w-11/12 lg:px-0 text-gray-700 dark:text-gray-300">Discover how much time your team is spending on their work.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card rounded-md border-0 h-72 shadow-md">
+                    <div class="e-card-content">
+                        <div class="flex flex-col items-center">
+                            <span class="e-avatar e-avatar-circle e-icons e-day text-3xl bg-green-100 text-green-700 dark:bg-green-800 dark:text-green-500" style="width: 76px; height: 76px;"></span>
+                            <h2 class="text-sm font-medium pt-6 text-gray-900 dark:text-white">Resource planning</h2>
+                            <p class="text-xs text-center pt-4 px-7 lg:px-0 w-11/12 text-gray-700 dark:text-gray-300">Monitor how your resources are utilized across projects.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card rounded-md border-0 h-72 shadow-md">
+                    <div class="e-card-content">
+                        <div class="flex flex-col items-center">
+                            <span class="e-avatar e-avatar-circle e-icons e-border-shadow-2 text-3xl bg-red-100 text-red-600 dark:bg-red-800 dark:text-red-400" style="width: 76px; height: 76px;"></span>
+                            <h2 class="text-sm font-medium pt-6 text-gray-900 dark:text-white">Invoicing</h2>
+                            <p class="text-xs text-center pt-4 px-7 lg:px-0 w-11/12 text-gray-700 dark:text-gray-300">Invoice based on reported time for accurate billing.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="mx-auto px-3 px-sm-4 py-5" style="min-height: 36rem; max-width: 70rem;">
+            <div class="row g-4 mx-lg-2">
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="e-card border-0 shadow px-1" style="height: 298px;">
+                        <div class="e-card-content">
+                            <div class="d-flex flex-column align-items-center">
+                                <span class="e-avatar e-avatar-circle e-icons e-paste fs-3 bg-info-subtle text-info" style="width: 76px; height: 76px;"></span>
+                                <p class="fw-medium pt-4 mb-3 text-body">Project management</p>
+                                <p class="small text-center px-4 px-lg-0 text-body-secondary">Create tasks, track time, and update progress all in one place.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="e-card border-0 shadow px-1" style="height: 298px;">
+                        <div class="e-card-content">
+                            <div class="d-flex flex-column align-items-center">
+                                <span class="e-avatar e-avatar-circle e-icons e-clock fs-3 bg-warning-subtle text-warning" style="width: 76px; height: 76px;"></span>
+                                <p class="fw-medium pt-4 mb-3 text-body">Time tracking</p>
+                                <p class="small text-center px-4 px-lg-0 text-body-secondary">Discover how much time your team is spending on their work.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="e-card border-0 shadow px-1" style="height: 298px;">
+                        <div class="e-card-content">
+                            <div class="d-flex flex-column align-items-center">
+                                <span class="e-avatar e-avatar-circle e-icons e-agenda-date-range fs-3 bg-success-subtle text-success" style="width: 76px; height: 76px;"></span>
+                                <p class="fw-medium pt-4 mb-3 text-body">Resource planning</p>
+                                <p class="small text-center px-4 px-lg-0 text-body-secondary">Monitor how your resources are utilized across projects.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12 col-sm-6 col-xl-3">
+                    <div class="e-card border-0 shadow px-1" style="height: 298px;">
+                        <div class="e-card-content">
+                            <div class="d-flex flex-column align-items-center">
+                                <span class="e-avatar e-avatar-circle e-icons e-border-shadow-2 fs-3 bg-danger-subtle text-danger" style="width: 76px; height: 76px;"></span>
+                                <p class="fw-medium pt-4 mb-3 text-body">Invoicing</p>
+                                <p class="small text-center px-4 px-lg-0 text-body-secondary">Invoice based on reported time for accurate billing.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

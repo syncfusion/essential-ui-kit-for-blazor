@@ -1,0 +1,144 @@
+﻿@page "/blocks/ai-prompt-card-3"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="px-4 py-20 sm:px-6 m-auto" style="max-width: 1062px;">
+            <div class="grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+                <div class="e-card rounded-lg border-none shadow-md w-full">
+                    <div class="flex justify-between">
+                        <div class="p-4 !pr-0 flex items-center">
+                            <span class="e-icons e-edit text-2xl text-gray-500 dark:text-gray-200"></span>
+                        </div>
+                        <div class="e-card-stacked">
+                            <div class="e-card-header !px-4 !pt-4 !pb-2 !justify-between items-center !w-full">
+                                <div class="e-card-header-caption">
+                                    <div class="e-card-header-title">
+                                        <p class="text-sm font-medium text-gray-900 dark:text-white">Screenwriter</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="e-card-content !px-4 !pb-4 !text-wrap">
+                                <p class="text-xs text-gray-700 line-clamp-1 dark:text-gray-300">I want you to act as a screenwriter. You will develop engaging and creative scripts for movies or TV shows based on the themes, characters, and plot lines I provide.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg border-none shadow-md w-full">
+                    <div class="flex justify-between">
+                        <div class="p-4 !pr-0 flex items-center">
+                            <span class="e-icons e-edit text-2xl text-gray-500 dark:text-gray-200"></span>
+                        </div>
+                        <div class="e-card-stacked">
+                            <div class="e-card-header !px-4 !pt-4 !pb-2 !justify-between items-center !w-full">
+                                <div class="e-card-header-caption">
+                                    <div class="e-card-header-title">
+                                        <p class="text-sm font-medium text-gray-900 dark:text-white">Debater</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="e-card-content !px-4 !pb-4 !text-wrap">
+                                <p class="text-xs text-gray-700 line-clamp-1 dark:text-gray-300">I want you to act as a debater. I will provide you with a topic, and you will present arguments for both sides, offering well-reasoned points and counterpoints.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg border-none shadow-md w-full">
+                    <div class="flex justify-between">
+                        <div class="p-4 !pr-0 flex items-center">
+                            <span class="e-icons e-edit text-2xl text-gray-500 dark:text-gray-200"></span>
+                        </div>
+                        <div class="e-card-stacked">
+                            <div class="e-card-header !px-4 !pt-4 !pb-2 !justify-between items-center !w-full">
+                                <div class="e-card-header-caption">
+                                    <div class="e-card-header-title">
+                                        <p class="text-sm font-medium text-gray-900 dark:text-white">Cyber security specialist</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="e-card-content !px-4 !pb-4 !text-wrap">
+                                <p class="text-xs text-gray-700 line-clamp-1 dark:text-gray-300">I want you to act as a cyber security specialist. I will describe a digital security scenario, and you will suggest strategies to protect systems, identify vulnerabilities, and respond to threats.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="px-4 py-5 px-sm-5 mx-auto" style="max-width: 1062px;">
+            <div class="row g-3">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="e-card rounded-3 border-0 shadow-lg w-100">
+                        <div class="d-flex">
+                            <div class="p-3 pe-0 d-flex align-items-center">
+                                <span class="e-icons e-edit fs-4 text-body-secondary"></span>
+                            </div>
+                            <div class="e-card-stacked">
+                                <div class="e-card-header px-3 pt-3 d-flex justify-content-between align-items-center w-100">
+                                    <div class="e-card-header-caption">
+                                        <div class="e-card-header-title">
+                                            <p class="small mb-0 fw-medium text-body">Screenwriter</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="e-card-content px-3 pb-3 pt-2 text-wrap">
+                                    <p class="text-body-secondary mb-0 small text-truncate">I want you to act as a screenwriter. You will develop engaging and creative scripts for movies or TV shows based on the themes, characters, and plot lines I provide.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="e-card rounded-3 border-0 shadow-lg w-100">
+                        <div class="d-flex">
+                            <div class="p-3 pe-0 d-flex align-items-center">
+                                <span class="e-icons e-edit fs-4 text-body-secondary"></span>
+                            </div>
+                            <div class="e-card-stacked">
+                                <div class="e-card-header px-3 pt-3 d-flex justify-content-between align-items-center w-100">
+                                    <div class="e-card-header-caption">
+                                        <div class="e-card-header-title">
+                                            <p class="small mb-0 fw-medium text-body">Debater</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="e-card-content px-3 pb-3 pt-2 text-wrap">
+                                    <p class="text-body-secondary mb-0 small text-truncate">I want you to act as a debater. I will provide you with a topic, and you will present arguments for both sides, offering well-reasoned points and counterpoints.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-lg-4">
+                    <div class="e-card rounded-3 border-0 shadow-lg w-100">
+                        <div class="d-flex">
+                            <div class="p-3 pe-0 d-flex align-items-center">
+                                <span class="e-icons e-edit fs-4 text-body-secondary"></span>
+                            </div>
+                            <div class="e-card-stacked">
+                                <div class="e-card-header px-3 pt-3 d-flex justify-content-between align-items-center w-100">
+                                    <div class="e-card-header-caption">
+                                        <div class="e-card-header-title">
+                                            <p class="small mb-0 fw-medium text-body">Cyber security specialist</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="e-card-content px-3 pb-3 pt-2 text-wrap">
+                                    <p class="text-body-secondary mb-0 small text-truncate">I want you to act as a cyber security specialist. I will describe a digital security scenario, and you will suggest strategies to protect systems, identify vulnerabilities, and respond to threats.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

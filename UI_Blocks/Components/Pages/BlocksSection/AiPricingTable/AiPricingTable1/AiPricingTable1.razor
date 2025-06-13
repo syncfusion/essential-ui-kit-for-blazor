@@ -1,0 +1,233 @@
+﻿@page "/blocks/ai-pricing-table-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" class="relative flex items-center justify-center" style="min-height: 580px !important;">
+            <SfDialog @ref="Dialog" CssClass="absolute py-3" Target="#dialog-container" Visible="true" ShowCloseIcon="true" Width="537px" Height="460" CloseOnEscape="true">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <div class="max-w-2xl px-1 text-gray-700 dark:text-gray-300">
+                    <DialogTemplates>
+                        <Header>
+                            <span class="text-base">Select plan</span>
+                        </Header>
+                        <Content>
+                            <div class="sm:px-1.5">
+                                <div>
+                                    <p class="mb-3">Upgrade to access</p>
+                                    <div class="text-base text-gray-700 dark:text-gray-200">
+                                        <ul class="grid gap-3 sm:grid-cols-2">
+                                            <div class="grow">
+                                                <li class="flex items-start mb-3">
+                                                    <span class="e-icons e-circle-check mr-2 text-xl !leading-5 text-primary-600 dark:text-primary-400"></span>
+                                                    <span class="text-xs !leading-5">Unlimited searches, interactions, and history</span>
+                                                </li>
+                                                <li class="flex items-start mb-3">
+                                                    <span class="e-icons e-circle-check mr-2 text-xl !leading-5 text-primary-600 dark:text-primary-400"></span>
+                                                    <span class="text-xs !leading-5">Access to our GPT 3.5 model</span>
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <span class="e-icons e-circle-check mr-2 text-xl !leading-5 text-primary-600 dark:text-primary-400"></span>
+                                                    <span class="text-xs !leading-5">Access to web, ios, and Android apps</span>
+                                                </li>
+                                            </div>
+                                            <div class="grow">
+                                                <li class="flex items-start mb-3">
+                                                    <span class="e-icons e-circle-check mr-2 text-xl !leading-5 text-primary-600 dark:text-primary-400"></span>
+                                                    <span class="text-xs !leading-5">Mobile accessibility</span>
+                                                </li>
+                                                <li class="flex items-start mb-3">
+                                                    <span class="e-icons e-circle-check mr-2 text-xl !leading-5 text-primary-600 dark:text-primary-400"></span>
+                                                    <span class="text-xs !leading-5">Standard customer support</span>
+                                                </li>
+                                                <li class="flex items-start">
+                                                    <span class="e-icons e-circle-check mr-2 text-xl !leading-5 text-primary-600 dark:text-primary-400"></span>
+                                                    <span class="text-xs !leading-5">Basic reporting and analytics</span>
+                                                </li>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <hr class="my-6" />
+                                <div class="grid gap-3 lg:grid-cols-3 sm:grid-cols-2 box-border">
+                                    <div class="e-card rounded-none bg-gray-50 dark:bg-gray-900 border-none shadow-none">
+                                        <div class="e-card-header !pt-3 !px-3">
+                                            <div class="e-card-header-caption">
+                                                <div class="e-card-title font-medium text-xs text-gray-700 dark:text-white">Free</div>
+                                            </div>
+                                        </div>
+                                        <div class="e-card-content !pb-1 mt-3 !px-3">
+                                            <h2 class="text-2xl flex items-center text-gray-700 dark:text-white leading-tight font-medium">$0
+                                                <span class="font-normal text-gray-700 dark:text-gray-200 text-xs ml-2">/ month</span>
+                                            </h2>
+                                        </div>
+                                        <div class="e-card-actions !px-3 py-3 leading-9">
+                                            <SfButton CssClass="e-primary e-outline w-full" Content="Current plan" Type="Button" aria-label="current plan"></SfButton>
+                                        </div>
+                                    </div>
+                                    <div class="e-card rounded-none bg-gray-50 dark:bg-gray-900 border-none shadow-none">
+                                        <div class="e-card-header !pt-3 !px-3">
+                                            <div class="e-card-header-caption">
+                                                <div class="e-card-title font-medium text-xs text-gray-700 dark:text-white">Standard</div>
+                                            </div>
+                                        </div>
+                                        <div class="e-card-content !pb-1 mt-3 !px-3">
+                                            <h2 class="text-2xl flex items-center text-gray-700 dark:text-white leading-tight font-medium">$28
+                                                <span class="font-normal text-gray-700 dark:text-gray-200 text-xs ml-2">/ month</span>
+                                            </h2>
+                                        </div>
+                                        <div class="e-card-actions !px-3 py-3 leading-9">
+                                            <SfButton CssClass="e-primary w-full" Content="Upgrade" Type="Button" aria-label="upgrade" role="Button"></SfButton>
+                                        </div>
+                                    </div>
+                                    <div class="e-card rounded-none bg-gray-50 dark:bg-gray-900 border-none shadow-none">
+                                        <div class="e-card-header !pt-3 !px-3">
+                                            <div class="e-card-header-caption">
+                                                <div class="e-card-title font-medium text-xs text-gray-700 dark:text-white">Pro</div>
+                                            </div>
+                                        </div>
+                                        <div class="e-card-content !pb-1 mt-3 !px-3">
+                                            <h2 class="text-2xl flex items-center text-gray-700 dark:text-white leading-tight font-medium">$48
+                                                <span class="font-normal text-gray-700 dark:text-gray-200 text-xs ml-2">/ month</span>
+                                            </h2>
+                                        </div>
+                                        <div class="e-card-actions !px-3 py-3 leading-9">
+                                            <SfButton CssClass="e-primary w-full" Content="Upgrade" Type="Button" aria-label="upgrade" role="Button"></SfButton>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </Content>
+                    </DialogTemplates>
+                </div>
+            </SfDialog>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="top-0 flex w-full absolute">
+        <SfButton CssClass="mx-auto my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Type="button" aria-label="feedback for improvement" role="button">Pricing Table</SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" class="position-relative d-flex align-items-center justify-content-center" style="min-height: 580px !important;">
+            <SfDialog @ref="Dialog" Target="#dialog-container" Visible="true" ShowCloseIcon="true" Width="537px" Height="480px" CloseOnEscape="true">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <div class="container px-1 rounded text-body-secondary">
+                    <DialogTemplates>
+                        <Header>
+                            <span class="fs-6 ps-2">Select plan</span>
+                        </Header>
+                        <Content>
+                            <div class="px-sm-2">
+                                <div>
+                                    <p class="mb-3">Upgrade to access</p>
+                                    <div class="fs-6 text-body-secondary">
+                                        <ul class="row g-3 row-cols-sm-2 list-unstyled">
+                                            <div class="flex-grow-1">
+                                                <li class="d-flex align-items-start mb-3">
+                                                    <span class="e-icons e-circle-check me-2 fs-5 lh-sm text-primary"></span>
+                                                    <span class="small lh-base">Unlimited searches, interactions, and history</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-3">
+                                                    <span class="e-icons e-circle-check me-2 fs-5 lh-sm text-primary"></span>
+                                                    <span class="small lh-base">Access to our GPT 3.5 model</span>
+                                                </li>
+                                                <li class="d-flex align-items-start">
+                                                    <span class="e-icons e-circle-check me-2 fs-5 lh-sm text-primary"></span>
+                                                    <span class="small lh-base">Access to web, ios, and Android apps</span>
+                                                </li>
+                                            </div>
+                                            <div class="flex-grow-1">
+                                                <li class="d-flex align-items-start mb-3">
+                                                    <span class="e-icons e-circle-check me-2 fs-5 lh-sm text-primary"></span>
+                                                    <span class="small lh-base">Mobile accessibility</span>
+                                                </li>
+                                                <li class="d-flex align-items-start mb-3">
+                                                    <span class="e-icons e-circle-check me-2 fs-5 lh-sm text-primary"></span>
+                                                    <span class="small lh-base">Standard customer support</span>
+                                                </li>
+                                                <li class="d-flex align-items-start">
+                                                    <span class="e-icons e-circle-check me-2 fs-5 lh-sm text-primary"></span>
+                                                    <span class="small lh-base">Basic reporting and analytics</span>
+                                                </li>
+                                            </div>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <hr class="my-4" />
+                                <div class="row g-3">
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="e-card rounded-0 bg-body-tertiary border-0 shadow-none">
+                                            <div class="e-card-header pt-3 px-3">
+                                                <div class="e-card-header-caption">
+                                                    <div class="e-card-title fw-medium small text-body-secondary">Free</div>
+                                                </div>
+                                            </div>
+                                            <div class="e-card-content pb-1 pt-4 px-3">
+                                                <div class="fs-6 d-flex align-items-center text-body-secondary fw-medium mb-0">
+                                                    <h2 class="fs-4 mb-0">$0</h2>
+                                                    <span class="small ms-1">/ month</span>
+                                                </div>
+                                            </div>
+                                            <div class="e-card-actions px-3 pt-0 py-3 lh-lg">
+                                                <SfButton CssClass="e-primary w-full" Content="Upgrade" Type="Button" aria-label="upgrade" role="Button"></SfButton>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="e-card rounded-0 bg-body-tertiary border-0 shadow-none">
+                                            <div class="e-card-header pt-3 px-3">
+                                                <div class="e-card-header-caption">
+                                                    <div class="e-card-title fw-medium small text-body-secondary">Standard</div>
+                                                </div>
+                                            </div>
+                                            <div class="e-card-content pb-1 pt-4 px-3">
+                                                <div class="fs-6 d-flex align-items-center text-body-secondary fw-medium mb-0">
+                                                    <h2 class="fs-4 mb-0">$28</h2>
+                                                    <span class="small ms-1">/ month</span>
+                                                </div>
+                                            </div>
+                                            <div class="e-card-actions px-3 pt-0 py-3 lh-lg">
+                                                <SfButton CssClass="e-primary w-full" Content="Upgrade" Type="Button" aria-label="upgrade" role="Button"></SfButton>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-6 col-lg-4">
+                                        <div class="e-card rounded-0 bg-body-tertiary border-0 shadow-none">
+                                            <div class="e-card-header pt-3 px-3">
+                                                <div class="e-card-header-caption">
+                                                    <div class="e-card-title fw-medium small text-body-secondary">pro</div>
+                                                </div>
+                                            </div>
+                                            <div class="e-card-content pb-1 pt-4 px-3">
+                                                <div class="fs-6 d-flex align-items-center text-body-secondary fw-medium mb-0">
+                                                    <h2 class="fs-4 mb-0">$48</h2>
+                                                    <span class="small ms-1">/ month</span>
+                                                </div>
+                                            </div>
+                                            <div class="e-card-actions px-3 pt-0 py-3 lh-lg">
+                                                <SfButton CssClass="e-primary w-full" Content="Upgrade" Type="Button" aria-label="upgrade" role="Button"></SfButton>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </Content>
+                    </DialogTemplates>
+                </div>
+            </SfDialog>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="position-absolute top-0 d-flex w-100">
+        <SfButton CssClass="mx-auto my-2" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Type="button" aria-label="feedback for improvement" role="button">Pricing Table</SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

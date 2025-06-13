@@ -1,0 +1,86 @@
+﻿@page "/blocks/rating-8"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="pt-4" style="min-height:36rem">
+            <div class="w-full max-w-sm mx-auto mt-4 py-4 px-4 rounded-lg border bg-white border-gray-300 dark:bg-gray-800 dark:border-gray-500 shadow-sm">
+                <div class="flex items-center justify-between">
+                    <div class="flex items-center gap-2">
+                        <div class="relative w-12 h-12">
+                            <span class="e-avatar e-avatar-circle e-avatar-large">
+                                <img src="assets/images/common/avatar/avatar-11.jpg" alt="olivia adams" />
+                            </span>
+                            <span class="absolute bottom-0 right-0 w-4 h-4 rounded-full flex items-center justify-center border-2 border-white dark:border-gray-800 bg-green-500 text-white text-xs">
+                                <span class="e-icons e-check"></span>
+                            </span>
+                        </div>
+                        <div class="flex flex-col">
+                            <p class="text-gray-900 dark:text-white font-medium pl-2">Olivia Adams
+                                <span class="font-normal text-base text-gray-500 dark:text-gray-400 ml-1"><span>&#64;</span>oliviaadams</span>
+                            </p>
+                            <div class="flex items-center text-sm font-medium mt-1">
+                                <SfRating Value="4.5" ShowLabel="true" Precision="PrecisionType.Exact">
+                                    <EmptyTemplate>
+                                        <span class="sf-icon-star-filled-01 text-2xl text-gray-300 dark:text-gray-500"></span>
+                                    </EmptyTemplate>
+                                    <FullTemplate>
+                                        <span class="sf-icon-star-filled-01 text-2xl text-amber-300"></span>
+                                    </FullTemplate>
+                                    <LabelTemplate Context="data">
+                                        <p class="!text-gray-900 dark:!text-white text-sm font-medium">@($"{data} / 5")</p>
+                                    </LabelTemplate>
+                                </SfRating>
+                            </div>
+                        </div>
+                    </div>
+                    <SfButton CssClass="e-flat" IconCss="e-icons e-bookmark" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="mx-auto mt-4 p-3 border rounded-3 bg-body" style="max-width: 364px;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                        <div class="position-relative" style="width: 48px; height: 48px;">
+                            <span class="e-avatar e-avatar-circle e-avatar-large">
+                                <img src="assets/images/common/avatar/avatar-11.jpg" alt="olivia adams" />
+                            </span>
+                            <span class="position-absolute bottom-0 end-0 border border-white bg-success text-white rounded-circle d-flex align-items-center justify-content-center" style="width: 16px; height: 16px; font-size: 10px;">
+                                <span class="e-icons e-check"></span>
+                            </span>
+                        </div>
+                        <div class="d-flex flex-column">
+                            <p class="mb-1 fw-medium text-body ms-2 small">Olivia Adams
+                                <span class="fw-normal text-body-secondary ms-1"> <span>&#64;</span>oliviaadams </span>
+                            </p>
+                            <div class="d-flex align-items-center fw-medium fs-6">
+                                <SfRating Value="4.5" ShowLabel="true" Precision="PrecisionType.Exact">
+                                    <EmptyTemplate>
+                                        <span class="sf-icon-star-02 fs-5 text-body-secondary"></span>
+                                    </EmptyTemplate>
+                                    <FullTemplate>
+                                        <span class="sf-icon-star-filled-01 fs-5 text-warning"></span>
+                                    </FullTemplate>
+                                    <LabelTemplate Context="data">
+                                        <p class="fw-medium text-body mb-1">@($"{data} / 5")</p>
+                                    </LabelTemplate>
+                                </SfRating>
+                            </div>
+                        </div>
+                    </div>
+                    <SfButton CssClass="e-flat" IconCss="e-icons e-bookmark" Type="button" aria-label="Bookmark" role="button"></SfButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}

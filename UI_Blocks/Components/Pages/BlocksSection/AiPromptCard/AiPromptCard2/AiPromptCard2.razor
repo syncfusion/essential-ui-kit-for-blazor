@@ -1,0 +1,234 @@
+﻿@page "/blocks/ai-prompt-card-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-gray-50 dark:bg-gray-900">
+		<div class="px-4 lg:px-0 py-20 mx-auto lg:max-w-6xl">
+			<div class="grid gap-6 sm:grid-cols-2">
+				<div class="e-card rounded-lg border-none shadow-md w-full">
+					<div class="e-card-stacked">
+						<div class="flex items-center justify-between">
+							<div>
+								<div class="e-card-header !px-4 !pt-4 !pb-2 !justify-between items-center !w-full">
+									<div>
+										<div class="e-card-header-caption">
+											<div class="e-card-header-title">
+												<p class="text-sm font-medium text-gray-900 dark:text-white">Linux terminal</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="e-card-content !px-4 !pb-4 !text-wrap">
+									<p class="text-xs text-gray-700 line-clamp-1 dark:text-gray-300">I want you to act as a Linux terminal. I will type commands and you will reply with what the terminal should show. I want you to only reply with the terminal output inside one unique code block, and nothing else.</p>
+								</div>
+							</div>
+							<div class="e-card-actions !p-4">
+								<div class="e-icons text-xl text-gray-500 dark:text-gray-200 e-bookmark mb-1"></div>
+								<div class="text-gray-900 dark:text-white text-xs text-center">23</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="e-card rounded-lg border-none shadow-md w-full">
+					<div class="e-card-stacked">
+						<div class="flex items-center justify-between">
+							<div>
+								<div class="e-card-header !px-4 !pt-4 !pb-2 !justify-between items-center !w-full">
+									<div>
+										<div class="e-card-header-caption">
+											<div class="e-card-header-title">
+												<p class="text-sm font-medium text-gray-900 dark:text-white">Travel guide</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="e-card-content !px-4 !pb-4 !text-wrap">
+									<p class="text-xs text-gray-700 line-clamp-1 dark:text-gray-300">I want you to act as a travel guide. I will write you my location and you will suggest places to visit in and around my location. You will also suggest local foods to try and cultural experiences to explore.</p>
+								</div>
+							</div>
+							<div class="e-card-actions !p-4">
+								<div class="e-icons text-xl text-gray-500 dark:text-gray-200 e-bookmark mb-1"></div>
+								<div class="text-gray-900 dark:text-white text-xs text-center">10</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="e-card rounded-lg border-none shadow-md w-full">
+					<div class="e-card-stacked">
+						<div class="flex items-center justify-between">
+							<div>
+								<div class="e-card-header !px-4 !pt-4 !pb-2 !justify-between items-center !w-full">
+									<div>
+										<div class="e-card-header-caption">
+											<div class="e-card-header-title">
+												<p class="text-sm font-medium text-gray-900 dark:text-white">Educational content creator</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="e-card-content !px-4 !pb-4 !text-wrap">
+									<p class="text-xs text-gray-700 line-clamp-1 dark:text-gray-300">I want you to act as an educational content creator. You will need to create engaging and informative content on a given topic, suitable for a specific audience such as students, professionals, or general readers.</p>
+								</div>
+							</div>
+							<div class="e-card-actions !p-4">
+								<div class="e-icons text-xl text-gray-500 dark:text-gray-200 e-bookmark mb-1"></div>
+								<div class="text-gray-900 dark:text-white text-xs text-center">0</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="e-card rounded-lg border-none shadow-md w-full">
+					<div class="e-card-stacked">
+						<div class="flex items-center justify-between">
+							<div>
+								<div class="e-card-header !px-4 !pt-4 !pb-2 !justify-between items-center !w-full">
+									<div>
+										<div class="e-card-header-caption">
+											<div class="e-card-header-title">
+												<p class="text-sm font-medium text-gray-900 dark:text-white">English pronunciation helper</p>
+											</div>
+										</div>
+									</div>
+								</div>
+								<div class="e-card-content !px-4 !pb-4 !text-wrap">
+									<p class="text-xs text-gray-700 line-clamp-1 dark:text-gray-300">I want you to act as an English pronunciation assistant for Turkish-speaking people. I will write you phrases and you will provide phonetic transcriptions and audio examples to help with pronunciation.</p>
+								</div>
+							</div>
+							<div class="e-card-actions !p-4">
+								<div class="e-icons text-xl text-gray-500 dark:text-gray-200 e-bookmark mb-1"></div>
+								<div class="text-gray-900 dark:text-white text-xs text-center">0</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body-tertiary">
+		<div class="px-3 py-5 mx-auto" style="max-width: 1140px;">
+			<div class="row g-4">
+				<div class="col-sm-6">
+					<div class="e-card rounded-3 border-0 shadow-lg w-100">
+						<div class="e-card-stacked">
+							<div class="d-flex align-items-start justify-content-between">
+								<div>
+									<div class="e-card-header px-3 pt-3 d-flex justify-content-between align-items-center w-100">
+										<div>
+											<div class="e-card-header-caption">
+												<div class="e-card-header-title">
+													<p class="small fw-medium text-body mb-0">Linux terminal</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="e-card-content px-3 pb-3 pt-2 text-wrap">
+										<p class="small mb-0 text-body-secondary" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">
+											I want you to act as a Linux terminal. I will type commands and you will reply with what the terminal should show. I want you to only reply with the terminal output inside one unique code block, and nothing else.
+										</p>
+									</div>
+								</div>
+								<div class="e-card-actions p-3 text-center">
+									<div class="e-icons fs-5 text-body-secondary mb-1 e-bookmark"></div>
+									<div class="text-body small lh-base">23</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="e-card rounded-3 border-0 shadow-lg w-100">
+						<div class="e-card-stacked">
+							<div class="d-flex align-items-start justify-content-between">
+								<div>
+									<div class="e-card-header px-3 pt-3 d-flex justify-content-between align-items-center w-100">
+										<div>
+											<div class="e-card-header-caption">
+												<div class="e-card-header-title">
+													<p class="small fw-medium text-body mb-0">Travel guide</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="e-card-content px-3 pb-3 pt-2 text-wrap">
+										<p class="small mb-0 text-body-secondary" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">
+											I want you to act as a travel guide. I will write you my location and you will suggest places to visit in and around my location. You will also suggest local foods to try and cultural experiences to explore.
+										</p>
+									</div>
+								</div>
+								<div class="e-card-actions p-3 text-center">
+									<div class="e-icons fs-5 text-body-secondary mb-1 e-bookmark"></div>
+									<div class="text-body small lh-base">10</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="e-card rounded-3 border-0 shadow-lg w-100">
+						<div class="e-card-stacked">
+							<div class="d-flex align-items-start justify-content-between">
+								<div>
+									<div class="e-card-header px-3 pt-3 d-flex justify-content-between align-items-center w-100">
+										<div>
+											<div class="e-card-header-caption">
+												<div class="e-card-header-title">
+													<p class="small fw-medium text-body mb-0">Educational content creator</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="e-card-content px-3 pb-3 pt-2 text-wrap">
+										<p class="small mb-0 text-body-secondary" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">
+											I want you to act as an educational content creator. You will need to create engaging and informative content on a given topic, suitable for a specific audience such as students, professionals, or general readers.
+										</p>
+									</div>
+								</div>
+								<div class="e-card-actions p-3 text-center">
+									<div class="e-icons fs-5 text-body-secondary mb-1 e-bookmark"></div>
+									<div class="text-body small lh-base">0</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-6">
+					<div class="e-card rounded-3 border-0 shadow-lg w-100">
+						<div class="e-card-stacked">
+							<div class="d-flex align-items-start justify-content-between">
+								<div>
+									<div class="e-card-header px-3 pt-3 d-flex justify-content-between align-items-center w-100">
+										<div>
+											<div class="e-card-header-caption">
+												<div class="e-card-header-title">
+													<p class="small fw-medium text-body mb-0">English pronunciation helper
+													</p>
+												</div>
+											</div>
+										</div>
+									</div>
+									<div class="e-card-content px-3 pb-3 pt-2 text-wrap">
+										<p class="small mb-0 text-body-secondary" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">
+											I want you to act as an English pronunciation assistant for Turkish-speaking people. I will write you phrases and you will provide phonetic transcriptions and audio examples to help with pronunciation.
+										</p>
+									</div>
+								</div>
+								<div class="e-card-actions p-3 text-center">
+									<div class="e-icons fs-5 text-body-secondary mb-1 e-bookmark"></div>
+									<div class="text-body small lh-base">0</div>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+

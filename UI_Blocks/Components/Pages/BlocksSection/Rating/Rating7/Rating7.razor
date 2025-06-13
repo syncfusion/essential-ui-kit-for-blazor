@@ -1,0 +1,80 @@
+﻿@page "/blocks/rating-7"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="pt-4" style="min-height:36rem">
+            <div class="flex flex-col gap-5 lg:flex-row items-center justify-center">
+                <div class="p-6 border-0 sm:!rounded-lg max-w-sm sm:!border rounded-none bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500">
+                    <h3 class="font-semibold mb-6 text-base text-center text-gray-900 dark:text-white">Were you satisfied with our platform</h3>
+                    <div class="flex gap-10 justify-center">
+                        <div class="flex flex-col items-center" @onclick="@(() => IsSatisfied = true)">
+                            <div class="@($"e-avatar e-avatar-circle !w-16 !h-16 shrink-0 flex items-center justify-center {(IsSatisfied == true ? "bg-green-100 dark:bg-green-800 text-green-700 dark:text-green-500" : "bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300")}")">
+                                <span class="e-icons e-thumbs-up text-4xl"></span>
+                            </div>
+                            <span class="@($"mt-2 text-sm font-medium {(IsSatisfied == true ? "text-green-700 dark:text-green-500" : "text-gray-900 dark:text-white")}")">YES</span>
+                        </div>
+                        <div class="flex flex-col items-center cursor-pointer" @onclick="@(() => IsSatisfied = false)">
+                            <div class="@($"e-avatar e-avatar-circle !w-16 !h-16 shrink-0 flex items-center justify-center {(IsSatisfied == false ? "bg-red-100 dark:bg-red-800 text-red-600 dark:text-red-400" : "bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300")}")">
+                                <span class="e-icons e-thumbs-down text-4xl"></span>
+                            </div>
+                            <span class="@($"mt-2 text-sm font-medium {(IsSatisfied == false ? "text-red-600 dark:text-red-400" : "text-gray-900 dark:text-white")}")">NO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="max-w-sm h-full w-full border-0 sm:!rounded-lg sm:!border rounded-none py-6 bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500">
+                    <h3 class="font-semibold text-base text-center text-gray-900 dark:text-white">Share your feedback</h3>
+                    <div class="mt-4 mx-auto">
+                        <div class="flex gap-4 justify-center">
+                            <p class="mt-1 text-sm text-gray-700 dark:text-gray-100">Was this page helpful?</p>
+                            <div class="flex justify-center gap-3">
+                                <SfButton IconCss="e-icons e-thumbs-up" CssClass="e-small" Content="Yes" Type="button" aria-label="yes" role="button"></SfButton>
+                                <SfButton IconCss="e-icons e-thumbs-down" CssClass="e-small" Content="No" Type="button" aria-label="no" role="button"></SfButton>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="d-flex flex-column flex-lg-row justify-content-center align-items-center gap-4">
+                <div class="p-4 bg-white border rounded-3 text-center flex-grow-1 bg-body" style="max-width: 330px;">
+                    <h3 class="fw-semibold mb-4 fs-6 text-body">Were you satisfied with our platform</h3>
+                    <div class="d-flex justify-content-center gap-5">
+                        <div class="d-flex flex-column align-items-center" style="cursor: pointer;" @onclick="@(() => IsSatisfied = true)">
+                            <div class="e-avatar e-avatar-circle d-flex align-items-center justify-content-center @(IsSatisfied == true ? "bg-success-subtle text-success" : "bg-body-secondary text-body-secondary")" style="width: 64px; height: 64px;">
+                                <span class="e-icons e-thumbs-up fs-2"></span>
+                            </div>
+                            <span class="mt-2 small fw-medium @(IsSatisfied == true ? "text-success" : "text-body")">YES</span>
+                        </div>
+                        <div class="d-flex flex-column align-items-center" style="cursor: pointer;" @onclick="@(() => IsSatisfied = false)">
+                            <div class="e-avatar e-avatar-circle d-flex align-items-center justify-content-center @(IsSatisfied == false ? "bg-danger-subtle text-danger" : "bg-body-secondary text-body-secondary")" style="width: 64px; height: 64px;">
+                                <span class="e-icons e-thumbs-down fs-2"></span>
+                            </div>
+                            <span class="mt-2 small fw-medium @(IsSatisfied == false ? "text-danger" : "text-body")">NO</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="p-4 bg-white border rounded-3 w-100 bg-body" style="max-width: 384px;">
+                    <h3 class="fw-semibold fs-6 text-center text-body">Share your feedback</h3>
+                    <div class="mt-3 d-flex flex-row justify-content-center gap-3">
+                        <p class="small text-body-secondary mb-1">Was this page helpful?</p>
+                        <div class="d-flex gap-2 pl-1">
+                           <SfButton IconCss="e-icons e-thumbs-up" CssClass="e-small e-outline" Content="Yes" Type="button" aria-label="yes" role="button"></SfButton>
+                           <SfButton IconCss="e-icons e-thumbs-down" CssClass="e-small e-outline" Content="No" Type="button" aria-label="no" role="button"></SfButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

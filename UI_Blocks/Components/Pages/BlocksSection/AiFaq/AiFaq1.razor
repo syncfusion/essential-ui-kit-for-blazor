@@ -1,0 +1,50 @@
+﻿@page "/blocks/ai-faq-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-950">
+        <div id="FAQ" class="w-full px-4 sm:px-0 py-7 sm:py-12 mx-auto h-full" style="max-width: 615px; min-height: 940px;">
+            <SfAccordion @ref="Accordion" class="bg-transparent !border-0 !my-1" ExpandMode="ExpandMode.Single">
+                @foreach (var item in FAQData)
+                {
+                    <AccordionItems>
+                        <AccordionItem CssClass="!border-0 !rounded-xl mb-2" Expanded="@((item.Id == 1))">
+                            <HeaderTemplate>
+                                <div class="w-full font-normal pl-1 sm:p-0 pr-12">@item.Question</div>
+                            </HeaderTemplate>
+                            <ContentTemplate>
+                                <div class="px-4 sm:px-3 py-3 bg-gray-50 dark:bg-gray-700">@item.Answer</div>
+                            </ContentTemplate>
+                        </AccordionItem>
+                    </AccordionItems>
+                }
+            </SfAccordion>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div id="FAQ" class="w-100 px-3 py-4 py-sm-5 mx-auto h-100" style="max-width: 615px; min-height: 820px;">
+            <SfAccordion @ref="Accordion" class="bg-transparent border-0 my-1" ExpandMode="ExpandMode.Single">
+                @foreach (var item in FAQData)
+                {
+                    <AccordionItems>
+                        <AccordionItem Expanded="@((item.Id == 1))">
+                            <HeaderTemplate>
+                                <div class="w-100 ps-1 py-1 p-sm-0 pe-5">@item.Question</div>
+                            </HeaderTemplate>
+                            <ContentTemplate>
+                                <div class="p-3 bg-body-tertiary text-body">@item.Answer</div>
+                            </ContentTemplate>
+                        </AccordionItem>
+                    </AccordionItems>
+                }
+            </SfAccordion>
+        </div>
+    </section>
+}

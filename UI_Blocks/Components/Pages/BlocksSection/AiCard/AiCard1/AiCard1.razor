@@ -1,0 +1,100 @@
+﻿@page "/blocks/ai-card-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-900">
+        <div class="w-full lg:max-w-4xl px-4 sm:px-12 lg:px-28 lg:w-11/12 mx-auto py-20" style="min-height: 36rem;">
+            <div class="flex flex-col sm:flex-row gap-6">
+                <div class="e-card rounded-lg border-0 justify-start shadow-md">
+                    <div class="e-card-header !px-4 !pt-4">
+                        <div class="flex items-center">
+                            <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url(assets/images/common/avatar/avatar-5.jpg);"></span>
+                        </div>
+                        <div class="e-card-header-caption !pl-3">
+                            <div class="e-card-header-title">
+                                <p class="text-sm font-medium text-gray-900 dark:text-white truncate">Bob Johnson</p>
+                            </div>
+                            <div class="e-card-sub-title">
+                                <p class="text-xs text-gray-700 dark:text-gray-300 truncate">bobjohnson&#64;example.com</p>
+                            </div>
+                        </div>
+                        <span class="e-badge e-badge-success e-bigger">Free</span>
+                    </div>
+                    <div class="e-card-actions !px-4 !pt-3 !pb-4">
+                        <SfButton CssClass="w-full" Content="Upgrade to Pro" Type="button" aria-label="upgrade to pro" role="button"></SfButton>
+                    </div>
+                </div>
+                <div class="e-card rounded-lg border-0 justify-start shadow-md">
+                    <div class="e-card-header !px-4 !pt-4">
+                        <div class="flex items-center">
+                            <span class="e-avatar e-avatar-circle e-avatar-small" style="background-image: url(assets/images/common/avatar/avatar-5.jpg);"></span>
+                        </div>
+                        <div class="e-card-header-caption !pl-3">
+                            <div class="e-card-header-title">
+                                <p class="text-sm font-medium text-gray-900 dark:text-white truncate">Bob Johnson</p>
+                            </div>
+                            <div class="e-card-sub-title">
+                                <p class="text-xs text-gray-700 dark:text-gray-300 truncate">bobjohnson&#64;example.com</p>
+                            </div>
+                        </div>
+                        <span class="e-badge e-badge-primary e-bigger">Starter</span>
+                    </div>
+                    <div class="e-card-actions !px-4 !pt-3 !pb-4">
+                        <SfButton CssClass="w-full" Content="Upgrade to Pro" Type="button" aria-label="upgrade to pro" role="button"></SfButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="w-100 mx-auto px-3 px-sm-5 py-5" style="max-width: 50rem; min-height: 36rem;">
+            <div class="d-flex flex-column flex-sm-row gap-4">
+                <div class="e-card shadow-lg rounded-3 border-0">
+                    <div class="e-card-header px-4 pt-4">
+                        <div class="d-flex align-items-center">
+                            <span class="e-avatar e-avatar-circle" style="background-image: url(assets/images/common/avatar/avatar-5.jpg);"></span>
+                        </div>
+                        <div class="e-card-header-caption ps-2">
+                            <div class="e-card-header-title">
+                                <p class="small fw-medium text-body text-truncate mb-0">Bob Johnson</p>
+                            </div>
+                            <div class="e-card-sub-title">
+                                <p class="small text-body-secondary text-truncate mb-0">bobjohnson&#64;example.com</p>
+                            </div>
+                        </div>
+                        <span class="e-badge e-badge-success">Free</span>
+                    </div>
+                    <div class="e-card-actions px-4 py-4">
+                        <SfButton CssClass="e-outline w-100" Content="Upgrade to Pro" Type="Button" aria-label="upgrade to pro" role="button"></SfButton>
+                    </div>
+                </div>
+                <div class="e-card shadow-lg rounded-3 border-0">
+                    <div class="e-card-header px-4 pt-4">
+                        <div class="d-flex align-items-center">
+                            <span class="e-avatar e-avatar-circle" style="background-image: url(assets/images/common/avatar/avatar-5.jpg);"></span>
+                        </div>
+                        <div class="e-card-header-caption ps-2">
+                            <div class="e-card-header-title">
+                                <p class="small fw-medium text-body text-truncate mb-0">Bob Johnson</p>
+                            </div>
+                            <div class="e-card-sub-title">
+                                <p class="small text-body-secondary text-truncate mb-0">bobjohnson&#64;example.com</p>
+                            </div>
+                        </div>
+                        <span class="e-badge e-badge-primary">Starter</span>
+                    </div>
+                    <div class="e-card-actions px-4 py-4">
+                        <SfButton CssClass="e-outline w-100" Content="Upgrade to Pro" Type="Button" aria-label="upgrade to pro" role="button"></SfButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

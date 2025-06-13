@@ -1,0 +1,78 @@
+﻿@page "/blocks/ai-dialog-3"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" class="relative" style="min-height: 580px;">
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg overflow-hidden" Target="#dialog-container" IsModal="true" Width="580px" MinHeight="238px" aria-label="create a public page" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Content>
+                        <div class="flex flex-col gap-6 px-4 py-6 sm:px-6">
+                            <div class="flex justify-between items-center">
+                                <p class="text-lg font-medium">Create a public page to share</p>
+                                <SfButton CssClass="e-flat e-small" IconCss="e-icons e-close" OnClick="@(async () => { if (Dialog != null) await Dialog.HideAsync(); })" Type="button" aria-label="close" role="button"></SfButton>
+                            </div>
+                            <div class="flex flex-col gap-3">
+                                <SfRadioButton Name="shareOption" Label="This prompt & response" Value="false" TChecked="bool" aria-label="apply feedback to this prompt and response only" role="radio"></SfRadioButton>
+                                <SfRadioButton Name="shareOption" Label="Entire chat" Value="true" TChecked="bool" aria-label="apply feedback to the entire chat" role="radio"></SfRadioButton>
+                            </div>
+                            <div class="flex flex-col gap-3">
+                                <div class="e-bigger flex justify-between items-center shadow-sm border rounded-3xl overflow-hidden bg-white dark:bg-gray-800 border-gray-300 dark:border-gray-500">
+                                    <SfTextBox CssClass="!border-0 !rounded-3xl !shadow-none grow" Type="InputType.URL" Placeholder="https://helpbot.boldsign.com/share/********" aria-label="enter URL to generate a link" role="textbox"></SfTextBox>
+                                    <SfButton CssClass="e-primary !rounded-3xl m-1.5" IconCss="e-icons e-link" Type="button" aria-label="create link" role="button">Create link</SfButton>
+                                </div>
+                                <p class="flex justify-center gap-1 text-xs text-gray-500 dark:text-gray-400"><i class="e-icons e-circle-info text-base dark:text-gray-300 leading-none"></i>Anyone with the link can see or share it with others, so share responsibly.</p>
+                            </div>
+                        </div>
+                    </Content>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="top-0 left-0 absolute w-full flex">
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Type="button" aria-label="create public page" role="button">Create Public Page</SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" class="position-relative" style="min-height: 580px;">
+            <SfDialog @ref="Dialog" class="rounded-2" Target="#dialog-container" IsModal="true" Width="580px" MinHeight="238px" aria-label="create a public page" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Content>
+                        <div class="d-flex flex-column gap-4 px-3 py-4 px-sm-4">
+                            <div class="d-flex justify-content-between align-items-center fs-5">
+                                <p class="fw-medium small mb-0">Create a public page to share</p>
+                                <SfButton CssClass="e-flat e-small" IconCss="e-icons e-close" OnClick="@(async () => { if (Dialog != null) await Dialog.HideAsync(); })" Type="button" aria-label="close" role="button"></SfButton>
+                            </div>
+                            <div class="d-flex flex-column gap-3">
+                                <SfRadioButton Name="shareOption" Label="This prompt & response" Value="false" TChecked="bool" aria-label="apply feedback to this prompt and response only" role="radio"></SfRadioButton>
+                                <SfRadioButton Name="shareOption" Label="Entire chat" Value="true" TChecked="bool" aria-label="apply feedback to the entire chat" role="radio"></SfRadioButton>
+                            </div>
+                            <div class="d-flex flex-column gap-3">
+                                <div class="e-bigger d-flex justify-content-between align-items-center border bg-body rounded-pill overflow-hidden">
+                                    <SfTextBox CssClass="flex-grow-1 border-0 rounded-pill shadow-none" Type="InputType.URL" Placeholder="https://helpbot.boldsign.com/share/********" aria-label="enter URL to generate a link" role="textbox"></SfTextBox>
+                                    <SfButton CssClass="e-primary rounded-pill m-1" IconCss="e-icons e-link" Type="button" aria-label="create link" role="button">Create link</SfButton>
+                                </div>
+                                <p class="d-flex justify-content-center gap-1 small text-body-secondary mb-0"><i class="e-icons e-circle-info lh-base"></i>Anyone with the link can see or share it with others, so share responsibly.</p>
+                            </div>
+                        </div>
+                    </Content>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="position-absolute top-0 start-0 d-flex w-100">
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Type="button" aria-label="create public page" role="button">Create Public Page</SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

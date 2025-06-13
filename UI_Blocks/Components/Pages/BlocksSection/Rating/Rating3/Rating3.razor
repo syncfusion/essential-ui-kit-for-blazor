@@ -1,0 +1,100 @@
+﻿@page "/blocks/rating-3"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="pt-4" style="min-height:36rem">
+            <div class="mx-auto w-full p-6 mt-4 sm:!rounded-lg sm:!border rounded-none max-w-xl border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-800 text-center">
+                <div class="flex justify-between items-center">
+                    <div class="flex gap-2 items-center">
+                        <span class="e-avatar e-avatar-circle shrink-0">
+                            <img src="assets/images/common/avatar/avatar-2.jpg" alt="profile picture" />
+                        </span>
+                        <div class="text-start">
+                            <div class="font-medium xl:text-sm text-base text-gray-900 dark:text-white">Frank Moore</div>
+                            <div class="text-xs text-gray-700 dark:text-gray-100">Joined on October 2001</div>
+                        </div>
+                    </div>
+                    <SfChip>
+                        <ChipItems>
+                            <ChipItem Text="Best for small teams" CssClass="e-info !rounded-xl !text-[10px]"></ChipItem>
+                        </ChipItems>
+                    </SfChip>             
+                </div>
+                <div class="flex flex-col items-start sm:flex-row sm:items-center gap-0 sm:gap-2 mt-1 sm:mt-2">
+                    <SfRating Value="4.0">
+                        <EmptyTemplate>
+                            <span class="sf-icon-star-filled-01 text-2xl text-gray-300 dark:text-gray-500"></span>
+                        </EmptyTemplate>
+                        <FullTemplate>
+                            <span class="sf-icon-star-filled-01 text-2xl text-amber-300"></span>
+                        </FullTemplate>
+                    </SfRating>
+                    <p class="text-base font-medium sm:!mt-0 text-gray-900 dark:text-white">Highly efficient and user-friendly!</p>
+                </div>
+                <div class="text-start">
+                    <p class="text-sm mt-3 sm:mt-0 text-gray-500 dark:text-gray-400">Reviewed on Jul 1, 2024</p>
+                    <p class="text-sm mt-6 sm:mt-4 text-gray-700 dark:text-gray-100">This SaaS platform has completely streamlined our workflow. The setup was quick, and the interface is incredibly user-friendly. Within hours, we had everything integrated, and automation was running smoothly across our team.</p>
+                    <p class="text-sm mt-6 mb-3 text-gray-700 dark:text-gray-100">Would highly recommend it for small to mid-sized teams looking for a scalable solution!</p>
+                    <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 font-medium text-sm">Read more</a>
+                    <p class="text-xs font-medium text-gray-500 dark:text-gray-400 mt-4">19 people found this helpful</p>
+                    <div class="flex gap-4 items-center mt-4">
+                        <SfButton CssClass="e-outline" Content="Helpful" Type="button" aria-label="mark as helpful" role="button"></SfButton>
+                        <SfButton CssClass="e-primary e-flat" Content="Report" Type="button" aria-label="report" role="button"></SfButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="pt-3" style="min-height: 36rem;">
+            <div class="mx-auto w-100 p-4 border text-center rounded-3 bg-body" style="max-width: 576px;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <div class="d-flex align-items-center gap-2">
+                        <span class="e-avatar e-avatar-circle flex-shrink-0">
+                            <img src="assets/images/common/avatar/avatar-2.jpg" alt="profile picture" />
+                        </span>
+                        <div class="text-start">
+                            <div class="fw-medium fs-6 text-body">Frank Moore</div>
+                            <div class="text-body-secondary small">Joined on October 2001</div>
+                        </div>
+                    </div>
+                    <SfChip>
+                        <ChipItems>
+                            <ChipItem CssClass="e-info rounded-pill" Text="Best for small teams"></ChipItem>
+                        </ChipItems>
+                    </SfChip>
+                </div>
+                <div class="d-flex flex-column flex-sm-row align-items-start align-items-sm-center gap-0 gap-sm-2 mt-1 mt-sm-2">
+                    <SfRating Value="4.0">
+                        <EmptyTemplate>
+                            <span class="sf-icon-star-02 fs-4 text-body-secondary"></span>
+                        </EmptyTemplate>
+                        <FullTemplate>
+                            <span class="sf-icon-star-filled-01 fs-4 text-warning"></span>
+                        </FullTemplate>
+                    </SfRating>
+                    <p class="fw-medium mb-0">Highly efficient and user-friendly!</p>
+                </div>
+                <div class="text-start">
+                    <p class="text-body-secondary small mt-sm-0 mt-3">Reviewed on Jul 1, 2024</p>
+                    <p class="small text-body-secondary mt-4">This SaaS platform has completely streamlined our workflow. The setup was quick, and the interface is incredibly user-friendly. Within hours, we had everything integrated, and automation was running smoothly across our team.</p>
+                    <p class="small text-body-secondary mt-4 mb-2">Would highly recommend it for small to mid-sized teams looking for a scalable solution!</p>
+                    <a href="javascript:void(0);" class="text-primary fw-medium small text-decoration-none">Read more</a>
+                    <p class="text-body-secondary small mt-3">19 people found this helpful</p>
+                    <div class="d-flex align-items-center gap-3 mt-3">
+                        <SfButton CssClass="e-outline" Content="Helpful" Type="button" aria-label="mark as helpful" role="button"></SfButton>
+                        <SfButton CssClass="e-primary e-flat" Content="Report" Type="button" aria-label="report" role="button"></SfButton>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

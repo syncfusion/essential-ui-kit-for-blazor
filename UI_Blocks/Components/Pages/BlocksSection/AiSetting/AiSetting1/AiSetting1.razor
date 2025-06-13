@@ -1,0 +1,160 @@
+﻿@page "/blocks/ai-setting-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div class="h-screen flex">
+            <div class="hidden sm:block h-full w-16 lg:w-60 border-r border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-700"></div>
+            <div class="flex flex-col grow">
+                <div class="flex items-center gap-4 p-4 border-b border-gray-200 dark:border-gray-600">
+                    @if (IsMobileView)
+                    {
+                        <SfButton CssClass="e-flat" IconCss="e-icons e-menu" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+                    }
+                    <h3 class="text-base font-semibold text-gray-900 dark:text-white">Settings</h3>
+                </div>
+                <div id="settings-page" class="lg:max-w-3xl flex h-full text-gray-700 dark:text-gray-300">
+                    <SfSidebar @ref="Sidebar" @key="SidebarViewMode" class="p-3 !border-r !border-gray-200 dark:!border-gray-600 bg-white dark:bg-gray-800" Target="#settings-page" ShowBackdrop="@IsMobileView" Type="@SidebarDisplayType" EnableGestures="false" Width="248px" IsOpen="@IsSidebarOpen" OnClose="@(args => { args.Cancel = IsSidebarClosable; })" aria-label="main navigation menu" role="complementary">
+                        <ChildContent>
+                            <SfListView CssClass="e-list-template border-0" DataSource="@NavigationMenu" aria-label="main navigation list" role="list">
+                                <ListViewFieldSettings TValue="ListItem" Text="Field" IconCss="FontIcon"></ListViewFieldSettings>
+                                <ListViewTemplates TValue="ListItem">
+                                    <Template>
+                                        @{
+                                            <div class="e-list-wrapper !p-3 flex items-center gap-3 rounded-lg">
+                                                <span class="e-icons @context.FontIcon text-base dark:!text-gray-200"></span>
+                                                <span class="text-sm font-medium">@context.Field</span>
+                                            </div>
+                                        }
+                                    </Template>
+                                </ListViewTemplates>
+                            </SfListView>
+                        </ChildContent>
+                    </SfSidebar>
+                    <div class="py-5 sm:py-6 px-4 flex flex-col gap-6 grow text-sm font-medium text-gray-900 dark:text-white">
+                        <div class="flex gap-2 items-center justify-between sm:gap-8">
+                            <label class="w-52 sm:grow">Theme</label>
+                            <SfDropDownButton @ref="ThemeDropdown" Content="Light" Type="button" aria-label="select theme" role="button">
+                                <DropDownButtonEvents Opened="@(args => IsThemeDropdownOpen = true)" Closed="@(args => IsThemeDropdownOpen = false)"></DropDownButtonEvents>
+                                <DropDownMenuItems>
+                                    <DropDownMenuItem Text="Light"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="Dark"></DropDownMenuItem>
+                                </DropDownMenuItems>
+                            </SfDropDownButton>
+                        </div>
+                        <div class="flex gap-2 items-center justify-between sm:gap-8">
+                            <label class="w-52 sm:grow">Language</label>
+                            <SfDropDownButton @ref="LanguageDropdown" Content="English" Type="button" aria-label="select language" role="button">
+                                <DropDownButtonEvents Opened="@(args => IsLanguageDropdownOpen = true)" Closed="@(args => IsLanguageDropdownOpen = false)"></DropDownButtonEvents>
+                                <DropDownMenuItems>
+                                    <DropDownMenuItem Text="English"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="Español"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="Français"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="Deutsch"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="日本語"></DropDownMenuItem>
+                                </DropDownMenuItems>
+                            </SfDropDownButton>
+                        </div>
+                        <div class="flex gap-2 justify-between sm:gap-8">
+                            <label class="w-52 sm:grow">Render user messages as markdown</label>
+                            <SfSwitch Checked="true" aria-label="render user messages as markdown" role="switch"></SfSwitch>
+                        </div>
+                        <div class="flex gap-2 justify-between sm:gap-8">
+                            <label class="w-52 sm:grow">Auto-scroll to latest message on chat open</label>
+                            <SfSwitch Checked="false" aria-label="auto-scroll to latest message on chat open" role="switch"></SfSwitch>
+                        </div>
+                        <div class="flex gap-2 justify-between sm:gap-8">
+                            <label class="w-52 sm:grow">Hide right-most side panel</label>
+                            <SfSwitch Checked="false" aria-label="hide right-most side panel" role="switch"></SfSwitch>
+                        </div>
+                        <div class="flex gap-2 items-center justify-between sm:gap-8">
+                            <label class="w-52 sm:grow">Manage side panel settings</label>
+                            <SfButton Type="button" aria-label="manage" role="button">Manage</SfButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="row vh-100 d-flex g-0">
+            <div class="d-none d-sm-block h-100 border-end border-light-subtle bg-body-tertiary col-1 col-lg-3" style="min-width: 62px; max-width: 248px;"></div>
+            <div class="d-flex flex-column flex-grow-1 col">
+                <div class="d-flex align-items-center gap-3 p-3 border-bottom border-light-subtle">
+                    @if (IsMobileView)
+                    {
+                        <SfButton CssClass="e-flat" IconCss="e-icons e-menu" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+                    }
+                    <h3 class="fs-6 fw-bold text-body mb-0">Settings</h3>
+                </div>
+                <div id="settings-page" class="d-flex h-100" style="max-width: 768px;">
+                    <SfSidebar @ref="Sidebar" @key="SidebarViewMode" class="p-3 border-end bg-body border-light-subtle" Target="#settings-page" ShowBackdrop="@IsMobileView" Type="@SidebarDisplayType" EnableGestures="false" Width="248px" IsOpen="@IsSidebarOpen" OnClose="@(args => { args.Cancel = IsSidebarClosable; })" aria-label="main navigation menu" role="complementary">
+                        <ChildContent>
+                            <SfListView CssClass="e-list-template border-0" DataSource="@NavigationMenu" aria-label="main navigation list" role="list">
+                                <ListViewFieldSettings TValue="ListItem" Text="Field" IconCss="FontIcon"></ListViewFieldSettings>
+                                <ListViewTemplates TValue="ListItem">
+                                    <Template>
+                                        @{
+                                            <div class="e-list-wrapper p-2 d-flex align-items-center gap-2 rounded">
+                                                <span class="e-icons @context.FontIcon fs-6 ms-1 my-1"></span>
+                                                <span class="fw-medium m-1">@context.Field</span>
+                                            </div>
+                                        }
+                                    </Template>
+                                </ListViewTemplates>
+                            </SfListView>
+                        </ChildContent>
+                    </SfSidebar>
+                    <div class="p-3 d-flex flex-column gap-4 flex-grow-1 small fw-medium text-body">
+                        <div class="d-flex gap-2 align-items-center justify-content-between">
+                            <label class="flex-sm-grow-1" style="width: 13rem;">Theme</label>
+                            <SfDropDownButton @ref="ThemeDropdown" CssClass="e-outline" Content="Light" Type="button" aria-label="select theme" role="button">
+                                <DropDownButtonEvents Opened="@(args => IsThemeDropdownOpen = true)" Closed="@(args => IsThemeDropdownOpen = false)"></DropDownButtonEvents>
+                                <DropDownMenuItems>
+                                    <DropDownMenuItem Text="Light"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="Dark"></DropDownMenuItem>
+                                </DropDownMenuItems>
+                            </SfDropDownButton>
+                        </div>
+                        <div class="d-flex gap-2 align-items-center justify-content-between">
+                            <label class="flex-sm-grow-1" style="width: 13rem;">Language</label>
+                            <SfDropDownButton @ref="LanguageDropdown" CssClass="e-outline" Content="English" Type="button" aria-label="select language" role="button">
+                                <DropDownButtonEvents Opened="@(args => IsLanguageDropdownOpen = true)" Closed="@(args => IsLanguageDropdownOpen = false)"></DropDownButtonEvents>
+                                <DropDownMenuItems>
+                                    <DropDownMenuItem Text="English"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="Español"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="Français"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="Deutsch"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="日本語"></DropDownMenuItem>
+                                </DropDownMenuItems>
+                            </SfDropDownButton>
+                        </div>
+                        <div class="d-flex gap-2 justify-content-between">
+                            <label class="flex-sm-grow-1" style="width: 13rem;">Render user messages as markdown</label>
+                            <SfSwitch CssClass="e-small" Checked="true" aria-label="render user messages as markdown" role="switch"></SfSwitch>
+                        </div>
+                        <div class="d-flex gap-2 justify-content-between">
+                            <label class="flex-sm-grow-1" style="width: 13rem;">Auto-scroll to latest message on chat open</label>
+                            <SfSwitch CssClass="e-small" Checked="false" aria-label="auto-scroll to latest message on chat open" role="switch"></SfSwitch>
+                        </div>
+                        <div class="d-flex gap-2 justify-content-between">
+                            <label class="flex-sm-grow-1" style="width: 13rem;">Hide right-most side panel</label>
+                            <SfSwitch CssClass="e-small" Checked="false" aria-label="hide right-most side panel" role="switch"></SfSwitch>
+                        </div>
+                        <div class="d-flex gap-2 align-items-center justify-content-between">
+                            <label class="flex-sm-grow-1" style="width: 13rem;">Manage side panel settings</label>
+                            <SfButton CssClass="e-outline" Type="button" aria-label="manage" role="button">Manage</SfButton>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}

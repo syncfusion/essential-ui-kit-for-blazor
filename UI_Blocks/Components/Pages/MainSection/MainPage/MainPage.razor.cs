@@ -14,7 +14,7 @@ namespace UI_Blocks.Components.Pages.MainSection.MainPage
 
         public List<BlockList> CurrentBlocks { get; private set; } = new List<BlockList>();
 
-        public List<string> Tabs { get; } = new List<string> { "Authentication", "Layouts", "E-commerce", "Communication" };
+        public List<string> Tabs { get; } = new List<string> { "Authentication", "Layouts", "Data Visualization", "AI", "E-commerce", "Communication" };
 
         protected override void OnInitialized()
         {

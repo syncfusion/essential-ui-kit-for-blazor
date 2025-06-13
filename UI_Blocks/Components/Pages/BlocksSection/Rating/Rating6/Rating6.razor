@@ -1,0 +1,84 @@
+﻿@page "/blocks/rating-6"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="pt-4" style="min-height: 36rem">
+            <div class="mx-auto w-full sm:max-w-xs border-0 mt-3 py-6 sm:!rounded-lg sm:!border rounded-none border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-800 text-center">
+                <h3 class="font-semibold text-base text-gray-900 dark:text-white">Rate your experience</h3>
+                <p class="text-sm mt-3 px-8 sm:px-6 text-gray-700 dark:text-gray-100" style="310px">We'd love to hear from you! How is your experience with our platform?</p>
+                    <SfRating ItemsCount="3" EnableSingleSelection=true EnableAnimation=false> 
+                        <EmptyTemplate Context="context">
+                           <div class="flex mt-2">
+                                @{
+                                    if (context.Index == 0)
+                                    {
+                                        <span class="rounded-xl p-2 @(ExperienceLevel == "unhappy" ? "bg-green-50 dark:bg-green-900 shadow-lg" : "")" @onclick="@(() => ExperienceLevel = "unhappy")">
+                                            <img class="h-10 w-10" src="assets/images/rating/experience-rating/unhappy.png" alt="unhappy" />
+                                        </span>
+                                    }
+                                    else if (context.Index == 1)
+                                    {
+                                        <span class="rounded-xl p-2 @(ExperienceLevel == "neutral" ? "!bg-cyan-50 dark:!bg-cyan-900 shadow-lg" : "")" @onclick="@(() => ExperienceLevel = "neutral")">
+                                            <img class="h-10 w-10" src="assets/images/rating/experience-rating/neutral.png" alt="neutral" />
+                                        </span>
+                                    }
+                                    else if (context.Index == 2)
+                                    {
+                                        <span class="rounded-xl p-2 @(ExperienceLevel == "happy" ? "bg-orange-50 dark:bg-orange-900 shadow-lg" : "")" @onclick="@(() => ExperienceLevel = "happy")">
+                                            <img class="h-10 w-10" src="assets/images/rating/experience-rating/happy.png" alt="happy" />
+                                        </span>
+                                    }
+                                }
+                           </div>
+                        </EmptyTemplate>
+                        <TooltipTemplate>@((context == 1) ? "Unhappy" : (context == 2) ? "Neutral" : (context == 3) ? "Happy" : "")</TooltipTemplate>
+                    </SfRating>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="mx-auto w-100 mt-3 bg-white border rounded-3 text-center bg-body" style="max-width: 360px;">
+                <h3 class="fw-semibold fs-6 text-body mt-4">Rate your experience</h3>
+                <p class="small mt-3 text-body-secondary mb-0" style="width: 310px;">We'd love to hear from you! How is your experience with our platform?</p>
+                <div class="d-flex gap-4 justify-content-center align-items-center">
+                    <SfRating ItemsCount="3" EnableSingleSelection=true EnableAnimation=false>
+                        <EmptyTemplate Context="context">
+                            <div class="d-flex mt-1 mb-2">
+                                @{
+                                    if (context.Index == 0)
+                                    {
+                                        <span class="rounded-3 p-2 @(ExperienceLevel == "unhappy" ? "bg-success-subtle shadow" : "")" @onclick="@(() => ExperienceLevel = "unhappy")">
+                                            <img src="assets/images/rating/experience-rating/unhappy.png" alt="unhappy" style="width: 2.5rem; height: 2.5rem;" />
+                                        </span>
+                                    }
+                                    else if (context.Index == 1)
+                                    {
+                                        <span class="rounded-3 p-2 @(ExperienceLevel == "neutral" ? "bg-info-subtle shadow" : "")" @onclick="@(() => ExperienceLevel = "neutral")">
+                                            <img src="assets/images/rating/experience-rating/neutral.png" alt="neutral" style="width: 2.5rem; height: 2.5rem;" />
+                                        </span>
+                                    }
+                                    else if (context.Index == 2)
+                                    {
+                                        <span class="rounded-3 p-2 @(ExperienceLevel == "happy" ? "bg-warning-subtle shadow" : "")" @onclick="@(() => ExperienceLevel = "happy")">
+                                            <img src="assets/images/rating/experience-rating/happy.png" alt="happy" style="width: 2.5rem; height: 2.5rem;" />
+                                        </span>
+                                    }
+                                }
+                            </div>
+                        </EmptyTemplate>
+                    <TooltipTemplate>@((context == 1) ? "Unhappy" :(context == 2) ? "Neutral" :(context == 3) ? "Happy" : "")</TooltipTemplate>
+                </SfRating>
+                </div>
+            </div>
+        </div>
+    </section>
+}

@@ -1,0 +1,13 @@
+::deep #sidebar-chat .e-list-item {
+    border-bottom: none !important;
+}
+
+::deep #sidebar-chat .e-listview .e-list-group-item {
+    background-color: inherit;
+    border-bottom: 0px;
+    margin-top: 10px;
+}
+
+::deep #sidebar-chat .e-listview .e-list-group-item:first-child {
+    margin-top: 0px;
+}

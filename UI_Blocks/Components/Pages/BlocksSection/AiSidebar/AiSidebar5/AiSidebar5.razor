@@ -1,0 +1,82 @@
+﻿@page "/blocks/ai-sidebar-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-800">
+        <div id="search-history" style="height: 766px;">
+            <SfSidebar @key="IsMobileView" class="bg-gray-50 dark:bg-gray-700" Width="256px" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="@IsBackdropVisible" role="complementary">
+                <div class="px-4 py-3">
+                    <div class="flex justify-between items-center">
+                        <span class="font-medium text-sm text-gray-900 dark:text-white">Search history</span>
+                        <SfButton CssClass="e-danger e-flat" Type="button" Content="Delete" aria-label="delete" role="button"></SfButton>
+                    </div>
+                    <div class="pt-3">
+                        <SfListView CssClass="e-list-template !border-0" DataSource="@SearchItems" aria-label="search history list" role="list">
+                            <ListViewFieldSettings TValue="SearchItem"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="SearchItem">
+                                <Template Context="data">
+                                    <div class="e-list-wrapper flex items-center justify-between border border-gray-200 dark:border-gray-600 rounded-xl !px-3 mb-3">
+                                        <div class="flex flex-col">
+                                            <span class="text-gray-900 dark:text-white !text-wrap !line-clamp-1 w-full truncate text-sm md:text-xs" title="@data.Title">@data.Title</span>
+                                            <span class="text-xs text-gray-500 dark:text-gray-400 !text-wrap !line-clamp-1 w-full truncate mt-0.5" title="@data.SubTitle">@data.SubTitle</span>
+                                        </div>
+                                        <div class="ml-2">
+                                            <SfCheckBox TChecked="bool" aria-label="select search history item" role="checkbox"></SfCheckBox>
+                                        </div>
+                                    </div>
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </div>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 absolute top-0 right-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div id="search-history" style="height: 766px;">
+            <SfSidebar @key="IsMobileView" class="bg-body border-light-subtle" Width="256px" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="true" ShowBackdrop="@IsBackdropVisible" role="complementary">
+                <div class="p-3">
+                    <div class="d-flex justify-content-between align-items-center fs-6">
+                        <span class="small fw-medium text-body">Search history</span>
+                        <SfButton CssClass="e-danger e-flat" Type="button" Content="Delete" aria-label="delete" role="button"></SfButton>
+                    </div>
+                    <div>
+                        <SfListView CssClass="e-list-template border-0" DataSource="@SearchItems" aria-label="search history list" role="list">
+                            <ListViewFieldSettings TValue="SearchItem"></ListViewFieldSettings>
+                            <ListViewTemplates TValue="SearchItem">
+                                <Template Context="data">
+                                    <div class="e-list-wrapper d-flex align-items-center justify-content-between border border-light-subtle mt-3 py-2" style="border-radius: 12px;">
+                                        <div class="d-flex flex-column">
+                                            <span class="text-wrap overflow-hidden small" title="@data.Title" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">@data.Title</span>
+                                            <span class="mt-1 text-wrap overflow-hidden small" title="@data.SubTitle" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">@data.SubTitle</span>
+                                        </div>
+                                        <div class="ms-2">
+                                            <SfCheckBox CssClass="e-bigger" TChecked="bool" aria-label="select search history item" role="checkbox"></SfCheckBox>
+                                        </div>
+                                    </div>
+                                </Template>
+                            </ListViewTemplates>
+                        </SfListView>
+                    </div>
+                </div>
+            </SfSidebar>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 position-absolute top-0 end-0">
+        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

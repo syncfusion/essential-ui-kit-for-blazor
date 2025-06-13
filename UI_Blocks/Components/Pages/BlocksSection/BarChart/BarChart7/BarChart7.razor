@@ -1,0 +1,157 @@
+﻿@page "/blocks/bar-chart-7"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 930px;">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-2">
+                    <div class="flex justify-between">
+                        <h1 class="font-medium text-base text-gray-900 dark:text-white">Weather Trends</h1>
+                        <SfButton IconCss="e-icons e-notes" CssClass="sm:hidden block align-right" Type="button" aria-label="report" role="button"></SfButton>
+                    </div>
+                    <div class="flex items-center mt-1 sm:mt-0">
+                        <p class="font-medium text-base text-gray-500 mr-1">Location:</p>
+                        <SfDropDownButton @ref="DropDown" Items="@CountryOptions" Content="@SelectedPlace" Type="button" aria-label="choose a city" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)" ItemSelected="Place"></DropDownButtonEvents>
+                        </SfDropDownButton>
+                        <SfButton CssClass="e-outline ml-4 sm:block hidden" Content="View Report" Type="button" aria-label="view month" role="button"></SfButton>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <SfChart @ref="Chart" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartEvents OnPointRender="@OnPointRender" />
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" LabelRotation="@XAxisLabelRotation" Interval="1">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Minimum="0" Maximum="35" Interval="5" LabelFormat="{value}°C">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@BarChartData" XName="Month" YName="Temperature" Type="ChartSeriesType.Column">
+                                <ChartMarker>
+                                    <ChartDataLabel Visible="true" Position="Syncfusion.Blazor.Charts.LabelPosition.Outer">
+                                        <ChartDataLabelFont Color="#6B7280"></ChartDataLabelFont>
+                                    </ChartDataLabel>
+                                </ChartMarker>
+                                <ChartCornerRadius TopRight="4" TopLeft="4"></ChartCornerRadius>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartLegendSettings Visible="true"></ChartLegendSettings>
+                    </SfChart>
+                </div>
+                <div class="grid grid-cols-2 sm:flex sm:flex-nowrap justify-center gap-2 sm:gap-4 pt-0 sm:pt-3 text-xs dark:text-white">
+                    <div class="flex items-center gap-2 pl-6 sm:pl-0">
+                        <div class="w-4 bg-yellow-500" style="background-color: #FFD54F;height: 16px;"></div>
+                        <span>1°C to 10°C</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-4 h-4 bg-yellow-400" style="background-color: #FFB300;height: 16px;"></div>
+                        <span>11°C to 20°C</span>
+                    </div>
+                    <div class="flex items-center gap-2 pl-6 sm:pl-0">
+                        <div class="w-4 bg-orange-400" style="background-color: #FB8C00;height: 16px;"></div>
+                        <span>21°C to 25°C</span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <div class="w-4 bg-red-600" style="background-color: #F4511E;height: 16px;"></div>
+                        <span>25°C to 30°C</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center p-4 p-sm-6">
+            <div class="w-100" style="max-width: 930px;">
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-2">
+                    <div class="d-flex justify-content-between">
+                        <h1 class="fw-medium fs-6">Weather Trends</h1>
+                        <SfButton IconCss="e-icons e-description" CssClass="d-sm-none float-right e-outline" Type="button" aria-label="report" role="button"></SfButton>
+                    </div>
+                    <div class="d-flex align-items-center mt-1 mt-sm-0">
+                        <span class="fw-medium fs-6 text-body-secondary me-2">Location:</span>
+                        <SfDropDownButton CssClass="e-outline" @ref="DropDown" Items="@CountryOptions" Content="@SelectedPlace" Type="button" aria-label="choose a city" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)" ItemSelected="Place"></DropDownButtonEvents>
+                        </SfDropDownButton>
+                        <SfButton CssClass="e-outline ms-4 d-sm-block" Content="View Report" Type="button" aria-label="view month" role="button"></SfButton>
+                    </div>
+                </div>
+                <div class="mt-3">
+                    <SfChart @ref="Chart" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartEvents OnPointRender="@OnPointRender" />
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" LabelRotation="@XAxisLabelRotation" Interval="1">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Minimum="0" Maximum="35" Interval="5" LabelFormat="{value}°C">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@BarChartData" XName="Month" YName="Temperature" Type="ChartSeriesType.Column">
+                                <ChartMarker>
+                                    <ChartDataLabel Visible="true" Position="Syncfusion.Blazor.Charts.LabelPosition.Outer">
+                                        <ChartDataLabelFont Color="#6B7280"></ChartDataLabelFont>
+                                    </ChartDataLabel>
+                                </ChartMarker>
+                                <ChartCornerRadius TopRight="4" TopLeft="4"></ChartCornerRadius>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartLegendSettings Visible="true"></ChartLegendSettings>
+                    </SfChart>
+                </div>
+                <div class="row row-cols-2 row-cols-sm-auto justify-content-center g-2 g-sm-4 pt-0 pt-sm-3 fs-6">
+                    <div class="d-flex align-items-center gap-2 ps-5 ps-sm-0">
+                        <div style="background-color: #f59e0b;height: 16px; width: 16px;"></div>
+                        <span class="small">1°C to 10°C</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <div style="background-color: #FFB300;height: 16px;width: 16px;"></div>
+                        <span class="small">11°C to 20°C</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2 ps-5 ps-sm-0">
+                        <div style="background-color: #FB8C00;height: 16px;width: 16px;"></div>
+                        <span class="small">21°C to 25°C</span>
+                    </div>
+                    <div class="d-flex align-items-center gap-2">
+                        <div style="background-color: #F4511E;height: 16px;width: 16px;"></div>
+                        <span class="small">25°C to 30°C</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+}
