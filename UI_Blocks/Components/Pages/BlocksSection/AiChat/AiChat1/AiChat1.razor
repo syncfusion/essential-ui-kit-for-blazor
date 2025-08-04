@@ -9,7 +9,7 @@
     <section>
         <div id="chat-header" class="flex flex-col items-center max-w-4xl mx-auto pb-6 rounded-xl overflow-hidden bg-white dark:bg-gray-900" style="max-height: 850px; min-height: 36rem; max-width: 850px;">
             <div class="flex items-center w-full flex-col px-1 sm:px-4 py-2">
-                <SfListView DataSource="@PromptDetail" CssClass="!border-0 py-4" Width="100%" Height="100%" aria-label="chat conversation" role="list">
+                <SfListView CssClass="!border-0 py-4" DataSource="@PromptDetail" Width="100%" Height="100%" aria-label="chat conversation" role="list">
                     <ListViewFieldSettings TValue="PromptData"></ListViewFieldSettings>
                     <ListViewTemplates TValue="PromptData">
                         <Template Context="Data">
@@ -18,10 +18,10 @@
                                 <div class="flex justify-end ml-auto sm:mr-3 gap-3 items-start w-full sm:w-3/4">
                                     <div class="flex flex-col gap-1 items-end">
                                         <div class="p-3 rounded-lg bg-primary-100 dark:bg-primary-800">
-                                            <div class="text-sm text-gray-900 dark:text-white">@Data.Text</div>
-                                            <div class="flex gap-1">
-                                                <span class="e-avatar e-avatar-circle e-avatar-small e-icons e-edit !text-base !text-gray-700 dark:!text-white bg-transparent"></span>
-                                                <span class="e-avatar e-avatar-circle e-avatar-small e-icons e-copy !text-base !text-gray-700 dark:!text-white bg-transparent"></span>
+                                            <div class="text-sm text-gray-900 dark:text-white mb-1">@Data.Text</div>
+                                            <div class="flex">
+                                                <SfButton class="e-flat !border-0 text-base" IconCss="e-icons e-edit" Type="button" aria-label="edit" role="button" style="pointer-events: none"></SfButton>
+                                                <SfButton class="e-flat !border-0 text-base" IconCss="e-icons e-copy" Type="button" aria-label="copy" role="button" style="pointer-events: none"></SfButton>
                                             </div>
                                         </div>
                                     </div>
@@ -36,7 +36,7 @@
                                     <div class="flex flex-col gap-1 pt-1 pb-3 rounded-lg bg-gray-50 dark:bg-gray-700 w-full">
                                         @if (Data.IsList)
                                         {
-                                            <SfListView DataSource="@ResourceDetail" CssClass="!border-0 pl-1 pr-2" ShowIcon="false" Width="100%" aria-label="chat conversation" role="list">
+                                            <SfListView CssClass="!border-0 pl-1 pr-2" DataSource="@ResourceDetail" ShowIcon="false" Width="100%" aria-label="chat conversation" role="list">
                                                 <ListViewFieldSettings TValue="ResourceData"></ListViewFieldSettings>
                                                 <ListViewTemplates TValue="ResourceData">
                                                     <Template Context="Resource">
@@ -83,7 +83,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     <section>
         <div id="chat-header" class="d-flex flex-column align-items-center mx-auto pb-3 rounded-lg overflow-hidden bg-body" style="max-height: 850px; min-height: 36rem; max-width: 850px;">
             <div class="d-flex align-items-center w-100 flex-column px-1 px-sm-3 py-2">
-                <SfListView DataSource="@PromptDetail" CssClass="!border-0 py-4" Width="100%" Height="100%" aria-label="chat conversation" role="list">
+                <SfListView CssClass="!border-0 py-4" DataSource="@PromptDetail" Width="100%" Height="100%" aria-label="chat conversation" role="list">
                     <ListViewFieldSettings TValue="PromptData"></ListViewFieldSettings>
                     <ListViewTemplates TValue="PromptData">
                         <Template Context="Data">
@@ -93,9 +93,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                     <div class="d-flex flex-column gap-1 align-items-end">
                                         <div class="p-3 rounded bg-primary-subtle">
                                             <div class="fs-6 text-body pb-2">@Data.Text</div>
-                                            <div class="d-flex gap-1">
-                                                <span class="e-avatar e-avatar-circle e-avatar-small e-icons e-edit fs-6 text-secondary bg-transparent"></span>
-                                                <span class="e-avatar e-avatar-circle e-avatar-small e-icons e-copy fs-6 text-secondary bg-transparent"></span>
+                                            <div class="d-flex">
+                                                <SfButton class="e-flat border-0 fs-6" IconCss="e-icons e-edit" Type="button" aria-label="edit" role="button" style="pointer-events: none"></SfButton>
+                                                <SfButton class="e-flat border-0 fs-6" IconCss="e-icons e-copy" Type="button" aria-label="copy" role="button" style="pointer-events: none"></SfButton>
                                             </div>
                                         </div>
                                     </div>
@@ -110,7 +110,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                     <div class="d-flex flex-column gap-1 pt-2 pb-3 rounded bg-light-subtle w-100">
                                         @if (Data.IsList)
                                         {
-                                            <SfListView DataSource="@ResourceDetail" CssClass="!border-0 px-2" ShowIcon="false" Width="100%" aria-label="chat conversation" role="list">
+                                            <SfListView CssClass="!border-0 px-2" DataSource="@ResourceDetail" ShowIcon="false" Width="100%" aria-label="chat conversation" role="list">
                                                 <ListViewFieldSettings TValue="ResourceData"></ListViewFieldSettings>
                                                 <ListViewTemplates TValue="ResourceData">
                                                     <Template Context="Resource">

@@ -8,24 +8,24 @@
 {
     <section class="bg-white dark:bg-gray-900">
         <div style="height: 945px; width: @Width; float: right;">
-            <SfSidebar Width="@Width" class="w-full bg-white dark:bg-gray-900" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" ShowBackdrop="true" role="complementary">
+            <SfSidebar class="w-full bg-white dark:bg-gray-900" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" ShowBackdrop="true" role="complementary">
                 <ChildContent>
                     <div class="bg-white dark:bg-gray-900">
                         <div class="border-b border-gray-200 dark:border-gray-600">
                             <div class="flex justify-between items-center px-4 py-3 border-b border-gray-200 dark:border-gray-600">
                                 <h2 class="text-base font-semibold text-gray-900 dark:text-white">Room Filters</h2>
-                                <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" @onclick="ToggleSidebar" aria-label="close sidebar" role="button"></SfButton>
+                                <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="close sidebar" role="button"></SfButton>
                             </div>
                             <div class="p-4 flex justify-center">
                                 <SfCalendar TValue="DateTime" CssClass="e-bigger shadow-none border-none"></SfCalendar>
                             </div>
                         </div>
                         <div class="pt-4 px-1">
-                            <SfAccordion class="border-0 bg-transparent">
+                            <SfAccordion class="border-0 bg-transparent" ExpandMode="ExpandMode.Multiple" role="accordion">
                                 <AccordionItems>
                                     <AccordionItem Expanded="true">
                                         <HeaderTemplate>
-                                            <div class='font-normal text-gray-500 dark:text-gray-400'>Floors</div>
+                                            <div class='font-medium text-gray-500 dark:text-gray-400'>Floors</div>
                                         </HeaderTemplate>
                                         <ContentTemplate>
                                             <div>
@@ -54,13 +54,13 @@
                                     <span class="e-icons e-circle-info ml-2"></span>
                                 </label>
                                 <div class="px-2 ml-4">
-                                    <SfSlider @bind-Value="@Value" Min="1000" Max="5000" Step="1" Type="SliderType.Range" Width="225px">
-                                        <SliderTicks Placement="Placement.After" LargeStep="4000" Format="c0" />
-                                        <SliderTooltip IsVisible="true" Format="c0" />
+                                    <SfSlider Value="@Value" Min="1000" Max="5000" Step="1" Type="SliderType.Range" Width="225px">
+                                        <SliderTicks Placement="Placement.After" LargeStep="4000" Format="c0"></SliderTicks>
+                                        <SliderTooltip IsVisible="true" Format="c0"></SliderTooltip>
                                     </SfSlider>
                                 </div>
                             </div>
-                            <SfAccordion class="border-0 bg-transparent">
+                            <SfAccordion class="border-0 bg-transparent" ExpandMode="ExpandMode.Multiple" role="accordion">
                                 <AccordionItems>
                                     <AccordionItem Expanded="true">
                                         <HeaderTemplate>
@@ -78,7 +78,7 @@
                                                     <SfCheckBox Label="Television" Checked="false" aria-label="television" role="checkbox"></SfCheckBox>
                                                 </div>
                                                 <div>
-                                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Type="button" aria-label="show more" role="button">Show more</SfButton>
+                                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Content="Show more" Type="button" aria-label="show more" role="button"></SfButton>
                                                 </div>
                                             </div>
                                         </ContentTemplate>
@@ -93,7 +93,7 @@
     </section>
    <!-- SB Code - Start -->
     <div class="p-3 absolute top-0 right-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -101,20 +101,20 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
         <div style="height: 1010px; width: @Width; float: right;">
-            <SfSidebar Width="@Width" class="bg-body" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" ShowBackdrop="true" role="complementary">
+            <SfSidebar class="bg-body" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" ShowBackdrop="true" role="complementary">
                 <ChildContent>
                     <div class="bg-body">
                         <div class="border-bottom border-light-subtle">
                             <div class="d-flex justify-content-between align-items-center px-4 py-3 border-bottom border-light-subtle">
                                 <h2 class="h6 fw-semibold text-body mb-0">Room Filters</h2>
-                                <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" @onclick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                                <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="close sidebar" role="button"></SfButton>
                             </div>
-                            <div class="p-4 pb-0 d-flex justify-content-center align-items-center">
+                            <div class="pb-0 d-flex justify-content-center align-items-center">
                                 <SfCalendar TValue="DateTime" CssClass="e-bigger shadow-none border-0"></SfCalendar>
                             </div>
                         </div>
                         <div class="pt-2 px-1">
-                            <SfAccordion class="border-0 bg-transparent">
+                            <SfAccordion class="border-0 bg-transparent" ExpandMode="ExpandMode.Multiple" role="accordion">
                                 <AccordionItems>
                                     <AccordionItem Expanded="true">
                                         <HeaderTemplate>
@@ -145,13 +145,13 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                     <span class="e-icons e-circle-info ms-2"></span>
                                 </label>
                                 <div class="px-2 ms-3">
-                                    <SfSlider @bind-Value="@Value" Min="1000" Max="5000" Step="1" Type="SliderType.Range" Width="225px">
-                                        <SliderTicks Placement="Placement.After" LargeStep="4000" Format="c0" />
-                                        <SliderTooltip IsVisible="true" Format="c0" />
+                                    <SfSlider Value="@Value" Min="1000" Max="5000" Step="1" Type="SliderType.Range" Width="225px">
+                                        <SliderTicks Placement="Placement.After" LargeStep="4000" Format="c0"></SliderTicks>
+                                        <SliderTooltip IsVisible="true" Format="c0"></SliderTooltip>
                                     </SfSlider>
                                 </div>
                             </div>
-                            <SfAccordion class="border-0 bg-transparent">
+                            <SfAccordion class="border-0 bg-transparent" ExpandMode="ExpandMode.Multiple" role="accordion">
                                 <AccordionItems>
                                     <AccordionItem Expanded="true">
                                         <HeaderTemplate>
@@ -169,7 +169,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                     <SfCheckBox Label="Television" Checked="false" aria-label="television" role="checkbox"></SfCheckBox>
                                                 </div>
                                                 <div>
-                                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Type="button" aria-label="show more" role="button">Show more</SfButton>
+                                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Content="Show more" Type="button" aria-label="show more" role="button"></SfButton>
                                                 </div>
                                             </div>
                                         </ContentTemplate>
@@ -184,7 +184,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 position-absolute top-0 end-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" @onclick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

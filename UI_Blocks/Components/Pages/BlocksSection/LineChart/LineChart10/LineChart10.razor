@@ -1,0 +1,130 @@
+﻿@page "/blocks/line-chart-10"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-white dark:bg-gray-900">
+		<div class="h-screen flex justify-center p-4 sm:p-6">
+			<div class="w-full" style="max-width: 580px">
+				<div class="flex flex-col gap-3">
+					<div class="flex justify-between items-center">
+						<h1 class="text-base font-semibold text-gray-900 dark:text-white">Sales Overview</h1>
+						<SfButton CssClass="e-outline hidden sm:block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+						<SfButton CssClass="e-outline sm:hidden" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+					</div>
+					<div class="flex flex-col-reverse sm:flex-row justify-between items-start sm:items-center gap-6">
+						<p class="text-sm text-gray-700 dark:text-gray-300">Comparison</p>
+						<SfDropDownButton @ref="MonthOptions" class="e-outline" IconCss="e-icons e-day" Content="Jan" Type="button" aria-label="choose a month" role="button">
+							<DropDownButtonEvents Opened="@(args => IsMonthDropdownOpen = true)" Closed="@(args => IsMonthDropdownOpen = false)"></DropDownButtonEvents>
+							<DropDownMenuItems>
+								<DropDownMenuItem Text="Jan"></DropDownMenuItem>
+								<DropDownMenuItem Text="Feb"></DropDownMenuItem>
+								<DropDownMenuItem Text="Mar"></DropDownMenuItem>
+								<DropDownMenuItem Text="Apr"></DropDownMenuItem>
+								<DropDownMenuItem Text="May"></DropDownMenuItem>
+							</DropDownMenuItems>
+						</SfDropDownButton>
+					</div>
+				</div>
+				<div class="mt-1">
+					<SfChart @ref="Chart" Width="100%" Height="250px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+						<ChartArea><ChartAreaBorder Width="0"></ChartAreaBorder></ChartArea>
+						<ChartPrimaryXAxis Minimum="4" Maximum="24" Interval="4" LabelPlacement="Syncfusion.Blazor.Charts.LabelPlacement.OnTicks">
+							<ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+							<ChartAxisTitleStyle FontWeight="500"></ChartAxisTitleStyle>
+							<ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+							<ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+							<ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+							<ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+							<ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+						</ChartPrimaryXAxis>
+						<ChartPrimaryYAxis Minimum="0" Maximum="75" Interval="25" LabelFormat="{value}%">
+							<ChartAxisMajorGridLines Width="1" DashArray="5,5"></ChartAxisMajorGridLines>
+							<ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+							<ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+							<ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+							<ChartAxisLineStyle Width="0" Color="transparent"></ChartAxisLineStyle>
+							<ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+							<ChartAxisTitleStyle FontWeight="500"></ChartAxisTitleStyle>
+						</ChartPrimaryYAxis>
+						<ChartSeriesCollection>
+							<ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis" Name="Actual Progress" Fill="#267DDA" Width="1" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line">
+								<ChartTrendlines>
+									<ChartTrendline Type="TrendlineTypes.Linear" Width="1" Name="Ideal Progress" DashArray="5,5" Fill="#9CA3AF"></ChartTrendline>
+								</ChartTrendlines>
+							</ChartSeries>
+						</ChartSeriesCollection>
+						<ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near" Height="40px">
+                            <ChartLegendMargin Bottom="8"></ChartLegendMargin>
+						</ChartLegendSettings>
+					</SfChart>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body">
+		<div class="vh-100 d-flex justify-content-center align-items-start p-3 p-sm-4">
+			<div class="w-100" style="max-width: 580px">
+				<div class="d-flex flex-column gap-3">
+					<div class="d-flex justify-content-between align-items-center">
+						<h1 class="h6 fw-semibold text-body mb-0">Sales Overview</h1>
+						<SfButton CssClass="e-outline d-none d-sm-block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+						<SfButton CssClass="e-outline d-block d-sm-none" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+					</div>
+					<div class="d-flex flex-column-reverse flex-sm-row justify-content-between align-items-start align-items-sm-center gap-3">
+						<p class="small text-body-secondary mb-0">Comparison</p>
+						<SfDropDownButton @ref="MonthOptions" CssClass="e-outline" IconCss="e-icons e-day" Content="Jan" Type="button" aria-label="choose a month" role="button">
+							<DropDownButtonEvents Opened="@(args => IsMonthDropdownOpen = true)" Closed="@(args => IsMonthDropdownOpen = false)"></DropDownButtonEvents>
+								<DropDownMenuItems>
+									<DropDownMenuItem Text="Jan"></DropDownMenuItem>
+									<DropDownMenuItem Text="Feb"></DropDownMenuItem>
+									<DropDownMenuItem Text="Mar"></DropDownMenuItem>
+									<DropDownMenuItem Text="Apr"></DropDownMenuItem>
+									<DropDownMenuItem Text="May"></DropDownMenuItem>
+								</DropDownMenuItems>
+						</SfDropDownButton>
+					</div>
+				</div>
+				<div class="mt-1">
+					<SfChart @ref="Chart" Width="100%" Height="250px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+							<ChartArea><ChartAreaBorder Width="0"></ChartAreaBorder></ChartArea>
+							<ChartPrimaryXAxis Minimum="4" Maximum="24" Interval="4" LabelPlacement="Syncfusion.Blazor.Charts.LabelPlacement.OnTicks">
+								<ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+								<ChartAxisTitleStyle FontWeight="500"></ChartAxisTitleStyle>
+								<ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+								<ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+								<ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+								<ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+								<ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+							</ChartPrimaryXAxis>
+							<ChartPrimaryYAxis Minimum="0" Maximum="75" Interval="25" LabelFormat="{value}%">
+								<ChartAxisMajorGridLines Width="1" Color="@(CurrentTheme == "bootstrap5.3-dark" ? "#4B5563" : "#E5E7EB")" DashArray="5,5"></ChartAxisMajorGridLines>
+								<ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+								<ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+								<ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+								<ChartAxisLineStyle Width="0" Color="transparent"></ChartAxisLineStyle>
+								<ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+								<ChartAxisTitleStyle FontWeight="500"></ChartAxisTitleStyle>
+							</ChartPrimaryYAxis>
+							<ChartSeriesCollection>
+								<ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis" Name="Actual Progress" Fill="#267DDA" Width="1" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line">
+									<ChartTrendlines>
+										<ChartTrendline Type="TrendlineTypes.Linear" Name="Ideal Progress" Width="1" DashArray="5,5" Fill="#9CA3AF"></ChartTrendline>
+									</ChartTrendlines>
+								</ChartSeries>
+							</ChartSeriesCollection>
+							<ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near" Height="40px">
+                                <ChartLegendMargin Bottom="8"></ChartLegendMargin>
+							</ChartLegendSettings>
+					</SfChart>
+				</div>
+			</div>
+		</div>
+	</section>
+}

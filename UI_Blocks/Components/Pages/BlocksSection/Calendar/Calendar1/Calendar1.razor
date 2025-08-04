@@ -8,18 +8,18 @@
 {
     <section class="bg-white dark:bg-gray-800">
         <div style="height: 850px; width: @Width; float: right;">
-            <SfSidebar Width="@Width" class="w-full bg-white dark:bg-gray-800" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+            <SfSidebar class="w-full bg-white dark:bg-gray-800" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
                 <ChildContent>
                     <div class="border-b border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-800">
                         <div class="flex justify-between items-center px-4 py-3 border-b border-gray-200 dark:border-gray-600">
                             <h2 class="text-base font-semibold text-gray-900 dark:text-white">Quick view</h2>
-                            <SfButton @onclick="ToggleSidebar" CssClass="e-flat text-base" IconCss="e-icons e-close" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                            <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="close sidebar" role="button"></SfButton>
                         </div>
-                        <div class="p-4 flex justify-center items-center">
+                        <div class="flex justify-center items-center">
                             <SfCalendar TValue="DateTime" CssClass="e-bigger shadow-none border-none"></SfCalendar>
                         </div>
                     </div>
-                    <div class="p-4 bg-white dark:bg-gray-800 pt-4">
+                    <div class="bg-white dark:bg-gray-800 p-3">
                         <h6 class="text-sm font-semibold text-gray-900 dark:text-white">Sep, 22</h6>
                         <div class="flex items-center flex-wrap space-y-3 pt-3">
                             <div class="e-card w-full !ml-0 pt-3">
@@ -31,7 +31,7 @@
                                             <p class="text-xs text-gray-700 dark:text-gray-300">10:00 AM - 11:00 AM</p>
                                             <div class="flex items-center space-x-2 mt-1">
                                                 <span class="e-avatar e-avatar-xsmall e-avatar-circle bg-green-700 dark:bg-green-500 text-xs text-white dark:text-black flex items-center justify-center rounded-full">JB</span>
-                                                <span class="text-sm text-gray-700 dark:text-gray-300">Jerome Bell</span>
+                                                <span class="text-xs text-gray-700 dark:text-gray-300">Jerome Bell</span>
                                             </div>
                                         </div>
                                     </div>
@@ -75,24 +75,24 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 absolute top-0 right-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" @onclick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
-        <div style="height: 965px; width: @Width; float: right;">
-            <SfSidebar Width="@Width" class="d-flex flex-column h-100 bg-body" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+        <div style="height: 975px; width: @Width; float: right;">
+            <SfSidebar class="d-flex flex-column h-100 bg-body" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
                 <ChildContent>
                     <div class="bg-body">
                         <div class="border-bottom">
                             <div class="d-flex justify-content-between align-items-center px-3 py-2 pt-3 border-bottom">
                                 <h2 class="h6 text-body fw-bold mb-0">Quick view</h2>
-                                <SfButton @onclick="ToggleSidebar" CssClass="e-flat fs-6" IconCss="e-icons e-close" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                                <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="close sidebar" role="button"></SfButton>
                             </div>
                             <div class="p-3 pb-0 d-flex justify-content-center align-items-center">
-                                 <SfCalendar TValue="DateTime" CssClass="e-bigger shadow-none border-0"></SfCalendar>
+                                <SfCalendar TValue="DateTime" CssClass="e-bigger shadow-none border-0"></SfCalendar>
                             </div>
                         </div>
                         <div class="p-3">
@@ -101,7 +101,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <div class="e-card w-100 mt-2">
                                     <div class="e-card-content px-1">
                                         <div class="d-flex">
-                                            <div class="bg-info rounded me-2" style="width: 4px; height: 98px;"></div>
+                                            <div class="bg-info rounded" style="width: 4px; height: 98px; margin-right: 12px;"></div>
                                             <div class="e-card-stacked">
                                                 <h5 class="fs-6 fw-medium text-body mb-1">Project Kickoff</h5>
                                                 <p class="fs-sm text-body-secondary mb-1">10:00 AM - 11:00 AM</p>
@@ -116,7 +116,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <div class="e-card w-100 mt-3">
                                     <div class="e-card-content px-1">
                                         <div class="d-flex">
-                                            <div class="bg-danger rounded me-2" style="width: 4px; height: 98px;"></div>
+                                            <div class="bg-danger rounded" style="width: 4px; height: 98px; margin-right: 12px;"></div>
                                             <div class="e-card-stacked">
                                                 <h5 class="fs-6 fw-medium text-body mb-1">Marketing Strategy</h5>
                                                 <p class="fs-sm text-body-secondary mb-1">02:00 PM - 04:00 PM</p>
@@ -131,7 +131,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <div class="e-card w-100 mt-3">
                                     <div class="e-card-content px-1">
                                         <div class="d-flex">
-                                            <div class="bg-success rounded me-2" style="width: 4px; height: 98px;"></div>
+                                            <div class="bg-success rounded" style="width: 4px; height: 98px; margin-right: 12px;"></div>
                                             <div class="e-card-stacked">
                                                 <h5 class="fs-6 fw-medium text-body mb-1">Product Design Review</h5>
                                                 <p class="fs-sm text-body-secondary mb-1">05:00 PM - 06:30 PM</p>
@@ -152,7 +152,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 position-absolute top-0 end-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" @onclick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

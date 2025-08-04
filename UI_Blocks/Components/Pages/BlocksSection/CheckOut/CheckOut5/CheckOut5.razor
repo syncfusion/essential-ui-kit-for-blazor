@@ -9,7 +9,6 @@
 	<section>
 		<div id="dialog-container" class="relative" style="min-height: 1370px !important;">
 			<SfDialog @ref="Dialog" CssClass="absolute" Target="#dialog-container" Visible="true" ShowCloseIcon="true" Width="662px" Height="100%" CloseOnEscape="true">
-				<DialogEvents Opened="@onOpen"></DialogEvents>
 				<div class="max-w-2xl px-1 text-gray-700 dark:text-gray-300">
 					<DialogTemplates>
 						<Header>
@@ -100,7 +99,7 @@
 							<div>
 								<h2 class="mb-4 font-semibold text-lg text-gray-900 dark:text-white">Payments</h2>
 								<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-									<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 hover:border">
+									<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 hover:border bg-gray-100 dark:bg-gray-800">
 										<div class="e-card-content">
 											<div class="e-bigger">
 												<SfRadioButton Label="Credit card" Name="payment" TChecked="Boolean" aria-label="credit card" role="radio"></SfRadioButton>
@@ -108,11 +107,11 @@
 											<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">Pay with your credit card</div>
 										</div>
 										<div class="e-card-actions">
-											<SfButton CssClass="e-flat mr-3" Type="button" IconCss="e-icons e-trash e-medium" Content="Delete" aria-label="delete" role="button"></SfButton>
-											<SfButton CssClass="e-flat" Type="button" IconCss="e-icons e-edit e-medium" Content="Edit" aria-label="edit" role="button"></SfButton>
+											<SfButton CssClass="e-flat mr-3" IconCss="e-icons e-trash e-medium" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
+											<SfButton CssClass="e-flat" IconCss="e-icons e-edit e-medium" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
 										</div>
 									</div>
-									<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+									<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
 										<div class="e-card-content">
 											<div class="e-bigger">
 												<SfRadioButton Label="Payment on delivery" Name="payment" Value="Payment on delivery" Checked="@SelectedPaymentMethod" aria-label="payment on delivery" role="radio"></SfRadioButton>
@@ -120,11 +119,11 @@
 											<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">+ $12 payment processing fee</div>
 										</div>
 										<div class="e-card-actions">
-											<SfButton CssClass="e-flat mr-3" Type="button" IconCss="e-icons e-trash e-medium" Content="Delete" aria-label="delete" role="button"></SfButton>
-											<SfButton CssClass="e-flat" Type="button" IconCss="e-icons e-edit e-medium" Content="Edit" aria-label="edit" role="button"></SfButton>
+											<SfButton CssClass="e-flat mr-3" IconCss="e-icons e-trash e-medium" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
+											<SfButton CssClass="e-flat" IconCss="e-icons e-edit e-medium" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
 										</div>
 									</div>
-									<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+									<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
 										<div class="e-card-content">
 											<div class="e-bigger">
 												<SfRadioButton Label="PayPal account" Name="payment" TChecked="Boolean" aria-label="paypal account" role="radio"></SfRadioButton>
@@ -132,8 +131,8 @@
 											<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">Connect to your account</div>
 										</div>
 										<div class="e-card-actions">
-											<SfButton CssClass="e-flat mr-3" Type="button" IconCss="e-icons e-trash e-medium" Content="Delete" aria-label="delete" role="button"></SfButton>
-											<SfButton CssClass="e-flat" Type="button" IconCss="e-icons e-edit e-medium" Content="Edit" aria-label="edit" role="button"></SfButton>
+											<SfButton CssClass="e-flat mr-3" IconCss="e-icons e-trash e-medium" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
+											<SfButton CssClass="e-flat" IconCss="e-icons e-edit e-medium" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
 										</div>
 									</div>
 								</div>
@@ -141,7 +140,7 @@
 							<div class="mt-6">
 								<h2 class="mb-4 font-semibold text-lg text-gray-900 dark:text-white">Delivery methods</h2>
 								<div class="grid grid-cols-1 md:grid-cols-2 gap-5">
-									<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+									<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
 										<div class="e-card-content">
 											<div class="e-bigger">
 												<SfRadioButton Label="$15 - DHL fast delivery" Name="delivery" TChecked="Boolean" aria-label="$15 - DHL fast delivery" role="radio"></SfRadioButton>
@@ -149,7 +148,7 @@
 											<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">Get it by tomorrow</div>
 										</div>
 									</div>
-									<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+									<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
 										<div class="e-card-content">
 											<div class="e-bigger">
 												<SfRadioButton Label="Free delivery - FedEx" Name="delivery" Value="Free delivery - FedEx" Checked="@SelectedDeliveryMethod" aria-label="FedEx free delivery" role="radio"></SfRadioButton>
@@ -157,7 +156,7 @@
 											<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">Get it by Friday, 13 Dec 2023</div>
 										</div>
 									</div>
-									<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+									<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
 										<div class="e-card-content">
 											<div class="e-bigger">
 												<SfRadioButton Label="$49 - Express delivery" Name="delivery" aria-label="$49 - express delivery" TChecked="Boolean" role="radio"></SfRadioButton>
@@ -169,23 +168,28 @@
 							</div>
 						</Content>
 						<FooterTemplate>
-							<div class="e-bigger mb-4 text-right">
-								<SfButton CssClass="md:mr-4 !ml-0 w-full md:w-fit e-primary" Type="submit" aria-label="proceed to checkout" role="button">Proceed to checkout</SfButton>
-								<SfButton CssClass="dark:text-white w-full !ml-0 md:w-fit mt-4 md:mt-0 e-outline" Type="submit" aria-label="continue shopping" role="button">Continue shopping</SfButton>
+							<div class="e-bigger sm:flex block mb-4 justify-end">
+								<SfButton CssClass="md:mr-4 !ml-0 w-full lg:w-fit e-primary" Content="Proceed to checkout" Type="submit" aria-label="proceed to checkout" role="button"></SfButton>
+								<SfButton CssClass="dark:text-white w-full !ml-0 lg:w-fit mt-4 md:mt-0 e-outline" Content="Continue shopping" Type="submit" aria-label="continue shopping" role="button"></SfButton>
 							</div>
 						</FooterTemplate>
 					</DialogTemplates>
+					<DialogEvents Opened="@(args => args.PreventFocus = true)"></DialogEvents>
 				</div>
 			</SfDialog>
 		</div>
 	</section>
+	<!-- SB Code - Start -->
+    <div class="top-0 flex w-full absolute">
+        <SfButton CssClass="mx-auto my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="Shoping cart" Type="button" aria-label="shoping cart" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
 	<section>
 		<div id="dialog-container" class="position-relative" style="min-height: 1340px !important;">
 			<SfDialog @ref="Dialog" Target="#dialog-container" Visible="true" ShowCloseIcon="true" Width="662px" Height="100%" CloseOnEscape="true">
-				<DialogEvents Opened="@onOpen"></DialogEvents>
 				<DialogTemplates>
 					<Header>
 						<span style="font-size: 18px;">My shopping cart</span>
@@ -275,7 +279,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 								<h2 class="fw-medium fs-5 text-body mb-3">Payments</h2>
 								<div class="row g-3">
 									<div class="col-md-6">
-										<div class="e-card h-100">
+										<div class="e-card h-100 bg-body-tertiary">
 											<div class="e-card-content pb-2">
 												<div class="e-bigger">
 													<SfRadioButton Label="Credit card" Name="payment" TChecked="Boolean" aria-label="credit card" role="radio"></SfRadioButton>
@@ -283,13 +287,13 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 												<div class="text-dark-emphasis mt-1 ps-1 ms-4">Pay with your credit card</div>
 											</div>
 											<div class="e-card-actions">
-												<SfButton CssClass="e-flat me-3" Type="button" IconCss="e-icons e-trash" Content="Delete" aria-label="delete" role="button"></SfButton>
-												<SfButton CssClass="e-flat" Type="button" IconCss="e-icons e-edit" Content="Edit" aria-label="edit" role="button"></SfButton>
+												<SfButton CssClass="e-flat me-3" IconCss="e-icons e-trash" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
+												<SfButton CssClass="e-flat" IconCss="e-icons e-edit" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
 											</div>
 										</div>
 									</div>
 									<div class="col-md-6">
-										<div class="e-card h-100">
+										<div class="e-card h-100 bg-body-tertiary">
 											<div class="e-card-content pb-2">
 												<div class="e-bigger">
 													<SfRadioButton Label="Payment on delivery" Name="payment" Value="Payment on delivery" Checked="@SelectedPaymentMethod" aria-label="payment on delivery" role="radio"></SfRadioButton>
@@ -297,13 +301,13 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 												<div class="text-dark-emphasis mt-1 ms-4 ps-1">+ $12 payment processing fee</div>
 											</div>
 											<div class="e-card-actions">
-												<SfButton CssClass="e-flat me-3" Type="button" IconCss="e-icons e-trash" Content="Delete" aria-label="delete" role="button"></SfButton>
-												<SfButton CssClass="e-flat" Type="button" IconCss="e-icons e-edit" Content="Edit" aria-label="edit" role="button"></SfButton>
+												<SfButton CssClass="e-flat me-3" IconCss="e-icons e-trash" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
+												<SfButton CssClass="e-flat" IconCss="e-icons e-edit" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
 											</div>
 										</div>
 									</div>
 									<div class="col-md-6">
-										<div class="e-card h-100">
+										<div class="e-card h-100 bg-body-tertiary">
 											<div class="e-card-content pb-2">
 												<div class="e-bigger">
 													<SfRadioButton Label="PayPal account" Name="payment" TChecked="Boolean" aria-label="paypal account" role="radio"></SfRadioButton>
@@ -311,8 +315,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 												<div class="text-dark-emphasis mt-1 ms-4 ps-1">Connect to your account</div>
 											</div>
 											<div class="e-card-actions">
-												<SfButton CssClass="e-flat me-3" Type="button" IconCss="e-icons e-trash" Content="Delete" aria-label="delete" role="button"></SfButton>
-												<SfButton CssClass="e-flat" Type="button" IconCss="e-icons e-edit" Content="Edit" aria-label="edit" role="button"></SfButton>
+												<SfButton CssClass="e-flat me-3" IconCss="e-icons e-trash" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
+												<SfButton CssClass="e-flat" IconCss="e-icons e-edit" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
 											</div>
 										</div>
 									</div>
@@ -322,7 +326,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 								<h2 class="fw-medium fs-5 text-body mb-3">Delivery methods</h2>
 								<div class="row g-3">
 									<div class="col-md-6">
-										<div class="e-card h-100">
+										<div class="e-card h-100 bg-body-tertiary">
 											<div class="e-card-content">
 												<div class="e-bigger">
 													<SfRadioButton Label="$15 - DHL fast delivery" Name="delivery" TChecked="Boolean" aria-label="$15 - DHL fast delivery" role="radio"></SfRadioButton>
@@ -332,7 +336,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 										</div>
 									</div>
 									<div class="col-md-6">
-										<div class="e-card h-100">
+										<div class="e-card h-100 bg-body-tertiary">
 											<div class="e-card-content">
 												<div class="e-bigger">
 												    <SfRadioButton Label="Free delivery - FedEx" Name="delivery" Value="Free delivery - FedEx" Checked="@SelectedDeliveryMethod" aria-label="FedEx free delivery" role="radio"></SfRadioButton>
@@ -342,7 +346,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 										</div>
 									</div>
 									<div class="col-md-6">
-										<div class="e-card h-100">
+										<div class="e-card h-100 bg-body-tertiary">
 											<div class="e-card-content">
 												<div class="e-bigger">
 												    <SfRadioButton Label="$49 - Express delivery" Name="delivery" TChecked="Boolean" aria-label="$49 - express delivery" role="radio"></SfRadioButton>
@@ -358,15 +362,21 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 					<FooterTemplate>
 						<div class="e-bigger row justify-content-lg-center justify-content-xl-end flex-column flex-md-row px-2 text-right">
 							<div class="col-12 col-md-6 col-xl-5 m-0 mb-3 mb-md-0">
-								<SfButton CssClass="e-primary e-block m-0" Type="submit" aria-label="proceed to checkout" role="button">Proceed to checkout</SfButton>
+								<SfButton CssClass="e-primary e-block m-0" Content="Proceed to checkout" Type="submit" aria-label="proceed to checkout" role="button"></SfButton>
 							</div>
 							<div class="col-12 col-md-6 col-xl-5 ps-md-1">
-								<SfButton CssClass="e-secondary e-block m-0" Type="submit" aria-label="continue shopping" role="button">Continue shopping</SfButton>
+								<SfButton CssClass="e-secondary e-block m-0" Content="Continue shopping" Type="submit" aria-label="continue shopping" role="button"></SfButton>
 							</div>
 						</div>
 					</FooterTemplate>
 				</DialogTemplates>
+				<DialogEvents Opened="@(args => args.PreventFocus = true)"></DialogEvents>
 			</SfDialog>
 		</div>
 	</section>
+	<!-- SB Code - Start -->
+    <div class="position-absolute top-0 d-flex w-100">
+        <SfButton CssClass="mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="Shoping cart" Type="button" aria-label="shoping cart" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }

@@ -4,7 +4,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Statistics.Statistics11
 {
     public partial class Statistics11
     {
-        public List<Metric> MetricsData { get; set; } = new List<Metric>
+        public List<Metric> MetricsData = new List<Metric>
         {
             new Metric
             {

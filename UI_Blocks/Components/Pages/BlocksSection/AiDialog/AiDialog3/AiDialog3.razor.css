@@ -1,3 +1,7 @@
 ﻿::deep #dialog-container .e-dialog .e-dlg-content {
     padding: 0;
 }
+
+::deep #dialog-container .e-dialog .e-dlg-header-content {
+    border: 0;
+}

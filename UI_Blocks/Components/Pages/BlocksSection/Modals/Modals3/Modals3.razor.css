@@ -1,7 +1,16 @@
-::deep #dialog-container .e-dialog .e-dlg-content {
+::deep #dialog-container .e-dialog .e-dlg-header-content,
+::deep #dialog-container .e-dialog .e-footer-content {
     border: inherit;
     border-inline: none;
     border-radius: 0;
+}
+
+::deep #dialog-container .e-dialog .e-dlg-header-content {
+    border-top: 0;
+}
+
+::deep #dialog-container .e-dialog .e-footer-content {
+    border-bottom: 0;
 }
 
 ::deep #dialog-container .e-accordion .e-acrdn-item {

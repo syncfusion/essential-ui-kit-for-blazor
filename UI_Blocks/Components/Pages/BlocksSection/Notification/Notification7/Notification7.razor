@@ -33,8 +33,7 @@
                         <ListViewTemplates TValue="NotificationItem">
                             <Template Context="data">
                                 <div class="e-card shadow-none rounded-lg flex-row !p-4 !pb-2 sm:!pb-1 flex items-start">
-                                    <span class="e-avatar e-avatar-circle shrink-0"
-                                          style="background-image: url('assets/images/common/avatar/@data.Avatar'); background-size: cover;">
+                                    <span class="e-avatar e-avatar-circle shrink-0" style="background-image: url('assets/images/common/avatar/@data.Avatar'); background-size: cover;">
                                     </span>
                                     <div class="e-card-stacked">
                                         <span class="flex flex-col items-start ml-3 text-gray-900 dark:text-white">
@@ -49,7 +48,7 @@
                                                     <span>@data.Date.ToString("dd/MM/yyyy")</span>
                                                     <span>@data.Date.ToString("HH:mm:ss")</span>
                                                 </span>
-                                                <SfButton CssClass="e-primary e-flat" Content="View details" IconCss="e-icons e-chevron-right text-xl" IconPosition="IconPosition.Right" Type="button" aria-label="view details" role="button"></SfButton>
+                                                <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-chevron-right text-xl" IconPosition="IconPosition.Right" Content="View details" Type="button" aria-label="view details" role="button"></SfButton>
                                             </div>
                                         </span>
                                     </div>
@@ -61,11 +60,16 @@
             </SfSidebar>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 absolute top-0 right-0">
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" IsToggle="true" OnClick="@(() => IsSidebarToggle = !IsSidebarToggle)" Type="button" aria-label="show sidebar" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
-        <div style="height: 875px; width: @Width; float:right;">
+        <div style="height: 940px; width: @Width; float:right;">
             <SfSidebar @ref="@Sidebar" class="d-flex flex-column" Position="SidebarPosition.Right" Type="SidebarType.Push" Width="@Width" IsOpen="true" ShowBackdrop="true" role="sidebar">
                 <div class="flex-shrink-0">
                     <div class="d-flex align-items-center gap-2 p-3 border-bottom">
@@ -91,8 +95,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         <ListViewTemplates TValue="NotificationItem">
                             <Template Context="data">
                                 <div class="e-card rounded-3 lh-base p-3 pb-2 d-flex flex-row align-items-start">
-                                    <span class="e-avatar e-avatar-circle flex-shrink-0"
-                                          style="background-image: url('assets/images/common/avatar/@data.Avatar'); background-size: cover;">
+                                    <span class="e-avatar e-avatar-circle flex-shrink-0" style="background-image: url('assets/images/common/avatar/@data.Avatar'); background-size: cover;">
                                     </span>
                                     <div class="e-card-stacked">
                                         <span class="d-flex flex-column align-items-start ms-2">
@@ -107,7 +110,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                     <span>@data.Date.ToString("dd/MM/yyyy")</span>
                                                     <span class="ms-1">@data.Date.ToString("HH:mm:ss")</span>
                                                 </span>
-                                                <SfButton CssClass="e-primary e-flat" Content="View details" IconCss="e-icons e-chevron-right text-xl" IconPosition="IconPosition.Right" Type="button" aria-label="view details" role="button"></SfButton>
+                                                <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-chevron-right text-xl" IconPosition="IconPosition.Right" Content="View details" Type="button" aria-label="view details" role="button"></SfButton>
                                             </div>
                                         </span>
                                     </div>
@@ -119,4 +122,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
             </SfSidebar>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="p-3 position-absolute top-0 end-0">
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" IsToggle="true" OnClick="@(() => IsSidebarToggle = !IsSidebarToggle)" Type="button" aria-label="show sidebar" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }

@@ -1,0 +1,158 @@
+﻿@page "/blocks/line-chart-5"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-white dark:bg-gray-900">
+		<div class="h-screen flex justify-center p-4 sm:p-6">
+			<div class="w-full" style="max-width: 950px">
+				<div class="flex flex-col gap-2 mb-4 w-full">
+					<div class="flex justify-between">
+						<h2 class="text-base font-medium text-gray-900 dark:text-white">Profit Pulse Insights</h2>
+						<SfButton CssClass="e-outline hidden sm:block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+						<SfButton CssClass="e-outline block sm:hidden" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+					</div>
+					<p class="text-sm text-gray-500 dark:text-gray-400">Origin Game EA</p>
+					<div class="flex justify-between items-start flex-col-reverse sm:flex-row gap-4 mt-1">
+						<div class="flex items-center gap-3">
+							<p class="text-xl font-semibold text-gray-700 dark:text-gray-300">
+								<span class="text-gray-500 dark:text-gray-400">$</span> 28,089.00
+							</p>
+							<div class="flex items-center gap-1 text-green-700 dark:text-green-500">
+								<span class="e-icons e-arrow-up"></span>
+								<span class="text-xs font-medium">+26% of last month</span>
+							</div>
+						</div>
+						<div class="hidden sm:block">
+							<SfButtonGroup class="e-btn-group flex">
+								<input type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
+								<label class="e-btn" for="day">D</label>
+								<input type="radio" id="week" name="align" value="W" aria-label="week" role="button" />
+								<label class="e-btn" for="week">W</label>
+								<input type="radio" id="month" name="align" value="M" aria-label="month" role="button" />
+								<label class="e-btn" for="month">M</label>
+								<input type="radio" id="year" name="align" value="Y" checked aria-label="year" role="button" />
+								<label class="e-btn" for="year">Y</label>
+								<input type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button" />
+								<label class="e-btn" for="custom">Custom</label>
+							</SfButtonGroup>
+						</div>
+						<SfDropDownButton @ref="PeriodOptions" CssClass="e-outline block sm:hidden" Content="Year" Type="button" aria-label="choose a period" role="button">
+								<DropDownButtonEvents Opened="@(args => IsPeriodDropdownOpen = true)" Closed="@(args => IsPeriodDropdownOpen = false)"></DropDownButtonEvents>
+								<DropDownMenuItems>
+									<DropDownMenuItem Text="Day"></DropDownMenuItem>
+									<DropDownMenuItem Text="Week"></DropDownMenuItem>
+									<DropDownMenuItem Text="Month"></DropDownMenuItem>
+									<DropDownMenuItem Text="Year"></DropDownMenuItem>
+									<DropDownMenuItem Text="Custom"></DropDownMenuItem>
+								</DropDownMenuItems>
+						</SfDropDownButton>
+					</div>
+				</div>
+				<div>
+					<SfChart @ref="Chart" Width="100%" Height="350px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+						<ChartLegendSettings Visible="false"></ChartLegendSettings>
+						<ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelRotation="@XAxisLabelRotation" LabelPlacement="Syncfusion.Blazor.Charts.LabelPlacement.OnTicks">
+							<ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+						</ChartPrimaryXAxis>
+						<ChartPrimaryYAxis Minimum="10" Maximum="60" Interval="10" LabelFormat="{value}k">
+							<ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+						</ChartPrimaryYAxis>
+						<ChartSeriesCollection>
+							<ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis1" Name="ActualRevenue" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Spline" Width="2"	Fill="@(CurrentTheme == "tailwind-dark" ? "#4B5563" : "#D1D5DB")"></ChartSeries>
+							<ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis2" Name="PredictedRevenue" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Spline" Width="4" Fill="url(#gradient)"></ChartSeries>
+						</ChartSeriesCollection>
+						<ChartTooltipSettings Enable="true" Shared="false" Header="" EnableMarker="false" ShowNearestTooltip="true" Format="<b>$ ${point.y} (+5.9%)<br>21 May, 08:30 PM</b>"></ChartTooltipSettings>
+						<ChartCrosshairSettings Enable="true" SnapToData="true" DashArray="5,5" LineType="Syncfusion.Blazor.Charts.LineType.Vertical"></ChartCrosshairSettings>
+					</SfChart>
+				</div>
+			</div>
+			<svg style="height: 0; width: 0">
+				<defs>
+					<linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+						<stop offset="0%" style="stop-color: #ffb900; stop-opacity: 1;"></stop>
+						<stop offset="100%" style="stop-color: #de4383; stop-opacity: 1;"></stop>
+					</linearGradient>
+				</defs>
+			</svg>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body">
+		<div class="w-100 d-flex justify-content-center p-3 p-sm-4">
+			<div class="w-100" style="max-width: 950px">
+				<div class="d-flex flex-column mb-4 w-100">
+					<div class="d-flex justify-content-between">
+						<h2 class="fs-6 fw-medium text-body mb-0">Profit Pulse Insights</h2>
+						<SfButton CssClass="e-outline d-none d-sm-block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+						<SfButton CssClass="e-outline d-sm-none" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+					</div>
+					<p class="small text-body-secondary mb-0">Origin Game EA</p>
+					<div class="d-flex justify-content-between align-items-start flex-column-reverse flex-sm-row gap-3 mt-3">
+						<div class="d-flex align-items-center gap-3 ">
+							<p class="h5 fw-semibold text-body-secondary mb-0"><span class="text-body-secondary">$</span> 28,089.00</p>
+							<div class="d-flex align-items-center gap-1 text-success">
+								<span class="e-icons e-arrow-up"></span>
+								<span class="fw-medium small">+26% of last month</span>
+							</div>
+						</div>
+						<div class="d-none d-sm-block">
+							<SfButtonGroup class="e-btn-group d-flex">
+								<input type="radio" id="day" name="align" value="D" aria-label="day" role="button"/>
+								<label class="e-btn" for="day">D</label>
+								<input type="radio" id="week" name="align" value="W" aria-label="week" role="button"/>
+								<label class="e-btn" for="week">W</label>
+								<input type="radio" id="month" name="align" value="M" aria-label="month" role="button"/>
+								<label class="e-btn" for="month">M</label>
+								<input type="radio" id="year" name="align" value="Y" checked aria-label="year" role="button" />
+								<label class="e-btn" for="year">Y</label>
+								<input type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button" />
+								<label class="e-btn" for="custom">Custom</label>
+							</SfButtonGroup>
+						</div>
+						<SfDropDownButton @ref="PeriodOptions" CssClass="e-outline d-block d-sm-none" Content="Year" Type="button" aria-label="choose a period" role="button">
+							<DropDownButtonEvents Opened="@(args => IsPeriodDropdownOpen = true)" Closed="@(args => IsPeriodDropdownOpen = false)"></DropDownButtonEvents>
+							<DropDownMenuItems>
+								<DropDownMenuItem Text="Day"></DropDownMenuItem>
+								<DropDownMenuItem Text="Week"></DropDownMenuItem>
+								<DropDownMenuItem Text="Month"></DropDownMenuItem>
+								<DropDownMenuItem Text="Year"></DropDownMenuItem>
+								<DropDownMenuItem Text="Custom"></DropDownMenuItem>
+							</DropDownMenuItems>
+						</SfDropDownButton>
+					</div>
+				</div>
+				<div>
+					<SfChart @ref="Chart" Width="100%" Height="350px" UseGroupingSeparator="true" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+						<ChartLegendSettings Visible="false"></ChartLegendSettings>
+						<ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelRotation="@XAxisLabelRotation" LabelPlacement="Syncfusion.Blazor.Charts.LabelPlacement.OnTicks">
+							<ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+						</ChartPrimaryXAxis>
+						<ChartPrimaryYAxis Minimum="10" Maximum="60" Interval="10" LabelFormat="{value}k">
+							<ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+						</ChartPrimaryYAxis>
+						<ChartSeriesCollection>
+							<ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis1" Name="ActualRevenue" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Spline" Fill="@(CurrentTheme == "bootstrap5.3-dark" ? "#4B5563" : "#D1D5DB")" Width="2"></ChartSeries>
+							<ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis2" Name="PredictedRevenue" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Spline" Fill="url(#gradient)" Width="4"></ChartSeries>
+						</ChartSeriesCollection>
+						<ChartTooltipSettings Enable="true" Shared="false" Header="" EnableMarker="false" ShowNearestTooltip="true" Format="<b>$ ${point.y} (+5.9%)<br>21 May, 08:30 PM</b>"></ChartTooltipSettings>
+						<ChartCrosshairSettings Enable="true" SnapToData="true" DashArray="5,5" LineType="Syncfusion.Blazor.Charts.LineType.Vertical"></ChartCrosshairSettings>
+					</SfChart>
+				</div>
+				<svg style="height: 0; width: 0;">
+					<defs>
+						<linearGradient id="gradient" x1="0%" y1="0%" x2="0%" y2="100%">
+							<stop offset="0%" style="stop-color: #EF6400; stop-opacity: 1;"></stop>
+							<stop offset="100%" style="stop-color: #EF00AC; stop-opacity: 1;"></stop>
+						</linearGradient>
+					</defs>
+				</svg>
+			</div>
+		</div>
+	</section>
+}

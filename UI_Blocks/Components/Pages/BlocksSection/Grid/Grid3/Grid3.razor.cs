@@ -2,32 +2,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid3
 {
     public partial class Grid3
     {
-        public class CustomerDetails
-        {
-            public string Name { get; set; } = string.Empty;
-            public string Email { get; set; } = string.Empty;
-            public string Avatar { get; set; } = string.Empty;
-        }
-        
-        public class Invoice
-        {
-            public int Id { get; set; }
-            public string InvoiceId { get; set; } = string.Empty;
-            public CustomerDetails CustomerDetails { get; set; } = new CustomerDetails();
-            public DateTime InvoiceDate { get; set; }
-            public string ItemsPurchased { get; set; } = string.Empty;
-            public int Quantity { get; set; }
-            public decimal Price { get; set; }
-            public decimal Tax { get; set; }
-            public decimal Discount { get; set; }
-            public decimal Total { get; set; }
-            public string Status { get; set; } = string.Empty;
-            public DateTime DueDate { get; set; }
-            public DateTime? PaymentDate { get; set; }
-            public string? PaymentMethod { get; set; }
-        }
-
-        List<Invoice> GridData = new List<Invoice>
+        public List<Invoice> GridData = new List<Invoice>
         {
             new Invoice
             {
@@ -250,5 +225,30 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid3
                 PaymentMethod = "Cash"
             }
         };
+
+        public class CustomerDetails
+        {
+            public string Name { get; set; } = string.Empty;
+            public string Email { get; set; } = string.Empty;
+            public string Avatar { get; set; } = string.Empty;
+        }
+        
+        public class Invoice
+        {
+            public int Id { get; set; }
+            public string InvoiceId { get; set; } = string.Empty;
+            public CustomerDetails CustomerDetails { get; set; } = new CustomerDetails();
+            public DateTime InvoiceDate { get; set; }
+            public string ItemsPurchased { get; set; } = string.Empty;
+            public int Quantity { get; set; }
+            public decimal Price { get; set; }
+            public decimal Tax { get; set; }
+            public decimal Discount { get; set; }
+            public decimal Total { get; set; }
+            public string Status { get; set; } = string.Empty;
+            public DateTime DueDate { get; set; }
+            public DateTime? PaymentDate { get; set; }
+            public string? PaymentMethod { get; set; }
+        }
     }
 }

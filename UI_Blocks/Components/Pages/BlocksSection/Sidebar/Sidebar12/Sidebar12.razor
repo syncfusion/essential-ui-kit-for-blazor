@@ -6,8 +6,8 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section class="bg-white dark:bg-gray-950">
-        <div class="float-right" style="height: 600px;">
-            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-l !border-gray-200 dark:!border-gray-700" Width="256px" @bind-IsOpen="SidebarToggle" Position="SidebarPosition.Right" ShowBackdrop="true" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+        <div style="height: 600px;">
+            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-l !border-gray-200 dark:!border-gray-700" Width="256px" IsOpen="@IsSidebarOpen"  ShowBackdrop="@IsBackdropVisible" Position="SidebarPosition.Right" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
                 <div class="py-6 h-screen">
                     <div class="flex justify-between items-center px-3 mb-2">
                         <span class="text-base text-gray-600 dark:text-gray-400">Market Cap</span>
@@ -42,15 +42,15 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 top-0 right-0 absolute">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
-        <div class="float-right" style="height: 600px;">
-            <SfSidebar Width="256px" @bind-IsOpen="SidebarToggle" Position="SidebarPosition.Right" ShowBackdrop="true" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+        <div style="height: 600px;">
+            <SfSidebar Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Position="SidebarPosition.Right" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
                 <div class="py-4 vh-100">
                     <div class="d-flex justify-content-between align-items-center mb-2 px-2 ms-1">
                         <span class="fs-6 text-body-secondary">Market Cap</span>
@@ -85,7 +85,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="py-3 px-1 position-absolute top-0 end-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

@@ -8,10 +8,10 @@
 {
     <section class="bg-white dark:bg-gray-900 h-full">
         <div class="w-full pt-5 pb-4" style="height: 600px;">
-            <div id="SearchContainerParent" class="mx-auto" style="max-width: 480px">
+            <div id="SearchContainerParent" class="mx-auto px-4" style="max-width: 480px">
                 @if (Data != null)
                 {
-                    <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" DataSource="@Data" Placeholder="Search" PopupHeight="750px" CssClass="e-bigger" role="combobox">
+                    <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" CssClass="e-bigger" DataSource="@Data" Placeholder="Search" PopupHeight="750px" role="combobox">
                         <AutoCompleteEvents TValue="string" TItem="SearchItem" Focus="@FocusHandlerAsync" Created="@FocusHandlerAsync"></AutoCompleteEvents>
                         <AutoCompleteFieldSettings Value="Name"></AutoCompleteFieldSettings>
                         <AutoCompleteTemplates TItem="SearchItem">
@@ -48,10 +48,10 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body h-100">
         <div class="pt-4 pb-3" style="height: 600px;">
-            <div id="SearchContainerParent" class="mx-auto" style="max-width: 480px">
+            <div id="SearchContainerParent" class="mx-auto px-3" style="max-width: 480px">
                 @if (Data != null)
                 {
-                    <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" DataSource="@Data" Placeholder="Search" PopupHeight="750px" CssClass="e-bigger" role="combobox">
+                    <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" CssClass="e-bigger" DataSource="@Data" Placeholder="Search" PopupHeight="750px" role="combobox">
                         <AutoCompleteEvents TValue="string" TItem="SearchItem" Focus="@FocusHandlerAsync" Created="@FocusHandlerAsync"></AutoCompleteEvents>
                         <AutoCompleteFieldSettings Value="Name"></AutoCompleteFieldSettings>
                         <AutoCompleteTemplates TItem="SearchItem">

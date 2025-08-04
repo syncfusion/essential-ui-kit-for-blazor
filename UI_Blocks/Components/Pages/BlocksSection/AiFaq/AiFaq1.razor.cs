@@ -24,8 +24,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.AiFaq
         public class FaqItem
         {
             public int Id { get; set; }
-            public string Question { get; set; }
-            public string Answer { get; set; }
+            public string Question { get; set; } = string.Empty;
+            public string Answer { get; set; } = string.Empty;
         }
     }
 }

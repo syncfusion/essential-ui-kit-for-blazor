@@ -26,7 +26,7 @@
                             </div>
                         </div>
                         <div class="px-4">
-                            <SfButton CssClass="w-full" IconCss="e-icons e-plus" Type="button" Content="New chat" aria-label="new chat" role="button"></SfButton>
+                            <SfButton CssClass="w-full" IconCss="e-icons e-plus" Content="New chat" Type="button" aria-label="new chat" role="button"></SfButton>
                         </div>
                         <div class="mt-6">
                             <SfListView CssClass="e-list-template border-0" DataSource="@ChatHistory" aria-label="chat history list" role="list">
@@ -55,7 +55,7 @@
                                     <p class="mt-6">7-day trial. Cancel anytime.</p>
                                 </div>
                                 <div class="e-card-actions !pb-1 !px-1 !pt-2">
-                                    <SfButton CssClass="w-full" IconCss="e-icons e-plus" Type="button" Content="Invite people" aria-label="invite people" role="button"></SfButton>
+                                    <SfButton CssClass="w-full" IconCss="e-icons e-plus" Content="Invite people" Type="button" aria-label="invite people" role="button"></SfButton>
                                 </div>
                             </div>
                         </div>
@@ -77,7 +77,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 top-0 left-0 absolute">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -103,7 +103,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             </div>
                         </div>
                         <div class="px-3">
-                            <SfButton CssClass="w-100 e-outline" IconCss="e-icons e-plus" Type="button" Content="New chat" aria-label="new chat" role="button"></SfButton>
+                            <SfButton CssClass="w-100 e-outline" IconCss="e-icons e-plus" Content="New chat" Type="button" aria-label="new chat" role="button"></SfButton>
                         </div>
                         <div class="mt-4">
                             <SfListView CssClass="e-list-template border-0 rounded-0" DataSource="@ChatHistory" aria-label="chat history list" role="list">
@@ -132,7 +132,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                     <p class="mt-3 mb-2 text-body-secondary small">7-day trial. Cancel anytime.</p>
                                 </div>
                                 <div class="e-card-actions p-0">
-                                    <SfButton CssClass="w-100" IconCss="e-icons e-plus" Type="button" Content="Invite people" aria-label="invite people" role="button"></SfButton>
+                                    <SfButton CssClass="w-100" IconCss="e-icons e-plus" Content="Invite people" Type="button" aria-label="invite people" role="button"></SfButton>
                                 </div>
                             </div>
                         </div>
@@ -154,7 +154,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 position-absolute top-0 start-0">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

@@ -1,5 +1,4 @@
-﻿
-::deep #chat-sidepanel .e-list-item {
+﻿::deep #chat-sidepanel .e-list-item {
     border: none !important;
     height: auto !important;
     padding: 8px !important;

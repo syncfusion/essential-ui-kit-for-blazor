@@ -4,13 +4,13 @@ namespace UI_Blocks.Components.Pages.BlocksSection.AiChat.AiChat2
 {
     public partial class AiChat2
     {
-        public List<PromptData> PromptDetail { get; set; } = new List<PromptData>
+        public List<PromptData> PromptDetail = new List<PromptData>
         {
-            new PromptData { Id = "1", Name = "You", Time = "20m", Text = "Make a description about this picture", Category = "sender", IsList = false },
-            new PromptData { Id = "2", Category = "reply", IsList = true }
+            new PromptData { Id = 1, Name = "You", Time = "20m", Text = "Make a description about this picture", Category = "sender", IsList = false },
+            new PromptData { Id = 2, Category = "reply", IsList = true }
         };
 
-        public List<ResourceData> ResourceDetail { get; set; } = new List<ResourceData>
+        public List<ResourceData> ResourceDetail = new List<ResourceData>
         {
             new ResourceData
             {
@@ -32,7 +32,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.AiChat.AiChat2
 
         public class PromptData
         {
-            public string Id { get; set; } = string.Empty;
+            public int Id { get; set; }
             public string Name { get; set; } = string.Empty;
             public string Time { get; set; } = string.Empty;
             public string Text { get; set; } = string.Empty;
@@ -43,7 +43,6 @@ namespace UI_Blocks.Components.Pages.BlocksSection.AiChat.AiChat2
         public class ResourceData
         {
             public string Text { get; set; } = string.Empty;
-            public string Image { get; set; } = string.Empty;
             public string Description { get; set; } = string.Empty;
         }
     }

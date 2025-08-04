@@ -4,8 +4,6 @@
 
 @ThemeLinks
 
-@inject IJSRuntime JSRuntime
-
 @if (CurrentTheme.Contains("tailwind"))
 {
 	<section class="bg-white dark:bg-gray-900">
@@ -27,12 +25,12 @@
 										</div>
 										<span class="!text-sm !text-gray-700 dark:!text-gray-200 !whitespace-normal !mt-1 !truncate w-full md:w-full !line-clamp-1">@context.Content</span>
 										<span class="flex items-center space-x-4 mt-2">
-											<SfButton CssClass="e-flat e-lib" IconCss="e-icons sf-icon-message-circle-reply text-base" Type="button" Content="Reply" aria-label="reply" role="button"></SfButton>
-											<SfButton CssClass="e-flat e-lib" IconCss="e-icons e-eye e-medium" Type="button" Content="Mark as read" aria-label="mark as read" role="button"></SfButton>
+											<SfButton CssClass="e-flat e-lib" IconCss="e-icons sf-icon-message-circle-reply text-base" Content="Reply" Type="button" aria-label="reply" role="button"></SfButton>
+											<SfButton CssClass="e-flat e-lib" IconCss="e-icons e-eye e-medium" Content="Mark as read" Type="button" aria-label="mark as read" role="button"></SfButton>
 										</span>
 									</span>
 									<span class="ml-auto">
-										<SfButton CssClass="e-icons e-medium e-more-horizontal-1 e-flat !px-2" Type="button" aria-label="more options" role="button"></SfButton>
+										<SfButton CssClass="e-flat e-medium !px-2" IconCss="e-icons e-more-horizontal-1" Type="button" aria-label="more options" role="button"></SfButton>
 									</span>
 								</div>
 							}
@@ -64,11 +62,11 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 										</div>
 										<span class="mt-1 text-wrap overflow-hidden" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">@context.Content</span>
 										<span class="d-flex align-items-center gap-4 mt-2">
-											<SfButton CssClass="e-flat e-lib e-inherit" IconCss="e-icons sf-icon-message-circle-reply" Type="button" Content="Reply" aria-label="reply" role="button"></SfButton>
-											<SfButton CssClass="e-flat e-lib e-inherit" IconCss="e-icons e-eye e-medium" Type="button" Content="Mark as read" aria-label="mark as read" role="button"></SfButton>
+											<SfButton CssClass="e-flat e-lib e-inherit" IconCss="e-icons sf-icon-message-circle-reply" Content="Reply" Type="button" aria-label="reply" role="button"></SfButton>
+											<SfButton CssClass="e-flat e-lib e-inherit" IconCss="e-icons e-eye e-medium" Content="Mark as read" Type="button" aria-label="mark as read" role="button"></SfButton>
 										</span>
 									</div>
-									<SfButton CssClass="e-icons e-medium e-more-horizontal-1 e-flat px-2" Type="button" aria-label="more options" role="button"></SfButton>
+									<SfButton CssClass="e-flat e-medium px-2" IconCss="e-icons e-more-horizontal-1" Type="button" aria-label="more options" role="button"></SfButton>
 								</div>
 							}
 						</Template>

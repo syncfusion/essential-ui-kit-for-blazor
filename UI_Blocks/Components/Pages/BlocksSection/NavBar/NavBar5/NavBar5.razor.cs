@@ -6,42 +6,32 @@ namespace UI_Blocks.Components.Pages.BlocksSection.NavBar.NavBar5
 {
     public partial class NavBar5
     {
-        private SfBreadcrumb? Breadcrumb;
-        private SfDropDownButton? MainDropdown;
-        private SfDropDownButton? MoreOptionsDropdown;
+        public SfBreadcrumb? Breadcrumb;
+        public SfDropDownButton? MainDropdown;
+        public SfDropDownButton? MoreOptionsDropdown;
 
-        private bool _isMoreOptionsDropdownOpen = false;
-        private bool _isMainOptionsDropdownOpen = false;
-        private string _activeBreadcrumbText = "Personal";
-
-        private void OnMoreOptionsOpened() => _isMoreOptionsDropdownOpen = true;
-
-        private void OnMoreOptionsClosed() => _isMoreOptionsDropdownOpen = false;
-
-        private void OnMainOptionsOpened() => _isMainOptionsDropdownOpen = true;
-
-        private void OnMainOptionsClosed() => _isMainOptionsDropdownOpen = false;
-
+        public bool IsMoreOptionsDropdownOpen = false;
+        public bool IsMainOptionsDropdownOpen = false;
+        private string activeBreadcrumbText = "Personal";
         
-
-        private void OnBreadcrumbItemClicked(BreadcrumbClickedEventArgs args)
+        public void BreadcrumbItemClicked(BreadcrumbClickedEventArgs args)
         {
             if (!string.IsNullOrEmpty(args.Item.Text))
             {
-                _activeBreadcrumbText = args.Item.Text;
+                activeBreadcrumbText = args.Item.Text;
                 StateHasChanged();
             }
         }
 
-        private void OnMenuItemSelected(MenuEventArgs args)
+        public void OnMenuItemSelected(MenuEventArgs args)
         {
             if (args.Item.Text == "CompanyName.com")
             {
-                _activeBreadcrumbText = "CompanyName.com";
+                activeBreadcrumbText = "CompanyName.com";
 
                 if (Breadcrumb != null)
                 {
-                    Breadcrumb.ActiveItem = _activeBreadcrumbText;
+                    Breadcrumb.ActiveItem = activeBreadcrumbText;
                 }
                 StateHasChanged();
             }
@@ -52,11 +42,11 @@ namespace UI_Blocks.Components.Pages.BlocksSection.NavBar.NavBar5
         {
             if (message == "resizeAction")
             {
-                if (_isMoreOptionsDropdownOpen && MoreOptionsDropdown != null)
+                if (IsMoreOptionsDropdownOpen && MoreOptionsDropdown != null)
                 {
                     MoreOptionsDropdown.Toggle();
                 }
-                if (_isMainOptionsDropdownOpen && MainDropdown != null)
+                if (IsMainOptionsDropdownOpen && MainDropdown != null)
                 {
                     MainDropdown.Toggle();
                 }

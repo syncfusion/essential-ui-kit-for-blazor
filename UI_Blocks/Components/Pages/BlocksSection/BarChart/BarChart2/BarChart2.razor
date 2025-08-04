@@ -14,8 +14,8 @@
                         <h1 class="text-base font-medium text-gray-900 dark:text-white mb-2">Daily Expense</h1>
                         <p class="text-sm text-gray-500 dark:text-gray-400">Data from 21-27 Dec, 2024</p>
                     </div>
-                    <SfButton Class="e-outline hidden sm:block" Content="View Report" type="button" aria-label="view report" role="button"></SfButton>
-                    <SfButton Class="e-outline sm:hidden" IconCss="e-icons e-description" type="button" aria-label="view report" role="button"></SfButton>
+                    <SfButton Class="e-outline hidden sm:block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+                    <SfButton Class="e-outline sm:hidden" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
                 </div>
                 <div class="flex flex-wrap items-center">
                     <div class="w-full md:w-3/5 lg:w-7/12">
@@ -31,7 +31,7 @@
                                 <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
                                 <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
                             </ChartPrimaryXAxis>
-                            <ChartPrimaryYAxis >
+                            <ChartPrimaryYAxis>
                                 <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
                                 <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                                 <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
@@ -40,19 +40,19 @@
                                 <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
                             </ChartPrimaryYAxis>
                             <ChartSeriesCollection>
-                                <ChartSeries Name="Food & Drink" DataSource="@BarChartData" XName="XAxis" YName="YAxis1" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="LegendShape.Rectangle" Fill="#267DDA"></ChartSeries>
-                                <ChartSeries Name="Grocery" DataSource="@BarChartData" XName="XAxis" YName="YAxis2" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="LegendShape.Rectangle" Fill="#01A8B5"></ChartSeries>
-                                <ChartSeries Name="Shopping" DataSource="@BarChartData" XName="XAxis" YName="YAxis3" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="LegendShape.Rectangle" Fill="#91BD34"></ChartSeries>
-                                <ChartSeries Name="Transport" DataSource="@BarChartData" XName="XAxis" YName="YAxis4" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="LegendShape.Rectangle" Fill="#FFB900"></ChartSeries>
+                                <ChartSeries Name="Food & Drink" DataSource="@BarChartData" XName="XAxis" YName="YAxis1" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" Fill="#267DDA"></ChartSeries>
+                                <ChartSeries Name="Grocery" DataSource="@BarChartData" XName="XAxis" YName="YAxis2" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" Fill="#01A8B5"></ChartSeries>
+                                <ChartSeries Name="Shopping" DataSource="@BarChartData" XName="XAxis" YName="YAxis3" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" Fill="#91BD34"></ChartSeries>
+                                <ChartSeries Name="Transport" DataSource="@BarChartData" XName="XAxis" YName="YAxis4" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" Fill="#FFB900"></ChartSeries>
                             </ChartSeriesCollection>
-                            <ChartLegendSettings Visible="false" />
+                            <ChartLegendSettings Visible="false"></ChartLegendSettings>
                         </SfChart>
                     </div>
                     <div class="w-full md:w-2/5 lg:w-5/12">
                         <SfAccumulationChart Width="100%" Height="300px" ID="container" EnableBorderOnMouseMove="false" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
                             <AccumulationChartSeriesCollection>
-                                <AccumulationChartSeries DataSource="@PieChartData" Palettes="@(new[] { "#03B4B4", "#78B008", "#F39C12", "#0D72DE" })" XName="XAxis" YName="YAxis" Name="XAxis" InnerRadius="65%" LegendShape="LegendShape.Rectangle">
-                                    <AccumulationDataLabelSettings Name="DataLabelMappingName" Visible="true" Position="AccumulationLabelPosition.Outside">
+                                <AccumulationChartSeries DataSource="@PieChartData" Palettes="@(new[] { "#03B4B4", "#78B008", "#F39C12", "#0D72DE" })" XName="XAxis" YName="YAxis" Name="XAxis" InnerRadius="65%" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle">
+                                    <AccumulationDataLabelSettings Name="DataLabelMappingName" Visible="true" Position="Syncfusion.Blazor.Charts.AccumulationLabelPosition.Outside">
                                     </AccumulationDataLabelSettings>
                                     <AccumulationChartAnnotations>
                                         <AccumulationChartAnnotation Region="Regions.Series" X="50%" Y="50%">
@@ -83,8 +83,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         <h1 class="text-body fs-6 fw-medium mb-2">Daily Expense</h1>
                         <p class="text-body-secondary small lh-sm m-0">Data from 21-27 Dec, 2024</p>
                     </div>
-                    <SfButton Class="e-outline  d-none d-sm-block" Content="View Report" type="button" aria-label="view report" role="button"></SfButton>
-                    <SfButton Class="e-outline d-sm-none" IconCss="e-icons e-description" type="button" aria-label="view report" role="button"></SfButton>
+                    <SfButton Class="e-outline d-none d-sm-block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+                    <SfButton Class="e-outline d-sm-none" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
                 </div>
                 <div class="d-flex flex-wrap align-items-center">
                     <div class="col-12 col-sm-7">
@@ -100,7 +100,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
                                 <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
                             </ChartPrimaryXAxis>
-                            <ChartPrimaryYAxis >
+                            <ChartPrimaryYAxis>
                                 <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
                                 <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                                 <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
@@ -109,19 +109,19 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
                             </ChartPrimaryYAxis>
                             <ChartSeriesCollection>
-                                <ChartSeries Name="Food & Drink" DataSource="@BarChartData" XName="XAxis" YName="YAxis1" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="LegendShape.Rectangle" Fill="#3A95FF"></ChartSeries>
-                                <ChartSeries Name="Grocery" DataSource="@BarChartData" XName="XAxis" YName="YAxis2" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="LegendShape.Rectangle" Fill="#EF6400"></ChartSeries>
-                                <ChartSeries Name="Shopping" DataSource="@BarChartData" XName="XAxis" YName="YAxis3" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="LegendShape.Rectangle" Fill="#35FF23"></ChartSeries>
-                                <ChartSeries Name="Transport" DataSource="@BarChartData" XName="XAxis" YName="YAxis4" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="LegendShape.Rectangle" Fill="#FDDA02"></ChartSeries>
+                                <ChartSeries Name="Food & Drink" DataSource="@BarChartData" XName="XAxis" YName="YAxis1" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" Fill="#3A95FF"></ChartSeries>
+                                <ChartSeries Name="Grocery" DataSource="@BarChartData" XName="XAxis" YName="YAxis2" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" Fill="#EF6400"></ChartSeries>
+                                <ChartSeries Name="Shopping" DataSource="@BarChartData" XName="XAxis" YName="YAxis3" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" Fill="#35FF23"></ChartSeries>
+                                <ChartSeries Name="Transport" DataSource="@BarChartData" XName="XAxis" YName="YAxis4" Type="Syncfusion.Blazor.Charts.ChartSeriesType.StackingColumn" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" Fill="#FDDA02"></ChartSeries>
                             </ChartSeriesCollection>
-                            <ChartLegendSettings Visible="false" />
+                            <ChartLegendSettings Visible="false"></ChartLegendSettings>
                         </SfChart>
                     </div>
                     <div class="col-12 col-sm-5">
                         <SfAccumulationChart Width="100%" Height="300px" ID="container" EnableBorderOnMouseMove="false" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
                             <AccumulationChartSeriesCollection>
-                                <AccumulationChartSeries DataSource="@PieChartData" Palettes="@(new[] { "#3A95FF", "#EF6400", "#35FF23", "#FDDA02" })" XName="XAxis" YName="YAxis" Name="XAxis" InnerRadius="65%" LegendShape="LegendShape.Rectangle">
-                                    <AccumulationDataLabelSettings Name="DataLabelMappingName" Visible="true" Position="AccumulationLabelPosition.Outside">
+                                <AccumulationChartSeries DataSource="@PieChartData" Palettes="@(new[] { "#3A95FF", "#EF6400", "#35FF23", "#FDDA02" })" XName="XAxis" YName="YAxis" Name="XAxis" InnerRadius="65%" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle">
+                                    <AccumulationDataLabelSettings Name="DataLabelMappingName" Visible="true" Position="Syncfusion.Blazor.Charts.AccumulationLabelPosition.Outside">
                                     </AccumulationDataLabelSettings>
                                     <AccumulationChartAnnotations>
                                         <AccumulationChartAnnotation Region="Regions.Series" X="50%" Y="50%">

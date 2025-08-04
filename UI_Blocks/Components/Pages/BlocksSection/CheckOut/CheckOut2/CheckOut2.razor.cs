@@ -2,6 +2,6 @@
 {
     public partial class CheckOut2
     {
-        private string SelectedDeliveryInfo { get; set; } = "G8 - (+1) 432 000 2245";
+        public string SelectedDeliveryInfo = "G8 - (+1) 432 000 2245";
     }
 }

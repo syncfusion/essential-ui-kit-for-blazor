@@ -1,0 +1,182 @@
+﻿@page "/blocks/line-chart-7"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+		<div class="h-screen flex justify-center py-4 sm:py-6">
+			<div class="w-full" style="max-width: 560px">
+				<div class="flex flex-col gap-2.5 px-4 sm:px-6">
+					<div class="flex justify-between">
+						<h2 class="text-base font-medium text-gray-900 dark:text-white">AAPL - Apple Inc.</h2>
+						<SfButton CssClass="block sm:hidden e-outline" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+						<SfButton CssClass="hidden sm:block" Content="View Report" type="button" aria-label="view report" role="button"></SfButton>
+					</div>
+					<div>
+						<p class="text-lg font-semibold text-gray-900 dark:text-white">$248.13</p>
+						<p class="text-xs text-green-700 dark:text-green-500 font-medium mt-1 flex items-center gap-1"><span class="e-icons e-arrow-up"></span> 0.17 (+0.07%) Today</p>
+					</div>
+				</div>
+				<div class="flex justify-between items-center gap-2 my-5 px-4 sm:px-6">
+					<div class="hidden sm:block">
+						<SfButtonGroup class="e-btn-group flex">
+							<input type="radio" id="day" name="align" value="Day" aria-label="day" role="button"/>
+							<label class="e-btn" for="day">Day</label>
+							<input type="radio" id="week" name="align" value="Week" checked aria-label="week" role="button"/>
+							<label class="e-btn" for="week">Week</label>
+							<input type="radio" id="month" name="align" value="Month" aria-label="month" role="button"/>
+							<label class="e-btn" for="month">Month</label>
+							<input type="radio" id="year" name="align" value="Year" aria-label="year" role="button"/>
+							<label class="e-btn" for="year">Year</label>
+							<input type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button"/>
+							<label class="e-btn" for="custom">Custom</label>
+						</SfButtonGroup>
+					</div>
+					<SfDropDownButton @ref="PeriodOptions" CssClass="e-outline block sm:hidden" Content="Week" Type="button" aria-label="choose a period" role="button">
+						<DropDownButtonEvents Opened="@(args => IsPeriodDropdownOpen = true)" Closed="@(args => IsPeriodDropdownOpen = false)"></DropDownButtonEvents>
+						<DropDownMenuItems>
+							<DropDownMenuItem Text="Day"></DropDownMenuItem>
+							<DropDownMenuItem Text="Week"></DropDownMenuItem>
+							<DropDownMenuItem Text="Month"></DropDownMenuItem>
+							<DropDownMenuItem Text="Year"></DropDownMenuItem>
+							<DropDownMenuItem Text="Custom"></DropDownMenuItem>
+						</DropDownMenuItems>
+					</SfDropDownButton>
+					<SfDropDownButton @ref="ChartOptions" CssClass="e-outline" Content="Line Chart" Type="button" aria-label="choose a chart" role="button">
+						<DropDownButtonEvents Opened="@(args => IsChartDropdownOpen = true)" Closed="@(args => IsChartDropdownOpen = false)"></DropDownButtonEvents>
+						<DropDownMenuItems>
+							<DropDownMenuItem Text="Line Chart"></DropDownMenuItem>
+							<DropDownMenuItem Text="Bar Chart"></DropDownMenuItem>
+							<DropDownMenuItem Text="Area Chart"></DropDownMenuItem>
+							<DropDownMenuItem Text="Scatter Chart"></DropDownMenuItem>
+							<DropDownMenuItem Text="Pie Chart"></DropDownMenuItem>
+						</DropDownMenuItems>
+					</SfDropDownButton>
+				</div>
+				<div class="pe-4">
+					<SfChart @ref="Chart" Height="300px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+						<ChartArea><ChartAreaBorder Width="0"></ChartAreaBorder></ChartArea>
+						<ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+							<ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+							<ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+							<ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+							<ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+							<ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+							<ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+						</ChartPrimaryXAxis>
+						<ChartPrimaryYAxis Minimum="274" Maximum="276" Interval="0.5">
+							<ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+							<ChartAxisMajorGridLines Width="1" DashArray="5,5"></ChartAxisMajorGridLines>
+							<ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+							<ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+							<ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+							<ChartAxisLineStyle Width="0" Color="transparent"></ChartAxisLineStyle>
+						</ChartPrimaryYAxis>
+						<ChartSeriesCollection>
+							<ChartSeries DataSource="@StockPerformanceData" XName="Date" YName="Close" Name="Close" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" Fill="#91BD34" Width="2"></ChartSeries>
+						</ChartSeriesCollection>
+						<ChartLegendSettings Visible="false"></ChartLegendSettings>
+						<ChartTooltipSettings Enable="true" EnableMarker="false" Header="" ShowNearestTooltip="true" ShowHeaderLine="false"></ChartTooltipSettings>
+						<ChartEvents TooltipRender="TooltipRender"></ChartEvents>
+					</SfChart>
+				</div>
+				<div class="flex flex-col sm:flex-row justify-between gap-2 px-4 sm:px-6 mt-3">
+					<SfButton CssClass="e-outline w-full font-medium" Content="Sell" type="button" aria-label="sell stock" role="button"></SfButton>
+					<SfButton CssClass="e-primary w-full font-medium" Content="Buy" type="button" aria-label="buy stock" role="button"></SfButton>
+				</div>
+			</div>
+		</div>
+	</section>
+
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body">
+		<div class="vh-100 d-flex justify-content-center py-3 py-sm-4">
+			<div class="w-100" style="max-width: 560px">
+				<div class="d-flex flex-column gap-2 px-3 px-sm-4">
+					<div class="d-flex justify-content-between align-items-center">
+						<h2 class="h6 fw-medium text-body">AAPL - Apple Inc.</h2>
+						<SfButton CssClass="e-outline d-sm-none" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+						<SfButton CssClass="e-outline d-none d-sm-block" Content="View Report" type="button" aria-label="view report" role="button"></SfButton>
+					</div>
+					<div>
+						<p class="h5 fw-semibold text-body mb-1">$248.13</p>
+						<p class="small text-success fw-medium d-flex align-items-center gap-1 mb-0">
+						<span class="e-icons e-arrow-up"></span> 0.17 (+0.07%) Today</p>
+					</div>
+				</div>
+				<div class="d-flex justify-content-between gap-2 my-4 px-3 px-sm-4">
+					<div class="d-none d-sm-block">
+						<SfButtonGroup class="e-btn-group d-flex">
+							<input type="radio" id="day" name="align" value="Day" aria-label="day" role="button"/>
+							<label class="e-btn" for="day">Day</label>
+							<input type="radio" id="week" name="align" value="Week" checked aria-label="week" role="button"/>
+							<label class="e-btn" for="week">Week</label>
+							<input type="radio" id="month" name="align" value="Month" aria-label="month" role="button"/>
+							<label class="e-btn" for="month">Month</label>
+							<input type="radio" id="year" name="align" value="Year" aria-label="year" role="button"/>
+							<label class="e-btn" for="year">Year</label>
+							<input type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button"/>
+							<label class="e-btn" for="custom">Custom</label>
+						</SfButtonGroup>
+					</div>
+					<SfDropDownButton @ref="PeriodOptions" CssClass="e-outline d-inline-block d-sm-none" Content="Week" Type="button" aria-label="choose a period" role="button">
+						<DropDownButtonEvents Opened="@(args => IsPeriodDropdownOpen = true)" Closed="@(args => IsPeriodDropdownOpen = false)"></DropDownButtonEvents>
+						<DropDownMenuItems>
+							<DropDownMenuItem Text="Day"></DropDownMenuItem>
+							<DropDownMenuItem Text="Week"></DropDownMenuItem>
+							<DropDownMenuItem Text="Month"></DropDownMenuItem>
+							<DropDownMenuItem Text="Year"></DropDownMenuItem>
+							<DropDownMenuItem Text="Custom"></DropDownMenuItem>
+						</DropDownMenuItems>
+					</SfDropDownButton>
+					<SfDropDownButton @ref="ChartOptions" CssClass="e-outline" Content="Line Chart" Type="button" aria-label="choose a chart" role="button">
+						<DropDownButtonEvents Opened="@(args => IsChartDropdownOpen = true)" Closed="@(args => IsChartDropdownOpen = false)"></DropDownButtonEvents>
+						<DropDownMenuItems>
+							<DropDownMenuItem Text="Line Chart"></DropDownMenuItem>
+							<DropDownMenuItem Text="Bar Chart"></DropDownMenuItem>
+							<DropDownMenuItem Text="Area Chart"></DropDownMenuItem>
+							<DropDownMenuItem Text="Scatter Chart"></DropDownMenuItem>
+							<DropDownMenuItem Text="Pie Chart"></DropDownMenuItem>
+						</DropDownMenuItems>
+					</SfDropDownButton>
+				</div>
+				<div class="pe-3">
+					<SfChart @ref="Chart" Height="300px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+						<ChartArea><ChartAreaBorder Width="0"></ChartAreaBorder></ChartArea>
+						<ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+							<ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+							<ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+							<ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+							<ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+							<ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+							<ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+						</ChartPrimaryXAxis>
+						<ChartPrimaryYAxis Minimum="274" Maximum="276" Interval="0.5" >
+							<ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+							<ChartAxisMajorGridLines Width="1" DashArray="5,5"></ChartAxisMajorGridLines>
+							<ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+							<ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+							<ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+							<ChartAxisLineStyle Width="0" Color="transparent"></ChartAxisLineStyle>
+						</ChartPrimaryYAxis>
+						<ChartSeriesCollection>
+							<ChartSeries DataSource="@StockPerformanceData" XName="Date" YName="Close" Name="Close" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" Fill="#0EAB44" Width="2"></ChartSeries>
+						</ChartSeriesCollection>
+						<ChartLegendSettings Visible="false"></ChartLegendSettings>
+						<ChartTooltipSettings Enable="true" EnableMarker="false" Header="" ShowNearestTooltip="true" Format="<b>${series.name} : $ ${point.y}</b>" ShowHeaderLine="false"></ChartTooltipSettings>
+						<ChartEvents TooltipRender="TooltipRender"></ChartEvents>
+					</SfChart>
+				</div>
+				<div class="d-flex flex-column flex-sm-row justify-content-between gap-2 px-3 px-sm-4 mt-3">
+					<SfButton CssClass="e-outline w-100 font-medium" Content="Sell" type="button" aria-label="sell stock" role="button"></SfButton>
+					<SfButton CssClass="e-primary w-100 font-medium" Content="Buy" type="button" aria-label="buy stock" role="button"></SfButton>
+				</div>
+			</div>
+		</div>
+	</section>
+}

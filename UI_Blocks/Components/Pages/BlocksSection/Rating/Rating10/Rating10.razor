@@ -1,0 +1,90 @@
+﻿@page "/blocks/rating-10"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div id="rating" class="py-4" style="min-height: 50rem;">
+            <div class="py-4 px-6 mx-auto sm:!rounded-lg sm:!border rounded-none border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-800 flex flex-col justify-center items-center" style="max-width: 488px;">
+                @foreach (var Ratings in CustomerRating)
+                {
+                    <div class="flex w-full items-center justify-between mb-2">
+                        <p class="text-base font-medium truncate text-gray-900 dark:text-white">@Ratings.Rating</p>
+                        <SfRating CssClass="me-0" Value="@Ratings.Value" ShowLabel="true" Precision="PrecisionType.Exact">
+                            <EmptyTemplate>
+                                <span class="sf-icon-star-filled-01 !text-2xl text-gray-300 dark:text-gray-500"></span>
+                            </EmptyTemplate>
+                            <FullTemplate>
+                                <span class="sf-icon-star-filled-01 !text-2xl text-amber-300"></span>
+                            </FullTemplate>
+                            <LabelTemplate Context="data">
+                                <p class="text-gray-900 dark:text-white text-sm font-normal">@($"{data.ToString("0.0")} / 5")</p>
+                            </LabelTemplate>
+                        </SfRating>
+                    </div>
+                }
+                @foreach (var Reviews in ReviewData)
+                {
+                    <hr class="my-2 w-full border-gray-300 dark:border-gray-600" />
+                    <div class="flex justify-between items-center w-full">
+                        <p class="text-sm font-medium truncate text-gray-900 dark:text-white">@Reviews.Title</p>
+                        <SfRating Value="@Reviews.Rating">
+                            <EmptyTemplate>
+                                <span class="sf-icon-star-filled-01 !text-2xl text-gray-300 dark:text-gray-500"></span>
+                            </EmptyTemplate>
+                            <FullTemplate>
+                                <span class="sf-icon-star-filled-01 !text-2xl text-amber-300"></span>
+                            </FullTemplate>
+                        </SfRating>
+                    </div>
+                    <p class="text-sm mb-4 text-gray-700 dark:text-gray-100">@Reviews.Review</p>
+                }
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div id="rating" class="py-3" style="min-height: 56rem;">
+            <div class="py-3 px-4 mx-auto rounded-3 border bg-body text-body d-flex flex-column justify-content-center align-items-center" style="max-width: 488px;">
+                @foreach (var Ratings in CustomerRating)
+                {
+                    <div class="d-flex w-100 align-items-center justify-content-between mb-1">
+                        <p class="fs-6 fw-medium text-body text-truncate mb-0">@Ratings.Rating</p>
+                        <SfRating CssClass="me-0" Value="@Ratings.Value" ShowLabel="true" Precision="PrecisionType.Exact">
+                            <EmptyTemplate>
+                                <span class="sf-icon-star-02 fs-4 text-body-secondary"></span>
+                            </EmptyTemplate>
+                            <FullTemplate>
+                                <span class="sf-icon-star-filled-01 fs-4 text-warning"></span>
+                            </FullTemplate>
+                            <LabelTemplate Context="data">
+                                <span class="fs-6"><p class="small text-body fw-normal mb-1">@($"{data.ToString("0.0")} / 5")</p></span>
+                            </LabelTemplate>
+                        </SfRating>
+                    </div>
+                }
+                @foreach (var Reviews in ReviewData)
+                {
+                    <hr class="w-100 border-bottom my-2" />
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <p class="fs-6 fw-medium text-truncate text-body mb-0">@Reviews.Title</p>
+                        <SfRating Value="@Reviews.Rating" Precision="PrecisionType.Exact">
+                            <EmptyTemplate>
+                                <span class="sf-icon-star-02 fs-4 text-body-secondary"></span>
+                            </EmptyTemplate>
+                            <FullTemplate>
+                                <span class="sf-icon-star-filled-01 fs-4 text-warning"></span>
+                            </FullTemplate>
+                        </SfRating>
+                    </div>
+                    <p class="small mb-3 text-body-secondary">@Reviews.Review</p>
+                }
+            </div>
+        </div>
+    </section>
+}

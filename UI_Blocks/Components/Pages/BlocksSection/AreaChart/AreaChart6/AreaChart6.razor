@@ -1,0 +1,100 @@
+﻿@page "/blocks/area-chart-6"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 666px;">
+                <h2 class="text-base font-medium text-gray-900 dark:text-white mb-2">Revenue Analysis</h2>
+                <div class="flex justify-between sm:items-center flex-col sm:flex-row gap-4 sm:gap-0 pb-5">
+                    <p class="text-gray-500 dark:text-gray-400 text-sm">Analyze your revenue performance over the week</p>
+                    <SfDropDownButton @ref="DropDownButton" CssClass="e-outline w-fit" IconCss="e-icons e-day" Content="Current Week" Type="button" aria-label="choose a date range" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="Today"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Yesterday"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Current Week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Last Week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Current Month"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Last Month"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+                <div>
+                    <SfChart @ref="Chart" Width="100%" Height="250px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartEvents OnAxisLabelRender="@AxisLabelRender"></ChartEvents>
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" LabelRotation="@XAxisLabelRotation">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Minimum="0" Maximum="20000" Interval="5000">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@AreaChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Spline" XName="Date" YName="CurrentWeek" Name="Current week" Width="2" Fill="#5A61F6"></ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Spline" XName="Date" YName="LastWeek" Name="Last week" Width="2" Fill="#D83B01"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartLegendSettings Visible="false"></ChartLegendSettings>
+                        <ChartTooltipSettings Enable="true" EnableMarker="false" Shared="false" ShowNearestTooltip="true" ShowHeaderLine="false" Format="${series.name}: $${point.y}" Header=""></ChartTooltipSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="d-flex justify-content-center p-3 p-sm-4">
+            <div class="w-100" style="max-width: 666px;">
+                <h2 class="fw-medium fs-6 text-body mb-3 mb-sm-1">Revenue Analysis</h2>
+                <div class="d-flex justify-content-between align-items-start flex-column flex-sm-row gap-3 gap-sm-0 pb-4">
+                    <p class="text-secondary small mb-0">Analyze your revenue performance over the week</p>
+                    <SfDropDownButton @ref="DropDownButton" CssClass="e-outline w-auto" IconCss="e-icons e-day" Content="Current Week" Type="button" aria-label="choose a date range" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="Today"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Yesterday"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Current Week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Last Week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Current Month"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Last Month"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+                <SfChart @ref="Chart" Width="100%" Height="250px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                    <ChartEvents OnAxisLabelRender="@AxisLabelRender"></ChartEvents>
+                    <ChartArea>
+                        <ChartAreaBorder Width="0"></ChartAreaBorder>
+                    </ChartArea>
+                    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" LabelRotation="@XAxisLabelRotation">
+                        <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                        <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                        <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                    </ChartPrimaryXAxis>
+                    <ChartPrimaryYAxis Minimum="0" Maximum="20000" Interval="5000">
+                        <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                        <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                        <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                    </ChartPrimaryYAxis>
+                    <ChartSeriesCollection>
+                        <ChartSeries DataSource="@AreaChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Spline" XName="Date" YName="CurrentWeek" Name="Current week" Width="2" Fill="@(CurrentTheme == "tailwind-dark" ? "#3A95FF" : "#006EEF")"></ChartSeries>
+                        <ChartSeries DataSource="@AreaChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Spline" XName="Date" YName="LastWeek" Name="Last week" Width="2" Fill="#EF6400"></ChartSeries>
+                    </ChartSeriesCollection>
+                    <ChartLegendSettings Visible="false"></ChartLegendSettings>
+                    <ChartTooltipSettings Enable="true" EnableMarker="false" Shared="false" ShowNearestTooltip="true" ShowHeaderLine="false" Format="${series.name}: $${point.y}" Header=""></ChartTooltipSettings>
+                </SfChart>
+            </div>
+        </div>
+    </section>
+}

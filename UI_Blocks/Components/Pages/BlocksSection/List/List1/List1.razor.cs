@@ -4,9 +4,9 @@ namespace UI_Blocks.Components.Pages.BlocksSection.List.List1
 {
     public partial class List1
     {
-        private string WidthStyle { get; set; } = "max-width:544px";
+        public string WidthStyle = "max-width:544px";
 
-        public List<TaskItem> TaskData { get; set; } = new List<TaskItem>
+        public List<TaskItem> TaskData = new List<TaskItem>
         {
             new TaskItem { Id = 1, Name = "Sarah Lee", Header = "Finalize Project Plan", Content = "Refine the project plan to ensure all phases are outlined clearly.", Date = new DateTime(2024, 3, 15), Completed = true },
             new TaskItem { Id = 2, Name = "Alex Carter", Header = "Prepare Budget Report", Content = "Compile and review the budget report for stakeholder presentation.", Date = new DateTime(2024, 4, 10), Completed = true },
@@ -21,8 +21,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.List.List1
             if (message == "resizeAction")
             {
                 WidthStyle = windowWidth < 1024 ? "width:100%" : "max-width:544px";
-                StateHasChanged();
             }
+            StateHasChanged();
         }
 
         public class TaskItem

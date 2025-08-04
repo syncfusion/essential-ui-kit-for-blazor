@@ -7,7 +7,7 @@
 {
     <section class="bg-white dark:bg-gray-950">
         <div id="user-contact-sidebar" style="height: 680px;">
-            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
                 <div class="flex items-center p-3 justify-between">
                     <div class="flex items-center">
                         <span class="e-avatar e-avatar-circle e-avatar-small">
@@ -15,7 +15,7 @@
                         </span>
                         <div class="ml-3">
                             <div class="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
-                            <p class="mb-0 text-gray-900 dark:text-white">johnwick&#64;123.com</p>
+                            <a class="text-gray-900 dark:text-white" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                         </div>
                     </div>
                     <SfButton CssClass="e-icons e-chevron-down-double e-flat e-large px-1" Type="button" aria-label="view additional profile settings" role="button"></SfButton>
@@ -74,7 +74,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 top-0 left-0 absolute">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -82,7 +82,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
         <div id="user-contact-sidebar" style="height: 700px;">
-            <SfSidebar Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+            <SfSidebar Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
                 <div class="d-flex justify-content-between align-items-center px-3 pb-3 mt-4">
                     <div class="d-flex align-items-center">
                         <span class="e-avatar e-avatar-small e-avatar-circle">
@@ -90,7 +90,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         </span>
                         <div class="ms-2">
                             <div class="fs-6 fw-medium text-body">John Wick</div>
-                            <p class="mb-0 text-body-secondary">johnwick&#64;123.com</p>
+                            <a class="text-body-secondary text-decoration-none" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                         </div>
                     </div>
                     <SfButton CssClass="e-icons e-chevron-down-double e-flat" Type="button" aria-label="view additional profile settings" role="button"></SfButton>
@@ -129,7 +129,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 </div>
                 <hr class="mx-3 opacity-100 border-light-subtle" />
                 <p class="fs-6 text-body-secondary m-3">Active Contacts</p>
-                <SfListView DataSource="ContactList" class="border-0 e-bigger" aria-label="view active contacts" role="list">
+                <SfListView class="border-0 e-bigger" DataSource="@ContactList" aria-label="view active contacts" role="list">
                     <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
                     <ListViewTemplates TValue="MenuItem">
                         <Template>
@@ -149,7 +149,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="py-3 px-1 position-absolute top-0 start-0">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

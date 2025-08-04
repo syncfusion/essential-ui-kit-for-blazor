@@ -24,7 +24,7 @@
                                 <span class="e-avatar e-avatar-large e-avatar-circle">
                                     <img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
                                 </span>
-                                <span class="e-badge e-badge-circle absolute bottom-0 right-0 bg-gray-100 dark:bg-gray-700"><i class="e-icons e-edit text-gray-500 dark:text-gray-200"></i></span>
+                                <span class="e-badge e-badge-circle absolute bottom-0 right-0 bg-gray-100 dark:bg-gray-700"><span class="e-icons e-edit text-gray-500 dark:text-gray-200"></span></span>
                             </div>
                         </div>
                         <div class="flex flex-col gap-6 sm:gap-4 text-sm font-medium text-gray-900 dark:text-white">
@@ -54,11 +54,11 @@
                         </div>
                         <div class="flex flex-col gap-4">
                             <div class="flex flex-col gap-1 w-11/12 sm:auto">
-                                <SfCheckBox Checked="true" Label="Truncate long transactions in the editor" aria-label="truncate long transactions in the editor" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Checked="true" Label="Truncate long transactions in the editor" aria-label="truncate long transactions in the editor" role="checkbox"></SfCheckBox>
                                 <p class="ml-7">Shorten lengthy records for better readability.</p>
                             </div>
                             <div class="flex flex-col gap-1 w-11/12 sm:w-auto">
-                                <SfCheckBox Checked="true" Label="Show spelling and grammar errors in the editor" aria-label="show spelling and grammar errors in the editor" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Checked="true" Label="Show spelling and grammar errors in the editor" aria-label="show spelling and grammar errors in the editor" role="checkbox"></SfCheckBox>
                                 <p class="ml-7">Detect and highlight mistakes automatically.</p>
                             </div>
                         </div>
@@ -67,11 +67,11 @@
                     <div class="flex flex-col gap-12 sm:gap-8">
                         <div class="flex justify-between gap-1 sm:justify-normal">
                             <p class="text-sm font-medium sm:w-72 shrink-0 text-gray-900 dark:text-white">Translation view options</p>
-                            <SfSwitch Checked="true" aria-label="enable translation view" role="switch"></SfSwitch>
+                            <SfSwitch TChecked="bool" Checked="true" aria-label="enable translation view" role="switch"></SfSwitch>
                         </div>
                         <div class="flex gap-3 self-end">
-                            <SfButton Type="button" Disabled="true" aria-label="cancel" role="button">Cancel</SfButton>
-                            <SfButton CssClass="e-primary" Type="button" aria-label="save changes" role="button">Save changes</SfButton>
+                            <SfButton Content="Cancel" Type="button" Disabled="true" aria-label="cancel" role="button"></SfButton>
+                            <SfButton CssClass="e-primary" Content="Save changes" Type="button" aria-label="save changes" role="button"></SfButton>
                         </div>
                     </div>
                 </div>
@@ -99,7 +99,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <span class="e-avatar e-avatar-large e-avatar-circle">
                                     <img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
                                 </span>
-                                <span class="e-badge e-badge-circle position-absolute bottom-0 end-0 bg-body-secondary"><i class="e-icons e-edit small text-body-secondary"></i></span>
+                                <span class="e-badge e-badge-circle position-absolute bottom-0 end-0 bg-body-secondary"><span class="e-icons e-edit small text-body-secondary"></span></span>
                             </div>
                         </div>
                         <div class="d-flex flex-column gap-3 fs-6 fw-medium text-body mt-2">
@@ -129,11 +129,11 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         </div>
                         <div class="d-flex flex-column gap-3">
                             <div class="small d-flex flex-column gap-1 w-100">
-                                <SfCheckBox Checked="true" Label="Truncate long transactions in the editor" aria-label="truncate long transactions in the editor" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Checked="true" Label="Truncate long transactions in the editor" aria-label="truncate long transactions in the editor" role="checkbox"></SfCheckBox>
                                 <p class="small ms-4 mb-0">Shorten lengthy records for better readability.</p>
                             </div>
                             <div class="small d-flex flex-column gap-1 w-100">
-                                <SfCheckBox Checked="true" Label="Show spelling and grammar errors in the editor" aria-label="show spelling and grammar errors in the editor" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Checked="true" Label="Show spelling and grammar errors in the editor" aria-label="show spelling and grammar errors in the editor" role="checkbox"></SfCheckBox>
                                 <p class="small ms-4 mb-0">Detect and highlight mistakes automatically.</p>
                             </div>
                         </div>
@@ -142,11 +142,11 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     <div class="d-flex flex-column gap-5 gap-sm-4">
                         <div class="d-flex justify-content-between gap-1 justify-content-sm-start align-items-center">
                             <p class="small fw-medium flex-shrink-1 text-body mb-0" style="width: 18rem;">Translation view options</p>
-                            <SfSwitch CssClass="e-small" Checked="true" aria-label="enable translation view" role="switch"></SfSwitch>
+                            <SfSwitch CssClass="e-small" TChecked="bool" Checked="true" aria-label="enable translation view" role="switch"></SfSwitch>
                         </div>
                         <div class="d-flex gap-3 align-self-end">
-                            <SfButton CssClass="e-outline" Type="button" Disabled="true" aria-label="cancel" role="button">Cancel</SfButton>
-                            <SfButton CssClass="e-primary" Type="button" aria-label="save changes" role="button">Save changes</SfButton>
+                            <SfButton CssClass="e-outline" Content="Cancel" Type="button" Disabled="true" aria-label="cancel" role="button"></SfButton>
+                            <SfButton CssClass="e-primary" Content="Save changes" Type="button" aria-label="save changes" role="button"></SfButton>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,10 @@
+﻿::deep #plan-comparison .table th:first-child,
+::deep #plan-comparison .table td:first-child {
+  position: sticky;
+  left: 0;
+  z-index: 10;
+}
+
+::deep #plan-comparison .table thead th:first-child {
+  z-index: 20;
+}

@@ -8,18 +8,18 @@
 {
     <section class="bg-white dark:bg-gray-900 h-full">
         <div class="w-full pt-5 pb-4" style="height: 600px;">
-            <div id="SearchContainerParent" class="mx-auto" style="max-width: 480px">
+            <div id="SearchContainerParent" class="mx-auto px-4" style="max-width: 480px">
                 @if (Data != null)
                 {
-                    <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" DataSource="@Data" Placeholder="Search" PopupHeight="750px" CssClass="e-bigger" role="combobox">
+                    <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" CssClass="e-bigger" DataSource="@Data" Placeholder="Search" PopupHeight="750px" role="combobox">
                         <AutoCompleteEvents TValue="string" TItem="SearchItem" Focus="@FocusHandlerAsync" Created="@FocusHandlerAsync"></AutoCompleteEvents>
                         <AutoCompleteFieldSettings Value="Name"></AutoCompleteFieldSettings>
                         <AutoCompleteTemplates TItem="SearchItem">
                             <ItemTemplate Context="context">
                                 <div class="flex items-center px-5 py-2">
                                     <span class="indent-0 e-avatar e-avatar-medium e-avatar-circle text-sm shrink-0 @(context.ColorTheme == "Orange" ? "bg-orange-100 dark:bg-orange-800 dark:text-orange-300 text-orange-700" :
-                                          context.ColorTheme == "Blue" ? "bg-cyan-100 dark:bg-cyan-800 dark:text-cyan-200 text-cyan-700" :
-                                          context.ColorTheme == "Red" ? "bg-red-100 dark:bg-red-800 dark:text-red-300 text-red-600" : "")">
+                                        context.ColorTheme == "Blue" ? "bg-cyan-100 dark:bg-cyan-800 dark:text-cyan-200 text-cyan-700" :
+                                        context.ColorTheme == "Red" ? "bg-red-100 dark:bg-red-800 dark:text-red-300 text-red-600" : "")">
                                         @context.Initial
                                     </span>
                                     <div class="w-full">
@@ -42,18 +42,18 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body h-100">
         <div class="pt-4 pb-3">
-            <div id="SearchContainerParent" class="mx-auto" style="max-width: 480px">
+            <div id="SearchContainerParent" class="mx-auto px-3" style="max-width: 480px">
                 @if (Data != null)
                 {
-                    <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" DataSource="@Data" Placeholder="Search" PopupHeight="750px" CssClass="e-bigger" role="combobox">
+                    <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" CssClass="e-bigger" DataSource="@Data" Placeholder="Search" PopupHeight="750px" role="combobox">
                         <AutoCompleteEvents TValue="string" TItem="SearchItem" Focus="@FocusHandlerAsync" Created="@FocusHandlerAsync"></AutoCompleteEvents>
                         <AutoCompleteFieldSettings Value="Name"></AutoCompleteFieldSettings>
                         <AutoCompleteTemplates TItem="SearchItem">
                             <ItemTemplate Context="context">
                                 <div class="d-flex align-items-center px-3 p-2" style="text-indent: 0;">
                                     <span class="e-avatar e-avatar-medium e-avatar-circle shrink-0 @(context.ColorTheme == "Orange" ? "text-warning-emphasis bg-warning-subtle" :
-                                          context.ColorTheme == "Blue" ? "text-info-emphasis bg-info-subtle" :
-                                          context.ColorTheme == "Red" ? "text-danger-emphasis bg-danger-subtle" : "")">
+                                        context.ColorTheme == "Blue" ? "text-info-emphasis bg-info-subtle" :
+                                        context.ColorTheme == "Red" ? "text-danger-emphasis bg-danger-subtle" : "")">
                                         @context.Initial
                                     </span>
 

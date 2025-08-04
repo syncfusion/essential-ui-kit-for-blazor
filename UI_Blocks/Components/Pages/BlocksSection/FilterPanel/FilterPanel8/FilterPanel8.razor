@@ -101,7 +101,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 absolute top-0 right-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -202,7 +202,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start --> 
     <div class="p-3 position-absolute top-0 end-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

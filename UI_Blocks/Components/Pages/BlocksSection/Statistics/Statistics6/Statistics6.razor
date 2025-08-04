@@ -13,11 +13,11 @@
                 {
                     <div class="e-card rounded-lg">
                         <div class="e-card-stacked">
-                            <div class="e-card-header !justify-between items-center !py-3 !px-6 bg-gray-50 dark:bg-gray-700">
+                            <div class="e-card-header !justify-between items-center !py-3 !px-6 bg-gray-50 dark:bg-gray-600 opacity-70">
                                 <div class="e-card-header-title">
-                                    <h3 class="text-base font-medium text-gray-500 dark:text-gray-400">@data.MetricName</h3>
+                                    <h3 class="text-base font-medium text-gray-700 dark:text-gray-200">@data.MetricName</h3>
                                 </div>
-                                <SfButton CssClass="e-flat e-icons e-more-horizontal-1 e-medium" Type="button" aria-label="more options" role="button"></SfButton>
+                                <SfButton CssClass="e-flat e-medium e-icons e-more-horizontal-1" Type="button" aria-label="more options" role="button"></SfButton>
                             </div>
                             <div class="e-card-content !py-6 !px-6">
                                 <p class="text-3xl !leading-10 font-semibold mb-4 xl:mb-6 text-gray-900 dark:text-white">@data.CurrentValue.ToString("N0")</p>
@@ -44,13 +44,13 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 @foreach (var data in MetricsData)
                 {
                     <div class="col-12 col-sm-6 col-xl-3">
-                        <div class="e-card rounded-3 e-bigger shadow-lg">
+                        <div class="e-card rounded-3 e-bigger shadow">
                             <div class="e-card-stacked">
                                 <div class="e-card-header d-flex justify-content-between align-items-center py-3 px-4 bg-body-tertiary">
                                     <div class="e-card-header-title">
                                         <h3 class="fs-6 fw-medium text-body text-opacity-50 mb-0 lh-base">@data.MetricName</h3>
                                     </div>
-                                    <SfButton CssClass="e-flat e-icons e-more-horizontal-1 e-medium" Type="button" aria-label="more options" role="button"></SfButton>
+                                    <SfButton CssClass="e-flat e-medium e-icons e-more-horizontal-1" Type="button" aria-label="more options" role="button"></SfButton>
                                 </div>
                                 <div class="e-card-content p-4">
                                     <p class="fs-3 lh-sm fw-bold text-body">@data.CurrentValue.ToString("N0")</p>

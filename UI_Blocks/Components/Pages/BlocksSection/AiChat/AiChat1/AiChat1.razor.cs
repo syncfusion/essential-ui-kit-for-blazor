@@ -4,13 +4,13 @@ namespace UI_Blocks.Components.Pages.BlocksSection.AiChat.AiChat1
 {
     public partial class AiChat1
     {
-        public List<PromptData> PromptDetail { get; set; } = new List<PromptData>
+        public List<PromptData> PromptDetail = new List<PromptData>
         {
-            new PromptData { Id = "1", Text = "Suggest 3 websites about ethical hacking", Category = "sender", IsList = false },
-            new PromptData { Id = "2", Category = "reply", IsList = true }
+            new PromptData { Id = 1, Text = "Suggest 3 websites about ethical hacking", Category = "sender", IsList = false },
+            new PromptData { Id = 2, Category = "reply", IsList = true }
         };
 
-        public List<ResourceData> ResourceDetail { get; set; } = new List<ResourceData>
+        public List<ResourceData> ResourceDetail = new List<ResourceData>
         {
             new ResourceData { Type = "Header", Text = "Here are four websites where you can improve your ethical hacking skills:" },
             new ResourceData { Type = "Resource", Text = "Cybrary (cybrary.it):", Description = "Cybrary offers a wide range of free and paid courses on cybersecurity, including ethical hacking. There are beginner to advanced level courses that cover various aspects of cybersecurity, including penetration testing and threat intelligence." },
@@ -31,7 +31,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.AiChat.AiChat1
 
         public class PromptData
         {
-            public string Id { get; set; } = string.Empty;
+            public int Id { get; set; }
             public string Text { get; set; } = string.Empty;
             public string Category { get; set; } = string.Empty;
             public bool IsList { get; set; }

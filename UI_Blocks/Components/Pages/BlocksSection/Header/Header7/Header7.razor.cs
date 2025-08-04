@@ -15,8 +15,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Header.Header7
             {
                 MaxItems = windowWidth <= 640 ? 1 : 2;
                 OverflowMode = MaxItems < 2 ? BreadcrumbOverflowMode.Menu : BreadcrumbOverflowMode.None;
-                StateHasChanged();
             }
+            StateHasChanged();
         }
     }
 }

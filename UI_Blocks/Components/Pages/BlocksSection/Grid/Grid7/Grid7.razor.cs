@@ -2,41 +2,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid7
 {
     public partial class Grid7
     {
-        public class CustomerDetails
-        {
-            public string Name { get; set; } = string.Empty;
-            public string Initial { get; set; } = string.Empty;
-            public string Email { get; set; } = string.Empty;
-            public string ColorTheme { get; set; } = string.Empty;
-        }
-        
-        public class Product
-        {
-            public string Name { get; set; } = string.Empty;
-            public string Image { get; set; } = string.Empty;
-        }
-
-        public class SalesRep
-        {
-            public string Name { get; set; } = string.Empty;
-            public string Avatar { get; set; } = string.Empty;
-        }
-
-        public class Transaction
-        {
-            public int Id { get; set; }
-            public string TransactionId { get; set; } = string.Empty;
-            public CustomerDetails CustomerDetails { get; set; } = new CustomerDetails();
-            public DateTime Date { get; set; }
-            public Product Product { get; set; } = new Product();
-            public int Quantity { get; set; }
-            public decimal Amount { get; set; }
-            public string PaymentMethod { get; set; } = string.Empty;
-            public SalesRep SalesRep { get; set; } = new SalesRep();
-            public string Status { get; set; } = string.Empty;
-        }
-
-        List<Transaction> GridData = new List<Transaction>
+        public List<Transaction> GridData = new List<Transaction>
         {
             new Transaction
             {
@@ -309,5 +275,39 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid7
                 Status = "Failed"
             }
         };
+
+        public class CustomerDetails
+        {
+            public string Name { get; set; } = string.Empty;
+            public string Initial { get; set; } = string.Empty;
+            public string Email { get; set; } = string.Empty;
+            public string ColorTheme { get; set; } = string.Empty;
+        }
+        
+        public class Product
+        {
+            public string Name { get; set; } = string.Empty;
+            public string Image { get; set; } = string.Empty;
+        }
+
+        public class SalesRep
+        {
+            public string Name { get; set; } = string.Empty;
+            public string Avatar { get; set; } = string.Empty;
+        }
+
+        public class Transaction
+        {
+            public int Id { get; set; }
+            public string TransactionId { get; set; } = string.Empty;
+            public CustomerDetails CustomerDetails { get; set; } = new CustomerDetails();
+            public DateTime Date { get; set; }
+            public Product Product { get; set; } = new Product();
+            public int Quantity { get; set; }
+            public decimal Amount { get; set; }
+            public string PaymentMethod { get; set; } = string.Empty;
+            public SalesRep SalesRep { get; set; } = new SalesRep();
+            public string Status { get; set; } = string.Empty;
+        }
     }
 }

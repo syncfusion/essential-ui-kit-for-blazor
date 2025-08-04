@@ -7,7 +7,7 @@
 {
     <section class="bg-white dark:bg-gray-950">
         <div style="height: 605px;">
-            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
                 <div class="flex flex-col h-screen justify-between">
                     <div>
                         <div class="flex items-center p-4">
@@ -16,7 +16,7 @@
                             </span>
                             <div class="ml-3">
                                 <div class="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
-                                <p class="mb-0 text-gray-900 dark:text-white">johnwick&#64;123.com</p>
+                                <a class="text-gray-900 dark:text-white" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                             </div>
                         </div>
                         <div class="px-4 py-3">
@@ -59,7 +59,9 @@
                             <h3 class="text-xl mt-2 text-gray-700 font-semibold dark:text-gray-300">70 GB free of 150 GB</h3>
                         </div>
                         <div class="py-3">
-                            <SfProgressBar Type="ProgressType.Linear" CornerRadius="CornerType.Square" Value="54" Height="8px" Width="205px" TrackThickness="8" ProgressThickness="8" ProgressColor="#4F46E5"></SfProgressBar>
+                            <SfProgressBar Type="ProgressType.Linear" CornerRadius="CornerType.Square" Value="54" Height="8px" Width="223px" TrackThickness="8" ProgressThickness="8" ProgressColor="#4F46E5">
+                                <ProgressBarMargin Left="0" Right="0"></ProgressBarMargin>
+                            </SfProgressBar>
                         </div>
                         <div class="py-3">
                             <SfButton IconCss="e-icons sf-icon-upload-cloud text-base" CssClass="e-outline w-full" content="Upgrade to Pro" Type="button" aria-label="upgrade to professional version" role="button"></SfButton>
@@ -71,7 +73,7 @@
     </section>
     <!-- SB Code - Start -->
         <div class="p-3 top-0 left-0 absolute">
-            <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+            <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
         </div>
     <!-- SB Code - End -->
 }
@@ -79,7 +81,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
         <div style="height: 630px;">
-            <SfSidebar Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+            <SfSidebar Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
                 <div class="d-flex flex-column vh-100 justify-content-between">
                     <div>
                         <div class="d-flex align-items-center px-3 pb-3 mt-4">
@@ -88,7 +90,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             </span>
                             <div class="ms-2">
                                 <div class="fs-6 fw-medium text-body">John Wick</div>
-                                <p class="mb-0 text-body-secondary">johnwick&#64;123.com</p>
+                                <a class="text-body-secondary text-decoration-none" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                             </div>
                         </div>
                         <div class="px-3">
@@ -110,7 +112,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 </ListViewTemplates>
                             </SfListView>
                         </div>
-                        <p class="m-3 fs-6 text-body-secondary">Others</p>
+                        <hr class="mx-3 border-light-subtle opacity-100" />
                         <div>
                             <SfListView CssClass="border-0 e-bigger" DataSource="@SupportMenu" aria-label="other navigation links" role="list">
                                 <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
@@ -131,7 +133,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             <h3 class="mt-1 text-body fw-medium fs-5 mb-0">70 GB free of 150 GB</h3>
                         </div>
                         <div class="mt-2">
-                            <SfProgressBar Type="ProgressType.Linear" Value="54" Height="8" Width="205" TrackThickness="8" ProgressThickness="8" ProgressColor="#0D6EFD" CornerRadius="CornerType.Round"></SfProgressBar>
+                            <SfProgressBar Type="ProgressType.Linear" Value="54" Height="8" Width="223" TrackThickness="8" ProgressThickness="8" ProgressColor="#0D6EFD" CornerRadius="CornerType.Round">
+                                <ProgressBarMargin Left="0" Right="0"></ProgressBarMargin>
+                            </SfProgressBar>
                         </div>
                         <div class="mt-3">
                             <SfButton class="e-outline w-100" IconCss="e-icons sf-icon-upload-cloud fs-6" Content="Upgrade to Pro" Type="button" aria-label="upgrade to professional version" role="button"></SfButton>
@@ -143,7 +147,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
         <div class="py-3 px-1 position-absolute top-0 start-0">
-            <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+            <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
         </div>
     <!-- SB Code - End -->
 }

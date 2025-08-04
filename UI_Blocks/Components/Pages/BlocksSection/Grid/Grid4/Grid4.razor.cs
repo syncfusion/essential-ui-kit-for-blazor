@@ -2,37 +2,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid4
 {
     public partial class Grid4
     {
-        public class Profile
-        {
-            public string Name { get; set; } = string.Empty;
-            public string Initial { get; set; } = string.Empty;
-            public string Email { get; set; } = string.Empty;
-            public string ColorTheme { get; set; } = string.Empty;
-            public string Avatar { get; set; } = string.Empty;
-        }
-
-        public class AssignedTo
-        {
-            public string Name { get; set; } = string.Empty;
-            public string Department { get; set; } = string.Empty;
-        }
-
-        public class Contact
-        {
-            public int Id { get; set; }
-            public string ContactId { get; set; } = string.Empty;
-            public Profile Profile { get; set; } = new Profile();
-            public string JobTitle { get; set; } = string.Empty;
-            public string Company { get; set; } = string.Empty;
-            public List<string> CommunicationPreferences { get; set; } = new List<string>();
-            public string Location { get; set; } = string.Empty;
-            public string LeadSource { get; set; } = string.Empty;
-            public string Avatar { get; set; } = string.Empty;
-            public AssignedTo AssignedTo { get; set; } = new AssignedTo();
-            public string Status { get; set; } = string.Empty;
-        }
-
-        List<Contact> GridData = new List<Contact>
+        public List<Contact> GridData = new List<Contact>
         {
             new Contact
             {
@@ -285,5 +255,35 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid4
                 Status = "Active"
             }
         };
+
+        public class Profile
+        {
+            public string Name { get; set; } = string.Empty;
+            public string Initial { get; set; } = string.Empty;
+            public string Email { get; set; } = string.Empty;
+            public string ColorTheme { get; set; } = string.Empty;
+            public string Avatar { get; set; } = string.Empty;
+        }
+
+        public class AssignedTo
+        {
+            public string Name { get; set; } = string.Empty;
+            public string Department { get; set; } = string.Empty;
+        }
+
+        public class Contact
+        {
+            public int Id { get; set; }
+            public string ContactId { get; set; } = string.Empty;
+            public Profile Profile { get; set; } = new Profile();
+            public string JobTitle { get; set; } = string.Empty;
+            public string Company { get; set; } = string.Empty;
+            public List<string> CommunicationPreferences { get; set; } = new List<string>();
+            public string Location { get; set; } = string.Empty;
+            public string LeadSource { get; set; } = string.Empty;
+            public string Avatar { get; set; } = string.Empty;
+            public AssignedTo AssignedTo { get; set; } = new AssignedTo();
+            public string Status { get; set; } = string.Empty;
+        }
     }
 }

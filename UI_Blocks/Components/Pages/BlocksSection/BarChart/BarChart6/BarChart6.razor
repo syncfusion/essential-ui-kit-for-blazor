@@ -12,12 +12,14 @@
                 <div class="flex justify-between flex-col md:flex-row md:items-center md:justify-between gap-4">
                     <h1 class="text-base font-medium text-gray-900 dark:text-white">Ticket Activity Overview</h1>
                     <div class="flex flex-col sm:flex-row gap-4 items-start">
-                        <SfDropDownButton IconCss="e-icons e-day" Content="01/12/2024 - 07/12/2024" Type="button" aria-label="choose a date" role="button"></SfDropDownButton>
+                        <div class="w-64">
+                            <SfDatePicker TValue="DateTime?" CssClass="shadow-none border-none" Placeholder="01/12/2024 - 07/12/2024" aria-label="enter a start and end date here" role="combobox"></SfDatePicker>
+                        </div>
                         <SfDropDownButton @ref="DropDownButton" Content="All Tickets" Type="button" aria-label="choose a ticket type" role="button">
                             <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
                             <DropDownMenuItems>
                                 <DropDownMenuItem Text="All Tickets"></DropDownMenuItem>
-                                <DropDownMenuItem Text="Drafts"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Draft"></DropDownMenuItem>
                                 <DropDownMenuItem Text="Processed"></DropDownMenuItem>
                             </DropDownMenuItems>
                         </SfDropDownButton>
@@ -59,12 +61,14 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 <div class="d-flex justify-content-between flex-column flex-md-row align-items-md-center justify-content-md-between gap-3">
                     <h1 class="fs-6 fw-medium">Ticket Activity Overview</h1>
                     <div class="d-flex flex-column flex-sm-row gap-3 align-items-start mb-3">
-                        <SfDropDownButton CssClass="e-outline" IconCss="e-icons e-day" Content="01/12/2024 - 07/12/2024" Type="button" aria-label="choose a date" role="button"></SfDropDownButton>
+                        <div style="width: 256px;">
+                            <SfDatePicker TValue="DateTime?" CssClass="shadow-none border-none" Placeholder="01/12/2024 - 07/12/2024" aria-label="enter a start and end date here" role="combobox"></SfDatePicker>
+                        </div>
                         <SfDropDownButton @ref="DropDownButton" CssClass="e-outline" Content="All Tickets" Type="button" aria-label="choose a ticket type" role="button">
                             <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
                             <DropDownMenuItems>
                                 <DropDownMenuItem Text="All Tickets"></DropDownMenuItem>
-                                <DropDownMenuItem Text="Drafts"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Draft"></DropDownMenuItem>
                                 <DropDownMenuItem Text="Processed"></DropDownMenuItem>
                             </DropDownMenuItems>
                         </SfDropDownButton>

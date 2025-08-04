@@ -4,8 +4,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.FilterPanel.FilterPanel4
 {
     public partial class FilterPanel4
     {
-        public bool IsSidebarOpen { get; set; } = true;
-        public string Width { get; set; } = "320px";
+        public bool IsSidebarOpen = true;
+        public string Width = "320px";
 
         public List<string> Assignee { get; set; } = new List<string>
         {
@@ -33,19 +33,14 @@ namespace UI_Blocks.Components.Pages.BlocksSection.FilterPanel.FilterPanel4
             "Closed"
         };
 
-        public void ToggleSidebar()
-        {
-            IsSidebarOpen = !IsSidebarOpen;
-        }
-
         [JSInvokable]
         public void ResizeHandler(string message, int windowWidth)
         {
             if (message == "resizeAction")
             {
                 Width = windowWidth < 540 ? "100%" : "320px";
-                StateHasChanged();
             }
+            StateHasChanged();
         }
     }
 }

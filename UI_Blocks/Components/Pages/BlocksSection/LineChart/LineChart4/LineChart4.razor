@@ -12,11 +12,15 @@
                 <div class="flex justify-between items-center sm:mb-3">
                     <h2 class="text-base font-semibold text-gray-900 dark:text-white">Transaction Activity</h2>
                     <div class="flex gap-3">
-                        <SfButton class="e-outline hidden sm:block" Content="Select Date" IconCss="e-icons e-day" IconPosition="IconPosition.Right"></SfButton>
-                        <SfButton class="e-icons e-more-vertical-1 e-outline border-0" aria-label="more options" role="button"></SfButton>
+                        <div class="w-32 hidden sm:block">
+                            <SfDatePicker TValue="DateTime?" CssClass="shadow-none border-none" Placeholder="Select Date" aria-label="enter a date here" role="combobox"></SfDatePicker>
+                        </div>
+                        <SfButton class="e-icons e-more-vertical-1 e-outline border-0" Type="button" aria-label="more options" role="button"></SfButton>
                     </div>
                 </div>
-                <SfButton class="e-outline block sm:hidden my-3" Content="Select Date" IconCss="e-icons e-day" IconPosition="IconPosition.Right"></SfButton>
+                <div class="w-32 block sm:hidden">
+                    <SfDatePicker TValue="DateTime?" CssClass="shadow-none border-none  my-3" Placeholder="Select Date" aria-label="enter a date here" role="combobox"></SfDatePicker>
+                </div>
                 <div>
                     <SfChart Width="100%" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
                         <ChartArea>
@@ -39,12 +43,12 @@
                             <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
                         </ChartPrimaryYAxis>
                         <ChartSeriesCollection>
-                            <ChartSeries DataSource="@LineChartData" Type="ChartSeriesType.Spline" XName="Month" YName="YAxis1" Name="Total Transaction" Width="3" Fill="#fbbf24" LegendShape="LegendShape.Rectangle" EnableTooltip="true"></ChartSeries>
-                            <ChartSeries DataSource="@LineChartData" Type="ChartSeriesType.Spline" XName="Month" YName="YAxis2" Name="Success Transaction" Width="3" fill="#84cc16" legendShape="LegendShape.Rectangle" EnableTooltip="true"></ChartSeries>
+                            <ChartSeries DataSource="@LineChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Spline" XName="Month" YName="YAxis1" Name="Total Transaction" Width="3" Fill="#fbbf24" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" EnableTooltip="true"></ChartSeries>
+                            <ChartSeries DataSource="@LineChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Spline" XName="Month" YName="YAxis2" Name="Success Transaction" Width="3" fill="#84cc16" legendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" EnableTooltip="true"></ChartSeries>
                         </ChartSeriesCollection>
-                        <ChartTooltipSettings Enable="true" Shared="true" Format="${series.name}: ${point.y}" Header="${point.x}"></ChartTooltipSettings>
-                        <ChartCrosshairSettings Enable="true" LineType="LineType.Vertical" SnapToData="true" DashArray="2"></ChartCrosshairSettings>
-                        <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Alignment.Center" ShapeHeight="10" ShapeWidth="10" Padding="12">
+                        <ChartTooltipSettings Enable="true" Shared="true" Format="${series.name}: ${point.y}" Header="${point.x}" ShowHeaderLine="false"></ChartTooltipSettings>
+                        <ChartCrosshairSettings Enable="true" LineType="Syncfusion.Blazor.Charts.LineType.Vertical" SnapToData="true" DashArray="2"></ChartCrosshairSettings>
+                        <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Center" ShapeHeight="10" ShapeWidth="10" Padding="12">
                             <ChartLegendTextStyle Size="13px"></ChartLegendTextStyle>
                         </ChartLegendSettings>
                     </SfChart>
@@ -61,11 +65,15 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 <div class="d-flex justify-content-between align-items-center mb-sm-3">
                     <h2 class="fs-6 fw-medium">Transaction Activity</h2>
                     <div class="d-flex gap-3">
-                        <SfButton CssClass="e-outline" class="e-outline d-none d-sm-block" Content="Select Date" IconCss="e-icons e-day" IconPosition="IconPosition.Right"></SfButton>
-                        <SfButton CssClass="e-outline" class="e-icons e-more-vertical-1 e-outline border-0" aria-label="more options" role="button"></SfButton>
+                        <div class="d-none d-sm-block" style="width: 128px">
+                            <SfDatePicker TValue="DateTime?" CssClass="shadow-none border-none" Placeholder="Select Date" aria-label="enter a date here" role="combobox"></SfDatePicker>
+                        </div>
+                        <SfButton CssClass="e-outline" class="e-icons e-more-vertical-1 e-outline border-0" Type="button" aria-label="more options" role="button"></SfButton>
                     </div>
                 </div>
-                <SfButton class="e-outline d-sm-none my-3" Content="Select Date" IconCss="e-icons e-day" IconPosition="IconPosition.Right"></SfButton>
+                <div class="d-sm-none" style="width: 128px">
+                    <SfDatePicker TValue="DateTime?" CssClass="shadow-none border-none" Placeholder="Select Date" aria-label="enter a date here" role="combobox"></SfDatePicker>
+                </div>
                 <div>
                     <SfChart Width="100%" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
                         <ChartArea>
@@ -88,12 +96,12 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
                         </ChartPrimaryYAxis>
                         <ChartSeriesCollection>
-                            <ChartSeries DataSource="@LineChartData" Type="ChartSeriesType.Spline" XName="Month" YName="YAxis1" Name="Total Transaction" Width="3" Fill="#F42929" LegendShape="LegendShape.Rectangle" EnableTooltip="true"></ChartSeries>
-                            <ChartSeries DataSource="@LineChartData" Type="ChartSeriesType.Spline" XName="Month" YName="YAxis2" Name="Success Transaction" Width="3" fill="#0EAB44" legendShape="LegendShape.Rectangle" EnableTooltip="true"></ChartSeries>
+                            <ChartSeries DataSource="@LineChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Spline" XName="Month" YName="YAxis1" Name="Total Transaction" Width="3" Fill="#F42929" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" EnableTooltip="true"></ChartSeries>
+                            <ChartSeries DataSource="@LineChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Spline" XName="Month" YName="YAxis2" Name="Success Transaction" Width="3" fill="#0EAB44" legendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle" EnableTooltip="true"></ChartSeries>
                         </ChartSeriesCollection>
-                        <ChartTooltipSettings Enable="true" Shared="true" Format="${series.name}: ${point.y}" Header="${point.x}"></ChartTooltipSettings>
-                        <ChartCrosshairSettings Enable="true" LineType="LineType.Vertical" SnapToData="true" DashArray="2"></ChartCrosshairSettings>
-                        <ChartLegendSettings Visible="true" Position="LegendPosition.Top" Alignment="Alignment.Center" ShapeHeight="10" ShapeWidth="10" Padding="16">
+                        <ChartTooltipSettings Enable="true" Shared="true" Format="${series.name}: ${point.y}" Header="${point.x}" ShowHeaderLine="false"></ChartTooltipSettings>
+                        <ChartCrosshairSettings Enable="true" LineType="Syncfusion.Blazor.Charts.LineType.Vertical" SnapToData="true" DashArray="2"></ChartCrosshairSettings>
+                        <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Center" ShapeHeight="10" ShapeWidth="10" Padding="16">
                             <ChartLegendTextStyle Size="13px"></ChartLegendTextStyle>
                         </ChartLegendSettings>
                     </SfChart>

@@ -12,24 +12,25 @@
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Syncfusion.Blazor.Cards" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.Lists" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.Themes" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.Buttons" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.Notifications" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.Popups" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.SplitButtons" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.Layouts" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.Inputs" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.Calendars" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.Navigations" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.DropDowns" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.RichTextEditor" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.Grid" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.ProgressBar" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.Charts" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.QueryBuilder" Version="29.1.33" />
-    <PackageReference Include="Syncfusion.Blazor.InteractiveChat" Version="29.1.33" />
+    <PackageReference Include="Syncfusion.Blazor.Cards" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.Chart3D" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.Lists" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.Themes" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.Buttons" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.Notifications" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.Popups" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.SplitButtons" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.Layouts" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.Inputs" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.Calendars" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.Navigations" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.DropDowns" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.RichTextEditor" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.Grid" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.ProgressBar" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.Charts" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.QueryBuilder" Version="29.2.11" />
+    <PackageReference Include="Syncfusion.Blazor.InteractiveChat" Version="29.2.11" />
   </ItemGroup>
 
 </Project>

@@ -3,7 +3,7 @@
     public partial class TileView5
     {
 
-        private List<JobDetail> JobDetails = new()
+        public List<JobDetail> JobDetails = new List<JobDetail>
         {
             new JobDetail { JobId = 1, Title = "Embedded Power Electronics Design Engineer (Entry-Level)", Company = "Nokia Solutions Pvt. Ltd", Reviews = 343, Experience = "0-2 yrs", Salary = "8-12 Lacs PA", Location = "USA", Posted = "2 days ago", Openings = 1, Applicants = 927, Logo = "nokia.png" },
             new JobDetail { JobId = 2, Title = "Walk in Interview_Salesforce Developer", Company = "Delta Solutions Pvt. Ltd", Reviews = 4567, Experience = "0-5 yrs", Salary = "6-10 Lacs PA", Location = "UK", Posted = "4 days ago", Openings = 4, Applicants = 234, Logo = "salesforce.png" },

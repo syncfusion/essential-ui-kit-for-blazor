@@ -14,7 +14,7 @@
                 </div>
                 <div class="flex gap-3">
                     <SfButton CssClass="block sm:hidden sm:me-6" IconCss="e-icons e-filter" Type="button" aria-label="filter" role="button"></SfButton>
-                    <SfDropDownButton CssClass="block sm:hidden me-4 e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                    <SfDropDownButton CssClass="block sm:hidden me-4 e-caret-hide !pr-1" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
                         <DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
                     </SfDropDownButton>
                 </div>
@@ -22,7 +22,7 @@
             <div class="flex items-center justify-between px-4 sm:px-6">
                 <div class="w-full">
                     <SfTab HeightAdjustMode="Auto" Width="100%" OverFlowMode="@OverflowMode">
-                        <TabEvents Selected="OnTabSelected"></TabEvents>
+                        <TabEvents Selected="@TabSelected"></TabEvents>
                         <TabItems>
                             <TabItem>
                                 <HeaderTemplate>
@@ -41,7 +41,7 @@
                                                 <ChipItem CssClass="e-outline !rounded-2xl" Text="Priority: High"></ChipItem>
                                             </ChipItems>
                                         </SfChip>
-                                        <SfButton CssClass="ml-1 e-flat" Type="button" aria-label="clear all" role="button">Clear all</SfButton>
+                                        <SfButton CssClass="ml-1 e-flat" Content="Clear all" Type="button" aria-label="clear all" role="button"></SfButton>
                                     </div>
                                 </ContentTemplate>
                             </TabItem>
@@ -63,7 +63,7 @@
                                                 <ChipItem CssClass="e-outline !rounded-2xl" Text="Priority: High"></ChipItem>
                                             </ChipItems>
                                         </SfChip>
-                                        <SfButton CssClass="ml-1 e-flat" Type="button" aria-label="clear all" role="button">Clear all</SfButton>
+                                        <SfButton CssClass="ml-1 e-flat" Content="Clear all" Type="button" aria-label="clear all" role="button"></SfButton>
                                     </div>
                                 </ContentTemplate>
                             </TabItem>
@@ -102,7 +102,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 </div>
                 <div class="d-flex gap-3">
                     <SfButton CssClass="e-outline d-block d-sm-none me-sm-4" IconCss="e-icons e-filter" Type="button" aria-label="filter" role="button"></SfButton>
-                    <SfDropDownButton CssClass="e-outline d-block d-sm-none me-3 e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                    <SfDropDownButton CssClass="e-outline d-block d-sm-none me-3 e-caret-hide pe-1" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
                         <DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
                     </SfDropDownButton>
                 </div>
@@ -110,7 +110,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
             <div class="d-flex align-items-center justify-content-between px-3 px-sm-4">
                 <div class="w-100">
                     <SfTab HeightAdjustMode="Auto" Width="100%" OverFlowMode="@OverflowMode">
-                        <TabEvents Selected="OnTabSelected"></TabEvents>
+                        <TabEvents Selected="@TabSelected"></TabEvents>
                         <TabItems>
                             <TabItem>
                                 <HeaderTemplate>
@@ -129,7 +129,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                 <ChipItem CssClass="e-outline rounded-pill py-2" Text="Priority: High"></ChipItem>
                                             </ChipItems>
                                         </SfChip>
-                                        <SfButton CssClass="e-flat" Type="button" aria-label="clear all" role="button">Clear all</SfButton>
+                                        <SfButton CssClass="e-flat" Content="Clear all" Type="button" aria-label="clear all" role="button"></SfButton>
                                     </div>
                                 </ContentTemplate>
                             </TabItem>
@@ -143,7 +143,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 </HeaderTemplate>
                                 <ContentTemplate>
                                     <div class="d-none d-sm-flex py-3 align-items-center gap-2">
-                                        <SfButton CssClass="e-outline me-1" IconCss="e-icons e-filter" Type="button" Content="Add filters" aria-label="add filters" role="button"></SfButton>
+                                        <SfButton CssClass="e-outline me-1" IconCss="e-icons e-filter" Content="Add filters" Type="button" aria-label="add filters" role="button"></SfButton>
                                         <div class="border-start" style="height: 16px;"></div>
                                         <SfChip EnableDelete="true">
                                             <ChipItems>
@@ -151,7 +151,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                 <ChipItem CssClass="e-outline rounded-pill py-2" Text="Priority: High"></ChipItem>
                                             </ChipItems>
                                         </SfChip>
-                                        <SfButton CssClass="e-flat" Type="button" aria-label="clear all" role="button">Clear all</SfButton>
+                                        <SfButton CssClass="e-flat" Content="Clear all" Type="button" aria-label="clear all" role="button"></SfButton>
                                     </div>
                                 </ContentTemplate>
                             </TabItem>

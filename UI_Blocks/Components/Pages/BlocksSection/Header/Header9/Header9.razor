@@ -34,7 +34,7 @@
                     <div class="hidden sm:flex">
                         <span class="hidden md:block">
                             <SfSplitButton @ref="NewCourseDropdown" IconCss="e-icons e-plus" Content="New Course" aria-label="choose the new course" role="button">
-                                <SplitButtonEvents Opened="OnNewCourseDropdownOpened" Closed="OnNewCourseDropdownClosed"></SplitButtonEvents>
+                                <SplitButtonEvents Opened="@(args => IsNewCourseDropdownOpen = true)" Closed="@(args => IsNewCourseDropdownOpen = false)"></SplitButtonEvents>
                                 <DropDownMenuItems>
                                     <DropDownMenuItem Text="Create Course"></DropDownMenuItem>
                                     <DropDownMenuItem Text="Import Course"></DropDownMenuItem>
@@ -44,8 +44,8 @@
                         </span>
                         <SfButton class="ml-3" CssClass="e-flat" IconCss="e-icons e-settings" Type="button" aria-label="settings" role="button"></SfButton>
                     </div>
-                    <SfDropDownButton @ref="AdditionalOptionDropdown" class="block sm:hidden" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
-                        <DropDownButtonEvents Opened="OnAdditionalOptionDropdownOpened" Closed="OnAdditionalOptionDropdownClosed"></DropDownButtonEvents>
+                    <SfDropDownButton @ref="DropDownButton" class="block sm:hidden" CssClass="e-flat e-caret-hide !pr-1" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
                         <DropDownMenuItems>
                             <DropDownMenuItem Text="New Course"></DropDownMenuItem>
                             <DropDownMenuItem Text="Create Course"></DropDownMenuItem>
@@ -89,7 +89,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     <div class="d-none d-sm-flex">
                         <span class="d-none d-sm-block">
                             <SfSplitButton @ref="NewCourseDropdown" IconCss="e-icons e-plus" Content="New Course" aria-label="choose the new course" role="button">
-                                <SplitButtonEvents Opened="OnNewCourseDropdownOpened" Closed="OnNewCourseDropdownClosed"></SplitButtonEvents>
+                                <SplitButtonEvents Opened="@(args => IsNewCourseDropdownOpen = true)" Closed="@(args => IsNewCourseDropdownOpen = false)"></SplitButtonEvents>
                                 <DropDownMenuItems>
                                     <DropDownMenuItem Text="Create Course"></DropDownMenuItem>
                                     <DropDownMenuItem Text="Import Course"></DropDownMenuItem>
@@ -99,8 +99,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         </span>
                         <SfButton class="ms-3" CssClass="e-flat" IconCss="e-icons e-settings" Type="button" aria-label="settings" role="button"></SfButton>
                     </div>
-                    <SfDropDownButton @ref="AdditionalOptionDropdown" class="block d-sm-none" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
-                        <DropDownButtonEvents Opened="OnAdditionalOptionDropdownOpened" Closed="OnAdditionalOptionDropdownClosed"></DropDownButtonEvents>
+                    <SfDropDownButton @ref="DropDownButton" class="block d-sm-none" CssClass="e-flat e-caret-hide pe-1" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
                         <DropDownMenuItems>
                             <DropDownMenuItem Text="New Course"></DropDownMenuItem>
                             <DropDownMenuItem Text="Create Course"></DropDownMenuItem>

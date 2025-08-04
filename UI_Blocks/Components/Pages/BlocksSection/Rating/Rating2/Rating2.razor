@@ -11,7 +11,7 @@
             <div class="mt-4 p-4 mx-auto max-w-sm border-0 sm:rounded-lg sm:border rounded-none border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-800 flex flex-col justify-center items-center">
                 <img class="h-10 w-9" src="assets/images/common/brand-logos/svg/vector.svg" alt="logo" />
                 <div class="flex justify-center items-center ml-2">
-                    <SfRating Value="4.0" ShowLabel="true">
+                    <SfRating Value="4.0" ShowLabel="true" Precision="PrecisionType.Exact">
                         <EmptyTemplate>
                             <span class="sf-icon-star-filled-01 text-2xl text-gray-300 dark:text-gray-500"></span>
                         </EmptyTemplate>
@@ -19,7 +19,7 @@
                             <span class="sf-icon-star-filled-01 text-2xl text-amber-300"></span>
                         </FullTemplate>
                         <LabelTemplate Context="data">
-                            <p class="!text-gray-900 dark:!text-white text-sm font-medium">@($"{data} / 5")</p>
+                            <p class="!text-gray-900 dark:!text-white text-sm font-medium">@($"{data.ToString("0.0")} / 5.0")</p>
                         </LabelTemplate>
                     </SfRating>
                 </div>
@@ -35,7 +35,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
             <div class="mt-4 p-3 mx-auto rounded-3 border d-flex flex-column justify-content-center align-items-center bg-body" style="max-width: 384px;">
                 <img src="assets/images/common/brand-logos/svg/vector.svg" alt="logo" style="height: 40px; width: 36px;" />
                 <div class="mt-1 fs-6">
-                    <SfRating Value="4.0" ShowLabel="true">
+                    <SfRating Value="4.0" ShowLabel="true" Precision="PrecisionType.Exact">
                         <EmptyTemplate>
                             <span class="sf-icon-star-02 fs-4 text-body-secondary"></span>
                         </EmptyTemplate>
@@ -43,7 +43,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             <span class="sf-icon-star-filled-01 fs-4 text-warning"></span>
                         </FullTemplate>
                         <LabelTemplate Context="data">
-                            <p class="fw-medium text-body mb-1">@($"{data} / 5")</p>
+                            <span class="fs-6">
+                                <p class="text-body mb-0 small">@($"{data.ToString("0.0")} / 5.0")</p>
+                            </span>
                         </LabelTemplate>
                     </SfRating>
                 </div>

@@ -1,0 +1,164 @@
+﻿@page "/blocks/rating-16"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section>
+        <div id="dialog-container" class="pt-4 relative" style="min-height:576px;">
+            <SfDialog @ref="Dialog" id="dialog" class="rounded-none sm:rounded-lg pt-3.5 sm:px-1.5 overflow-hidden shadow-sm" ShowCloseIcon="true" Visible="true" Target="#dialog-container" Width="400px" Height="380px" IsModal="true" MaxWidth="400px" aria-label="submit feedback" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <div class="flex flex-col">
+                            <h4 class="text-base mb-0 font-semibold text-gray-900 dark:text-white">Share your feedback</h4>
+                        </div>
+                    </Header>
+                    <Content>
+                        <p class="text-sm font-normal text-gray-700 dark:text-gray-100 pb-3">How was working with our platform today?</p>
+                        <SfRating ItemsCount="5" EnableAnimation="false" EnableSingleSelection="true">
+                            <EmptyTemplate Context="data">
+                                <div class="pr-2 sm:pr-4 py-5">
+                                    @switch (data.Index)
+                                    {
+                                        case 0:
+                                            <span @onclick="@(() => experienceLevel = "love")">
+                                                <span class="@(experienceLevel == "love" ? "sf-icon-emoji-love text-2xl rounded-full p-3 text-orange-700 dark:text-orange-500 dark:bg-orange-800 bg-orange-100" : "sf-icon-emoji-love text-2xl rounded-full p-3 text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-700")"></span>
+                                            </span>
+                                            break;
+                                        case 1:
+                                            <span @onclick="@(() => experienceLevel = "smile")">
+                                                <span class="@(experienceLevel == "smile" ? "sf-icon-emoji-smile text-2xl rounded-full p-3 text-orange-700 dark:text-orange-500 dark:bg-orange-800 bg-orange-100" : "sf-icon-emoji-smile text-2xl rounded-full p-3 text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-700")"></span>
+                                            </span>
+                                            break;
+                                        case 2:
+                                            <span @onclick="@(() => experienceLevel = "emoji")">
+                                                <span class="@(experienceLevel == "emoji" ? "e-icons e-emoji text-2xl rounded-full p-3 text-orange-700 dark:text-orange-500 dark:bg-orange-800 bg-orange-100" : "e-icons e-emoji text-2xl rounded-full p-3 text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-700")"></span>
+                                            </span>
+                                            break;
+                                        case 3:
+                                            <span @onclick="@(() => experienceLevel = "neutral")">
+                                                <span class="@(experienceLevel == "neutral" ? "sf-icon-emoji-neutral text-2xl rounded-full p-3 text-orange-700 dark:text-orange-500 dark:bg-orange-800 bg-orange-100" : "sf-icon-emoji-neutral text-2xl rounded-full p-3 text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-700")"></span>
+                                            </span>
+                                            break;
+                                        case 4:
+                                            <span @onclick="@(() => experienceLevel = "sad")">
+                                                <span class="@(experienceLevel == "sad" ? "sf-icon-emoji-sad text-2xl rounded-full p-3 text-orange-700 dark:text-orange-500 dark:bg-orange-800 bg-orange-100" : "sf-icon-emoji-sad text-2xl rounded-full p-3 text-gray-500 dark:text-gray-300 bg-gray-100 dark:bg-gray-700")"></span>
+                                            </span>
+                                            break;
+                                    }
+                                </div>
+                            </EmptyTemplate>
+                            <TooltipTemplate Context="item">
+                                @switch (item)
+                                {
+                                    case 1: <span>Love</span>; break;
+                                    case 2: <span>Smile</span>; break;
+                                    case 3: <span>Happy</span>; break;
+                                    case 4: <span>Neutral</span>; break;
+                                    case 5: <span>Sad</span>; break;
+                                }
+                            </TooltipTemplate>
+                        </SfRating>
+                        <div class="flex flex-col gap-1 grow text-sm">
+                            <label class="font-medium text-xs text-gray-700 dark:text-gray-100">Can you tell us more?</label>
+                            <SfTextArea Placeholder="Tell us like what could be improved..." ResizeMode="Resize.None" Rows="@(IsMobile ? 13 : 6)" aria-label="enter your suggestions" role="textbox" style=@($"height:{(IsMobile ? "100%" : "95px")}")></SfTextArea>
+                        </div>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="pb-4 flex gap-4">
+                            <SfButton class="!ml-0" CssClass="e-outline e-block" Content="Cancel" Type="Button" aria-label="cancel" role="button"></SfButton>
+                            <SfButton class="!ml-0" CssClass="e-primary e-block" Content="Submit" Type="Button" aria-label="submit" role="button"></SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="absolute top-0 w-full flex">
+        <SfButton CssClass="mx-auto my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Feedback Form" Type="Button" aria-label="open feedback form" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section>
+        <div id="dialog-container" class="pt-4 position-relative" style="min-height:576px;">
+            <SfDialog @ref="Dialog" id="dialog" class="pt-sm-3 px-sm-2 overflow-hidden shadow-sm" ShowCloseIcon="true" Visible="true" Target="#dialog-container" Width="400px" Height="380px" IsModal="true" MaxWidth="400px" aria-label="submit feedback" role="dialog">
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                <DialogTemplates>
+                    <Header>
+                        <div class="d-flex">
+                            <h4 class="mb-0 mt-1 fs-6 fw-bold text-body">Share your feedback</h4>
+                        </div>
+                    </Header>
+                    <Content>
+                        <p class="fw-normal text-body-secondary mb-0 pb-3">How was working with our platform today?</p>
+                        <SfRating ItemsCount="5" EnableAnimation="false" EnableSingleSelection="true">
+                            <EmptyTemplate Context="data">
+                                <div class="pe-4 py-3">
+                                    @switch (data.Index)
+                                    {
+                                        case 0:
+                                            <span @onclick="@(() => experienceLevel = "love")">
+                                                <span class="@(experienceLevel == "love" ? "sf-icon-emoji-love fs-4 rounded-circle p-2 text-warning bg-warning-subtle" : "sf-icon-emoji-love fs-4 rounded-circle p-2 text-secondary bg-body-secondary")"></span>
+                                            </span>
+                                            break;
+                                        case 1:
+                                            <span @onclick="@(() => experienceLevel = "smile")">
+                                                <span class="@(experienceLevel == "smile" ? "sf-icon-emoji-smile fs-4 rounded-circle p-2 text-warning bg-warning-subtle" : "sf-icon-emoji-smile fs-4 rounded-circle p-2 text-secondary bg-body-secondary")"></span>
+                                            </span>
+                                            break;
+                                        case 2:
+                                            <span @onclick="@(() => experienceLevel = "emoji")">
+                                                <span class="@(experienceLevel == "emoji" ? "e-icons e-emoji fs-4 rounded-circle p-2 text-warning bg-warning-subtle" : "e-icons e-emoji fs-4 rounded-circle p-2 text-secondary bg-body-secondary")"></span>
+                                            </span>
+                                            break;
+                                        case 3:
+                                            <span @onclick="@(() => experienceLevel = "neutral")">
+                                                <span class="@(experienceLevel == "neutral" ? "sf-icon-emoji-neutral fs-4 rounded-circle p-2 text-warning bg-warning-subtle" : "sf-icon-emoji-neutral fs-4 rounded-circle p-2 text-secondary bg-body-secondary")"></span>
+                                            </span>
+                                            break;
+                                        case 4:
+                                            <span @onclick="@(() => experienceLevel = "sad")">
+                                                <span class="@(experienceLevel == "sad" ? "sf-icon-emoji-sad fs-4 rounded-circle p-2 text-warning bg-warning-subtle" : "sf-icon-emoji-sad fs-4 rounded-circle p-2 text-secondary bg-body-secondary")"></span>
+                                            </span>
+                                            break;
+                                    }
+                                </div>
+                            </EmptyTemplate>
+                            <TooltipTemplate Context="item">
+                                @switch (item)
+                                {
+                                    case 1: <span>Love</span>; break;
+                                    case 2: <span>Smile</span>; break;
+                                    case 3: <span>Happy</span>; break;
+                                    case 4: <span>Neutral</span>; break;
+                                    case 5: <span>Sad</span>; break;
+                                }
+                            </TooltipTemplate>
+                        </SfRating>
+                        <div class="d-flex flex-column gap-1 flex-grow-1">
+                            <label class="text-body-secondary small">Can you tell us more?</label>
+                            <SfTextArea Placeholder="Tell us like what could be improved..." ResizeMode="Resize.None" Rows="@(IsMobile ? 13 : 6)" aria-label="enter your suggestions" role="textbox" style=@($"height:{(IsMobile ? "100%" : "95px")}")></SfTextArea>
+                        </div>
+                    </Content>
+                    <FooterTemplate>
+                        <div class="d-flex gap-3 pb-1 mb-2 flex-grow">
+                            <SfButton CssClass="e-block e-outline ms-0" Content="Cancel" Type="Button" aria-label="cancel" role="button"></SfButton>
+                            <SfButton CssClass="e-block e-primary ms-0" Content="Submit" Type="Button" aria-label="submit" role="button"></SfButton>
+                        </div>
+                    </FooterTemplate>
+                </DialogTemplates>
+            </SfDialog>
+        </div>
+    </section>
+    <!-- SB Code - Start -->
+    <div class="position-absolute top-0 w-100 d-flex">
+        <SfButton class="mx-auto my-3" CssClass="e-outline" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Feedback Form" Type="Button" aria-label="open feedback form" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
+}

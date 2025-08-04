@@ -11,8 +11,8 @@
             <div class="w-full" style="max-width: 730px;">
                 <div class="flex justify-between items-center mb-4">
                     <div>
-                        <h1 class="text-base font-semibold text-gray-900 dark:text-white">Weather History</h1>
-                        <p class="text-xs mt-2 sm:mt-0 text-gray-500 dark:text-white">Location: <span class="font-medium text-gray-800 dark:text-white">Charlotte, North Carolina</span></p>
+                        <h1 class="text-base font-medium text-gray-900 dark:text-white mb-2">Weather History</h1>
+                        <p class="text-xs mt-2 sm:mt-0 text-gray-500 dark:text-gray-400">Location: <span class="font-medium">Charlotte, North Carolina</span></p>
                     </div>
                     <SfButton CssClass="e-outline hidden sm:inline-block" Content="Download Report" Type="button" aria-label="download report" role="button"></SfButton>
                     <SfButton CssClass="e-outline block sm:hidden" IconCss="e-icons e-download" Type="button" aria-label="download report" role="button"></SfButton>
@@ -28,7 +28,7 @@
                             </div>
                         </div>
                         <div class="flex gap-3">
-                            <SfButtonGroup class="e-btn-group hidden sm:block">
+                            <SfButtonGroup class="e-btn-group hidden sm:flex">
                                 <input Type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
                                 <label class="e-btn" for="day">D</label>
                                 <input Type="radio" id="week" name="align" value="W" aria-label="week" role="button" />
@@ -41,26 +41,47 @@
                                 <label class="e-btn" for="custom">Custom</label>
                             </SfButtonGroup>
                             <div class="flex justify-between items-center grow">
-                                <SfDropDownButton @ref=PeriodDropDown CssClass="inline-block sm:hidden" Content="Year" Items="@PeriodOptions" Type="button" aria-label="choose a range" role="button">
+                                <SfDropDownButton @ref="PeriodDropDown" CssClass="inline-block sm:hidden" Content="Year" Type="button" aria-label="choose a range" role="button">
                                     <DropDownButtonEvents Opened="@(args => IsPeriodDropdownOpen = true)" Closed="@(args => IsPeriodDropdownOpen = false)"></DropDownButtonEvents>
+                                    <DropDownMenuItems>
+                                        <DropDownMenuItem Text="Day"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Week"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Month"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Year"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Custom"></DropDownMenuItem>
+                                    </DropDownMenuItems>
                                 </SfDropDownButton>
-                                <SfDropDownButton @ref=WeatherDropDown CssClass="inline-block" Content="Temperature" Items="@WeatherOptions" Type="button" aria-label="choose a metric" role="button">
+                                <SfDropDownButton @ref="WeatherDropDown" CssClass="inline-block" Content="Temperature" Type="button" aria-label="choose a metric" role="button">
                                     <DropDownButtonEvents Opened="@(args => IsTempDropdownOpen = true)" Closed="@(args => IsTempDropdownOpen = false)"></DropDownButtonEvents>
+                                    <DropDownMenuItems>
+                                        <DropDownMenuItem Text="Temperature"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Wind speed"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Air pressure"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Snowfall"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Visibility"></DropDownMenuItem>
+                                    </DropDownMenuItems>
                                 </SfDropDownButton>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="flex items-center gap-3 text-gray-500 text-xs mb-4 dark:text-white">
-                    <p>Record temps: <span class="font-medium dark:text-white">26° / -13°C</span></p>
+                <div class="flex flex-wrap items-center gap-3 text-gray-500 text-xs mb-4 dark:text-white">
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:gap-1">
+                        <p>Record temps:</p>
+                        <p class="font-medium dark:text-white sm:ml-1">26° / -13°C</p>
+                    </div>
                     <div class="border-l h-6 border-gray-200 dark:border-gray-600"></div>
-                    <div class="h-4 border-gray-300"></div>
-                    <p>Avg rainfall: <span class="font-medium dark:text-white">9.9 cm</span></p>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:gap-1">
+                        <p>Avg rainfall:</p>
+                        <p class="font-medium dark:text-white sm:ml-1">9.9 cm</p>
+                    </div>
                     <div class="border-l h-6 border-gray-200 dark:border-gray-600"></div>
-                    <div class="h-4 border-gray-300"></div>
-                    <p class="text-xs">Snow: <span class="font-medium dark:text-white">2 days</span></p>
+                    <div class="flex flex-col sm:flex-row sm:items-center sm:gap-1">
+                        <p>Snow:</p>
+                        <p class="font-medium dark:text-white sm:ml-1">2 days</p>
+                    </div>
                 </div>
-                <SfChart @ref=Chart Width="100%" Height="200px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                <SfChart @ref="Chart" Width="100%" Height="200px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
                     <ChartArea>
                         <ChartAreaBorder Width="0"></ChartAreaBorder>
                     </ChartArea>
@@ -72,7 +93,7 @@
                         <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
                         <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
                     </ChartPrimaryXAxis>
-                    <ChartPrimaryYAxis Minimum="0" Maximum="30" Interval="10" EdgeLabelPlacement="EdgeLabelPlacement.Shift">
+                    <ChartPrimaryYAxis Minimum="0" Maximum="30" Interval="10" EdgeLabelPlacement="Syncfusion.Blazor.Charts.EdgeLabelPlacement.Shift">
                         <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
                         <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                         <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
@@ -81,11 +102,10 @@
                         <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
                     </ChartPrimaryYAxis>
                     <ChartArea>
-                        <ChartAreaBorder Width="0" />
+                        <ChartAreaBorder Width="0"></ChartAreaBorder>
                     </ChartArea>
                     <ChartSeriesCollection>
-                        <ChartSeries DataSource="@BarChartData" Type="ChartSeriesType.RangeColumn" XName="Days" High="HighTemp" Low="LowTemp" Fill="#267DDA" ColumnSpacing="0.1" CornerRadius="@(new ChartCornerRadius { TopLeft = 4, TopRight = 4, BottomLeft = 4, BottomRight = 4 })">
-                        </ChartSeries>
+                        <ChartSeries DataSource="@BarChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.RangeColumn" XName="Days" High="HighTemp" Low="LowTemp" Fill="#267DDA" ColumnSpacing="0.1" CornerRadius="@(new ChartCornerRadius { TopLeft = 4, TopRight = 4, BottomLeft = 4, BottomRight = 4 })"></ChartSeries>
                     </ChartSeriesCollection>
                 </SfChart>
             </div>
@@ -99,8 +119,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
             <div class="w-100" style="max-width: 730px;">
                 <div class="d-flex justify-content-between align-items-center mb-4">
                     <div>
-                        <h1 class="fs-6 fw-medium text-body">Weather History</h1>
-                        <p class="fs-6 mt-2 sm-mt-0 text-body-secondary">Location: <span class="font-medium text-gray-800 dark:text-white">Charlotte, North Carolina</span></p>
+                        <h1 class="fs-6 text-body fw-medium mb-2">Weather History</h1>
+                        <p class="small text-body-secondary m-0">Location: <span class="fw-medium">Charlotte, North Carolina</span></p>
                     </div>
                     <SfButton CssClass="e-outline d-none d-sm-block" Content="Download Report" Type="button" aria-label="download report" role="button"></SfButton>
                     <SfButton CssClass="e-outline d-sm-none" IconCss="e-icons e-download" Type="button" aria-label="download report" role="button"></SfButton>
@@ -116,7 +136,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             </div>
                         </div>
                         <div class="d-flex gap-3">
-                            <SfButtonGroup class="e-btn-group d-none d-sm-block">
+                            <SfButtonGroup class="e-btn-group d-none d-sm-flex">
                                 <input Type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
                                 <label class="e-btn" for="day">D</label>
                                 <input Type="radio" id="week" name="align" value="W" aria-label="week" role="button" />
@@ -129,24 +149,44 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <label class="e-btn" for="custom">Custom</label>
                             </SfButtonGroup>
                             <div class="d-flex justify-content-between align-items-center flex-grow-1">
-                                <SfDropDownButton @ref=PeriodDropDown CssClass="inline-block d-sm-none" Content="Year" Items="@PeriodOptions" Type="button" aria-label="choose a range" role="button">
+                                <SfDropDownButton @ref="PeriodDropDown" CssClass="e-outline inline-block d-sm-none" Content="Year" Type="button" aria-label="choose a range" role="button">
                                     <DropDownButtonEvents Opened="@(args => IsPeriodDropdownOpen = true)" Closed="@(args => IsPeriodDropdownOpen = false)"></DropDownButtonEvents>
+                                    <DropDownMenuItems>
+                                        <DropDownMenuItem Text="Day"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Week"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Month"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Year"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Custom"></DropDownMenuItem>
+                                    </DropDownMenuItems>
                                 </SfDropDownButton>
-                                <SfDropDownButton @ref=WeatherDropDown CssClass="inline-block e-outline" Content="Temperature" Items="@WeatherOptions" Type="button" aria-label="choose a metric" role="button">
+                                <SfDropDownButton @ref="WeatherDropDown" CssClass="inline-block e-outline" Content="Temperature" Type="button" aria-label="choose a metric" role="button">
                                     <DropDownButtonEvents Opened="@(args => IsTempDropdownOpen = true)" Closed="@(args => IsTempDropdownOpen = false)"></DropDownButtonEvents>
+                                    <DropDownMenuItems>
+                                        <DropDownMenuItem Text="Temperature"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Wind speed"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Air pressure"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Snowfall"></DropDownMenuItem>
+                                        <DropDownMenuItem Text="Visibility"></DropDownMenuItem>
+                                    </DropDownMenuItems>
                                 </SfDropDownButton>
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="d-flex gap-2 flex-column flex-sm-row justify-content-start align-items-sm-center small lh-sm text-body-secondary mb-2">
-                    <span class="mb-0">Record temps:</span>
-                    <div class="d-flex align-items-center gap-2 gap-sm-3">
-                        <span class="fw-medium mb-0">26° / -13°C</span>
-                        <div class="border-start border-1 border-dark-subtle" style="height: 16px;"></div>
-                        <span class="mb-0">Avg rainfall: <span class="fw-medium">9.9 cm</span></span>
-                        <div class="border-start border-1 border-dark-subtle" style="height: 16px;"></div>
-                        <span class="mb-0">Snow: <span class="fw-medium">2 days</span></span>
+                <div class="d-flex flex-wrap align-items-center gap-3 text-body-secondary small mb-4">
+                    <div class="d-flex flex-column flex-sm-row">
+                        <span>Record temps:</span>
+                        <span class="fw-medium ms-sm-1">26° / -13°C</span>
+                    </div>
+                    <div class="border-start text-body-secondary" style="height: 24px;"></div>
+                    <div class="d-flex flex-column flex-sm-row">
+                        <span>Avg rainfall:</span>
+                        <span class="fw-medium ms-sm-1">9.9 cm</span>
+                    </div>
+                    <div class="border-start text-body-secondary" style="height: 24px;"></div>
+                    <div class="d-flex flex-column flex-sm-row">
+                        <span>Snow:</span>
+                        <span class="fw-medium ms-sm-1">2 days</span>
                     </div>
                 </div>
                 <SfChart @ref="Chart" Width="100%" Height="200px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
@@ -161,7 +201,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
                         <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
                     </ChartPrimaryXAxis>
-                    <ChartPrimaryYAxis Minimum="0" Maximum="30" Interval="10" EdgeLabelPlacement="EdgeLabelPlacement.Shift">
+                    <ChartPrimaryYAxis Minimum="0" Maximum="30" Interval="10" EdgeLabelPlacement="Syncfusion.Blazor.Charts.EdgeLabelPlacement.Shift">
                         <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
                         <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
                         <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
@@ -170,11 +210,10 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
                     </ChartPrimaryYAxis>
                     <ChartArea>
-                        <ChartAreaBorder Width="0" />
+                        <ChartAreaBorder Width="0"></ChartAreaBorder>
                     </ChartArea>
                     <ChartSeriesCollection>
-                        <ChartSeries DataSource="@BarChartData" Type="ChartSeriesType.RangeColumn" XName="Days" High="HighTemp" Low="LowTemp" Fill="#267DDA" ColumnSpacing="0.1" CornerRadius="@(new ChartCornerRadius { TopLeft = 4, TopRight = 4, BottomLeft = 4, BottomRight = 4 })">
-                        </ChartSeries>
+                        <ChartSeries DataSource="@BarChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.RangeColumn" XName="Days" High="HighTemp" Low="LowTemp" Fill="#267DDA" ColumnSpacing="0.1" CornerRadius="@(new ChartCornerRadius { TopLeft = 4, TopRight = 4, BottomLeft = 4, BottomRight = 4 })"></ChartSeries>
                     </ChartSeriesCollection>
                 </SfChart>
             </div>

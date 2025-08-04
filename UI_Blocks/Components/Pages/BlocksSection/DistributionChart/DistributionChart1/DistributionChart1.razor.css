@@ -1,0 +1,9 @@
+::deep .e-listview .e-list-item.e-active,
+::deep .e-listview .e-list-item:hover,
+::deep .e-listview .e-list-item.e-focused {
+    background-color: transparent !important;
+}
+
+::deep .e-listview .e-list-item.e-level-1 {
+    border-bottom: 1px solid #6b7280;
+}

@@ -39,10 +39,10 @@
 					</div>
 					<div class="mt-4 sm:flex items-center justify-between w-full">
 						<span class="flex items-center">
-							<SfSwitch Checked="true" CssClass="w-9" aria-label="show only discounted items" role="switch"></SfSwitch>
+							<SfSwitch CssClass="w-9" Checked="true" aria-label="show only discounted items" role="switch"></SfSwitch>
 							<span class="text-base sm:text-sm text-gray-900 dark:text-gray-50 ml-2">Show only discounted items</span>
 						</span>
-						<SfDropDownButton CssClass="mt-3 sm:mt-0" Type="button" Content="All Categories" aria-label="choose category" role="button">
+						<SfDropDownButton CssClass="mt-3 sm:mt-0" Content="All Categories" Type="button" aria-label="choose category" role="button">
 							<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
 						</SfDropDownButton>
 					</div>
@@ -52,7 +52,7 @@
 							<Template>
 								@{
 									<div class="e-card flex flex-row p-4 sm:py-5 sm:px-5">
-										<div class="e-card-image !w-auto shrink-0">
+										<div class="e-card-image flex items-center !w-auto shrink-0 bg-gray-50 dark:bg-gray-700 rounded">
 											<img class="!w-28 h-24 sm:h-28" src="assets/images/tile-view/shopping-cart/@context.Image" alt="product picture" />
 										</div>
 										<div class="e-card-stacked ml-3 flex sm:!flex-row flex-col w-full sm:!justify-between">
@@ -77,8 +77,8 @@
 													<SfNumericTextBox Format="n0" Value="1" Width="130px" aria-label="quantity of items" role="spinbutton"></SfNumericTextBox>
 												</div>
 												<div class="mt-3 text-end flex px-1">
-													<SfButton CssClass="e-primary sm:w-44 w-full" IconCss="sf-icon-cart !text-base" Type="button" Content="Add to Cart" aria-label="add to cart" role="button"></SfButton>
-													<SfButton CssClass="sf-icon-heart text-base sm:!flex sm:!items-center ml-2 h-8 px-2 !hidden" Type="button" aria-label="add to wishlist" role="button"></SfButton>
+													<SfButton CssClass="e-primary sm:w-44 w-full" IconCss="sf-icon-cart !text-base" Content="Add to Cart" Type="button" aria-label="add to cart" role="button"></SfButton>
+													<SfButton CssClass="sm:!flex sm:!items-center ml-2 h-8 px-2 !hidden" IconCss="sf-icon-heart text-base" Type="button" aria-label="add to wishlist" role="button"></SfButton>
 												</div>
 											</div>
 										</div>
@@ -110,7 +110,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 						</BreadcrumbTemplates>
 					</SfBreadcrumb>
 					<div class="e-appbar-spacer"></div>
-					<SfButton CssClass="e-icons e-flat sf-icon-notification-bell-01 fs-6" Type="button" aria-label="notification" role="button"></SfButton>
+					<SfButton CssClass="e-flat fs-6" IconCss="sf-icon-notification-bell-01" Type="button" aria-label="notification" role="button"></SfButton>
 					<span class="e-avatar e-avatar-circle e-avatar-small ms-3">
 						<img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
 					</span>
@@ -132,7 +132,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 							<SfSwitch Checked="true" CssClass="bs-switch" aria-label="show only discounted items" role="switch"></SfSwitch>
 							<span class="fs-6 text-body ms-2 ps-1">Show only discounted items</span>
 						</span>
-						<SfDropDownButton CssClass="mt-3 mt-sm-0 e-outline" Type="button" Content="All Categories" aria-label="choose category" role="button">
+						<SfDropDownButton CssClass="mt-3 mt-sm-0 e-outline" Content="All Categories" Type="button" aria-label="choose category" role="button">
 							<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
 						</SfDropDownButton>
 					</div>
@@ -142,7 +142,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 							<Template>
 								@{
 									<div class="e-card d-flex flex-row p-2 rounded-3">
-										<div class="e-card-image w-auto ps-2">
+										<div class="e-card-image d-flex align-items-center w-auto bg-body-tertiary rounded-1">
 											<img src="assets/images/tile-view/shopping-cart/@context.Image" alt="product picture" style="width: 112px; height: 108px;" />
 										</div>
 										<div class="e-card-stacked ms-2 ps-1 py-1 d-flex flex-column flex-sm-row w-100 justify-content-between">
@@ -167,8 +167,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 													<SfNumericTextBox Format="n0" Value="1" Width="130px" aria-label="quantity of items" role="spinbutton"></SfNumericTextBox>
 												</div>
 												<div class="mt-2 pt-1 d-flex justify-content-sm-end">
-													<SfButton CssClass="e-primary w-100 w-sm-25" IconCss="sf-icon-cart" Type="button" Content="Add to Cart" aria-label="add to cart" role="button"></SfButton>
-													<SfButton CssClass="e-outline sf-icon-heart fs-6 ms-2 d-none d-sm-block" Type="button" aria-label="add to wishlist" role="button"></SfButton>
+													<SfButton CssClass="e-primary w-100 w-sm-25" IconCss="sf-icon-cart" Content="Add to Cart" Type="button" aria-label="add to cart" role="button"></SfButton>
+													<SfButton CssClass="e-outline ms-2 d-none d-sm-block" IconCss="sf-icon-heart fs-6" Type="button" aria-label="add to wishlist" role="button"></SfButton>
 												</div>
 											</div>
 										</div>

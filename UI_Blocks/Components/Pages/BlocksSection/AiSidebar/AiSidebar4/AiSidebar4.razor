@@ -42,7 +42,7 @@
                                                 <div class="relative">
                                                     <span id="target" class="e-icons e-more-horizontal-1 e-medium hidden group-hover:block ml-3" @onclick="@(args => ContextMenu.Open(args.ClientX, args.ClientY))"></span>
                                                 </div>
-                                                <SfContextMenu @ref="ContextMenu" Target="#target" TValue="MenuItem" aria-label="message options menu" role="menu">
+                                                <SfContextMenu @ref="ContextMenu" TValue="MenuItem" Target="#target" aria-label="message options menu" role="menu">
                                                     <MenuItems>
                                                         <MenuItem Text="Pin" IconCss="sf-icon-push-pin"></MenuItem>
                                                         <MenuItem Text="Delete" IconCss="e-icons e-trash"></MenuItem>
@@ -65,7 +65,7 @@
                         </div>
                     </div>
                     <div class="pb-4 px-3">
-                        <SfButton CssClass="e-primary w-full" IconCss="e-icons e-plus e-medium" Type="button" Content="Start new chat" aria-label="start new chat" role="button"></SfButton>
+                        <SfButton CssClass="e-primary w-full" IconCss="e-icons e-plus e-medium" Content="Start new chat" Type="button" aria-label="start new chat" role="button"></SfButton>
                     </div>
                 </div>
             </SfSidebar>
@@ -73,7 +73,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 top-0 left-0 absolute">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -113,7 +113,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                             {
                                                 <span class="text-truncate flex-grow-1 w-100" title="@data.Message">@data.Message</span>
                                                 <span id="target" class="e-icons e-more-horizontal-1 d-none context-menu fs-6 ms-1" @onclick="@(args => ContextMenu.Open(args.ClientX, args.ClientY))"></span>
-                                                <SfContextMenu @ref="ContextMenu" Target="#target" TValue="MenuItem" aria-label="message options menu" role="menu">
+                                                <SfContextMenu @ref="ContextMenu" TValue="MenuItem" Target="#target" aria-label="message options menu" role="menu">
                                                     <MenuItems>
                                                         <MenuItem Text="Pin" IconCss="sf-icon-push-pin"></MenuItem>
                                                         <MenuItem Text="Delete" IconCss="e-icons e-trash"></MenuItem>
@@ -136,7 +136,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         </div>
                     </div>
                     <div class="pb-3 px-3">
-                        <SfButton CssClass="e-primary w-100" IconCss="e-icons e-plus e-medium" Type="button" Content="Start new chat" aria-label="start new chat" role="button"></SfButton>
+                        <SfButton CssClass="e-primary w-100" IconCss="e-icons e-plus e-medium" Content="Start new chat" Type="button" aria-label="start new chat" role="button"></SfButton>
                     </div>
                 </div>
             </SfSidebar>
@@ -144,7 +144,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 position-absolute top-0 start-0">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

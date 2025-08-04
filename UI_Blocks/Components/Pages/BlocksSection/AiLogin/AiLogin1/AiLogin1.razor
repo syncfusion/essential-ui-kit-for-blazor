@@ -19,7 +19,7 @@
                         <div class="flex items-center justify-center">
                             <div class="w-full max-w-md rounded-lg px-3 py-8 md:px-6 md:py-20">
                                 <div class="flex justify-center gap-3 mb-8">
-                                    <i class="e-icons e-ai-chat text-2xl text-primary-600 dark:text-primary-400"></i>
+                                    <span class="e-icons e-ai-chat text-2xl text-primary-600 dark:text-primary-400"></span>
                                     <h2 class="text-center font-semibold text-gray-900 dark:text-white text-2xl">Fusion AI</h2>
                                 </div>
                                 <form action="#" class="mt-6" onsubmit="event.preventDefault();">
@@ -38,17 +38,17 @@
                                         </SfButton>
                                     </div>
                                     <div class="relative flex justify-center items-center mt-6">
-                                        <span class="bg-gray-50 dark:bg-gray-800 px-2.5 z-10 absolute text-sm text-gray-700 dark:text-gray-300">Or</span>
+                                        <span class="bg-white dark:bg-gray-800 px-2.5 z-10 absolute text-sm text-gray-700 dark:text-gray-300">Or</span>
                                         <hr class="w-full absolute border-gray-200 dark:border-gray-600" />
                                     </div>
                                     <div class="mt-6 mb-4">
-                                        <SfTextBox @ref="UserName" CssClass="e-normal !border-0 shadow-sm dark:bg-gray-700" Type="InputType.Email" Placeholder="Username or email" FloatLabelType="FloatLabelType.Never" Created="@(args => UserName?.AddIconAsync("prepend", "e-icons e-user e-small"))" aria-label="enter your email address" role="textbox"></SfTextBox>
+                                        <SfTextBox @ref="UserName" CssClass="e-normal !border-0 shadow-sm !bg-gray-50 dark:!bg-gray-700" Type="InputType.Email" Placeholder="Username or email" FloatLabelType="FloatLabelType.Never" Created="@(args => UserName?.AddIconAsync("prepend", "e-icons e-user e-small"))" aria-label="enter your email address" role="textbox"></SfTextBox>
                                     </div>
                                     <div class="mb-6 relative">
-                                        <SfTextBox @ref="Password" CssClass="e-normal !border-0 shadow-sm bg-none dark:bg-gray-700" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" Created="@(args => Password?.AddIconAsync("prepend", "e-icons e-lock e-small"))" aria-label="enter your email password" role="textbox"></SfTextBox>
+                                        <SfTextBox @ref="Password" CssClass="e-normal !border-0 shadow-sm !bg-gray-50 dark:!bg-gray-700" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" Created="@(args => Password?.AddIconAsync("prepend", "e-icons e-lock e-small"))" aria-label="enter your email password" role="textbox"></SfTextBox>
                                     </div>
                                     <div class="mb-4">
-                                        <SfButton CssClass="e-normal w-full e-primary e-btn" Type="submit" aria-label="sign in with fusion AI" role="button">Sign in with Fusion AI</SfButton>
+                                        <SfButton CssClass="e-normal w-full e-primary" Content="Sign in with Fusion AI" Type="submit" aria-label="sign in with fusion AI" role="button"></SfButton>
                                     </div>
                                 </form>
                                 <div>
@@ -80,7 +80,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         <div class="d-flex align-items-center justify-content-center">
                             <div class="w-100 rounded-lg px-3 py-5 px-md-4 px-md-5" style="max-width: 448px;">
                                 <div class="d-flex justify-content-center gap-2 mb-4">
-                                    <i class="e-icons e-ai-chat fs-4 text-primary"></i>
+                                    <span class="e-icons e-ai-chat fs-4 text-primary"></span>
                                     <h2 class="text-center fw-semibold text-body fs-4">Fusion AI</h2>
                                 </div>
                                 <form action="#" class="mt-4" onsubmit="event.preventDefault();">
@@ -103,13 +103,13 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                         <hr class="w-100 border-light-subtle opacity-100" />
                                     </div>
                                     <div class="mt-4 mb-3">
-                                        <SfTextBox @ref="UserName" CssClass="e-normal small text-secondary border-0 shadow-sm bg-body-tertiary" Type="InputType.Email" Placeholder="Username or email" FloatLabelType="FloatLabelType.Never" Created="@(args => UserName?.AddIconAsync("prepend", "e-icons e-user e-small"))" aria-label="enter your email address" role="textbox"></SfTextBox>
+                                        <SfTextBox @ref="UserName" CssClass="e-normal small text-secondary border-0 bg-body-tertiary" Type="InputType.Email" Placeholder="Username or email" FloatLabelType="FloatLabelType.Never" Created="@(args => UserName?.AddIconAsync("prepend", "e-icons e-user e-small border-0"))" aria-label="enter your email address" role="textbox"></SfTextBox>
                                     </div>
                                     <div class="mb-4 position-relative">
-                                        <SfTextBox @ref="Password" CssClass="e-normal small text-secondary border-0 shadow-sm bg-body-tertiary" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" Created="@(args => Password?.AddIconAsync("prepend", "e-icons e-lock e-small"))" aria-label="enter your email password" role="textbox"></SfTextBox>
+                                        <SfTextBox @ref="Password" CssClass="e-normal small text-secondary border-0 bg-body-tertiary" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" Created="@(args => Password?.AddIconAsync("prepend", "e-icons e-lock e-small border-0"))" aria-label="enter your email password" role="textbox"></SfTextBox>
                                     </div>
                                     <div class="mb-3">
-                                        <SfButton CssClass="e-normal w-100 e-primary e-btn" Type="submit" aria-label="sign in" role="button">Sign in with Fusion AI</SfButton>
+                                        <SfButton CssClass="e-normal w-100 e-primary" Content="Sign in with Fusion AI" Type="submit" aria-label="sign in" role="button"></SfButton>
                                     </div>
                                 </form>
                                 <div>

@@ -7,8 +7,7 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section>
-        <div id="dialog-container" class="relative flex justify-center" style="min-height: 826px;">
-            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="contact information" role="button">Contact Information</SfButton>
+        <div id="dialog-container" class="relative" style="min-height: 826px;">
             <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="548px" aria-label="add or update contact information" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
@@ -21,7 +20,7 @@
                             <p class="text-sm font-medium mb-3">Profile Photo</p>
                             <div class="flex items-center gap-4">
                                 <span class="e-avatar e-avatar-circle size-20 shrink-0">
-                                    <i class="e-icons e-user text-4xl text-gray-500 dark:text-gray-300"></i>
+                                    <span class="e-icons e-user text-4xl text-gray-500 dark:text-gray-300"></span>
                                 </span>
                                 <div id="upload-template">
                                     <SfUploader AllowMultiple="false" AllowedExtensions="image/*" MaxFileSize="2000000">
@@ -88,20 +87,24 @@
                     </Content>
                     <FooterTemplate>
                         <div class="flex justify-end gap-2 sm:gap-1 mt-1 mb-2">
-                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
-                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="button" aria-label="save contact" role="button">Save Contact</SfButton>
+                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Content="Cancel" Type="button" aria-label="cancel" role="button"></SfButton>
+                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Content="Save Contact" Type="button" aria-label="save contact" role="button"></SfButton>
                         </div>
                     </FooterTemplate>
                 </DialogTemplates>
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="top-0 left-0 absolute w-full flex">
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Contact Information" Type="button" aria-label="contact information" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
-        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 826px;">
-            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="contact information" role="button">Contact Information</SfButton>
+        <div id="dialog-container" class="position-relative" style="min-height: 826px;">
             <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="548px" aria-label="add or update contact information" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
@@ -114,7 +117,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             <p class="fw-medium mb-2 text-body">Profile Photo</p>
                             <div class="d-flex align-items-center gap-3 pt-1">
                                 <span class="e-avatar e-avatar-circle" style="width: 80px; height: 80px;">
-                                    <i class="e-icons e-user fs-2"></i>
+                                    <span class="e-icons e-user fs-2"></span>
                                 </span>
                                 <div id="upload-template">
                                     <SfUploader AllowMultiple="false" AllowedExtensions="image/*" MaxFileSize="2000000">
@@ -181,12 +184,17 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     </Content>
                     <FooterTemplate>
                         <div class="d-flex justify-content-end gap-2 gap-sm-1 py-1">
-                            <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
-                            <SfButton CssClass="e-primary col col-sm-auto" Type="button" aria-label="save contact" role="button">Save Contact</SfButton>
+                            <SfButton CssClass="col col-sm-auto ms-0" Content="Cancel" Type="button" aria-label="cancel" role="button"></SfButton>
+                            <SfButton CssClass="e-primary col col-sm-auto" Content="Save Contact" Type="button" aria-label="save contact" role="button"></SfButton>
                         </div>
                     </FooterTemplate>
                 </DialogTemplates>
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="position-absolute top-0 start-0 d-flex w-100">
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Contact Information" Type="button" aria-label="contact information" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }

@@ -5,13 +5,13 @@ namespace UI_Blocks.Components.Pages.BlocksSection.List.List11
 {
     public partial class List11
     {
-        private string WidthStyle { get; set; } = "max-width:610px";
+        public string WidthStyle = "max-width:610px";
 
-        private int MaxItems { get; set; } = 4;
+        public int MaxItems = 4;
 
-        private BreadcrumbOverflowMode OverflowMode { get; set; } = BreadcrumbOverflowMode.None;
+        public BreadcrumbOverflowMode OverflowMode { get; set; } = BreadcrumbOverflowMode.None;
 
-        private List<FileData> Files { get; set; } = new List<FileData>
+        public List<FileData> Files = new List<FileData>
         {
             new FileData { Id = 1, FileName = "Project_Presentation_2024_V1.pptx", Data1 = "Documents", Data2 = "Presentations", Data3 = "Project Presentations", Data4 = "2024", Image = "ppt.png" },
             new FileData { Id = 2, FileName = "Inventory_Tracking_Sheet_August.xlsx", Data1 = "Documents", Data2 = "Finance", Data3 = "Quarterly Reports", Data4 = "Q3 2024", Image = "excel.png" },
@@ -34,8 +34,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.List.List11
                     _ => 4
                 };
                 OverflowMode = MaxItems <= 2 ? BreadcrumbOverflowMode.Menu : BreadcrumbOverflowMode.None;
-                StateHasChanged();
             }
+            StateHasChanged();
         }
 
         public class FileData

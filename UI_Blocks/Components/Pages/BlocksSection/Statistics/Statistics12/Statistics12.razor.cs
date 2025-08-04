@@ -2,7 +2,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Statistics.Statistics12
 {
     public partial class Statistics12
     {
-        public List<Metric> MetricsData { get; set; } = new List<Metric>
+        public List<Metric> MetricsData = new List<Metric>
         {
             new Metric { Id = 1, MetricName = "Dream Car", CurrentValue = 26008, Goal = 34678 },
             new Metric { Id = 2, MetricName = "House Savings", CurrentValue = 12567, Goal = 25000 },

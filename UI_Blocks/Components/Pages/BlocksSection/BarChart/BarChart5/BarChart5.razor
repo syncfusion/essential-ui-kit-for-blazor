@@ -22,7 +22,7 @@
                                 <DropDownMenuItem Text="2020"></DropDownMenuItem>
                             </DropDownMenuItems>
                         </SfDropDownButton>
-                        <SfButton Content="Download Report" CssClass="hidden lg:block" Type="button" aria-label="download report" role="button"></SfButton>
+                        <SfButton CssClass="hidden lg:block" Content="Download Report" Type="button" aria-label="download report" role="button"></SfButton>
                         <SfButton CssClass="block lg:hidden" IconCss="e-icons e-download" Type="button" aria-label="download report" role="button"></SfButton>
                     </div>
                 </div>
@@ -59,7 +59,7 @@
                             <ChartSeries DataSource="@BarChartData" XName="XAxis" YName="YAxis1" Type="ChartSeriesType.StackingColumn" Fill="#01A8B5" Name="This Year Sales" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Circle"></ChartSeries>
                             <ChartSeries DataSource="@BarChartData" XName="XAxis" YName="YAxis2" YAxisName="YAxisRight" Type="ChartSeriesType.Line" Width="2" Fill="@(CurrentTheme == "tailwind-dark" ? "#FFFFFF" : "#1F2937")" Name="Total Sales Var%" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Circle"></ChartSeries>
                         </ChartSeriesCollection>
-                        <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near" Padding="30" Width="340"></ChartLegendSettings>
+                        <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near" Height="53"></ChartLegendSettings>
                     </SfChart>
                 </div>
             </div>
@@ -84,7 +84,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <DropDownMenuItem Text="2020"></DropDownMenuItem>
                             </DropDownMenuItems>
                         </SfDropDownButton>
-                        <SfButton Content="Download Report" CssClass="d-none d-lg-block e-outline" Type="button" aria-label="download report" role="button"></SfButton>
+                        <SfButton CssClass="d-none d-lg-block e-outline" Content="Download Report" Type="button" aria-label="download report" role="button"></SfButton>
                         <SfButton CssClass="d-lg-none e-outline" IconCss="e-icons e-download" Type="button" aria-label="download report" role="button"></SfButton>
                     </div>
                 </div>
@@ -120,7 +120,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             <ChartSeries DataSource="@BarChartData" XName="XAxis" YName="YAxis1" Type="ChartSeriesType.StackingColumn" Fill="#006EEF" Name="This Year Sales" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Circle"></ChartSeries>
                             <ChartSeries DataSource="@BarChartData" XName="XAxis" YName="YAxis2" YAxisName="YAxisRight" Type="ChartSeriesType.Line" Width="2" Fill="@(CurrentTheme == "bootstrap5.3-dark" ? "#FFFFFF" : "#1F2937")" Name="Total Sales Var%" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Circle"></ChartSeries>
                         </ChartSeriesCollection>
-                        <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near" Padding="30" Width="340"></ChartLegendSettings>
+                        <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near" Height="53"></ChartLegendSettings>
                     </SfChart>
                 </div>
             </div>

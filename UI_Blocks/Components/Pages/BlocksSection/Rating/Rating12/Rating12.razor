@@ -1,0 +1,90 @@
+﻿@page "/blocks/rating-12"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="flex flex-col sm:flex-row gap-8 justify-between px-4 sm:px-12 py-8 mx-auto bg-white dark:bg-gray-800 border-0 sm:rounded-lg sm:border border-gray-300 dark:border-gray-500" style="max-width: 606px;">
+                <div class="flex flex-col justify-center items-center mt-1 mb-1">
+                    <h2 class="text-lg font-semibold text-gray-900 dark:text-white text-center">Overall score</h2>
+                    <SfRating Value="4.1" ShowLabel="true" Precision="PrecisionType.Exact" LabelPosition="Syncfusion.Blazor.Inputs.LabelPosition.Top">
+                        <EmptyTemplate>
+                            <span class="sf-icon-star-filled-01 !text-2xl text-gray-300 dark:text-gray-500"></span>
+                        </EmptyTemplate>
+                        <FullTemplate>
+                            <span class="sf-icon-star-filled-01 !text-2xl text-amber-300"></span>
+                        </FullTemplate>
+                        <LabelTemplate Context="data">
+                            <h2 class="text-3xl font-semibold pt-2 text-gray-900 dark:text-white">@data.ToString("0.0") <span class="text-lg font-normal">/5</span></h2>
+                        </LabelTemplate>
+                    </SfRating>
+                    <span class="e-badge e-bigger e-badge-pill mt-1 bg-gray-100 dark:bg-gray-700 font-medium">Based on 121 reviews</span>
+                </div>
+                <div class="flex flex-col">
+                    @foreach (var rating in CustomerRating)
+                    {
+                        <div class="mb-2 text-left">
+                            <div class="flex justify-between text-sm font-medium text-gray-700">
+                                <span class="text-gray-700 dark:text-gray-100">@rating.Label</span>
+                                <span class="text-gray-900 dark:text-white">@rating.RatingValue.ToString("0.0")</span>
+                            </div>
+                            <div class="flex">
+                                <div class="grow sm:grow-0" style="height: 30px;">
+                                    <SfProgressBar id="@rating.Id.ToString()" Value="@rating.Value" Width="@ProgressWidth" Height="30" ProgressThickness="8" TrackThickness="8" ProgressColor="#FFB900" CornerRadius="CornerType.Round">
+                                        <ProgressBarMargin Left="1" Right="1"></ProgressBarMargin>
+                                    </SfProgressBar>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="d-flex flex-column flex-sm-row gap-4 justify-content-between px-4 px-sm-5 py-4 mx-auto bg-body border rounded-3" style="max-width: 606px;">
+                <div class="d-flex flex-column justify-content-center align-items-center mt-1 mb-1">
+                    <h2 class="fs-5 fw-medium text-body text-center mb-0">Overall score</h2>
+                    <SfRating Value="4.1" ShowLabel="true" Precision="PrecisionType.Exact" LabelPosition="Syncfusion.Blazor.Inputs.LabelPosition.Top">
+                        <EmptyTemplate>
+                            <span class="sf-icon-star-02 fs-4 text-body-secondary"></span>
+                        </EmptyTemplate>
+                        <FullTemplate>
+                            <span class="sf-icon-star-filled-01 fs-4 text-warning"></span>
+                        </FullTemplate>
+                        <LabelTemplate Context="data">
+                            <h2 class="fw-bold pt-2 text-body mb-0">@data.ToString("0.0") <span class="h6 fw-medium">/5</span></h2>
+                        </LabelTemplate>
+                    </SfRating>
+                    <span class="e-badge rounded-pill bg-body-secondary text-body-secondary fw-medium mt-3">Based on 121 reviews</span>
+                </div>
+                <div class="d-flex flex-column">
+                    @foreach (var rating in CustomerRating)
+                    {
+                        <div class="mb-2 text-start">
+                            <div class="d-flex justify-content-between small fw-medium text-body-secondary">
+                                <span>@rating.Label</span>
+                                <span class="text-body small">@rating.RatingValue</span>
+                            </div>
+                            <div class="d-flex">
+                                <div class="flex-grow-1" style="height: 30px;">
+                                    <SfProgressBar id="@rating.Id.ToString()" Value="@rating.Value" Width="@ProgressWidth" Height="30" ProgressThickness="8" TrackThickness="8" ProgressColor="#FFB900" CornerRadius="CornerType.Round">
+                                        <ProgressBarMargin Left="1" Right="1"></ProgressBarMargin>
+                                    </SfProgressBar>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}

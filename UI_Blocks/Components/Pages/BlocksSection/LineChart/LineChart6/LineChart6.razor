@@ -1,0 +1,156 @@
+﻿@page "/blocks/line-chart-6"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 1120px;">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-md font-semibold text-gray-900 dark:text-white">Consolidated Budget</h2>
+                    <div class="flex gap-2">
+                        <SfButton CssClass="e-outline" IconCss="e-icons e-refresh" Type="button" aria-label="refresh" role="button"></SfButton>
+                        <SfButtonGroup class="e-btn-group hidden sm:flex">
+                            <input type="radio" id="day" name="align" value="day" aria-label="day" role="button" />
+                            <label class="e-btn" for="day">D</label>
+                            <input type="radio" id="week" name="align" value="week" aria-label="week" role="button" />
+                            <label class="e-btn" for="week">W</label>
+                            <input type="radio" id="month" name="align" value="month" aria-label="month" role="button" />
+                            <label class="e-btn" for="month">M</label>
+                            <input type="radio" id="year" name="align" value="year" checked aria-label="year" role="button" />
+                            <label class="e-btn" for="year">Y</label>
+                            <input type="radio" id="custom" name="align" value="custom" aria-label="custom" role="button" />
+                            <label class="e-btn" for="custom">Custom</label>
+                        </SfButtonGroup>
+                    </div>
+                </div>
+                <SfDropDownButton @ref="DropDownButton" CssClass="e-outline block sm:hidden" Content="Year" Type="button" aria-label="choose a year" role="button">
+                    <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                    <DropDownMenuItems>
+                        <DropDownMenuItem Text="Day"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Week"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Month"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Year"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Custom"></DropDownMenuItem>
+                    </DropDownMenuItems>
+                </SfDropDownButton>
+                <div class="mt-1">
+                    <SfChart Width="100%" Height="400px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartMargin Left="0" Right="0" Top="0" Bottom="34"></ChartMargin>
+                        <ChartAnnotations>
+                            <ChartAnnotation X="@XValue" Y="@YValue" CoordinateUnits="Units.Pixel" Region="Regions.Chart">
+                                <ContentTemplate>
+                                    <div class="flex flex-col items-center"> 
+                                        <div style="width: 2px; height: 325px; background: @(CurrentTheme == "tailwind-dark" ? "repeating-linear-gradient(to bottom, #6B7280 0, #6B7280 4px, transparent 4px, transparent 8px)" : "repeating-linear-gradient(to bottom, #9CA3AF 0, #9CA3AF 4px, transparent 4px, transparent 8px)");"></div>
+                                        <div style="width: 10px; height: 10px; border-radius: 50%; background-color: @(CurrentTheme == "tailwind-dark" ? "#9CA3AF" : "#1F2937");"></div>
+                                        <div style="text-align: center; font-size: 12px; font-weight: 500; color: @(CurrentTheme == "tailwind-dark" ? "#FFFFFF" : "#111827");">Dec 6, 2024</div>
+                                    </div>
+                                </ContentTemplate>
+                            </ChartAnnotation>
+                        </ChartAnnotations>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM dd, yyyy">
+                            <ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1" Color="@(CurrentTheme == "tailwind-dark" ? "#4B5563" : "#E5E7EB")"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisCrosshairTooltip Enable="true"></ChartAxisCrosshairTooltip>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis LabelFormat="{value}" Minimum="0" Maximum="30000" Interval="5000">
+                            <ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1" Color="@(CurrentTheme == "tailwind-dark" ? "#4B5563" : "#E5E7EB")"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@SplineChartData" XName="XAxis" YName="YAxis1" Name="Revenues" Type="ChartSeriesType.Spline" Fill="#267DDA" Width="2"></ChartSeries>
+                            <ChartSeries DataSource="@SplineChartData" XName="XAxis" YName="YAxis2" Name="Expenditures" Type="ChartSeriesType.Spline" Fill="#DE4383" Width="2"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true" Shared="true" EnableMarker="true" Format="${series.name}: $${point.y}"></ChartTooltipSettings>
+                        <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near"></ChartLegendSettings>
+                        <ChartCrosshairSettings Enable="true" DashArray="2,3" LineType="LineType.Vertical"></ChartCrosshairSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center align-items-start p-3 p-sm-4">
+            <div class="w-100" style="max-width: 1120px;">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="h6 fw-medium text-body mb-0">Consolidated Budget</h2>
+                    <div class="d-flex gap-3">
+                        <SfButton CssClass="e-outline" IconCss="e-icons e-refresh" Type="button" aria-label="refresh" role="button"></SfButton>
+                        <SfButtonGroup class="e-btn-group d-none d-sm-flex">
+                            <input type="radio" id="day" name="align" value="day" aria-label="day" role="button" />
+                            <label class="e-btn" for="day">D</label>
+                            <input type="radio" id="week" name="align" value="week" aria-label="week" role="button" />
+                            <label class="e-btn" for="week">W</label>
+                            <input type="radio" id="month" name="align" value="month" aria-label="month" role="button" />
+                            <label class="e-btn" for="month">M</label>
+                            <input type="radio" id="year" name="align" value="year" checked aria-label="year" role="button" />
+                            <label class="e-btn" for="year">Y</label>
+                            <input type="radio" id="custom" name="align" value="custom" aria-label="custom" role="button" />
+                            <label class="e-btn" for="custom">Custom</label>
+                        </SfButtonGroup>
+                    </div>
+                </div>
+                <SfDropDownButton @ref="DropDownButton" CssClass="e-outline d-inline-block d-sm-none" Content="Year" Type="button" aria-label="choose a year" role="button">
+                    <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                    <DropDownMenuItems>
+                        <DropDownMenuItem Text="Day"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Week"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Month"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Year"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Custom"></DropDownMenuItem>
+                    </DropDownMenuItems>
+                </SfDropDownButton>
+                <div class="mt-1">
+                    <SfChart Height="400px" Width="100%" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartMargin Left="0" Right="0" Top="0" Bottom="34"></ChartMargin>
+                        <ChartAnnotations>
+                            <ChartAnnotation X="@XValue" Y="@YValue" CoordinateUnits="Units.Pixel" Region="Regions.Chart">
+                                <ContentTemplate>
+                                    <div class="d-flex flex-column align-items-center"> 
+                                        <div style="width: 2px; height: 325px; background: @(CurrentTheme == "bootstrap5.3-dark" ? "repeating-linear-gradient(to bottom, #6B7280 0, #6B7280 4px, transparent 4px, transparent 8px)" : "repeating-linear-gradient(to bottom, #9CA3AF 0, #9CA3AF 4px, transparent 4px, transparent 8px)");"></div>
+                                        <div style="width: 10px; height: 10px; border-radius: 50%; background-color: @(CurrentTheme == "bootstrap5.3-dark" ? "#9CA3AF" : "#1F2937");"></div>
+                                        <div style="text-align: center; font-size: 12px; font-weight: 500; color: @(CurrentTheme == "bootstrap5.3-dark" ? "#FFFFFF" : "#111827");">Dec 6, 2024</div>
+                                    </div>
+                                </ContentTemplate>
+                            </ChartAnnotation>
+                        </ChartAnnotations>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM dd, yyyy">
+                            <ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1" Color="@(CurrentTheme == "bootstrap5.3-dark" ? "#4B5563" : "#E5E7EB")"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisCrosshairTooltip Enable="true"></ChartAxisCrosshairTooltip>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis LabelFormat="{value}" Minimum="0" Maximum="30000" Interval="5000">
+                            <ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1" Color="@(CurrentTheme == "bootstrap5.3-dark" ? "#4B5563" : "#E5E7EB")"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@SplineChartData" XName="XAxis" YName="YAxis1" Name="Revenues" Type="ChartSeriesType.Spline" Fill="#006EEF" Width="2"></ChartSeries>
+                            <ChartSeries DataSource="@SplineChartData" XName="XAxis" YName="YAxis2" Name="Expenditures" Type="ChartSeriesType.Spline" Fill="#EF00AC" Width="2"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true" Shared="true" EnableMarker="true" Format="${series.name}: $${point.y}"></ChartTooltipSettings>
+                        <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near"></ChartLegendSettings>
+                        <ChartCrosshairSettings Enable="true" DashArray="2,3" LineType="LineType.Vertical"></ChartCrosshairSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}

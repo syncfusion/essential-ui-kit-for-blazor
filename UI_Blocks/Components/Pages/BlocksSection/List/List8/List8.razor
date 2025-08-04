@@ -4,8 +4,6 @@
 
 @ThemeLinks
 
-@inject IJSRuntime JSRuntime
-
 @if (CurrentTheme.Contains("tailwind"))
 {
 	<section class="bg-white dark:bg-gray-900">
@@ -15,7 +13,7 @@
 					<span class="e-input-group-icon e-icons e-search !text-base"></span>
 					<input class="e-input !pl-0" type="text" placeholder="People, chat, keywords" aria-label="search for people, chats, or keywords" role="textbox" />
 				</div>
-				<SfListView CssClass="!border-0 mt-4 e-list-template" DataSource=@ChatMessages aria-label="list of chats" role="list">
+				<SfListView CssClass="!border-0 mt-4 e-list-template" DataSource="@ChatMessages" aria-label="list of chats" role="list">
 					<ListViewFieldSettings Id="Id" Text="Name" TValue="ChatMessage"></ListViewFieldSettings>
 					<ListViewTemplates TValue="ChatMessage">
 						<Template>
@@ -63,7 +61,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 					<span class="e-input-group-icon e-icons e-search border-0 !pr-3"></span>
 					<input class="e-input ps-0" type="text" placeholder="People, chat, keywords" aria-label="search for people, chats, or keywords" role="textbox" />
 				</div>
-				<SfListView CssClass="border-0 mt-2 e-list-template" DataSource=@ChatMessages aria-label="list of chats" role="list">
+				<SfListView CssClass="border-0 mt-2 e-list-template" DataSource="@ChatMessages" aria-label="list of chats" role="list">
 					<ListViewFieldSettings Id="Id" Text="Name" TValue="ChatMessage"></ListViewFieldSettings>
 					<ListViewTemplates TValue="ChatMessage">
 						<Template>

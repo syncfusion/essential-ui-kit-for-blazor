@@ -1,0 +1,143 @@
+﻿@page "/blocks/area-chart-8"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 1020px;">
+                <div class="flex flex-col gap-3 sm:gap-4">
+                    <div class="flex grow justify-between items-start gap-2">
+                        <div>
+                            <h1 class="text-base font-medium text-gray-900 dark:text-white">Temperature Analysis</h1>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-2">Temperature variations by month in &deg;C</p>
+                        </div>
+                        <SfButton CssClass="e-outline hidden sm:block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+                        <SfButton CssClass="e-outline block sm:hidden" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+                    </div>
+                    <div class="flex justify-between gap-3">
+                        <SfDropDownButton @ref="CountryDropdown" CssClass="e-outline" IconCss="e-icons e-location" Content="@(IsMobileView ? "" : "Texas, USA")" Type="button" aria-label="choose a city" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsCountryDropdownOpen = true)" Closed="@(args => IsCountryDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="Los Angeles, California"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Phoenix, Arizona"></DropDownMenuItem>
+                                <DropDownMenuItem Text="San Jose, California"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Santa Fe, New Mexico"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Texas, USA"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                        <div class="flex gap-3">
+                            <SfButton CssClass="e-outline" IconCss="e-icons e-refresh" Type="button" aria-label="refresh" role="button"></SfButton>
+                            <SfDropDownButton @ref="RangeDropdown" CssClass="e-outline" Content="2024" Type="button" aria-label="choose a year" role="button">
+                                <DropDownButtonEvents Opened="@(args => IsRangeDropdownOpen = true)" Closed="@(args => IsRangeDropdownOpen = false)"></DropDownButtonEvents>
+                                <DropDownMenuItems>
+                                    <DropDownMenuItem Text="2024"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="2023"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="2022"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="2021"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="2020"></DropDownMenuItem>
+                                </DropDownMenuItems>
+                            </SfDropDownButton>
+                            <SfButton CssClass="e-outline" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="view options" role="button"></SfButton>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-6 sm:mt-5">
+                    <SfChart @ref="Chart" Height="335px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartMargin Left="11"></ChartMargin>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" IntervalType="Syncfusion.Blazor.Charts.IntervalType.Months" Interval="1" LabelRotation="@XAxisLabelRotation">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Minimum="-30" Maximum="40" Interval="10">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@AreaChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.RangeArea" XName="Date" High="High" Low="Low" Fill="@(CurrentTheme == "tailwind-dark" ? " #4B5563" : "#D1D5DB")">
+                                <ChartSeriesBorder Width="2" Color="@(CurrentTheme == "tailwind-dark" ? " #9CA3AF" : "#1F2937")"></ChartSeriesBorder>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center p-3 p-sm-4">
+            <div class="w-100" style="max-width: 1020px;">
+                <div class="d-flex flex-column gap-2 gap-sm-3">
+                    <div class="d-flex flex-grow-1 justify-content-between align-items-start gap-2">
+                        <div>
+                            <h1 class="fs-6 fw-medium text-body">Temperature Analysis</h1>
+                            <p class="small text-body-secondary mt-2 mb-0">Temperature variations by month in &deg;C</p>
+                        </div>
+                        <SfButton CssClass="e-outline d-none d-sm-block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+                        <SfButton CssClass="e-outline d-block d-sm-none" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+                    </div>
+                    <div class="d-flex justify-content-between gap-3 mt-1 mt-sm-0">
+                        <SfDropDownButton @ref="CountryDropdown" CssClass="e-outline" IconCss="e-icons e-location" Content="@(IsMobileView ? "" : "Texas, USA")" Type="button" aria-label="choose a city" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsCountryDropdownOpen = true)" Closed="@(args => IsCountryDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="Los Angeles, California"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Phoenix, Arizona"></DropDownMenuItem>
+                                <DropDownMenuItem Text="San Jose, California"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Santa Fe, New Mexico"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Texas, USA"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                        <div class="d-flex gap-2">
+                            <SfButton CssClass="e-outline" IconCss="e-icons e-refresh" Type="button" aria-label="refresh" role="button"></SfButton>
+                            <SfDropDownButton @ref="RangeDropdown" CssClass="e-outline mx-1" Content="2024" Type="button" aria-label="choose a year" role="button">
+                                <DropDownButtonEvents Opened="@(args => IsRangeDropdownOpen = true)" Closed="@(args => IsRangeDropdownOpen = false)"></DropDownButtonEvents>
+                                <DropDownMenuItems>
+                                    <DropDownMenuItem Text="2024"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="2023"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="2022"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="2021"></DropDownMenuItem>
+                                    <DropDownMenuItem Text="2020"></DropDownMenuItem>
+                                </DropDownMenuItems>
+                            </SfDropDownButton>
+                            <SfButton CssClass="e-outline" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="view options" role="button"></SfButton>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <SfChart @ref="Chart" Height="335px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartMargin Left="11"></ChartMargin>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" IntervalType="Syncfusion.Blazor.Charts.IntervalType.Months" Interval="1" LabelRotation="@XAxisLabelRotation">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Minimum="-30" Maximum="40" Interval="10">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@AreaChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.RangeArea" XName="Date" High="High" Low="Low" Fill="@(CurrentTheme == "bootstrap5.3-dark" ? "#495057" : "#DEE2E6")">
+                                <ChartSeriesBorder Width="2" Color="@(CurrentTheme == "bootstrap5.3-dark" ? "#ADB5BD" : "#343A40")"></ChartSeriesBorder>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}

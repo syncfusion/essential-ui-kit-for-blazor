@@ -4,8 +4,6 @@
 
 @ThemeLinks
 
-@inject IJSRuntime JSRuntime
-
 @if (CurrentTheme.Contains("tailwind"))
 {
 	<section class="bg-white dark:bg-gray-900">
@@ -41,7 +39,7 @@
 											</span>
 										</div>
 										<div class="flex items-center">
-											<SfButton CssClass="e-icons e-more-horizontal-1 e-outline w-8 h-8 !flex items-center" Type="button" aria-label="more options" role="button"></SfButton>
+											<SfButton CssClass="e-outline !py-1.5" IconCss="e-icons e-more-horizontal-1" Type="button" aria-label="more options" role="button"></SfButton>
 										</div>
 									</div>
 								</div>
@@ -88,7 +86,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 											</span>
 										</div>
 										<div class="d-flex align-items-center">
-											<SfButton CssClass="e-icons e-more-horizontal-1 e-outline d-flex align-items-center py-2" Type="button" aria-label="more options" role="button"></SfButton>
+											<SfButton CssClass="e-outline" IconCss="e-icons e-more-horizontal-1" Type="button" aria-label="more options" role="button"></SfButton>
 										</div>
 									</div>
 								</div>

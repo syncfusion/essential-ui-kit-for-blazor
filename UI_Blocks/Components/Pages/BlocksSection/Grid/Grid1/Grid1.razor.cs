@@ -2,34 +2,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid1
 {
     public partial class Grid1
     {
-        public class Detail
-        {
-            public string Name { get; set; } = string.Empty;
-            public string Initial { get; set; } = string.Empty;
-            public string Email { get; set; } = string.Empty;
-            public string ColorTheme { get; set; } = string.Empty;
-        }
-
-        public class Assignee
-        {
-            public string Name { get; set; } = string.Empty;
-            public string Avatar { get; set; } = string.Empty;
-        }
-
-        public class Lead
-        {
-            public int Id { get; set; }
-            public string LeadId { get; set; } = string.Empty;
-            public Detail Details { get; set; } = new Detail();
-            public string Status { get; set; } = string.Empty;
-            public string Interest { get; set; } = string.Empty;
-            public DateTime Date { get; set; }
-            public Assignee Assignee { get; set; } = new Assignee();
-            public string Source { get; set; } = string.Empty;
-            public int Revenue { get; set; }
-        }
-        
-        List<Lead> GridData = new List<Lead>
+        public List<Lead> GridData = new List<Lead>
         {
             new Lead
             {
@@ -252,5 +225,32 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid1
                 Revenue = 90000
             }
         };
+
+        public class Detail
+        {
+            public string Name { get; set; } = string.Empty;
+            public string Initial { get; set; } = string.Empty;
+            public string Email { get; set; } = string.Empty;
+            public string ColorTheme { get; set; } = string.Empty;
+        }
+
+        public class Assignee
+        {
+            public string Name { get; set; } = string.Empty;
+            public string Avatar { get; set; } = string.Empty;
+        }
+
+        public class Lead
+        {
+            public int Id { get; set; }
+            public string LeadId { get; set; } = string.Empty;
+            public Detail Details { get; set; } = new Detail();
+            public string Status { get; set; } = string.Empty;
+            public string Interest { get; set; } = string.Empty;
+            public DateTime Date { get; set; }
+            public Assignee Assignee { get; set; } = new Assignee();
+            public string Source { get; set; } = string.Empty;
+            public int Revenue { get; set; }
+        }   
     }
 }

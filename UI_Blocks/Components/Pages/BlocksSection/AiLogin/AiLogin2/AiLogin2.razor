@@ -6,7 +6,7 @@
 
 @if (CurrentTheme.Contains("tailwind"))
 {
-    <section class="bg-gray-50 dark:bg-gray-800">
+    <section class="bg-white dark:bg-gray-800">
         <div class="relative flex items-center justify-center h-screen">
             <div class="absolute top-0 left-0" style="background-image: url('assets/images/ai/login/ai-login/top-curve.svg'); background-size: contain; background-repeat: no-repeat; height: 28%; width: 100%;"></div>
             <div class="w-full max-w-md rounded-lg px-4 py-14 md:px-6 md:py-20">
@@ -16,16 +16,16 @@
                 <p class="text-base text-center font-normal text-gray-900 dark:text-white">Please enter your login Id and password</p>
                 <form action="#" class="mt-4 mb-6" onsubmit="event.preventDefault();">
                     <div class="mb-4">
-                        <SfTextBox @ref="UserName" CssClass="e-normal text-base text-gray-500 !border-0 shadow-sm dark:bg-gray-700" Type="InputType.Email" Placeholder="Username or email" FloatLabelType="FloatLabelType.Never" Created="@(args => UserName?.AddIconAsync("prepend", "e-icons e-user e-small"))" aria-label="enter your email address" role="textbox"></SfTextBox>
+                        <SfTextBox @ref="UserName" CssClass="e-normal text-base text-gray-500 !border-0 shadow-sm !bg-gray-50 dark:!bg-gray-700" Type="InputType.Email" Placeholder="Username or email" FloatLabelType="FloatLabelType.Never" Created="@(args => UserName?.AddIconAsync("prepend", "e-icons e-user e-small"))" aria-label="enter your email address" role="textbox"></SfTextBox>
                     </div>
                     <div class="mb-3 relative">
-                        <SfTextBox @ref="Password" CssClass="e-normal text-base text-gray-500 !border-0 shadow-sm bg-none dark:bg-gray-700" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" Created="@(args => Password?.AddIconAsync("prepend", "e-icons e-lock e-small"))" aria-label="enter your email password" role="textbox"></SfTextBox>
+                        <SfTextBox @ref="Password" CssClass="e-normal text-base text-gray-500 !border-0 shadow-sm !bg-gray-50 dark:!bg-gray-700" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" Created="@(args => Password?.AddIconAsync("prepend", "e-icons e-lock e-small"))" aria-label="enter your email password" role="textbox"></SfTextBox>
                     </div>
                     <div class="flex items-center justify-end mb-6">
                         <a href="javascript:void(0);" class="font-normal text-xs text-primary-600 dark:text-primary-400" aria-label="forgot password?" role="link">Forgot password?</a>
                     </div>
                     <div class="mt-6">
-                        <SfButton CssClass="w-full e-primary e-btn" Onclick="@((MouseEventArgs args) => { })" Type="submit" aria-label="login" role="button">Login</SfButton>
+                        <SfButton CssClass="w-full e-primary" OnClick="@((MouseEventArgs args) => { })" Content="Login" Type="submit" aria-label="login" role="button"></SfButton>
                     </div>
                 </form>
                 <div class="flex items-center justify-center gap-4 flex-col">
@@ -37,7 +37,7 @@
                 <div>
                     <span class="flex items-center justify-center gap-1 font-normal text-xs mt-4">
                         <p class="text-center text-gray-900 dark:text-white">Not a member yet?</p>
-                        <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400" aria-label="register" role="link">Register</a>
+                        <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 z-10" aria-label="register" role="link">Register</a>
                     </span>
                 </div>
             </div>
@@ -57,16 +57,16 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 <p class="fs-6 text-center fw-normal text-body">Please enter your login Id and password</p>
                 <form action="#" class="mt-3 mb-3" onsubmit="event.preventDefault();">
                     <div class="mb-3">
-                        <SfTextBox @ref="UserName" CssClass="e-normal small text-secondary !border-0 shadow-sm bg-body-tertiary" Type="InputType.Email" Placeholder="Username or email" FloatLabelType="FloatLabelType.Never" Created="@(args => UserName?.AddIconAsync("prepend", "e-icons e-user e-small"))" aria-label="enter your email address" role="textbox"></SfTextBox>
+                        <SfTextBox @ref="UserName" CssClass="e-normal small text-secondary border-0 bg-body-tertiary" Type="InputType.Email" Placeholder="Username or email" FloatLabelType="FloatLabelType.Never" Created="@(args => UserName?.AddIconAsync("prepend", "e-icons e-user e-small border-0"))" aria-label="enter your email address" role="textbox"></SfTextBox>
                     </div>
                     <div class="mb-2 position-relative">
-                        <SfTextBox @ref="Password" CssClass="e-normal small text-secondary !border-0 shadow-sm bg-body-tertiary" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" Created="@(args => Password?.AddIconAsync("prepend", "e-icons e-lock e-small"))" aria-label="enter your email password" role="textbox"></SfTextBox>
+                        <SfTextBox @ref="Password" CssClass="e-normal small text-secondary border-0 bg-body-tertiary" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" Created="@(args => Password?.AddIconAsync("prepend", "e-icons e-lock e-small border-0"))" aria-label="enter your email password" role="textbox"></SfTextBox>
                     </div>
                     <div class="d-flex align-items-center justify-content-end mb-3">
                         <a href="javascript:void(0);" class="fw-normal small text-primary text-decoration-none" aria-label="forgot password?" role="link">Forgot password?</a>
                     </div>
                     <div class="mt-3">
-                        <SfButton CssClass="w-100 e-primary e-btn" Onclick="@((MouseEventArgs args) => { })" Type="submit" aria-label="login" role="button">Login</SfButton>
+                        <SfButton CssClass="w-100 e-primary" OnClick="@((MouseEventArgs args) => { })" Content="Login" Type="submit" aria-label="login" role="button"></SfButton>
                     </div>
                 </form>
                 <div class="d-flex align-items-center justify-content-center gap-3 flex-column">
@@ -78,7 +78,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 <div>
                     <span class="d-flex align-items-center justify-content-center gap-1 fw-normal small mt-3">
                         <p class="text-center text-body mb-0">Not a member yet?</p>
-                        <a href="javascript:void(0);" class="text-primary text-decoration-none" aria-label="register" role="link">Register</a>
+                        <a href="javascript:void(0);" class="text-primary text-decoration-none z-1" aria-label="register" role="link">Register</a>
                     </span>
                 </div>
             </div>

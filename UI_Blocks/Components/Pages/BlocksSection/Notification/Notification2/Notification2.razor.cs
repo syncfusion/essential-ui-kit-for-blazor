@@ -17,7 +17,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Notification.Notification2
             new Notification { Id = 2, Avatar = "avatar-5.jpg", Sender = "David Clark", Content = "Hey, can you check the latest documents posted in the group?", Time = "4 day" }
         };
 
-        private async void AfterOpen(Syncfusion.Blazor.Popups.OpenEventArgs args)
+        public async void AfterOpen(Syncfusion.Blazor.Popups.OpenEventArgs args)
         {
             args.PreventFocus = true;
             await Task.Delay(50);

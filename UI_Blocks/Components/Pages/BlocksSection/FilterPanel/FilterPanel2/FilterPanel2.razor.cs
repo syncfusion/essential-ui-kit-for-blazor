@@ -11,7 +11,6 @@ namespace UI_Blocks.Components.Pages.BlocksSection.FilterPanel.FilterPanel2
 
         public int RecordLength { get; set; }
         public int RecordData { get; set; }
-        public string XValue { get; set; } = string.Empty;
 
         public List<RuleModel> Rules1 { get; set; } = new List<RuleModel>();
         public List<RuleModel> Rules2 { get; set; } = new List<RuleModel>();
@@ -24,21 +23,20 @@ namespace UI_Blocks.Components.Pages.BlocksSection.FilterPanel.FilterPanel2
             new OperatorsModel { Value = "isnot", Text = "Is not" }
         };
 
-        public async Task OpenDialogAync()
-        {
-            await Dialog?.ShowAsync();
-        }
-
         public async Task AddNewRulePrimaryAsync()
         {
             QueryBuilder1?.AddRule(new RuleModel(), "group0");
+            await Task.Delay(50);
             RecordLength = QueryBuilder1?.GetRules()?.Rules?.Count ?? 0;
+            await InvokeAsync(StateHasChanged);
         }
 
         public async Task AddNewRuleSecondaryAsync()
         {
             QueryBuilder2?.AddRule(new RuleModel(), "group0");
+            await Task.Delay(50);
             RecordData = QueryBuilder2?.GetRules()?.Rules?.Count ?? 0;
+            await InvokeAsync(StateHasChanged);
         }
     }
 }

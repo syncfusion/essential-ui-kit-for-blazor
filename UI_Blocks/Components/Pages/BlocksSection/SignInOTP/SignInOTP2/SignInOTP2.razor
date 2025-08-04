@@ -7,7 +7,7 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section class="bg-gray-50 dark:bg-gray-950">
-        <div class="flex flex-col lg:flex-row md:min-h-screen">
+        <div class="flex flex-col lg:flex-row" style="min-height: 580px;">
             <div class="w-full lg:w-7/12 p-0">
                 <div class="w-full h-60 lg:h-full" style="background-image: url('assets/images/authentication/split-screen/split-screen.png'); background-size: cover; background-repeat: no-repeat; background-position: center;"></div>
             </div>
@@ -28,7 +28,7 @@
                                     </div>
                                 </div>
                                 <div class="e-bigger mt-6">
-                                    <SfButton CssClass="e-btn e-primary w-full" type="submit" aria-label="verify OTP" role="button">Verify</SfButton>
+                                    <SfButton CssClass="e-primary w-full" Content="Verify" Type="submit" aria-label="verify OTP" role="button"></SfButton>
                                 </div>
                             </form>
                             <span class="flex items-center justify-center gap-2 mt-7 e-bigger">
@@ -45,7 +45,7 @@
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
-        <div class="d-flex flex-column flex-lg-row min-vh-100">
+        <div class="d-flex flex-column flex-lg-row" style="min-height: 580px;">
             <div class="col-12 col-lg-7 p-0">
                 <div class="w-100 h-100" style="background-image: url('assets/images/authentication/split-screen/split-screen.png'); background-size: cover; background-repeat: no-repeat; background-position: center; min-height: 240px;"></div>
             </div>
@@ -65,7 +65,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 </div>
                             </div>
                             <div class="mt-4 e-bigger">
-                                <SfButton CssClass="e-btn e-block e-primary" type="submit" aria-label="verify OTP" role="button">Verify</SfButton>
+                                <SfButton CssClass="e-block e-primary" Content="Verify" Type="submit" aria-label="verify OTP" role="button"></SfButton>
                             </div>
                         </form>
                         <div class="d-flex align-items-center justify-content-center gap-2 mt-4">

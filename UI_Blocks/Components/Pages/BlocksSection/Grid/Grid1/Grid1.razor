@@ -131,11 +131,11 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <div class="d-flex gap-3 align-items-center py-1">
                                     <div class="rounded-circle overflow-hidden" style="width: 32px; height: 32px;">
                                         <span class="e-avatar e-avatar-circle e-avatar-small @(lead.Details.ColorTheme switch {
-                                            "Red" => "bg-danger-subtle text-danger",
-                                            "Green" => "bg-success-subtle text-success",
-                                            "Blue" => "bg-info-subtle text-info",
-                                            "Orange" => "bg-warning-subtle text-warning",
-                                            "Purple" => "bg-primary-subtle text-primary",
+                                            "Red" => "bg-danger-subtle text-danger-emphasis",
+                                            "Green" => "bg-success-subtle text-success-emphasis",
+                                            "Blue" => "bg-info-subtle text-info-emphasis",
+                                            "Orange" => "bg-warning-subtle text-warning-emphasis",
+                                            "Purple" => "bg-primary-subtle text-primary-emphasis",
                                             _ => ""
                                         })">
                                             @lead.Details.Initial

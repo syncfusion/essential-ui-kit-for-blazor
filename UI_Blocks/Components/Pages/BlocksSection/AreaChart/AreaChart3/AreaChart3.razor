@@ -1,0 +1,106 @@
+﻿@page "/blocks/area-chart-3"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6 w-full">
+            <div class="w-full max-w-2xl">
+                <div class="flex flex-col mb-4 w-full">
+                    <div class="flex justify-between gap-4">
+                        <div class="flex">
+                            <h2 class="text-base text-gray-900 font-medium mb-0 dark:text-white">Saving Growth Statistics</h2>
+                        </div>
+                        <SfButton CssClass="block sm:hidden h-8 e-outline" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose a year" role="button"></SfButton>
+                        <SfButtonGroup class="e-btn-group hidden sm:flex">
+							<input Type="radio" id="all" name="align" value="All" checked aria-label="all" role="button" />
+							<label class="e-btn" for="all">All</label>
+							<input Type="radio" id="money" name="align" value="Money Market" aria-label="money market" role="button" />
+							<label class="e-btn" for="money">Money Market</label>
+							<input Type="radio" id="stock" name="align" value="Stocks" aria-label="stocks" role="button" />
+							<label class="e-btn" for="stock">Stocks</label>
+							<input Type="radio" id="bonds" name="align" value="Bonds" aria-label="bonds" role="button" />
+							<label class="e-btn" for="bonds">Bonds</label>
+						</SfButtonGroup>
+                    </div>
+                    <p class="mb-0 text-sm text-gray-500 pr-2 sm:pr-0" style="max-width: 280px;">Revealing risk and growth in investments.</p>
+                </div>
+                <div>
+                    <SfChart @ref="Chart" Width="100%" Height="350px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartLegendSettings Visible="false"></ChartLegendSettings>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelRotation="@XAxisLabelRotation">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Minimum="0" Maximum="30000" Interval="5000" LabelFormat="{value}">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@AreaChartData" XName="XAxis" YName="YAxis1" Name="MoneyMarketData" Type="ChartSeriesType.Line" Fill="#91BD34" Width="2"></ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" XName="XAxis" YName="YAxis2" Name="StocksData" Type="ChartSeriesType.Line" Fill="#D83B01" Width="2"></ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" XName="XAxis" YName="YAxis3" Name="BondsData" Type="ChartSeriesType.Line" Fill="#267DDA" Width="2"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true" Shared="true" Header=""></ChartTooltipSettings>
+                        <ChartCrosshairSettings Enable="true" SnapToData="true" DashArray="5,5" LineType="LineType.Vertical"></ChartCrosshairSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex align-items-start justify-content-center p-4 p-sm-5 w-100">
+            <div class="w-100" style="max-width: 680px;">
+                <div class="d-flex flex-column mb-4">
+                    <div class="d-flex justify-content-between gap-3">
+                        <div class="d-flex">
+                            <h1 class="text-body fs-5 mb-0">Saving Growth Statistics</h1>
+                        </div>
+                        <SfButton CssClass="d-block d-sm-none e-outline" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose a year" role="button" style="height: 38px"></SfButton>
+                        <SfButtonGroup class="e-btn-group d-none d-sm-flex">
+							<input Type="radio" id="all" name="align" value="All" checked aria-label="all" role="button" />
+							<label class="e-btn" for="all">All</label>
+							<input Type="radio" id="money" name="align" value="Money Market" aria-label="money market" role="button" />
+							<label class="e-btn" for="money">Money Market</label>
+							<input Type="radio" id="stock" name="align" value="Stocks" aria-label="stocks" role="button" />
+							<label class="e-btn" for="stock">Stocks</label>
+							<input Type="radio" id="bonds" name="align" value="Bonds" aria-label="bonds" role="button" />
+							<label class="e-btn" for="bonds">Bonds</label>
+						</SfButtonGroup>
+                    </div>
+                    <p class="mb-0 small text-body-secondary pe-sm-0 pe-4" style="max-width: 260px;">Revealing risk and growth in investments.</p>
+                </div>
+                <SfChart @ref="Chart" Width="100%" Height="350px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                    <ChartLegendSettings Visible="false"></ChartLegendSettings>
+                    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelRotation="@XAxisLabelRotation">
+                        <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                        <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                        <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                        <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                    </ChartPrimaryXAxis>
+                    <ChartPrimaryYAxis Minimum="0" Maximum="30000" Interval="5000" LabelFormat="{value}">
+                        <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                        <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                        <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                    </ChartPrimaryYAxis>
+                    <ChartSeriesCollection>
+                        <ChartSeries DataSource="@AreaChartData" XName="XAxis" YName="YAxis1" Name="MoneyMarketData" Type="ChartSeriesType.Line" Fill="#91BD34" Width="2"></ChartSeries>
+                        <ChartSeries DataSource="@AreaChartData" XName="XAxis" YName="YAxis2" Name="StocksData" Type="ChartSeriesType.Line" Fill="#D83B01" Width="2"></ChartSeries>
+                        <ChartSeries DataSource="@AreaChartData" XName="XAxis" YName="YAxis3" Name="BondsData" Type="ChartSeriesType.Line" Fill="#267DDA" Width="2"></ChartSeries>
+                    </ChartSeriesCollection>
+                    <ChartTooltipSettings Enable="true" Shared="true" Header=""></ChartTooltipSettings>
+                    <ChartCrosshairSettings Enable="true" SnapToData="true" DashArray="5,5" LineType="LineType.Vertical"></ChartCrosshairSettings>
+                </SfChart>
+            </div>
+        </div>
+    </section>
+}

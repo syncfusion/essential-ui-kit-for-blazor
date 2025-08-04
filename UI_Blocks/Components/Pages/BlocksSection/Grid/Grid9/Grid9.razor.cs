@@ -2,21 +2,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid9
 {
     public partial class Grid9
     {
-        public class Permission
-        {
-            public int Id { get; set; }
-            public string Category { get; set; } = string.Empty;
-            public string PermissionName { get; set; } = string.Empty;
-            public bool SystemAdmin { get; set; }
-            public bool ItManager { get; set; }
-            public bool HrManager { get; set; }
-            public bool FinanceManager { get; set; }
-            public bool SalesManager { get; set; }
-            public bool CustomerServiceRep { get; set; }
-            public bool GeneralEmployee { get; set; }
-        }
-        
-        List<Permission> GridData = new List<Permission>
+        public List<Permission> GridData = new List<Permission>
         {
             new Permission { Id = 1, Category = "User Management", PermissionName = "Create Users", SystemAdmin = true, ItManager = true, HrManager = false, FinanceManager = false, SalesManager = false, CustomerServiceRep = false, GeneralEmployee = false },
             new Permission { Id = 2, Category = "User Management", PermissionName = "Edit Users", SystemAdmin = true, ItManager = true, HrManager = false, FinanceManager = false, SalesManager = false, CustomerServiceRep = false, GeneralEmployee = false },
@@ -38,5 +24,19 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid9
             new Permission { Id = 18, Category = "General Access", PermissionName = "Submit Expense Reports", SystemAdmin = true, ItManager = true, HrManager = true, FinanceManager = true, SalesManager = true, CustomerServiceRep = true, GeneralEmployee = true },
             new Permission { Id = 19, Category = "General Access", PermissionName = "View Personal Information", SystemAdmin = true, ItManager = true, HrManager = true, FinanceManager = true, SalesManager = true, CustomerServiceRep = true, GeneralEmployee = true }
         };
+
+        public class Permission
+        {
+            public int Id { get; set; }
+            public string Category { get; set; } = string.Empty;
+            public string PermissionName { get; set; } = string.Empty;
+            public bool SystemAdmin { get; set; }
+            public bool ItManager { get; set; }
+            public bool HrManager { get; set; }
+            public bool FinanceManager { get; set; }
+            public bool SalesManager { get; set; }
+            public bool CustomerServiceRep { get; set; }
+            public bool GeneralEmployee { get; set; }
+        }
     }
 }

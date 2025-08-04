@@ -8,7 +8,7 @@
 {
     <section class="bg-white dark:bg-gray-800">
         <div style="min-height: 36rem;">
-            <div class="py-3 px-4 sm:px-6 flex justify-between border-b border-gray-200 dark:border-gray-600">
+            <div class="py-3 px-4 sm:px-6 flex justify-between items-center border-b border-gray-200 dark:border-gray-600">
                 <div id="breadcrumb">
                     <SfBreadcrumb EnableNavigation="false" OverFlowMode="@OverflowMode" MaxItems="@MaxItems">
                         <BreadcrumbItems>
@@ -38,8 +38,8 @@
                             </div>
                         </SfButton>
                     </div>
-                    <SfDropDownButton @ref="Dropdown" class="block sm:hidden" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
-                        <DropDownButtonEvents Opened="OnDropdownOpened" Closed="OnDropdownClosed"></DropDownButtonEvents>
+                    <SfDropDownButton @ref="DropDownButton" class="block sm:hidden !pr-1" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
                         <DropDownMenuItems>
                             <DropDownMenuItem Text="API Documentation"></DropDownMenuItem>
                             <DropDownMenuItem Text="Feedback"></DropDownMenuItem>
@@ -96,8 +96,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             </div>
                         </SfButton>
                     </div>
-                    <SfDropDownButton @ref="Dropdown" class="d-block d-sm-none" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
-                        <DropDownButtonEvents Opened="OnDropdownOpened" Closed="OnDropdownClosed"></DropDownButtonEvents>
+                    <SfDropDownButton @ref="DropDownButton" class="d-block d-sm-none pe-1" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
                         <DropDownMenuItems>
                             <DropDownMenuItem Text="API Documentation"></DropDownMenuItem>
                             <DropDownMenuItem Text="Feedback"></DropDownMenuItem>

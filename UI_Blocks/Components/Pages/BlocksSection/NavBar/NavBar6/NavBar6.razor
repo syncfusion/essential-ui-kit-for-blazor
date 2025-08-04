@@ -23,7 +23,7 @@
 							</div>
 							<div>
 								<SfDropDownButton @ref="ProfileDropdown" CssClass="e-flat hidden sm:block" Content="Bonnie Crane" Type="button" aria-label="choose a profile" role="button">
-									<DropDownButtonEvents Opened="OnProfileDropdownOpened" Closed="OnProfileDropdownClosed"></DropDownButtonEvents>
+									<DropDownButtonEvents Opened="@(args => IsProfileDropdownOpen = true)" Closed="@(args => IsProfileDropdownOpen = false)"></DropDownButtonEvents>
 									<DropDownMenuItems>
 										<DropDownMenuItem Text="Michael Gough" IconCss="e-icons e-folder"></DropDownMenuItem>
 										<DropDownMenuItem Text="Roberta Cases" IconCss="e-icons e-folder"></DropDownMenuItem>
@@ -33,10 +33,10 @@
 						</div>
 					</div>
 					<div class="hidden lg:block">
-						<SfButton CssClass="e-flat py-2 mr-2" Type="button" aria-label="changelog" role="button">Changelog</SfButton>
-						<SfButton CssClass="e-flat py-2 mr-2" Type="button" aria-label="support" role="button">Support</SfButton>
-						<SfButton CssClass="e-flat py-2 mr-2" Type="button" aria-label="documentation" role="button">Documentation</SfButton>
-						<SfButton CssClass="bg-transparent py-2 mr-2" Type="button" aria-label="feedback" role="button">Feedback</SfButton>
+						<SfButton CssClass="e-flat py-2 mr-2" Content="Changelog" Type="button" aria-label="changelog" role="button"></SfButton>
+						<SfButton CssClass="e-flat py-2 mr-2" Content="Support" Type="button" aria-label="support" role="button"></SfButton>
+						<SfButton CssClass="e-flat py-2 mr-2" Content="Documentation" Type="button" aria-label="documentation" role="button"></SfButton>
+						<SfButton CssClass="bg-transparent py-2 mr-2" Content="Feedback" Type="button" aria-label="feedback" role="button"></SfButton>
 					</div>
 					<span id="menu" class="lg:hidden">
 						<SfMenu TValue="MenuItem" HamburgerMode="true" ShowItemOnClick="true" Title="">
@@ -111,7 +111,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 						</div>
 						<div>
 							<SfDropDownButton @ref="ProfileDropdown" CssClass="e-flat d-none d-sm-block" Content="Bonnie Crane" Type="button" aria-label="choose a profile" role="button">
-								<DropDownButtonEvents Opened="OnProfileDropdownOpened" Closed="OnProfileDropdownClosed"></DropDownButtonEvents>
+								<DropDownButtonEvents Opened="@(args => IsProfileDropdownOpen = true)" Closed="@(args => IsProfileDropdownOpen = false)"></DropDownButtonEvents>
 								<DropDownMenuItems>
 									<DropDownMenuItem Text="Michael Gough" IconCss="e-icons e-folder"></DropDownMenuItem>
 									<DropDownMenuItem Text="Roberta Cases" IconCss="e-icons e-folder"></DropDownMenuItem>
@@ -121,10 +121,10 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 					</div>
 				</div>
 				<div class="d-none d-lg-block">
-					<SfButton CssClass="e-flat py-2 me-2" Type="button" aria-label="changelog" role="button">Changelog</SfButton>
-					<SfButton CssClass="e-flat py-2 me-2" Type="button" aria-label="support" role="button">Support</SfButton>
-					<SfButton CssClass="e-flat py-2 me-2" Type="button" aria-label="documentation" role="button">Documentation</SfButton>
-					<SfButton CssClass="bg-secondary py-2 me-2" Type="button" aria-label="feedback" role="button">Feedback</SfButton>
+					<SfButton CssClass="e-flat py-2 me-2" Conent="Changelog" Type="button" aria-label="changelog" role="button"></SfButton>
+					<SfButton CssClass="e-flat py-2 me-2" Content="Support" Type="button" aria-label="support" role="button"></SfButton>
+					<SfButton CssClass="e-flat py-2 me-2" Content="Documentation" Type="button" aria-label="documentation" role="button"></SfButton>
+					<SfButton CssClass="bg-secondary py-2 me-2" Content="Feedback" Type="button" aria-label="feedback" role="button"></SfButton>
 				</div>
 				<span id="menu" class="d-lg-none">
 					<SfMenu TValue="MenuItem" CssClass="bg-body-tertiary" HamburgerMode="true" ShowItemOnClick="true" Title="">

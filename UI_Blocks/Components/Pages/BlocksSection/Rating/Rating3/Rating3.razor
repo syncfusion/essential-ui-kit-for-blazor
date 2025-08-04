@@ -7,7 +7,7 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section class="bg-gray-50 dark:bg-gray-800">
-        <div class="pt-4" style="min-height:36rem">
+        <div class="pt-4" style="min-height: 36rem;">
             <div class="mx-auto w-full p-6 mt-4 sm:!rounded-lg sm:!border rounded-none max-w-xl border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-800 text-center">
                 <div class="flex justify-between items-center">
                     <div class="flex gap-2 items-center">
@@ -21,7 +21,7 @@
                     </div>
                     <SfChip>
                         <ChipItems>
-                            <ChipItem Text="Best for small teams" CssClass="e-info !rounded-xl !text-[10px]"></ChipItem>
+                            <ChipItem Text="Best for small teams" CssClass="e-info !rounded-xl !text-xs"></ChipItem>
                         </ChipItems>
                     </SfChip>             
                 </div>
@@ -68,7 +68,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     </div>
                     <SfChip>
                         <ChipItems>
-                            <ChipItem CssClass="e-info rounded-pill" Text="Best for small teams"></ChipItem>
+                            <ChipItem CssClass="e-primary rounded-pill" Text="Best for small teams"></ChipItem>
                         </ChipItems>
                     </SfChip>
                 </div>

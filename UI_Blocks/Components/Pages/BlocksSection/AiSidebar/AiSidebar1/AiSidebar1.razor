@@ -70,8 +70,8 @@
                     </div>
                     <div class="flex items-center justify-center">
                         <div class="bg-white dark:bg-gray-800 mb-6 p-1 w-fit border border-gray-200 dark:border-gray-600 rounded-lg">
-                            <SfButton CssClass="rounded-lg e-primary" IconCss="e-icons e-brightness" Type="button" Content="Light" aria-label="switch to light theme" role="button"></SfButton>
-                            <SfButton CssClass="rounded-lg e-flat" IconCss="e-icons e-contrast" Type="button" Content="Dark" aria-label="switch to dark theme" role="button"></SfButton>
+                            <SfButton CssClass="rounded-lg e-primary" IconCss="e-icons e-brightness" Content="Light" Type="button" aria-label="switch to light theme" role="button"></SfButton>
+                            <SfButton CssClass="rounded-lg e-flat" IconCss="e-icons e-contrast" Content="Dark" Type="button" aria-label="switch to dark theme" role="button"></SfButton>
                         </div>
                     </div>
                 </div>
@@ -80,7 +80,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 top-0 left-0 absolute">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -150,8 +150,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     </div>
                     <div class="d-flex justify-content-center">
                         <div class="bg-body mb-4 p-1 border border-light-subtle rounded-3">
-                            <SfButton CssClass="rounded-3 e-primary" IconCss="e-icons e-brightness" Type="button" Content="Light" aria-label="switch to light theme" role="button"></SfButton>
-                            <SfButton CssClass="rounded-3 e-flat" IconCss="e-icons e-contrast" Type="button" Content="Dark" aria-label="switch to dark theme" role="button"></SfButton>
+                            <SfButton CssClass="rounded-3 e-primary" IconCss="e-icons e-brightness" Content="Light" Type="button" aria-label="switch to light theme" role="button"></SfButton>
+                            <SfButton CssClass="rounded-3 e-flat" IconCss="e-icons e-contrast" Content="Dark" Type="button" aria-label="switch to dark theme" role="button"></SfButton>
                         </div>
                     </div>
                 </div>
@@ -160,7 +160,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 position-absolute top-0 start-0">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

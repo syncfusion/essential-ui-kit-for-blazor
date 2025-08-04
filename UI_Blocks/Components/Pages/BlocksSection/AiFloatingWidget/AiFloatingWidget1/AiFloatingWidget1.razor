@@ -1,0 +1,84 @@
+﻿@page "/blocks/ai-floating-widget-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-950">
+        <div id="floating-chat" class="sm:pt-4 sm:pr-4" style="height: @(IsMobileView ? " 580px" : "690px" )">
+            <div id="target" class="w-full">
+                <div class="flex items-center justify-center pt-4 block sm:hidden">
+                    <SfButton CssClass="e-primary e-round e-bigger" IconCss="sf-icon-help-circle !text-xl" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="open contact us form" role="button"></SfButton>
+                </div>
+                <SfDialog @ref="Dialog" cssClass="sm:!rounded-2xl !rounded-none overflow-hidden !border-0" Target="#target" Width="@(IsMobileView ? " 400px" : "350px" )" Visible="@IsDialogVisible" ShowCloseIcon="false" aria-label="chat with AI assistant" role="dialog">
+                    <DialogTemplates>
+                        <Header>
+                            <div class="pt-4 pb-5 bg-primary-600 dark:bg-primary-400">
+                                <div class="flex justify-end block sm:hidden px-4 absolute right-0">
+                                    <SfButton CssClass="e-primary e-round" IconCss="e-icons e-close text-white dark:text-black !leading-5" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="close contact us form" role="button"></SfButton>
+                                </div>
+                                <div class="flex flex-col items-center pt-2">
+                                    <h2 class="text-white dark:text-black font-semibold text-sm">Chat with our AI</h2>
+                                    <p class="pt-2 pb-4 text-center text-wrap w-44 text-xs font-medium text-white dark:text-black">Ask any question and our AI will answer</p>
+                                    <SfButton class="rounded-2xl !border !border-white dark:!border-black" CssClass="e-primary" Content="New chat" Type="button" aria-label="new chat" role="button"></SfButton>
+                                </div>
+                            </div>
+                        </Header>
+                        <Content>
+                            <div id="assistview-tw" class="bg-primary-600 dark:bg-primary-400 px-4 pb-4">
+                                <div class="bg-white dark:bg-gray-800 flex flex-col rounded-2xl px-3" style="height: 410px;">
+                                    <SfAIAssistView @ref="AIAssist" CssClass="rounded-lg" height="90%" PromptPlaceholder="Type your message here..." PromptRequested="@PromptRequestAsync" Prompts="@prompts"></SfAIAssistView>
+                                    <p class="text-center text-xs font-normal mt-2 mb-3 text-gray-700 dark:text-gray-300">Powered by <span class="font-semibold dark:text-white">Remall</span></p>
+                                </div>
+                            </div>
+                        </Content>
+                    </DialogTemplates>
+                    <DialogEvents Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                    <DialogPositionData X="right" Y="top"></DialogPositionData>
+                </SfDialog>
+                <SfFab class="!hidden sm:!block e-primary e-round e-bigger" IconCss="@(IsDialogVisible ? "e-icons e-close !text-2xl" : "sf-icon-help-circle !text-2xl")" Position="FabPosition.BottomRight" Type="Button" Target="#target" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" aria-label="show/hide AI assistant" role="button"></SfFab>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div id="floating-chat" class="pt-sm-3 pe-sm-3" style="height:@(IsMobileView ? "580px" : "690px")">
+            <div id="target" class="w-100">
+                <div class="d-flex align-items-center justify-content-center pt-4 d-block d-sm-none">
+                    <SfButton CssClass="e-primary e-round e-bigger" IconCss="sf-icon-help-circle fs-5 lh-base" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="open contact us form" role="button"></SfButton>
+                </div>
+                <SfDialog @ref="Dialog" CssClass="rounded-4 overflow-hidden border-0" Target="#target" Width="@(IsMobileView ? "400px" : "350px")" MinHeight="580px" Visible="@IsDialogVisible" ShowCloseIcon="false" aria-label="chat with AI assistant" role="dialog">
+                    <DialogTemplates>
+                        <Header>
+                            <div class="py-4 bg-primary">
+                                <div class="d-flex justify-content-end d-block d-sm-none px-3 pt-3 position-absolute end-0 top-0">
+                                    <SfButton CssClass="e-primary e-round" IconCss="e-icons e-close text-white" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="close contact us form" role="button"></SfButton>
+                                </div>
+                                <div class="d-flex flex-column align-items-center">
+                                    <h2 class="text-white fw-bold small mb-0">Chat with our AI</h2>
+                                    <p class="pt-2 pb-3 text-center text-wrap mb-0 w-50 text-white small fw-medium">Ask any question and our AI will answer</p>
+                                    <SfButton class="rounded-5 px-3 border border-white" CssClass="e-primary" Content="New chat" Type="button" aria-label="new chat" role="button"></SfButton>
+                                </div>
+                            </div>
+                        </Header>
+                        <Content>
+                            <div id="assistview-bs" class="bg-primary px-3 pb-3">
+                                <div class="bg-body d-flex flex-column rounded-4 px-3" style="height: 398px;">
+                                    <SfAIAssistView @ref="AIAssist" CssClass="rounded" PromptPlaceholder="Type your message here..." PromptRequested="@PromptRequestAsync" Prompts="@prompts"></SfAIAssistView>
+                                    <p class="text-center small fw-normal mt-2 mb-3 text-body-secondary">Powered by <span class="fw-medium text-body">Remall</span></p>
+                                </div>
+                            </div>
+                        </Content>
+                    </DialogTemplates>
+                    <DialogEvents Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                    <DialogPositionData X="right" Y="top"></DialogPositionData>
+                </SfDialog>
+                <SfFab CssClass="e-primary e-round e-bigger d-none d-sm-block" IconCss="@(IsDialogVisible ? "e-icons e-close fs-5 lh-base" : "sf-icon-help-circle fs-5 lh-base")" Position="FabPosition.BottomRight" Type="Button" Target="#target" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" aria-label="show/hide AI assistant" role="button"></SfFab>
+            </div>
+        </div>
+    </section>
+}

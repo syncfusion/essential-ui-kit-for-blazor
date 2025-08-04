@@ -138,6 +138,25 @@
     text-align: left;
     color: #111827;
     margin-top: 60px;
+    display: flex;
+    align-items: center;
+}
+
+.new-status {
+    color: white;
+    font-weight: 400;
+    font-size: 12px;
+    border-radius: 12px;
+    padding: 2px;
+    margin: 0px 8px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    background: #198754;
+    width: 38px;
+    flex-shrink: 0;
 }
 
 .sample-title .figma-button {

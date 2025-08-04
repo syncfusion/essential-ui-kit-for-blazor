@@ -7,9 +7,8 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section>
-        <div id="dialog-container" class="relative flex justify-center" style="min-height: 660px;">
-            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="manage access" role="button">Manage Access</SfButton>
-            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Visible="true" Width="540px" aria-label="manage team member access" role="dialog">
+        <div id="dialog-container" class="relative" style="min-height: 660px;">
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4 overflow-hidden" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Visible="true" Width="540px" aria-label="manage team member access" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
                     <Header>
@@ -48,8 +47,8 @@
                         <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-4 sm:gap-1 py-2">
                             <p class="text-left text-sm text-gray-500 dark:text-gray-400">Changes will be logged for audit purposes</p>
                             <div class="flex gap-2 sm:gap-1">
-                                <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
-                                <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="button" aria-label="apply changes" role="button">Apply Changes</SfButton>
+                                <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Content="Cancel" Type="button" aria-label="cancel" role="button"></SfButton>
+                                <SfButton CssClass="e-primary w-1/2 sm:w-fit" Content="Apply Changes" Type="button" aria-label="apply changes" role="button"></SfButton>
                             </div>
                         </div>
                     </FooterTemplate>
@@ -57,12 +56,16 @@
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="top-0 left-0 absolute w-full flex">
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Manage Access" Type="button" aria-label="manage access" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
-        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 660px;">
-            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="manage access" role="button">Manage Access</SfButton>
+        <div id="dialog-container" class="position-relative" style="min-height: 660px;">
             <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Visible="true" Width="540px" aria-label="manage team member access" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
@@ -90,7 +93,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                 </div>
                                                 <span class="e-badge e-badge-pill @(context.Status == "Active" ? "e-badge-success" : "e-badge-warning")">@context.Status</span>
                                             </div>
-                                            <SfDropDownButton CssClass="m-1 m-sm-0 me-sm-1 e-outline" Content="@context.Role" Type="button" style="width: 100px;" aria-label="choose a role" role="button"></SfDropDownButton>
+                                            <SfDropDownButton CssClass="m-1 m-sm-0 me-sm-1 e-outline" Content="@context.Role" Type="button" aria-label="choose a role" role="button" style="width: 100px;"></SfDropDownButton>
                                         </div>
                                     </div>
                                 }
@@ -99,11 +102,11 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         </SfListView>
                     </Content>
                     <FooterTemplate>
-                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 py-1">
-                            <p class="text-body text-opacity-50 text-start mb-0">Changes will be logged for audit purposes</p>
+                        <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 py-1 fs-6">
+                            <p class="text-body text-opacity-50 text-start mb-0 small">Changes will be logged for audit purposes</p>
                             <div class="d-flex justify-content-end gap-2 gap-sm-1">
-                                <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
-                                <SfButton CssClass="e-primary col col-sm-auto" Type="button" aria-label="apply changes" role="button">Apply Changes</SfButton>
+                                <SfButton CssClass="col col-sm-auto ms-0" Content="Cancel" Type="button" aria-label="cancel" role="button"></SfButton>
+                                <SfButton CssClass="e-primary col col-sm-auto" Content="Apply Changes" Type="button" aria-label="apply changes" role="button"></SfButton>
                             </div>
                         </div>
                     </FooterTemplate>
@@ -111,4 +114,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="position-absolute top-0 start-0 d-flex w-100">
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Manage Access" Type="button" aria-label="manage access" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }

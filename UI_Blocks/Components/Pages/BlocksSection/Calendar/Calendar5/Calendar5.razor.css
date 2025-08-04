@@ -1,6 +1,7 @@
 ::deep .e-list-template .e-list-item {
     border-bottom: none !important;
 }
+
 ::deep .e-calendar .e-footer-container {
     display: none;
 }

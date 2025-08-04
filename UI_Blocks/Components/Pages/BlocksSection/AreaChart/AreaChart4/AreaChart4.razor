@@ -1,0 +1,190 @@
+﻿@page "/blocks/area-chart-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 690px;">
+                <div>
+                    <h1 class="text-base font-medium mb-2 text-gray-900 dark:text-white">Visitor Analysis</h1>
+                    <p class="text-sm font-normal text-gray-500 dark:text-gray-400">Overall Visitors</p>
+                </div>
+                <div class="mt-4 sm:mt-5 flex flex-col-reverse sm:flex-row sm:justify-between sm:items-center sm:gap-0 gap-5">
+                    <h1 class="text-xl font-semibold text-gray-900 dark:text-white">30,754</h1>
+                    <div class="flex flex-row gap-3 sm:ml-auto">
+                        <SfDropDownButton @ref="YearDropDown" Content="2024" Type="button" aria-label="choose a year" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsYearDropdownOpen = true)" Closed="@(args => IsYearDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="2024"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2023"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2022"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2021"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2020"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                        <SfDropDownButton @ref="UserMenuDropDown" Content="Age" Type="button" aria-label="user information selection" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsUserMenuOpen = true)" Closed="@(args => IsUserMenuOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="Age"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Gender"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Location"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Language"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="flex text-gray-700 font-medium gap-3 dark:text-gray-300">
+                        <p class="text-sm">Age Category:</p>
+                        <div class="flex items-center text-xs gap-3 sm:gap-6">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full" style="background-color: #267DDA;"></span>
+                                <p>12 - 19</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full" style="background-color: #DE4383;"></span>
+                                <p>20 - 39</p>
+                            </div>
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full" style="background-color: #01A8B5;"></span>
+                                <p>40></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-7 sm:mt-5">
+                    <SfChart @ref=Chart Height="300px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" LabelRotation="@XAxisLabelRotation" Interval="1" LabelPlacement="Syncfusion.Blazor.Charts.LabelPlacement.OnTicks" EdgeLabelPlacement="Syncfusion.Blazor.Charts.EdgeLabelPlacement.Shift">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis LabelFormat="{value}" RangePadding="Syncfusion.Blazor.Charts.ChartRangePadding.None" Minimum="0" Maximum="500" Interval="100" EdgeLabelPlacement="Syncfusion.Blazor.Charts.EdgeLabelPlacement.Shift">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="Teens" Type="ChartSeriesType.SplineArea" Name="12 - 19" Fill="#267DDA" Opacity="0.4" Width="2">
+                                <ChartSeriesBorder Width="0"></ChartSeriesBorder>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="YoungAdults" Type="ChartSeriesType.SplineArea" Name="20 - 39" Fill="#DE4383" Opacity="0.4" Width="2">
+                                <ChartSeriesBorder Width="0"></ChartSeriesBorder>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="Adults" Type="ChartSeriesType.SplineArea" Name="40>" Fill="#01A8B5" Opacity="0.4" Width="2">
+                                <ChartSeriesBorder Width="0"></ChartSeriesBorder>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartLegendSettings Visible="false"></ChartLegendSettings>
+                        <ChartTooltipSettings Enable="true" Header="" EnableMarker="false" ShowNearestTooltip="true" Format="<b>${point.y} ↑</b>"></ChartTooltipSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center p-3 p-sm-4">
+            <div class="w-100" style="max-width: 690px;">
+                <div>
+                    <h1 class="fs-6 fw-medium mb-1 text-body">Visitor Analysis</h1>
+                    <p class="small fw-normal text-body-secondary mb-sm-1 mb-0">Overall Visitors</p>
+                </div>
+                <div class="mt-3 d-flex flex-column-reverse flex-sm-row justify-content-sm-between align-items-sm-center gap-sm-0 gap-3">
+                    <h1 class="fs-5 fw-bolder text-body mb-0">30,754</h1>
+                    <div class="d-flex flex-row gap-3 gap-sm-2 ms-sm-auto">
+                        <SfDropDownButton @ref="YearDropDown" CssClass="e-outline me-sm-1" Content="2024" Type="button" aria-label="choose a year" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsYearDropdownOpen = true)" Closed="@(args => IsYearDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="2024"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2023"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2022"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2021"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2020"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                        <SfDropDownButton @ref="UserMenuDropDown" CssClass="e-outline" Content="Age" Type="button" aria-label="user information selection" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsUserMenuOpen = true)" Closed="@(args => IsUserMenuOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="Age"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Gender"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Location"></DropDownMenuItem>
+                                <DropDownMenuItem Text="Language"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                    </div>
+                </div>
+                <div class="mt-3 mb-1">
+                    <div class="small d-flex fw-medium gap-2">
+                        <p class="text-body-secondary pe-1 mb-0">Age Category:</p>
+                        <div class="d-flex align-items-center text-body gap-3 gap-sm-4">
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="rounded-circle" style="width: 8px; height: 8px; background-color: #006EEF;"></span>
+                                <p class="mb-0">12 - 19</p>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="rounded-circle" style="width: 8px; height: 8px; background-color: #EF00AC;"></span>
+                                <p class="mb-0">20 - 39</p>
+                            </div>
+                            <div class="d-flex align-items-center gap-2">
+                                <span class="rounded-circle" style="width: 8px; height: 8px; background-color: #00EFA7;"></span>
+                                <p class="mb-0">40></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5 mt-sm-3">
+                    <SfChart @ref=Chart Height="300px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" LabelRotation="@XAxisLabelRotation" Interval="1" LabelPlacement="Syncfusion.Blazor.Charts.LabelPlacement.OnTicks" EdgeLabelPlacement="Syncfusion.Blazor.Charts.EdgeLabelPlacement.Shift">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis LabelFormat="{value}" RangePadding="Syncfusion.Blazor.Charts.ChartRangePadding.None" Minimum="0" Maximum="500" Interval="100" EdgeLabelPlacement="Syncfusion.Blazor.Charts.EdgeLabelPlacement.Shift">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="Teens" Type="ChartSeriesType.SplineArea" Name="12 - 19" Fill="#006EEF" Opacity="0.4" Width="2">
+                                <ChartSeriesBorder Width="0"></ChartSeriesBorder>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="YoungAdults" Type="ChartSeriesType.SplineArea" Name="20 - 39" Fill="#EF00AC" Opacity="0.4" Width="2">
+                                <ChartSeriesBorder Width="0"></ChartSeriesBorder>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="Adults" Type="ChartSeriesType.SplineArea" Name="40>" Fill="#00EFA7" Opacity="0.4" Width="2">
+                                <ChartSeriesBorder Width="0"></ChartSeriesBorder>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartLegendSettings Visible="false"></ChartLegendSettings>
+                        <ChartTooltipSettings Enable="true" Header="" EnableMarker="false" ShowNearestTooltip="true" Format="<b>${point.y} ↑</b>"></ChartTooltipSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}

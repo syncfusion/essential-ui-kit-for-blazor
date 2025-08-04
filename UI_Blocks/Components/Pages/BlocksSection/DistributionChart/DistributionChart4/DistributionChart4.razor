@@ -1,0 +1,132 @@
+@page "/blocks/distribution-chart-4"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 530px;">
+                <div class="flex flex-col sm:flex-row justify-between items-start gap-4">
+                    <p class="text-base font-semibold text-gray-900 dark:text-white">Browser Market Share Overview</p>
+                    <div class="flex gap-3">
+                        <SfButton CssClass="e-outline" IconCss="e-icons e-refresh" Type="button" aria-label="refresh" role="button"></SfButton>
+                        <SfDropDownButton @ref="DropDownButton" CssClass="e-outline" Content="2024" Type="button" aria-label="choose a year" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="2024"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2023"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2022"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2021"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2020"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                        <SfButton CssClass="e-outline" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
+                    </div>
+                </div>
+                <div class="mt-2 mx-auto">
+                    <SfAccumulationChart Width="100%" Height="360px" Title="" EnableSmartLabels="true" EnableBorderOnMouseMove="false" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <AccumulationChartLegendSettings Visible="false"></AccumulationChartLegendSettings>
+                        <AccumulationChartTooltipSettings Enable="@ShowToolTip" EnableMarker="false"></AccumulationChartTooltipSettings>
+                        <AccumulationChartSeriesCollection>
+                            <AccumulationChartSeries DataSource="@PieChartData" XName="XAxis" YName="YAxis" PointColorMapping="Fill" GroupTo="9" GroupMode=GroupMode.Point>
+                                <AccumulationDataLabelSettings Visible="@ShowDataLabels" Name="Text" Position="AccumulationLabelPosition.Outside">
+                                    <AccumulationChartConnector Type="ConnectorType.Line" Length="20px" Color="@(CurrentTheme == "tailwind-dark" ? "#9CA3AF" : "#6B7280")"> </AccumulationChartConnector>
+                                    <AccumulationChartDataLabelFont Size="12px" Color="@(CurrentTheme == "tailwind-dark" ? "#9CA3AF" : "#6B7280")"></AccumulationChartDataLabelFont>
+                                </AccumulationDataLabelSettings>
+                                <AccumulationChartSeriesBorder Width="1" Color="@(CurrentTheme == "tailwind-dark" ? "#000000" : "#FFFFFF")"></AccumulationChartSeriesBorder>
+                            </AccumulationChartSeries>
+                        </AccumulationChartSeriesCollection>
+                    </SfAccumulationChart>
+                </div>
+            </div>
+            <svg width="0" height="0">
+                <defs>
+                    <pattern id="DiagonalLine" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+                        <rect width="1" height="4" transform="translate(0,0)" fill="#01A8B5"/>
+                    </pattern>
+                    <pattern id="Grid" patternUnits="userSpaceOnUse" width="5" height="5">
+                        <path d="M0 0 L0 5 M0 0 L5 0" stroke="#5A61F6" stroke-width="1" />
+                    </pattern>
+                    <pattern id="VerticalStripe" patternUnits="userSpaceOnUse" width="4" height="4">
+                        <path d="M2,0 L2,4" stroke="#9CA3AF" stroke-width="1" />
+                    </pattern>
+                    <pattern id="VerticalDash" patternUnits="userSpaceOnUse" width="6" height="6">
+                        <path d="M3,0 L3,6" stroke="#D83B01" stroke-width="1" />
+                    </pattern>
+                    <pattern id="HorizontalStripe" patternUnits="userSpaceOnUse" width="4" height="4">
+                        <path d="M0,2 L4,2" stroke="#DE4383" stroke-width="1" />
+                    </pattern>
+                    <pattern id="Dots" patternUnits="userSpaceOnUse" width="6" height="6">
+                        <circle cx="3" cy="3" r="1.5" fill="#FFB900" />
+                    </pattern>
+                </defs>
+            </svg>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="d-flex justify-content-center p-3 p-sm-4">
+            <div class="w-100" style="max-width: 530px;">
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-start gap-3 mb-4">
+                    <p class="h6 fw-semibold text-body mb-0">Browser Market Share Overview</p>
+                    <div class="d-flex gap-3">
+                        <SfButton CssClass="e-outline" IconCss="e-icons e-refresh" Type="button" aria-label="refresh" role="button"></SfButton>
+                        <SfDropDownButton @ref="DropDownButton" CssClass="e-outline" Content="2024" Type="button" aria-label="choose a year" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="2024"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2023"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2022"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2021"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2020"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                        <SfButton CssClass="e-outline" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
+                    </div>
+                </div>
+                <div class="mt-2 mx-auto">
+                    <SfAccumulationChart Width="100%" Height="360px" Title="" EnableSmartLabels="true" EnableBorderOnMouseMove="false" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <AccumulationChartLegendSettings Visible="false"></AccumulationChartLegendSettings>
+                        <AccumulationChartTooltipSettings Enable="@ShowToolTip" EnableMarker="false"></AccumulationChartTooltipSettings>
+                        <AccumulationChartSeriesCollection>
+                            <AccumulationChartSeries DataSource="@PieChartData" XName="XAxis" YName="YAxis" PointColorMapping="Fill" GroupTo="9" GroupMode=GroupMode.Point>
+                                <AccumulationDataLabelSettings Visible="@ShowDataLabels" Name="Text" Position="AccumulationLabelPosition.Outside">
+                                    <AccumulationChartConnector Type="ConnectorType.Line" Length="20px" Color="@(CurrentTheme == "bootstrap5.3-dark" ? "#9CA3AF" : "#6B7280")"> </AccumulationChartConnector>
+                                    <AccumulationChartDataLabelFont Size="12px" Color="@(CurrentTheme == "bootstrap5.3-dark" ? "#9CA3AF" : "#6B7280")"></AccumulationChartDataLabelFont>
+                                </AccumulationDataLabelSettings>
+                                <AccumulationChartSeriesBorder Width="1" Color="@(CurrentTheme == "bootstrap5.3-dark" ? "#000000" : "#FFFFFF")"></AccumulationChartSeriesBorder>
+                            </AccumulationChartSeries>
+                        </AccumulationChartSeriesCollection>
+                    </SfAccumulationChart>
+                </div>
+            </div>
+            <svg width="0" height="0">
+                <defs>
+                    <pattern id="DiagonalLine" width="4" height="4" patternUnits="userSpaceOnUse" patternTransform="rotate(-45)">
+                        <rect width="1" height="4" transform="translate(0,0)" fill="#00EFA7"/>
+                    </pattern>
+                    <pattern id="Grid" patternUnits="userSpaceOnUse" width="5" height="5">
+                        <path d="M0 0 L0 5 M0 0 L5 0" stroke="#006EEF" stroke-width="1" />
+                    </pattern>
+                    <pattern id="VerticalStripe" patternUnits="userSpaceOnUse" width="4" height="4">
+                        <path d="M2,0 L2,4" stroke="#9CA3AF" stroke-width="1" />
+                    </pattern>
+                    <pattern id="VerticalDash" patternUnits="userSpaceOnUse" width="6" height="6">
+                        <path d="M3,0 L3,6" stroke="#F42929" stroke-width="1" />
+                    </pattern>
+                    <pattern id="HorizontalStripe" patternUnits="userSpaceOnUse" width="4" height="4">
+                        <path d="M0,2 L4,2" stroke="#EF00AC" stroke-width="1" />
+                    </pattern>
+                    <pattern id="Dots" patternUnits="userSpaceOnUse" width="6" height="6">
+                        <circle cx="3" cy="3" r="1.5" fill="#FFB900" />
+                    </pattern>
+                </defs>
+            </svg>
+        </div>
+    </section>
+}

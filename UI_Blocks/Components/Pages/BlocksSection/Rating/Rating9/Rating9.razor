@@ -1,0 +1,82 @@
+﻿@page "/blocks/rating-9"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="py-6 mx-auto flex flex-col justify-center items-center bg-white dark:bg-gray-800 border-0 sm:!rounded-lg sm:!border border-gray-300 dark:border-gray-500 text-gray-900 dark:text-white" style="max-width: 360px;">
+                <h2 class="text-base font-semibold">Customer reviews</h2>
+                <div class="flex justify-center items-center py-1">
+                    <SfRating Value="4.0" ShowLabel="true" Precision="PrecisionType.Exact">
+                        <EmptyTemplate>
+                            <span class="sf-icon-star-filled-01 !text-2xl text-gray-300 dark:text-gray-500"></span>
+                        </EmptyTemplate>
+                        <FullTemplate>
+                            <span class="sf-icon-star-filled-01 !text-2xl text-amber-300"></span>
+                        </FullTemplate>
+                        <LabelTemplate Context="data">
+                            <p class="!text-gray-900 dark:!text-white text-sm font-medium">@($"{data.ToString("0.0")} / 5")</p>
+                        </LabelTemplate>
+                    </SfRating>
+                </div>
+                <p class="text-sm text-gray-500 dark:text-gray-400">based on 135 ratings</p>
+                <div class="pt-6 flex flex-col gap-1 px-4 sm:px-6 w-full">
+                    @foreach (var rating in CustomerRatings)
+                    {
+                        <div class="flex justify-center items-center">
+                            <span class="text-gray-700 dark:text-gray-100 text-sm shrink-0" style="min-width: 38px;">@rating.Label star</span>
+                            <div class="grow sm:grow-0 shrink-1 mx-2" style="height: 30px; width: 80%;">
+                                <SfProgressBar id="@rating.Id.ToString()" Width="@ProgressWidth" Value="@rating.Value" ProgressThickness="12" Height="30" TrackThickness="12" ProgressColor="#FFB900" CornerRadius="CornerType.Round">
+                                    <ProgressBarMargin Left="1" Right="1"></ProgressBarMargin>
+                                </SfProgressBar>
+                            </div>
+                            <span class="text-gray-900 dark:text-white text-xs font-medium" style="min-width: 18px;">@rating.Value</span>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="py-4 mx-auto d-flex flex-column justify-content-center align-items-center bg-body border rounded-3 text-body" style="max-width: 360px;">
+                <h2 class="fs-6 fw-bold text-body">Customer reviews</h2>
+                <div class="d-flex justify-content-center align-items-center py-1">
+                    <SfRating Value="4.0" ShowLabel="true" Precision="PrecisionType.Exact">
+                        <EmptyTemplate>
+                            <span class="sf-icon-star-02 fs-4 text-body-secondary"></span>
+                        </EmptyTemplate>
+                        <FullTemplate>
+                            <span class="sf-icon-star-filled-01 fs-4 text-warning"></span>
+                        </FullTemplate>
+                        <LabelTemplate Context="data">
+                            <span class="fs-6"><p class="text-body small fw-normal mb-0">@($"{data.ToString("0.0")} / 5")</p></span>
+                        </LabelTemplate>
+                    </SfRating>
+                </div>
+                <p class="small text-body-secondary mb-0">based on 135 ratings</p>
+                <div class="pt-4 d-flex flex-column gap-2 px-3 px-sm-4 w-100">
+                    @foreach (var rating in CustomerRatings)
+                    {
+                        <div class="d-flex justify-content-center align-items-center">
+                            <span class="text-body-secondary small flex-shrink-0" style="min-width: 35px;">@rating.Label star</span>
+                            <div class="flex-grow-1 flex-shrink-1 flex-sm-shrink-0 mx-2" style="height: 30px; width: 80%;">
+                                <SfProgressBar id="@rating.Id.ToString()" Width="@ProgressWidth" Value="@rating.Value" ProgressThickness="12" Height="30" TrackThickness="12" ProgressColor="#FFB900" CornerRadius="CornerType.Round">
+                                    <ProgressBarMargin Left="1" Right="1"></ProgressBarMargin>
+                                </SfProgressBar>
+                            </div>
+                            <span class="small"><p class="text-body small fw-medium mb-0" style="min-width: 13px;">@rating.Value</p></span>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}

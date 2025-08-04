@@ -1,17 +1,12 @@
 using Microsoft.JSInterop;
-using Syncfusion.Blazor.Navigations;
 
 namespace UI_Blocks.Components.Pages.BlocksSection.Calendar.Calendar2
 {
     public partial class Calendar2
     {
-        private bool SidebarToggle { get; set; } = true;
-        private double[] Value { get; set; } = [2500, 4000];
-        private string Width { get; set; } = "310px";
-        private void ToggleSidebar()
-        {
-            SidebarToggle = !SidebarToggle;
-        }
+        public bool IsSidebarOpen = true;
+        public double[] Value = [2500, 4000];
+        public string Width = "310px";
 
         [JSInvokable]
         public void ResizeHandler(string message, int windowWidth)
@@ -19,8 +14,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Calendar.Calendar2
             if (message == "resizeAction")
             {
                 Width = windowWidth < 540 ? "100%" : "310px";
-                StateHasChanged();
             }
+            StateHasChanged();
         }
     }
 }

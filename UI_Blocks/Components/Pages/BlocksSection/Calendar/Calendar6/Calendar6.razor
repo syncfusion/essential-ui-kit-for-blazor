@@ -8,7 +8,7 @@
 {
     <section class="bg-white dark:bg-gray-900">
         <div style="height: 912px; width: @Width; float: right;">
-            <SfSidebar class="w-full bg-white dark:bg-gray-900" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" ShowBackdrop="true" role="complementary">
+            <SfSidebar class="w-full bg-white dark:bg-gray-900" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" ShowBackdrop="true" role="complementary">
                 <ChildContent>
                     <div>
                         <div class="flex justify-between items-center px-4 py-3">
@@ -16,13 +16,13 @@
                                 <label class="text-sm text-gray-900 dark:text-white">CALENDAR</label>
                                 <SfDatePicker TValue="DateTime?" Start="CalendarView.Decade" Depth="CalendarView.Decade" Format="yyyy"></SfDatePicker>
                             </div>
-                            <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" OnClick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                            <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="close sidebar" role="button"></SfButton>
                         </div>
                     </div>
                     <div class="flex px-4 py-2 border-y border-gray-200 dark:border-gray-600 justify-between">
-                        <SfButton CssClass="e-primary e-outline" Content="Request time off" IconCss="e-icons e-plus" Type="button" aria-label="request time off" role="button"></SfButton>
+                        <SfButton CssClass="e-primary e-outline" IconCss="e-icons e-plus" Content="Request time off" Type="button" aria-label="request time off" role="button"></SfButton>
                         <div class="my-auto">
-                            <SfDropDownButton Items="@MenuItems" CssClass="e-flat background-none !border-none e-caret-hide" IconCss="e-icons e-more-vertical-2" Type="button" aria-label="select the leave options" role="button">
+                            <SfDropDownButton Items="@MenuItems" CssClass="e-flat background-none !border-none e-caret-hide !pr-1" IconCss="e-icons e-more-vertical-2" Type="button" aria-label="select the leave options" role="button">
                                 <DropDownButtonEvents ItemSelected="LeaveOptions"></DropDownButtonEvents>
                             </SfDropDownButton>
                         </div>
@@ -66,7 +66,7 @@
                                     <div class="e-card shadow-none pt-3 border-gray-200 dark:border-gray-600 flex-row justify-between">
                                         <div class="e-card-stacked">
                                             <div class="e-card-content">
-                                                <div class="font-normal text-xs text-gray-500 mb-0.5">3 day request</div>
+                                                <div class="font-normal text-xs text-gray-500 dark:text-gray-300 mb-0.5">3 day request</div>
                                                 <div class="text-xs font-semibold mb-2">24 Sep - 26 Sep</div>
                                                 <span class="e-badge e-badge-pill e-bigger e-badge-secondary border border-gray-200 dark:border-gray-600">Casual</span>
                                             </div>
@@ -76,7 +76,7 @@
                                     <div class="e-card shadow-none pt-3 border-gray-200 dark:border-gray-600 flex-row justify-between">
                                         <div class="e-card-stacked">
                                             <div class="e-card-content">
-                                                <div class="font-normal text-xs text-gray-500 mb-0.5">Half day request</div>
+                                                <div class="font-normal text-xs text-gray-500 dark:text-gray-300 mb-0.5">Half day request</div>
                                                 <div class="text-xs font-semibold mb-2">04 Sep</div>
                                                 <span class="e-badge e-badge-pill e-bigger e-badge-info">Sick</span>
                                             </div>
@@ -89,7 +89,7 @@
                                     <div class="e-card shadow-none pt-3 border-gray-200 dark:border-gray-600 flex-row justify-between">
                                         <div class="e-card-stacked">
                                             <div class="e-card-content">
-                                                <div class="font-normal text-xs text-gray-500 mb-0.5">2 day request</div>
+                                                <div class="font-normal text-xs text-gray-500 dark:text-gray-300 mb-0.5">2 day request</div>
                                                 <div class="text-xs font-semibold mb-2">23 Jul - 24 Jul</div>
                                                 <span class="e-badge e-badge-pill e-bigger e-badge-secondary border border-gray-200 dark:border-gray-600">Casual</span>
                                             </div>
@@ -129,15 +129,15 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 absolute top-0 right-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" Type="button" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
-    <section class="bg-light">
+    <section class="bg-body">
         <div style="height: 940px; width: @Width; float: right;">
-            <SfSidebar class="bg-body" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" ShowBackdrop="true" role="complementary">
+            <SfSidebar class="bg-body" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" ShowBackdrop="true" role="complementary">
                 <ChildContent>
                     <div>
                         <div class="d-flex justify-content-between align-items-center p-3">
@@ -145,13 +145,13 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <label class="fs-6 text-body-secondary">CALENDAR</label>
                                 <SfDatePicker TValue="DateTime?" Start="CalendarView.Decade" Depth="CalendarView.Decade" Format="yyyy"></SfDatePicker>
                             </div>
-                            <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" OnClick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                            <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="close sidebar" role="button"></SfButton>
                         </div>
                     </div>
                     <div class="d-flex p-3 border-bottom border-top border-light-subtle justify-content-between">
-                        <SfButton CssClass="e-primary e-outline" Content="Request time off" IconCss="e-icons e-plus" Type="button" aria-label="request time off" role="button"></SfButton>
+                        <SfButton CssClass="e-primary e-outline" IconCss="e-icons e-plus" Content="Request time off" Type="button" aria-label="request time off" role="button"></SfButton>
                         <div class="my-auto">
-                            <SfDropDownButton Items="@MenuItems" CssClass="e-flat border-0 e-caret-hide" IconCss="e-icons e-more-vertical-2" Type="button" aria-label="select the leave options" role="button">
+                            <SfDropDownButton Items="@MenuItems" CssClass="e-flat border-0 e-caret-hide pe-1" IconCss="e-icons e-more-vertical-2" Type="button" aria-label="select the leave options" role="button">
                                 <DropDownButtonEvents ItemSelected="LeaveOptions"></DropDownButtonEvents>
                             </SfDropDownButton>
                         </div>
@@ -256,7 +256,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 position-absolute top-0 end-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" Type="button" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

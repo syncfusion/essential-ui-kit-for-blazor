@@ -15,7 +15,7 @@
 						<input class="e-input !pl-0" type="text" placeholder="Search" aria-label="search transactions" role="textbox" />
 					</div>
 					<div class="e-appbar-spacer"></div>
-					<SfButton CssClass="e-flat sf-icon-notification-bell-01 text-base ml-2" Type="button" aria-label="notification" role="button"></SfButton>
+					<SfButton CssClass="e-flat text-base ml-2" IconCss="sf-icon-notification-bell-01" Type="button" aria-label="notification" role="button"></SfButton>
 					<span class="e-avatar e-avatar-circle e-avatar-small shrink-0 ml-3">
 						<img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
 					</span>
@@ -37,7 +37,7 @@
 					<div class="flex flex-col justify-between gap-4 mb-3 text-gray-900 dark:text-gray-50 md:flex-row">
 						<div class="flex justify-between">
 							<p class="text-xl font-medium">Transactions</p>
-							<SfButton CssClass="e-primary sm:hidden e-icons e-plus" Type="button" aria-label="add new transaction" role="button"></SfButton>
+							<SfButton CssClass="e-primary sm:hidden" IconCss="e-icons e-plus" Type="button" aria-label="add new transaction" role="button"></SfButton>
 						</div>
 						<div class="flex flex-col gap-4 sm:flex-row">
 							<div class="flex items-center gap-2 text-sm">
@@ -47,7 +47,7 @@
 							<SfDropDownButton CssClass="w-fit" Content="This week" Type="button" aria-label="choose the week" role="button">
 								<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
 							</SfDropDownButton>
-							<SfButton CssClass="e-primary hidden sm:inline-block" Type="button" aria-label="add new transaction" role="button">Add New Transaction</SfButton>
+							<SfButton CssClass="e-primary hidden sm:inline-block" Content="Add New Transaction" Type="button" aria-label="add new transaction" role="button"></SfButton>
 						</div>
 					</div>
 					<SfListView CssClass="!border-0 e-list-template" DataSource="@TransactionDetails" aria-label="list of transaction with details" role="list">
@@ -57,7 +57,7 @@
 								@{
 									<div class="e-card flex-row gap-1 rounded-lg sm:gap-0 p-4">
 										<span class="e-avatar e-avatar-large e-avatar-circle shrink-0 mr-2 sm:mr-4 @(context.PaymentType == "Credit Card" ? "bg-green-100 text-green-700 dark:text-green-500" : context.PaymentType == "Wire Transfer" ? "bg-indigo-100 text-indigo-600" : context.PaymentType == "Deposit" ? "bg-orange-100 text-orange-500 dark:text-orange-700" : context.PaymentType == "ACH Transfer" ? "bg-cyan-100 dark:bg-sky-100 text-cyan-700 dark:text-cyan-600" : "")">
-											<i class="sf-icon-dollar text-2xl"></i>
+											<span class="sf-icon-dollar text-2xl"></span>
 										</span>
 										<div class="e-card-stacked grow sm:space-y-3">
 											<div class="e-card-header !flex-col gap-2 sm:!flex-row items-start !p-0">
@@ -82,7 +82,7 @@
 											</div>
 										</div>
 										<div class="e-card-actions self-start !p-0 leading-none">
-											<SfButton CssClass="e-round e-icons e-more-vertical-1 e-flat" Type="button" aria-label="more options" role="button"></SfButton>
+											<SfButton CssClass="e-round e-flat" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
 										</div>
 									</div>
 								}
@@ -105,7 +105,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 						<input class="e-input ps-0" type="text" placeholder="Search" aria-label="search transactions" role="textbox" />
 					</div>
 					<div class="d-flex gap-2">
-						<SfButton CssClass="e-flat sf-icon-notification-bell-01 fs-6" Type="button" aria-label="notification" role="button"></SfButton>
+						<SfButton CssClass="e-flat fs-6" IconCss="sf-icon-notification-bell-01" Type="button" aria-label="notification" role="button"></SfButton>
 						<span class="e-avatar e-avatar-circle e-avatar-small flex-shrink-0 ms-1">
 							<img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
 						</span>
@@ -128,7 +128,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 					<div class="d-flex flex-column justify-content-between gap-4 mt-2 pt-1 flex-md-row">
 						<div class="d-flex justify-content-between">
 							<h5 class="mb-0 fw-medium lh-base text-body">Transactions</h5>
-							<SfButton CssClass="e-primary d-sm-none e-icons e-plus" Type="button" aria-label="add new transaction" role="button"></SfButton>
+							<SfButton CssClass="e-primary d-sm-none" IconCss="e-icons e-plus" Type="button" aria-label="add new transaction" role="button"></SfButton>
 						</div>
 						<div class="d-flex flex-column align-items-start align-items-sm-center gap-3 flex-sm-row">
 							<div class="d-flex align-items-center gap-2 fs-6 text-body">
@@ -138,7 +138,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 							<SfDropDownButton CssClass="e-outline" Content="This week" Type="button" aria-label="choose the week" role="button">
 								<DropDownButtonEvents OnOpen="@(args => args.Cancel = true)"></DropDownButtonEvents>
 							</SfDropDownButton>
-							<SfButton CssClass="e-primary d-none d-sm-inline-block" Type="button" aria-label="add new transaction" role="button">Add New Transaction</SfButton>
+							<SfButton CssClass="e-primary d-none d-sm-inline-block" Content="Add New Transaction" Type="button" aria-label="add new transaction" role="button"></SfButton>
 						</div>
 					</div>
 					<SfListView CssClass="border-0 mt-4 e-list-template" DataSource="@TransactionDetails" aria-label="list of transaction with details" role="list">
@@ -148,7 +148,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 								@{
 									<div class="e-card d-flex flex-row gap-2 gap-sm-0 lh-base px-2 py-3 rounded-3 px-sm-3">
 										<span class="e-avatar e-avatar-large e-avatar-circle flex-shrink-0 me-2 me-sm-3 @(context.PaymentType == "Credit Card" ? "bg-info-subtle text-info-emphasis" : context.PaymentType == "Wire Transfer" ? "bg-success-subtle text-success-emphasis" : context.PaymentType == "Deposit" ? "bg-warning-subtle text-warning-emphasis" : context.PaymentType == "ACH Transfer" ? "bg-primary-subtle text-primary" : "")">
-											<i class="sf-icon-dollar fs-3"></i>
+											<span class="sf-icon-dollar fs-3"></span>
 										</span>
 										<div class="e-card-stacked flex-grow-1">
 											<div class="e-card-header flex-column gap-2 flex-sm-row align-items-start p-0 mb-sm-2">
@@ -172,7 +172,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 											</div>
 										</div>
 										<div class="e-card-actions align-self-start p-0">
-											<SfButton CssClass="e-round e-icons e-more-vertical-1 e-flat" Type="button" aria-label="more options" role="button"></SfButton>
+											<SfButton CssClass="e-round e-flat" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
 										</div>
 									</div>
 								}

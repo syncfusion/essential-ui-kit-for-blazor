@@ -33,8 +33,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Notification.Notification3
                 {
                     Dropdown.Toggle();
                 }
-                StateHasChanged();
             }
+            StateHasChanged();
         }
 
         public class Message

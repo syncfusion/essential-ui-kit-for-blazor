@@ -7,8 +7,8 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section class="bg-gray-50 dark:bg-gray-950">
-        <div class="flex flex-col lg:flex-row mx-auto p-0 min-h-screen">
-            <div class="w-full lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style="background-image: url('assets/images/authentication/feature-list/feature-list.png'); background-size: cover; background-repeat: no-repeat;">
+        <div class="flex flex-col lg:flex-row mx-auto p-0" style="min-height: 580px;">
+            <div class="w-full order-2 lg:order-1 lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style="background-image: url('assets/images/authentication/feature-list/feature-list.png'); background-size: cover; background-repeat: no-repeat;">
                 <div class="flex flex-wrap mx-0 w-full sm:p-6 xl:p-0 md:p-8 lg:px-6">
                     <div class="hidden xl:block xl:w-1/6"></div>
                     <div class="w-full xl:w-2/3">
@@ -36,7 +36,7 @@
                     <div class="hidden xl:block xl:w-1/6"></div>
                 </div>
             </div>
-            <div class="w-full lg:w-5/12">
+            <div class="w-full order-1 lg:order-2 lg:w-5/12">
                 <div class="bg-gray-50 dark:bg-gray-950">
                     <div class="flex justify-center">
                         <div class="w-full max-w-md rounded-lg p-4 p-md-6 py-12">
@@ -53,7 +53,7 @@
                                     </div>
                                 </div>
                                 <div class="e-bigger mt-6">
-                                    <SfButton CssClass="e-btn e-primary w-full" type="submit" aria-label="verify OTP" role="button">Verify</SfButton>
+                                    <SfButton CssClass="e-primary w-full" Content="Verify" Type="submit" aria-label="verify OTP" role="button"></SfButton>
                                 </div>
                             </form>
                             <span class="flex items-center justify-center gap-2 mt-7 e-bigger">
@@ -69,8 +69,8 @@
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
-    <section class="container-fluid d-md-flex d-block flex-wrap mx-auto p-0 min-vh-100">
-        <div class="col-12 col-lg-7 d-flex align-items-center bg-success p-4 p-lg-4" style="background-image: url('assets/images/authentication/feature-list/feature-list.png'); background-size: cover; background-repeat: no-repeat;">
+    <section class="container-fluid row d-flex flex-wrap mx-auto p-0" style="min-height: 580px;">
+        <div class="col-12 col-lg-7 order-2 order-lg-1 d-flex align-items-center bg-success p-4 p-lg-4" style="background-image: url('assets/images/authentication/feature-list/feature-list.png'); background-size: cover; background-repeat: no-repeat;">
             <div class="row mx-0 w-100 py-5">
                 <div class="col-xl-2 d-lg-block"></div>
                 <div class="col-xl-8">
@@ -86,7 +86,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 <div class="col-xl-2 d-lg-block"></div>
             </div>
         </div>
-        <div class="col-12 col-lg-5 p-0">
+        <div class="col-12 col-lg-5 order-1 order-lg-2 p-0">
             <div class="d-flex justify-content-center bg-body">
                 <div class="bg-body rounded-lg p-4 py-5 w-100" style="max-width: 450px;">
                     <div class="d-flex justify-content-center align-items-center mb-4">
@@ -102,7 +102,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             </div>
                         </div>
                         <div class="mt-4 e-bigger">
-                            <SfButton CssClass="e-btn e-block e-primary" type="submit" aria-label="verify OTP" role="button">Verify</SfButton>
+                            <SfButton CssClass="e-block e-primary" Content="Verify" Type="submit" aria-label="verify OTP" role="button"></SfButton>
                         </div>
                     </form>
                     <div class="d-flex align-items-center justify-content-center gap-2 mt-4">

@@ -13,8 +13,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Header.Header2
             if (message == "resizeAction")
             {
                 OverflowMode = windowWidth < 640 ? OverflowMode.Popup : OverflowMode.Extended;
-                StateHasChanged();
             }
+            StateHasChanged();
         }
     }
 }

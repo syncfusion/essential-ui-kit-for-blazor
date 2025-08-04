@@ -7,8 +7,8 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section class="bg-gray-50 dark:bg-gray-950">
-        <div class="flex flex-col lg:flex-row mx-auto p-0 min-h-screen">
-            <div class="w-full lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style="background-image: url('assets/images/authentication/feature-list/feature-list.png'); background-size: cover; background-repeat: no-repeat;">
+        <div class="flex flex-col lg:flex-row mx-auto p-0" style="min-height: 580px;">
+            <div class="w-full order-2 lg:order-1 lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style="background-image: url('assets/images/authentication/feature-list/feature-list.png'); background-size: cover; background-repeat: no-repeat;">
                 <div class="flex flex-wrap mx-0 w-full sm:p-6 xl:p-0 md:p-8 lg:px-6">
                     <div class="hidden xl:block xl:w-1/6"></div>
                     <div class="w-full xl:w-2/3">
@@ -36,7 +36,7 @@
                     <div class="hidden xl:block xl:w-1/6"></div>
                 </div>
             </div>
-            <div class="w-full lg:w-5/12">
+            <div class="w-full order-1 lg:order-2 lg:w-5/12">
                 <div class="bg-gray-50 dark:bg-gray-950">
                     <div class="flex justify-center">
                         <div class="w-full max-w-md rounded-lg p-6 py-12">
@@ -55,7 +55,7 @@
                                 </div>
                             </form>
                             <div class="e-bigger">
-                                <SfButton CssClass="w-full text-lg e-primary e-btn" type="submit" aria-label="click to unlock your session" role="button">Unlock your session</SfButton>
+                                <SfButton CssClass="w-full text-lg e-primary" Content="Unlock your session" Type="submit" aria-label="click to unlock your session" role="button"></SfButton>
                             </div>
                             <span class="flex items-center justify-center gap-2 mt-7">
                                 <p class="text-center text-gray-900 dark:text-white">Return to</p>
@@ -70,12 +70,12 @@
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
-    <section class="container-fluid d-md-flex d-block flex-wrap mx-auto p-0 min-vh-100">
-        <div class="col-12 col-lg-7 d-flex align-items-center bg-success p-4 p-lg-4" style="background-image: url('assets/images/authentication/feature-list/feature-list.png'); background-size: cover; background-repeat: no-repeat;">
+    <section class="container-fluid row d-flex flex-wrap mx-auto p-0" style="min-height: 580px;">
+        <div class="col-12 col-lg-7 order-2 order-lg-1 d-flex align-items-center bg-success p-4 p-lg-4" style="background-image: url('assets/images/authentication/feature-list/feature-list.png'); background-size: cover; background-repeat: no-repeat;">
             <div class="row mx-0 w-100 py-5">
                 <div class="col-xl-2 d-lg-block"></div>
                 <div class="col-xl-8">
-                        <h1 class="fw-bold display-6 text-light">Welcome to our design system</h1>
+                    <h1 class="fw-bold display-6 text-light">Welcome to our design system</h1>
                     <p class="my-4 fw-normal text-light m-0">The Bootstrap Design System helps developers build organized and well-coded dashboards full of beautiful and rich modules. Join us and start building your application today.</p>
                     <ul class="list-unstyled text-light">
                         <li class="d-flex align-items-center gap-3 mb-3 fw-normal"><span class="e-icons e-circle-check fs-5"></span>70+ components</li>
@@ -87,7 +87,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 <div class="col-xl-2 d-lg-block"></div>
             </div>
         </div>
-        <div class="col-12 col-lg-5 p-0">
+        <div class="col-12 col-lg-5 order-1 order-lg-2 p-0">
             <div class="d-flex justify-content-center bg-body">
                 <div class="bg-body rounded-lg p-4 py-5 w-100" style="max-width: 450px;">
                     <div class="d-flex justify-content-center mb-4">
@@ -105,7 +105,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         </div>
                     </form>
                     <div class="e-bigger">
-                        <SfButton CssClass="e-btn e-block e-primary" type="submit" aria-label="click to unlock your session" role="button">Unlock your session</SfButton>
+                        <SfButton CssClass="e-block e-primary" Content="Unlock your session" Type="submit" aria-label="click to unlock your session" role="button"></SfButton>
                     </div>
                     <div class="d-flex align-items-center justify-content-center gap-1 mt-4">
                         <p class="text-center mb-0 text-body">Return to</p>

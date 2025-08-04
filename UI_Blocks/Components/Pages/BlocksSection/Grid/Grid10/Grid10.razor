@@ -15,7 +15,7 @@
                             @{
                                 var dataItem = (context as ProductSales)!;   
                                 <div class="flex items-center gap-3">
-                                    <div class="w-8">
+                                    <div class="w-8 shrink-0 bg-gray-50 dark:bg-gray-700 rounded">
                                         <img class="rounded h-8" src="@($"assets/images/advance-grid/product-sales-table/{dataItem.ProductImage}")" width="32px" alt="product image" />
                                     </div>
                                     <div class="text-sm">@dataItem.Product</div>
@@ -31,9 +31,9 @@
                             }
                         </Template>
                     </GridColumn>
-                    <GridColumn Field="TotalRevenue" HeaderText="Total Revenue" Format="C0" Width="126" />
-                    <GridColumn Field="AverageSellingPrice" HeaderText="Average Selling Price" Format="C0" Width="158" />
-                    <GridColumn Field="PercentOfTotalSales" HeaderText="% of Total Sales" Width="128" />
+                    <GridColumn Field="TotalRevenue" HeaderText="Total Revenue" Format="C0" Width="126"></GridColumn>
+                    <GridColumn Field="AverageSellingPrice" HeaderText="Average Selling Price" Format="C0" Width="158"></GridColumn>
+                    <GridColumn Field="PercentOfTotalSales" HeaderText="% of Total Sales" Width="128"></GridColumn>
                     <GridColumn Field="TotalSalesRep" HeaderText="Sales Representative" Width="186">
                         <Template>
                             @{
@@ -56,7 +56,7 @@
                             }
                         </Template>
                     </GridColumn>
-                    <GridColumn Field="ReturnRate" HeaderText="Return Rate" Width="103" />
+                    <GridColumn Field="ReturnRate" HeaderText="Return Rate" Width="103"></GridColumn>
                 </GridColumns>
             </SfGrid>
         </div>
@@ -73,7 +73,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             @{
                                 var dataItem = (context as ProductSales)!; 
                                 <div class="d-flex align-items-center gap-2">
-                                    <div class="w-8">
+                                    <div class="w-8 flex-shrink-0 bg-body-tertiary rounded-1">
                                         <img class="rounded h-8" src="@($"assets/images/advance-grid/product-sales-table/{dataItem.ProductImage}")" width="32" alt="product image" />
                                     </div>
                                     <div>@dataItem.Product</div>
@@ -89,9 +89,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             }
                         </Template>
                     </GridColumn>
-                    <GridColumn Field="TotalRevenue" HeaderText="Total Revenue" Format="C0" Width="126" />
-                    <GridColumn Field="AverageSellingPrice" HeaderText="Average Selling Price" Format="C0" Width="158" />
-                    <GridColumn Field="PercentOfTotalSales" HeaderText="% of Total Sales" Width="128" />
+                    <GridColumn Field="TotalRevenue" HeaderText="Total Revenue" Format="C0" Width="126" ></GridColumn>
+                    <GridColumn Field="AverageSellingPrice" HeaderText="Average Selling Price" Format="C0" Width="158"></GridColumn>
+                    <GridColumn Field="PercentOfTotalSales" HeaderText="% of Total Sales" Width="128"></GridColumn>
                     <GridColumn Field="TotalSalesRep" HeaderText="Sales Representative" Width="186">
                         <Template>
                             @{
@@ -114,7 +114,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             }
                         </Template>
                     </GridColumn>
-                    <GridColumn Field="ReturnRate" HeaderText="Return Rate" Width="103" />
+                    <GridColumn Field="ReturnRate" HeaderText="Return Rate" Width="103"></GridColumn>
                 </GridColumns>
             </SfGrid>
         </div>

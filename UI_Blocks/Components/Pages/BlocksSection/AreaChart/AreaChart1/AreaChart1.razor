@@ -1,0 +1,134 @@
+﻿@page "/blocks/area-chart-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full">
+                <div class="flex justify-between">
+                    <h1 class="font-medium dark:text-white">Expenditure Analysis</h1>
+                    <SfButton Class="e-outline sm:hidden" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+                    <SfButton Class="e-outline hidden sm:block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+                </div>
+                <div class="flex flex-col sm:flex-row sm:!justify-between mt-3 gap-2 items-start">
+                    <SfDropDownButton CssClass="inline-block sm:hidden e-outline" Content="Year" Type="button" aria-label="choose a range" role="button">
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="Day"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Month"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Year"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Custom"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                    <div class="flex flex-wrap sm:justify-between items-center mt-3">
+                        <span class="text-xl font-semibold text-gray-900 dark:text-white">$53.9K</span>
+                        <span class="text-sm justify-end e-icons e-arrow-up text-green-700 ml-2"></span>
+                        <span class="text-xs text-green-700">2.2% of Last Month</span>
+                    </div>
+                    <SfButtonGroup class="e-btn-group hidden sm:flex" role="group">
+                        <input Type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
+                        <label class="e-btn" for="day">D</label>
+                        <input Type="radio" id="week" name="align" value="W" aria-label="week" role="button" />
+                        <label class="e-btn" for="week">W</label>
+                        <input Type="radio" id="month" name="align" value="M" aria-label="month" role="button" />
+                        <label class="e-btn" for="month">M</label>
+                        <input Type="radio" id="year" name="align" value="Y" checked aria-label="year" role="button" />
+                        <label class="e-btn" for="year">Y</label>
+                        <input Type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button" />
+                        <label class="e-btn" for="custom">Custom</label>
+                    </SfButtonGroup>
+                </div>
+                <div class="flex flex-col sm:flex-row items-start gap-2 mt-3 mb-4">
+                    <span class="e-badge e-badge-success e-bigger">Income: $88,840</span>
+                    <span class="e-badge e-badge-danger e-bigger">Expenses: $34,112</span>
+                </div>
+                <div>
+                    <SfChart Width="100%" Height="400px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" LabelPlacement="Syncfusion.Blazor.Charts.LabelPlacement.OnTicks">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis LabelFormat="${value}" Minimum="5000" Maximum="40000" Interval="5000">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@FinancialData" XName="Day" YName="Revenue" Type="ChartSeriesType.StackingArea" Fill="#D83B01" Width="2" Opacity="0.2">
+                                <ChartMarker Visible="true" Width="8" Height="8" Shape="ChartShape.Circle" IsFilled="true"></ChartMarker>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@FinancialData" XName="Day" YName="Expense" Type="ChartSeriesType.StackingArea" Fill="#91BD34" Width="2" Opacity="0.2">
+                                <ChartMarker Visible="true" Width="8" Height="8" Shape="ChartShape.Circle" IsFilled="true"></ChartMarker>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex align-items-start justify-content-center p-3 p-sm-4">
+            <div class="w-100">
+                <div class="d-flex justify-content-between">
+                    <h1 class="text-body fs-5">Expenditure Analysis</h1>
+                    <SfButton Class="e-outline d-block d-sm-none" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+                    <SfButton Class="e-outline d-none d-sm-block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+                </div>
+                <div class="d-flex flex-column flex-sm-row justify-content-sm-between mt-3 gap-2 align-items-start">
+					<SfDropDownButton CssClass="d-block d-sm-none e-outline" Content="Year" Type="button" aria-label="choose a range" role="button">
+						<DropDownMenuItems>
+							<DropDownMenuItem Text="Day"></DropDownMenuItem>
+							<DropDownMenuItem Text="Week"></DropDownMenuItem>
+							<DropDownMenuItem Text="Month"></DropDownMenuItem>
+							<DropDownMenuItem Text="Year"></DropDownMenuItem>
+							<DropDownMenuItem Text="Custom"></DropDownMenuItem>
+						</DropDownMenuItems>
+					</SfDropDownButton>
+                    <div class="d-flex flex-wrap justify-content-sm-between align-items-center">
+                        <span class="fs-5 fw-semibold text-body">$53.9K</span>
+                        <span class="text-success e-icons e-arrow-up ms-1 small"></span>
+                        <span class="text-success small">2.2% of Last Month</span>
+                    </div>
+                    <SfButtonGroup class="e-btn-group d-none d-sm-flex">
+                        <input Type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
+                        <label class="e-btn" for="day">D</label>
+                        <input Type="radio" id="week" name="align" value="W" aria-label="week" role="button" />
+                        <label class="e-btn" for="week">W</label>
+                        <input Type="radio" id="month" name="align" value="M" aria-label="month" role="button" />
+                        <label class="e-btn" for="month">M</label>
+                        <input Type="radio" id="year" name="align" value="Y" checked aria-label="year" role="button" />
+                        <label class="e-btn" for="year">Y</label>
+                        <input Type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button" />
+                        <label class="e-btn" for="custom">Custom</label>
+                    </SfButtonGroup>
+                </div>
+                <div class="d-flex flex-column flex-sm-row align-items-start gap-2 mt-2 mb-4">
+                    <span class="e-badge e-badge-success">Income: $88,840</span>
+                    <span class="e-badge e-badge-warning">Expenses: $34,112</span>
+                </div>
+                <SfChart Width="100%" Height="400px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                    <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" LabelPlacement="Syncfusion.Blazor.Charts.LabelPlacement.OnTicks">
+                        <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                    </ChartPrimaryXAxis>
+                    <ChartPrimaryYAxis LabelFormat="${value}" Minimum="5000" Maximum="40000" Interval="5000">
+                        <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                    </ChartPrimaryYAxis>
+                    <ChartSeriesCollection>
+                        <ChartSeries DataSource="@FinancialData" XName="Day" YName="Revenue" Type="ChartSeriesType.StackingArea" Fill="#D83B01" Width="2" Opacity="0.2">
+                            <ChartMarker Visible="true" Width="8" Height="8" Shape="ChartShape.Circle" IsFilled="true"></ChartMarker>
+                        </ChartSeries>
+                        <ChartSeries DataSource="@FinancialData" XName="Day" YName="Expense" Type="ChartSeriesType.StackingArea" Fill="#91BD34" Width="2" Opacity="0.2">
+                            <ChartMarker Visible="true" Width="8" Height="8" Shape="ChartShape.Circle" IsFilled="true"></ChartMarker>
+                        </ChartSeries>
+                    </ChartSeriesCollection>
+                    <ChartTooltipSettings Enable="true"></ChartTooltipSettings>
+                </SfChart>
+            </div>
+        </div>
+    </section>
+}

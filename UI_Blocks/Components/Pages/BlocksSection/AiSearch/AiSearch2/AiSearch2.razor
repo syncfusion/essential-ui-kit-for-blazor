@@ -9,7 +9,7 @@
     <section class="bg-white dark:bg-gray-900 h-100">
         <div class="w-full pt-5 pb-4 h-screen">
             <div class="px-4 mx-auto lg:px-0" style="max-width: 537px">
-                <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" DataSource="@FilteredData" Placeholder="Search" PopupHeight="750px" CssClass="e-bigger" role="combobox">
+                <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" CssClass="e-bigger" DataSource="@FilteredData" Placeholder="Search" PopupHeight="750px" role="combobox">
                     <AutoCompleteEvents TValue="string" TItem="SearchItem" Focus="@FocusHandlerAsync" OnClose="@(args => { if (IsTabSwitch) args.Cancel = true; })" Created="@FocusHandlerAsync"></AutoCompleteEvents>
                     <AutoCompleteFieldSettings Value="Name"></AutoCompleteFieldSettings>
                     <AutoCompleteTemplates TItem="SearchItem">
@@ -81,12 +81,12 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     <section class="bg-body h-100">
         <div class="w-100 pt-3 pb-3 h-100">
             <div class="px-3 mx-auto" style="max-width: 537px">
-                <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" DataSource="@FilteredData" Placeholder="Search" PopupHeight="750px" CssClass="e-bigger" role="combobox">
+                <SfAutoComplete TValue="string" TItem="SearchItem" @ref="Search" CssClass="e-bigger" DataSource="@FilteredData" Placeholder="Search" PopupHeight="750px" role="combobox">
                     <AutoCompleteEvents TValue="string" TItem="SearchItem" Focus="@FocusHandlerAsync" OnClose="@(args => { if (IsTabSwitch) args.Cancel = true; })" Created="@FocusHandlerAsync"></AutoCompleteEvents>
                     <AutoCompleteFieldSettings Value="Name"></AutoCompleteFieldSettings>
                     <AutoCompleteTemplates TItem="SearchItem">
                         <HeaderTemplate>
-                            <SfTab @ref="Tab" OverFlowMode="@OverflowMode">
+                            <SfTab @ref="Tab" CssClass="mt-2" OverFlowMode="@OverflowMode">
                                 <TabEvents Created="@(args => FilteredData = AllData.Take(6).ToList())" Selected="@TabSelectedAsync"></TabEvents>
                                 <TabItems>
                                     <TabItem>

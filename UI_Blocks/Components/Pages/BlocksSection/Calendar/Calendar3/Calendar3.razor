@@ -7,8 +7,8 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section class="bg-white dark:bg-gray-900">
-        <div style="height: 752px; width: @Width; float: right;">
-            <SfSidebar Width="@Width" class="w-full h-full flex flex-col bg-white dark:bg-gray-900" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+        <div style="height: 763px; width: @Width; float: right;">
+            <SfSidebar class="w-full h-full flex flex-col bg-white dark:bg-gray-900" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
                 <ChildContent>
                     <div class="flex-none bg-white dark:bg-gray-900">
                         <div class="flex justify-between items-center px-4 border-gray-200 dark:border-gray-600">
@@ -16,13 +16,13 @@
                                 <h2 class="text-xs mb-1 text-gray-700 dark:text-gray-300">CALENDAR</h2>
                                 <SfDatePicker TValue="DateTime?" CssClass="shadow-none border-none" Placeholder="Enter date" aria-label="enter a date here" role="combobox"></SfDatePicker>
                             </div>
-                            <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" @onclick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                            <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="close sidebar" role="button"></SfButton>
                         </div>
                     </div>
                     <div class="flex-grow overflow-y-auto bg-white dark:bg-gray-900">
                         <div class="flex justify-between border-b border-t border-gray-200 dark:border-gray-600 p-4 py-3">
-                            <SfButton CssClass="e-outline w-16 text-xs py-1 px-3">Today</SfButton>
-                            <SfButton CssClass="e-flat e-icons e-more-vertical-1"></SfButton>
+                            <SfButton CssClass="e-outline w-16 text-xs py-1 px-3" Content="Today" Type="button" aria-label="today" role="button"></SfButton>
+                            <SfButton CssClass="e-flat" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more" role="button"></SfButton>
                         </div>
                         <div class="space-y-3 p-4">
                             <h6 class="text-xs text-gray-500">SEPTEMBER</h6>
@@ -61,8 +61,8 @@
                             </div>
                         </div>
                     </div>
-                    <div class="flex-none py-2 px-4 w-full border-t border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800">
-                        <SfButton CssClass="e-flat e-primary" IconCss="e-icons e-plus" Type="button" aria-label="create an event" role="button">Create an event</SfButton>
+                    <div class="flex sm:flex-start  py-2 px-4 w-full border-t border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800">
+                        <SfButton CssClass="e-flat e-primary" IconCss="e-icons e-plus" Content="Create an event" Type="button" aria-label="create an event" role="button"></SfButton>
                     </div>
                 </ChildContent>
             </SfSidebar>
@@ -70,33 +70,33 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 absolute top-0 right-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" @onclick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" Type="button" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
-        <div style="height: 798px; width: @Width; float: right;">
-            <SfSidebar Width="@Width" class="h-100 d-flex flex-column bg-body sidebar-1" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
+        <div style="height: 803px; width: @Width; float: right;">
+            <SfSidebar class="h-100 d-flex flex-column bg-body" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" CloseOnDocumentClick="false" ShowBackdrop="true" role="complementary">
                 <ChildContent>
                     <div class="bg-body">
                         <div class="flex-shrink-0">
                             <div class="d-flex justify-content-between align-items-center px-3 border-bottom border-light-subtle">
                                 <div class="py-2 pe-5 pt-2">
-                                    <h2 class="small text-muted mb-1">CALENDAR</h2>
+                                    <h2 class="small text-body-secondary mb-1">CALENDAR</h2>
                                     <SfDatePicker TValue="DateTime?" CssClass="shadow-none" Placeholder="Enter date" aria-label="enter a date here" role="combobox"></SfDatePicker>
                                 </div>
-                                <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" @onclick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                                <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="close sidebar" role="button"></SfButton>
                             </div>
                         </div>
                         <div class="flex-grow-1 overflow-auto bg-body">
                             <div class="d-flex justify-content-between border-bottom border-light-subtle p-3">
-                                <SfButton CssClass="e-outline px-2 p-1" Type="button" aria-label="today" role="button">Today</SfButton>
-                                <SfButton CssClass="e-flat e-icons e-more-vertical-1" Type="button" aria-label="more actions" role="button"></SfButton>
+                                <SfButton CssClass="e-outline px-2 p-1" Content="Today" Type="button" aria-label="today" role="button"></SfButton>
+                                <SfButton CssClass="e-flat" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more actions" role="button"></SfButton>
                             </div>
                             <div class="px-3 py-3">
-                                <h6 class="small text-muted">SEPTEMBER</h6>
+                                <h6 class="small text-body-secondary">SEPTEMBER</h6>
                                 <div>
                                     <h5 class="fs-6 text-body-secondary">Mon, Sep 2</h5>
                                     <p class="w-100 text-info bg-info-subtle rounded ps-3 p-1">Labor Day</p>
@@ -113,7 +113,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                     <h5 class="fs-6 text-body-secondary">Fri, Sep 20</h5>
                                     <p class="w-100 text-info bg-info-subtle rounded ps-3 p-1">POW/MIA Recognition Day</p>
                                 </div>
-                                <h6 class="small text-muted pt-2">OCTOBER</h6>
+                                <h6 class="small text-body-secondary pt-1">OCTOBER</h6>
                                 <div>
                                     <h5 class="fs-6 text-body-secondary">Tue, Oct 8</h5>
                                     <p class="w-100 text-info bg-info-subtle rounded ps-3 p-1">Yom Kippur (Jewish Holiday)</p>
@@ -132,8 +132,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 </div>
                             </div>
                         </div>
-                        <div class="flex-shrink-0 py-2 px-4 w-100 border-top border-light-subtle bg-body-tertiary">
-                            <SfButton CssClass="e-flat e-primary" IconCss="e-icons e-plus" Type="button" aria-label="create an event" role="button">Create an event</SfButton>
+                        <div class="d-flex justify-content-sm-start justify-content-center flex-shrink-0 py-2 px-4 w-100 border-top border-light-subtle bg-body-tertiary">
+                            <SfButton CssClass="e-flat e-primary" IconCss="e-icons e-plus" Content="Create an event" Type="button" aria-label="create an event" role="button"></SfButton>
                         </div>
                     </div>
                 </ChildContent>
@@ -142,7 +142,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 position-absolute top-0 end-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" @onclick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

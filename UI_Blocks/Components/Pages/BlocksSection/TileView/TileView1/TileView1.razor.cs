@@ -2,7 +2,7 @@
 {
     public partial class TileView1
     {
-        private readonly List<TicketDetail> TicketDetails = new()
+        public List<TicketDetail> TicketDetails = new List<TicketDetail>
         {
             new TicketDetail { TicketId = 98724, DueDate = new DateTime(2024, 8, 15), CreatedTime = "Creates 3 hrs ago", Title = "Update payment gateway integration", Category = "Development", Requester = "Emma Thompson", Assignee = "Michael Chen", Status = "Open", PriorityLevel = "High", CommentCount = 0 },
             new TicketDetail { TicketId = 98725, DueDate = new DateTime(2024, 9, 30), CreatedTime = "Creates 5 hrs ago", Title = "Create onboarding email sequence", Category = "Marketing", Requester = "Sophie Martin", Assignee = "Alex Johnson", Status = "In-progress", PriorityLevel = "Medium", CommentCount = 5 },
@@ -10,7 +10,7 @@
             new TicketDetail { TicketId = 98727, DueDate = new DateTime(2024, 8, 5), CreatedTime = "Creates 2 days ago", Title = "Implement two-factor authentication", Category = "Security", Requester = "Robert Brown", Assignee = "Sarah Davis", Status = "Closed", PriorityLevel = "Low", CommentCount = 7 }
         };
 
-        private string GetPriorityClass(string priority)
+        public string GetPriorityClass(string priority)
         {
             return priority switch
             {
@@ -21,7 +21,7 @@
             };
         }
 
-        private string GetPriorityIcon(string priority)
+        public string GetPriorityIcon(string priority)
         {
             return priority switch
             {
@@ -32,7 +32,7 @@
             };
         }
 
-        private string GetStatusClass(string status)
+        public string GetStatusClass(string status)
         {
             return status switch
             {

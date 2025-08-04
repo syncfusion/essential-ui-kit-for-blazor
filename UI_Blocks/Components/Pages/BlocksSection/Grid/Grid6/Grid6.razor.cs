@@ -2,27 +2,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid6
 {
     public partial class Grid6
     {
-        public class CustomerDetails
-        {
-            public string Name { get; set; } = string.Empty;
-            public string Email { get; set; } = string.Empty;
-            public string Avatar { get; set; } = string.Empty;
-        }
-
-        public class Transaction
-        {
-            public int Id { get; set; }
-            public string TransactionId { get; set; } = string.Empty;
-            public CustomerDetails CustomerDetails { get; set; } = new CustomerDetails();
-            public string InvoiceNumber { get; set; } = string.Empty;
-            public string Description { get; set; } = string.Empty;
-            public decimal Amount { get; set; }
-            public DateTime Date { get; set; }
-            public string PaymentMethod { get; set; } = string.Empty;
-            public string Status { get; set; } = string.Empty;
-        }
-
-        List<Transaction> GridData = new List<Transaction>
+        public List<Transaction> GridData = new List<Transaction>
         {
             new Transaction
             {
@@ -195,5 +175,25 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid6
                 Status = "Completed"
             }
         };
+
+        public class CustomerDetails
+        {
+            public string Name { get; set; } = string.Empty;
+            public string Email { get; set; } = string.Empty;
+            public string Avatar { get; set; } = string.Empty;
+        }
+
+        public class Transaction
+        {
+            public int Id { get; set; }
+            public string TransactionId { get; set; } = string.Empty;
+            public CustomerDetails CustomerDetails { get; set; } = new CustomerDetails();
+            public string InvoiceNumber { get; set; } = string.Empty;
+            public string Description { get; set; } = string.Empty;
+            public decimal Amount { get; set; }
+            public DateTime Date { get; set; }
+            public string PaymentMethod { get; set; } = string.Empty;
+            public string Status { get; set; } = string.Empty;
+        }
     }
 }

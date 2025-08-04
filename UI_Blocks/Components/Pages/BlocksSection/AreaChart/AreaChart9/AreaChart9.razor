@@ -1,0 +1,136 @@
+﻿@page "/blocks/area-chart-9"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 1116px;">
+                <div class="flex justify-between flex-col sm:flex-row sm:items-start gap-4">
+                    <div class="flex justify-between gap-2">
+                        <div>
+                            <h1 class="text-base font-medium text-gray-900 dark:text-white">Expense Analysis</h1>
+                            <p class="text-sm text-gray-500 dark:text-gray-400 mt-1 sm:mt-2">Family Expense for the year 2024</p>
+                        </div>
+                        <SfButton CssClass="e-outline block sm:hidden self-start" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+                    </div>
+                    <div class="flex gap-3">
+                        <SfDropDownButton @ref="RangeDropdown" CssClass="e-outline" Content="2024" Type="button" aria-label="choose a year" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsRangeDropdownOpen = true)" Closed="@(args => IsRangeDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="2024"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2023"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2022"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2021"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2020"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                        <SfButton CssClass="e-outline hidden sm:block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <SfChart @ref="Chart" Height="270px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartMargin Left="0"></ChartMargin>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelRotation="@XAxisLabelRotation">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis LabelFormat="${value}k" Minimum="0" Maximum="400" Interval="100">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartLegendSettings Visible="true" EnableHighlight="true" Padding="15"></ChartLegendSettings>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="JohnExpense" Name="John" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" Width="2" Fill="@(CurrentTheme == "tailwind-dark" ? "#9CA3AF" : "#1F2937")" LegendShape="Syncfusion.Blazor.Charts.LegendShape.HorizontalLine">
+                                <ChartMarker Visible="true" Shape="Syncfusion.Blazor.Charts.ChartShape.Circle" IsFilled="true"></ChartMarker>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="PeterExpense" Name="Peter" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" Width="2" Fill="#01A8B5" LegendShape="Syncfusion.Blazor.Charts.LegendShape.HorizontalLine">
+                                <ChartMarker Visible="true" Shape="Syncfusion.Blazor.Charts.ChartShape.Pentagon" IsFilled="true"></ChartMarker>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="SteveExpense" Name="Steve" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" Width="2" Fill="#267DDA" LegendShape="Syncfusion.Blazor.Charts.LegendShape.HorizontalLine">
+                                <ChartMarker Visible="true" Shape="Syncfusion.Blazor.Charts.ChartShape.Rectangle" IsFilled="true"></ChartMarker>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="CharleExpense" Name="Charle" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" Width="2" Fill="#FFB900" LegendShape="Syncfusion.Blazor.Charts.LegendShape.HorizontalLine">
+                                <ChartMarker Visible="true" Shape="Syncfusion.Blazor.Charts.ChartShape.Triangle" IsFilled="true"></ChartMarker>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true" ShowNearestTooltip="true"></ChartTooltipSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center p-3 p-sm-4">
+            <div class="w-100" style="max-width: 1116px;">
+                <div class="d-flex justify-content-between flex-column flex-sm-row align-items-sm-start gap-3">
+                    <div class="d-flex justify-content-between gap-2">
+                        <div>
+                            <h1 class="fs-6 fw-medium text-body">Expense Analysis</h1>
+                            <p class="small text-body-secondary mt-2 mb-0">Family Expense for the year 2024</p>
+                        </div>
+                        <SfButton CssClass="e-outline d-block d-sm-none align-self-start" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+                    </div>
+                    <div class="d-flex gap-2">
+                        <SfDropDownButton @ref="RangeDropdown" CssClass="e-outline" Content="2024" Type="button" aria-label="choose a year" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsRangeDropdownOpen = true)" Closed="@(args => IsRangeDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="2024"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2023"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2022"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2021"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2020"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                        <SfButton CssClass="e-outline d-none d-sm-block ms-1" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <SfChart @ref="Chart" Height="270px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartMargin Left="0"></ChartMargin>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" Interval="1" LabelRotation="@XAxisLabelRotation">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis LabelFormat="${value}k" Minimum="0" Maximum="400" Interval="100">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartLegendSettings Visible="true" EnableHighlight="true" Padding="15"></ChartLegendSettings>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="JohnExpense" Name="John" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" Width="2" Fill="#9747FF" LegendShape="Syncfusion.Blazor.Charts.LegendShape.HorizontalLine">
+                                <ChartMarker Visible="true" Shape="Syncfusion.Blazor.Charts.ChartShape.Circle" IsFilled="true"></ChartMarker>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="PeterExpense" Name="Peter" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" Width="2" Fill="#00EFA7" LegendShape="Syncfusion.Blazor.Charts.LegendShape.HorizontalLine">
+                                <ChartMarker Visible="true" Shape="Syncfusion.Blazor.Charts.ChartShape.Pentagon" IsFilled="true"></ChartMarker>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="SteveExpense" Name="Steve" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" Width="2" Fill="@(CurrentTheme == "bootstrap5.3-dark" ? "#3A95FF" : "#006EEF")" LegendShape="Syncfusion.Blazor.Charts.LegendShape.HorizontalLine">
+                                <ChartMarker Visible="true" Shape="Syncfusion.Blazor.Charts.ChartShape.Rectangle" IsFilled="true"></ChartMarker>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" XName="Month" YName="CharleExpense" Name="Charle" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" Width="2" Fill="#EF6400" LegendShape="Syncfusion.Blazor.Charts.LegendShape.HorizontalLine">
+                                <ChartMarker Visible="true" Shape="Syncfusion.Blazor.Charts.ChartShape.Triangle" IsFilled="true"></ChartMarker>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true" ShowNearestTooltip="true"></ChartTooltipSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}

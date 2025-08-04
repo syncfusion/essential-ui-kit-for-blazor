@@ -2,30 +2,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid2
 {
     public partial class Grid2
     {
-        public class Person
-        {
-            public string Name { get; set; } = string.Empty;
-            public string Initial { get; set; } = string.Empty;
-            public string Email { get; set; } = string.Empty;
-            public string ColorTheme { get; set; } = string.Empty;
-            public string Avatar { get; set; } = string.Empty;
-        }
-
-        public class Ticket
-        {
-            public int Id { get; set; }
-            public string TicketId { get; set; } = string.Empty;
-            public string Issue { get; set; } = string.Empty;
-            public string Category { get; set; } = string.Empty;
-            public string Estimated { get; set; } = string.Empty;
-            public DateTime ResponseDue { get; set; }
-            public string Priority { get; set; } = string.Empty;
-            public Person Assignee { get; set; } = new Person();
-            public Person CreatedBy { get; set; } = new Person();
-            public string Status { get; set; } = string.Empty;
-        }
-
-        List<Ticket> GridData = new List<Ticket>
+        public List<Ticket> GridData = new List<Ticket>
         {
             new Ticket
             {
@@ -288,5 +265,28 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid2
                 Status = "In Progress"
             }
         };
+
+        public class Person
+        {
+            public string Name { get; set; } = string.Empty;
+            public string Initial { get; set; } = string.Empty;
+            public string Email { get; set; } = string.Empty;
+            public string ColorTheme { get; set; } = string.Empty;
+            public string Avatar { get; set; } = string.Empty;
+        }
+
+        public class Ticket
+        {
+            public int Id { get; set; }
+            public string TicketId { get; set; } = string.Empty;
+            public string Issue { get; set; } = string.Empty;
+            public string Category { get; set; } = string.Empty;
+            public string Estimated { get; set; } = string.Empty;
+            public DateTime ResponseDue { get; set; }
+            public string Priority { get; set; } = string.Empty;
+            public Person Assignee { get; set; } = new Person();
+            public Person CreatedBy { get; set; } = new Person();
+            public string Status { get; set; } = string.Empty;
+        }
     }
 }

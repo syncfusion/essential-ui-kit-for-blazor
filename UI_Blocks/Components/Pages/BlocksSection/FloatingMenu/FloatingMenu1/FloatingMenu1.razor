@@ -1,4 +1,5 @@
 ﻿@page "/blocks/floating-menu-1"
+
 @inherits UI_Blocks.Components.Pages.MainSection.Demo
 
 @ThemeLinks
@@ -8,12 +9,18 @@
     <section class="bg-gray-50 dark:bg-gray-950">
         <div id="floating-article" class="sm:pt-4 sm:pr-4" style="height: @(IsMobileView ? "591px" : "720px")">
             <div id="target" class="w-full" >
-                    <SfDialog @ref="Dialog" CssClass="sm:!rounded-t !rounded-none overflow-hidden !border-0" Target="#target" ShowCloseIcon="false" Width="400px" MinHeight="591px" IsModal="false" aria-label="get help from helpdesk" role="dialog">
+                <div class="flex items-center justify-center pt-4 block sm:hidden">
+                    <SfButton CssClass="e-primary e-round e-bigger" IconCss="sf-icon-help-circle !text-xl" OnClick="@(() => IsToggleState = !IsToggleState)" Type="button" aria-label="open contact us form" role="button"></SfButton>
+                </div>
+                <SfDialog @ref="Dialog" CssClass="sm:!rounded-t !rounded-none overflow-hidden !border-0" Target="#target" Visible="@IsToggleState" ShowCloseIcon="false" Width="400px" MinHeight="591px" IsModal="false" aria-label="get help from helpdesk" role="dialog">
                     <DialogTemplates>
                         <Header>
                             <div class="flex flex-col justify-between items-center bg-primary-600 dark:bg-primary-400 p-3">
                                 <div class="w-full text-center">
                                     <p class="text-lg font-semibold text-white dark:text-gray-900">Help</p>
+                                </div>
+                                <div class="flex justify-end block sm:hidden px-4 absolute right-0">
+                                    <SfButton CssClass="e-primary e-round" IconCss="e-icons e-close text-white dark:text-black !text-base" OnClick="@(() => IsToggleState = !IsToggleState)" Type="button" aria-label="close contact us form" role="button"></SfButton>
                                 </div>
                                 <div class="e-input-group e-bigger mt-3">
                                     <input class="e-input" type="text" placeholder="Search for help" aria-label="search for help" role="textbox" />
@@ -22,7 +29,7 @@
                             </div>
                         </Header>
                         <Content>
-                                <SfListView CssClass="border-0 bg-white dark:bg-gray-900" DataSource="@Data" Width="100%" Height="486px" aria-label="help articles" role="list">
+                            <SfListView CssClass="border-0 bg-white dark:bg-gray-900" DataSource="@Data" Width="100%" Height="486px" aria-label="help articles" role="list">
                                 <ListViewFieldSettings TValue="FloatingData" Id="question" Text="Answer"></ListViewFieldSettings>
                                 <ListViewTemplates TValue="FloatingData">
                                     <Template>
@@ -39,11 +46,11 @@
                                 </ListViewTemplates>
                             </SfListView>
                         </Content>
-                    </DialogTemplates> 
-                    <DialogPositionData X="@XValue" Y="@YValue"></DialogPositionData>
-                    <DialogEvents Created="@CreatedHandler" Opened="@onOpen"></DialogEvents>
+                    </DialogTemplates>
+                    <DialogEvents Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                    <DialogPositionData X="right" Y="top"></DialogPositionData>
                 </SfDialog>
-                <SfFab CssClass="e-primary e-round e-bigger !hidden sm:!block" IconCss="@(ToggleState ? "sf-icon-help-circle !text-2xl" : "e-icons e-close !text-2xl")" Position="FabPosition.BottomRight" Type="button" OnClick="ToggleDialogAsync" aria-label="show/hide helpdesk" role="button"></SfFab>
+                <SfFab CssClass="e-primary e-round e-bigger !hidden sm:!block" IconCss="@(IsToggleState ? "e-icons e-close !text-2xl" : "sf-icon-help-circle !text-2xl")" Position="FabPosition.BottomRight" Type="button" OnClick="@(() => IsToggleState = !IsToggleState)" aria-label="show/hide helpdesk" role="button"></SfFab>
             </div>
         </div>
     </section>
@@ -53,12 +60,18 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     <section class="bg-body">
          <div id="floating-article" class="pt-sm-3 pe-sm-3" style="height: @(IsMobileView ? "591px" : "720px")">
             <div id="target" class="w-100" >
-                    <SfDialog @ref="Dialog" CssClass="rounded-1 overflow-hidden border-0" Target="#target" ShowCloseIcon="false" Width="400px" MinHeight="591px" onshow="true" aria-label="get help from helpdesk" role="dialog">
+                <div class="d-flex align-items-center justify-content-center pt-4 d-block d-sm-none">
+                    <SfButton CssClass="e-primary e-round e-bigger" IconCss="sf-icon-help-circle fs-5 lh-base" OnClick="@(() => IsToggleState = !IsToggleState)" Type="button" aria-label="open contact us form" role="button"></SfButton>
+                </div>
+                <SfDialog @ref="Dialog" CssClass="rounded-1 overflow-hidden border-0" Target="#target" Visible="@IsToggleState" ShowCloseIcon="false" Width="400px" MinHeight="591px" onshow="true" aria-label="get help from helpdesk" role="dialog">
                     <DialogTemplates>
                         <Header>
                             <div class="d-flex flex-column justify-content-between align-items-center bg-primary text-white p-3">
                                 <div class="w-100 text-center">
                                     <p class="fs-6 fw-semibold m-0 lh-sm text-white">Help</p>
+                                </div>
+                                <div class="d-flex justify-content-end d-block d-sm-none px-3 pt-2 position-absolute end-0 top-0">
+                                    <SfButton CssClass="e-primary e-round" IconCss="e-icons e-close text-white" OnClick="@(() => IsToggleState = !IsToggleState)" Type="button" aria-label="close contact us form" role="button"></SfButton>
                                 </div>
                                 <div class="e-input-group e-bigger mt-3">
                                     <input class="e-input form-control" type="text" placeholder="Search for help" aria-label="search for help" role="textbox" />
@@ -67,7 +80,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             </div>
                         </Header>
                         <Content>
-                                <SfListView CssClass="border-0 rounded-0" DataSource="@Data" Width="100%" Height="485px" aria-label="help articles" role="list">
+                            <SfListView CssClass="border-0 rounded-0" DataSource="@Data" Width="100%" Height="485px" aria-label="help articles" role="list">
                                 <ListViewFieldSettings TValue="FloatingData" Id="question" Text="Answer"></ListViewFieldSettings>
                                 <ListViewTemplates TValue="FloatingData">
                                     <Template>
@@ -85,10 +98,10 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             </SfListView>
                         </Content>
                     </DialogTemplates>
-                    <DialogPositionData X="@XValue.ToString()" Y="@YValue.ToString()"></DialogPositionData>
-                    <DialogEvents Created="@CreatedHandler" Opened="@onOpen"></DialogEvents>
+                    <DialogEvents Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                    <DialogPositionData X="right" Y="top"></DialogPositionData>
                 </SfDialog>
-                <SfFab CssClass="e-primary e-round e-bigger d-none d-sm-block" IconCss="@(ToggleState ? "sf-icon-help-circle fs-4" : "e-icons e-close fs-5")" Position="FabPosition.BottomRight" Type="button" OnClick="ToggleDialogAsync" aria-label="show/hide helpdesk" role="button"></SfFab>
+                <SfFab CssClass="e-primary e-round e-bigger d-none d-sm-block" IconCss="@(IsToggleState ? "e-icons e-close fs-5" : "sf-icon-help-circle fs-4" )" Position="FabPosition.BottomRight" Type="button" OnClick="@(() => IsToggleState = !IsToggleState)" aria-label="show/hide helpdesk" role="button"></SfFab>
             </div>
         </div>
     </section>

@@ -20,7 +20,7 @@
             <div class="flex items-center justify-between px-4 sm:px-6 relative">
                 <div class="w-full">
                     <SfTab HeightAdjustMode="Auto" Width="100%" OverFlowMode="@OverflowMode">
-                        <TabEvents Selected="OnTabSelected"></TabEvents>
+                        <TabEvents Selected="@TabSelected"></TabEvents>
                         <TabItems>
                             <TabItem>
                                 <HeaderTemplate>
@@ -86,7 +86,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
             <div class="d-flex align-items-center justify-content-between px-3 px-sm-4 position-relative">
                 <div class="w-100">
                     <SfTab HeightAdjustMode="Auto" Width="100%" OverFlowMode="@OverflowMode">
-                        <TabEvents Selected="OnTabSelected"></TabEvents>
+                        <TabEvents Selected="@TabSelected"></TabEvents>
                         <TabItems>
                             <TabItem>
                                 <HeaderTemplate>

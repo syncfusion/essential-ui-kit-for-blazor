@@ -8,8 +8,7 @@
 {
     <section>
         <div id="dialog-container" class="relative flex items-center justify-center" style="min-height: 580px !important;">
-            <SfDialog @ref="Dialog" CssClass="absolute py-3" Target="#dialog-container" Visible="true" ShowCloseIcon="true" Width="537px" Height="460" CloseOnEscape="true">
-                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+            <SfDialog @ref="Dialog" CssClass="absolute py-3" Target="#dialog-container" IsModal="true" Visible="true" ShowCloseIcon="true" Width="537px" Height="460" CloseOnEscape="true">
                 <div class="max-w-2xl px-1 text-gray-700 dark:text-gray-300">
                     <DialogTemplates>
                         <Header>
@@ -52,8 +51,7 @@
                                         </ul>
                                     </div>
                                 </div>
-                                <hr class="my-6" />
-                                <div class="grid gap-3 lg:grid-cols-3 sm:grid-cols-2 box-border">
+                                <div class="grid gap-3 lg:grid-cols-3 sm:grid-cols-2 box-border border-0 border-t mt-6 pt-6 border-gray-200 dark:border-gray-600">
                                     <div class="e-card rounded-none bg-gray-50 dark:bg-gray-900 border-none shadow-none">
                                         <div class="e-card-header !pt-3 !px-3">
                                             <div class="e-card-header-caption">
@@ -66,7 +64,7 @@
                                             </h2>
                                         </div>
                                         <div class="e-card-actions !px-3 py-3 leading-9">
-                                            <SfButton CssClass="e-primary e-outline w-full" Content="Current plan" Type="Button" aria-label="current plan"></SfButton>
+                                            <SfButton CssClass="e-primary e-outline w-full" Content="Current plan" Type="button" aria-label="current plan" role="button"></SfButton>
                                         </div>
                                     </div>
                                     <div class="e-card rounded-none bg-gray-50 dark:bg-gray-900 border-none shadow-none">
@@ -81,7 +79,7 @@
                                             </h2>
                                         </div>
                                         <div class="e-card-actions !px-3 py-3 leading-9">
-                                            <SfButton CssClass="e-primary w-full" Content="Upgrade" Type="Button" aria-label="upgrade" role="Button"></SfButton>
+                                            <SfButton CssClass="e-primary w-full" Content="Upgrade" Type="button" aria-label="upgrade" role="button"></SfButton>
                                         </div>
                                     </div>
                                     <div class="e-card rounded-none bg-gray-50 dark:bg-gray-900 border-none shadow-none">
@@ -96,7 +94,7 @@
                                             </h2>
                                         </div>
                                         <div class="e-card-actions !px-3 py-3 leading-9">
-                                            <SfButton CssClass="e-primary w-full" Content="Upgrade" Type="Button" aria-label="upgrade" role="Button"></SfButton>
+                                            <SfButton CssClass="e-primary w-full" Content="Upgrade" Type="button" aria-label="upgrade" role="button"></SfButton>
                                         </div>
                                     </div>
                                 </div>
@@ -104,12 +102,13 @@
                         </Content>
                     </DialogTemplates>
                 </div>
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
             </SfDialog>
         </div>
     </section>
     <!-- SB Code - Start -->
     <div class="top-0 flex w-full absolute">
-        <SfButton CssClass="mx-auto my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Type="button" aria-label="feedback for improvement" role="button">Pricing Table</SfButton>
+        <SfButton CssClass="mx-auto my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Content="Pricing Table" Type="button" aria-label="pricing table" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -117,8 +116,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
         <div id="dialog-container" class="position-relative d-flex align-items-center justify-content-center" style="min-height: 580px !important;">
-            <SfDialog @ref="Dialog" Target="#dialog-container" Visible="true" ShowCloseIcon="true" Width="537px" Height="480px" CloseOnEscape="true">
-                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+            <SfDialog @ref="Dialog" Target="#dialog-container" Visible="true" IsModal="true" ShowCloseIcon="true" Width="537px" Height="480px" CloseOnEscape="true">
                 <div class="container px-1 rounded text-body-secondary">
                     <DialogTemplates>
                         <Header>
@@ -161,8 +159,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                         </ul>
                                     </div>
                                 </div>
-                                <hr class="my-4" />
-                                <div class="row g-3">
+                                <div class="row g-3 border-top border-light-subtle mt-4 pt-2">
                                     <div class="col-md-6 col-lg-4">
                                         <div class="e-card rounded-0 bg-body-tertiary border-0 shadow-none">
                                             <div class="e-card-header pt-3 px-3">
@@ -177,7 +174,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                 </div>
                                             </div>
                                             <div class="e-card-actions px-3 pt-0 py-3 lh-lg">
-                                                <SfButton CssClass="e-primary w-full" Content="Upgrade" Type="Button" aria-label="upgrade" role="Button"></SfButton>
+                                                <SfButton CssClass="e-primary e-outline w-100" Content="Upgrade" Type="button" aria-label="upgrade" role="button"></SfButton>
                                             </div>
                                         </div>
                                     </div>
@@ -195,7 +192,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                 </div>
                                             </div>
                                             <div class="e-card-actions px-3 pt-0 py-3 lh-lg">
-                                                <SfButton CssClass="e-primary w-full" Content="Upgrade" Type="Button" aria-label="upgrade" role="Button"></SfButton>
+                                                <SfButton CssClass="e-primary w-100" Content="Upgrade" Type="button" aria-label="upgrade" role="button"></SfButton>
                                             </div>
                                         </div>
                                     </div>
@@ -213,7 +210,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                 </div>
                                             </div>
                                             <div class="e-card-actions px-3 pt-0 py-3 lh-lg">
-                                                <SfButton CssClass="e-primary w-full" Content="Upgrade" Type="Button" aria-label="upgrade" role="Button"></SfButton>
+                                                <SfButton CssClass="e-primary w-100" Content="Upgrade" Type="button" aria-label="upgrade" role="button"></SfButton>
                                             </div>
                                         </div>
                                     </div>
@@ -222,12 +219,13 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         </Content>
                     </DialogTemplates>
                 </div>
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
             </SfDialog>
         </div>
     </section>
     <!-- SB Code - Start -->
     <div class="position-absolute top-0 d-flex w-100">
-        <SfButton CssClass="mx-auto my-2" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Type="button" aria-label="feedback for improvement" role="button">Pricing Table</SfButton>
+        <SfButton CssClass="mx-auto my-2" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Content="Pricing Table" Type="button" aria-label="pricing table" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

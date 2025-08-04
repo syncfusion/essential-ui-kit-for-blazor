@@ -1,12 +1,15 @@
 ﻿using Microsoft.JSInterop;
 using Syncfusion.Blazor.Navigations;
 using Syncfusion.Blazor.Popups;
+using Syncfusion.Blazor.SplitButtons;
 
 namespace UI_Blocks.Components.Pages.BlocksSection.Notification.Notification1
 {
     public partial class Notification1
     {
         public SfDialog? Dialog;
+        public SfDropDownButton? Dropdown;
+        public bool IsDropdownOpened = false;
         public bool IsDialogVisible = true;
         public List<NotificationItem> MessageData { get; set; } = new List<NotificationItem>();
         public int SelectedTabIndex = 0;
@@ -54,12 +57,12 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Notification.Notification1
             }
         };
 
-        public void OnTabCreated()
+        public void TabCreated()
         {
             MessageData = Data.Take(4).ToList();
         }
 
-        public async Task OnTabSelectedAsync(SelectEventArgs args)
+        public async Task TabSelectedAsync(SelectEventArgs args)
         {
             SelectedTabIndex = args.SelectedIndex;
             switch (args.SelectedIndex)
@@ -87,8 +90,12 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Notification.Notification1
             {
                 DialogWidth = windowWidth < 480 ? "328px" : "448px";
                 await Dialog.RefreshPositionAsync();
-                StateHasChanged();
             }
+            if (IsDropdownOpened && Dropdown != null)
+            {
+                Dropdown.Toggle();
+            }
+            StateHasChanged();
         }
 
         public class NotificationItem

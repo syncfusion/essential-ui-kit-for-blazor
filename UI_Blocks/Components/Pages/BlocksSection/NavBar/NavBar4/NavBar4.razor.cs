@@ -5,31 +5,23 @@ namespace UI_Blocks.Components.Pages.BlocksSection.NavBar.NavBar4
 {
     public partial class NavBar4
     {
-        private SfDropDownButton? ResourcesDropdown;
-        private SfDropDownButton? BrandDropdown;
+        public SfDropDownButton? ResourcesDropdown;
+        public SfDropDownButton? BrandDropdown;
 
-        private bool _isResourcesDropdownOpen = false;
-        private bool _isBrandDropdownOpen = false;
-
-        private void OnResourcesDropdownOpened() => _isResourcesDropdownOpen = true;
-
-        private void OnResourcesDropdownClosed() => _isResourcesDropdownOpen = false;
-
-        private void OnBrandDropdownOpened() => _isBrandDropdownOpen = true;
-
-        private void OnBrandDropdownClosed() => _isBrandDropdownOpen = false;
+        public bool IsResourcesDropdownOpen = false;
+        public bool IsBrandDropdownOpen = false;
 
         [JSInvokable]
         public void ResizeHandler(string message, int windowWidth)
         {
             if (message == "resizeAction")
             {
-                if (_isResourcesDropdownOpen && ResourcesDropdown != null)
+                if (IsResourcesDropdownOpen && ResourcesDropdown != null)
                 {
                     ResourcesDropdown.Toggle();
                 }
 
-                if (_isBrandDropdownOpen && BrandDropdown != null)
+                if (IsBrandDropdownOpen && BrandDropdown != null)
                 {
                     BrandDropdown.Toggle();
                 }
