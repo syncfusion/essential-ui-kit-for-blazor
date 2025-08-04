@@ -2,20 +2,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid5
 {
     public partial class Grid5
     {
-        public class Asset
-        {
-            public int Id { get; set; }
-            public string AssetId { get; set; } = string.Empty;
-            public string Hardware { get; set; } = string.Empty;
-            public string Category { get; set; } = string.Empty;
-            public string SerialNum { get; set; } = string.Empty;
-            public string Invoice { get; set; } = string.Empty;
-            public string? Assigned { get; set; } = string.Empty;
-            public DateTime PurchaseDate { get; set; }
-            public DateTime? WarrantyEndDate { get; set; }
-            public string Status { get; set; } = string.Empty;
-        }
-        List<Asset> GridData = new List<Asset>
+        public List<Asset> GridData = new List<Asset>
         {
             new Asset
             {
@@ -148,5 +135,19 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid5
                 Status = "Pending"
             }
         };
+
+        public class Asset
+        {
+            public int Id { get; set; }
+            public string AssetId { get; set; } = string.Empty;
+            public string Hardware { get; set; } = string.Empty;
+            public string Category { get; set; } = string.Empty;
+            public string SerialNum { get; set; } = string.Empty;
+            public string Invoice { get; set; } = string.Empty;
+            public string? Assigned { get; set; } = string.Empty;
+            public DateTime PurchaseDate { get; set; }
+            public DateTime? WarrantyEndDate { get; set; }
+            public string Status { get; set; } = string.Empty;
+        }
     }
 }

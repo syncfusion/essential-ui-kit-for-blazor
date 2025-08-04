@@ -7,134 +7,152 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section class="bg-white dark:bg-gray-900">
-        <div class="h-screen flex justify-center items-center p-4 sm:p-6" style="min-height: 710px; max-height: 1390px;">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
             <div class="w-full" style="max-width: 1100px;">
-                <div class="flex justify-between items-center mb-5">
+                <div class="flex justify-between items-center mb-2 sm:mb-5">
                     <p class="text-base font-medium text-gray-900 dark:text-white pl-3">Currency Exchange Rates</p>
                     <div class="flex items-start gap-3">
-                        <SfButtonGroup class="e-btn-group hidden sm:block">
-                            <input type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
+                        <SfButtonGroup class="e-btn-group hidden sm:flex">
+                            <input Type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
                             <label class="e-btn" for="day">D</label>
-                            <input type="radio" id="week" name="align" value="W" aria-label="week" role="button" />
+                            <input Type="radio" id="week" name="align" value="W" aria-label="week" role="button" />
                             <label class="e-btn" for="week">W</label>
-                            <input type="radio" id="month" name="align" value="M" aria-label="month" role="button" />
+                            <input Type="radio" id="month" name="align" value="M" aria-label="month" role="button" />
                             <label class="e-btn" for="month">M</label>
-                            <input type="radio" id="year" name="align" value="Y" checked aria-label="year" role="button" />
+                            <input Type="radio" id="year" name="align" value="Y" checked aria-label="year" role="button" />
                             <label class="e-btn" for="year">Y</label>
-                            <input type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button" />
+                            <input Type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button" />
                             <label class="e-btn" for="custom">Custom</label>
                         </SfButtonGroup>
-                        <SfButton IconCss="e-icons e-refresh"></SfButton>
+                        <SfButton IconCss="e-icons e-refresh" Type="button" aria-label="refresh" role="button"></SfButton>
                     </div>
                 </div>
-                <div class="grid grid-cols-1 sm:grid-cols-2 sm:gap-8">
+                <SfDropDownButton @ref="DropDownButton" CssClass="block sm:hidden ml-3 mb-5" Content="Year" Type="button" aria-label="choose a range" role="button">
+                    <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                    <DropDownMenuItems>
+                        <DropDownMenuItem Text="Day"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Week"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Month"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Year"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Custom"></DropDownMenuItem>
+                    </DropDownMenuItems>
+                </SfDropDownButton>
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-8">
                     <div>
                         <p class="text-sm text-gray-700 dark:text-gray-300 font-medium mb-3 pl-3">USD to EURO</p>
-                        <SfChart Background="transparent" Height="@Height" Width="@Width" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
-                            <ChartArea>
-                                <ChartAreaBorder Width="0"></ChartAreaBorder>
-                            </ChartArea>
-                            <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryXAxis>
-                            <ChartPrimaryYAxis LabelFormat="${value}" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryYAxis>
-                            <ChartSeriesCollection>
-                                <ChartSeries DataSource="@LineChartData" XName="Date" YName="EUR" Type="ChartSeriesType.Line" Width="1" Fill="#4CC9F0"></ChartSeries>
-                            </ChartSeriesCollection>
-                        </SfChart>
+                        <div style="height:@Height;">
+                            <SfChart Background="transparent" Height="100%" Width="@Width" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                                <ChartArea>
+                                    <ChartAreaBorder Width="0"></ChartAreaBorder>
+                                </ChartArea>
+                                <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryXAxis>
+                                <ChartPrimaryYAxis LabelFormat="${value}">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryYAxis>
+                                <ChartSeriesCollection>
+                                    <ChartSeries DataSource="@LineChartData" XName="Date" YName="EUR" Type="ChartSeriesType.Line" Width="1" Fill="#4CC9F0"></ChartSeries>
+                                </ChartSeriesCollection>
+                            </SfChart>
+                        </div>
                     </div>
                     <div>
                         <p class="text-sm text-gray-700 dark:text-gray-300 font-medium mb-3 pl-3">USD to INR</p>
-                        <SfChart Background="transparent" Height="@Height" Width="@Width" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
-                            <ChartArea>
-                                <ChartAreaBorder Width="0"></ChartAreaBorder>
-                            </ChartArea>
-                            <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryXAxis>
-                            <ChartPrimaryYAxis LabelFormat="${value}" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryYAxis>
-                            <ChartSeriesCollection>
-                                <ChartSeries DataSource="@LineChartData" XName="Date" YName="INR" Type="ChartSeriesType.Line" Width="1" Fill="#F15BB5" />
-                            </ChartSeriesCollection>
-                        </SfChart>
+                        <div style="height:@Height;">
+                            <SfChart Background="transparent" Height="100%" Width="@Width" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                                <ChartArea>
+                                    <ChartAreaBorder Width="0"></ChartAreaBorder>
+                                </ChartArea>
+                                <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryXAxis>
+                                <ChartPrimaryYAxis LabelFormat="${value}">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryYAxis>
+                                <ChartSeriesCollection>
+                                    <ChartSeries DataSource="@LineChartData" XName="Date" YName="INR" Type="ChartSeriesType.Line" Width="1" Fill="#F15BB5"></ChartSeries>
+                                </ChartSeriesCollection>
+                            </SfChart>
+                        </div>
                     </div>
                     <div>
                         <p class="text-sm text-gray-700 dark:text-gray-300 font-medium mb-3 pl-3">USD to JPY</p>
-                        <SfChart Background="transparent" Height="@Height" Width="@Width" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
-                            <ChartArea>
-                                <ChartAreaBorder Width="0"></ChartAreaBorder>
-                            </ChartArea>
-                            <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryXAxis>
-                            <ChartPrimaryYAxis LabelFormat="${value}" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryYAxis>
-                            <ChartSeriesCollection>
-                                <ChartSeries DataSource="@LineChartData" XName="Date" YName="JPY" Type="ChartSeriesType.Line" Width="1" Fill="#9B5DE5" />
-                            </ChartSeriesCollection>
-                        </SfChart>
+                        <div style="height:@Height;">
+                            <SfChart Background="transparent" Height="100%" Width="@Width" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                                <ChartArea>
+                                    <ChartAreaBorder Width="0"></ChartAreaBorder>
+                                </ChartArea>
+                                <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryXAxis>
+                                <ChartPrimaryYAxis LabelFormat="${value}">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryYAxis>
+                                <ChartSeriesCollection>
+                                    <ChartSeries DataSource="@LineChartData" XName="Date" YName="JPY" Type="ChartSeriesType.Line" Width="1" Fill="#9B5DE5"></ChartSeries>
+                                </ChartSeriesCollection>
+                            </SfChart>
+                        </div>
                     </div>
                     <div>
                         <p class="text-sm text-gray-700 dark:text-gray-300 font-medium mb-3 pl-3">USD to SGD</p>
-                        <SfChart Background="transparent" Height="@Height" Width="@Width" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
-                            <ChartArea>
-                                <ChartAreaBorder Width="0"></ChartAreaBorder>
-                            </ChartArea>
-                            <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryXAxis>
-                            <ChartPrimaryYAxis LabelFormat="${value}" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryYAxis>
-                            <ChartSeriesCollection>
-                                <ChartSeries DataSource="@LineChartData" XName="Date" YName="SGD" Type="ChartSeriesType.Line" Width="1" Fill="#00F5D4"></ChartSeries>
-                            </ChartSeriesCollection>
-                        </SfChart>
+                        <div style="height:@Height;">
+                            <SfChart Background="transparent" Height="100%" Width="@Width" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                                <ChartArea>
+                                    <ChartAreaBorder Width="0"></ChartAreaBorder>
+                                </ChartArea>
+                                <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryXAxis>
+                                <ChartPrimaryYAxis LabelFormat="${value}">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryYAxis>
+                                <ChartSeriesCollection>
+                                    <ChartSeries DataSource="@LineChartData" XName="Date" YName="SGD" Type="ChartSeriesType.Line" Width="1" Fill="#00F5D4"></ChartSeries>
+                                </ChartSeriesCollection>
+                            </SfChart>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -144,135 +162,152 @@
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
-        <div class="vh-100 d-flex justify-content-center p-4 p-sm-6" style="min-height: 710px; max-height: 1000px;">
+        <div class="vh-100 d-flex justify-content-center p-4 p-sm-6">
             <div class="w-100" style="max-width: 1100px;">
                 <div class="d-flex justify-content-between align-items-center mb-3">
                     <span class="fs-6 fw-medium ps-3">Currency Exchange Rates</span>
                     <div class="d-flex align-items-start gap-3">
-                        <SfButtonGroup class="e-btn-group d-none d-sm-block">
-                            <input type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
+                        <SfButtonGroup class="e-btn-group d-none d-sm-flex">
+                            <input Type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
                             <label class="e-btn" for="day">D</label>
-                            <input type="radio" id="week" name="align" value="W" aria-label="week" role="button" />
+                            <input Type="radio" id="week" name="align" value="W" aria-label="week" role="button" />
                             <label class="e-btn" for="week">W</label>
-                            <input type="radio" id="month" name="align" value="M" aria-label="month" role="button" />
+                            <input Type="radio" id="month" name="align" value="M" aria-label="month" role="button" />
                             <label class="e-btn" for="month">M</label>
-                            <input type="radio" id="year" name="align" value="Y" checked aria-label="year" role="button" />
+                            <input Type="radio" id="year" name="align" value="Y" checked aria-label="year" role="button" />
                             <label class="e-btn" for="year">Y</label>
-                            <input type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button" />
+                            <input Type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button" />
                             <label class="e-btn" for="custom">Custom</label>
                         </SfButtonGroup>
                         <SfButton CssClass="e-outline" IconCss="e-icons e-refresh" Type="button" aria-label="refresh" role="button"></SfButton>
                     </div>
                 </div>
-                <SfDropDownButton CssClass="block d-sm-none e-outline mb-3" Content="Year" Items="@PeriodOptions" Type="button" aria-label="choose a range" role="button"></SfDropDownButton>
+                <SfDropDownButton CssClass="block d-sm-none e-outline ml-3 mb-3" Content="Year" Type="button" aria-label="choose a range" role="button">
+                    <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                    <DropDownMenuItems>
+                        <DropDownMenuItem Text="Day"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Week"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Month"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Year"></DropDownMenuItem>
+                        <DropDownMenuItem Text="Custom"></DropDownMenuItem>
+                    </DropDownMenuItems>
+                </SfDropDownButton>
                 <div class="row g-4">
                     <div class="col-12 col-sm-6">
                         <span class="small text-body-secondary fw-medium mb-3 ps-3">USD to EURO</span>
-                        <SfChart Background="transparent" Height="@Height" Width="@Width" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
-                            <ChartArea>
-                                <ChartAreaBorder Width="0"></ChartAreaBorder>
-                            </ChartArea>
-                            <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryXAxis>
-                            <ChartPrimaryYAxis LabelFormat="${value}">
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryYAxis>
-                            <ChartSeriesCollection>
-                                <ChartSeries DataSource="@LineChartData" XName="Date" YName="EUR" Type="ChartSeriesType.Line" Width="1" Fill="#4CC9F0" />
-                            </ChartSeriesCollection>
-                        </SfChart>
+                        <div style="height:@Height;">
+                            <SfChart Background="transparent" Height="100%" Width="@Width" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                                <ChartArea>
+                                    <ChartAreaBorder Width="0"></ChartAreaBorder>
+                                </ChartArea>
+                                <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryXAxis>
+                                <ChartPrimaryYAxis LabelFormat="${value}">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryYAxis>
+                                <ChartSeriesCollection>
+                                    <ChartSeries DataSource="@LineChartData" XName="Date" YName="EUR" Type="ChartSeriesType.Line" Width="1" Fill="#4CC9F0"></ChartSeries>
+                                </ChartSeriesCollection>
+                            </SfChart>
+                        </div>
                     </div>
                     <div class="col-12 col-sm-6">
                         <span class="small text-body-secondary fw-medium mb-3 ps-3">USD to INR</span>
-                        <SfChart Background="transparent" Height="@Height" Width="@Width" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
-                            <ChartArea>
-                                <ChartAreaBorder Width="0"></ChartAreaBorder>
-                            </ChartArea>
-                            <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryXAxis>
-                            <ChartPrimaryYAxis LabelFormat="${value}" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryYAxis>
-                            <ChartSeriesCollection>
-                                <ChartSeries DataSource="@LineChartData" XName="Date" YName="INR" Type="ChartSeriesType.Line" Width="1" Fill="#F15BB5" />
-                            </ChartSeriesCollection>
-                        </SfChart>
+                        <div style="height:@Height;">
+                            <SfChart Background="transparent" Height="100%" Width="@Width" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                                <ChartArea>
+                                    <ChartAreaBorder Width="0"></ChartAreaBorder>
+                                </ChartArea>
+                                <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryXAxis>
+                                <ChartPrimaryYAxis LabelFormat="${value}">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryYAxis>
+                                <ChartSeriesCollection>
+                                    <ChartSeries DataSource="@LineChartData" XName="Date" YName="INR" Type="ChartSeriesType.Line" Width="1" Fill="#F15BB5"></ChartSeries>
+                                </ChartSeriesCollection>
+                            </SfChart>
+                        </div>
                     </div>
                     <div class="col-12 col-sm-6">
                         <span class="small text-body-secondary fw-medium mb-3 ps-3">USD to JPY</span>
-                        <SfChart Background="transparent" Height="@Height" Width="@Width" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
-                            <ChartArea>
-                                <ChartAreaBorder Width="0"></ChartAreaBorder>
-                            </ChartArea>
-                            <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryXAxis>
-                            <ChartPrimaryYAxis LabelFormat="${value}" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryYAxis>
-                            <ChartSeriesCollection>
-                                <ChartSeries DataSource="@LineChartData" XName="Date" YName="JPY" Type="ChartSeriesType.Line" Width="1" Fill="#9B5DE5" />
-                            </ChartSeriesCollection>
-                        </SfChart>
+                        <div style="height:@Height;">
+                            <SfChart Background="transparent" Height="100%" Width="@Width" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                                <ChartArea>
+                                    <ChartAreaBorder Width="0"></ChartAreaBorder>
+                                </ChartArea>
+                                <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryXAxis>
+                                <ChartPrimaryYAxis LabelFormat="${value}">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryYAxis>
+                                <ChartSeriesCollection>
+                                    <ChartSeries DataSource="@LineChartData" XName="Date" YName="JPY" Type="ChartSeriesType.Line" Width="1" Fill="#9B5DE5"></ChartSeries>
+                                </ChartSeriesCollection>
+                            </SfChart>
+                        </div>
                     </div>
                     <div class="col-12 col-sm-6">
                         <div class="small text-body-secondary fw-medium mb-3 pl-3">USD to SGD</div>
-                        <SfChart Background="transparent" Height="@Height" Width="@Width" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
-                            <ChartArea>
-                                <ChartAreaBorder Width="0"></ChartAreaBorder>
-                            </ChartArea>
-                            <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryXAxis>
-                            <ChartPrimaryYAxis LabelFormat="${value}" >
-                                <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
-                                <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
-                                <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
-                                <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
-                                <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
-                                <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
-                            </ChartPrimaryYAxis>
-                            <ChartSeriesCollection>
-                                <ChartSeries DataSource="@LineChartData" XName="Date" YName="SGD" Type="ChartSeriesType.Line" Width="1" Fill="#00F5D4" />
-                            </ChartSeriesCollection>
-                        </SfChart>
+                        <div style="height:@Height;">
+                            <SfChart Background="transparent" Height="100%" Width="@Width" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                                <ChartArea>
+                                    <ChartAreaBorder Width="0"></ChartAreaBorder>
+                                </ChartArea>
+                                <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" LabelFormat="MMM" Interval="1">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryXAxis>
+                                <ChartPrimaryYAxis LabelFormat="${value}">
+                                    <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                                    <ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                                    <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                                    <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                                    <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                                    <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                                </ChartPrimaryYAxis>
+                                <ChartSeriesCollection>
+                                    <ChartSeries DataSource="@LineChartData" XName="Date" YName="SGD" Type="ChartSeriesType.Line" Width="1" Fill="#00F5D4"></ChartSeries>
+                                </ChartSeriesCollection>
+                            </SfChart>
+                        </div>
                     </div>
                 </div>
             </div>

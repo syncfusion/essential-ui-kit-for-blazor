@@ -1,5 +1,6 @@
-﻿using Syncfusion.Blazor.DropDowns;
-using Microsoft.JSInterop;
+﻿using Microsoft.JSInterop;
+using Syncfusion.Blazor.DropDowns;
+
 namespace UI_Blocks.Components.Pages.BlocksSection.AiSearch.AiSearch1
 {
     public partial class AiSearch1

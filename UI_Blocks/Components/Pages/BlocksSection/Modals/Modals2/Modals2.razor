@@ -7,8 +7,7 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section>
-        <div id="dialog-container" class="relative flex justify-center" style="min-height: 580px;">
-            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="personal information" role="button">Personal Information</SfButton>
+        <div id="dialog-container" class="relative" style="min-height: 580px;">
             <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Visible="true" Width="400px" aria-label="update personal information" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
@@ -41,20 +40,24 @@
                     </Content>
                     <FooterTemplate>
                         <div class="flex flex-row justify-end gap-2 sm:gap-1 mt-1 mb-2">
-                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
-                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="submit" aria-label="submit" role="button">Submit</SfButton>
+                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Content="Cancel" Type="button" aria-label="cancel" role="button"></SfButton>
+                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Content="Submit" Type="submit" aria-label="submit" role="button"></SfButton>
                         </div>
                     </FooterTemplate>
                 </DialogTemplates>
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="top-0 left-0 absolute w-full flex">
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Personal Information" Type="button" aria-label="personal information" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
-        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 580px;">
-            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="personal information" role="button">Personal Information</SfButton>
+        <div id="dialog-container" class="position-relative" style="min-height: 580px;">
             <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Visible="true" Width="400px" aria-label="update personal information" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
@@ -87,12 +90,17 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     </Content>
                     <FooterTemplate>
                         <div class="d-flex justify-content-end gap-2 gap-sm-1 py-1">
-                            <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
-                            <SfButton CssClass="e-primary col col-sm-auto" Type="submit" aria-label="submit" role="button">Submit</SfButton>
+                            <SfButton CssClass="col col-sm-auto ms-0" Content="Cancel" Type="button" aria-label="cancel" role="button"></SfButton>
+                            <SfButton CssClass="e-primary col col-sm-auto" Content="Submit" Type="submit" aria-label="submit" role="button"></SfButton>
                         </div>
                     </FooterTemplate>
                 </DialogTemplates>
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="position-absolute top-0 start-0 d-flex w-100">
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Personal Information" Type="button" aria-label="personal information" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }

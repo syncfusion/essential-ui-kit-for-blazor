@@ -1,6 +1,6 @@
 ﻿@page "/blocks/floating-menu-2"
+
 @inherits UI_Blocks.Components.Pages.MainSection.Demo
-@inject IJSRuntime JSRuntime
 
 @ThemeLinks
 
@@ -9,7 +9,10 @@
     <section class="bg-gray-50 dark:bg-gray-950">
         <div id="floating-chat" class="sm:pt-4 sm:pr-4" style="height: @(IsMobileView ? "580px" : "720px")">
             <div id="target" class="w-full" >
-                <SfDialog @ref="Dialog" CssClass="sm:!rounded-t !rounded-none overflow-hidden !border-0" Target="#target" Width="400px" MinHeight="580px" aria-label="chatbot" role="dialog">
+                <div class="flex items-center justify-center pt-4 block sm:hidden">
+                    <SfButton CssClass="e-primary e-round e-bigger" IconCss="sf-icon-message-chat-circle !text-xl" OnClick="@(() => IsToggleState = !IsToggleState)" Type="button" aria-label="open contact us form" role="button"></SfButton>
+                </div>
+                <SfDialog @ref="Dialog" CssClass="sm:!rounded-t !rounded-none overflow-hidden !border-0" Target="#target" Visible="@IsToggleState" Width="400px" MinHeight="580px" aria-label="chatbot" role="dialog">
                     <DialogTemplates>
                         <Header>
                             <div class="flex justify-between items-center bg-primary-600 dark:bg-primary-400 py-4 px-4 sm:px-6">
@@ -19,6 +22,9 @@
                                         <div class="w-3 h-3 rounded-full bg-green-700 dark:bg-green-500 absolute right-0 bottom-0.5 border border-white dark:border-black"></div>
                                     </div>
                                     <p class="text-white font-semibold dark:text-gray-900">ChatBot</p>
+                                </div>
+                                <div class="flex justify-end block sm:hidden">
+                                    <SfButton CssClass="e-primary e-round" IconCss="e-icons e-close text-white dark:text-black !text-base" OnClick="@(() => IsToggleState = !IsToggleState)" Type="button" aria-label="close contact us form" role="button"></SfButton>
                                 </div>
                             </div>
                         </Header>
@@ -30,22 +36,22 @@
                                         <div class="@(context.Contact != "ChatBot" ? "flex justify-end items-end flex-col" : "flex justify-start gap-3 w-full")">
                                             @if (context.Contact != "ChatBot")
                                             {
-                                                    <div class="bg-gray-300 dark:bg-gray-700 px-3 py-2 rounded-lg rounded-se-none w-11/12">
-                                                        <div class="dark:text-gray-50">@context.Chat</div>
-                                                    </div>
-                                                    <p class="text-gray-500 dark:text-gray-400 mt-1 text-xs">@context.Contact</p>
+                                                <div class="bg-gray-300 dark:bg-gray-700 px-3 py-2 rounded-lg rounded-se-none w-11/12">
+                                                    <div class="dark:text-gray-50">@context.Chat</div>
+                                                </div>
+                                                <p class="text-gray-500 dark:text-gray-400 mt-1 text-xs">@context.Contact</p>
                                             }
                                             else
                                             {
-                                                    <div>
-                                                        <span class="e-avatar e-avatar-circle e-avatar-small e-icons e-user !text-xl bg-gray-300 dark:bg-gray-700"></span>
+                                                <div>
+                                                    <span class="e-avatar e-avatar-circle e-avatar-small e-icons e-user !text-xl bg-gray-300 dark:bg-gray-700"></span>
+                                                </div>
+                                                <div>
+                                                    <div class="px-3 py-2 rounded-lg rounded-ss-none bg-gray-100 dark:bg-gray-800">
+                                                        <div class="dark:text-gray-50">@context.Chat</div>
                                                     </div>
-                                                    <div>
-                                                        <div class="px-3 py-2 rounded-lg rounded-ss-none bg-gray-100 dark:bg-gray-800">
-                                                            <div class="dark:text-gray-50">@context.Chat</div>
-                                                        </div>
-                                                        <p class="text-gray-500 dark:text-gray-400 mt-1 text-xs">@context.Contact</p>
-                                                    </div>
+                                                    <p class="text-gray-500 dark:text-gray-400 mt-1 text-xs">@context.Contact</p>
+                                                </div>
                                             }
                                         </div>
                                     </Template>
@@ -57,19 +63,19 @@
                                 <div class="e-card bg-gray-50 dark:bg-gray-800 dark:border-gray-600">
                                     <div class="e-card-content text-center">
                                         <p class="pt-4 pb-2.5">How would you rate our support?</p>
-                                        <SfRating Value="0.5" Precision="PrecisionType.Exact"/>
+                                        <SfRating Value="0.5" Precision="PrecisionType.Exact"></SfRating>
                                     </div>
                                 </div>
                                 <div class="e-bigger mt-3">
-                                    <SfTextBox @ref="TextBox" Placeholder="Enter a message" Type="InputType.Text" Created="@AddNavIconAsync" aria-label="enter a message" role="textbox"></SfTextBox>
+                                    <SfTextBox @ref="TextBox" Placeholder="Enter a message" Type="InputType.Text" FloatLabelType="FloatLabelType.Never" Created="@(args => TextBox?.AddIconAsync("append", "sf-icon-navigation-right-up border-0"))" aria-label="enter a message" role="textbox"></SfTextBox>
                                 </div>
                             </div>
                         </FooterTemplate>
                     </DialogTemplates>
-                    <DialogPositionData X="@XValue.ToString()" Y="@YValue.ToString()"></DialogPositionData>
-                    <DialogEvents Created="@CreatedHandler" Opened="@onOpen"></DialogEvents>
+                    <DialogEvents Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                    <DialogPositionData X="right" Y="top"></DialogPositionData>
                 </SfDialog>
-                <SfFab CssClass="e-primary e-bigger e-round !hidden sm:!block" IconCss="@(_toggleState ? "sf-icon-message-chat-circle !text-2xl" : "e-icons e-close !text-2xl")" Position="FabPosition.BottomRight" Type="button" OnClick="ToggleDialogAsync" aria-label="show/hide chatbot" role="button"></SfFab>
+                <SfFab CssClass="e-primary e-bigger e-round !hidden sm:!block" IconCss="@(IsToggleState ? "e-icons e-close !text-2xl" : "sf-icon-message-chat-circle !text-2xl")" Position="FabPosition.BottomRight" Type="button" OnClick="@(() => IsToggleState = !IsToggleState)" aria-label="show/hide chatbot" role="button"></SfFab>
             </div>
         </div>
     </section>
@@ -79,7 +85,10 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     <section class="bg-body">
         <div id="floating-chat" class="pt-sm-3 pe-sm-3" style="height: @(IsMobileView ? "580px" : "720px")">
             <div id="target" class="w-100" >
-                <SfDialog @ref="Dialog" CssClass="rounded-1 overflow-hidden border-0" Target="#target" Width="400px" MinHeight="580px" aria-label="chatbot" role="dialog">
+                <div class="d-flex align-items-center justify-content-center pt-4 d-block d-sm-none">
+                    <SfButton CssClass="e-primary e-round e-bigger" IconCss="sf-icon-message-chat-circle fs-5 lh-base" OnClick="@(() => IsToggleState = !IsToggleState)" Type="button" aria-label="open contact us form" role="button"></SfButton>
+                </div>
+                <SfDialog @ref="Dialog" CssClass="rounded-1 overflow-hidden border-0" Target="#target" Visible="@IsToggleState" Width="400px" MinHeight="580px" aria-label="chatbot" role="dialog">
                     <DialogTemplates>
                         <Header>
                             <div class="d-flex justify-content-between align-items-center bg-primary py-3 px-4">
@@ -89,6 +98,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                         <div class="position-absolute end-0 bottom-0 border rounded-circle bg-success" style="width: 12px; height: 12px;"></div>
                                     </div>
                                     <p class="text-white fw-semibold fs-6 lh-sm m-0">ChatBot</p>
+                                </div>
+                                <div class="d-flex justify-content-end d-block d-sm-none">
+                                    <SfButton CssClass="e-primary e-round" IconCss="e-icons e-close text-white" OnClick="@(() => IsToggleState = !IsToggleState)" Type="button" aria-label="close contact us form" role="button"></SfButton>
                                 </div>
                             </div>
                         </Header>
@@ -100,22 +112,22 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                         <div class="@(context.Contact != "ChatBot" ? "d-flex justify-content-end flex-column align-items-end ps-5" : "d-flex justify-content-start gap-3")">
                                             @if (context.Contact != "ChatBot")
                                             {
-                                                    <div class="bg-body-secondary px-3 py-2 rounded-3" style="border-top-right-radius: 0px !important;">
-                                                        <div class="text-body">@context.Chat</div>
-                                                    </div>
-                                                    <p class="text-body-secondary small m-0">@context.Contact</p>
+                                                <div class="bg-body-secondary px-3 py-2 rounded-3" style="border-top-right-radius: 0px !important;">
+                                                    <div class="text-body">@context.Chat</div>
+                                                </div>
+                                                <p class="text-body-secondary small m-0">@context.Contact</p>
                                             }
                                             else
                                             {
-                                                    <div>
-                                                        <span class="e-avatar e-avatar-circle e-avatar-small bg-body-tertiary e-icons e-user fs-5"></span>
+                                                <div>
+                                                    <span class="e-avatar e-avatar-circle e-avatar-small bg-body-tertiary e-icons e-user fs-5"></span>
+                                                </div>
+                                                <div>
+                                                    <div class="px-3 py-2 rounded-3 bg-body-tertiary" style="border-top-left-radius: 0px !important;">
+                                                        <div class="text-body">@context.Chat</div>
                                                     </div>
-                                                    <div>
-                                                        <div class="px-3 py-2 rounded-3 bg-body-tertiary" style="border-top-left-radius: 0px !important;">
-                                                            <div class="text-body">@context.Chat</div>
-                                                        </div>
-                                                        <p class="text-body-secondary small m-0">@context.Contact</p>
-                                                    </div>
+                                                    <p class="text-body-secondary small m-0">@context.Contact</p>
+                                                </div>
                                             }
                                         </div>
                                     </Template>
@@ -127,19 +139,19 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <div class="e-card bg-body-tertiary">
                                     <div class="e-card-content p-3 text-center">
                                         <p class="mb-1 fs-6 opacity-75">How would you rate our support?</p>
-                                        <SfRating Value="0.5" Precision="PrecisionType.Exact" />
+                                        <SfRating Value="0.5" Precision="PrecisionType.Exact"></SfRating>
                                     </div>
                                 </div>
                                 <div class="e-bigger mt-3">
-                                    <SfTextBox @ref="TextBox" Placeholder="Enter a message" Type="InputType.Text" Created="AddNavIconAsync" aria-label="enter a message" role="textbox"></SfTextBox>
+                                    <SfTextBox @ref="TextBox" Placeholder="Enter a message" Type="InputType.Text" FloatLabelType="FloatLabelType.Never" Created="@(args => TextBox?.AddIconAsync("append", "sf-icon-navigation-right-up border-0"))" aria-label="enter a message" role="textbox"></SfTextBox>
                                 </div>
                             </div>
                         </FooterTemplate>
                     </DialogTemplates>
-                    <DialogPositionData X="@XValue.ToString()" Y="@YValue.ToString()"></DialogPositionData>
-                    <DialogEvents Created="@CreatedHandler" Opened="@onOpen"></DialogEvents>
+                    <DialogEvents Opened="@(args => args.PreventFocus = true)"></DialogEvents>
+                    <DialogPositionData X="right" Y="top"></DialogPositionData>
                 </SfDialog>
-                <SfFab CssClass="e-primary e-bigger e-round d-none d-sm-block" IconCss="@(_toggleState ? "sf-icon-message-chat-circle fs-4" : "e-icons e-close fs-5")" Position="FabPosition.BottomRight" Type="button" OnClick="ToggleDialogAsync" aria-label="show/hide chatbot" role="button"></SfFab>
+                <SfFab CssClass="e-primary e-bigger e-round d-none d-sm-block" IconCss="@(IsToggleState ? "e-icons e-close fs-5" : "sf-icon-message-chat-circle fs-4")" Position="FabPosition.BottomRight" Type="button" OnClick="@(() => IsToggleState = !IsToggleState)" aria-label="show/hide chatbot" role="button"></SfFab>
             </div>
         </div>
     </section>

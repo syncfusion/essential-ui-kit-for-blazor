@@ -7,20 +7,25 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section class="bg-gray-50 dark:bg-gray-950">
-        <div class="w-full flex justify-end p-4 mx-auto" id="target" style="min-height: 680px; max-width: 480px;">
+        <div id="target" class="w-full flex justify-end p-4 mx-auto" style="min-height: 680px; max-width: 480px;">
             <div class="relative w-8 h-8">
                 <SfButton CssClass="e-outline e-round" IconCss="sf-icon-notification-bell-02" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
                 <span class="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 mr-2">4</span>
             </div>
         </div>
-        <SfDialog @ref="Dialog" Target="#target" ID="notification" CssClass="!bg-white dark:!bg-gray-800 rounded-lg overflow-hidden !border" Visible="@IsDialogVisible" Width="@DialogWidth" aria-label="notification" role="dialog">
+        <SfDialog @ref="Dialog" id="notification" CssClass="!bg-white dark:!bg-gray-800 rounded-lg overflow-hidden !border" Target="#target" Visible="@IsDialogVisible" Width="@DialogWidth" aria-label="notification" role="dialog">
             <DialogTemplates>
                 <Header>
                     <div class="flex justify-between items-center p-4 md:px-3 md:py-2">
                         <h1 class="text-base md:text-lg text-gray-900 dark:text-white font-medium">Notifications</h1>
                         <div class="flex items-center gap-3">
-                            <SfButton CssClass="e-flat e-small block sm:hidden" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more menu" role="button"></SfButton>
-                            <SfButton CssClass="e-flat e-small e-round" IconCss="e-icons e-close" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                            <SfDropDownButton @ref="Dropdown" CssClass="e-flat e-small e-caret-hide !pr-1 block sm:hidden" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="notification options" role="button">
+                                <DropDownButtonEvents Opened="@(() => { IsDropdownOpened = true; })" Closed="@(() => { IsDropdownOpened = false; })"></DropDownButtonEvents>
+                                <DropDownMenuItems>
+                                    <DropDownMenuItem Text="Mark all as read"></DropDownMenuItem>
+                                </DropDownMenuItems>
+                            </SfDropDownButton>
+                            <SfButton CssClass="e-flat e-small" IconCss="e-icons e-close" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
                         </div>
                     </div>
                 </Header>
@@ -29,7 +34,7 @@
                         <SfButton CssClass="e-link !text-gray-700 dark:!text-white absolute right-3 top-1 z-50 hidden sm:block" Content="Mark all as read" Type="button" aria-label="mark all as read" role="button"></SfButton>
                         <SfTab>
                             <TabItems>
-                                <TabEvents Created="@OnTabCreated" Selected="@OnTabSelectedAsync"></TabEvents>
+                                <TabEvents Created="@TabCreated" Selected="@TabSelectedAsync"></TabEvents>
                                 <TabItem>
                                     <HeaderTemplate>
                                         <div class="flex items-center gap-2">
@@ -63,7 +68,7 @@
                                                 }
                                                 @if (!string.IsNullOrEmpty(context.Initial))
                                                 {
-                                                    <span class="e-avatar e-avatar-circle @(context.ColorTheme == "Green" ? "!bg-green-100 !text-green-700 dark:!text-green-500" : context.ColorTheme == "Orange" ? "!bg-orange-100 !text-orange-700 dark:!text-orange-500" : "")">@context.Initial</span>
+                                                    <span class="e-avatar e-avatar-circle @(context.ColorTheme == "Green" ? "!bg-green-100 dark:!bg-green-800 !text-green-700 dark:!text-green-500" : context.ColorTheme == "Orange" ? "!bg-orange-100 dark:!bg-orange-800 !text-orange-700 dark:!text-orange-500" : "")">@context.Initial</span>
                                                 }
                                             </div>
                                             <div class="flex flex-col gap-1">
@@ -104,14 +109,19 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 <span class="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 me-2">4</span>
             </div>
         </div>
-        <SfDialog @ref="Dialog" Target="#target" ID="notification" CssClass="bg-body rounded overflow-hidden border" Visible="@IsDialogVisible" Width="@DialogWidth" aria-label="notification" role="dialog">
+        <SfDialog @ref="Dialog" id="notification" CssClass="bg-body rounded overflow-hidden border" Target="#target" Visible="@IsDialogVisible" Width="@DialogWidth" aria-label="notification" role="dialog">
             <DialogTemplates>
                 <Header>
                     <div class="d-flex justify-content-between align-items-center p-3">
                         <h1 class="fs-5 text-body fw-medium m-0">Notifications</h1>
-                        <div class="d-flex align-items-center gap-3">
-                            <SfButton CssClass="e-flat e-small d-block d-sm-none" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more menu" role="button"></SfButton>
-                            <SfButton CssClass="e-flat e-small e-round e-inherit" IconCss="e-icons e-close" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                        <div class="d-flex align-items-center gap-2">
+                            <SfDropDownButton @ref="Dropdown" CssClass="e-flat e-small e-caret-hide e-inherit pe-1 d-block d-sm-none" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="notification options" role="button">
+                                <DropDownButtonEvents Opened="@(() => { IsDropdownOpened = true; })" Closed="@(() => { IsDropdownOpened = false; })"></DropDownButtonEvents>
+                                <DropDownMenuItems>
+                                    <DropDownMenuItem Text="Mark all as read"></DropDownMenuItem>
+                                </DropDownMenuItems>
+                            </SfDropDownButton>
+                            <SfButton CssClass="e-flat e-small e-inherit" IconCss="e-icons e-close" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
                         </div>
                     </div>
                 </Header>
@@ -120,7 +130,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         <SfButton CssClass="e-link position-absolute top-0 end-0 z-1 d-none d-sm-block me-2 text-secondary" Content="Mark all as read" Type="button" aria-label="mark all as read" role="button"></SfButton>
                         <SfTab>
                             <TabItems>
-                                <TabEvents Created="@OnTabCreated" Selected="@OnTabSelectedAsync"></TabEvents>
+                                <TabEvents Created="@TabCreated" Selected="@TabSelectedAsync"></TabEvents>
                                 <TabItem>
                                     <HeaderTemplate>
                                         <div class="d-flex align-items-center gap-2">
@@ -154,7 +164,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                 }
                                                 @if (!string.IsNullOrEmpty(context.Initial))
                                                 {
-                                                    <span class="e-avatar e-avatar-circle @(context.ColorTheme == "Green" ? "bg-success-subtle text-success" : context.ColorTheme == "Orange" ? "bg-warning-subtle text-warning" : "")">@context.Initial</span>
+                                                    <span class="e-avatar e-avatar-circle @(context.ColorTheme == "Green" ? "bg-success-subtle text-success" : context.ColorTheme == "Orange" ? "bg-warning-subtle text-warning-emphasis" : "")">@context.Initial</span>
                                                 }
                                             </div>
                                             <div class="d-flex flex-column gap-1">

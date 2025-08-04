@@ -6,9 +6,9 @@
 
 @if (CurrentTheme.Contains("tailwind"))
 {
-	<section class="bg-gray-50 dark:bg-gray-900">
-		<div class="lg:flex lg:justify-center lg:items-center">
-			<div class="py-10 px-3 md:px-6 md:py-14 xl:px-11 xl:py-6 w-full">
+	<section class="bg-white dark:bg-gray-900">
+		<div class="lg:flex lg:justify-center lg:items-center" style="min-height: 45rem;">
+			<div class="py-10 px-4 md:px-6 md:py-14 xl:px-11 xl:py-6 w-full">
 				<form action="#" onsubmit="@(() => {})">
 					<div class="mb-3 flex items-center ml-4">
 						<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-3">From:</label>
@@ -16,7 +16,7 @@
 					</div>
 					<div class="mb-3 flex items-center ml-8 relative">
 						<label class="block text-sm font-medium text-gray-700 dark:text-gray-300 mr-3">To:</label>
-						<SfMultiSelect TValue="string[]" TItem="string" DataSource="@(new[] { "Thomas" , "Henry" } )" Value="@(new[] { "Thomas" })" Mode="VisualMode.Box" CssClass="e-bigger pl-1" class="w-full" aria-label="select the email recipients" role="listbox">
+						<SfMultiSelect TValue="string[]" TItem="string" DataSource="@(new[] { "Thomas" , "Henry" } )" Value="@(new[] { "Thomas" })" Mode="VisualMode.Box" CssClass="e-bigger pl-1" class="w-full" Placeholder="Select recipients" aria-label="select the email recipients" role="listbox">
 							<MultiSelectFieldSettings Text="Text" Value="Text"></MultiSelectFieldSettings>
 						</SfMultiSelect>
 						<div class="absolute right-12" style="bottom: 8px;">
@@ -29,7 +29,7 @@
 						<SfTextBox Cssclass="w-full e-bigger" Type="InputType.Text" Value="Issue with Online Banking App - Transactions Not Completing" Placeholder="Enter the subject" FloatLabelType="FloatLabelType.Never" aria-label="enter the subject" role="textbox"></SfTextBox>
 					</div>
 					<div class="mb-4">
-						<SfRichTextEditor ariaLabel="enter and format your text message" role="application" style="max-height: 500px; overflow-y: auto;">
+						<SfRichTextEditor aria-label="enter and format your text message" role="application" style="max-height: 500px; overflow-y: auto;">
 							<RichTextEditorToolbarSettings Type="ToolbarType.MultiRow" Items="@ToolbarItems"></RichTextEditorToolbarSettings>
 							<p>Dear Support Team,</p>
 							<p class="!mb-0">I am having trouble completing transactions in the Online Banking App. The app freezes at the confirmation screen every time I attempt to transfer money.</p>
@@ -45,13 +45,11 @@
 						</SfRichTextEditor>
 					</div>
 					<div class="mb-6">
-						<SfUploader aria-label="upload files" role="button">
-							<UploaderAsyncSettings SaveUrl="https://blazor.syncfusion.com/services/production/api/FileUploader/Save" RemoveUrl="https://blazor.syncfusion.com/services/production/api/FileUploader/Remove"></UploaderAsyncSettings>
-						</SfUploader>
+						<SfUploader aria-label="upload files" role="button"></SfUploader>
 					</div>
 					<div class="flex justify-end space-x-4">
-						<SfButton CssClass="e-outline" Type="button" Content="Discard" aria-label="discard this email" role="button"></SfButton>
-						<SfButton CssClass="e-primary" Type="submit" Content="Send" aria-label="send this email" role="button"></SfButton>
+						<SfButton CssClass="e-outline" Content="Discard" Type="button" aria-label="discard this email" role="button"></SfButton>
+						<SfButton CssClass="e-primary" Content="Send" Type="submit" aria-label="send this email" role="button"></SfButton>
 					</div>
 				</form>
 			</div>
@@ -70,7 +68,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 					</div>
 					<div class="mb-3 d-flex align-items-center ms-4 ps-1 position-relative">
 						<label class="form-label small text-body-secondary ps-1 pe-3 mb-0">To:</label>
-						<SfMultiSelect TValue="string[]" TItem="string" CssClass="e-bigger ps-1" DataSource="@(new[] { "Thomas" , "Henry" } )" Value="@(new[] { "Thomas" })" Mode="VisualMode.Box" class="w-100" aria-label="select the email recipients" role="listbox">
+						<SfMultiSelect TValue="string[]" TItem="string" CssClass="e-bigger ps-1" DataSource="@(new[] { "Thomas" , "Henry" } )" Value="@(new[] { "Thomas" })" Mode="VisualMode.Box" class="w-100" Placeholder="Select recipients" aria-label="select the email recipients" role="listbox">
 							<MultiSelectFieldSettings Text="text" Value="text"></MultiSelectFieldSettings>
 						</SfMultiSelect>
 						<div class="position-absolute d-flex align-items-center end-0 me-4 pe-3" style="bottom: 8px;">
@@ -99,13 +97,11 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 						</SfRichTextEditor>
 					</div>
 					<div class="mb-4">
-						<SfUploader aria-label="upload files" role="button">
-							<UploaderAsyncSettings SaveUrl="https://blazor.syncfusion.com/services/production/api/FileUploader/Save" RemoveUrl="https://blazor.syncfusion.com/services/production/api/FileUploader/Remove"></UploaderAsyncSettings>
-						</SfUploader>
+						<SfUploader aria-label="upload files" role="button"></SfUploader>
 					</div>
 					<div class="d-flex justify-content-end gap-3">
-						<SfButton CssClass="e-outline" Type="button" Content="Discard" aria-label="discard this email" role="button"></SfButton>
-						<SfButton CssClass="e-primary" Type="submit" Content="Send" aria-label="send this email" role="button"></SfButton>
+						<SfButton CssClass="e-outline" Content="Discard" Type="button" aria-label="discard this email" role="button"></SfButton>
+						<SfButton CssClass="e-primary" Content="Send" Type="submit" aria-label="send this email" role="button"></SfButton>
 					</div>
 				</form>
 			</div>

@@ -13,13 +13,13 @@
                 <span class="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 mr-2">4</span>
             </div>
         </div>
-        <SfDialog @ref="Dialog" Id="notification" Target="#target" CssClass="!bg-white dark:!bg-gray-800 rounded-lg overflow-hidden !border" Width="@DialogWidth" Visible="@IsDialogVisible" aria-label="notification" role="dialog">
+        <SfDialog @ref="Dialog" id="notification" CssClass="!bg-white dark:!bg-gray-800 rounded-lg overflow-hidden !border" Target="#target" Width="@DialogWidth" Visible="@IsDialogVisible" aria-label="notification" role="dialog">
             <DialogEvents Opened="@AfterOpen"></DialogEvents>
             <DialogTemplates>
                 <Header>
                     <div class="flex justify-between items-center p-4">
                         <p class="text-base md:text-lg text-gray-900 dark:text-white font-medium">Notifications</p>
-                        <SfButton CssClass="e-flat e-small e-round" IconCss="e-icons e-close" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                        <SfButton CssClass="e-flat e-small" IconCss="e-icons e-close" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
                     </div>
                 </Header>
                 <Content>
@@ -85,13 +85,13 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 <span class="e-badge e-badge-danger e-badge-notification e-badge-overlap e-badge-circle mt-1 me-2">4</span>
             </div>
         </div>
-        <SfDialog @ref="Dialog" Id="notification" Target="#target" CssClass="bg-body rounded overflow-hidden border" Width="@DialogWidth" Visible="@IsDialogVisible" aria-label="notification" role="dialog">
+        <SfDialog @ref="Dialog" id="notification" CssClass="bg-body rounded overflow-hidden border" Target="#target" Width="@DialogWidth" Visible="@IsDialogVisible" aria-label="notification" role="dialog">
             <DialogEvents Opened="@AfterOpen"></DialogEvents>
             <DialogTemplates>
                 <Header>
                     <div class="d-flex justify-content-between align-items-center px-3 py-2 my-1 border-bottom border-light-subtle">
                         <p class="text-body fs-5 lh-base fw-medium mb-0">Notifications</p>
-                        <SfButton CssClass="e-flat e-small e-round e-inherit" IconCss="e-icons e-close" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
+                        <SfButton CssClass="e-flat e-small e-inherit" IconCss="e-icons e-close" OnClick="@(() => IsDialogVisible = !IsDialogVisible)" Type="button" aria-label="show/hide notification" role="button"></SfButton>
                     </div>
                 </Header>
                 <Content>

@@ -64,7 +64,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Notification.Notification6
                 Category = "focused"
             }
         };
-        public void OnTabCreated()
+        public void TabCreated()
         {
             TicketData = Data.Take(5).ToList();
         }

@@ -164,25 +164,8 @@
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-    display:flex;
-    align-items: center;
-}
-
-.component-list-text span,
-.block-footer .block-title span {
-    background: #15803D;
-    color: white;
-    font-weight: 400;
-    font-size: 12px;
-    border-radius: 12px;
-    padding: 2px;
-    margin-left: 8px;
-    width: 38px;
-    height: 20px;
     display: flex;
     align-items: center;
-    justify-content: center;
-	box-sizing: border-box;
 }
 
 .component-count {
@@ -196,6 +179,31 @@
     border-radius: 12px;
     white-space: nowrap;
     padding: 2px 8px;
+}
+
+.sample-status {
+    font-weight: 400;
+    font-size: 12px;
+    border-radius: 12px;
+    padding: 2px;
+    margin-left: 8px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.new-status {
+    color: #FFFFFF;
+    background: #198754;
+    width: 38px;
+}
+
+.updated-status {
+    color: #000000;
+    background: #FFC107;
+    width: 65px;
 }
 
 .blocks-list {

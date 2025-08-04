@@ -6,16 +6,16 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Calendar.Calendar6
 {
     public partial class Calendar6
     {
-        private bool SidebarToggle { get; set; } = true;
-        private string SelectedItem = "Holiday";
-        private List<string> UniqueMonthsDescription = new();
-        private string Width { get; set; } = "310px";
-        private List<DropDownMenuItem> MenuItems = new List<DropDownMenuItem>
+        public bool IsSidebarOpen = true;
+        public string SelectedItem = "Holiday";
+        public List<string> UniqueMonthsDescription = new();
+        public string Width = "310px";
+        public List<DropDownMenuItem> MenuItems = new List<DropDownMenuItem>
         {
             new DropDownMenuItem { Text = "Holiday", IconCss = "e-icons e-check" },
             new DropDownMenuItem { Text = "My PTO", IconCss = "" }
         };
-        private List<TimelineDay> TimelineData = new()
+        public List<TimelineDay> TimelineData = new List<TimelineDay>
         {
             new TimelineDay { Title = "Labor Day", Description = "Mon, Sep 2" },
             new TimelineDay { Title = "Patriot Day", Description = "Wed, Sep 11" },
@@ -33,7 +33,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Calendar.Calendar6
             await Task.CompletedTask;
         }
 
-        private void GetUniqueMonths()
+        public void GetUniqueMonths()
         {
             var months = new HashSet<string>();
             var descriptions = new List<string>();
@@ -49,18 +49,13 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Calendar.Calendar6
             UniqueMonthsDescription = descriptions;
         }
 
-        private void ToggleSidebar()
-        {
-            SidebarToggle = !SidebarToggle;
-        }
-
-        private void LeaveOptions(MenuEventArgs args)
+        public void LeaveOptions(MenuEventArgs args)
         {
             SelectedItem = args.Item.Text;
             MenuItems.ForEach(item => item.IconCss = item.Text == SelectedItem ? "e-icons e-check" : "");
         }
 
-        private string GetMonthAbbreviation(string date) => date.Split(", ")[1].Split(" ")[0];
+        public string GetMonthAbbreviation(string date) => date.Split(", ")[1].Split(" ")[0];
 
         [JSInvokable]
         public void ResizeHandler(string message, int windowWidth)
@@ -68,14 +63,14 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Calendar.Calendar6
             if (message == "resizeAction")
             {
                 Width = windowWidth < 540 ? "100%" : "310px";
-                StateHasChanged();
             }
+            StateHasChanged();
         }
 
         public class TimelineDay
         {
-            public string Title { get; set; } = String.Empty;
-            public string Description { get; set; } = String.Empty;
+            public string Title { get; set; } = string.Empty;
+            public string Description { get; set; } = string.Empty;
         }
     }
 }

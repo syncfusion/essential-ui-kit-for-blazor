@@ -5,18 +5,18 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Search.Search3
 {
     public partial class Search3
     {
-        private SfAutoComplete<string, SearchItem>? Search;
+        public SfAutoComplete<string, SearchItem>? Search;
         public string? Width;
-        private List<SearchItem> Data = new List<SearchItem>()
+        public List<SearchItem> Data = new List<SearchItem>()
         {
-            new() { Id = 1, Name = "Johnson", },
-            new() { Id = 2, Name = "White", },
-            new() { Id = 3, Name = "Harris", },
-            new() { Id = 4, Name = "Jane Smith", Initial = "JS", EmailId = "jane.smith@example.com" },
-            new() { Id = 5, Name = "Mark Johnson", Initial = "MJ", EmailId = "markjohnson@example.com" },
-            new() { Id = 6, Name = "Tom Harris", Initial = "TH", EmailId = "tomharris@example.com" },
+            new SearchItem { Id = 1, Name = "Johnson" },
+            new SearchItem { Id = 2, Name = "White" },
+            new SearchItem { Id = 3, Name = "Harris" },
+            new SearchItem { Id = 4, Name = "Jane Smith", Initial = "JS", EmailId = "jane.smith@example.com" },
+            new SearchItem { Id = 5, Name = "Mark Johnson", Initial = "MJ", EmailId = "markjohnson@example.com" },
+            new SearchItem { Id = 6, Name = "Tom Harris", Initial = "TH", EmailId = "tomharris@example.com" }
         };
-        private async Task FocusHandlerAsync()
+        public async Task FocusHandlerAsync()
         {
             if (Search != null)
             {
@@ -40,7 +40,6 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Search.Search3
             public string? Name { get; set; } = string.Empty;
             public string? Initial { get; set; } = string.Empty;
             public string? EmailId { get; set; } = string.Empty;
-
         }
     }
 }

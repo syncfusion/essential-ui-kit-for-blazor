@@ -1,6 +1,6 @@
-﻿using Syncfusion.Blazor.DropDowns;
+﻿using Microsoft.JSInterop;
+using Syncfusion.Blazor.DropDowns;
 using Syncfusion.Blazor.Navigations;
-using Microsoft.JSInterop;
 
 namespace UI_Blocks.Components.Pages.BlocksSection.AiSearch.AiSearch2
 {
@@ -13,7 +13,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.AiSearch.AiSearch2
         public OverflowMode OverflowMode { get; set; } = OverflowMode.Extended;
         public List<SearchItem> FilteredData { get; set; } = new List<SearchItem>();
 
-        public List<SearchItem> AllData = new List<SearchItem>()
+        public List<SearchItem> AllData = new List<SearchItem>
         {
             new SearchItem { Id = 1, Name = "Bob Johnson", Status = "Last active 5 minutes ago", Image = "avatar-1.jpg", Category = "Team" },
             new SearchItem { Id = 2, Name = "Marketing site brief", Status = "Added by Bob Johnson in Sisyphus", Image = "", Category = "Files" },

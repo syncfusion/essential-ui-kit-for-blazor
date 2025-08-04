@@ -4,8 +4,6 @@
 
 @ThemeLinks
 
-@inject IJSRuntime JSRuntime
-
 @if (CurrentTheme.Contains("tailwind"))
 {
 	<section class="bg-white dark:bg-gray-900">
@@ -19,7 +17,7 @@
 								<div class="e-list-wrapper border-b border-gray-200 dark:border-gray-600 !px-1 sm:!px-3 !py-4 flex items-start">
 									<SfCheckBox CssClass="pt-1" @bind-Checked="@context.Completed" aria-label="select tasks in the to-do list" role="checkbox"></SfCheckBox>
 									<div class="ml-3">
-										<span class="e-list-item-header font-medium text-sm @((context.Completed ? "line-through text-gray-700 dark:text-gray-200" : "text-gray-900 dark:text-white"))">@context.Header</span>
+										<span class="e-list-item-header font-medium text-sm @(context.Completed ? "line-through text-gray-700 dark:text-gray-200" : "text-gray-900 dark:text-white")">@context.Header</span>
 										@if (context.Id == 3)
 										{
 											<span class="e-badge e-badge-pill e-badge-success ml-2 !px-2">New</span>

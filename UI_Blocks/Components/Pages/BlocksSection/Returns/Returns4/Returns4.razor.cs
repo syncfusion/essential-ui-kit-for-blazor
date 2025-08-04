@@ -5,11 +5,11 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Returns.Returns4
 {
     public partial class Returns4
     {
-        private SfStepper? Stepper;
-        private string StepperStyle = "";
-        private StepperOrientation StepperOrientation = StepperOrientation.Horizontal;
-        private StepperLabelPosition LabelPos = StepperLabelPosition.Bottom;
-        private string SelectedReturnMethod { get; set; } = "I want a shop voucher";
+        public SfStepper? Stepper;
+        public string StepperStyle = "";
+        public StepperOrientation StepperOrientation = StepperOrientation.Horizontal;
+        public StepperLabelPosition LabelPos = StepperLabelPosition.Bottom;
+        public string SelectedReturnMethod { get; set; } = "I want a shop voucher";
 
         [JSInvokable]
         public async Task ResizeHandler(string message, int windowWidth)
@@ -25,9 +25,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Returns.Returns4
                 {
                     await Stepper.RefreshProgressbarAsync();
                 }
-
-                StateHasChanged();
             }
+            StateHasChanged();
         }
     }
 }

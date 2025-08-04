@@ -7,8 +7,7 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section>
-        <div id="dialog-container" class="relative flex justify-center" style="min-height: 764px;">
-            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="transaction details" role="button">Transaction Details</SfButton>
+        <div id="dialog-container" class="relative" style="min-height: 764px;">
             <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg overflow-hidden sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="835px" aria-label="view transaction details" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
@@ -19,8 +18,8 @@
                         <div class="flex flex-col sm:flex-row justify-between gap-4 sm:items-center mb-5 sm:mb-6">
                             <SfCheckBox Label="Export time fields in minutes formats" TChecked="bool" aria-label="export time fields in minutes format" role="checkbox"></SfCheckBox>
                             <div class="flex flex-row justify-end gap-3">
-                                <SfButton CssClass="w-1/2 sm:w-fit e-outline" IconCss="e-icons e-export" Type="button" aria-label="export" role="button">Export</SfButton>
-                                <SfDropDownButton CssClass="w-1/2 sm:w-fit e-outline" IconCss="e-icons e-user" Type="button" aria-label="choose a contact" role="button">Contact</SfDropDownButton>
+                                <SfButton CssClass="w-1/2 sm:w-fit e-outline" IconCss="e-icons e-export" Content="Export" Type="button" aria-label="export" role="button"></SfButton>
+                                <SfDropDownButton CssClass="w-1/2 sm:w-fit e-outline" IconCss="e-icons e-user" Content="Contact" Type="button" aria-label="choose a contact" role="button"></SfDropDownButton>
                             </div>
                         </div>
                         <SfGrid class="e-bigger mb-1.5" DataSource="@Data" Width="100%" AllowSorting="true" AllowFiltering="true" GridLines="GridLine.None" RowHeight="44" role="grid">
@@ -34,7 +33,7 @@
                                         <p class="text-sm text-gray-700 dark:text-gray-200">@data.TransactionId</p>
                                     </Template>
                                 </GridColumn>
-                                <GridColumn Field="CustomerDetails" HeaderText="Customer Name" Width="260" AllowSorting="false" AllowFiltering="false">
+                                <GridColumn Field="CustomerDetails.Name" HeaderText="Customer Name" Width="260" AllowSorting="false">
                                     <Template>
                                         @{
                                             var data = (TransactionData)context;
@@ -73,12 +72,16 @@
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="top-0 left-0 absolute w-full flex">
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Transaction Details" Type="button" aria-label="transaction details" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
-        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 764px;">
-            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="transaction details" role="button">Transaction Details</SfButton>
+        <div id="dialog-container" class="position-relative" style="min-height: 764px;">
             <SfDialog @ref="Dialog" class="rounded-3 m-sm-2 overflow-hidden" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="865px" aria-label="view transaction details" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
@@ -89,8 +92,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         <div class="d-flex flex-column flex-sm-row justify-content-between gap-3 align-items-sm-center mb-4 mb-sm-3">
                             <SfCheckBox Label="Export time fields in minutes formats" TChecked="bool" aria-label="export time fields in minutes format" role="checkbox"></SfCheckBox>
                             <div class="d-flex flex-row justify-content-end gap-3 gap-sm-2">
-                                <SfButton CssClass="col col-sm-auto e-outline" IconCss="e-icons e-export" Type="button" aria-label="export" role="button">Export</SfButton>
-                                <SfDropDownButton CssClass="col col-sm-auto e-outline ms-sm-1" IconCss="e-icons e-user" Type="button" aria-label="choose a contact" role="button">Contact</SfDropDownButton>
+                                <SfButton CssClass="col col-sm-auto e-outline" IconCss="e-icons e-export" Content="Export" Type="button" aria-label="export" role="button"></SfButton>
+                                <SfDropDownButton CssClass="col col-sm-auto e-outline ms-sm-1" IconCss="e-icons e-user" Content="Contact" Type="button" aria-label="choose a contact" role="button"></SfDropDownButton>
                             </div>
                         </div>
                         <SfGrid class="e-bigger mb-1" DataSource="@Data" Width="100%" AllowSorting="true" AllowFiltering="true" GridLines="GridLine.None" RowHeight="44" role="grid">
@@ -104,7 +107,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                         <p class="text-body mb-0">@data.TransactionId</p>
                                     </Template>
                                 </GridColumn>
-                                <GridColumn Field="CustomerDetails" HeaderText="Customer Name" Width="260" AllowSorting="false" AllowFiltering="false">
+                                <GridColumn Field="CustomerDetails.Name" HeaderText="Customer Name" Width="260" AllowSorting="false">
                                     <Template>
                                         @{
                                             var data = (TransactionData)context;
@@ -141,4 +144,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="position-absolute top-0 start-0 d-flex w-100">
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Transaction Details" Type="button" aria-label="transaction details" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }

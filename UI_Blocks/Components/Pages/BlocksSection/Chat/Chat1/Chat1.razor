@@ -20,17 +20,17 @@
 						</span>
 					</div>
 					<div class="flex items-center gap-3">
-						<SfButton CssClass="e-flat sm:block hidden e-icons e-search text-base leading-3" Type="button" aria-label="search" role="button"></SfButton>
+						<SfButton CssClass="e-flat sm:block hidden leading-3" IconCss="e-icons e-search text-base" Type="button" aria-label="search" role="button"></SfButton>
 						<div class="border-l h-6 border-gray-200 dark:border-gray-600 sm:block hidden"></div>
-						<SfButton CssClass="e-flat sm:block hidden sf-icon-phone-01 text-base leading-3" Type="button" aria-label="audio call" role="button"></SfButton>
-						<SfButton CssClass="e-flat sm:block hidden e-icons e-video" Type="button" aria-label="video call" role="button"></SfButton>
-						<SfButton CssClass="e-flat e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
+						<SfButton CssClass="e-flat sm:block hidden leading-3" IconCss="sf-icon-phone-01 text-base" Type="button" aria-label="audio call" role="button"></SfButton>
+						<SfButton CssClass="e-flat sm:block hidden" IconCss="e-icons e-video" Type="button" aria-label="video call" role="button"></SfButton>
+						<SfButton CssClass="e-flat" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
 					</div>
 				</div>
 			</div>
 			<div class="flex items-center flex-col pt-7 pb-2 bg-white dark:bg-gray-900 border-t border-gray-200 dark:border-gray-800">
-				<span class="e-badge e-badge-pill e-badge-secondary border border-gray-200 e-small">Wednesday, Sep 18th</span>
-				<SfListView CssClass="!border-0 px-2 sm:px-4 sm:pr-7 lg:pr-12 py-4" DataSource="@Data" Width="100%" Height="100%" aria-label="chat conversations" role="list">
+				<span class="e-badge e-badge-pill e-badge-secondary border border-gray-200 dark:border-gray-600 e-small">Wednesday, Sep 18th</span>
+				<SfListView CssClass="!border-0 px-2 sm:px-4 py-4" DataSource="@Data" Width="100%" Height="100%" aria-label="chat conversations" role="list">
 				<ListViewFieldSettings TValue="ChatMessage"></ListViewFieldSettings>
 					<ListViewTemplates TValue="ChatMessage">
 						<Template>
@@ -38,7 +38,7 @@
 								var message = context as ChatMessage;
 								@if (message.Chat != "receiver")
 								{
-									<div class="flex justify-end ml-auto sm:mr-3 gap-3 items-start w-4/5">
+									<div class="flex justify-end ml-auto gap-3 items-start w-4/5">
 										<div class="flex flex-col gap-1 items-end">
 											<div class="py-2 px-3 rounded-lg rounded-se-none bg-gray-100 dark:bg-gray-700">
 												<div class="text-gray-900 dark:text-gray-50">@message.Text</div>
@@ -73,8 +73,8 @@
 					</ListViewTemplates>
 				</SfListView>
 			</div>
-			<div class="e-bigger w-full text-base px-4 sm:pl-6 sm:pr-12 lg:pr-16 lg:mr-1">
-				<SfTextBox @ref=@_textBox1 Placeholder="Enter a message" Type="InputType.Text" Created="@(() => addIconAsync(_textBox1))"></SfTextBox>
+			<div class="e-bigger w-full text-base px-4 sm:px-6">
+				<SfTextBox @ref="TextBox" Type="InputType.Text" Placeholder="Enter a message" FloatLabelType="FloatLabelType.Never" Created="@(args => TextBox?.AddIconAsync("append", "sf-icon-navigation-right-up border-0"))" aria-label="enter a message" role="textbox"></SfTextBox>
 			</div>
 		</div>
 	</section>
@@ -95,17 +95,17 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 						</span>
 					</div>
 					<div class="d-flex align-items-center gap-3">
-						<SfButton CssClass="e-flat d-none d-sm-block e-icons e-search" Type="button" aria-label="search" role="button"></SfButton>
+						<SfButton CssClass="e-flat d-none d-sm-block" IconCss="e-icons e-search" Type="button" aria-label="search" role="button"></SfButton>
 						<div class="border-start border-secondary-subtle d-none d-sm-block" style="height: 24px;"></div>
-						<SfButton CssClass="e-flat d-none d-sm-block sf-icon-phone-01 fs-6" Type="button" aria-label="audio call" role="button"></SfButton>
-						<SfButton CssClass="e-flat d-none d-sm-block e-icons e-video" Type="button" aria-label="video call" role="button"></SfButton>
-						<SfButton CssClass="e-flat e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
+						<SfButton CssClass="e-flat d-none d-sm-block" IconCss="sf-icon-phone-01 fs-6" Type="button" aria-label="audio call" role="button"></SfButton>
+						<SfButton CssClass="e-flat d-none d-sm-block" IconCss="e-icons e-video" Type="button" aria-label="video call" role="button"></SfButton>
+						<SfButton CssClass="e-flat" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
 					</div>
 				</div>
 			</div>
 			<div class="d-flex flex-column align-items-center pt-4 border-top bg-body">
 				<span class="e-badge e-badge-pill border px-2">Wednesday, Sep 18th</span>
-				<SfListView CssClass="border-0 px-2 px-sm-3 pe-md-4 pe-sm-3 pb-4 pt-3 w-100" DataSource="@Data" Width="100%" Height="100%" aria-label="chat conversations" role="list">
+				<SfListView CssClass="border-0 px-2 px-sm-3 pb-4 pt-3 w-100" DataSource="@Data" Width="100%" Height="100%" aria-label="chat conversations" role="list">
 				<ListViewFieldSettings TValue="ChatMessage"></ListViewFieldSettings>
 					<ListViewTemplates TValue="ChatMessage">
 						<Template>
@@ -113,7 +113,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 								var message = context as ChatMessage;
 								if (message.Chat != "receiver")
 								{
-									<div class="d-flex justify-content-end pe-sm-3 ms-auto align-items-start w-75">
+									<div class="d-flex justify-content-end ms-auto align-items-start w-75">
 										<div class="d-flex flex-column gap-1 align-items-end">
 											<div class="py-2 px-3 rounded bg-body-secondary" style="border-top-right-radius: 0px !important;">
 												<div class="text-body">@message.Text</div>
@@ -149,8 +149,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 					</ListViewTemplates>
 				</SfListView>
 			</div>
-			<div class="e-bigger ms-sm-4 ms-3 me-md-5 me-3">
-				<SfTextBox @ref=@_textBox2 CssClass="w-100" Placeholder="Enter a message" Type="InputType.Text" Created="@(() => addIconAsync(_textBox2))"></SfTextBox>
+			<div class="e-bigger mx-3 mx-sm-4">
+				<SfTextBox @ref="TextBox" CssClass="w-100" Type="InputType.Text" Placeholder="Enter a message" FloatLabelType="FloatLabelType.Never" Created="@(args => TextBox?.AddIconAsync("append", "sf-icon-navigation-right-up border-0"))" aria-label="enter a message" role="textbox"></SfTextBox>
 			</div>
 		</div>
 	</section>

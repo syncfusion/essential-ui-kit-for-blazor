@@ -8,18 +8,18 @@
 {
     <section class="bg-white dark:bg-gray-900">
         <div style="height: 792px; width: @Width; float: right;">
-            <SfSidebar Width="@Width" class="w-full h-full flex flex-col bg-white dark:bg-gray-900" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" ShowBackdrop="true" role="complementary">
+            <SfSidebar class="w-full h-full flex flex-col bg-white dark:bg-gray-900" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" ShowBackdrop="true" role="complementary">
                 <ChildContent>
                     <div class="flex-none border-b border-gray-200 dark:border-gray-600 bg-white dark:bg-gray-900">
                         <div class="flex justify-between items-center px-4 py-3 border-b border-gray-200 dark:border-gray-600">
                             <h2 class="text-base font-semibold text-gray-900 dark:text-white">To-Do List</h2>
-                            <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" OnClick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                            <SfButton CssClass="e-flat text-base" IconCss="e-icons e-close" Type="button" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" aria-label="close sidebar" role="button"></SfButton>
                         </div>
-                        <div class="p-4 flex justify-center">
+                        <div class="flex justify-center">
                             <SfCalendar TValue="DateTime" CssClass="e-bigger shadow-none border-none"></SfCalendar>
                         </div>
                     </div>
-                    <div class="flex-grow overflow-y-auto bg-white dark:bg-gray-900">
+                    <div class="flex-grow overflow-y-auto bg-white dark:bg-gray-900" style="height: 430px;">
                         <p class="text-sm font-semibold text-gray-900 dark:text-white p-4 pt-6">Sep 22</p>
                         <SfListView CssClass="!border-0 e-list-template" DataSource="@(data)" aria-label="list of to-do tasks" role="list">
                             <ListViewFieldSettings TValue="TodoData" Id="Id" Text="Header"></ListViewFieldSettings>
@@ -38,7 +38,7 @@
                             </ListViewTemplates>
                         </SfListView>
                     </div>
-                    <div class="flex-none px-3 py-2 border-t border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800">
+                    <div class="flex justify-center sm:justify-start px-3 py-2 border-t border-gray-200 dark:border-gray-600 bg-gray-50 dark:bg-gray-800">
                         <SfButton CssClass="e-primary e-flat text-xs" IconCss="e-icons e-plus" Content="Create New" Type="button" aria-label="create new" role="button"></SfButton>
                     </div>
                 </ChildContent>
@@ -47,28 +47,28 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 absolute top-0 right-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" Type="button" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
-        <div style="height: 825px; width: @Width; float: right;">
-            <SfSidebar Width="@Width" class="d-flex flex-column bg-body" Position="SidebarPosition.Right" Type="SidebarType.Push" @bind-IsOpen="SidebarToggle" ShowBackdrop="true" role="complementary">
+        <div style="height: 882px; width: @Width; float: right;">
+            <SfSidebar class="d-flex flex-column bg-body" Width="@Width" Position="SidebarPosition.Right" Type="SidebarType.Push" IsOpen="@IsSidebarOpen" ShowBackdrop="true" role="complementary">
                 <ChildContent>
                     <div class="bg-body">
                         <div class="border-bottom flex-shrink-0 border-light-subtle">
                             <div class="d-flex justify-content-between align-items-center px-3 py-2 border-bottom border-light-subtle">
                                 <h2 class="mb-0 fs-6 fw-bold text-body">To-Do List</h2>
-                                <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" OnClick="ToggleSidebar" Type="button" aria-label="close sidebar" role="button"></SfButton>
+                                <SfButton CssClass="e-flat fs-6" IconCss="e-icons e-close" Type="button" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" aria-label="close sidebar" role="button"></SfButton>
                             </div>
                             <div class="pb-0 d-flex justify-content-center align-items-center">
                                 <SfCalendar TValue="DateTime" CssClass="e-bigger shadow-none w-100 border-0"></SfCalendar>
                             </div>
                         </div>
-                        <div class="flex-grow-1 overflow-auto">
-                            <p class="mb-0 fw-bold text-body-emphasis p-3 pt-4">Sep 22</p>
+                        <div class="flex-grow-1 overflow-auto fs-6" style="height: 430px;">
+                            <p class="mb-0 fw-bold text-body-emphasis small p-3 pt-4">Sep 22</p>
                             <SfListView CssClass="border-0 py-1 e-list-template" DataSource="@data" aria-label="list of to-do tasks" role="list">
                                 <ListViewFieldSettings TValue="TodoData" Id="Id" Text="Header"></ListViewFieldSettings>
                                 <ListViewTemplates TValue="TodoData">
@@ -86,7 +86,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 </ListViewTemplates>
                             </SfListView>
                         </div>
-                        <div class="flex-shrink-0 px-3 py-2 border-top border-light-subtle bg-body-tertiary">
+                        <div class="d-flex justify-content-sm-start justify-content-center flex-shrink-0 px-3 py-2 border-top border-light-subtle bg-body-tertiary">
                             <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Content="Create New" Type="button" aria-label="create new" role="button"></SfButton>
                         </div>
                     </div>
@@ -96,7 +96,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 position-absolute top-0 end-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" Type="button" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

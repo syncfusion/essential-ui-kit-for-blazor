@@ -7,9 +7,8 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section>
-        <div id="dialog-container" class="relative flex justify-center" style="min-height: 600px;">
-            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="add team member" role="button">Add Team Member</SfButton>
-            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="545px" aria-label="add a new team member" role="dialog">
+        <div id="dialog-container" class="relative" style="min-height: 600px;">
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4 overflow-hidden" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="545px" aria-label="add a new team member" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
                 <DialogTemplates>
                     <Header>
@@ -35,7 +34,7 @@
                                         <AccordionItem CssClass="mb-3 !border !rounded-lg" Expanded="@(ExpandedIndex == 0)">
                                             <HeaderTemplate>
                                                 <div class="flex gap-2.5 items-center mr-4">
-                                                    <span class="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i class="e-icons sf-icon-users text-xl"></i></span>
+                                                    <span class="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><span class="e-icons sf-icon-users text-xl"></span></span>
                                                     <div class="flex flex-col gap-0.5">
                                                         <p class="text-base">User Information</p>
                                                         <p class="text-gray-500 font-normal dark:text-gray-400 text-wrap line-clamp-1">Basic details about the team member</p>
@@ -64,7 +63,7 @@
                                         <AccordionItem CssClass="mb-3 !border !rounded-lg" Expanded="@(ExpandedIndex == 1)">
                                             <HeaderTemplate>
                                                 <div class="flex gap-2.5 items-center mr-4">
-                                                    <span class="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i class="e-icons sf-icon-building-03 text-xl"></i></span>
+                                                    <span class="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><span class="e-icons sf-icon-building-03 text-xl"></span></span>
                                                     <div class="flex flex-col gap-0.5">
                                                         <p class="text-base">Workspace Access</p>
                                                         <p class="text-gray-500 font-normal dark:text-gray-400 text-wrap line-clamp-1">Workspace and role assignment</p>
@@ -87,7 +86,7 @@
                                         <AccordionItem CssClass="mb-3 !border !rounded-lg" Expanded="@(ExpandedIndex == 2)">
                                             <HeaderTemplate>
                                                 <div class="flex gap-2.5 items-center mr-4">
-                                                    <span class="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i class="e-icons sf-icon-shield text-xl"></i></span>
+                                                    <span class="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><span class="e-icons sf-icon-shield text-xl"></span></span>
                                                     <div class="flex flex-col gap-0.5">
                                                         <p class="text-base">Security Settings</p>
                                                         <p class="text-gray-500 font-normal dark:text-gray-400 text-wrap line-clamp-1">Configure security and authentication</p>
@@ -116,7 +115,7 @@
                                         <AccordionItem CssClass="!border !rounded-lg" Expanded="@(ExpandedIndex == 3)">
                                             <HeaderTemplate>
                                                 <div class="flex gap-2.5 items-center mr-4">
-                                                    <span class="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><i class="e-icons sf-icon-laptop-01 text-xl"></i></span>
+                                                    <span class="e-avatar rounded-lg border bg-gray-100 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-300"><span class="e-icons sf-icon-laptop-01 text-xl"></span></span>
                                                     <div class="flex flex-col gap-0.5">
                                                         <p class="text-base">Resource Access</p>
                                                         <p class="text-gray-500 font-normal dark:text-gray-400 text-wrap line-clamp-1">Configure access to various tools</p>
@@ -184,20 +183,24 @@
                     </Content>
                     <FooterTemplate>
                         <div class="flex justify-end gap-2 sm:gap-1 py-2">
-                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
-                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="button" aria-label="add member" role="button">Add Member</SfButton>
+                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Content="Cancel" Type="button" aria-label="cancel" role="button"></SfButton>
+                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Content="Add Member" Type="button" aria-label="add member" role="button"></SfButton>
                         </div>
                     </FooterTemplate>
                 </DialogTemplates>
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="top-0 left-0 absolute w-full flex">
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Add Team Member" Type="button" aria-label="add team member" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
-        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 600px;">
-            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="add team member" role="button">Add Team Member</SfButton>
+        <div id="dialog-container" class="position-relative" style="min-height: 600px;">
             <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="545px" aria-label="add a new team member" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
                 <DialogTemplates>
@@ -224,7 +227,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                         <AccordionItem CssClass="mb-3 border rounded-3 overflow-hidden" Expanded="@(ExpandedIndex == 0)">
                                             <HeaderTemplate>
                                                 <div class="d-flex gap-2 align-items-center me-3">
-                                                    <span class="e-avatar rounded-3 border bg-body-secondary"><i class="e-icons sf-icon-users fs-4"></i></span>
+                                                    <span class="e-avatar rounded-3 border bg-body-secondary"><span class="e-icons sf-icon-users fs-4"></span></span>
                                                     <div class="d-flex flex-column ms-1">
                                                         <p class="fs-6 fw-medium mb-0">User Information</p>
                                                         <p class="text-body text-wrap text-opacity-50 text-truncate mb-0" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">Basic details about the team member</p>
@@ -253,7 +256,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                         <AccordionItem CssClass="mb-3 border rounded-3 overflow-hidden" Expanded="@(ExpandedIndex == 1)">
                                             <HeaderTemplate>
                                                 <div class="d-flex gap-2 align-items-center me-3">
-                                                    <span class="e-avatar rounded-3 border bg-body-secondary"><i class="e-icons sf-icon-building-03 fs-4"></i></span>
+                                                    <span class="e-avatar rounded-3 border bg-body-secondary"><span class="e-icons sf-icon-building-03 fs-4"></span></span>
                                                     <div class="d-flex flex-column ms-1">
                                                         <p class="fs-6 fw-medium mb-0">Workspace Access</p>
                                                         <p class="text-body text-wrap text-opacity-50 text-truncate mb-0" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">Workspace and role assignment</p>
@@ -276,7 +279,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                         <AccordionItem CssClass="mb-3 border rounded-3 overflow-hidden" Expanded="@(ExpandedIndex == 2)">
                                             <HeaderTemplate>
                                                 <div class="d-flex gap-2 align-items-center me-3">
-                                                    <span class="e-avatar rounded-3 border bg-body-secondary"><i class="e-icons sf-icon-shield fs-4"></i></span>
+                                                    <span class="e-avatar rounded-3 border bg-body-secondary"><span class="e-icons sf-icon-shield fs-4"></span></span>
                                                     <div class="d-flex flex-column ms-1">
                                                         <p class="fs-6 fw-medium mb-0">Security Settings</p>
                                                         <p class="text-body text-wrap text-opacity-50 text-truncate mb-0" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">Configure security and authentication</p>
@@ -305,7 +308,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                         <AccordionItem CssClass="border rounded-3 overflow-hidden" Expanded="@(ExpandedIndex == 3)">
                                             <HeaderTemplate>
                                                 <div class="d-flex gap-2 align-items-center me-3">
-                                                    <span class="e-avatar rounded-3 border bg-body-secondary"><i class="e-icons sf-icon-laptop-01 fs-4"></i></span>
+                                                    <span class="e-avatar rounded-3 border bg-body-secondary"><span class="e-icons sf-icon-laptop-01 fs-4"></span></span>
                                                     <div class="d-flex flex-column ms-1">
                                                         <p class="fs-6 fw-medium mb-0">Resource Access</p>
                                                         <p class="text-body text-wrap text-opacity-50 text-truncate mb-0" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden;">Configure access to various tools</p>
@@ -373,12 +376,17 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     </Content>
                     <FooterTemplate>
                         <div class="d-flex justify-content-end gap-2 py-1">
-                            <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
-                            <SfButton CssClass="e-primary col col-sm-auto" Type="button" aria-label="add member" role="button">Add Member</SfButton>
+                            <SfButton CssClass="col col-sm-auto ms-0" Content="Cancel" Type="button" aria-label="cancel" role="button"></SfButton>
+                            <SfButton CssClass="e-primary col col-sm-auto" Content="Add Member" Type="button" aria-label="add member" role="button"></SfButton>
                         </div>
                     </FooterTemplate>
                 </DialogTemplates>
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="position-absolute top-0 start-0 d-flex w-100">
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Add Team Member" Type="button" aria-label="add team member" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }

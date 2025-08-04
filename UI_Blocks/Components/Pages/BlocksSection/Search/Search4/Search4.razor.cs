@@ -4,19 +4,19 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Search.Search4
 {
     public partial class Search4
     {
-        private SfAutoComplete<string, SearchItem>? Search;
+        public SfAutoComplete<string, SearchItem>? Search;
         public string? Width;
-        private List<SearchItem> Data = new List<SearchItem>()
+        public List<SearchItem> Data = new List<SearchItem>()
         {
-            new () { Id = 1, Name = "Mark Johnson", Initial = "MJ", EmailId = "mark.johnson@example.com", ColorTheme = "Orange",},
-            new () { Id = 2, Name = "Emily White", Initial = "EW", EmailId = "emily.white@example.com", ColorTheme = "Blue",},
-            new () { Id = 3, Name = "Tom Harris", Initial = "TH", EmailId = "tom.harris@example.com", ColorTheme = "Blue",},
-            new () {  Id = 4,Name = "Lisa Green", Initial = "LG",EmailId = "lisa.green@example.com",ColorTheme = "Orange",},
-            new () {  Id = 5, Name = "David Clark", Initial = "DC",  EmailId = "david.clark@example.com", ColorTheme = "Red",},
-            new () { Id = 6,  Name = "Rachel Lee", Initial = "RL",EmailId = "rachel.lee@example.com", ColorTheme = "Blue",},
+            new SearchItem { Id = 1, Name = "Mark Johnson", Initial = "MJ", EmailId = "mark.johnson@example.com", ColorTheme = "Orange" },
+            new SearchItem { Id = 2, Name = "Emily White", Initial = "EW", EmailId = "emily.white@example.com", ColorTheme = "Blue" },
+            new SearchItem { Id = 3, Name = "Tom Harris", Initial = "TH", EmailId = "tom.harris@example.com", ColorTheme = "Blue" },
+            new SearchItem { Id = 4, Name = "Lisa Green", Initial = "LG", EmailId = "lisa.green@example.com", ColorTheme = "Orange" },
+            new SearchItem { Id = 5, Name = "David Clark", Initial = "DC", EmailId = "david.clark@example.com", ColorTheme = "Red" },
+            new SearchItem { Id = 6, Name = "Rachel Lee", Initial = "RL", EmailId = "rachel.lee@example.com", ColorTheme = "Blue" }
         };
 
-        private async Task FocusHandlerAsync()
+        public async Task FocusHandlerAsync()
         {
             if (Search != null)
             {

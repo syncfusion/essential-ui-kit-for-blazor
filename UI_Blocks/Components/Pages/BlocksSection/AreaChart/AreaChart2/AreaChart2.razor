@@ -1,0 +1,118 @@
+﻿@page "/blocks/area-chart-2"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+	<section class="bg-white dark:bg-gray-900">
+		<div class="h-screen flex justify-center p-4 sm:p-6">
+			<div class="w-full max-w-2xl">
+				<div class="flex gap-4 justify-between items-start">
+					<div class="flex justify-between mb-2">
+						<div class="flex flex-row">
+							<span class="sf-icon-column-chart !text-2xl mr-2 dark:text-white"></span>
+							<h1 class="text-base font-medium mt-1 dark:text-white text-gray-900">KPI Performance</h1>
+						</div>
+					</div>
+					<div class="flex gap-4">
+						<SfDropDownButton CssClass="hidden sm:block" @ref="DesktopDropdown" Items="@MonthOptions" Content="@SelectedYear" Type="button" aria-label="choose a year" role="button">
+							<DropDownButtonEvents Opened="@(args => IsDesktopDropdown = true)" Closed="@(args => IsDesktopDropdown = false)"></DropDownButtonEvents>
+						</SfDropDownButton>
+						<SfDropDownButton CssClass="block sm:hidden" IconCss="e-icons e-day" @ref="MobileDropdown" Items="@MonthOptions" Type="button" aria-label="choose a year" role="button">
+							<DropDownButtonEvents Opened="@(args => IsMobileDropdown = true)" Closed="@(args => IsMobileDropdown = false)"></DropDownButtonEvents>
+						</SfDropDownButton>
+					</div>
+				</div>
+				<div class="flex flex-col font-medium text-xl dark:text-white">
+					90.75%
+					<div class="flex flex-row text-sm font-normal mt-1">
+						<span class="text-green-700 dark:text-green-500 mr-1 flex items-center"><span class="e-icons e-arrow-up"></span>20%</span>
+						<span class="text-gray-500 dark:text-gray-400">vs last month</span>
+					</div>
+				</div>
+				<div class="mt-6">
+					<SfChart Width="100%" Height="300px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+					    <ChartArea><ChartAreaBorder Width="0"></ChartAreaBorder></ChartArea>
+						<ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+							<ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+							<ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+						</ChartPrimaryXAxis>
+						<ChartPrimaryYAxis>
+							<ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+							<ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+							<ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+							<ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+							<ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+						</ChartPrimaryYAxis>
+						<ChartSeriesCollection>
+							<ChartSeries Fill="#5A61F6" DataSource="@MetricData" XName="Month" YName="Value" Type="ChartSeriesType.StepArea" Opacity="@(CurrentTheme == "tailwind-dark" ? 0.3 : 0.1)" StepPosition="StepPosition.Center" >
+								<ChartSeriesBorder Width="2.5"></ChartSeriesBorder>
+							</ChartSeries>
+						</ChartSeriesCollection>
+						<ChartTooltipSettings Enable="true" Header="" EnableMarker="false" Format="${point.y} +5.9%"></ChartTooltipSettings>
+						<ChartMargin Left="0" Bottom="0" Right="0" Top="0"></ChartMargin>
+					</SfChart>
+				</div>
+			</div>
+		</div>
+	</section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+	<section class="bg-body">
+		<div class="vh-100 d-flex justify-content-center p-4 p-sm-5">
+			<div class="w-100" style="max-width: 680px;">
+				<div class="d-flex justify-content-between align-items-start gap-3">
+					<div class="mb-2 d-flex justify-content-between">
+						<div class="d-flex flex-row align-items-start">
+							<span class="sf-icon-column-chart fs-5 me-2"></span>
+							<h1 class="text-body fs-5">KPI Performance</h1>
+						</div>
+					</div>
+					<div class="d-flex gap-3">
+						<SfDropDownButton CssClass="d-none d-sm-block" @ref="DesktopDropdown" Items="@MonthOptions" Content="@SelectedYear" Type="button" aria-label="choose a year" role="button">
+							<DropDownButtonEvents Opened="@(args => IsDesktopDropdown = true)" Closed="@(args => IsDesktopDropdown = false)"></DropDownButtonEvents>
+						</SfDropDownButton>
+						<SfDropDownButton CssClass="d-block d-sm-none" IconCss="e-icons e-day" @ref="MobileDropdown" Items="@MonthOptions" Type="button" aria-label="choose a year" role="button">
+							<DropDownButtonEvents Opened="@(args => IsMobileDropdown = true)" Closed="@(args => IsMobileDropdown = false)"></DropDownButtonEvents>
+						</SfDropDownButton>
+					</div>
+				</div>
+				<div class="d-flex flex-column fw-semibold fs-5">
+					90.75%
+					<div class="d-flex flex-row fs-6 fw-normal mt-1 align-items-center">
+					    <span class="text-success me-1 small d-flex align-items-center"><span class="e-icons e-arrow-up"></span>20%</span>
+						<span class="small">vs last month</span>
+					</div>
+				</div>
+				<div class="mt-4">
+					<SfChart Width="100%" Height="300px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+					    <ChartArea><ChartAreaBorder Width="0"></ChartAreaBorder></ChartArea>
+						<ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+							<ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+							<ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+						</ChartPrimaryXAxis>
+						<ChartPrimaryYAxis>
+							<ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+							<ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+							<ChartAxisMajorGridLines Width="1"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+							<ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+							<ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+						</ChartPrimaryYAxis>
+						<ChartSeriesCollection>
+							<ChartSeries Fill="#006EEF" DataSource="@MetricData" XName="Month" YName="Value" Type="ChartSeriesType.StepArea" Opacity="@(CurrentTheme == "bootstrap5.3-dark" ? 0.3 : 0.1)" StepPosition="StepPosition.Center">
+								<ChartSeriesBorder Width="2.5"></ChartSeriesBorder>
+							</ChartSeries>
+						</ChartSeriesCollection>
+						<ChartTooltipSettings Enable="true" Header="" EnableMarker="false" Format="${point.y} +5.9%"></ChartTooltipSettings>
+						<ChartMargin Left="0" Bottom="0" Right="0" Top="0"></ChartMargin>
+					</SfChart>
+				</div>
+			</div>
+		</div>
+	</section>
+}

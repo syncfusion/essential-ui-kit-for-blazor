@@ -11,7 +11,7 @@
             new TransactionDetail { TransactionId = "TXN000248", Title = "Payment for invoice #9876", Company = "Delta Supplier", Amount = 15000, Currency = "USD", PaymentType = "ACH Transfer", Category = "Supplies", Status = "Pending" }
         };
 
-        private string GetStatusClass(string status)
+        public string GetStatusClass(string status)
         {
             return status switch
             {

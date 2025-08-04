@@ -6,17 +6,12 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Header.Header9
 {
     public partial class Header9
     {
-        private bool IsNewCourseDropdownOpen { get; set; } = false;
-        private bool IsAdditionalOptionDropdownOpen { get; set; } = false;
+        public SfDropDownButton? DropDownButton;
         public SfSplitButton? NewCourseDropdown;
-        public SfDropDownButton? AdditionalOptionDropdown;
-        public int MaxItems { get; set; } = 2;
+        public bool IsDropdownOpen = false;
+        public bool IsNewCourseDropdownOpen = false;
+        public int MaxItems = 2;
         public BreadcrumbOverflowMode OverflowMode { get; set; } = BreadcrumbOverflowMode.None;
-
-        public void OnNewCourseDropdownOpened() => IsNewCourseDropdownOpen = true;
-        public void OnNewCourseDropdownClosed() => IsNewCourseDropdownOpen = false;
-        public void OnAdditionalOptionDropdownOpened() => IsAdditionalOptionDropdownOpen = true;
-        public void OnAdditionalOptionDropdownClosed() => IsAdditionalOptionDropdownOpen = false;
 
         [JSInvokable]
         public void ResizeHandler(string message, int windowWidth)
@@ -26,16 +21,16 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Header.Header9
                 MaxItems = windowWidth <= 640 ? 1 : 2;
                 OverflowMode = MaxItems < 2 ? BreadcrumbOverflowMode.Menu : BreadcrumbOverflowMode.None;
 
+                if (IsDropdownOpen && DropDownButton != null)
+                {
+                    DropDownButton.Toggle();
+                }
                 if (IsNewCourseDropdownOpen && NewCourseDropdown != null)
                 {
                     NewCourseDropdown.Toggle();
                 }
-                if (IsAdditionalOptionDropdownOpen && AdditionalOptionDropdown != null)
-                {
-                    AdditionalOptionDropdown.Toggle();
-                }
-                StateHasChanged();
             }
+            StateHasChanged();
         }
     }
 }

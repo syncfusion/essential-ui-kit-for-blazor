@@ -1,6 +1,6 @@
-﻿using Syncfusion.Blazor.SplitButtons;
-using Microsoft.JSInterop;
+﻿using Microsoft.JSInterop;
 using Syncfusion.Blazor.Charts;
+using Syncfusion.Blazor.SplitButtons;
 
 namespace UI_Blocks.Components.Pages.BlocksSection.LineChart.LineChart2
 {
@@ -12,13 +12,6 @@ namespace UI_Blocks.Components.Pages.BlocksSection.LineChart.LineChart2
         public double XAxisLabelRotation = 0;
         public string[] Palettes = { "#91BD34", "#FFB900", "#DE4383", "#01A8B5", "#91BD34", "#DE4383", "#267DDA", "#01A8B5", "#D83B01", "#9CA3AF" };
         public List<LineData> LineChartData = new List<LineData>();
-
-        public List<DropDownMenuItem> UnitOptions = new List<DropDownMenuItem>
-        {
-            new DropDownMenuItem { Text = "Millimeter" },
-            new DropDownMenuItem { Text = "Centimeter" },
-            new DropDownMenuItem { Text = "Meter" }
-        };
 
         public double[] RainFallData = new double[]
         {

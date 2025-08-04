@@ -2,27 +2,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid10
 {
     public partial class Grid10
     {
-        public class SalesRep
-        {
-            public string Name { get; set; } = string.Empty;
-            public string Initial { get; set; } = string.Empty;
-            public string ColorTheme { get; set; } = string.Empty;
-        }
-
-        public class ProductSales
-        {
-            public int Id { get; set; }
-            public string Product { get; set; } = string.Empty;
-            public string ProductImage { get; set; } = string.Empty;
-            public int UnitSold { get; set; }
-            public int TotalRevenue { get; set; }
-            public decimal AverageSellingPrice { get; set; }
-            public string PercentOfTotalSales { get; set; } = string.Empty;
-            public SalesRep TotalSalesRep { get; set; } = new SalesRep();
-            public string ReturnRate { get; set; } = string.Empty;
-        }
-
-        List<ProductSales> GridData = new List<ProductSales>
+        public List<ProductSales> GridData = new List<ProductSales>
         {
             new ProductSales
             {
@@ -195,5 +175,25 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid10
                 ReturnRate = "0.8%"
             }
         };
+
+        public class SalesRep
+        {
+            public string Name { get; set; } = string.Empty;
+            public string Initial { get; set; } = string.Empty;
+            public string ColorTheme { get; set; } = string.Empty;
+        }
+
+        public class ProductSales
+        {
+            public int Id { get; set; }
+            public string Product { get; set; } = string.Empty;
+            public string ProductImage { get; set; } = string.Empty;
+            public int UnitSold { get; set; }
+            public int TotalRevenue { get; set; }
+            public decimal AverageSellingPrice { get; set; }
+            public string PercentOfTotalSales { get; set; } = string.Empty;
+            public SalesRep TotalSalesRep { get; set; } = new SalesRep();
+            public string ReturnRate { get; set; } = string.Empty;
+        }
     }
 }

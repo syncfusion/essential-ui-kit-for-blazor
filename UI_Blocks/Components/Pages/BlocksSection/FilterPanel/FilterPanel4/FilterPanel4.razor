@@ -45,7 +45,7 @@
                                         <div class="text-sm font-medium text-gray-900 dark:text-white">Requester Details</div>
                                     </HeaderTemplate>
                                     <ContentTemplate>
-                                        <div class="flex items-center space-x-2 p-1">
+                                        <div class="flex items-center space-x-2">
                                             <div>
                                                 <span class="e-avatar e-avatar-medium e-avatar-circle bg-primary-600 dark:bg-primary-400 text-sm text-white dark:text-black">MG</span>
                                             </div>
@@ -98,7 +98,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 absolute top-0 right-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -131,8 +131,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 </TabItems>
                             </SfTab>
                         </div>
-                        <div class="w-10 px-2 border-bottom border-subtle d-flex justify-content-center align-items-center">
-                            <a class="e-icons e-chevron-right-double fs-6 text-decoration-none text-secondary"></a>
+                        <div class="w-10 px-3 border-bottom border-subtle d-flex justify-content-center align-items-center">
+                            <a class="e-icons e-chevron-right-double small text-decoration-none text-secondary"></a>
                         </div>
                     </div>
                     <div>
@@ -149,7 +149,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                             </div>
                                             <div>
                                                 <h2 class="fw-medium fs-6 text-body">Michael Green</h2>
-                                                <a class="text-xs fw-normal text-secondary" href="mailto:michael.green@example.com">michael.green&#64;example.com</a>
+                                                <a class="text-xs fw-normal text-secondary text-decoration-none" href="mailto:michael.green@example.com">michael.green&#64;example.com</a>
                                             </div>
                                         </div>
                                     </ContentTemplate>
@@ -164,7 +164,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                     </HeaderTemplate>
                                     <ContentTemplate>
                                         <div class="row m-0 g-3 pb-1">
-                                            <div class="col-6 px-1">
+                                            <div class="col-6 px-1 mt-1">
                                                 <label class="mb-1 fw-medium fs-6 text-body">Status</label>
                                                 <SfDropDownList TValue="string" TItem="string" DataSource="@Status" Placeholder="Open" aria-label="choose a status" role="listbox"></SfDropDownList>
                                             </div>
@@ -196,7 +196,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 position-absolute top-0 end-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@ToggleSidebar" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

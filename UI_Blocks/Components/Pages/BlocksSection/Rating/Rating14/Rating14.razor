@@ -1,0 +1,120 @@
+﻿@page "/blocks/rating-14"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="py-6 justify-between mx-auto w-full bg-white dark:bg-gray-800 border-0 sm:rounded-lg sm:border border-gray-300 dark:border-gray-500" style="max-width: 360px;">
+                <div class="px-6">
+                    <div class="flex gap-3">
+                        <div class="rounded-full flex items-center justify-center shrink-0 bg-transparent border border-gray-300 dark:border-gray-500" style="height:38px; width: 38px;">
+                            <span class="e-icons e-star-filled text-gray-900 dark:text-white"></span>
+                        </div>
+                        <div>
+                            <h2 class="text-base font-semibold text-gray-900 dark:text-white">Rate our product</h2>
+                            <p class="text-xs font-medium text-gray-500 dark:text-gray-400 mt-1">Provide us with feedback for the product</p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="border-gray-300 dark:border-gray-600 my-4" />
+                <div class="flex items-center px-6">
+                    <h2 class="text-3xl font-semibold text-gray-900 dark:text-white text-center" style="width: 50px;">@Rating</h2>
+                    <hr class="border border-gray-300 dark:border-gray-600 h-12 ms-3 me-2" />
+                    <div>
+                        <SfRating Precision="PrecisionType.Exact" Value="Rating" ValueChanged="@(args => Rating = args)">
+                            <EmptyTemplate>
+                                <span class="sf-icon-star-filled-01 !text-2xl text-gray-300 dark:text-gray-500"></span>
+                            </EmptyTemplate>
+                            <FullTemplate>
+                                <span class="sf-icon-star-filled-01 !text-2xl text-amber-300"></span>
+                            </FullTemplate>
+                        </SfRating>
+                        <p class="text-sm text-gray-900 dark:text-white ps-3">@Rating<span class="px-2">17.4K Ratings</span><span class="text-gray-500 dark:text-gray-400 underline">567 reviews</span></p>
+                    </div>
+                </div>
+                <hr class="border-gray-300 dark:border-gray-600 mt-6 mb-6" />
+                <div class="flex flex-col px-6">
+                    @foreach (var ratings in CustomerRating)
+                    {
+                        <div class="mb-2 text-left">
+                            <div class="flex items-center gap-1">
+                                <div class="grow sm:grow-0" style="height: 30px; width: 90%;">
+                                    <SfProgressBar id="@ratings.Id.ToString()" Value="@ratings.Value" Width="@ProgressWidth" ProgressThickness="12" TrackThickness="12" height="30" ProgressColor="#FFB900" CornerRadius="CornerType.Round">
+                                        <ProgressBarMargin Left="1" Right="1"></ProgressBarMargin>
+                                    </SfProgressBar>
+                                </div>
+                                <span class="text-gray-900 dark:text-white text-xs font-medium ms-1">@ratings.RatingValue.ToString("0.0")</span>
+                                <span class="sf-icon-star-filled-01 text-lg text-amber-300"></span>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <hr class="border-gray-300 dark:border-gray-600" />
+                <div class="px-6 pt-5 w-full">
+                    <SfButton class="w-full" IconCss="e-icons e-edit" Content="Write a review" Type="button" aria-label="write a review" role="button"></SfButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="pt-4 pb-3 d-flex flex-column justify-content-center mx-auto w-100 bg-body rounded-3 border" style="max-width: 360px;">
+                <div class="px-4">
+                    <div class="d-flex gap-3">
+                        <div class="rounded-circle d-flex align-items-center justify-content-center bg-transparent border flex-shrink-0" style="height: 38px; width: 38px;">
+                            <span class="e-icons e-star-filled text-body"></span>
+                        </div>
+                        <div class="small">
+                            <h2 class="fs-6 fw-bold text-body mb-1">Rate our product</h2>
+                            <p class="small fw-medium text-body-secondary mt-1 mb-0">Provide us with feedback for the product</p>
+                        </div>
+                    </div>
+                </div>
+                <hr class="mt-3 mb-2 border-light-subtle opacity-100" />
+                <div class="d-flex align-items-center px-4">
+                    <h2 class="fs-3 fw-bold text-body text-center mb-0" style="width: 50px;">@Rating</h2>
+                    <hr class="border-end border-light-subtle opacity-100 ms-3 me-2" style="height: 3rem;" />
+                    <div>
+                        <SfRating Precision="PrecisionType.Exact" Value="Rating" ValueChanged="@(args => Rating = args)">
+                            <EmptyTemplate>
+                                <span class="sf-icon-star-02 fs-4 text-body-secondary"></span>
+                            </EmptyTemplate>
+                            <FullTemplate>
+                                <span class="sf-icon-star-filled-01 fs-4 text-warning"></span>
+                            </FullTemplate>
+                        </SfRating>
+                        <p class="small text-body mb-0 ps-2">@Rating<span class="px-2">17.4K Ratings</span><span class="text-body-secondary text-decoration-underline">567 reviews</span></p>
+                    </div>
+                </div>
+                <hr class="mb-4 border-light-subtle opacity-100" />
+                <div class="d-flex flex-column px-4">
+                    @foreach (var ratings in CustomerRating)
+                    {
+                        <div class="mb-2 text-start">
+                            <div class="d-flex align-items-center gap-1 small">
+                                <div class="flex-grow-1" style="height: 30px; width: 80%;">
+                                    <SfProgressBar id="@ratings.Id.ToString()" Value="@ratings.Value" Width="@ProgressWidth" ProgressThickness="12" TrackThickness="12" height="30" ProgressColor="#FFB900" CornerRadius="CornerType.Round">
+                                        <ProgressBarMargin Left="1" Right="1"></ProgressBarMargin>
+                                    </SfProgressBar>
+                                </div>
+                                <span class="text-body small fw-medium ms-1">@ratings.RatingValue.ToString("0.0")</span>
+                                <span class="sf-icon-star-filled-01 text-warning fs-5"></span>
+                            </div>
+                        </div>
+                    }
+                </div>
+                <hr class="border-light-subtle opacity-100" />
+                <div class="px-4 my-1 w-100">
+                    <SfButton class="w-100" CssClass="e-outline" IconCss="e-icons e-edit" Content="Write a review" Type="button" aria-label="write a review" role="button"></SfButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}

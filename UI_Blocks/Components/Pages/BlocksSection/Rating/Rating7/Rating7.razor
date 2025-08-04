@@ -18,7 +18,7 @@
                             </div>
                             <span class="@($"mt-2 text-sm font-medium {(IsSatisfied == true ? "text-green-700 dark:text-green-500" : "text-gray-900 dark:text-white")}")">YES</span>
                         </div>
-                        <div class="flex flex-col items-center cursor-pointer" @onclick="@(() => IsSatisfied = false)">
+                        <div class="flex flex-col items-center" @onclick="@(() => IsSatisfied = false)">
                             <div class="@($"e-avatar e-avatar-circle !w-16 !h-16 shrink-0 flex items-center justify-center {(IsSatisfied == false ? "bg-red-100 dark:bg-red-800 text-red-600 dark:text-red-400" : "bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-300")}")">
                                 <span class="e-icons e-thumbs-down text-4xl"></span>
                             </div>
@@ -50,13 +50,13 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 <div class="p-4 bg-white border rounded-3 text-center flex-grow-1 bg-body" style="max-width: 330px;">
                     <h3 class="fw-semibold mb-4 fs-6 text-body">Were you satisfied with our platform</h3>
                     <div class="d-flex justify-content-center gap-5">
-                        <div class="d-flex flex-column align-items-center" style="cursor: pointer;" @onclick="@(() => IsSatisfied = true)">
+                        <div class="d-flex flex-column align-items-center" @onclick="@(() => IsSatisfied = true)">
                             <div class="e-avatar e-avatar-circle d-flex align-items-center justify-content-center @(IsSatisfied == true ? "bg-success-subtle text-success" : "bg-body-secondary text-body-secondary")" style="width: 64px; height: 64px;">
                                 <span class="e-icons e-thumbs-up fs-2"></span>
                             </div>
                             <span class="mt-2 small fw-medium @(IsSatisfied == true ? "text-success" : "text-body")">YES</span>
                         </div>
-                        <div class="d-flex flex-column align-items-center" style="cursor: pointer;" @onclick="@(() => IsSatisfied = false)">
+                        <div class="d-flex flex-column align-items-center" @onclick="@(() => IsSatisfied = false)">
                             <div class="e-avatar e-avatar-circle d-flex align-items-center justify-content-center @(IsSatisfied == false ? "bg-danger-subtle text-danger" : "bg-body-secondary text-body-secondary")" style="width: 64px; height: 64px;">
                                 <span class="e-icons e-thumbs-down fs-2"></span>
                             </div>

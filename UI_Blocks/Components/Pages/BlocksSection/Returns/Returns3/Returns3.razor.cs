@@ -1,16 +1,15 @@
 ﻿using Microsoft.JSInterop;
 using Syncfusion.Blazor.Navigations;
 
-
 namespace UI_Blocks.Components.Pages.BlocksSection.Returns.Returns3
 {
     public partial class Returns3
     {
-        private SfStepper? Stepper;
-        private string StepperStyle = "";
-        private StepperOrientation StepperOrientation = StepperOrientation.Horizontal;
-        private StepperLabelPosition LabelPos = StepperLabelPosition.Bottom;
-        private string SelectedDeliveryMethod { get; set; } = "Express Courier - $19";
+        public SfStepper? Stepper;
+        public string StepperStyle = "";
+        public StepperOrientation StepperOrientation = StepperOrientation.Horizontal;
+        public StepperLabelPosition LabelPos = StepperLabelPosition.Bottom;
+        public string SelectedDeliveryMethod { get; set; } = "Express Courier - $19";
 
         [JSInvokable]
         public async Task ResizeHandler(string message, int windowWidth)
@@ -26,9 +25,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Returns.Returns3
                 {
                     await Stepper.RefreshProgressbarAsync();
                 }
-
-                StateHasChanged();
             }
+            StateHasChanged();
         }
     }
 }

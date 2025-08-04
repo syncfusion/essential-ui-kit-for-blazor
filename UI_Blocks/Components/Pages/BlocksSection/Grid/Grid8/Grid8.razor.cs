@@ -2,30 +2,6 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid8
 {
     public partial class Grid8
     {
-        public class ProgressBar
-        {
-            public string Id { get; set; } = string.Empty;
-            public double Value { get; set; }
-        }
-
-        public class SalesData
-        {
-            public int Id { get; set; }
-            public string Name { get; set; } = string.Empty;
-            public int TotalSales { get; set; }
-            public string Trend { get; set; } = string.Empty;
-            public int DealsClosed { get; set; }
-            public int Target { get; set; }
-            public ProgressBar ProgressBar { get; set; } = new ProgressBar();
-            public int AvgDealSize { get; set; }
-            public string WinPercent { get; set; } = string.Empty;
-            public int WinRate { get; set; }
-            public int CallsMade { get; set; }
-            public int Meetings { get; set; }
-            public int PipelineValue { get; set; }
-            public int Performance { get; set; }
-        }
-
         public List<SalesData> GridData = new List<SalesData>
         {
             new SalesData
@@ -182,5 +158,29 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Grid.Grid8
                 Performance = 99
             }
         };
+
+        public class ProgressBar
+        {
+            public string Id { get; set; } = string.Empty;
+            public double Value { get; set; }
+        }
+
+        public class SalesData
+        {
+            public int Id { get; set; }
+            public string Name { get; set; } = string.Empty;
+            public int TotalSales { get; set; }
+            public string Trend { get; set; } = string.Empty;
+            public int DealsClosed { get; set; }
+            public int Target { get; set; }
+            public ProgressBar ProgressBar { get; set; } = new ProgressBar();
+            public int AvgDealSize { get; set; }
+            public string WinPercent { get; set; } = string.Empty;
+            public int WinRate { get; set; }
+            public int CallsMade { get; set; }
+            public int Meetings { get; set; }
+            public int PipelineValue { get; set; }
+            public int Performance { get; set; }
+        }
     }
 }

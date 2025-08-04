@@ -1,0 +1,8 @@
+::deep #rating .e-rating-container .e-rating-label.e-label-right {
+    margin: 0px !important;
+}
+
+::deep #rating .e-rating-container .e-rating-item-container {
+    padding-left: 0px !important;
+    padding-right: 0px !important;
+}

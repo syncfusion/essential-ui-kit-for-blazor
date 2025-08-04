@@ -1,0 +1,126 @@
+﻿@page "/blocks/line-chart-11"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 700px;">
+                <div class="flex flex-col sm:flex-row gap-6 justify-between items-start sm:items-center mb-6">
+                    <h2 class="text-gray-900 dark:text-white font-medium">NC Weather Report - 2024</h2>
+                    <SfButtonGroup class="e-btn-group hidden sm:flex">
+                        <input type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
+                        <label class="e-btn" for="day">D</label>
+                        <input type="radio" id="week" name="align" value="W" checked aria-label="week" role="button" />
+                        <label class="e-btn" for="week">W</label>
+                        <input type="radio" id="month" name="align" value="M" aria-label="month" role="button" />
+                        <label class="e-btn" for="month">M</label>
+                        <input type="radio" id="year" name="align" value="Y" aria-label="year" role="button" />
+                        <label class="e-btn" for="year">Y</label>
+                        <input type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button" />
+                        <label class="e-btn" for="custom">Custom</label>
+                    </SfButtonGroup>
+                    <SfDropDownButton @ref="DropDownButton" CssClass="e-outline block sm:hidden" Content="Week" Type="button" aria-label="choose a year" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="Day"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Month"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Year"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Custom"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+                <div>
+                    <SfChart Width="100%" Height="380px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+                            <ChartAxisLabelStyle FontWeight="500" FontStyle="12px" Color="@(CurrentTheme == "tailwind-dark" ? "white" : "gray-900")"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis LabelFormat="{value}°C" Minimum="0" Maximum="40" Interval="5">
+                            <ChartAxisLabelStyle FontWeight="500" FontStyle="12px" Color="@(CurrentTheme == "tailwind-dark" ? "white" : "gray-900")"></ChartAxisLabelStyle>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis1" Name="Max Temp" Type="ChartSeriesType.Spline" Fill="@(CurrentTheme == "tailwind-dark" ? "#9CA3AF" : "#1F2937")" Width="3"></ChartSeries>
+                            <ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis2" Name="Avg Temp" Type="ChartSeriesType.Spline" Fill="#01A8B5" Width="3"></ChartSeries>
+                            <ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis3" Name="Min Temp" Type="ChartSeriesType.Spline" Fill="#267DDA" Width="3"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true" Shared="false" ShowNearestTooltip="true" Format="Dec 10, 18:21 PM<br/>Temp: ${point.y}" Header="" EnableMarker="false"></ChartTooltipSettings>
+                        <ChartLegendSettings Visible="true" Padding="15"></ChartLegendSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center align-items-start p-3 p-sm-4">
+            <div class="w-100" style="max-width: 700px;">
+                <div class="d-flex flex-column flex-sm-row gap-3 justify-content-between align-items-start align-items-sm-center mb-4">
+                    <h2 class="fs-6 fw-medium text-body mb-0">NC Weather Report - 2024</h2>
+                    <SfButtonGroup class="e-btn-group d-none d-sm-flex">
+                        <input type="radio" id="day" name="align" value="D" aria-label="day" role="button" />
+                        <label class="e-btn" for="day">D</label>
+                        <input type="radio" id="week" name="align" value="W" checked aria-label="week" role="button" />
+                        <label class="e-btn" for="week">W</label>
+                        <input type="radio" id="month" name="align" value="M" aria-label="month" role="button" />
+                        <label class="e-btn" for="month">M</label>
+                        <input type="radio" id="year" name="align" value="Y" aria-label="year" role="button" />
+                        <label class="e-btn" for="year">Y</label>
+                        <input type="radio" id="custom" name="align" value="Custom" aria-label="custom" role="button" />
+                        <label class="e-btn" for="custom">Custom</label>
+                    </SfButtonGroup>
+                    <SfDropDownButton @ref="DropDownButton" CssClass="e-outline d-block d-sm-none" Content="Week" Type="button" aria-label="choose a year" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="Day"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Month"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Year"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Custom"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+                <div>
+                    <SfChart Width="100%" Height="380px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+                            <ChartAxisLabelStyle FontWeight="500" FontStyle="12px" Color="@(CurrentTheme == "bootstrap5.3-dark" ? "white" : "gray-900")"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis LabelFormat="{value}°C" Minimum="0" Maximum="40" Interval="5">
+                            <ChartAxisLabelStyle FontWeight="500" FontStyle="12px" Color="@(CurrentTheme == "bootstrap5.3-dark" ? "white" : "gray-900")"></ChartAxisLabelStyle>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis1" Name="Max Temp" Type="ChartSeriesType.Spline" Fill="@(CurrentTheme == "bootstrap5.3-dark" ? "#ADB5BD" : "#343A40")" Width="3"></ChartSeries>
+                            <ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis2" Name="Avg Temp" Type="ChartSeriesType.Spline" Fill="#00EFA7" Width="3"></ChartSeries>
+                            <ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis3" Name="Min Temp" Type="ChartSeriesType.Spline" Fill="#006EEF" Width="3"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true" Shared="false" ShowNearestTooltip="true" Format="Dec 10, 18:21 PM<br/>Temp: ${point.y}" Header="" EnableMarker="false"></ChartTooltipSettings>
+                        <ChartLegendSettings Visible="true" Padding="15"></ChartLegendSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}

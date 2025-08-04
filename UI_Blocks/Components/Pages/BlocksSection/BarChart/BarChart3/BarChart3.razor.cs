@@ -1,7 +1,6 @@
-﻿using Syncfusion.Blazor.SplitButtons;
-using Microsoft.JSInterop;
+﻿using Microsoft.JSInterop;
 using Syncfusion.Blazor.Charts;
-using Syncfusion.Blazor.RichTextEditor.Internal;
+using Syncfusion.Blazor.SplitButtons;
 
 namespace UI_Blocks.Components.Pages.BlocksSection.BarChart.BarChart3
 {
@@ -13,24 +12,6 @@ namespace UI_Blocks.Components.Pages.BlocksSection.BarChart.BarChart3
         public bool IsPeriodDropdownOpen = false;
         public bool IsTempDropdownOpen = false;
         public double XAxisLabelRotation = 0;
-
-        public List<DropDownMenuItem> PeriodOptions = new List<DropDownMenuItem>
-        {
-            new DropDownMenuItem { Text = "Day" },
-            new DropDownMenuItem { Text = "Week" },
-            new DropDownMenuItem { Text = "Month" },
-            new DropDownMenuItem { Text = "Year" },
-            new DropDownMenuItem { Text = "Custom" }
-        };
-
-        public List<DropDownMenuItem> WeatherOptions = new List<DropDownMenuItem>
-        {
-            new DropDownMenuItem { Text = "Temperature" },
-            new DropDownMenuItem { Text = "Wind speed" },
-            new DropDownMenuItem { Text = "Air pressure" },
-            new DropDownMenuItem { Text = "Snowfall" },
-            new DropDownMenuItem { Text = "Visibility" }
-        };
 
         public List<WeatherData> BarChartData = new List<WeatherData>
         {

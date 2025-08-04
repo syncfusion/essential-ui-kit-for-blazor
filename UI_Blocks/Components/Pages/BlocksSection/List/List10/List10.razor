@@ -4,14 +4,12 @@
 
 @ThemeLinks
 
-@inject IJSRuntime JSRuntime
-
 @if (CurrentTheme.Contains("tailwind"))
 {
 	<section class="bg-white dark:bg-gray-900">
 		<div class="flex items-center justify-center min-h-screen">
 			<div id="task-list" class="max-w-none lg:max-w-2xl w-full m-auto p-4 md:py-8 lg:px-24">
-				<SfListView CssClass="!border-0 e-list-template" DataSource=@Data aria-label="list of tasks" role="list">
+				<SfListView CssClass="!border-0 e-list-template" DataSource="@Data" aria-label="list of tasks" role="list">
 					<ListViewFieldSettings Id="Id" Text="Content" TValue="TaskItem"></ListViewFieldSettings>
 					<ListViewTemplates TValue="TaskItem">
 						<Template>
@@ -24,7 +22,7 @@
 												<div class="flex justify-between">
 													<div>
 														<span class="e-list-item-header flex items-center !text-sm !font-medium !text-wrap !line-clamp-2 sm:!line-clamp-3 w-full truncate !text-gray-900 dark:!text-gray-200">@context.Content</span>
-														<span class="flex items-center space-x-2 text-gray-700 dark:text-gray-200 w-44 mt-3 sm:mt-2 text-nowrap">
+														<span class="flex items-center space-x-3 text-gray-700 dark:text-gray-200 w-44 mt-3 sm:mt-2 text-nowrap">
 															<span class="text-sm font-normal">Due Date</span>
 															<span class="text-sm font-normal e-icons e-day text-xl text-gray-700 dark:text-gray-200"></span>
 															<span class="text-sm font-normal pt-0.5 sm:pt-0">@context.Date.ToString("d MMMM yyyy")</span>
@@ -49,7 +47,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 	<section class="bg-body">
 		<div class="d-flex align-items-center justify-content-center min-vh-100">
 			<div id="task-list" class="container-xl w-100 m-auto p-3 p-md-4" style="@WidthStyle">
-				<SfListView CssClass="e-list-template" DataSource=@Data aria-label="list of tasks" role="list" style= "border-width: 0px;">
+				<SfListView CssClass="e-list-template" DataSource="@Data" aria-label="list of tasks" role="list" style= "border-width: 0px;">
 					<ListViewFieldSettings Id="Id" Text="Content" TValue="TaskItem"></ListViewFieldSettings>
 					<ListViewTemplates TValue="TaskItem">
 						<Template>

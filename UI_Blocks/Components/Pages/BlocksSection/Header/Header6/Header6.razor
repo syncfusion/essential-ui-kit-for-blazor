@@ -33,8 +33,8 @@
                                                 <span class="e-input-group-icon e-icons e-search border-start-0"></span>
                                             </div>
                                             <div class="border-l border-gray-200 dark:border-gray-600 h-5 me-2"></div>
-                                            <SfDropDownButton @ref="Dropdown" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
-                                                <DropDownButtonEvents Opened="OnDropdownOpened" Closed="OnDropdownClosed"></DropDownButtonEvents>
+                                            <SfDropDownButton @ref="DropDownButton" CssClass="e-flat e-caret-hide !pr-1" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                                                <DropDownButtonEvents Opened="@(args => IsDropdownOpened = true)" Closed="@(args => IsDropdownOpened = false)"></DropDownButtonEvents>
                                                 <DropDownMenuItems>
                                                     <DropDownMenuItem Text="Review Today"></DropDownMenuItem>
                                                     <DropDownMenuItem Text="Expired"></DropDownMenuItem>
@@ -126,8 +126,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                 <span class="e-input-group-icon e-icons e-search border-start-0"></span>
                                             </div>
                                             <div class="border-start me-2" style="height: 16px;"></div>
-                                            <SfDropDownButton @ref="Dropdown" CssClass="e-flat e-caret-hide" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
-                                                <DropDownButtonEvents Opened="OnDropdownOpened" Closed="OnDropdownClosed"></DropDownButtonEvents>
+                                            <SfDropDownButton @ref="DropDownButton" CssClass="e-flat e-caret-hide pe-1" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="choose the additional option" role="button">
+                                                <DropDownButtonEvents Opened="@(args => IsDropdownOpened = true)" Closed="@(args => IsDropdownOpened = false)"></DropDownButtonEvents>
                                                 <DropDownMenuItems>
                                                     <DropDownMenuItem Text="Review Today"></DropDownMenuItem>
                                                     <DropDownMenuItem Text="Expired"></DropDownMenuItem>

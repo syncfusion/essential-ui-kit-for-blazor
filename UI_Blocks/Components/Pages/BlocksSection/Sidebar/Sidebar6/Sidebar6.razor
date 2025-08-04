@@ -7,18 +7,18 @@
 {
     <section class="bg-white dark:bg-gray-950">
         <div style="height: 715px;">
-            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="expand menu" role="button">
+            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" aria-label="expand menu" role="button">
                 <div class="flex flex-col justify-between h-screen">
                     <div>
                         <div class="flex items-center justify-between py-4 px-3">
                             <div class="flex items-center">
                                 <img src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
-                                <div class="ml-3">
+                                <div class="ml-2">
                                     <div class="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
-                                    <p class="mb-0 text-gray-900 dark:text-white">johnwick&#64;123.com</p>
+                                    <a class="text-gray-900 dark:text-white" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                                 </div>
                             </div>
-                            <SfButton CssClass="e-icons e-chevron-down-double e-flat e-large" Type="button" aria-label="view additional profile settings" role="button"></SfButton>
+                            <SfButton CssClass="e-icons e-chevron-down-double e-flat e-large px-1" Type="button" aria-label="view additional profile settings" role="button"></SfButton>
                         </div>
                         <div>
                             <SfListView CssClass="border-0" DataSource="@NavigationMenu" aria-label="main navigation links" role="list">
@@ -71,7 +71,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 top-0 left-0 absolute">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -79,7 +79,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
         <div style="height: 715px;">
-            <SfSidebar Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="expand menu" role="button">
+            <SfSidebar Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" aria-label="expand menu" role="button">
                 <div class="d-flex flex-column justify-content-between vh-100">
                     <div>
                         <div class="d-flex align-items-center justify-content-between p-3">
@@ -87,7 +87,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <img src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
                                 <div class="ms-2">
                                     <div class="fs-6 fw-medium text-body">John Wick</div>
-                                    <p class="mb-0 text-body-secondary">johnwick&#64;123.com</p>
+                                    <a class="text-body-secondary text-decoration-none" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                                 </div>
                             </div>
                             <SfButton CssClass="e-icons e-chevron-down-double e-flat" Type="button" aria-label="view additional profile settings" role="button"></SfButton>
@@ -105,6 +105,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 </ListViewTemplates>
                             </SfListView>
                         </div>
+                        <hr class="mx-3 border-light-subtle opacity-100" />
                         <div>
                             <p class="text-body-secondary fs-6 m-3">Bergside Projects</p>
                             <SfListView DataSource="@LibraryMenu" class="border-0 e-bigger" aria-label="other navigation links" role="list">
@@ -142,7 +143,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="py-3 px-1 position-absolute top-0 start-0">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

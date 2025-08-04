@@ -4,9 +4,9 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Statistics.Statistics2
 {
     public partial class Statistics2
     {
-        private int ScreenWidth { get; set; }
+        private int ScreenWidth;
 
-        public List<Metric> MetricsData { get; set; } = new List<Metric>
+        public List<Metric> MetricsData = new List<Metric>
         {
             new Metric { MetricName = "Website Visits", CurrentValue = "756", ContextInfo = "", CurrentPercentage = "0.02%", Total = "221,314" },
             new Metric { MetricName = "Bounce Rate", CurrentValue = "36.7%", ContextInfo = "Percentage of visitors who leave after viewing one page.", CurrentPercentage = "3.31", Total = "34.12%" },
@@ -29,8 +29,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Statistics.Statistics2
             if (message == "resizeAction")
             {
                 ScreenWidth = windowWidth;
-                StateHasChanged();
             }
+            StateHasChanged();
         }
 
         public class Metric

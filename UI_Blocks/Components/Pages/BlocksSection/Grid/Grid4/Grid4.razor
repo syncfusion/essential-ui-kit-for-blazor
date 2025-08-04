@@ -12,11 +12,11 @@
                 <div class="w-full sm:w-72">
                     <div class="e-input-group w-full">
                         <span class="e-input-group-icon e-icons e-search"></span>
-                        <input class="e-input" type="text" placeholder="Search" aria-label="enter contact details" role="textbox" />
+                        <input class="e-input !pl-0" type="text" placeholder="Search" aria-label="enter contact details" role="textbox" />
                     </div>
                 </div>
             </div>
-            <SfGrid DataSource="GridData" Width="100%" Height="668" ClipMode="ClipMode.EllipsisWithTooltip" role="grid">
+            <SfGrid DataSource="GridData" Width="100%" Height="668" role="grid">
                 <GridColumns>
                     <GridColumn Field=@nameof(Contact.ContactId) HeaderText="Contact ID" Width="90">
                         <Template>
@@ -150,7 +150,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     </div>
                 </div>
             </div>
-            <SfGrid DataSource="GridData" Width="100%" Height="668" ClipMode="ClipMode.EllipsisWithTooltip" role="grid">
+            <SfGrid DataSource="GridData" Width="100%" Height="668" role="grid">
                 <GridColumns>
                     <GridColumn Field=@nameof(Contact.ContactId) HeaderText="Contact ID" Width="86">
                         <Template>
@@ -178,10 +178,10 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                         <span class="e-avatar e-avatar-circle e-avatar-small
                                                 @(contact.Profile.ColorTheme switch
                                                 {
-                                                    "Red" => "bg-danger-subtle text-danger",
-                                                    "Green" => "bg-success-subtle text-success",
-                                                    "Blue" => "bg-info-subtle text-info",
-                                                    "Orange" => "bg-warning-subtle text-warning",
+                                                    "Red" => "bg-danger-subtle text-danger-emphasis",
+                                                    "Green" => "bg-success-subtle text-success-emphasis",
+                                                    "Blue" => "bg-info-subtle text-info-emphasis",
+                                                    "Orange" => "bg-warning-subtle text-warning-emphasis",
                                                     _ => ""
                                                 })">
                                             @contact.Profile.Initial

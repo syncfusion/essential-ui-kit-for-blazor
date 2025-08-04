@@ -26,7 +26,7 @@
             <img src="@($"assets/images/sample-browser/{CurrentBlock.Url}.png")" alt="@($"{CurrentBlock.Name} - Image")" loading="lazy" />
         </span>
         <div class="block-section">
-            <div class="block-title">@CurrentBlock.Name</div>
+            <h1 class="block-title">@CurrentBlock.Name</h1>
             <div class="block-description">@CurrentBlock.Description</div>
         </div>
     </div>
@@ -37,6 +37,10 @@
         {
             <div class="sample-title">
                 @sample.Title
+                @if (sample.IsNew)
+                {
+                    <span class="new-status">New</span>
+                }
                 <a class="figma-button" href="https://www.figma.com/@@Syncfusion" target="_blank" role="button" tabindex="0">
                     <span class="figma-icon"><img src="assets/images/sample-browser/figma.svg" alt="Figma Logo" /></span>
                     <span class="figma-text">Get Figma</span>

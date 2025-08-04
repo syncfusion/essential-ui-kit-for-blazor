@@ -67,7 +67,7 @@
 							<SfRadioButton Label="The product was not dispatched" Name="Condition" TChecked="Boolean" aria-label="the product was not dispatched" role="radio"></SfRadioButton>
 						</div>
 					</div>
-					<SfButton CssClass="self-start" Type="button" aria-label="other condition" role="button">Other Condition</SfButton>
+					<SfButton CssClass="self-start" Content="Other Condition" Type="button" aria-label="other condition" role="button"></SfButton>
 				</div>
 				<div class="flex flex-col justify-between sm:w-1/2 md:w-auto">
 					<div class="flex flex-col gap-4 lg:mb-5 mb-4 e-bigger">
@@ -88,15 +88,15 @@
 							<SfCheckBox Label="Misleading product information" TChecked="Boolean" Name="Reason" aria-label="misleading product information" role="checkbox"></SfCheckBox>
 						</div>
 					</div>
-					<SfButton CssClass="self-start" Type="button" aria-label="i have other reason" role="button">I have other reason</SfButton>
+					<SfButton CssClass="self-start" Content="I have other reason" Type="button" aria-label="i have other reason" role="button"></SfButton>
 				</div>
 			</div>
 			<SfMessage CssClass="mb-6 items-center" Severity="MessageSeverity.Info" ShowIcon="false" ShowCloseIcon="true">
 				Please carefully select your reasons for returning the product, as this will help us process your request more efficiently and ensure your satisfaction with your purchase experience.
 			</SfMessage>
 			<div class="flex justify-end lg:gap-3 gap-4">
-				<SfButton CssClass="grow sm:grow-0" Type="button" aria-label="previous" role="button">Previous</SfButton>
-				<SfButton IsPrimary="true" CssClass="grow sm:grow-0" Type="button" aria-label="next" role="button">Next</SfButton>
+				<SfButton CssClass="grow sm:grow-0" Content="Previous" Type="button" aria-label="previous" role="button"></SfButton>
+				<SfButton IsPrimary="true" CssClass="grow sm:grow-0" Content="Next" Type="button" aria-label="next" role="button"></SfButton>
 			</div>
 		</div>
 	</section>
@@ -154,7 +154,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 						<SfRadioButton Label="The product was not delivered" TChecked="Boolean" Name="Condition" aria-label="the product was not delivered" role="radio"></SfRadioButton>
 						<SfRadioButton Label="The product was not dispatched" TChecked="Boolean" Name="Condition" aria-label="the product was not dispatched" role="radio"></SfRadioButton>
 					</div>
-					<SfButton CssClass="e-outline align-self-start" Type="button" aria-label="other condition" role="button">Other Condition</SfButton>
+					<SfButton CssClass="e-outline align-self-start" Content="Other Condition" Type="button" aria-label="other condition" role="button"></SfButton>
 				</div>
 				<div class="d-flex flex-column justify-content-between">
 					<div class="d-flex flex-column gap-3 mb-4 mb-md-3 e-bigger">
@@ -165,15 +165,15 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 						<SfCheckBox Label="Changed mind/not as expected" TChecked="Boolean" Name="Reason" aria-label="changed mind/not as expected" role="checkbox"></SfCheckBox>
 						<SfCheckBox Label="Misleading product information" TChecked="Boolean" Name="Reason" aria-label="misleading product information" role="checkbox"></SfCheckBox>
 					</div>
-					<SfButton CssClass="e-outline align-self-start" Type="button" aria-label="i have other reason" role="button">I have other reason</SfButton>
+					<SfButton CssClass="e-outline align-self-start" Content="I have other reason" Type="button" aria-label="i have other reason" role="button"></SfButton>
 				</div>
 			</div>
 			<SfMessage CssClass="mb-4 align-items-center" Severity="MessageSeverity.Info" ShowIcon="false" ShowCloseIcon="true">
 				Please carefully select your reasons for returning the product, as this will help us process your request more efficiently and ensure your satisfaction with your purchase experience.
 			</SfMessage>
 			<div class="d-flex justify-content-end gap-1">
-				<SfButton CssClass="e-outline flex-grow-1 flex-sm-grow-0 me-2" Type="button" aria-label="previous" role="button">Previous</SfButton>
-				<SfButton IsPrimary="true" CssClass="flex-grow-1 flex-sm-grow-0" Type="button" aria-label="next" role="button">Next</SfButton>
+				<SfButton CssClass="e-outline flex-grow-1 flex-sm-grow-0 me-2" Content="Previous" Type="button" aria-label="previous" role="button"></SfButton>
+				<SfButton IsPrimary="true" CssClass="flex-grow-1 flex-sm-grow-0" Content="Next" Type="button" aria-label="next" role="button"></SfButton>
 			</div>
 		</div>
 	</section>

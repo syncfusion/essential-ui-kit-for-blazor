@@ -8,10 +8,11 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Header.Header3
         private int ActiveTabIndex = 0;
         public OverflowMode OverflowMode { get; set; } = OverflowMode.Extended;
 
-        public void OnTabSelected(SelectEventArgs args)
+        public void TabSelected(SelectEventArgs args)
         {
             ActiveTabIndex = args.SelectedIndex;
         }
+
         public string GetBadgeClass(int index)
         {
             return index == ActiveTabIndex ? "e-badge-primary" : string.Empty;
@@ -23,8 +24,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Header.Header3
             if (message == "resizeAction")
             {
                 OverflowMode = windowWidth < 640 ? OverflowMode.Popup : OverflowMode.Extended;
-                StateHasChanged();
             }
+            StateHasChanged();
         }
     }
 }

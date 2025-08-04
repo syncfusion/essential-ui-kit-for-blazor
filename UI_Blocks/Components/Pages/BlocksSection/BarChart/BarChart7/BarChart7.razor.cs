@@ -11,16 +11,6 @@ namespace UI_Blocks.Components.Pages.BlocksSection.BarChart.BarChart7
         public SfDropDownButton? DropDown;
         public bool IsDropdownOpen = false;
         public double XAxisLabelRotation = 0;
-        public string SelectedPlace = "USA";
-
-        public List<DropDownMenuItem> CountryOptions = new List<DropDownMenuItem>
-        {
-            new DropDownMenuItem { Text = "Canada" },
-            new DropDownMenuItem { Text = "United Kingdom" },
-            new DropDownMenuItem { Text = "Germany" },
-            new DropDownMenuItem { Text = "USA" },
-            new DropDownMenuItem { Text = "Australia" }
-        };
 
         public List<WeatherData> BarChartData = new List<WeatherData>
         {
@@ -38,12 +28,6 @@ namespace UI_Blocks.Components.Pages.BlocksSection.BarChart.BarChart7
             new WeatherData { Month = "Dec", Temperature = 9.9 }
         };
 
-        public void Place(MenuEventArgs args)
-        {
-            SelectedPlace = args.Item.Text;
-            DropDown.Content = SelectedPlace;
-        }
-
         [JSInvokable]
         public void ResizeHandler(string message, int windowWidth)
         {
@@ -58,7 +42,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.BarChart.BarChart7
             StateHasChanged();
         }
 
-        public void OnPointRender(PointRenderEventArgs args)
+        public void PointRender(PointRenderEventArgs args)
         {
             double temp = Convert.ToDouble(args.Point.Y);
             args.Fill = temp <= 10 ? "#FFD54F" : temp <= 20 ? "#FFB300" : temp <= 25 ? "#FB8C00" : "#F4511E";

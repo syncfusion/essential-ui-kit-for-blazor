@@ -7,9 +7,8 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section>
-        <div id="dialog-container" class="relative flex justify-center" style="min-height: 665px;">
-            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="account settings" role="button">Account Settings</SfButton>
-            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg overflow-hidden sm:m-4" Target="#dialog-container" IsModal="true" Width="788px" Height="565px" aria-label="manage my account" role="dialog">
+        <div id="settings-container" class="relative" style="min-height: 665px;">
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg overflow-hidden sm:m-4" Target="#settings-container" IsModal="true" Width="788px" Height="565px" aria-label="manage my account" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
                     <Content>
@@ -47,7 +46,10 @@
                                 <div class="h-full">
                                     <div class="flex justify-between p-4 border-b dark:border-gray-600">
                                         <div class="flex gap-3">
-                                            <SfButton CssClass="e-icons e-menu sm:hidden" OnClick="@(() => IsSidebarOpen = true)" Type="button" aria-label="expand menu" role="button"></SfButton>
+                                            @if (IsMobile)
+                                            {
+                                                <SfButton CssClass="e-icons e-menu e-flat" OnClick="@(() => IsSidebarOpen = true)" Type="button" aria-label="expand menu" role="button"></SfButton>   
+                                            }
                                             <h3 class="text-base font-semibold">My Account</h3>
                                         </div>
                                         <SfButton CssClass="e-flat e-small !leading-none" IconCss="e-icons e-close" OnClick="@(async () => { if (Dialog != null) await Dialog.HideAsync(); })" Type="button" aria-label="close" role="button"></SfButton>
@@ -57,14 +59,14 @@
                                             <label class="text-xs font-medium text-gray-700 dark:text-gray-200">Full Name <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
                                             <div class="flex flex-col sm:flex-row gap-3 sm:gap-2">
                                                 <SfTextBox CssClass="grow" Type="InputType.Text" Placeholder="Enter your full name" aria-label="enter your full name" role="textbox"></SfTextBox>
-                                                <SfButton CssClass="w-fit" Type="button" Disabled="true" aria-label="change" role="button">Change</SfButton>
+                                                <SfButton CssClass="w-fit" Content="Change" Type="button" Disabled="true" aria-label="change" role="button"></SfButton>
                                             </div>
                                         </div>
                                         <div class="flex flex-col gap-1 mb-4">
                                             <label class="text-xs font-medium text-gray-700 dark:text-gray-200">Email <span class="text-red-600 font-normal dark:text-red-400">*</span></label>
                                             <div class="flex flex-col sm:flex-row gap-3 sm:gap-2">
                                                 <SfTextBox CssClass="grow" Type="InputType.Email" Placeholder="Enter a valid email address" aria-label="enter a valid email address" role="textbox"></SfTextBox>
-                                                <SfButton CssClass="w-fit" Type="button" Disabled="true" aria-label="change" role="button">Change</SfButton>
+                                                <SfButton CssClass="w-fit" Content="Change" Type="button" Disabled="true" aria-label="change" role="button"></SfButton>
                                             </div>
                                         </div>
                                         <div class="flex justify-between gap-1 text-sm text-gray-700 dark:text-gray-200 border-t dark:border-gray-600 py-4">
@@ -78,7 +80,7 @@
                                             <p class="text-sm font-semibold text-gray-700 dark:text-gray-200 mb-1">Account Deletion</p>
                                             <SfMessage CssClass="border-0 bg-transparent p-0" ShowIcon="false">
                                                 <p class="text-gray-700 dark:text-gray-200 mb-4 sm:mb-3"><span class="font-medium text-red-600 dark:text-red-400">Warning: </span> Deleting your account will permanently delete all your documents. This action can't be undone.</p>
-                                                <SfButton CssClass="e-danger e-outline" Type="button" aria-label="delete account" role="button">Delete Account</SfButton>
+                                                <SfButton CssClass="e-danger e-outline" Content="Delete Account" Type="button" aria-label="delete account" role="button"></SfButton>
                                             </SfMessage>
                                         </div>
                                     </div>
@@ -90,13 +92,17 @@
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="top-0 left-0 absolute w-full flex">
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Account Settings" Type="button" aria-label="account settings" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
-        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 665px;">
-            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="account settings" role="button">Account Settings</SfButton>
-            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" Width="788px" Height="565px" aria-label="manage my account" role="dialog">
+        <div id="settings-container" class="position-relative" style="min-height: 665px;">
+            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#settings-container" IsModal="true" Width="788px" Height="565px" aria-label="manage my account" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
                     <Content>
@@ -134,7 +140,10 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <div class="h-100">
                                     <div class="d-flex justify-content-between p-3 border-bottom">
                                         <div class="d-flex gap-3">
-                                            <SfButton CssClass="e-icons e-menu d-sm-none" OnClick="@(() => IsSidebarOpen = true)" Type="button" aria-label="expand menu" role="button"></SfButton>
+                                            @if (IsMobile)
+                                            {
+                                                <SfButton CssClass="e-icons e-menu e-flat" OnClick="@(() => IsSidebarOpen = true)" Type="button" aria-label="expand menu" role="button"></SfButton>
+                                            }
                                             <h3 class="fs-6 fw-bold mb-0 text-body">My Account</h3>
                                         </div>
                                         <SfButton CssClass="e-flat e-small" IconCss="e-icons e-close" OnClick="@(async () => { if (Dialog != null) await Dialog.HideAsync(); })" Type="button" aria-label="close" role="button"></SfButton>
@@ -144,14 +153,14 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                             <label class="small text-body-secondary">Full Name <span class="text-danger">*</span></label>
                                             <div class="d-flex flex-column flex-sm-row align-items-start gap-2">
                                                 <SfTextBox CssClass="w-100" Type="InputType.Text" Placeholder="Enter your full name" aria-label="enter your full name" role="textbox"></SfTextBox>
-                                                <SfButton CssClass="mt-1 mt-sm-0 ms-sm-1 ms-md-0" Type="button" Disabled="true" aria-label="change" role="button">Change</SfButton>
+                                                <SfButton CssClass="mt-1 mt-sm-0 ms-sm-1 ms-md-0" Content="Change" Type="button" Disabled="true" aria-label="change" role="button"></SfButton>
                                             </div>
                                         </div>
                                         <div class="d-flex flex-column gap-1 mb-3 pt-2 pt-sm-1">
                                             <label class="small text-body-secondary">Email <span class="text-danger">*</span></label>
                                             <div class="d-flex flex-column flex-sm-row align-items-start gap-2">
                                                 <SfTextBox CssClass="w-100" Type="InputType.Email" Placeholder="Enter a valid email address" aria-label="enter a valid email address" role="textbox"></SfTextBox>
-                                                <SfButton CssClass="mt-1 mt-sm-0 ms-sm-1 ms-md-0" Type="button" Disabled="true" aria-label="change" role="button">Change</SfButton>
+                                                <SfButton CssClass="mt-1 mt-sm-0 ms-sm-1 ms-md-0" Content="Change" Type="button" Disabled="true" aria-label="change" role="button"></SfButton>
                                             </div>
                                         </div>
                                         <div class="d-flex justify-content-between align-items-sm-center text-body-secondary border-top py-3">
@@ -165,7 +174,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                             <p class="fw-bold text-body-secondary mb-1">Account Deletion</p>
                                             <SfMessage CssClass="border-0 bg-transparent p-0" ShowIcon="false">
                                                 <p class="text-body-secondary mb-2"><span class="fw-medium text-danger">Warning: </span> Deleting your account will permanently delete all your documents. This action can't be undone.</p>
-                                                <SfButton CssClass="e-danger e-outline mt-2 mt-sm-1" Type="button" aria-label="delete account" role="button">Delete Account</SfButton>
+                                                <SfButton CssClass="e-danger e-outline mt-2 mt-sm-1" Content="Delete Account" Type="button" aria-label="delete account" role="button"></SfButton>
                                             </SfMessage>
                                         </div>
                                     </div>
@@ -177,4 +186,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="position-absolute top-0 start-0 d-flex w-100">
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Account Settings" Type="button" aria-label="account settings" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }

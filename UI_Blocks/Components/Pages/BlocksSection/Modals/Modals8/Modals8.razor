@@ -7,8 +7,7 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section>
-        <div id="dialog-container" class="relative flex justify-center" style="min-height: 750px;">
-            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="my settings" role="button">My Settings</SfButton>
+        <div id="dialog-container" class="relative" style="min-height: 750px;">
             <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="644px" Height="645px" aria-label="manage my settings" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
                 <DialogTemplates>
@@ -25,7 +24,7 @@
                                             <h3 class="text-sm font-medium mb-1">Your photo</h3>
                                             <div class="flex items-center gap-4 mb-6 sm:mb-5">
                                                 <span class="e-avatar e-avatar-large e-avatar-circle shrink-0 border border-gray-200 bg-gray-100 dark:border-gray-600 dark:bg-gray-700">
-                                                    <i class="e-icons e-user text-3xl dark:text-gray-300"></i>
+                                                    <span class="e-icons e-user text-3xl dark:text-gray-300"></span>
                                                 </span>
                                                 <div id="upload-template" class="grow">
                                                     <SfUploader CssClass="e-small" Multiple="false" AllowedExtensions="image/*" MaxFileSize="2000000">
@@ -161,7 +160,7 @@
                                                 <p class="text-xs text-gray-700 dark:text-gray-300 mb-4">Add upto 5 email address to forwarding</p>
                                                 <div class="flex flex-col sm:flex-row gap-4 sm:gap-3">
                                                     <SfTextBox CssClass="grow" Placeholder="Add forwarding emails" Type="InputType.Email" aria-label="enter forwarding email addresses" role="textbox"></SfTextBox>
-                                                    <SfButton CssClass="w-fit" IconCss="e-icons e-plus" Type="button" aria-label="add" role="button">Add</SfButton>
+                                                    <SfButton CssClass="w-fit" IconCss="e-icons e-plus" Content="Add" Type="button" aria-label="add" role="button"></SfButton>
                                                 </div>
                                                 <div class="border-t border-gray-200 dark:border-gray-600 mt-4 md:mt-3 pt-4 md:pt-3">
                                                     <div class="flex gap-3 items-center py-1.5">
@@ -190,7 +189,7 @@
                                                         <p class="text-xs text-wrap text-gray-700 dark:text-gray-300">Update your password regularly to maintain account security</p>
                                                     </div>
                                                 </div>
-                                                <SfButton CssClass="w-fit ml-7 sm:ml-0 mr-1" Type="button" aria-label="update" role="button">Update</SfButton>
+                                                <SfButton CssClass="w-fit ml-7 sm:ml-0 mr-1" Content="Update" Type="button" aria-label="update" role="button"></SfButton>
                                             </div>
                                         </div>
                                         <div class="e-card shadow-none px-4 py-2 mb-6">
@@ -202,7 +201,7 @@
                                                         <p class="text-xs text-wrap text-gray-700 dark:text-gray-300">Add an extra layer of security to your account</p>
                                                     </div>
                                                 </div>
-                                                <SfButton CssClass="w-fit ml-7 sm:ml-0 mr-1" Type="button" aria-label="enable" role="button">Enable</SfButton>
+                                                <SfButton CssClass="w-fit ml-7 sm:ml-0 mr-1" Content="Enable" Type="button" aria-label="enable" role="button"></SfButton>
                                             </div>
                                         </div>
                                         <h2 class="font-medium text-base mb-3">Accounts</h2>
@@ -214,7 +213,7 @@
                                                         <p class="text-sm font-medium text-gray-900 dark:text-white mb-0.5">Microsoft</p>
                                                         <p class="text-xs text-wrap text-gray-700 dark:text-gray-300">Access Microsoft services and single sign-on</p>
                                                     </div>
-                                                    <SfButton CssClass="w-fit mr-1" Type="button" aria-label="disconnect" role="button">Disconnect</SfButton>
+                                                    <SfButton CssClass="w-fit mr-1" Content="Disconnect" Type="button" aria-label="disconnect" role="button"></SfButton>
                                                 </div>
                                             </div>
                                         </div>
@@ -226,11 +225,11 @@
                                                         <p class="text-sm font-medium text-gray-900 dark:text-white mb-0.5">Twitter</p>
                                                         <p class="text-xs text-wrap text-gray-700 dark:text-gray-300">Connect to share updates and manage social features</p>
                                                     </div>
-                                                    <SfButton CssClass="w-fit mr-1" Type="button" aria-label="connect" role="button">Connect</SfButton>
+                                                    <SfButton CssClass="w-fit mr-1" Content="Connect" Type="button" aria-label="connect" role="button"></SfButton>
                                                 </div>
                                             </div>
                                         </div>
-                                        <SfButton CssClass="e-danger e-outline" Type="button" aria-label="delete account" role="button">Delete Account</SfButton>
+                                        <SfButton CssClass="e-danger e-outline" Content="Delete Account" Type="button" aria-label="delete account" role="button"></SfButton>
                                     </ContentTemplate>
                                 </TabItem>
                                 <TabItem>
@@ -259,20 +258,24 @@
                     </Content>
                     <FooterTemplate>
                         <div class="flex justify-end gap-2 sm:gap-1 py-2">
-                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="discard" role="button">Discard</SfButton>
-                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="button" aria-label="save changes" role="button">Save Changes</SfButton>
+                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Content="Discard" Type="button" aria-label="discard" role="button"></SfButton>
+                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Content="Save Changes" Type="button" aria-label="save changes" role="button"></SfButton>
                         </div>
                     </FooterTemplate>
                 </DialogTemplates>
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="top-0 left-0 absolute w-full flex">
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="My Settings" Type="button" aria-label="my settings" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
-        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 750px;">
-            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="my settings" role="button">My Settings</SfButton>
+        <div id="dialog-container" class="position-relative" style="min-height: 750px;">
             <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="644px" Height="660px" aria-label="manage my settings" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
                 <DialogTemplates>
@@ -289,7 +292,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                             <h3 class="fs-6 fw-medium mb-1 text-body lh-base">Your photo</h3>
                                             <div class="d-flex align-items-center gap-3 mb-4">
                                                 <span class="e-avatar e-avatar-large e-avatar-circle flex-shrink-0 bg-body-secondary">
-                                                    <i class="e-icons e-user fs-3"></i>
+                                                    <span class="e-icons e-user fs-3"></span>
                                                 </span>
                                                 <div id="upload-template" class="flex-grow-1">
                                                     <SfUploader CssClass="e-small" Multiple="false" AllowedExtensions="image/*" MaxFileSize="2000000">
@@ -423,7 +426,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                 <p class="text-muted small pt-1">Add up to 5 email addresses to forwarding</p>
                                                 <div class="d-flex flex-column flex-sm-row gap-3 mx-1">
                                                     <SfTextBox Placeholder="Add forwarding emails" Type="InputType.Email" aria-label="enter forwarding email addresses" role="textbox"></SfTextBox>
-                                                    <SfButton IconCss="e-icons e-plus" Type="button" aria-label="add" role="button" style="width: fit-content;">Add</SfButton>
+                                                    <SfButton IconCss="e-icons e-plus" Content="Add" Type="button" aria-label="add" role="button" style="width: fit-content;"></SfButton>
                                                 </div>
                                                 <div class="border-top mt-3 pt-3">
                                                     <div class="d-flex gap-3 align-items-center py-1">
@@ -452,7 +455,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                         <div class="small text-body-secondary">Update your password regularly to maintain account security</div>
                                                     </div>
                                                 </div>
-                                                <SfButton CssClass="ms-4 sm:ms-0" Type="button" aria-label="update" role="button">Update</SfButton>
+                                                <SfButton CssClass="ms-4 sm:ms-0" Content="Update" Type="button" aria-label="update" role="button"></SfButton>
                                             </div>
                                         </div>
                                         <div class="e-card px-3 py-2 mb-4">
@@ -464,7 +467,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                         <div class="small text-body-secondary">Add an extra layer of security to your account</div>
                                                     </div>
                                                 </div>
-                                                <SfButton CssClass="ms-4 sm:ms-0" Type="button" aria-label="enable" role="button">Enable</SfButton>
+                                                <SfButton CssClass="ms-4 sm:ms-0" Content="Enable" Type="button" aria-label="enable" role="button"></SfButton>
                                             </div>
                                         </div>
                                         <h2 class="fw-medium fs-6 mb-2">Accounts</h2>
@@ -476,7 +479,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                         <div class="d-flex align-items-center fs-6 text-body">Microsoft</div>
                                                         <div class="d-flex align-items-center text-wrap small text-body-secondary">Access Microsoft services and single sign-on</div>
                                                     </div>
-                                                    <SfButton Type="button" aria-label="disconnect" role="button">Disconnect</SfButton>
+                                                    <SfButton Content="Disconnect" Type="button" aria-label="disconnect" role="button"></SfButton>
                                                 </div>
                                             </div>
                                         </div>
@@ -488,11 +491,11 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                                         <div class="d-flex align-items-center fs-6 text-body">Twitter</div>
                                                         <div class="d-flex align-items-center text-wrap small text-body-secondary">Connect to share updates and manage social features</div>
                                                     </div>
-                                                    <SfButton Type="button" aria-label="connect" role="button">Connect</SfButton>
+                                                    <SfButton Content="Connect" Type="button" aria-label="connect" role="button"></SfButton>
                                                 </div>
                                             </div>
                                         </div>
-                                        <SfButton CssClass="e-danger e-outline" Type="button" aria-label="delete account" role="button">Delete Account</SfButton>
+                                        <SfButton CssClass="e-danger e-outline" Content="Delete Account" Type="button" aria-label="delete account" role="button"></SfButton>
                                     </ContentTemplate>
                                 </TabItem>
                                 <TabItem>
@@ -521,12 +524,17 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     </Content>
                     <FooterTemplate>
                         <div class="d-flex justify-content-end gap-2 gap-sm-1 py-1">
-                            <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="discard" role="button">Discard</SfButton>
-                            <SfButton CssClass="e-primary col col-sm-auto" Type="button" aria-label="save changes" role="button">Save Changes</SfButton>
+                            <SfButton CssClass="col col-sm-auto ms-0" Content="Discard" Type="button" aria-label="discard" role="button"></SfButton>
+                            <SfButton CssClass="e-primary col col-sm-auto" Content="Save Changes" Type="button" aria-label="save changes" role="button"></SfButton>
                         </div>
                     </FooterTemplate>
                 </DialogTemplates>
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="position-absolute top-0 start-0 d-flex w-100">
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="My Settings" Type="button" aria-label="my settings" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }

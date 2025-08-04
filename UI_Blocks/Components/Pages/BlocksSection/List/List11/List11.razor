@@ -4,8 +4,6 @@
 
 @ThemeLinks
 
-@inject IJSRuntime JSRuntime
-
 @if (CurrentTheme.Contains("tailwind"))
 {
 	<section class="bg-white dark:bg-gray-900">
@@ -25,7 +23,7 @@
 													<span class="e-list-item-header !text-sm !font-medium flex items-center !ml-4 !truncate w-72">@context.FileName</span>
 												</div>
 												<div class="!text-gray-700 dark:!text-gray-200 !ml-4 w-60 sm:w-full">
-													<SfBreadcrumb CssClass="w-100" EnableNavigation="false" OverFlowMode="OverflowMode" MaxItems="MaxItems">
+													<SfBreadcrumb CssClass="w-100" EnableNavigation="false" OverFlowMode="@OverflowMode" MaxItems="@MaxItems">
 														<BreadcrumbItems>
 															<BreadcrumbItem Text="@context.Data1"></BreadcrumbItem>
 															<BreadcrumbItem Text="@context.Data2"></BreadcrumbItem>
@@ -34,7 +32,7 @@
 														</BreadcrumbItems>
 														<BreadcrumbTemplates>
 															<SeparatorTemplate Context="data">
-																<span class="e-icons e-chevron-right"></span>
+																<span class="e-icons e-chevron-right !text-base"></span>
 															</SeparatorTemplate>
 														</BreadcrumbTemplates>
 													</SfBreadcrumb>
@@ -70,7 +68,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 													<span class="e-list-item-header small fw-medium d-flex align-items-center ms-3">@context.FileName</span>
 												</div>
 												<div class="ms-3 mt-1 col-6 col-sm-12" style="min-width: 250px; max-width: 500px;">
-													<SfBreadcrumb CssClass="w-100" EnableNavigation="false" OverFlowMode="OverflowMode" MaxItems="MaxItems">
+													<SfBreadcrumb CssClass="w-100" EnableNavigation="false" OverFlowMode="@OverflowMode" MaxItems="@MaxItems">
 														<BreadcrumbItems>
 															<BreadcrumbItem Text="@context.Data1"></BreadcrumbItem>
 															<BreadcrumbItem Text="@context.Data2"></BreadcrumbItem>
@@ -79,10 +77,10 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 														</BreadcrumbItems>
 														<BreadcrumbTemplates>
 															<ItemTemplate Context="data">
-																<a class="text-body">@data.Text</a>
+																<span class="fs-6"><a href="javascript:void(0);" class="text-body small px-2 px-sm-0 text-decoration-none">@data.Text</a></span>
 															</ItemTemplate>
 															<SeparatorTemplate Context="data">
-																<span class="e-icons e-chevron-right"></span>
+																<span class="e-icons e-chevron-right fs-6 pt-1"></span>
 															</SeparatorTemplate>
 														</BreadcrumbTemplates>
 													</SfBreadcrumb>

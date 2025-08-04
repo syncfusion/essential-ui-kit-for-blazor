@@ -1,0 +1,22 @@
+::deep #floating-contact .e-dlg-header-content,
+::deep #floating-contact .e-dlg-content,
+::deep #floating-contact .e-footer-content {
+    border: 0 !important;
+    padding: 0 !important;
+}
+
+::deep #floating-contact .e-upload {
+    border: none !important;
+}
+
+::deep #floating-contact .e-upload .e-file-select-wrap {
+    padding: 0 !important;
+}
+
+::deep #floating-contact .e-file-drop {
+    display: none !important;
+}
+
+::deep #floating-contact .e-popup.e-popup-open.e-dialog {
+    max-height: 580px !important;
+}

@@ -7,14 +7,13 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section>
-        <div id="dialog-container" class="relative flex justify-center" style="min-height: 700px;">
-            <SfButton CssClass="h-fit my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="add experience" role="button">Add Experience</SfButton>
-            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="548px" aria-label="add experience to your profile" role="dialog">
+        <div id="dialog-container" class="relative" style="min-height: 700px;">
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4 overflow-hidden" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="548px" aria-label="add experience to your profile" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
                     <Header>
                         <div class="flex gap-3">
-                            <span class="e-avatar shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg"><i class="e-icons e-flags text-xl text-gray-500 dark:text-gray-300"></i></span>
+                            <span class="e-avatar shrink-0 bg-gray-100 dark:bg-gray-700 rounded-lg"><span class="e-icons e-flags text-xl text-gray-500 dark:text-gray-300"></span></span>
                             <div>
                                 <p class="font-semibold leading-normal mb-0.5">Add Experience</p>
                                 <p class="text-xs leading-normal text-gray-500 dark:text-gray-400 text-wrap">Share where you've worked on your profile.</p>
@@ -66,26 +65,30 @@
                     </Content>
                     <FooterTemplate>
                         <div class="flex justify-end gap-2 sm:gap-1 py-2">
-                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Type="button" aria-label="discard" role="button">Discard</SfButton>
-                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Type="button" aria-label="save" role="button">Save</SfButton>
+                            <SfButton CssClass="w-1/2 sm:w-fit !ml-0" Content="Discard" Type="button" aria-label="discard" role="button"></SfButton>
+                            <SfButton CssClass="e-primary w-1/2 sm:w-fit" Content="Save" Type="button" aria-label="save" role="button"></SfButton>
                         </div>
                     </FooterTemplate>
                 </DialogTemplates>
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="top-0 left-0 absolute w-full flex">
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Add Experience" Type="button" aria-label="add experience" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
-        <div id="dialog-container" class="position-relative d-flex align-items-start" style="min-height: 700px;">
-            <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Type="button" aria-label="add experience" role="button">Add Experience</SfButton>
+        <div id="dialog-container" class="position-relative" style="min-height: 700px;">
             <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="548px" aria-label="add experience to your profile" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
                     <Header>
                         <div class="d-flex gap-2">
-                            <span class="e-avatar flex-shrink-0 rounded-3 bg-body-secondary"><i class="e-icons e-flags fs-5 text-body-secondary"></i></span>
+                            <span class="e-avatar flex-shrink-0 rounded-3 bg-body-secondary"><span class="e-icons e-flags fs-5 text-body-secondary"></span></span>
                             <div class="ms-1">
                                 <p class="fw-bold mb-0 text-body">Add Experience</p>
                                 <p class="small fw-normal text-wrap text-body text-opacity-50 mb-0">Share where you've worked on your profile.</p>
@@ -137,12 +140,17 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     </Content>
                     <FooterTemplate>
                         <div class="d-flex justify-content-end gap-2 gap-sm-1 py-1">
-                            <SfButton CssClass="col col-sm-auto ms-0" Type="button" aria-label="discard" role="button">Discard</SfButton>
-                            <SfButton CssClass="e-primary col col-sm-auto" Type="button" aria-label="save" role="button">Save</SfButton>
+                            <SfButton CssClass="col col-sm-auto ms-0" Content="Discard" Type="button" aria-label="discard" role="button"></SfButton>
+                            <SfButton CssClass="e-primary col col-sm-auto" Content="Save" Type="button" aria-label="save" role="button"></SfButton>
                         </div>
                     </FooterTemplate>
                 </DialogTemplates>
             </SfDialog>
         </div>
     </section>
+    <!-- SB Code - Start -->
+    <div class="position-absolute top-0 start-0 d-flex w-100">
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Add Experience" Type="button" aria-label="add experience" role="button"></SfButton>
+    </div>
+    <!-- SB Code - End -->
 }

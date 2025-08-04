@@ -5,17 +5,10 @@ namespace UI_Blocks.Components.Pages.BlocksSection.LineChart.LineChart3
 {
     public partial class LineChart3
     {
-        public string Height = "250px";
+        public SfDropDownButton? DropDownButton;
+        public bool IsDropdownOpen = false;
+        public string Height = "200px";
         public string Width = "500px";
-
-        public List<DropDownMenuItem> PeriodOptions = new List<DropDownMenuItem>
-        {
-            new DropDownMenuItem { Text = "Day" },
-            new DropDownMenuItem { Text = "Week" },
-            new DropDownMenuItem { Text = "Month" },
-            new DropDownMenuItem { Text = "Year" },
-            new DropDownMenuItem { Text = "Custom" }
-        };
 
         public List<SynchronizedData> LineChartData = new List<SynchronizedData>
         {
@@ -187,6 +180,10 @@ namespace UI_Blocks.Components.Pages.BlocksSection.LineChart.LineChart3
             {
                 Height = windowWidth < 767 ? "130px" : "250px";
                 Width = windowWidth < 767 ? "328px" : "500px";
+                if (IsDropdownOpen && DropDownButton != null)
+                {
+                    DropDownButton.Toggle();
+                }
             }
             StateHasChanged();
         }

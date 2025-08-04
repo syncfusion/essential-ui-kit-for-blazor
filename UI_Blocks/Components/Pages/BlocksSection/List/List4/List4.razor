@@ -4,8 +4,6 @@
 
 @ThemeLinks
 
-@inject IJSRuntime JSRuntime
-
 @if (CurrentTheme.Contains("tailwind"))
 {
 	<section class="bg-white dark:bg-gray-900">
@@ -18,7 +16,9 @@
 							@{
 								<div class="e-list-wrapper !px-1 sm:!px-3 border-b border-gray-200 dark:border-gray-600 !py-4 flex flex-col">
 									<span class="flex">
-										<img class="rounded-lg" src="assets/images/listview/carts/@context.Pic" width="80px" alt="product image" />
+										<div class="shrink-0 bg-gray-50 dark:bg-gray-700 rounded">
+											<img class="rounded-lg" src="assets/images/listview/carts/@context.Pic" width="80px" alt="product image" />
+										</div>
 										<span class="ml-4 flex flex-col">
 											<span class="e-list-item-header text-sm font-medium text-gray-900 dark:text-white !text-wrap !line-clamp-1 w-full truncate">@context.Header</span>
 											<p class="flex space-x-3 mt-1">
@@ -38,11 +38,11 @@
 									<div class="flex items-center mt-4 sm:mt-0 ml-0 sm:ml-24">
 										<div class="flex items-center">
 											<span class="e-small">
-												<SfButton CssClass="e-round mr-2 e-icons e-plus !text-sm" Type="button" aria-label="add another item to cart" role="button"></SfButton>
+												<SfButton CssClass="e-round mr-2 !text-sm" IconCss="e-icons e-plus" Type="button" aria-label="add another item to cart" role="button"></SfButton>
 											</span>
 											<SfTextBox class="text-center !pl-0 bg-transparent" CssClass="e-small" Value="1" aria-label="quantity of the product" role="textbox" style="width: 50px;"></SfTextBox>
 											<span class="e-small">
-												<SfButton CssClass="e-round ml-2 e-icons e-intermediate-state !text-sm" Type="button" aria-label="remove item from cart" role="button"></SfButton>
+												<SfButton CssClass="e-round ml-2 !text-sm" IconCss="e-icons e-intermediate-state" Type="button" aria-label="remove item from cart" role="button"></SfButton>
 											</span>
 										</div>
 										<div class="flex items-center ml-4">
@@ -78,7 +78,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 							@{
 								<div class="e-list-wrapper e-list-multi-line px-1 px-sm-3 py-3 d-flex flex-column">
 									<span class="d-flex">
-										<img class="rounded" src="assets/images/listview/carts/@context.Pic" width="80px" alt="product image" />
+										<div class="flex-shrink-0 bg-body-tertiary rounded-1">
+											<img class="rounded" src="assets/images/listview/carts/@context.Pic" width="80px" alt="product image" />
+										</div>
 										<span class="ms-2 ps-1 d-flex flex-column">
 											<p class="e-list-item-header fw-medium mb-0 w-100 text-wrap overflow-hidden" style="display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical;">@context.Header</p>
 											<p class="mt-1 mb-0">
@@ -98,11 +100,11 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 									<div class="d-flex align-items-center mt-3 mt-sm-0 ms-0 ms-sm-5 ps-sm-5">
 										<div class="d-flex align-items-center">
 											<span class="e-small">
-												<SfButton CssClass="e-round e-outline me-2 e-icons e-plus" Type="button" aria-label="add another item to cart" role="button"></SfButton>
+												<SfButton CssClass="e-round e-outline me-2" IconCss="e-icons e-plus" Type="button" aria-label="add another item to cart" role="button"></SfButton>
 											</span>
 											<SfTextBox class="ps-0 text-center border-0 bg-transparent" CssClass="e-small" value="1" aria-label="quantity of the product" role="textbox" style="width: 50px;"></SfTextBox>
 											<span class="e-small">
-												<SfButton CssClass="e-round e-outline ms-2 e-icons e-intermediate-state-2" Type="button" aria-label="remove item from cart" role="button"></SfButton>
+												<SfButton CssClass="e-round e-outline ms-2" IconCss="e-icons e-intermediate-state-2" Type="button" aria-label="remove item from cart" role="button"></SfButton>
 											</span>
 										</div>
 										<div class="d-flex align-items-center ms-4">

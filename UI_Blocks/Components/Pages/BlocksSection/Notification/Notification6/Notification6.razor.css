@@ -4,9 +4,10 @@
     padding: 0 !important;
 }
 
-::deep #list-bs .e-list-item.e-level-1.e-active a {
-    color: #FFFF;
+::deep #list-bs .e-list-item.e-level-1.e-focused a {
+    color: #FFFFFF;
 }
+
 ::deep #notification .e-tab .e-tab-header .e-toolbar-items .e-tab-wrap {
     padding: 0 12px !important;
 }

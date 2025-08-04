@@ -7,7 +7,7 @@
 {
     <section class="bg-white dark:bg-gray-950">
         <div style="height: 700px;">
-            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
                 <div class="flex flex-col justify-between h-screen">
                     <div>
                         <div class="flex flex-col justify-center items-center pt-6">
@@ -15,11 +15,11 @@
                                 <img src="assets/images/common/avatar/avatar-2.jpg" alt="profile picture" />
                             </span>
                             <div class="text-xl font-medium leading-normal text-gray-900 dark:text-white mt-4">John Wick</div>
-                            <p class="mb-0 text-base text-gray-900 dark:text-white mt-2">johnwick&#64;123.com</p>
+                            <a class="text-base text-gray-900 dark:text-white mt-2" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                         </div>
                         <hr class="m-4 border-gray-200 dark:border-gray-700" />
                         <div>
-                            <SfListView DataSource="@Data" CssClass="border-0" aria-label="main navigation links" role="list">
+                            <SfListView CssClass="border-0" DataSource="@Data" aria-label="main navigation links" role="list">
                                 <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
                                 <ListViewTemplates TValue="MenuItem">
                                     <Template>
@@ -33,7 +33,7 @@
                         </div>
                     </div>
                     <div class="p-4">
-                        <SfButton CssClass="e-outline w-full" IconCss="e-icons sf-icon-logout-07 text-base" Type="button" Content="Logout" aria-label="logout" role="button"></SfButton>
+                        <SfButton CssClass="e-outline w-full" IconCss="e-icons sf-icon-logout-07 text-base" Content="Logout"  Type="button" aria-label="logout" role="button"></SfButton>
                     </div>
                 </div>
             </SfSidebar>
@@ -41,7 +41,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 top-0 left-0 absolute">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -49,7 +49,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
         <div style="height: 700px;">
-            <SfSidebar Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+            <SfSidebar Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
                 <div class="d-flex flex-column justify-content-between vh-100">
                     <div>
                         <div class="d-flex flex-column justify-content-center align-items-center pt-4 mb-3">
@@ -57,10 +57,11 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <img src="assets/images/common/avatar/avatar-2.jpg" alt="profile picture" />
                             </span>
                             <div class="fs-5 fw-medium text-body mt-3">John Wick</div>
-                            <p class="mb-0 fs-6 text-body-secondary mt-2">johnwick&#64;123.com</p>
+                            <a class="fs-6 text-body-secondary mt-2 text-decoration-none" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                         </div>
+                        <hr class="mx-3 border-light-subtle opacity-100" />
                         <div>
-                            <SfListView DataSource="@Data" CssClass="border-0 e-bigger" aria-label="main navigation links" role="list">
+                            <SfListView CssClass="border-0 e-bigger" DataSource="@Data" aria-label="main navigation links" role="list">
                                 <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
                                 <ListViewTemplates TValue="MenuItem">
                                     <Template>
@@ -74,7 +75,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         </div>
                     </div>
                     <div class="p-3">
-                        <SfButton CssClass="e-outline w-100" IconCss="e-icons sf-icon-logout-07 fs-6" Type="button" Content="Logout" aria-label="logout" role="button"></SfButton>
+                        <SfButton CssClass="e-outline w-100" IconCss="e-icons sf-icon-logout-07 fs-6" Content="Logout" Type="button" aria-label="logout" role="button"></SfButton>
                     </div>
                 </div>
             </SfSidebar>
@@ -82,7 +83,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="py-3 px-1 position-absolute top-0 start-0">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

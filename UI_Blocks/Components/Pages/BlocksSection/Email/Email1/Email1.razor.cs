@@ -4,7 +4,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Email.Email1
 {
     public partial class Email1
     {
-        protected List<ToolbarItemModel> ToolbarItems = new List<ToolbarItemModel>()
+        public List<ToolbarItemModel> ToolbarItems = new List<ToolbarItemModel>
         {
             new ToolbarItemModel() { Command = ToolbarCommand.Bold },
             new ToolbarItemModel() { Command = ToolbarCommand.Italic },

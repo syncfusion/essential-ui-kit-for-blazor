@@ -4,9 +4,9 @@ namespace UI_Blocks.Components.Pages.BlocksSection.List.List6
 {
     public partial class List6
     {
-        private string WidthStyle { get; set; } = "max-width:452px";
+        public string WidthStyle = "max-width:452px";
 
-        public List<DataItem> FieldData { get; set; } = new List<DataItem>
+        public List<DataItem> FieldData = new List<DataItem>
         {
             new DataItem { Id = 1, Field = "Full Name", FontIcon = "e-icons e-user" },
             new DataItem { Id = 2, Field = "Email Address", FontIcon = "sf-icon-mail-02" },
@@ -21,8 +21,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.List.List6
             if (message == "resizeAction")
             {
                 WidthStyle = windowWidth < 1024 ? "width:100%" : "max-width:452px";
-                StateHasChanged();
             }
+            StateHasChanged();
         }
 
         public class DataItem

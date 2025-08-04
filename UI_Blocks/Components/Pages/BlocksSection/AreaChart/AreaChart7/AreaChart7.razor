@@ -1,0 +1,171 @@
+﻿@page "/blocks/area-chart-7"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 930px;">
+                <h3 class="text-base font-medium text-gray-900 dark:text-white">Weather Analysis</h3>
+                <div class="flex sm:items-center justify-between flex-col sm:flex-row flex-col-reverse gap-4 mt-4 md:mt-3">
+                    <SfButtonGroup class="e-btn-group self-start">
+                        <input Type="radio" id="temperature" name="weatherMetric" checked value="temperature" aria-label="temperature" role="button" />
+                        <label class="e-btn" for="temperature">
+                            <span class="e-btn-icon sf-icon-thermometer !text-sm" @(isMobileView ? "" : "e-icon-left")></span>
+                            <span class="hidden sm:inline-block">Temperature</span>
+                        </label>
+                        <input Type="radio" id="precipitation" name="weatherMetric" value="precipitation" aria-label="precipitation" role="button" />
+                        <label class="e-btn" for="precipitation">
+                            <span class="e-btn-icon sf-icon-precipitation !text-sm" @(isMobileView ? "" : "e-icon-left")></span>
+                            <span class="hidden sm:inline-block">Precipitation</span>
+                        </label>
+                        <input Type="radio" id="humidity" name="weatherMetric" value="humidity" aria-label="humidity" role="button" />
+                        <label class="e-btn" for="humidity">
+                            <span class="e-btn-icon sf-icon-humidity !text-sm" @(isMobileView ? "" : "e-icon-left")></span>
+                            <span class="hidden sm:inline-block">Humidity</span>
+                        </label>
+                        <input Type="radio" id="wind" name="weatherMetric" value="wind" aria-label="wind" role="button" />
+                        <label class="e-btn" for="wind">
+                            <span class="e-btn-icon sf-icon-wind !text-sm" @(isMobileView ? "" : "e-icon-left")></span>
+                            <span class="hidden sm:inline-block">Wind</span>
+                        </label>
+                    </SfButtonGroup>
+                    <SfDropDownButton @ref="DropDownButton" CssClass="e-outline w-fit" Content="Jan, 2024" Type="button" aria-label="choose a month" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="May, 2024"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Apr, 2024"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Mar, 2024"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Feb, 2024"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Jan, 2024"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+                <div class="mt-5">
+                    <SfChart @ref="Chart" Width="100%" Height="300px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" Visible="false" LabelFormat="MMM d">
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Minimum="0" Maximum="40" Interval="10" LabelFormat="{value}°">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@AreaChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.SplineArea" XName="Date" YName="High" Name="High" Width="2" Fill="url(#gradient-high)">
+                                <ChartSeriesBorder Color="#D83B01" Width="2"></ChartSeriesBorder>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.SplineArea" XName="Date" YName="Low" Name="Low" Width="2" Fill="url(#gradient-low)">
+                                <ChartSeriesBorder Color="#5A61F6" Width="2"></ChartSeriesBorder>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartLegendSettings Visible="false"></ChartLegendSettings>
+                        <ChartTooltipSettings Enable="true" EnableMarker="false" Shared="true" ShowHeaderLine="false" Format="Daily ${series.name} : ${point.y}" Header="${point.x}"></ChartTooltipSettings>
+                        <ChartCrosshairSettings Enable="true" LineType="Syncfusion.Blazor.Charts.LineType.Vertical" SnapToData="true" DashArray="4,5">
+                            <Line Color="#D1D5DB"></Line>
+                        </ChartCrosshairSettings>
+                    </SfChart>
+                    <svg width="0" height="0">
+                        <defs>
+                            <linearGradient id="gradient-high" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#D83B01" stop-opacity="0.2" />
+                                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0001" />
+                            </linearGradient>
+                            <linearGradient id="gradient-low" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#5A61F6" stop-opacity="0.2" />
+                                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0001" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center p-3 p-sm-4">
+            <div class="w-100" style="max-width: 930px;">
+                <h3 class="fs-6 fw-medium text-body mb-3">Weather Analysis</h3>
+                <div class="d-flex justify-content-between flex-column flex-sm-row flex-column-reverse gap-3 mt-3 mt-md-2 align-items-sm-center">
+                    <SfButtonGroup class="e-btn-group align-self-start">
+                        <input Type="radio" id="temperature" name="weatherMetric" checked value="temperature" aria-label="temperature" role="button" />
+                        <label class="e-btn" for="temperature">
+                            <span class="e-btn-icon sf-icon-thermometer small @(IsMobileView ? "" : "e-icon-left")"></span>
+                            <span class="d-none d-sm-inline-block">Temperature</span>
+                        </label>
+                        <input Type="radio" id="precipitation" name="weatherMetric" value="precipitation" aria-label="precipitation" role="button" />
+                        <label class="e-btn" for="precipitation">
+                            <span class="e-btn-icon sf-icon-precipitation small @(IsMobileView ? "" : "e-icon-left")"></span>
+                            <span class="d-none d-sm-inline-block">Precipitation</span>
+                        </label>
+                        <input Type="radio" id="humidity" name="weatherMetric" value="humidity" aria-label="humidity" role="button" />
+                        <label class="e-btn" for="humidity">
+                            <span class="e-btn-icon sf-icon-humidity small @(IsMobileView ? "" : "e-icon-left")"></span>
+                            <span class="d-none d-sm-inline-block">Humidity</span>
+                        </label>
+                        <input Type="radio" id="wind" name="weatherMetric" value="wind" aria-label="wind" role="button" />
+                        <label class="e-btn" for="wind">
+                            <span class="e-btn-icon sf-icon-wind small @(IsMobileView ? "" : "e-icon-left")"></span>
+                            <span class="d-none d-sm-inline-block">Wind</span>
+                        </label>
+                    </SfButtonGroup>
+                    <SfDropDownButton @ref="DropDownButton" CssClass="e-outline w-auto align-self-start" Content="Jan, 2024" Type="button" aria-label="choose a month" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="May, 2024"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Apr, 2024"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Mar, 2024"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Feb, 2024"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Jan, 2024"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+                <div class="mt-4">
+                    <SfChart @ref="Chart" Width="100%" Height="300px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.DateTime" Visible="false" LabelFormat="MMM d"></ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Minimum="0" Maximum="40" Interval="10" LabelFormat="{value}°">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@AreaChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.SplineArea" XName="Date" YName="High" Name="High" Width="2" Fill="url(#gradient-high)">
+                                <ChartSeriesBorder Color="@(CurrentTheme == "tailwind-dark" ? "#FF4B4B" : "#F42929")" Width="2"></ChartSeriesBorder>
+                            </ChartSeries>
+                            <ChartSeries DataSource="@AreaChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.SplineArea" XName="Date" YName="Low" Name="Low" Width="2" Fill="url(#gradient-low)">
+                                <ChartSeriesBorder Color="@(CurrentTheme == "tailwind-dark" ? "#3A95FF" : "#006EEF")" Width="2"></ChartSeriesBorder>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartLegendSettings Visible="false"></ChartLegendSettings>
+                        <ChartTooltipSettings Enable="true" EnableMarker="false" Shared="true" ShowHeaderLine="false" Format="Daily ${series.name} : ${point.y}" Header="${point.x}"></ChartTooltipSettings>
+                        <ChartCrosshairSettings Enable="true" LineType="Syncfusion.Blazor.Charts.LineType.Vertical" SnapToData="true" DashArray="4,5">
+                            <Line Color="#D1D5DB"></Line>
+                        </ChartCrosshairSettings>
+                    </SfChart>
+                    <svg width="0" height="0">
+                        <defs>
+                            <linearGradient id="gradient-high" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#F42929" stop-opacity="0.2" />
+                                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0001" />
+                            </linearGradient>
+                            <linearGradient id="gradient-low" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="#006EEF" stop-opacity="0.2" />
+                                <stop offset="100%" stop-color="#FFFFFF" stop-opacity="0.0001" />
+                            </linearGradient>
+                        </defs>
+                    </svg>
+                </div>
+            </div>
+        </div>
+    </section>
+}

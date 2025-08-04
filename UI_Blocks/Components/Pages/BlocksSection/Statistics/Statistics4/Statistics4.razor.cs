@@ -2,7 +2,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Statistics.Statistics4
 {
     public partial class Statistics4
     {
-        public List<Metric> MetricsData { get; set; } = new List<Metric>
+        public List<Metric> MetricsData = new List<Metric>
         {
             new Metric { MetricName = "Calories", CurrentValue = 243, CurrentPercentage = 12, MetricAssets = "calories.png", Unit = "kcal", Trend = "up" },
             new Metric { MetricName = "Activity", CurrentValue = 56, CurrentPercentage = -12, MetricAssets = "activity.png", Unit = "min", Trend = "down" },

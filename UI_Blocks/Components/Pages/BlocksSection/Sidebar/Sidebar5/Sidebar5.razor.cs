@@ -1,37 +1,36 @@
-﻿using Syncfusion.Blazor.Notifications;
+﻿using Microsoft.JSInterop;
+using Syncfusion.Blazor.Notifications;
 
 namespace UI_Blocks.Components.Pages.BlocksSection.Sidebar.Sidebar5
 {
     public partial class Sidebar5
     {
-        private SfToast? ToastInfo;
-        private SfToast? ToastWarning;
-        private bool SidebarToggle { get; set; } = true;
+        public SfToast? ToastInfo;
+        public SfToast? ToastWarning;
+        public bool IsSidebarOpen = true;
+        public bool IsBackdropVisible = false;
 
-        private readonly List<MenuItem> Data = new()
+        public List<MenuItem> Data = new List<MenuItem>
         {
             new MenuItem { Field = "Home", FontIcon = "e-icons e-home" },
             new MenuItem { Field = "My Dashboard", FontIcon = "e-icons e-grid-view" },
-            new MenuItem { Field = "Notifications", FontIcon = "sf-icon-notification-bell-01" },
+            new MenuItem { Field = "Notifications", FontIcon = "sf-icon-notification-bell-01" }
         };
 
-        public async Task CreatedHandler(SfToast? toast)
+        [JSInvokable]
+        public void ResizeHandler(string message, int windowWidth)
         {
-            if (toast != null)
+            if (message == "resizeAction")
             {
-                await toast.ShowAsync();
+                IsBackdropVisible = windowWidth <= 640;
             }
+            StateHasChanged();
         }
 
         public class MenuItem
         {
             public string Field { get; set; } = string.Empty;
             public string FontIcon { get; set; } = string.Empty;
-        }
-
-        private void ToggleSidebar()
-        {
-            SidebarToggle = !SidebarToggle;
         }
     }
 }

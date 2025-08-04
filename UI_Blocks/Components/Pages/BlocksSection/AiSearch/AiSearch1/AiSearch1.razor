@@ -1,7 +1,6 @@
 ﻿@page "/blocks/ai-search-1"
 
 @inherits UI_Blocks.Components.Pages.MainSection.Demo
-@inject IJSRuntime JSRuntime
 
 @ThemeLinks
 
@@ -9,8 +8,8 @@
 {
     <section class="bg-white dark:bg-gray-900 h-full">
         <div class="w-full pt-5 pb-4" style="height: 600px;">
-            <div id="SearchContainerParent" class="mx-auto" style="max-width: 400px">
-                <SfAutoComplete TValue="string" TItem="string" @ref="Search" DataSource="@(new List<string>())" Placeholder="Search" PopupHeight="530px" CssClass="e-bigger" role="combobox">
+            <div id="SearchContainerParent" class="mx-auto px-4" style="max-width: 400px">
+                <SfAutoComplete TValue="string" TItem="string" @ref="Search" CssClass="e-bigger" DataSource="@(new List<string>())" Placeholder="Search" PopupHeight="530px" role="combobox">
                     <AutoCompleteEvents TValue="string" TItem="string" Focus="@FocusHandlerAsync" Filtering="@SearchResult" Created="@FocusHandlerAsync"></AutoCompleteEvents>
                     <AutoCompleteTemplates TItem="string">
                         <NoRecordsTemplate>
@@ -24,7 +23,7 @@
                                         <div class="text-sm text-gray-900 dark:text-white">"@SearchKeyword" did not match any projects or commands. Please try again <a href="javascript:void(0);" class="font-normal underline p-0" role="link">create a new chat</a>.</div>
                                     </div>
                                     <div>
-                                        <SfButton CssClass="e-outline px-4" Content="Clear Search" Type="button" aria-label="clear search" role="button"></SfButton>
+                                        <SfButton CssClass="e-outline px-4" Content="Clear search" Type="button" aria-label="clear search" role="button"></SfButton>
                                     </div>
                                 </div>
                             </div>
@@ -39,8 +38,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body h-100">
         <div class="w-100 pt-3 pb-3 h-100" style="height: 600px;">
-            <div id="SearchContainerParent" class="mx-auto" style="max-width: 400px">
-                <SfAutoComplete TValue="string" TItem="string" @ref="Search" DataSource="@(new List<string>())" Placeholder="Search" PopupHeight="530px" CssClass="e-bigger" role="combobox">
+            <div id="SearchContainerParent" class="mx-auto px-3" style="max-width: 400px">
+                <SfAutoComplete TValue="string" TItem="string" @ref="Search" CssClass="e-bigger" DataSource="@(new List<string>())" Placeholder="Search" PopupHeight="530px" role="combobox">
                     <AutoCompleteEvents TValue="string" TItem="string" Focus="@FocusHandlerAsync" Filtering="@SearchResult" Created="@FocusHandlerAsync"></AutoCompleteEvents>
                     <AutoCompleteTemplates TItem="string">
                         <NoRecordsTemplate>
@@ -51,10 +50,10 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 <div>
                                     <div class="mb-4">
                                         <div class="mb-1 small fw-medium text-body">No search results found</div>
-                                        <div class="small text-body">“@SearchKeyword” did not match any chat history. Please try again or <a href="javascript:void(0);" class="fw-normal text-decoration-underline p-0" role="link">create a new chat</a>.</div>
+                                        <div class="small text-body">"@SearchKeyword" did not match any chat history. Please try again or <a href="javascript:void(0);" class="fw-normal text-decoration-underline p-0" role="link">create a new chat</a>.</div>
                                     </div>
                                     <div>
-                                        <SfButton CssClass="e-outline px-4" Content="Clear Search" Type="button" aria-label="clear search" role="button"></SfButton>
+                                        <SfButton CssClass="e-outline px-4" Content="Clear search" Type="button" aria-label="clear search" role="button"></SfButton>
                                     </div>
                                 </div>
                             </div>

@@ -1,0 +1,142 @@
+﻿@page "/blocks/rating-15"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="mx-auto w-full p-6 mt-4 bg-white dark:bg-gray-800 border-0 sm:border border-gray-300 dark:border-gray-500 sm:rounded-lg" style="max-width: 570px;">
+                <h4 class="font-semibold text-gray-900 dark:text-white">Leave us a review</h4>
+                <p class="text-sm mt-3 text-gray-700 dark:text-gray-100">Would you mind taking a moment to rate your satisfaction with your service?</p>
+                <div class="py-5">
+                    <SfRating EnableAnimation="false" EnableSingleSelection="true">
+                        <EmptyTemplate Context="data">
+                            <div class="w-full">
+                                @switch (data.Index)
+                                {
+                                    case 0:
+                                        <div class="flex flex-col items-start gap-3 mr-1.5 sm:mr-11">
+                                            <img class="h-12 w-12" src="assets/images/rating/customer-satisfaction/poor.png" alt="poor" />
+                                            <p class="sm:text-sm text-xs ml-2 font-medium text-gray-500 dark:text-gray-400">Poor</p>
+                                        </div>
+                                        break;
+                                    case 1:
+                                        <div class="flex flex-col items-center gap-3 mr-1.5 sm:mr-11">
+                                            <img class="h-12 w-12" src="assets/images/rating/customer-satisfaction/unhappy.png" alt="unhappy" />
+                                            <p class="sm:text-sm text-xs font-medium text-gray-500 dark:text-gray-400">Unhappy</p>
+                                        </div>
+                                        break;
+                                    case 2:
+                                        <div class="flex flex-col items-center gap-3 mr-1.5 sm:mr-11">
+                                            <img class="h-12 w-12" src="assets/images/rating/customer-satisfaction/average.png" alt="average" />
+                                            <p class="sm:text-sm text-xs font-medium text-gray-500 dark:text-gray-400">Average</p>
+                                        </div>
+                                        break;
+                                    case 3:
+                                        <div class="flex flex-col items-center gap-3 mr-1.5 sm:mr-11">
+                                            <img class="h-12 w-12" src="assets/images/rating/customer-satisfaction/good.png" alt="good" />
+                                            <p class="sm:text-sm text-xs font-medium text-gray-500 dark:text-gray-400">Good</p>
+                                        </div>
+                                        break;
+                                    case 4:
+                                        <div class="flex flex-col items-center gap-3">
+                                            <img class="h-12 w-12" src="assets/images/rating/customer-satisfaction/excellent.png" alt="excellent" />
+                                            <p class="sm:text-sm text-xs font-medium text-gray-500 dark:text-gray-400">Excellent</p>
+                                        </div>
+                                        break;
+                                }
+                            </div>
+                        </EmptyTemplate>
+                        <TooltipTemplate Context="item">
+                            @switch (item)
+                            {
+                                case 1: <span>Poor</span>; break;
+                                case 2: <span>Unhappy</span>; break;
+                                case 3: <span>Average</span>; break;
+                                case 4: <span>Good</span>; break;
+                                case 5: <span>Excellent</span>; break;
+                            }
+                        </TooltipTemplate>
+                    </SfRating>
+                </div>
+                <div class="flex flex-col">
+                    <SfTextArea CssClass="placeholder:text-sm" ResizeMode="Resize.None" Placeholder="How did you feel using our service?" aria-label="enter your feedback" role="textbox" style="height: 94px;"></SfTextArea>
+                </div>
+                <div class="flex justify-end mt-4">
+                    <SfButton cssClass="e-primary" Content="Share review" Type="Button" aria-label="share review" role="button"></SfButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="mx-auto w-100 p-4 mt-3 bg-body border rounded-3" style="max-width: 570px;">
+                <h4 class="fs-6 fw-semibold text-body mb-0">Leave us a review</h4>
+                <p class="small mb-0 text-body-secondary mt-2 pt-1">Would you mind taking a moment to rate your satisfaction with your service?</p>
+                <div class="py-4">
+                    <SfRating EnableAnimation="false" EnableSingleSelection="true">
+                        <EmptyTemplate Context="data">
+                            <div class="w-100">
+                                @switch (data.Index)
+                                {
+                                    case 0:
+                                        <div class="d-flex flex-column align-items-center fs-6 gap-2 me-sm-5">
+                                            <img class="img-fluid" style="height: 48px; width: 48px;" src="assets/images/rating/customer-satisfaction/poor.png" alt="Poor" />
+                                            <p class="small fw-medium text-body-secondary mb-0">Poor</p>
+                                        </div>
+                                        break;
+                                    case 1:
+                                        <div class="d-flex flex-column align-items-center fs-6 gap-2 me-sm-5 me-1">
+                                            <img class="img-fluid" style="height: 48px; width: 48px;" src="assets/images/rating/customer-satisfaction/unhappy.png" alt="Unhappy" />
+                                            <p class="small fw-medium text-body-secondary mb-0">Unhappy</p>
+                                        </div>
+                                        break;
+                                    case 2:
+                                        <div class="d-flex flex-column align-items-center fs-6 gap-2 me-sm-5 me-1">
+                                            <img class="img-fluid" style="height: 48px; width: 48px;" src="assets/images/rating/customer-satisfaction/average.png" alt="Average" />
+                                            <p class="small fw-medium text-body-secondary mb-0">Average</p>
+                                        </div>
+                                        break;
+                                    case 3:
+                                        <div class="d-flex flex-column align-items-center fs-6 gap-2 me-sm-5 me-1">
+                                            <img class="img-fluid" style="height: 48px; width: 48px;" src="assets/images/rating/customer-satisfaction/good.png" alt="Good" />
+                                            <p class="small fw-medium text-body-secondary mb-0">Good</p>
+                                        </div>
+                                        break;
+                                    case 4:
+                                        <div class="d-flex flex-column align-items-center fs-6 gap-2 me-1">
+                                            <img class="img-fluid" style="height: 48px; width: 48px;" src="assets/images/rating/customer-satisfaction/excellent.png" alt="Excellent" />
+                                            <p class="small fw-medium text-body-secondary mb-0">Excellent</p>
+                                        </div>
+                                        break;
+                                }
+                            </div>
+                        </EmptyTemplate>
+                        <TooltipTemplate Context="item">
+                            @switch (item)
+                            {
+                                case 1: <span>Poor</span>; break;
+                                case 2: <span>UnHappy</span>; break;
+                                case 3: <span>Average</span>; break;
+                                case 4: <span>Good</span>; break;
+                                case 5: <span>Excellent</span>; break;
+                            }
+                        </TooltipTemplate>
+                    </SfRating>
+                </div>
+                <div class="d-flex flex-column">
+                    <SfTextArea Placeholder="How did you feel using our service?" Row="6" ResizeMode="Resize.None" aria-label="enter your feedback" role="textbox" style="height: 94px;"></SfTextArea>
+                </div>
+                <div class="d-flex justify-content-end mt-3">
+                    <SfButton CssClass="e-primary" Content="Share review" Type="Button" aria-label="share review" role="button"></SfButton>
+                </div>
+            </div>
+        </div>
+    </section>
+}

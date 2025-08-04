@@ -9,36 +9,40 @@
     <section>
         <div id="dialog-container" class="relative" style="min-height: 580px;">
             <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg overflow-hidden" Target="#dialog-container" IsModal="true" Width="400px" aria-label="provide feedback for improvement" role="dialog">
-                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
+                    <Header>
+                        <div class="flex justify-between items-center pt-3 mb-1 sm:px-1.5">
+                            <p class="font-medium text-lg">Feedback for improvement</p>
+                            <SfButton CssClass="e-flat e-small me-1" IconCss="e-icons e-close" OnClick="@(async () => { if (Dialog != null) await Dialog.HideAsync(); })" Type="button" aria-label="close" role="button"></SfButton>
+                        </div>
+                    </Header>
                     <Content>
-                        <div class="flex flex-col gap-6 px-4 py-6 sm:px-6 h-full">
-                            <div class="flex justify-between items-center">
-                                <p class="font-medium text-lg">Feedback for improvement</p>
-                                <SfButton CssClass="e-flat e-small" IconCss="e-icons e-close" OnClick="@(async () => { if (Dialog != null) await Dialog.HideAsync(); })" Type="button" aria-label="close" role="button"></SfButton>
-                            </div>
-                            <div class="flex flex-col gap-3">
-                                <SfCheckBox Label="Factually incorrect" Checked="true" aria-label="factually incorrect" role="checkbox"></SfCheckBox>
-                                <SfCheckBox Label="Missing key information" Checked="false" aria-label="missing key information" role="checkbox"></SfCheckBox>
-                                <SfCheckBox Label="Ignored or refused instructions" Checked="false" aria-label="ignored or refused instructions" role="checkbox"></SfCheckBox>
+                        <div class="flex flex-col gap-6 px-4 py-3 sm:px-6 h-full">
+                            <div class="flex flex-col gap-3" style="max-width: fit-content">
+                                <SfCheckBox TChecked="bool" Label="Factually incorrect" Checked="true" aria-label="factually incorrect" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Label="Missing key information" aria-label="missing key information" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Label="Ignored or refused instructions" aria-label="ignored or refused instructions" role="checkbox"></SfCheckBox>
                             </div>
                             <div class="flex flex-col gap-1 grow text-sm">
                                 <label class="font-medium">Others (Optional)</label>
                                 <SfTextArea Placeholder="Please share your additional feedback to improvise" ResizeMode="Resize.None" Rows="6" aria-label="please share your additional feedback to improvise" role="textbox" style="height: 140px;"></SfTextArea>
                             </div>
-                            <div class="flex gap-3">
-                                <SfButton CssClass="w-1/2" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
-                                <SfButton CssClass="e-primary w-1/2" Type="submit" aria-label="submit" role="button">Submit</SfButton>
-                            </div>
                         </div>
                     </Content>
+                    <FooterTemplate>
+                        <div class="flex gap-3 sm:px-1.5 pt-1 pb-4">
+                            <SfButton CssClass="w-1/2 !ml-0" Content="Cancel" Type="button" aria-label="cancel" role="button"></SfButton>
+                            <SfButton CssClass="e-primary w-1/2 !ml-0" Content="Submit" Type="submit" aria-label="submit" role="button"></SfButton>
+                        </div>
+                    </FooterTemplate>
                 </DialogTemplates>
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
             </SfDialog>
         </div>
     </section>
     <!-- SB Code - Start -->
     <div class="top-0 left-0 absolute w-full flex">
-        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Type="button" aria-label="feedback for improvement" role="button">Feedback for Improvement</SfButton>
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Content="Feedback for Improvement" Type="button" aria-label="feedback for improvement" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -47,36 +51,40 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     <section>
         <div id="dialog-container" class="position-relative" style="min-height: 580px;">
             <SfDialog @ref="Dialog" class="rounded-2" Target="#dialog-container" IsModal="true" Width="400px" aria-label="provide feedback for improvement" role="dialog">
-                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
+                    <Header>
+                        <div class="d-flex justify-content-between align-items-center fs-5 px-sm-2 mx-1 pt-2">
+                            <p class="fw-medium small mb-0">Feedback for improvement</p>
+                            <SfButton CssClass="e-flat e-small" IconCss="e-icons e-close" OnClick="@(async () => { if (Dialog != null) await Dialog.HideAsync(); })" Type="button" aria-label="close" role="button"></SfButton>
+                        </div>
+                    </Header>
                     <Content>
-                        <div class="d-flex flex-column px-3 py-4 px-sm-4 h-100">
-                            <div class="d-flex justify-content-between align-items-center fs-5 mb-4">
-                                <p class="fw-medium small mb-0">Feedback for improvement</p>
-                                <SfButton CssClass="e-flat e-small" IconCss="e-icons e-close" OnClick="@(async () => { if (Dialog != null) await Dialog.HideAsync(); })" Type="button" aria-label="close" role="button"></SfButton>
+                        <div class="d-flex flex-column p-3 pb-2 px-sm-4 h-100">
+                            <div class="d-flex flex-column gap-3 mb-4 mb-md-3" style="max-width: fit-content">
+                                <SfCheckBox TChecked="bool" Label="Factually incorrect" Checked="true" aria-label="factually incorrect" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Label="Missing key information" aria-label="missing key information" role="checkbox"></SfCheckBox>
+                                <SfCheckBox TChecked="bool" Label="Ignored or refused instructions" aria-label="ignored or refused instructions" role="checkbox"></SfCheckBox>
                             </div>
-                            <div class="d-flex flex-column gap-3 mb-4 mb-md-3">
-                                <SfCheckBox Label="Factually incorrect" Checked="true" aria-label="factually incorrect" role="checkbox"></SfCheckBox>
-                                <SfCheckBox Label="Missing key information" Checked="false" aria-label="missing key information" role="checkbox"></SfCheckBox>
-                                <SfCheckBox Label="Ignored or refused instructions" Checked="false" aria-label="ignored or refused instructions" role="checkbox"></SfCheckBox>
-                            </div>
-                            <div class="d-flex flex-column gap-1 flex-grow-1 mb-4">
+                            <div class="d-flex flex-column gap-1 flex-grow-1">
                                 <label class="fw-medium">Others <span class="text-body-tertiary">(Optional)</span></label>
                                 <SfTextArea Placeholder="Please share your additional feedback to improvise" ResizeMode="Resize.None" Rows="6" aria-label="please share your additional feedback to improvise" role="textbox" style="height: 140px;"></SfTextArea>
                             </div>
-                            <div class="d-flex gap-3">
-                                <SfButton CssClass="w-50" Type="button" aria-label="cancel" role="button">Cancel</SfButton>
-                                <SfButton CssClass="e-primary w-50" Type="submit" aria-label="submit" role="button">Submit</SfButton>
-                            </div>
                         </div>
                     </Content>
+                    <FooterTemplate>
+                        <div class="d-flex gap-3 pb-2 m-1 px-sm-2">
+                            <SfButton CssClass="w-50 ms-0" Type="button" Content="Cancel" aria-label="cancel" role="button"></SfButton>
+                            <SfButton CssClass="e-primary w-50 ms-0" Type="submit" Content="Submit" aria-label="submit" role="button"></SfButton>
+                        </div>
+                    </FooterTemplate>
                 </DialogTemplates>
+                <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
             </SfDialog>
         </div>
     </section>
     <!-- SB Code - Start -->
     <div class="position-absolute top-0 start-0 d-flex w-100">
-        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Type="button" aria-label="feedback for improvement" role="button">Feedback for Improvement</SfButton>
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Content="Feedback for Improvement" Type="button" aria-label="feedback for improvement" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

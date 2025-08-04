@@ -12,7 +12,7 @@
                 <div class="px-4 py-3">
                     <div class="flex justify-between items-center">
                         <span class="font-medium text-sm text-gray-900 dark:text-white">Search history</span>
-                        <SfButton CssClass="e-danger e-flat" Type="button" Content="Delete" aria-label="delete" role="button"></SfButton>
+                        <SfButton CssClass="e-danger e-flat" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
                     </div>
                     <div class="pt-3">
                         <SfListView CssClass="e-list-template !border-0" DataSource="@SearchItems" aria-label="search history list" role="list">
@@ -38,7 +38,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 absolute top-0 right-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -50,7 +50,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 <div class="p-3">
                     <div class="d-flex justify-content-between align-items-center fs-6">
                         <span class="small fw-medium text-body">Search history</span>
-                        <SfButton CssClass="e-danger e-flat" Type="button" Content="Delete" aria-label="delete" role="button"></SfButton>
+                        <SfButton CssClass="e-danger e-flat" Content="Delete" Type="button" aria-label="delete" role="button"></SfButton>
                     </div>
                     <div>
                         <SfListView CssClass="e-list-template border-0" DataSource="@SearchItems" aria-label="search history list" role="list">
@@ -76,7 +76,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 position-absolute top-0 end-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

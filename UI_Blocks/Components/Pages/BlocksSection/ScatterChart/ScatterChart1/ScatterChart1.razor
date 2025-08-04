@@ -1,0 +1,106 @@
+﻿@page "/blocks/scatter-chart-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 690px">
+                <div class="flex flex-col sm:flex-row justify-between sm:items-center gap-3 mb-2">
+                    <div class="flex justify-between items-center">
+                        <h2 class="text-base font-semibold text-gray-900 dark:text-white pb-3 sm:pb-0">Sales Overview</h2>
+                        <SfButton CssClass="e-outline block sm:hidden e-outline" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+                    </div>
+                    <div class="flex gap-3">
+                        <SfDropDownButton @ref="DropDownButton" CssClass="e-outline" Content="Select Year" Type="button" aria-label="choose a year" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="2024"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2023"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2022"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2021"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2020"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                        <SfButton CssClass="e-outline hidden sm:block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+                    </div>
+                </div>
+                <SfChart @ref="Chart" Width="100%" Height="400px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                    <ChartPrimaryXAxis Title="Product Sales" Minimum="900" Maximum="1600" Interval="100" LabelRotation="@XAxisLabelRotation" LabelPlacement="Syncfusion.Blazor.Charts.LabelPlacement.OnTicks">
+                        <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                        <ChartAxisTitleStyle FontWeight="500"></ChartAxisTitleStyle>
+                    </ChartPrimaryXAxis>
+                    <ChartPrimaryYAxis Title="CSAT Score (%)" Minimum="70" Maximum="86" Interval="4">
+                        <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                        <ChartAxisTitleStyle FontWeight="500"></ChartAxisTitleStyle>
+                    </ChartPrimaryYAxis>
+                    <ChartSeriesCollection>
+                        <ChartSeries DataSource="@SlackPerformanceData" XName="ProductSales" YName="CSATScore" Name="Slack" Fill="#5A61F6" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Scatter">
+                            <ChartMarker Height="14" Width="14" Shape="Syncfusion.Blazor.Charts.ChartShape.Rectangle"></ChartMarker>
+                        </ChartSeries>
+                        <ChartSeries DataSource="@ZoomPerformanceData" XName="ProductSales" YName="CSATScore" Name="Zoom" Fill="#FFB900" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Scatter">
+                            <ChartMarker Height="14" Width="14" Shape="Syncfusion.Blazor.Charts.ChartShape.Circle"></ChartMarker>
+                        </ChartSeries>
+                        <ChartSeries DataSource="@TeamsPerformanceData" XName="ProductSales" YName="CSATScore" Name="Microsoft Teams" Fill="#01A8B5" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Scatter">
+                            <ChartMarker Height="14" Width="14" Shape="Syncfusion.Blazor.Charts.ChartShape.Triangle"></ChartMarker>
+                        </ChartSeries>
+                    </ChartSeriesCollection>
+                    <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near" Height="56"></ChartLegendSettings>
+                </SfChart>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+     <section class="bg-body">
+        <div class="d-flex justify-content-center p-3 p-sm-4">
+            <div class="w-100" style="max-width: 690px">
+                <div class="d-flex flex-column flex-sm-row justify-content-between align-items-sm-center gap-3 mb-2">
+                    <div class="d-flex justify-content-between align-items-center w-100">
+                        <h2 class="fs-6 fw-semibold text-body mb-0">Sales Overview</h2>
+                        <SfButton class="e-outline d-block d-sm-none" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+                    </div>
+                    <div class="d-flex justify-content-sm-end gap-3 w-100">
+                        <SfDropDownButton @ref="DropDownButton" CssClass="e-outline" Content="Select Year" Type="button" aria-label="choose a year" role="button">
+                            <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                            <DropDownMenuItems>
+                                <DropDownMenuItem Text="2024"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2023"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2022"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2021"></DropDownMenuItem>
+                                <DropDownMenuItem Text="2020"></DropDownMenuItem>
+                            </DropDownMenuItems>
+                        </SfDropDownButton>
+                        <SfButton class="e-outline d-none d-sm-block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+                    </div>
+                </div>
+                <SfChart @ref="Chart" Width="100%" Height="380px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                    <ChartPrimaryXAxis Title="Product Sales" Minimum="900" Maximum="1600" Interval="100" LabelRotation="@XAxisLabelRotation"  LabelPlacement="Syncfusion.Blazor.Charts.LabelPlacement.OnTicks">
+                        <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                        <ChartAxisTitleStyle FontWeight="500"></ChartAxisTitleStyle>
+                    </ChartPrimaryXAxis>
+                    <ChartPrimaryYAxis Title="CSAT Score (%)" Minimum="70" Maximum="86" Interval="4">
+                        <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                        <ChartAxisTitleStyle FontWeight="500"></ChartAxisTitleStyle>
+                    </ChartPrimaryYAxis>
+                    <ChartSeriesCollection>
+                        <ChartSeries DataSource="@SlackPerformanceData" XName="ProductSales" YName="CSATScore" Name="Slack" Fill="#3A95FF" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Scatter">
+                            <ChartMarker Height="14" Width="14" Shape="Syncfusion.Blazor.Charts.ChartShape.Rectangle"></ChartMarker>
+                        </ChartSeries>
+                        <ChartSeries DataSource="@ZoomPerformanceData" XName="ProductSales" YName="CSATScore" Name="Zoom" Fill="#FF9900" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Scatter">
+                            <ChartMarker Height="14" Width="14" Shape="Syncfusion.Blazor.Charts.ChartShape.Circle"></ChartMarker>
+                        </ChartSeries>
+                        <ChartSeries DataSource="@TeamsPerformanceData" XName="ProductSales" YName="CSATScore" Name="Microsoft Teams" Fill="#00EFA7" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Scatter">
+                            <ChartMarker Height="14" Width="14" Shape="Syncfusion.Blazor.Charts.ChartShape.Triangle"></ChartMarker>
+                        </ChartSeries>
+                    </ChartSeriesCollection>
+                    <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near" Height="56"></ChartLegendSettings>
+                </SfChart>
+            </div>
+        </div>
+    </section>
+}

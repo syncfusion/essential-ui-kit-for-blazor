@@ -6,7 +6,7 @@
 
 @if (CurrentTheme.Contains("tailwind"))
 {
-	<section class="bg-gray-50 dark:bg-gray-950">
+	<section class="bg-gray-50 dark:bg-gray-900">
 		<div id="checkout-accordion" class="container-lg px-4 md:px-6 text-gray-700 dark:text-gray-300 py-20" style="min-height: 1145px;">
 			<div class="m-auto w-full max-w-3xl">
 				<h2 class="font-semibold text-xl">Checkout</h2>
@@ -19,24 +19,24 @@
 								</HeaderTemplate>
 								<ContentTemplate>
 									<div>
-										<div class="e-card pt-3 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+										<div class="e-card pt-3 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-700">
 											<div class="e-card-content !pt-1 !px-4">
 												<div class="e-bigger">
-													<SfRadioButton Label="Trig Yellow - (+1) 432 434 2345" Name="delivery" Value="Trig Yellow - (+1) 432 434 2345" Checked="@SelectedDeliveryInfo" AriaLabel="trig yellow - (+1) 432 434 2345" role="radio"></SfRadioButton>
+													<SfRadioButton Label="Trig Yellow - (+1) 432 434 2345" Name="delivery" Value="Trig Yellow - (+1) 432 434 2345" Checked="@SelectedDeliveryInfo" aria-label="trig yellow - (+1) 432 434 2345" role="radio"></SfRadioButton>
 												</div>
 												<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">68 Dakota St, San Francisco, California 94107.</div>
 											</div>
 										</div>
-										<div class="e-card pt-3 mt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+										<div class="e-card pt-3 mt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-700">
 											<div class="e-card-content !pt-1 !px-4">
 												<div class="e-bigger">
-													<SfRadioButton Label="G8 - (+1) 432 000 2245" Name="delivery" Value="G8 - (+1) 432 000 2245" Checked="@SelectedDeliveryInfo" AriaLabel="g8 - (+1) 432 000 2245" role="radio"></SfRadioButton>
+													<SfRadioButton Label="G8 - (+1) 432 000 2245" Name="delivery" Value="G8 - (+1) 432 000 2245" Checked="@SelectedDeliveryInfo" aria-label="g8 - (+1) 432 000 2245" role="radio"></SfRadioButton>
 												</div>
 												<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">1 Dakota St, San Francisco, California 94107.</div>
 											</div>
 										</div>
 										<div class="e-bigger mt-5">
-											<SfButton CssClass="e-flat m-1" Content="Add new delivery information" IconCss="e-icons e-plus" Type="button" AriaLabel="add new delivery information" role="button"></SfButton>
+											<SfButton CssClass="e-flat m-1" IconCss="e-icons e-plus" Content="Add new delivery information" Type="button" aria-label="add new delivery information" role="button"></SfButton>
 										</div>
 									</div>
 								</ContentTemplate>
@@ -101,7 +101,7 @@
 						</div>
 					</div>
 					<div class="mt-5">
-						<SfButton CssClass="w-full border-gray-300 dark:border-gray-500" Type="button" Content="Add new info" IconCss="e-icons e-plus" aria-label="add new info" role="button"></SfButton>
+						<SfButton CssClass="w-full border-gray-300 dark:border-gray-500" IconCss="e-icons e-plus" Content="Add new info" Type="button" aria-label="add new info" role="button"></SfButton>
 					</div>
 				</form>
 				<div class="e-bigger mt-8">
@@ -145,7 +145,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 								</HeaderTemplate>
 								<ContentTemplate>
 									<div>
-										<div class="e-card">
+										<div class="e-card bg-body-tertiary">
 											<div class="e-card-content">
 												<div class="e-bigger">
 													<SfRadioButton Label="Trig Yellow - (+1) 432 434 2345" Value="Trig Yellow - (+1) 432 434 2345" Name="delivery" Checked="@SelectedDeliveryInfo" aria-label="trig yellow - (+1) 432 434 2345" role="radio"></SfRadioButton>
@@ -153,7 +153,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 												<div class="mt-1 ms-4 text-light-emphasis">68 Dakota St, San Francisco, California 94107.</div>
 											</div>
 										</div>
-										<div class="e-card mt-3">
+										<div class="e-card mt-3 bg-body-tertiary">
 											<div class="e-card-content">
 												<div class="e-bigger">
 													<SfRadioButton Label="G8 - (+1) 432 000 2245" Name="delivery" Value="G8 - (+1) 432 000 2245" Checked="@SelectedDeliveryInfo" aria-label="g8 - (+1) 432 000 2245" role="radio"></SfRadioButton>
@@ -162,7 +162,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 											</div>
 										</div>
 										<div class="e-bigger mt-3">
-											<SfButton CssClass="e-flat" Type="button" Content="Add new delivery information" IconCss="e-icons e-plus" aria-label="add new delivery information" role="button"></SfButton>
+											<SfButton CssClass="e-flat" IconCss="e-icons e-plus" Content="Add new delivery information" Type="button" aria-label="add new delivery information" role="button"></SfButton>
 										</div>
 									</div>
 								</ContentTemplate>
@@ -225,7 +225,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 						</div>
 					</div>
 					<div class="mt-3" cssClass="border-bottom">
-						<SfButton CssClass="e-block e-secondary" Type="button" Content="Add new info" IconCss="e-icons e-plus" aria-label="add new info" role="button"></SfButton>
+						<SfButton CssClass="e-block" IconCss="e-icons e-plus" Content="Add new info" Type="button" aria-label="add new info" role="button"></SfButton>
 					</div>
 				</form>
 				<div class="e-bigger mt-4">

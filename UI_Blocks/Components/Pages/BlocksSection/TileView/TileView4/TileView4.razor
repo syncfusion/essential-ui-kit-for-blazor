@@ -22,7 +22,7 @@
 						</BreadcrumbTemplates>
 					</SfBreadcrumb>
 					<div class="e-appbar-spacer"></div>
-					<SfButton CssClass="e-flat sf-icon-notification-bell-ring-03 text-base" Type="button" aria-label="notification" role="button"></SfButton>
+					<SfButton CssClass="e-flat text-base" IconCss="sf-icon-notification-bell-ring-03" Type="button" aria-label="notification" role="button"></SfButton>
 					<span class="e-avatar e-avatar-circle e-avatar-small shrink-0 ml-6">
 						<img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
 					</span>
@@ -34,10 +34,10 @@
 					<div class="flex gap-3">
 						<div class="e-input-group w-full md:w-72">
 							<span class="e-input-group-icon e-icons e-search"></span>
-							<input class="e-input !pl-0" type="text" placeholder="Search Buses" aria-label="search buses" role="textbox" />
+							<input class="e-input !pl-0" Type="text" placeholder="Search Buses" aria-label="search buses" role="textbox" />
 						</div>
 						<SfButton CssClass="hidden sm:inline-block" IconCss="e-icons e-filter" Content="Filter" Type="button" aria-label="filter" role="button"></SfButton>
-						<SfButton CssClass="sm:hidden e-icons e-filter" Type="button" aria-label="filter" role="button"></SfButton>
+						<SfButton CssClass="sm:hidden" IconCss="e-icons e-filter" Type="button" aria-label="filter" role="button"></SfButton>
 					</div>
 				</div>
 			</div>
@@ -63,7 +63,7 @@
 										</div>
 										<div class="e-card-content !p-0 flex items-center flex-wrap gap-4 text-gray-500 dark:text-gray-400 !overflow-visible">
 											<div class="flex items-center gap-2">
-												<SfRating CssClass="e-small" Value="@context.Rating" Precision="PrecisionType.Exact"></SfRating>
+												<SfRating CssClass="e-small" Value="@context.Rating" Precision="PrecisionType.Exact" ReadOnly="true"></SfRating>
 												<span>@context.Reviews reviews</span>
 											</div>
 											<span class="e-bigger e-badge e-badge-pill e-badge-success">Free date change</span>
@@ -76,8 +76,8 @@
 											<div class="border-s border-gray-500 dark:border-gray-400"></div>
 											<p>@context.Seats seats</p>
 										</div>
-										<p class="text-base mb-4 sm:mb-3">Starting at <span class="text-2xl font-semibold text-gray-900 dark:text-gray-50">@context.Price.ToString("C")</span></p>
-										<SfButton CssClass="e-primary e-block" Type="button" aria-label="show seats" role="button">Show seats</SfButton>
+										<p class="text-base mb-4 sm:mb-3">Starting at <span class="text-2xl font-semibold text-gray-900 dark:text-gray-50 ms-2">@context.Price.ToString("C")</span></p>
+										<SfButton CssClass="e-primary e-block" Content="Show seats" Type="button" aria-label="show seats" role="button"></SfButton>
 									</div>
 								</div>
 							}
@@ -107,7 +107,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 						</BreadcrumbTemplates>
 					</SfBreadcrumb>
 					<div class="e-appbar-spacer"></div>
-					<SfButton CssClass="e-flat sf-icon-notification-bell-ring-03 fs-6" Type="button" aria-label="notification" role="button"></SfButton>
+					<SfButton CssClass="e-flat fs-6" IconCss="sf-icon-notification-bell-ring-03" Type="button" aria-label="notification" role="button"></SfButton>
 					<span class="e-avatar e-avatar-circle e-avatar-small flex-shrink-0 ms-4">
 						<img src="assets/images/common/avatar/avatar-1.jpg" alt="profile picture" />
 					</span>
@@ -119,10 +119,10 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 					<div class="d-flex gap-2">
 						<div class="e-input-group me-1 flex-grow-1 felx-sm-grow-0">
 							<span class="e-input-group-icon e-icons e-search border-0"></span>
-							<input class="e-input ps-0" type="text" placeholder="Search Buses" aria-label="search buses" role="textbox" />
+							<input class="e-input ps-0" Type="text" placeholder="Search Buses" aria-label="search buses" role="textbox" />
 						</div>
 						<SfButton CssClass="e-outline d-none d-sm-inline-block" IconCss="e-icons e-filter" Content="Filter" Type="button" aria-label="filter" role="button"></SfButton>
-						<SfButton CssClass="e-outline d-sm-none e-icons e-filter" Type="button" aria-label="filter" role="button"></SfButton>
+						<SfButton CssClass="e-outline d-sm-none" IconCss="e-icons e-filter" Type="button" aria-label="filter" role="button"></SfButton>
 					</div>
 				</div>
 			</div>
@@ -148,7 +148,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 										</div>
 										<div class="e-card-content p-0 d-flex align-items-center flex-wrap gap-3 overflow-visible">
 											<div class="d-flex align-items-center gap-2">
-												<SfRating CssClass="e-small" Value="@context.Rating" Precision="PrecisionType.Exact"></SfRating>
+												<SfRating CssClass="e-small" Value="@context.Rating" Precision="PrecisionType.Exact" ReadOnly="true"></SfRating>
 												<span class="text-body-secondary">@context.Reviews reviews</span>
 											</div>
 											<span class="e-bigger e-badge e-badge-pill e-badge-success">Free date change</span>
@@ -161,8 +161,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 											<div class="border-start border-light-subtle"></div>
 											<p class="mb-0">@context.Seats seats</p>
 										</div>
-										<p class="mb-2 pb-1 fs-6 fw-medium text-body-secondary">Starting at <span class="fs-5 fw-bold lh-sm text-body">@context.Price.ToString("C")</span></p>
-										<SfButton CssClass="e-primary e-block" Type="button" aria-label="show seats" role="button">Show seats</SfButton>
+										<p class="mb-2 pb-1 fs-6 fw-medium text-body-secondary">Starting at <span class="fs-5 fw-bold lh-sm text-body ms-1">@context.Price.ToString("C")</span></p>
+										<SfButton CssClass="e-primary e-block" Content="Show seats" Type="button" aria-label="show seats" role="button"></SfButton>
 									</div>
 								</div>
 							}

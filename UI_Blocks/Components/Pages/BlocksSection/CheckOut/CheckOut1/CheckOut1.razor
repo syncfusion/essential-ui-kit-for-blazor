@@ -6,11 +6,11 @@
 
 @if (CurrentTheme.Contains("tailwind"))
 {
-	<section class="bg-white dark:bg-gray-900">
+	<section class="bg-gray-50 dark:bg-gray-900">
 		<div class="flex">
 			<div class="w-full m-auto text-gray-700 dark:text-gray-300">
 				<div class="lg:flex container-lg">
-					<div class="lg:w-8/12 px-4 pt-8 pb-6 md:px-6 lg:pb-8 xl:pl-11 xl:pt-8 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800">
+					<div class="lg:w-8/12 px-4 pt-8 pb-6 md:px-6 lg:pb-8 xl:pl-11 xl:pt-8 bg-gray-50 dark:bg-gray-900 border-r border-gray-200 dark:border-gray-800">
 						<div>
 							<div class="stepperOptional">
 								<SfStepper @ref="Stepper" ActiveStep="1">
@@ -74,13 +74,13 @@
 								</div>
 							</div>
 							<div class="mt-5">
-								<SfButton CssClass="e-flat" Type="button" Content="Add new address" IconCss="e-icons e-plus" aria-label="add new address" role="button"></SfButton>
+								<SfButton CssClass="e-flat" IconCss="e-icons e-plus" Content="Add new address" Type="button" aria-label="add new address" role="button"></SfButton>
 							</div>
 						</form>
 						<div>
 							<h2 class="mb-4 font-semibold text-lg text-gray-900 dark:text-white">Payments</h2>
 							<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 xl:gap-4">
-								<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+								<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
 									<div class="e-card-content">
 										<div class="e-bigger">
 											<SfRadioButton Label="Credit card" Name="payment" Value="Credit card" Checked="@SelectedPaymentMethod" aria-label="credit card" role="radio"></SfRadioButton>
@@ -92,7 +92,7 @@
 										<SfButton CssClass="e-flat" IconCss="e-icons e-edit e-medium" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
 									</div>
 								</div>
-								<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+								<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
 									<div class="e-card-content">
 										<div class="e-bigger">
 											<SfRadioButton Label="Payment on delivery" Name="payment" Checked="@SelectedPaymentMethod" Value="Payment on delivery" aria-label="payment on delivery" role="radio"></SfRadioButton>
@@ -104,7 +104,7 @@
 										<SfButton CssClass="e-flat" IconCss="e-icons e-edit e-medium" Content="Edit" Type="button" aria-label="edit" role="button"></SfButton>
 									</div>
 								</div>
-								<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+								<div class="e-card pt-4 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
 									<div class="e-card-content">
 										<div class="e-bigger">
 											<SfRadioButton Label="PayPal account" Name="payment" Value="PayPal account" aria-label="paypal account" Checked="@SelectedPaymentMethod" role="radio"></SfRadioButton>
@@ -121,7 +121,7 @@
 						<div class="mt-6 mb-5 xl:mb-8">
 							<h2 class="mb-4 font-semibold text-lg text-gray-900 dark:text-white">Delivery methods</h2>
 							<div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-5 xl:gap-4">
-								<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+								<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
 									<div class="e-card-content">
 										<div class="e-bigger">
 											<SfRadioButton Label="$15 - DHL fast delivery" Name="delivery" Value="$15 - DHL fast delivery" aria-label="$15 - DHL fast delivery" Checked="@SelectedDeliveryMethod" role="radio"></SfRadioButton>
@@ -129,7 +129,7 @@
 										<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">Get it by tomorrow</div>
 									</div>
 								</div>
-								<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+								<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
 									<div class="e-card-content">
 										<div class="e-bigger">
 											<SfRadioButton Label="Free delivery - FedEx" Name="delivery" Value="Free delivery - FedEx" Checked="@SelectedDeliveryMethod" aria-label="FedEx free delivery" role="radio"></SfRadioButton>
@@ -137,7 +137,7 @@
 										<div class="mt-1 ml-7 text-gray-500 dark:text-gray-400">Get it by Friday, 13 Dec 2023</div>
 									</div>
 								</div>
-								<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400">
+								<div class="e-card pt-4 pb-1 shadow-none border-transparent hover:border-primary-600 dark:hover:border-primary-400 bg-gray-100 dark:bg-gray-800">
 									<div class="e-card-content">
 										<div class="e-bigger">
 											<SfRadioButton Label="$49 - Express delivery" Name="delivery" Value="$49 - Express delivery" Checked="@SelectedDeliveryMethod" aria-label="$49 - express delivery" role="radio"></SfRadioButton>
@@ -154,7 +154,7 @@
 									<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Promo Code" FloatLabelType="FloatLabelType.Never" aria-label="enter the promo code" role="textbox"></SfTextBox>
 								</div>
 								<div class="e-bigger">
-									<SfButton CssClass="w-full md:w-max e-outline" Type="button" aria-label="apply" role="button">Apply</SfButton>
+									<SfButton CssClass="w-full md:w-max e-outline" Content="Apply" Type="button" aria-label="apply" role="button"></SfButton>
 								</div>
 							</div>
 						</div>
@@ -189,10 +189,10 @@
 								</div>
 							</div>
 							<div class="mt-6">
-								<SfButton CssClass="w-full e-primary" Type="submit" aria-label="proceed to payment" role="button">Proceed to payment</SfButton>
+								<SfButton CssClass="w-full e-primary" Content="Proceed to payment" Type="submit" aria-label="proceed to payment" role="button"></SfButton>
 							</div>
 							<p class="text-center text-sm mt-3 text-gray-500 dark:text-gray-400">
-								One or more items in your cart require an account <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 font-medium text-base p-0 underline">Sign in or Create an account now</a>
+								One or more items in your cart require an account <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 font-normal text-sm p-0 underline">Sign in or Create an account now</a>
 							</p>
 						</div>
 					</div>
@@ -276,7 +276,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 							<h2 class="fw-medium fs-5 text-body mb-3">Payments</h2>
 							<div class="row g-3">
 								<div class="col-md-6 col-xl-4">
-									<div class="e-card h-100">
+									<div class="e-card h-100 bg-body-tertiary">
 										<div class="e-card-content pb-2">
 											<div class="e-bigger">
 												<SfRadioButton Label="Credit card" Value="Credit card" Name="payment" Checked="@SelectedPaymentMethod" aria-label="credit card" role="radio"></SfRadioButton>
@@ -290,7 +290,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 									</div>
 								</div>
 								<div class="col-md-6 col-xl-4">
-									<div class="e-card h-100">
+									<div class="e-card h-100 bg-body-tertiary">
 										<div class="e-card-content pb-2">
 											<div class="e-bigger">
 												<SfRadioButton Label="Payment on delivery" Name="payment" Value="Payment on delivery" Checked="@SelectedPaymentMethod" aria-label="payment on delivery" role="radio"></SfRadioButton>
@@ -304,7 +304,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 									</div>
 								</div>
 								<div class="col-md-6 col-xl-4">
-									<div class="e-card h-100">
+									<div class="e-card h-100 bg-body-tertiary">
 										<div class="e-card-content pb-2">
 											<div class="e-bigger">
 												<SfRadioButton Label="PayPal account" Name="payment" Value="PayPal account" Checked="@SelectedPaymentMethod" aria-label="paypal account" role="radio"></SfRadioButton>
@@ -323,7 +323,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 							<h2 class="fw-medium fs-5 text-body mb-3">Delivery methods</h2>
 							<div class="row g-3">
 								<div class="col-md-6 col-xl-4">
-									<div class="e-card e-bigger h-100">
+									<div class="e-card e-bigger h-100 bg-body-tertiary">
 										<div class="e-card-content">
 											<div class="e-bigger">
 												<SfRadioButton Label="$15 - DHL fast delivery" Value="$15 - DHL fast delivery" Name="delivery" Checked="@SelectedDeliveryMethod" aria-label="$15 - DHL fast delivery" role="radio"></SfRadioButton>
@@ -333,7 +333,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 									</div>
 								</div>
 								<div class="col-md-6 col-xl-4">
-									<div class="e-card e-bigger h-100">
+									<div class="e-card e-bigger h-100 bg-body-tertiary">
 										<div class="e-card-content">
 											<div class="e-bigger">
 												<SfRadioButton Label="Free delivery - FedEx" Name="delivery" Value="Free delivery - FedEx" Checked="@SelectedDeliveryMethod" aria-label="FedEx free delivery" role="radio"></SfRadioButton>
@@ -343,7 +343,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 									</div>
 								</div>
 								<div class="col-md-6 col-xl-4">
-									<div class="e-card e-bigger h-100">
+									<div class="e-card e-bigger h-100 bg-body-tertiary">
 										<div class="e-card-content">
 											<div class="e-bigger">
 												<SfRadioButton Label="$49 - Express delivery" Value="$49 - Express delivery" Name="delivery" Checked="@SelectedDeliveryMethod" aria-label="$49 - express delivery" role="radio"></SfRadioButton>
@@ -361,7 +361,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 									<SfTextBox CssClass="e-bigger" Type="InputType.Text" Placeholder="Promo Code" FloatLabelType="FloatLabelType.Never" aria-label="enter the promo code" role="textbox"></SfTextBox>
 								</div>
 								<div class="col-md-auto e-bigger">
-									<SfButton CssClass="e-secondary e-block px-4" Type="button" aria-label="apply" role="button">Apply</SfButton>
+									<SfButton CssClass="e-secondary e-block px-4" Content="Apply" Type="button" aria-label="apply" role="button"></SfButton>
 								</div>
 							</div>
 						</div>
@@ -396,7 +396,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 								</div>
 							</div>
 							<div class="mt-3">
-								<SfButton CssClass="e-block e-primary" Type="submit" aria-label="proceed to payment" role="button">Proceed to payment</SfButton>
+								<SfButton CssClass="e-block e-primary" Content="Proceed to payment" Type="submit" aria-label="proceed to payment" role="button"></SfButton>
 							</div>
 							<p class="text-center text-sm text-dark-emphasis mt-3">
 								One or more items in your cart require an account <a href="javascript:void(0);" class="text-primary text-decoration-underline p-0 underline">Sign in or Create an account now</a>

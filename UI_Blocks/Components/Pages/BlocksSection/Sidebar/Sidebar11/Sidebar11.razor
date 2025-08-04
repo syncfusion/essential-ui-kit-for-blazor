@@ -6,8 +6,8 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section class="bg-white dark:bg-gray-950">
-        <div class="float-right" style="height: 600px;">
-            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-l !border-gray-200 dark:!border-gray-700" Position="SidebarPosition.Right" ShowBackdrop="true" Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+        <div style="height: 600px;">
+            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-l !border-gray-200 dark:!border-gray-700" Position="SidebarPosition.Right" Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
                 <div class="py-6 h-screen">
                     <div class="flex justify-between mb-2 px-3">
                         <span class="text-base text-gray-900 dark:text-white">Contacts</span>
@@ -43,15 +43,15 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 top-0 right-0 absolute">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
-        <div class="float-end" style="height: 600px;">
-            <SfSidebar Position="SidebarPosition.Right" ShowBackdrop="true" Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+        <div style="height: 600px;">
+            <SfSidebar Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" Position="SidebarPosition.Right" aria-label="main navigation menu" role="complementary">
                 <div class="py-4 vh-100">
                     <div class="d-flex justify-content-between mb-2 px-2 ms-1">
                         <span class="fs-6 text-body-secondary">Contacts</span>
@@ -61,7 +61,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             <SfButton class="e-medium e-icons e-more-horizontal-1 e-flat ms-2" Type="button" aria-label="more options" role="button"></SfButton>
                         </span>
                     </div>
-                    <SfListView DataSource="Data" class="border-0 e-bigger" aria-label="main contacts" role="list">
+                    <SfListView class="border-0 e-bigger" DataSource="@Data" aria-label="main contacts" role="list">
                         <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
                         <ListViewTemplates TValue="MenuItem">
                             <Template>
@@ -76,6 +76,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             </Template>
                         </ListViewTemplates>
                     </SfListView>
+                    <hr class="mx-3 border-light-subtle opacity-100" />
                     <div class="d-flex justify-content-between align-items-center mt-3 px-2 ms-1">
                         <span class="fs-6 text-body-secondary">Group Conversations</span>
                         <SfButton class="e-medium e-icons e-plus e-flat" Type="button" aria-label="add group conversations" role="button"></SfButton>
@@ -86,7 +87,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="py-3 px-1 position-absolute top-0 end-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

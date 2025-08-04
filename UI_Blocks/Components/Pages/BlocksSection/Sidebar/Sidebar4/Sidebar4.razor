@@ -7,19 +7,19 @@
 {
     <section class="bg-white dark:bg-gray-950">
         <div style="height: 730px;">
-            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
                 <div class="h-screen">
                     <div class="flex justify-between items-center p-4">
                         <div class="flex items-center">
                             <span class="e-avatar e-avatar-circle e-avatar-small">
                                 <img src="assets/images/common/avatar/avatar-2.jpg" alt="profile picture" />
                             </span>
-                            <div class="ml-3">
+                            <div class="ml-2">
                                 <div class="text-base font-medium leading-normal text-gray-900 dark:text-white">John Wick</div>
-                                <p class="mb-0 text-gray-900 dark:text-white">johnwick&#64;123.com</p>
+                                <a class="text-gray-900 dark:text-white" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                             </div>
                         </div>
-                        <SfButton CssClass="e-icons e-chevron-down-double e-large e-flat px-1" Type="Button" aria-label="view additional profile settings" role="button"></SfButton>
+                        <SfButton CssClass="e-icons e-chevron-down-double e-large e-flat px-1" Type="button" aria-label="view additional profile settings" role="button"></SfButton>
                     </div>
                     <div class="px-4 py-3">
                         <div class="e-input-group">
@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div>
-                        <SfListView DataSource="@NavigationMenu" class="border-0" aria-label="main navigation links" role="list">
+                        <SfListView class="border-0" DataSource="@NavigationMenu" aria-label="main navigation links" role="list">
                             <ListViewFieldSettings TValue="MenuItem"></ListViewFieldSettings>
                             <ListViewTemplates TValue="MenuItem">
                                 <Template>
@@ -47,7 +47,7 @@
                             <SfButton CssClass="e-icons e-circle-add e-medium e-flat" Type="button" aria-label="add new item" role="button"></SfButton>
                         </div>
                         <div>
-                            <SfListView DataSource="@BusinessCategories" class="border-0" aria-label="other navigation links" role="list">
+                            <SfListView class="border-0" DataSource="@BusinessCategories" aria-label="other navigation links" role="list">
                                 <ListViewFieldSettings TValue="DataModel"></ListViewFieldSettings>
                                 <ListViewTemplates TValue="DataModel">
                                     <Template>
@@ -60,7 +60,7 @@
                             </SfListView>
                         </div>
                         <div class="p-4">
-                            <SfButton CssClass="e-outline w-full" IconCss="e-icons e-plus e-medium" Type="Button" Content="Add Collection" aria-label="add collection" role="button"></SfButton>
+                            <SfButton CssClass="e-outline w-full" IconCss="e-icons e-plus e-medium" Content="Add Collection" Type="Button" aria-label="add collection" role="button"></SfButton>
                         </div>
                     </div>
                 </div>
@@ -69,7 +69,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 top-0 left-0 absolute">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -77,7 +77,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
         <div style="height: 730px;">
-            <SfSidebar Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+            <SfSidebar Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
                 <div class="vh-100">
                     <div class="d-flex justify-content-between align-items-center p-3">
                         <div class="d-flex align-items-center">
@@ -86,7 +86,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             </span>
                             <div class="ms-3">
                                 <div class="fs-6 fw-medium text-body">John Wick</div>
-                                <p class="mb-0 text-body-secondary">johnwick&#64;123.com</p>
+                                <a class="text-body-secondary text-decoration-none" href="mailto:johnwick@company.com">johnwick&#64;company.com</a>
                             </div>
                         </div>
                         <SfButton CssClass="e-icons e-chevron-down-double e-flat" Type="button" aria-label="view additional profile settings" role="button"></SfButton>
@@ -110,8 +110,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             </ListViewTemplates>
                         </SfListView>
                     </div>
+                    <hr class="mx-3 border-light-subtle opacity-100" />
                     <div>
-                        <div class="d-flex justify-content-between align-items-center p-3">
+                        <div class="d-flex justify-content-between align-items-center px-3 pb-2">
                             <span class="mb-0 text-body-secondary fs-6">Collection</span>
                             <SfButton class="e-icons e-circle-add e-medium e-flat" Type="button" aria-label="add new item" role="button"></SfButton>
                         </div>
@@ -129,7 +130,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             </SfListView>
                         </div>
                         <div class="p-3">
-                            <SfButton class="e-outline w-100 mb-0" IconCss="e-icons e-plus e-medium" Type="button" Content="Add Collection" aria-label="add collection" role="button"></SfButton>
+                            <SfButton class="e-outline w-100 mb-0" IconCss="e-icons e-plus e-medium" Content="Add Collection" Type="Button" aria-label="add collection" role="button"></SfButton>
                         </div>
                     </div>
                 </div>
@@ -138,7 +139,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="py-3 px-1 position-absolute top-0 start-0">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

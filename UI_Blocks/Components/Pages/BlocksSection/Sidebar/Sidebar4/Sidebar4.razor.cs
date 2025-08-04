@@ -1,27 +1,42 @@
-﻿namespace UI_Blocks.Components.Pages.BlocksSection.Sidebar.Sidebar4
+﻿using Microsoft.JSInterop;
+
+namespace UI_Blocks.Components.Pages.BlocksSection.Sidebar.Sidebar4
 {
     public partial class Sidebar4
     {
-        private bool SidebarToggle { get; set; } = true;
+        public bool IsSidebarOpen = true;
+        public bool IsBackdropVisible = false;
 
-        private List<MenuItem> NavigationMenu = new()
+        public List<MenuItem> NavigationMenu = new List<MenuItem>
         {
-            new() { Field = "Dashboard", FontIcon = "e-grid-view" },
-            new() { Field = "Revenue", FontIcon = "sf-icon-dollar" },
-            new() { Field = "Notifications", FontIcon = "sf-icon-notification-bell-01" },
-            new() { Field = "Analytics", FontIcon = "e-chart" },
-            new() { Field = "Wallets", FontIcon = "e-select-all" }
+            new MenuItem { Field = "Dashboard", FontIcon = "e-grid-view" },
+            new MenuItem { Field = "Revenue", FontIcon = "sf-icon-dollar" },
+            new MenuItem { Field = "Notifications", FontIcon = "sf-icon-notification-bell-01" },
+            new MenuItem { Field = "Analytics", FontIcon = "e-chart" },
+            new MenuItem { Field = "Wallets", FontIcon = "e-select-all" }
         };
-        private List<DataModel> BusinessCategories = new()
+
+        public List<DataModel> BusinessCategories = new List<DataModel>
         {
-            new() { Field = "Sales", FontIcon = "sf-icon-dollar" },
-            new() { Field = "Design", FontIcon = "sf-icon-desktop-01" },
-            new() { Field = "Fundraising", FontIcon = "sf-icon-dollar" },
-            new() { Field = "Internal", FontIcon = "e-comment-show" },
-            new() { Field = "Customer Success", FontIcon = "sf-icon-user-tick-02" },
-            new() { Field = "Networking", FontIcon = "sf-icon-laptop" },
-            new() { Field = "Legal", FontIcon = "e-notes" }
+            new DataModel { Field = "Sales", FontIcon = "sf-icon-dollar" },
+            new DataModel { Field = "Design", FontIcon = "sf-icon-desktop-01" },
+            new DataModel { Field = "Fundraising", FontIcon = "sf-icon-dollar" },
+            new DataModel { Field = "Internal", FontIcon = "e-comment-show" },
+            new DataModel { Field = "Customer Success", FontIcon = "sf-icon-user-tick-02" },
+            new DataModel { Field = "Networking", FontIcon = "sf-icon-laptop" },
+            new DataModel { Field = "Legal", FontIcon = "e-notes" }
         };
+
+        [JSInvokable]
+        public void ResizeHandler(string message, int windowWidth)
+        {
+            if (message == "resizeAction")
+            {
+                IsBackdropVisible = windowWidth <= 640;
+            }
+            StateHasChanged();
+        }
+
         public class MenuItem
         {
             public string Field { get; set; } = string.Empty;
@@ -33,12 +48,5 @@
             public string Field { get; set; } = string.Empty;
             public string FontIcon { get; set; } = string.Empty;
         }
-
-        private void ToggleSidebar()
-        {
-            SidebarToggle = !SidebarToggle;
-        }
     }
-
 }
-

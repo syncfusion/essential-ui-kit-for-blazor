@@ -1,0 +1,126 @@
+﻿@page "/blocks/line-chart-8"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 1100px;">
+                <div class="flex justify-between items-center mb-4">
+                    <h2 class="text-base font-semibold text-gray-900 dark:text-white">Sales Revenue</h2>
+                    <div class="flex gap-3">
+                        <SfButton CssClass="e-outline" IconCss="e-icons e-refresh" Type="button" aria-label="refresh" role="button"></SfButton>
+                        <SfButton CssClass="e-outline" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
+                    </div>
+                </div>
+                <div class="my-5">
+                    <div class="hidden sm:block mb-3">
+                        <SfButtonGroup class="e-btn-group">
+                            <input type="radio" id="week" name="align" value="week" checked aria-label="week" role="button" />
+                            <label class="e-btn" for="week">Week</label>
+                            <input type="radio" id="month" name="align" value="month" aria-label="month" role="button" />
+                            <label class="e-btn" for="month">Month</label>
+                            <input type="radio" id="year" name="align" value="year" aria-label="year" role="button" />
+                            <label class="e-btn" for="year">Year</label>
+                            <input type="radio" id="custom" name="align" value="custom" aria-label="custom" role="button" />
+                            <label class="e-btn" for="custom">Custom</label>
+                        </SfButtonGroup>
+                    </div>
+                    <SfDropDownButton @ref="DropDownButton" CssClass="e-outline block sm:hidden mb-3" Content="Week" Type="button" aria-label="choose a year" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="Week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Month"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Year"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Custom"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+                <div>
+                    <SfChart Width="100%" Height="300px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartEvents TooltipRender="TooltipRender"></ChartEvents>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" LabelPlacement="Syncfusion.Blazor.Charts.LabelPlacement.OnTicks">
+                            <ChartAxisLabelStyle FontWeight="500" FontStyle="12px"></ChartAxisLabelStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis LabelFormat="${value}k" Minimum="0" Maximum="150" Interval="25"></ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis1" Name="Recurring Revenue" Type="ChartSeriesType.Spline" Fill="#91BD34" Width="3"></ChartSeries>
+                            <ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis2" Name="One-Time Revenue" Type="ChartSeriesType.Spline" Fill="#9CA3AF" Width="3"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true" Header="" EnableMarker="false" ShowNearestTooltip="true"></ChartTooltipSettings>
+                        <ChartLegendSettings Visible="true" Padding="10"></ChartLegendSettings>
+                        <ChartCrosshairSettings Enable="true" SnapToData="true">
+                            <ChartCrosshairLine Width="1" Color="#9CA3AF"></ChartCrosshairLine>
+                        </ChartCrosshairSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center align-items-start p-3 p-sm-4">
+            <div class="w-100" style="max-width: 1100px;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 class="h6 fw-semibold text-body">Sales Revenue</h2>
+                    <div class="d-flex gap-3">
+                        <SfButton CssClass="e-outline" IconCss="e-icons e-refresh" Type="button" aria-label="refresh" role="button"></SfButton>
+                        <SfButton CssClass="e-outline" IconCss="e-icons e-more-vertical-1" Type="button" aria-label="more options" role="button"></SfButton>
+                    </div>
+                </div>
+                <div class="my-3">
+                    <div class="d-none d-sm-block">
+                        <SfButtonGroup class="e-btn-group">
+                            <input type="radio" id="week" name="align" value="week" checked aria-label="week" role="button" />
+                            <label class="e-btn" for="week">Week</label>
+                            <input type="radio" id="month" name="align" value="month" aria-label="month" role="button" />
+                            <label class="e-btn" for="month">Month</label>
+                            <input type="radio" id="year" name="align" value="year" aria-label="year" role="button" />
+                            <label class="e-btn" for="year">Year</label>
+                            <input type="radio" id="custom" name="align" value="custom" aria-label="custom" role="button" />
+                            <label class="e-btn" for="custom">Custom</label>
+                        </SfButtonGroup>
+                    </div>
+                    <SfDropDownButton @ref="DropDownButton" CssClass="e-outline d-block d-sm-none mb-3" Content="Week" Type="button" aria-label="choose a year" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsDropdownOpen = true)" Closed="@(args => IsDropdownOpen = false)"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="Week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Month"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Year"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Custom"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+                <div>
+                    <SfChart Width="100%" Height="300px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartEvents TooltipRender="TooltipRender"></ChartEvents>
+                        <ChartPrimaryXAxis ValueType="Syncfusion.Blazor.Charts.ValueType.Category" LabelPlacement="Syncfusion.Blazor.Charts.LabelPlacement.OnTicks">
+                            <ChartAxisLabelStyle FontWeight="500" FontStyle="12px"></ChartAxisLabelStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis LabelFormat="${value}k" Minimum="0" Maximum="150" Interval="25"></ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis1" Name="Recurring Revenue" Type="ChartSeriesType.Spline" Fill="#0EAB44" Width="3"></ChartSeries>
+                            <ChartSeries DataSource="@LineChartData" XName="XAxis" YName="YAxis2" Name="One-Time Revenue" Type="ChartSeriesType.Spline" Fill="#CED4DA" Width="3"></ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartTooltipSettings Enable="true" Header="" EnableMarker="false" ShowNearestTooltip="true"></ChartTooltipSettings>
+                        <ChartLegendSettings Visible="true" Padding="10"></ChartLegendSettings>
+                        <ChartCrosshairSettings Enable="true" SnapToData="true">
+                            <ChartCrosshairLine Width="1" Color="#9CA3AF"></ChartCrosshairLine>
+                        </ChartCrosshairSettings>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}

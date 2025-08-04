@@ -1,0 +1,142 @@
+﻿@page "/blocks/line-chart-9"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-4 sm:p-6">
+            <div class="w-full" style="max-width: 650px;">
+                <div class="flex justify-between items-center">
+                    <h2 class="text-base text-gray-900 dark:text-white">Sales Performance</h2>
+                    <SfDropDownButton @ref="MobileDropdown" CssClass="e-outline block sm:hidden" IconCss="e-icons e-day" Type="button" aria-label="choose a range" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsMobileDropdown = true)" Closed="@(args => IsMobileDropdown = false)"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="Today"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Yesterday"></DropDownMenuItem>
+                            <DropDownMenuItem Text="This week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Last week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="This month"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Last month"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+                <div class="flex items-center gap-2 mt-5">
+                    <p class="text-xl font-semibold text-gray-900 dark:text-white">+72.9%</p>
+                    <div class="flex items-center gap-1 text-green-700 dark:text-green-500 ml-1"><span class="e-icons e-arrow-up !text-sm"></span><p class="text-xs">2.9%</p></div>
+                    <p class="text-xs text-gray-500 dark:text-gray-400">past 7 days</p>
+                </div>
+                <div class="flex justify-between mt-2.5 mb-1">
+                    <p class="text-sm text-gray-700 dark:text-gray-300">Better than last week</p>
+                    <SfDropDownButton @ref="RangeDropdown" CssClass="e-outline hidden sm:block" IconCss="e-icons e-day" Content="Last month" Type="button" aria-label="choose a range" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsRangeDropdownOpen = true)" Closed="@(args => IsRangeDropdownOpen = false)"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="Today"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Yesterday"></DropDownMenuItem>
+                            <DropDownMenuItem Text="This week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Last week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="This month"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Last month"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+                <div>
+                    <SfChart Width="100%" Height="300px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartMargin Left="0"></ChartMargin>
+                        <ChartPrimaryXAxis Interval="1" ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis LabelFormat="${value}K" Minimum="0" Maximum="8" Interval="2">
+                            <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartTooltipSettings Enable="true" Shared="true" Header="" Format="${series.name} : ${point.y}" ShowHeaderLine="false"></ChartTooltipSettings>
+                        <ChartCrosshairSettings Enable="true" LineType="Syncfusion.Blazor.Charts.LineType.Vertical" SnapToData="true" DashArray="2" HighlightCategory="true">
+                            <ChartCrosshairLine Color="#01A8B5"></ChartCrosshairLine>
+                        </ChartCrosshairSettings>
+                        <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near" Height="40px">
+                            <ChartLegendMargin Bottom="8"></ChartLegendMargin>
+                        </ChartLegendSettings>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@LineChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" XName="Day" YName="ProjectedAverage" Name="Projected Average" Width="1" DashArray="5,5" Fill="#FFB900" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle"></ChartSeries>
+                            <ChartSeries DataSource="@LineChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" XName="Day" YName="SalesGrowth" Name="Sales Growth" Width="2" Fill="#01A8B5" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle">
+                                <ChartMarker Visible="true" Width="8" Height="8" IsFilled="true" Shape="Syncfusion.Blazor.Charts.ChartShape.Circle"></ChartMarker>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                    </SfChart>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center align-items-start p-3 p-sm-4">
+            <div class="w-100" style="max-width: 650px;">
+                <div class="d-flex justify-content-between align-items-center">
+                    <h2 class="h6 text-body mb-0">Sales Performance</h2>
+                    <SfDropDownButton @ref="MobileDropdown" CssClass="e-outline d-block d-sm-none" IconCss="e-icons e-day" Type="button" aria-label="choose a range" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsMobileDropdown = true)" Closed="@(args => IsMobileDropdown = false)"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="Today"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Yesterday"></DropDownMenuItem>
+                            <DropDownMenuItem Text="This week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Last week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="This month"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Last month"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+                <div class="d-flex align-items-center gap-2 mt-4">
+                    <p class="fs-5 fw-semibold text-body mb-0">+72.9%</p>
+                    <div class="d-flex align-items-center gap-1 text-success ms-2"><span class="e-icons e-arrow-up small"></span><p class="small mb-0">2.9%</p></div>
+                    <p class="small text-body-secondary mb-0">past 7 days</p>
+                </div>
+                <div class="d-flex justify-content-between align-items-center mt-2 mb-1">
+                    <p class="small text-body-secondary mb-0">Better than last week</p>
+                    <SfDropDownButton @ref="RangeDropdown" CssClass="e-outline d-none d-sm-block" IconCss="e-icons e-day" Content="Last month" Type="button" aria-label="choose a range" role="button">
+                        <DropDownButtonEvents Opened="@(args => IsRangeDropdownOpen = true)" Closed="@(args => IsRangeDropdownOpen = false)"></DropDownButtonEvents>
+                        <DropDownMenuItems>
+                            <DropDownMenuItem Text="Today"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Yesterday"></DropDownMenuItem>
+                            <DropDownMenuItem Text="This week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Last week"></DropDownMenuItem>
+                            <DropDownMenuItem Text="This month"></DropDownMenuItem>
+                            <DropDownMenuItem Text="Last month"></DropDownMenuItem>
+                        </DropDownMenuItems>
+                    </SfDropDownButton>
+                </div>
+                <SfChart Width="100%" Height="300px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                    <ChartArea>
+                        <ChartAreaBorder Width="0"></ChartAreaBorder>
+                    </ChartArea>
+                    <ChartMargin Left="0"></ChartMargin>
+                    <ChartPrimaryXAxis Interval="1" ValueType="Syncfusion.Blazor.Charts.ValueType.Category">
+                        <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                    </ChartPrimaryXAxis>
+                    <ChartPrimaryYAxis LabelFormat="${value}K" Minimum="0" Maximum="8" Interval="2">
+                        <ChartAxisLabelStyle FontWeight="500"></ChartAxisLabelStyle>
+                    </ChartPrimaryYAxis>
+                    <ChartTooltipSettings Enable="true" Shared="true" Header="" Format="${series.name} : ${point.y}" ShowHeaderLine="false"></ChartTooltipSettings>
+                    <ChartCrosshairSettings Enable="true" LineType="Syncfusion.Blazor.Charts.LineType.Vertical" SnapToData="true" DashArray="2" HighlightCategory="true">
+                        <ChartCrosshairLine Color="#01A8B5"></ChartCrosshairLine>
+                    </ChartCrosshairSettings>
+                    <ChartLegendSettings Visible="true" Position="Syncfusion.Blazor.Charts.LegendPosition.Top" Alignment="Syncfusion.Blazor.Charts.Alignment.Near" Height="40px">
+                        <ChartLegendMargin Bottom="8"></ChartLegendMargin>
+                    </ChartLegendSettings>
+                    <ChartSeriesCollection>
+                        <ChartSeries DataSource="@LineChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" XName="Day" YName="ProjectedAverage" Name="Projected Average" Width="1" DashArray="5,5" Fill="#FFB900" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle"></ChartSeries>
+                        <ChartSeries DataSource="@LineChartData" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Line" XName="Day" YName="SalesGrowth" Name="Sales Growth" Width="2" Fill="#00EFA7" LegendShape="Syncfusion.Blazor.Charts.LegendShape.Rectangle">
+                            <ChartMarker Visible="true" Width="8" Height="8" IsFilled="true" Shape="Syncfusion.Blazor.Charts.ChartShape.Circle"></ChartMarker>
+                        </ChartSeries>
+                    </ChartSeriesCollection>
+                </SfChart>
+            </div>
+        </div>
+    </section>
+}

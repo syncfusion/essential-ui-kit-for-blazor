@@ -25,11 +25,11 @@
                         <SfTextBox CssClass="e-bigger bg-none" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" aria-label="enter your email password" role="textbox"></SfTextBox>
                     </div>
                     <div class="flex items-center justify-between mb-6">
-                        <SfCheckBox TChecked="Boolean" CssClass="e-bigger" Label="Remember me" aria-label="remember me" role="checkbox"></SfCheckBox>
+                        <SfCheckBox TChecked="bool" CssClass="e-bigger" Label="Remember me" aria-label="remember me" role="checkbox"></SfCheckBox>
                         <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 font-medium text-base" style="padding-right: 0 !important;" aria-label="forgot password" role="link">Forgot password?</a>
                     </div>
                     <div class="e-bigger mt-6">
-                        <SfButton CssClass="w-full e-primary e-btn" type="submit" Onclick="@((MouseEventArgs args) => { })" aria-label="sign in" role="button">Sign in</SfButton>
+                        <SfButton CssClass="w-full e-primary" Content="Sign in" Type="submit" aria-label="sign in" role="button"></SfButton>
                     </div>
                 </form>
                 <div>
@@ -42,11 +42,11 @@
                         <hr class="w-full absolute border-gray-200 dark:border-gray-600" />
                     </div>
                     <div class="flex items-center justify-center pt-10 gap-4 flex-col">
-                        <SfButton CssClass="w-full flex items-center justify-center px-4 py-2 e-outline" type="submit" aria-label="sign in with google account" role="button">
+                        <SfButton CssClass="w-full flex items-center justify-center px-4 py-2 e-outline" Type="submit" aria-label="sign in with google account" role="button">
                             <img class="w-4" src="assets/images/common/brand-logos/png/google.png" alt="google logo" />
                             <span class="text-base pl-2.5">Sign in with Google</span>
                         </SfButton>
-                        <SfButton CssClass="w-full flex items-center justify-center px-4 py-2 e-outline" type="submit" aria-label="sign in with microsoft account" role="button">
+                        <SfButton CssClass="w-full flex items-center justify-center px-4 py-2 e-outline" Type="submit" aria-label="sign in with microsoft account" role="button">
                             <img class="w-4" src="assets/images/common/brand-logos/png/microsoft.png" alt="microsoft logo" />
                             <span class="text-base pl-2.5">Sign in with Microsoft</span>
                         </SfButton>
@@ -78,11 +78,11 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     <SfTextBox CssClass="e-bigger" Type="InputType.Password" Placeholder="Password" FloatLabelType="FloatLabelType.Never" aria-label="enter your email password" role="textbox"></SfTextBox>
                 </div>
                 <div class="d-flex align-items-center justify-content-between">
-                    <SfCheckBox TChecked="Boolean" CssClass="e-bigger" Label="Remember me" aria-label="remember me" role="checkbox"></SfCheckBox>
+                    <SfCheckBox TChecked="bool" CssClass="e-bigger" Label="Remember me" aria-label="remember me" role="checkbox"></SfCheckBox>
                     <a href="javascript:void(0);" class="text-primary fs-6 fw-medium text-decoration-none" style="padding-right: 0 !important; padding-top: 4px !important;" aria-label="forgot password" role="link">Forgot password?</a>
                 </div>
                 <div class="mt-4 e-bigger">
-                    <SfButton CssClass="e-btn e-block e-primary" type="submit" aria-label="sign in" role="button">Sign in</SfButton>
+                    <SfButton CssClass="e-block e-primary" Content="Sign in" Type="submit" aria-label="sign in" role="button"></SfButton>
                 </div>
             </form>
             <div class="d-flex flex-wrap align-items-center justify-content-center mt-3 gap-1">
@@ -95,11 +95,11 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     <hr class="w-100 border-light-subtle opacity-100" />
                 </div>
                 <div class="d-flex flex-column mt-3 align-items-center justify-content-center gap-3">
-                    <SfButton CssClass="e-btn e-outline e-block d-flex align-items-center justify-content-center px-3 py-2" type="submit" aria-label="sign in with google account" role="button">
+                    <SfButton CssClass="e-outline e-block d-flex align-items-center justify-content-center px-3 py-2" Type="submit" aria-label="sign in with google account" role="button">
                         <img src="assets/images/common/brand-logos/png/google.png" width="24px" alt="google logo" />
                         <span class="fs-6 fw-medium" style="padding-left: 8px;">Sign in with Google</span>
                     </SfButton>
-                    <SfButton CssClass="e-btn e-outline e-block d-flex align-items-center justify-content-center px-3 py-2" type="submit" aria-label="sign in with microsoft account" role="button">
+                    <SfButton CssClass="e-outline e-block d-flex align-items-center justify-content-center px-3 py-2" Type="submit" aria-label="sign in with microsoft account" role="button">
                         <img src="assets/images/common/brand-logos/png/microsoft.png" width="24px" alt="microsoft logo" />
                         <span class="fs-6 fw-medium" style="padding-left: 8px;">Sign in with Microsoft</span>
                     </SfButton>

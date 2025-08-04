@@ -1,6 +1,6 @@
-﻿using Syncfusion.Blazor.SplitButtons;
-using Microsoft.JSInterop;
+﻿using Microsoft.JSInterop;
 using Syncfusion.Blazor.Charts;
+using Syncfusion.Blazor.SplitButtons;
 
 namespace UI_Blocks.Components.Pages.BlocksSection.LineChart.LineChart1
 {
@@ -10,15 +10,6 @@ namespace UI_Blocks.Components.Pages.BlocksSection.LineChart.LineChart1
         public SfDropDownButton? DropDownButton;
         public bool IsDropdownOpen = false;
         public double XAxisLabelRotation = 0;
-
-        public List<DropDownMenuItem> YearOptions = new List<DropDownMenuItem>
-        {
-            new DropDownMenuItem { Text = "2024" }, 
-            new DropDownMenuItem { Text = "2023" },
-            new DropDownMenuItem { Text = "2022" },
-            new DropDownMenuItem { Text = "2021" },
-            new DropDownMenuItem { Text = "2020" }
-        };
 
         public List<RevenueData> LineChartData = new List<RevenueData>
         {

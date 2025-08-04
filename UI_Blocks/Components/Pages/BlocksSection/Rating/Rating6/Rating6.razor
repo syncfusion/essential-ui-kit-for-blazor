@@ -7,7 +7,7 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section class="bg-gray-50 dark:bg-gray-800">
-        <div class="pt-4" style="min-height: 36rem">
+        <div class="pt-4" style="min-height: 36rem;">
             <div class="mx-auto w-full sm:max-w-xs border-0 mt-3 py-6 sm:!rounded-lg sm:!border rounded-none border-gray-300 dark:border-gray-500 bg-white dark:bg-gray-800 text-center">
                 <h3 class="font-semibold text-base text-gray-900 dark:text-white">Rate your experience</h3>
                 <p class="text-sm mt-3 px-8 sm:px-6 text-gray-700 dark:text-gray-100" style="310px">We'd love to hear from you! How is your experience with our platform?</p>
@@ -46,9 +46,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body-tertiary">
         <div class="pt-4" style="min-height: 36rem;">
-            <div class="mx-auto w-100 mt-3 bg-white border rounded-3 text-center bg-body" style="max-width: 360px;">
+            <div class="mx-auto w-100 mt-3 bg-white border rounded-3 bg-body text-center" style="max-width: 360px;">
                 <h3 class="fw-semibold fs-6 text-body mt-4">Rate your experience</h3>
-                <p class="small mt-3 text-body-secondary mb-0" style="width: 310px;">We'd love to hear from you! How is your experience with our platform?</p>
+                <p class="small mt-3 text-body-secondary mb-0 mx-auto" style="width: 316px;">We'd love to hear from you! How is your experience with our platform?</p>
                 <div class="d-flex gap-4 justify-content-center align-items-center">
                     <SfRating ItemsCount="3" EnableSingleSelection=true EnableAnimation=false>
                         <EmptyTemplate Context="context">

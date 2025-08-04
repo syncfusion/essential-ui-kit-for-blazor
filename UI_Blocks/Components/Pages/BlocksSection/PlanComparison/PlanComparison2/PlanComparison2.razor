@@ -7,72 +7,72 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section class="bg-gray-50 dark:bg-gray-950">
-        <div class="overflow-x-auto m-auto">
-            <div class="flex justify-center min-w-max m-6">
+        <div id="plan-comparison" class="overflow-x-auto m-auto">
+            <div class="flex justify-center min-w-max mx-1 my-6 sm:mx-6">
                 <table class="table w-full table-bordered">
                     <thead class="bg-white dark:bg-gray-900 hover:bg-white hover:dark:bg-gray-900">
                         <tr class="bg-white dark:bg-gray-900 hover:bg-white hover:dark:bg-gray-900">
-                            <th class="border-none w-52 align-baseline">
-                                <div class="align-baseline text-left font-medium p-5 text-lg text-gray-900 dark:text-white">
+                            <th class="border-none align-baseline relative" style="width: 155px;">
+                                <div class="align-baseline text-left font-medium p-3 text-lg text-gray-900 dark:text-white bg-white dark:bg-gray-900 absolute top-0 left-0 right-0 bottom-0">
                                     Compare Plans
                                 </div>
                             </th>
-                            <th class="text-center w-72 font-medium text-base border-l border-r border-gray-200 dark:border-gray-600">
+                            <th class="text-center w-52 font-medium text-base border-l border-r border-gray-200 dark:border-gray-600">
                                 <div class="e-card rounded-none bg-white dark:bg-gray-900 hover:bg-white hover:dark:bg-gray-900 border-none shadow-none e-bigger py-2">
-                                    <div class="e-card-header">
+                                    <div class="e-card-header !px-3">
                                         <div class="e-card-header-caption">
                                             <div class="e-card-title font-medium text-lg text-gray-900 dark:text-white">
                                                 Single
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="e-card-content mb-4 mt-2">
-                                        <div class="mt-3 mb-8">
-                                            <h2 class="text-5xl text-gray-900 dark:text-white leading-tight font-bold">$69<span class="font-normal text-gray-700 dark:text-gray-200 text-3xl ml-2 line-through">$199</span></h2>
+                                    <div class="e-card-content mb-4 mt-2 !px-3">
+                                        <div class="mt-3 mb-8 flex justify-center">
+                                            <h2 class="text-4xl sm:text-5xl text-gray-900 dark:text-white leading-tight font-bold w-44 sm:w-56">$69<span class="font-normal text-gray-700 dark:text-gray-200 text-2xl sm:text-3xl ml-2 line-through">$199</span></h2>
                                         </div>
-                                        <p class="text-gray-700 text-base px-6 font-normal dark:text-gray-200">No monthly subscription, you only pay once.</p>
+                                        <p class="text-gray-700 text-base font-normal dark:text-gray-200 mx-auto" style="max-width: 225px;">No monthly subscription, you only pay once.</p>
                                     </div>
-                                    <div class="e-card-actions leading-9">
+                                    <div class="e-card-actions leading-9 !px-3">
                                         <SfButton CssClass="e-primary text-lg font-medium e-outline w-full" Content="Choose a plan" Type="button" aria-label="choose a plan" role="button"></SfButton>
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center w-72 font-medium text-base border-r border-gray-200 dark:border-gray-600">
+                            <th class="text-center w-52 font-medium text-base border-r border-gray-200 dark:border-gray-600">
                                 <div class="e-card bg-white dark:bg-gray-900 hover:bg-white hover:dark:bg-gray-900 rounded-none border-none shadow-none e-bigger py-2">
-                                    <div class="e-card-header">
+                                    <div class="e-card-header !px-3">
                                         <div class="e-card-header-caption">
                                             <div class="e-card-title font-medium text-lg text-gray-900 dark:text-white">
                                                 Premium
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="e-card-content mb-4 mt-2">
-                                        <div class="mt-3 mb-8">
-                                            <h2 class="text-5xl leading-tight text-gray-900 dark:text-white font-bold">$149<span class="font-normal text-gray-700 dark:text-gray-200 text-3xl ml-2 line-through">$599</span></h2>
+                                    <div class="e-card-content mb-4 mt-2 !px-3">
+                                        <div class="mt-3 mb-8 flex justify-center">
+                                            <h2 class="text-4xl sm:text-5xl leading-tight text-gray-900 dark:text-white font-bold w-44 sm:w-56">$149<span class="font-normal text-gray-700 dark:text-gray-200 text-2xl sm:text-3xl ml-2 line-through">$599</span></h2>
                                         </div>
-                                        <p class="text-gray-700 text-base px-6 font-normal dark:text-gray-200">No monthly subscription, you only pay once.</p>
+                                        <p class="text-gray-700 text-base font-normal dark:text-gray-200 mx-auto" style="max-width: 225px;">No monthly subscription, you only pay once.</p>
                                     </div>
-                                    <div class="e-card-actions leading-9">
+                                    <div class="e-card-actions leading-9 !px-3">
                                         <SfButton CssClass="e-primary text-lg font-medium w-full" Content="Choose a plan" Type="button" aria-label="choose a plan" role="button"></SfButton>
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center w-72 font-medium text-base">
+                            <th class="text-center w-52 font-medium text-base">
                                 <div class="e-card rounded-none bg-white dark:bg-gray-900 hover:bg-white hover:dark:bg-gray-900 border-none shadow-none e-bigger py-2">
-                                    <div class="e-card-header">
+                                    <div class="e-card-header !px-3">
                                         <div class="e-card-header-caption">
                                             <div class="e-card-title font-medium text-lg text-gray-900 dark:text-white">
                                                 Business
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="e-card-content mb-4 mt-2">
-                                        <div class="mt-3 mb-8">
-                                            <h2 class="text-5xl text-gray-900 dark:text-white leading-tight font-bold">$249<span class="font-normal text-gray-700 dark:text-gray-200 text-3xl ml-2 line-through">$699</span></h2>
+                                    <div class="e-card-content mb-4 mt-2 !px-3">
+                                        <div class="mt-3 mb-8 flex justify-center">
+                                            <h2 class="text-4xl sm:text-5xl text-gray-900 dark:text-white leading-tight font-bold w-44 sm:w-56">$249<span class="font-normal text-gray-700 dark:text-gray-200 text-2xl sm:text-3xl ml-2 line-through">$699</span></h2>
                                         </div>
-                                        <p class="text-gray-700 text-base px-6 font-normal dark:text-gray-200">No monthly subscription, you only pay once.</p>
+                                        <p class="text-gray-700 text-base font-normal dark:text-gray-200 mx-auto" style="max-width: 225px;">No monthly subscription, you only pay once.</p>
                                     </div>
-                                    <div class="e-card-actions leading-9">
+                                    <div class="e-card-actions leading-9 !px-3">
                                         <SfButton CssClass="e-primary text-lg font-medium e-outline w-full" Content="Choose a plan" Type="button" aria-label="choose a plan" role="button"></SfButton>
                                     </div>
                                 </div>
@@ -82,52 +82,52 @@
                     <tbody>
                         <tr class="border-b border-gray-200 dark:border-gray-600 border-none">
                             <td>
-                                <h2 class="my-4 font-semibold text-gray-900 dark:text-white">Features</h2>
+                                <h2 class="my-4 font-semibold text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-950 pl-2">Features</h2>
                             </td>
                         </tr>
                         <tr class="border-b border-gray-200 dark:border-gray-600">
-                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2">Only 1 User</td>
+                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">Only 1 User</td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                             <td class="text-center py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                         </tr>
                         <tr class="border-b border-gray-200 dark:border-gray-600">
-                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2">10 Projects</td>
+                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">10 Projects</td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                             <td class="text-center py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                         </tr>
                         <tr class="border-b border-gray-200 dark:border-gray-600">
-                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2">Agents Count</td>
+                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">Agents Count</td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 font-normal text-sm">24</td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 font-normal text-sm">32</td>
                             <td class="text-center py-3 font-normal text-sm text-gray-900 dark:text-white">100</td>
                         </tr>
                         <tr class="border-b border-gray-200 dark:border-gray-600">
-                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2">Unlimited Bandwidth</td>
+                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">Unlimited Bandwidth</td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                             <td class="text-center py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                         </tr>
                         <tr class="border-b border-gray-200 dark:border-gray-600">
-                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2">Unlimited Data</td>
+                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">Unlimited Data</td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                             <td class="text-center py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                         </tr>
                         <tr class="border-b border-gray-200 dark:border-gray-600 border-none">
                             <td>
-                                <h2 class="my-4 font-semibold text-gray-900 dark:text-white">Storage & Security</h2>
+                                <h2 class="my-4 font-semibold text-gray-900 dark:text-white bg-gray-50 dark:bg-gray-950 pl-2">Storage & Security</h2>
                             </td>
                         </tr>
                         <tr class="border-b border-gray-200 dark:border-gray-600">
-                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2">5 GB Storage</td>
+                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">5 GB Storage</td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                             <td class="text-center py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                         </tr>
                         <tr class="border-b border-gray-200 dark:border-gray-600">
-                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2">Fully Security Suite</td>
+                            <td class="border-r border-gray-200 dark:border-gray-600 text-gray-900 dark:text-white py-3 text-sm font-normal px-2 bg-gray-50 dark:bg-gray-950">Fully Security Suite</td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                             <td class="text-center border-r border-gray-200 dark:border-gray-600 py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
                             <td class="text-center py-3"><span class="e-icons text-gray-700 dark:text-white e-circle-check e-medium"></span></td>
@@ -141,66 +141,66 @@
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
-        <div class="table-responsive">
-            <div class="d-flex justify-content-center m-auto px-5 py-4" style="min-width: 1050px;">
+        <div id="plan-comparison" class="table-responsive">
+            <div class="d-flex justify-content-center m-auto px-1 px-sm-3 py-4" style="min-width: 740px;">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th class="align-baseline w-25 p-0 border-0 border-end">
-                                <div class="align-baseline text-left fw-medium lh-lg p-4 fs-6 text-body">
-                                    <div>Compare Plans</div>
+                            <th class="align-baseline p-0 border-0 border-end" style="width: 165px;">
+                                <div class="align-baseline text-left fw-medium lh-lg p-2 fs-5 text-body">
+                                    <div class="small">Compare Plans</div>
                                 </div>
                             </th>
-                            <th class="text-center fw-medium fs-5 w-25 p-0 border-0 border-end">
-                                <div class="e-card e-bigger lh-base border-0 shadow-none p-4">
+                            <th class="text-center fw-medium fs-5 p-0 border-0 border-end" style="width: 10rem;">
+                                <div class="e-card e-bigger lh-base border-0 shadow-none p-2 p-sm-3">
                                     <div class="e-card-header p-0">
                                         <div class="e-card-header-caption">
                                             <div class="card-title fw-medium fs-6">Single</div>
                                         </div>
                                     </div>
                                     <div class="e-card-content p-0">
-                                        <h2 class="fs-1 my-3 fw-bold text-body">$69<span class="fw-normal text-body-tertiary fs-4 ms-2 text-decoration-line-through mt-1">$199</span></h2>
-                                        <p class="fs-6 w-75 mx-auto fw-normal text-center text-light-emphasis m-0">No monthly subscription, you only pay once.</p>
+                                        <h2 class="fs-1 my-3 fw-bold text-body mx-auto" style="width: 153px;">$69<span class="fw-normal text-body-tertiary fs-4 ms-2 text-decoration-line-through mt-1">$199</span></h2>
+                                        <p class="fs-6 mx-auto fw-normal text-center text-light-emphasis m-0" style="max-width: 225px;">No monthly subscription, you only pay once.</p>
                                     </div>
                                     <div class="e-card-actions p-0">
                                         <div class="mt-4 e-bigger">
-                                            <SfButton CssClass="e-primary e-outline e-block" Type="button" aria-label="choose a plan" role="button">Choose a plan</SfButton>
+                                            <SfButton CssClass="e-primary e-outline e-block" Content="Choose a plan" Type="button" aria-label="choose a plan" role="button"></SfButton>
                                         </div>
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center fw-medium fs-5 w-25 p-0 border-0 border-end">
-                                <div class="e-card e-bigger lh-base border-0 shadow-none p-4">
+                            <th class="text-center fw-medium fs-5 p-0 border-0 border-end" style="width: 10rem;">
+                                <div class="e-card e-bigger lh-base border-0 shadow-none p-2 p-sm-3">
                                     <div class="e-card-header p-0">
                                         <div class="e-card-header-caption">
                                             <div class="card-title fw-medium fs-6 text-body">Premium</div>
                                         </div>
                                     </div>
                                     <div class="e-card-content p-0">
-                                        <h2 class="fs-1 my-3 fw-bold text-body">$149<span class="fw-normal text-body-tertiary fs-4 ms-2 text-decoration-line-through mt-1">$599</span></h2>
-                                        <p class="fs-6 w-75 mx-auto fw-normal text-center text-light-emphasis m-0">No monthly subscription, you only pay once.</p>
+                                        <h2 class="fs-1 my-3 fw-bold text-body mx-auto" style="width: 153px;">$149<span class="fw-normal text-body-tertiary fs-4 ms-2 text-decoration-line-through mt-1">$599</span></h2>
+                                        <p class="fs-6 mx-auto fw-normal text-center text-light-emphasis m-0" style="max-width: 225px;">No monthly subscription, you only pay once.</p>
                                     </div>
                                     <div class="e-card-actions p-0">
                                         <div class="mt-4 e-bigger">
-                                            <SfButton CssClass="e-primary e-block" Type="button" aria-label="choose a plan" role="button">Choose a plan</SfButton>
+                                            <SfButton CssClass="e-primary e-block" Content="Choose a plan" Type="button" aria-label="choose a plan" role="button"></SfButton>
                                         </div>
                                     </div>
                                 </div>
                             </th>
-                            <th class="text-center fw-medium fs-5 w-25 p-0 border-0">
-                                <div class="e-card e-bigger lh-base border-0 shadow-none p-4">
+                            <th class="text-center fw-medium fs-5 p-0 border-0" style="width: 10rem;">
+                                <div class="e-card e-bigger lh-base border-0 shadow-none p-2 p-sm-3">
                                     <div class="e-card-header p-0">
                                         <div class="e-card-header-caption">
                                             <div class="card-title fw-medium fs-6 text-body">Business</div>
                                         </div>
                                     </div>
                                     <div class="e-card-content p-0">
-                                        <h2 class="fs-1 my-3 fw-bold text-body">$249<span class="fw-normal text-body-tertiary fs-4 ms-2 text-decoration-line-through mt-1">$699</span></h2>
-                                        <p class="fs-6 w-75 mx-auto fw-normal text-center text-light-emphasis m-0">No monthly subscription, you only pay once.</p>
+                                        <h2 class="fs-1 my-3 fw-bold text-body mx-auto" style="width: 153px;">$249<span class="fw-normal text-body-tertiary fs-4 ms-2 text-decoration-line-through mt-1">$699</span></h2>
+                                        <p class="fs-6 mx-auto fw-normal text-center text-light-emphasis m-0" style="max-width: 225px;">No monthly subscription, you only pay once.</p>
                                     </div>
                                     <div class="e-card-actions p-0">
                                         <div class="mt-4 e-bigger">
-                                            <SfButton CssClass="e-outline e-primary e-block" Type="button" aria-label="choose a plan" role="button">Choose a plan</SfButton>
+                                            <SfButton CssClass="e-outline e-primary e-block" Content="Choose a plan" Type="button" aria-label="choose a plan" role="button"></SfButton>
                                         </div>
                                     </div>
                                 </div>
@@ -210,7 +210,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     <tbody class="border-0">
                         <tr class="border-0">
                             <td class="border-0 ps-0">
-                                <h2 class="my-3 fs-6 fw-bold text-body">Features</h2>
+                                <h2 class="my-3 fs-6 fw-bold text-body ps-2">Features</h2>
                             </td>
                         </tr>
                         <tr class="border-bottom border-0">
@@ -245,7 +245,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         </tr>
                         <tr class="border-0">
                             <td class="border-0 ps-0">
-                                <h2 class="my-3 fs-6 fw-bold text-body">Storage & Security</h2>
+                                <h2 class="my-3 fs-6 fw-bold text-body ps-2">Storage & Security</h2>
                             </td>
                         </tr>
                         <tr class="border-0 border-bottom">

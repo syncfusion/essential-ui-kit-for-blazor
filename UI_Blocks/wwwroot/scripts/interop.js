@@ -152,7 +152,7 @@ window.initializeDemoMessageListener = (dotNetRef) => {
             return;
         }
         if (event.data === "resizeCompleted") {
-            dotNetRef.invokeMethodAsync("ToggleLoadingIndicator", false);
+            dotNetRef.invokeMethodAsync("ToggleLoadingIndicator", false).catch(() => { });
         }
     };
 

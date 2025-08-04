@@ -1,12 +1,13 @@
-﻿using Syncfusion.Blazor.Navigations;
+using Microsoft.JSInterop;
 
-namespace UI_Blocks.Components.Pages.BlocksSection.Sidebar.Sidebar3
+﻿namespace UI_Blocks.Components.Pages.BlocksSection.Sidebar.Sidebar3
 {
     public partial class Sidebar3
     {
-        private bool SidebarToggle { get; set; } = true;
+        public bool IsSidebarOpen = true;
+        public bool IsBackdropVisible = false;
 
-        private readonly List<MenuItem> Data = new()
+        public List<MenuItem> Data = new List<MenuItem>
         {
             new MenuItem { Field = "Dashboard", FontIcon = "e-icons e-grid-view" },
             new MenuItem { Field = "Models", FontIcon = "e-icons e-send-backward" },
@@ -19,15 +20,20 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Sidebar.Sidebar3
             new MenuItem { Field = "Members", FontIcon = "e-user" }
         };
 
+        [JSInvokable]
+        public void ResizeHandler(string message, int windowWidth)
+        {
+            if (message == "resizeAction")
+            {
+                IsBackdropVisible = windowWidth <= 640;
+            }
+            StateHasChanged();
+        }
+
         public class MenuItem
         {
             public string Field { get; set; } = string.Empty;
             public string FontIcon { get; set; } = string.Empty;
-        }
-
-        private void ToggleSidebar()
-        {
-            SidebarToggle = !SidebarToggle;
         }
     }
 }

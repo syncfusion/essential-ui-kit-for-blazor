@@ -7,8 +7,8 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section class="bg-gray-50 dark:bg-gray-950">
-        <div class="flex flex-col lg:flex-row mx-auto p-0">
-            <div class="w-full lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style="background-image: url('assets/images/authentication/feature-list/feature-list.png'); background-size: cover; background-repeat: no-repeat;">
+        <div class="flex flex-col lg:flex-row mx-auto p-0" style="min-height: 770px;">
+            <div class="w-full order-2 lg:order-1 lg:w-7/12 px-6 py-14 bg-green-600 text-white flex items-center" style="background-image: url('assets/images/authentication/feature-list/feature-list.png'); background-size: cover; background-repeat: no-repeat;">
                 <div class="flex flex-wrap mx-0 w-full sm:p-6 xl:p-0 md:p-8 lg:px-6">
                     <div class="hidden xl:block xl:w-1/6"></div>
                     <div class="w-full xl:w-2/3">
@@ -36,7 +36,7 @@
                     <div class="hidden xl:block xl:w-1/6"></div>
                 </div>
             </div>
-            <div class="w-full lg:w-5/12">
+            <div class="w-full order-1 lg:order-2 lg:w-5/12">
                 <div class="bg-gray-50 dark:bg-gray-950">
                     <div class="flex items-center justify-center">
                         <div class="w-full max-w-md rounded-lg px-4 py-14 md:px-6 md:py-14">
@@ -60,7 +60,7 @@
                                     <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 font-medium text-base" style="padding-right: 0 !important;" aria-label="forgot password" role="link">Forgot password?</a>
                                 </div>
                                 <div class="e-bigger mt-6">
-                                    <SfButton CssClass="w-full e-primary e-btn" type="submit" aria-label="sign in" role="button">Sign in</SfButton>
+                                    <SfButton CssClass="w-full e-primary" Content="Sign in" Type="submit" aria-label="sign in" role="button"></SfButton>
                                 </div>
                             </form>
                             <div>
@@ -73,11 +73,11 @@
                                     <hr class="w-full absolute border-gray-200 dark:border-gray-600" />
                                 </div>
                                 <div class="flex items-center justify-center pt-10 gap-4 flex-col">
-                                    <SfButton CssClass="w-full flex items-center justify-center px-4 py-2 e-outline" type="submit" aria-label="sign in with google account" role="button">
+                                    <SfButton CssClass="w-full flex items-center justify-center px-4 py-2 e-outline" Type="submit" aria-label="sign in with google account" role="button">
                                         <img class="w-4" src="assets/images/common/brand-logos/png/google.png" alt="google logo" />
                                         <span class="text-base pl-2.5">Sign in with Google</span>
                                     </SfButton>
-                                    <SfButton CssClass="w-full flex items-center justify-center px-4 py-2 e-outline" type="submit" aria-label="sign in with microsoft account" role="button">
+                                    <SfButton CssClass="w-full flex items-center justify-center px-4 py-2 e-outline" Type="submit" aria-label="sign in with microsoft account" role="button">
                                         <img class="w-4" src="assets/images/common/brand-logos/png/microsoft.png" alt="microsoft logo" />
                                         <span class="text-base pl-2.5">Sign in with Microsoft</span>
                                     </SfButton>
@@ -92,8 +92,8 @@
 }
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
-    <section class="container-fluid d-md-flex d-block flex-wrap mx-auto p-0">
-        <div class="col-12 col-lg-7 d-flex align-items-center bg-success p-4 p-lg-4" style="background-image: url('assets/images/authentication/feature-list/feature-list.png'); background-size: cover; background-repeat: no-repeat;">
+    <section class="container-fluid row d-flex flex-wrap mx-auto p-0" style="min-height: 770px;">
+        <div class="col-12 col-lg-7 order-2 order-lg-1 d-flex align-items-center bg-success p-4 p-lg-4" style="background-image: url('assets/images/authentication/feature-list/feature-list.png'); background-size: cover; background-repeat: no-repeat;">
             <div class="row mx-0 w-100 py-5">
                 <div class="col-xl-2 d-lg-block"></div>
                 <div class="col-xl-8">
@@ -109,9 +109,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                 <div class="col-xl-2 d-lg-block"></div>
             </div>
         </div>
-        <div class="col-12 col-lg-5 p-0">
+        <div class="col-12 col-lg-5 order-1 order-lg-2 p-0">
             <div class="d-flex justify-content-center align-items-center bg-body">
-                <div class="max-w-lg bg-body rounded-lg p-4 p-md-5 w-100" style="max-width: 508px;">
+                <div class="max-w-lg bg-body rounded-lg p-4 py-5 p-md-5 w-100" style="max-width: 508px;">
                     <div class="d-flex justify-content-center align-items-center mb-4">
                         <img class="me-2" src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
                         <h5 class="text-center fw-bold mb-0 fs-5 text-body">Company Name</h5>
@@ -134,7 +134,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             <a href="javascript:void(0);" class="text-primary fs-6 fw-medium text-decoration-none" style="padding-right: 0 !important; padding-top: 4px !important;" aria-label="forgot password" role="link">Forgot password?</a>
                         </div>
                         <div class="mt-4 e-bigger">
-                            <SfButton CssClass="e-btn e-block e-primary" type="submit" aria-label="sign in" role="button">Sign in</SfButton>
+                            <SfButton CssClass="e-block e-primary" Content="Sign in" Type="submit" aria-label="sign in" role="button"></SfButton>
                         </div>
                     </form>
                     <div class="d-flex flex-wrap align-items-center justify-content-center mt-3 gap-1">
@@ -147,11 +147,11 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             <hr class="w-100 border-light-subtle opacity-100" />
                         </div>
                         <div class="d-flex flex-column mt-3 align-items-center justify-content-center gap-3">
-                            <SfButton CssClass="e-btn e-outline e-block d-flex align-items-center justify-content-center px-3 py-2" type="submit" aria-label="sign in with google account" role="button">
+                            <SfButton CssClass="e-outline e-block d-flex align-items-center justify-content-center px-3 py-2" Type="submit" aria-label="sign in with google account" role="button">
                                 <img src="assets/images/common/brand-logos/png/google.png" width="24px" alt="google logo" />
                                 <span class="fs-6 fw-medium" style="padding-left: 8px;">Sign in with Google</span>
                             </SfButton>
-                            <SfButton CssClass="e-btn e-outline e-block d-flex align-items-center justify-content-center px-3 py-2" type="submit" aria-label="sign in with microsoft account" role="button">
+                            <SfButton CssClass="e-outline e-block d-flex align-items-center justify-content-center px-3 py-2" Type="submit" aria-label="sign in with microsoft account" role="button">
                                 <img src="assets/images/common/brand-logos/png/microsoft.png" width="24px" alt="microsoft logo" />
                                 <span class="fs-6 fw-medium" style="padding-left: 8px;">Sign in with Microsoft</span>
                             </SfButton>

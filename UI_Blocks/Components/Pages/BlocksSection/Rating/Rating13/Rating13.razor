@@ -1,0 +1,56 @@
+﻿@page "/blocks/rating-13"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-gray-50 dark:bg-gray-800">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="mt-4 p-6 w-full mx-auto bg-white dark:bg-gray-800 border-0 sm:!border rounded-none sm:rounded-lg border-gray-300 dark:border-gray-500 flex flex-col justify-center items-center text-center" style="max-width: 360px;">
+                <h4 class="font-semibold text-base text-gray-900 dark:text-white">How would you like to rate our app experience?</h4>
+                <div class="mt-2">
+                    <SfRating Value="4">
+                        <EmptyTemplate>
+                            <span class="sf-icon-star-filled-01 !text-2xl text-gray-300 dark:text-gray-500 px-2"></span>
+                        </EmptyTemplate>
+                        <FullTemplate>
+                            <span class="sf-icon-star-filled-01 !text-2xl text-amber-300 px-2"></span>
+                        </FullTemplate>
+                    </SfRating>
+                </div>
+                <div class="flex justify-between w-full px-8 mx-8 text-xs font-medium text-gray-500 dark:text-gray-400 mt-1">
+                    <p>Unhappy</p>
+                    <p>Neutral</p>
+                    <p>Satisfied</p>
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body-tertiary">
+        <div class="pt-4" style="min-height: 36rem;">
+            <div class="mt-4 p-4 w-100 mx-auto bg-body text-center border rounded bg-body text-body" style="max-width: 360px;">
+                <h4 class="fw-bold fs-6 text-body">How would you like to rate our app experience?</h4>
+                <div class="mt-2">
+                    <SfRating Value="4">
+                        <EmptyTemplate>
+                            <span class="sf-icon-star-02 fs-4 text-body-secondary px-2"></span>
+                        </EmptyTemplate>
+                        <FullTemplate>
+                            <span class="sf-icon-star-filled-01 fs-4 text-warning px-2"></span>
+                        </FullTemplate>
+                    </SfRating>
+                </div>
+                <div class="d-flex justify-content-between px-3 mx-3 small">
+                    <p class="mb-0 small text-body-secondary fw-medium">Unhappy</p>
+                    <p class="mb-0 small text-body-secondary fw-medium">Neutral</p>
+                    <p class="mb-0 small text-body-secondary fw-medium">Satisfied</p>
+                </div>
+            </div>
+        </div>
+    </section>
+}

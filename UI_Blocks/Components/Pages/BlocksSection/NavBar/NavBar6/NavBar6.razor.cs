@@ -5,17 +5,13 @@ namespace UI_Blocks.Components.Pages.BlocksSection.NavBar.NavBar6
 {
     public partial class NavBar6
     {
-        private SfDropDownButton? ProfileDropdown;
-        private bool _isProfileDropdownOpen = false;
-
-        private void OnProfileDropdownOpened() => _isProfileDropdownOpen = true;
-
-        private void OnProfileDropdownClosed() => _isProfileDropdownOpen = false;
+        public SfDropDownButton? ProfileDropdown;
+        public bool IsProfileDropdownOpen = false;
 
         [JSInvokable]
         public void ResizeHandler(string message, int windowWidth)
         {
-            if (message == "resizeAction" && _isProfileDropdownOpen && ProfileDropdown != null)
+            if (message == "resizeAction" && IsProfileDropdownOpen && ProfileDropdown != null)
             {
                 ProfileDropdown.Toggle();
             }

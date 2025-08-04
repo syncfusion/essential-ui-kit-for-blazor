@@ -26,7 +26,7 @@
                     </div>
                     <div class="mt-3">
                         <SfTab Width="100%" OverflowMode="@OverflowMode">
-                            <TabEvents Created="@OnTabCreated" Selected="@OnTabSelectAsync"></TabEvents>
+                            <TabEvents Created="@TabCreated" Selected="@OnTabSelectAsync"></TabEvents>
                             <TabItems>
                                 <TabItem>
                                     <HeaderTemplate>
@@ -108,7 +108,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 absolute top-0 right-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" IsToggle="true" OnClick="@(() => IsSidebarToggle = !IsSidebarToggle)" Type="button" aria-label="show sidebar" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" IsToggle="true" OnClick="@(() => IsSidebarToggle = !IsSidebarToggle)" Type="button" aria-label="show sidebar" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -134,7 +134,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     </div>
                     <div class="mt-2">
                         <SfTab Width="100%" OverflowMode="@OverflowMode">
-                            <TabEvents Created="@OnTabCreated" Selected="@OnTabSelectAsync"></TabEvents>
+                            <TabEvents Created="@TabCreated" Selected="@OnTabSelectAsync"></TabEvents>
                             <TabItems>
                                 <TabItem>
                                     <HeaderTemplate>
@@ -216,7 +216,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 position-absolute top-0 end-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" IsToggle="true" OnClick="@(() => IsSidebarToggle = !IsSidebarToggle)" Type="button" aria-label="show sidebar" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" IsToggle="true" OnClick="@(() => IsSidebarToggle = !IsSidebarToggle)" Type="button" aria-label="show sidebar" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

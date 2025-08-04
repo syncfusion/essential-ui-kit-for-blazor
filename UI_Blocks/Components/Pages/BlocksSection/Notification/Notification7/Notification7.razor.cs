@@ -6,13 +6,13 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Notification.Notification7
 {
     public partial class Notification7
     {
-        private bool IsDropdownVisible { get; set; } = false;
-
         public SfSidebar? Sidebar;
         public SfDropDownButton? Dropdown;
         public string Width = "418px";
+        public bool IsDropdownVisible = false;
+        public bool IsSidebarToggle = true;
 
-        public List<NotificationItem> TransactionData { get; set; } = new List<NotificationItem>
+        public List<NotificationItem> TransactionData = new List<NotificationItem>
         {
             new NotificationItem
             {
@@ -58,8 +58,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Notification.Notification7
                 {
                     Dropdown.Toggle();
                 }
-                StateHasChanged();
             }
+            StateHasChanged();
         }
 
         public class NotificationItem

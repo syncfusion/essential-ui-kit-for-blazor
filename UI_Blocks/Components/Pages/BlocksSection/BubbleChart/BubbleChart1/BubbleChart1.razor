@@ -1,0 +1,134 @@
+﻿@page "/blocks/bubble-chart-1"
+
+@inherits UI_Blocks.Components.Pages.MainSection.Demo
+
+@ThemeLinks
+
+@if (CurrentTheme.Contains("tailwind"))
+{
+    <section class="bg-white dark:bg-gray-900">
+        <div class="h-screen flex justify-center p-3 sm:p-4">
+            <div class="w-full" style="max-width: 350px">
+                <div class="flex justify-between items-start mb-2">
+                    <div class="flex flex-col gap-2">
+                        <h2 class="text-base font-semibold text-gray-900 dark:text-white">Weekly Expense</h2>
+                        <p class="text-sm text-gray-500 dark:text-gray-400">From Dec 1 - Dec 8, 2024</p>
+                    </div>
+                    <SfButton CssClass="hidden sm:block e-outline" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+                    <SfButton CssClass="block sm:hidden e-outline" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+                </div>
+                <div>
+                    <SfChart Width="100%" Height="324px" Theme="@(CurrentTheme == "tailwind-dark" ? Theme.Tailwind3Dark : Theme.Tailwind3)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartLegendSettings Visible="false"></ChartLegendSettings>
+                        <ChartPrimaryXAxis Minimum="65" Maximum="102" Interval="5" CrossesAt="5">
+                            <ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Minimum="0" Maximum="60" Interval="5" CrossesAt="10">
+                            <ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0" Color="transparent"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@CategoryExpenseData" XName="Literacy" YName="GDPGrowth" Opacity="0.3" MinRadius="6" MaxRadius="18" Size="BubbleSize" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Bubble" PointColorMapping="Color">
+                                <ChartMarker>
+                                    <ChartDataLabel Visible="true" Position="Syncfusion.Blazor.Charts.LabelPosition.Middle" Format="{value}%">
+                                        <ChartDataLabelFont FontWeight="600" Size="15px"></ChartDataLabelFont>
+                                    </ChartDataLabel>
+                                </ChartMarker>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartEvents OnDataLabelRender="DataLabelEvent"></ChartEvents>
+                    </SfChart>
+                </div>
+                <div>
+                    @foreach (var Data in CategoryExpenseData)
+                    {
+                        var Border = Data.Id - 1 < CategoryExpenseData.Count - 1 ? "border-b border-gray-200 dark:border-gray-600" : "";
+                        <div class="flex justify-between items-center px-1 py-3 @Border">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2 h-2 rounded-full" style="background-color: @ColorPalette[Data.Id - 1]"></span>
+                                <p class="text-sm text-gray-700 dark:text-gray-300">@Data.Category</p>
+                            </div>
+                            <p class="text-xs text-gray-900 dark:text-white font-semibold">$@Data.Expense</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}
+else if (CurrentTheme.Contains("bootstrap5.3"))
+{
+    <section class="bg-body">
+        <div class="vh-100 d-flex justify-content-center p-3 p-sm-4 overflow-hidden">
+            <div class="w-100" style="max-width: 350px">
+                <div class="d-flex justify-content-between align-items-start mb-2">
+                    <div class="d-flex flex-column gap-2">
+                        <h2 class="h6 fw-semibold text-body mb-0">Weekly Expense</h2>
+                        <p class="text-body-secondary small mb-0">From Dec 1 - Dec 8, 2024</p>
+                    </div>
+                    <SfButton CssClass="e-outline d-none d-sm-block" Content="View Report" Type="button" aria-label="view report" role="button"></SfButton>
+                    <SfButton CssClass="e-outline d-block d-sm-none" IconCss="e-icons e-description" Type="button" aria-label="view report" role="button"></SfButton>
+                </div>
+                <div>
+                    <SfChart Width="100%" Height="324px" Theme="@(CurrentTheme == "bootstrap5.3-dark" ? Theme.Bootstrap5Dark : Theme.Bootstrap5)">
+                        <ChartArea>
+                            <ChartAreaBorder Width="0"></ChartAreaBorder>
+                        </ChartArea>
+                        <ChartLegendSettings Visible="false"></ChartLegendSettings>
+                        <ChartPrimaryXAxis Minimum="65" Maximum="102" Interval="5" CrossesAt="5">
+                            <ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0"></ChartAxisLineStyle>
+                        </ChartPrimaryXAxis>
+                        <ChartPrimaryYAxis Minimum="0" Maximum="60" Interval="5" CrossesAt="10">
+                            <ChartAxisLabelStyle Size="0"></ChartAxisLabelStyle>
+                            <ChartAxisMajorGridLines Width="0"></ChartAxisMajorGridLines>
+                            <ChartAxisMinorGridLines Width="0"></ChartAxisMinorGridLines>
+                            <ChartAxisMajorTickLines Width="0"></ChartAxisMajorTickLines>
+                            <ChartAxisMinorTickLines Width="0"></ChartAxisMinorTickLines>
+                            <ChartAxisLineStyle Width="0" Color="transparent"></ChartAxisLineStyle>
+                        </ChartPrimaryYAxis>
+                        <ChartSeriesCollection>
+                            <ChartSeries DataSource="@CategoryExpenseData" XName="Literacy" YName="GDPGrowth" Opacity="0.3" MinRadius="6" MaxRadius="18" Size="BubbleSize" Type="Syncfusion.Blazor.Charts.ChartSeriesType.Bubble" PointColorMapping="Color">
+                                <ChartMarker>
+                                    <ChartDataLabel Visible="true" Position="Syncfusion.Blazor.Charts.LabelPosition.Middle" Format="{value}%">
+                                        <ChartDataLabelFont FontWeight="600" Size="15px"></ChartDataLabelFont>
+                                    </ChartDataLabel>
+                                </ChartMarker>
+                            </ChartSeries>
+                        </ChartSeriesCollection>
+                        <ChartEvents OnDataLabelRender="DataLabelEvent"></ChartEvents>
+                    </SfChart>
+                </div>
+                <div>
+                    @foreach (var Data in CategoryExpenseData)
+                    { 
+                        var Border = Data.Id - 1 < CategoryExpenseData.Count - 1 ? "border-bottom" : "";
+                        <div class="d-flex justify-content-between align-items-center py-1 px-1 @Border">
+                            <div class="d-flex align-items-center gap-2 my-1">
+                                <span class="rounded-circle d-inline-block" style="width: 8px; height: 8px; background-color: @ColorPalette[Data.Id - 1];"></span>
+                                <p class="mb-0 small text-bodyp-secondary">@Data.Category</p>
+                            </div>
+                            <p class="my-1 small fw-semibold text-body-secondary">$@Data.Expense</p>
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </section>
+}

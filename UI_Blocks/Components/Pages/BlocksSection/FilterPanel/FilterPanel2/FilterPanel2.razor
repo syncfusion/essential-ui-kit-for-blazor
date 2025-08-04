@@ -9,8 +9,6 @@
     <section class="bg-white dark:bg-gray-800">
         <div id="dialog" class="relative dialog-target" style="min-height:800px">
             <SfDialog @ref="Dialog" CssClass="absolute border-b-0 border-t-0" Width="810px" MinHeight="800px" IsModal="true" ShowCloseIcon="true" Target="#dialog" aria-label="advanced filter" role="dialog">
-                <DialogPositionData X="@XValue"></DialogPositionData>
-                <DialogEvents Created="@(args => XValue = "right")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
                     <Header>
                         <div>
@@ -36,7 +34,7 @@
                                     </QueryBuilderColumns>
                                 </SfQueryBuilder>
                                 <div class="@(RecordLength != 0 ? "border-t " : "")py-3 px-5 border-gray-200 dark:border-gray-600 rounded-b-lg">
-                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Type="button" Content="Add New" OnClick="@AddNewRulePrimaryAsync" aria-label="add new" role="button"></SfButton>
+                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Content="Add New" Type="button" OnClick="@AddNewRulePrimaryAsync" aria-label="add new" role="button"></SfButton>
                                 </div>
                             </div>
                             <div class="flex items-center my-4">
@@ -60,7 +58,7 @@
                                     </QueryBuilderColumns>
                                 </SfQueryBuilder>
                                 <div class="@(RecordData != 0 ? "border-t " : "")py-3 px-5 border-gray-200 dark:border-gray-600 rounded-b-lg">
-                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Type="button" Content="Add New" OnClick="@AddNewRuleSecondaryAsync" aria-label="add new" role="button"></SfButton>
+                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Content="Add New" Type="button" OnClick="@AddNewRuleSecondaryAsync" aria-label="add new" role="button"></SfButton>
                                 </div>
                             </div>
                         </div>
@@ -68,20 +66,22 @@
                     <FooterTemplate>
                         <hr class="border-gray-200 dark:border-gray-700" />
                         <div class="flex flex-col-reverse sm:flex-row justify-between items-center w-full sm:pt-4 sm:pb-2">
-                            <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 pt-4 sm:pt-0 text-sm hover:underline">Learn more</a>
+                            <a href="javascript:void(0);" class="text-primary-600 dark:text-primary-400 pt-4 mb-3 sm:mb-0 sm:pt-0 text-sm hover:underline">Learn more</a>
                             <div class="flex flex-col sm:flex-row w-full sm:w-auto !ml-0 sm:ml-auto gap-3 mt-2 sm:mt-0">
-                                <SfButton CssClass="e-outline e-primary" class="border-0 w-full !ml-0 sm:!ml-auto sm:w-auto" Type="button" Content="Save filter" aria-label="save filter" role="button"></SfButton>
-                                <SfButton CssClass="e-primary" class="w-full sm:w-auto !ml-0 sm:!ml-auto" Type="button" Content="Apply" aria-label="apply" role="button"></SfButton>
+                                <SfButton CssClass="e-outline e-primary" class="border-0 w-full !ml-0 sm:!ml-auto sm:w-auto" Content="Save filter" Type="button" aria-label="save filter" role="button"></SfButton>
+                                <SfButton CssClass="e-primary" class="w-full sm:w-auto !ml-0 sm:!ml-auto" Content="Apply" Type="button" aria-label="apply" role="button"></SfButton>
                             </div>
                         </div>
                     </FooterTemplate>
                 </DialogTemplates>
+                <DialogPositionData X="right"></DialogPositionData>
+                <DialogEvents Opened="@(args => args.PreventFocus = true)"></DialogEvents>
             </SfDialog>
         </div>
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 absolute top-0 right-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@OpenDialogAync" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -90,17 +90,15 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     <section class="bg-body">
         <div id="dialog" class="position-relative" style="min-height:800px">
             <SfDialog @ref="Dialog" CssClass="absolute border-b-0 border-t-0" Width="810px" MinHeight="800px" IsModal="true" ShowCloseIcon="true" Target="#dialog" aria-label="advanced filter" role="dialog">
-                <DialogPositionData X="@XValue"></DialogPositionData>
-                <DialogEvents Created="@(args => XValue = "right")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
                     <Header>
-                        <div>
+                        <div class="px-1">
                             <p class="mb-2 fw-bold fs-6 text-body lh-sm">Advanced Filters</p>
                             <a href="javascript:void(0);" class="text-primary fw-bold small text-decoration-none lh-sm">Switch to basic filter</a>
                         </div>
                     </Header>
                     <Content>
-                        <div class="dialog-content">
+                        <div class="dialog-content px-1">
                             <p class="text-body-secondary fs-6">Apply this rule to the tickets that meet 
                                 <span class="fw-medium">All</span> of these conditions
                             </p>
@@ -117,7 +115,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                     </QueryBuilderColumns>
                                 </SfQueryBuilder>
                                 <div class="@(RecordLength != 0 ? "border-top" : "") p-3 rounded-bottom-3">
-                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Type="button" Content="Add New" OnClick="@AddNewRulePrimaryAsync" aria-label="add new" role="button"></SfButton>
+                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Content="Add New" Type="button" OnClick="@AddNewRulePrimaryAsync" aria-label="add new" role="button"></SfButton>
                                 </div>
                             </div>
                             <div class="d-flex align-items-center my-3">
@@ -141,7 +139,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                     </QueryBuilderColumns>
                                 </SfQueryBuilder>
                                 <div class="@(RecordData != 0 ? "border-top" : "") p-3 rounded-bottom-3">
-                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Type="button" Content="Add New" OnClick="@AddNewRuleSecondaryAsync" aria-label="add new" role="button"></SfButton>
+                                    <SfButton CssClass="e-primary e-flat" IconCss="e-icons e-plus" Content="Add New" Type="button" OnClick="@AddNewRuleSecondaryAsync" aria-label="add new" role="button"></SfButton>
                                 </div>
                             </div>
                         </div>
@@ -150,18 +148,20 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                         <div class="d-flex justify-content-between align-items-sm-center flex-column-reverse flex-sm-row py-1 px-3">
                             <a href="javascript:void(0);" class="text-primary fs-6 text-center pt-3 pt-sm-0 text-decoration-none">Learn more</a>
                             <div class="d-flex flex-column flex-sm-row w-sm-auto ms-0 ms-sm-auto gap-2">
-                                <SfButton CssClass="e-outline e-primary border-0 ms-0 flex-grow-1 flex-sm-grow-0" Type="button" Content="Save filter" aria-label="save filter" role="button"></SfButton>
-                                <SfButton CssClass="e-primary ms-0 flex-grow-1 flex-sm-grow-0 mt-2 mt-sm-0" Type="button" Content="Apply" aria-label="save filter" role="button"></SfButton>
+                                <SfButton CssClass="e-outline e-primary border-0 ms-0 flex-grow-1 flex-sm-grow-0" Content="Save filter" Type="button" aria-label="save filter" role="button"></SfButton>
+                                <SfButton CssClass="e-primary ms-0 flex-grow-1 flex-sm-grow-0 mt-2 mt-sm-0" Content="Apply" Type="button" aria-label="save filter" role="button"></SfButton>
                             </div>
                         </div>
                     </FooterTemplate>
                 </DialogTemplates>
+                <DialogPositionData X="right"></DialogPositionData>
+                <DialogEvents Opened="@(args => args.PreventFocus = true)"></DialogEvents>
             </SfDialog>
         </div>
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 position-absolute top-0 end-0">
-        <SfButton CssClass="e-large e-icons e-chevron-left e-round" OnClick="@OpenDialogAync" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-left" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

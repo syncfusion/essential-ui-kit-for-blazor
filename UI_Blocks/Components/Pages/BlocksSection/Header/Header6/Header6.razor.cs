@@ -6,8 +6,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Header.Header6
 {
     public partial class Header6
     {
-        private bool IsDropdownOpened { get; set; } = false;
-        public SfDropDownButton? Dropdown;
+        public SfDropDownButton? DropDownButton;
+        public bool IsDropdownOpened = false;
         public OverflowMode OverflowMode { get; set; } = OverflowMode.Extended;
         public Dictionary<string, int> HeaderData { get; set; } = new()
         {
@@ -16,9 +16,6 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Header.Header6
             ["ApprovalDue"] = 18
         };
 
-        public void OnDropdownOpened() => IsDropdownOpened = true;
-        public void OnDropdownClosed() => IsDropdownOpened = false;
-
         [JSInvokable]
         public void ResizeHandler(string message, int windowWidth)
         {
@@ -26,12 +23,12 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Header.Header6
             {
                 OverflowMode = windowWidth < 640 ? OverflowMode.Popup : OverflowMode.Extended;
 
-                if (IsDropdownOpened && Dropdown != null)
+                if (IsDropdownOpened && DropDownButton != null)
                 {
-                    Dropdown.Toggle();
+                    DropDownButton.Toggle();
                 }
-                StateHasChanged();
             }
+            StateHasChanged();
         }
     }
 }

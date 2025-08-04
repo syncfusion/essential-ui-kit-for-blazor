@@ -13,11 +13,11 @@
                     <div class="px-2 py-6 flex flex-col items-center h-full border-r border-gray-200 dark:border-gray-600" style="width:@DockWidth">
                         <img src="assets/images/ai/sidebar/two-columns-sidebar/logo.svg" alt="logo" />
                         <div class="flex flex-col gap-4 mt-6">
-                            <SfButton CssClass="e-icons e-comment-add e-medium e-flat px-2" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="add comment" role="button"></SfButton>
-                            <SfButton CssClass="e-icons e-user e-medium e-flat px-2" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="user profile" role="button"></SfButton>
-                            <SfButton CssClass="e-icons e-comment-show e-medium e-flat px-2 e-active" Type="button" OnClick="() => IsSidebarOpen = true" aria-label="message" role="button"></SfButton>
-                            <SfButton CssClass="e-icons e-search e-medium e-flat px-2" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="search" role="button"></SfButton>
-                            <SfButton CssClass="e-icons e-settings e-medium e-flat px-2" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="settings" role="button"></SfButton>
+                            <SfButton CssClass="e-flat px-2" IconCss="e-icons e-comment-add e-medium" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="add comment" role="button"></SfButton>
+                            <SfButton CssClass="e-flat px-2" IconCss="e-icons e-user e-medium" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="user profile" role="button"></SfButton>
+                            <SfButton CssClass="e-flat px-2 e-active" IconCss="e-icons e-comment-show e-medium" Type="button" OnClick="() => IsSidebarOpen = true" aria-label="message" role="button"></SfButton>
+                            <SfButton CssClass="e-flat px-2" IconCss="e-icons e-search e-medium" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="search" role="button"></SfButton>
+                            <SfButton CssClass="e-flat px-2" IconCss="e-icons e-settings e-medium" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="settings" role="button"></SfButton>
                         </div>
                     </div>
                     @if (IsSidebarOpen)
@@ -52,7 +52,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 top-0 left-0 absolute">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -65,11 +65,11 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     <div class="px-2 py-4 d-flex flex-column align-items-center" style="width: @DockWidth">
                         <img src="assets/images/ai/sidebar/two-columns-sidebar/logo.svg" alt="logo" />
                         <div class="d-flex flex-column gap-2 mt-2">
-                            <SfButton CssClass="e-icons e-comment-add e-medium e-flat" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="add comment" role="button"></SfButton>
-                            <SfButton CssClass="e-icons e-user e-medium e-flat" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="user profile" role="button"></SfButton>
-                            <SfButton CssClass="e-icons e-comment-show e-medium e-flat e-active" Type="button" OnClick="() => IsSidebarOpen = true" aria-label="message" role="button"></SfButton>
-                            <SfButton CssClass="e-icons e-search e-medium e-flat" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="search" role="button"></SfButton>
-                            <SfButton CssClass="e-icons e-settings e-medium e-flat" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="settings" role="button"></SfButton>
+                            <SfButton CssClass="e-flat" IconCss="e-icons e-comment-add e-medium" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="add comment" role="button"></SfButton>
+                            <SfButton CssClass="e-flat" IconCss="e-icons e-user e-medium" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="user profile" role="button"></SfButton>
+                            <SfButton CssClass="e-flat e-active" IconCss="e-icons e-comment-show e-medium" Type="button" OnClick="() => IsSidebarOpen = true" aria-label="message" role="button"></SfButton>
+                            <SfButton CssClass="e-flat" IconCss="e-icons e-search e-medium" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="search" role="button"></SfButton>
+                            <SfButton CssClass="e-flat" IconCss="e-icons e-settings e-medium" Type="button" OnClick="() => IsSidebarOpen = false" aria-label="settings" role="button"></SfButton>
                         </div>
                     </div>
                     @if (IsSidebarOpen)
@@ -104,7 +104,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 position-absolute top-0 start-0">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

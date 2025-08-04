@@ -145,9 +145,9 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                 var ticket = (context as Ticket)!;
                                 string priorityClass = ticket.Priority switch
                                 {
-                                    "High" => "e-icons e-arrow-up text-success",
-                                    "Medium" => "e-icons e-arrow-right text-warning",
-                                    "Low" => "e-icons e-arrow-down text-danger",
+                                    "High" => "e-icons e-arrow-up text-success-emphasis",
+                                    "Medium" => "e-icons e-arrow-right text-warning-emphasis",
+                                    "Low" => "e-icons e-arrow-down text-danger-emphasis",
                                     _ => ""
                                 };
                             }
@@ -172,10 +172,10 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                     else if (!string.IsNullOrEmpty(ticket.Assignee.Initial))
                                     {
                                         <span class='e-avatar e-avatar-circle e-avatar-small @(ticket.Assignee.ColorTheme switch {
-                                            "Red" => "bg-danger-subtle text-danger",
-                                            "Green" => "bg-success-subtle text-success",
-                                            "Blue" => "bg-info-subtle text-info",
-                                            "Orange" => "bg-warning-subtle text-warning",
+                                            "Red" => "bg-danger-subtle text-danger-emphasis",
+                                            "Green" => "bg-success-subtle text-success-emphasis",
+                                            "Blue" => "bg-info-subtle text-info-emphasis",
+                                            "Orange" => "bg-warning-subtle text-warning-emphasis",
                                             _ => ""
                                         })'>
                                             @ticket.Assignee.Initial
@@ -203,10 +203,10 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                                     else if (!string.IsNullOrEmpty(ticket.CreatedBy.Initial))
                                     {
                                         <span class='e-avatar e-avatar-circle e-avatar-small @(ticket.CreatedBy.ColorTheme switch {
-                                            "Red" => "bg-danger-subtle text-danger",
-                                            "Green" => "bg-success-subtle text-success",
-                                            "Blue" => "bg-info-subtle text-info",
-                                            "Orange" => "bg-warning-subtle text-warning",
+                                            "Red" => "bg-danger-subtle text-danger-emphasis",
+                                            "Green" => "bg-success-subtle text-success-emphasis",
+                                            "Blue" => "bg-info-subtle text-info-emphasis",
+                                            "Orange" => "bg-warning-subtle text-warning-emphasis",
                                             _ => ""
                                         })'>
                                             @ticket.CreatedBy.Initial

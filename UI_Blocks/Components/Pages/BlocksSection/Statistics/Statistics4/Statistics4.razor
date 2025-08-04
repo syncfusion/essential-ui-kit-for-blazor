@@ -7,7 +7,7 @@
 @if (CurrentTheme.Contains("tailwind"))
 {
     <section class="bg-gray-50 dark:bg-gray-900">
-        <div class="px-4 sm:px-6 xl:px-11 py-12">
+        <div id="wellness-metrics" class="px-4 sm:px-6 xl:px-11 py-12">
             <div class="grid sm:grid-cols-2 gap-6 lg:gap-4 lg:grid-cols-4">
                 @foreach (var data in MetricsData)
                 {
@@ -43,7 +43,7 @@
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body-tertiary">
-        <div class="px-3 px-sm-4 px-xl-5 py-5">
+        <div id="wellness-metrics" class="px-3 px-sm-4 px-xl-5 py-5">
             <div class="row g-4 g-lg-3">
                 @foreach (var data in MetricsData)
                 {

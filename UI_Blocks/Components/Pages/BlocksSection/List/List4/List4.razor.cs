@@ -4,9 +4,9 @@ namespace UI_Blocks.Components.Pages.BlocksSection.List.List4
 {
     public partial class List4
     {
-        private string WidthStyle { get; set; } = "max-width:608px";
+        public string WidthStyle = "max-width:608px";
 
-        private List<ShoeItem> Shoes { get; set; } = new List<ShoeItem>
+        public List<ShoeItem> Shoes = new List<ShoeItem>
         {
             new ShoeItem { Id = 1, Header = "Nike Air Max 270", Size = "8", Color = "White", Seller = "Meyaar", Amount = "$150.00", Badge = "10% off", Pic = "nike-white.png" },
             new ShoeItem { Id = 2, Header = "Adidas Ultraboost 22", Size = "8", Color = "Red", Seller = "Meyaar", Amount = "$180.00", Badge = "", Pic = "adidas-red.png" },
@@ -21,8 +21,8 @@ namespace UI_Blocks.Components.Pages.BlocksSection.List.List4
             if (message == "resizeAction")
             {
                 WidthStyle = windowWidth < 1024 ? "width:100%" : "max-width:608px";
-                StateHasChanged();
             }
+            StateHasChanged();
         }
 
         public class ShoeItem

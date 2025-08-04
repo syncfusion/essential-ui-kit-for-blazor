@@ -17,8 +17,8 @@
 							<SfButton CssClass="e-flat py-2 mr-1.5" Type="button" aria-label="home" role="button">Home</SfButton>
 							<SfButton CssClass="e-flat py-2 mr-1.5" Type="button" aria-label="products" role="button">Products</SfButton>
 							<SfButton CssClass="e-flat py-2 mr-1.5" Type="button" aria-label="company" role="button">Company</SfButton>
-							<SfDropDownButton @ref="ResourcesDropdown" id="resourcesDropdown" class="py-2 mr-1.5" CssClass="e-flat" Content="Resources" Type="button" aria-label="choose a resource" role="button">
-								<DropDownButtonEvents Opened="OnResourcesDropdownOpened" Closed="OnResourcesDropdownClosed"></DropDownButtonEvents>
+							<SfDropDownButton @ref="ResourcesDropdown" class="py-2 mr-1.5" CssClass="e-flat" Content="Resources" Type="button" aria-label="choose a resource" role="button">
+								<DropDownButtonEvents Opened="@(args => IsResourcesDropdownOpen = true)" Closed="@(args => IsResourcesDropdownOpen = false)"></DropDownButtonEvents>
 								<DropDownMenuItems>
 									<DropDownMenuItem Text="Dashboard"></DropDownMenuItem>
 									<DropDownMenuItem Text="Earnings"></DropDownMenuItem>
@@ -29,12 +29,12 @@
 						</div>
 					</div>
 					<div class="flex items-center">
-						<SfButton CssClass="sf-icon-notification-bell-02 leading-3 text-base hidden sm:block mr-2 e-flat" Type="button" aria-label="notification" role="button"></SfButton>
+						<SfButton CssClass="leading-3 hidden sm:block mr-2 e-flat" IconCss="sf-icon-notification-bell-02" Type="button" aria-label="notification" role="button"></SfButton>
 						<div class="border border-r border-gray-200 dark:border-gray-600 hidden xl:block mr-2 h-7"></div>
-						<SfButton CssClass="e-icons e-grid-view hidden xl:block mr-2 e-flat" Type="button" aria-label="grid view" role="button"></SfButton>
+						<SfButton CssClass="hidden xl:block mr-2 e-flat" IconCss="e-icons e-grid-view" Type="button" aria-label="grid view" role="button"></SfButton>
 						<div class="border border-r border-gray-200 dark:border-gray-600 hidden lg:block mr-2 h-7"></div>
-						<SfDropDownButton @ref="BrandDropdown" id="brandDropdown" CssClass="e-flat me-2 hidden lg:block" Content="CompanyName.com" Type="button" aria-label="choose a brand" role="button">
-							<DropDownButtonEvents Opened="OnBrandDropdownOpened" Closed="OnBrandDropdownClosed"></DropDownButtonEvents>
+						<SfDropDownButton @ref="BrandDropdown" CssClass="e-flat me-2 hidden lg:block" Content="CompanyName.com" Type="button" aria-label="choose a brand" role="button">
+							<DropDownButtonEvents Opened="@(args => IsBrandDropdownOpen = true)" Closed="@(args => IsBrandDropdownOpen = false)"></DropDownButtonEvents>
 							<DropDownMenuItems>
 								<DropDownMenuItem Text="React"></DropDownMenuItem>
 								<DropDownMenuItem Text="Vue.js"></DropDownMenuItem>
@@ -89,8 +89,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 						<SfButton CssClass="e-flat py-2 me-2" Type="button" aria-label="home" role="button">Home</SfButton>
 						<SfButton CssClass="e-flat py-2 me-2" Type="button" aria-label="products" role="button">Products</SfButton>
 						<SfButton CssClass="e-flat py-2 me-2" Type="button" aria-label="company" role="button">Company</SfButton>
-						<SfDropDownButton @ref="ResourcesDropdown" id="resourcesDropdown" CssClass="e-flat me-2" Content="Resources" Type="button" aria-label="choose a resource" role="button">
-							<DropDownButtonEvents Opened="OnResourcesDropdownOpened" Closed="OnResourcesDropdownClosed"></DropDownButtonEvents>
+						<SfDropDownButton @ref="ResourcesDropdown" CssClass="e-flat me-2" Content="Resources" Type="button" aria-label="choose a resource" role="button">
+							<DropDownButtonEvents Opened="@(args => IsResourcesDropdownOpen = true)" Closed="@(args => IsResourcesDropdownOpen = false)"></DropDownButtonEvents>
 							<DropDownMenuItems>
 								<DropDownMenuItem Text="Dashboard"></DropDownMenuItem>
 								<DropDownMenuItem Text="Earnings"></DropDownMenuItem>
@@ -101,12 +101,12 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 					</div>
 				</div>
 				<div class="d-flex align-items-center">
-					<SfButton CssClass="sf-icon-notification-bell-01 fs-6 d-none d-sm-block me-3 e-flat" Type="button" aria-label="notification" role="button"></SfButton>
+					<SfButton CssClass="d-none d-sm-block me-3 e-flat" IconCss="sf-icon-notification-bell-01 fs-6" Type="button" aria-label="notification" role="button"></SfButton>
 					<div class="border-end border-secondary-subtle d-none d-xl-block me-3" style="height: 24px;"></div>
-					<SfButton CssClass="e-icons e-grid-view d-none d-xl-block me-3 e-medium e-flat" Type="button" aria-label="grid view" role="button"></SfButton>
+					<SfButton CssClass="d-none d-xl-block me-3 e-flat" IconCss="e-icons e-grid-view e-medium" Type="button" aria-label="grid view" role="button"></SfButton>
 					<div class="border-end border-secondary-subtle d-none d-lg-block me-3" style="height: 24px;"></div>
-					<SfDropDownButton @ref="BrandDropdown" id="brandDropdown" CssClass="e-flat me-3 d-none d-lg-block" Content="CompanyName.com" Type="button" aria-label="choose a brand" role="button">
-						<DropDownButtonEvents Opened="OnBrandDropdownOpened" Closed="OnBrandDropdownClosed"></DropDownButtonEvents>
+					<SfDropDownButton @ref="BrandDropdown" CssClass="e-flat me-3 d-none d-lg-block" Content="CompanyName.com" Type="button" aria-label="choose a brand" role="button">
+						<DropDownButtonEvents Opened="@(args => IsBrandDropdownOpen = true)" Closed="@(args => IsBrandDropdownOpen = false)"></DropDownButtonEvents>
 						<DropDownMenuItems>
 							<DropDownMenuItem Text="React"></DropDownMenuItem>
 							<DropDownMenuItem Text="Vue.js"></DropDownMenuItem>

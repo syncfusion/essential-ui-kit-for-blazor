@@ -7,7 +7,7 @@
 {
     <section class="bg-white dark:bg-gray-950">
         <div id="alert-sidebar" style="height: 710px;">
-            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+            <SfSidebar class="bg-gray-50 dark:bg-gray-900 !border-r !border-gray-200 dark:!border-gray-700" Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
                 <div class="h-screen">
                     <div class="flex items-center py-4 px-3">
                         <img src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
@@ -87,8 +87,8 @@
                     </SfAccordion>
                     <div id="toast" class="!absolute bottom-0 left-0"></div>
                     <SfToast @ref="ToastInfo" CssClass="e-toast-info" Width="224px" ShowCloseButton="true" Timeout="0" Target="#toast" NewestOnTop="true">
+                        <ToastEvents Created="@(async () => await ToastInfo?.ShowAsync())"></ToastEvents>
                         <ToastPosition X="Left" Y="Bottom"></ToastPosition>
-                        <ToastEvents Created="@(() => CreatedHandler(ToastInfo))"></ToastEvents>
                         <ToastTemplates>
                             <Title>
                                 <div class="pr-2">Adaptive Tiles Meeting</div>
@@ -104,7 +104,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="p-3 top-0 left-0 absolute">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -112,7 +112,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section class="bg-body">
         <div id="alert-sidebar" style="height: 710px;">
-            <SfSidebar Width="256px" @bind-IsOpen="SidebarToggle" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
+            <SfSidebar Width="256px" IsOpen="@IsSidebarOpen" ShowBackdrop="@IsBackdropVisible" Type="SidebarType.Push" aria-label="main navigation menu" role="complementary">
                 <div class="min-vh-100">
                     <div class="d-flex align-items-center p-3">
                         <img src="assets/images/common/brand-logos/svg/vector.svg" alt="company logo" />
@@ -137,7 +137,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                             </ListViewTemplates>
                         </SfListView>
                     </div>
-                    <p class="m-3 fs-6 text-body-secondary">Others</p>
+                    <hr class="mx-3 border-light-subtle opacity-100" />
                     <SfAccordion class="bg-transparent border-0" ExpandMode="ExpandMode.Single" role="button">
                         <AccordionItems>
                             <AccordionItem IconCss="e-icons e-notes e-medium" CssClass="border-0">
@@ -192,8 +192,8 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
                     </SfAccordion>
                     <div id="toast" class="position-absolute bottom-0 start-0"></div>
                     <SfToast @ref="ToastInfo" CssClass="e-toast-info" Width="224px" ShowCloseButton="true" Timeout="0" Target="#toast" NewestOnTop="true">
+                        <ToastEvents Created="@(async () => await ToastInfo?.ShowAsync())"></ToastEvents>
                         <ToastPosition X="Left" Y="Bottom"></ToastPosition>
-                        <ToastEvents Created="@(() => CreatedHandler(ToastInfo))"></ToastEvents>
                         <ToastTemplates>
                             <Title>
                                 <div>Adaptive Tiles Meeting</div>
@@ -209,7 +209,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="py-3 px-1 position-absolute top-0 start-0">
-        <SfButton CssClass="e-large e-icons e-chevron-right e-round" Type="button" aria-label="expand menu" role="button" @onclick="ToggleSidebar"></SfButton>
+        <SfButton CssClass="e-round e-large e-icons e-chevron-right" OnClick="@(() => IsSidebarOpen = !IsSidebarOpen)" Type="button" aria-label="expand menu" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

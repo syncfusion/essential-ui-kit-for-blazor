@@ -2,7 +2,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Statistics.Statistics6
 {
     public partial class Statistics6
     {
-        public List<Metric> MetricsData { get; set; } = new List<Metric>
+        public List<Metric> MetricsData = new List<Metric>
         {
             new Metric { MetricName = "Followers", CurrentValue = 6025, PreviousValue = 6780, CurrentPercentage = 10.32, Trend = "up" },
             new Metric { MetricName = "Likes", CurrentValue = 72094, PreviousValue = 78001, CurrentPercentage = 7.57, Trend = "down" },
