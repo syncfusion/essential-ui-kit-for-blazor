@@ -9,7 +9,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Modals.Modals4
     {
         public SfDialog? Dialog;
         public SfListView<TeamMember> ListView;
-        public bool IsMobile;
+        public string DialogHeight = "auto";
 
         public List<TeamMember> DataSource = new List<TeamMember> 
         {
@@ -37,10 +37,10 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Modals.Modals4
         {
             if (message == "resizeAction" && Dialog != null)
             {
-                IsMobile = windowWidth <= 640;
-                await Dialog.HideAsync();
-                await Dialog.ShowAsync(IsMobile);
+                DialogHeight = windowWidth <= 640 ? "100%" : "auto";
+                await Dialog.RefreshPositionAsync();
             }
+            await InvokeAsync(StateHasChanged);
         }
 
         public class TeamMember

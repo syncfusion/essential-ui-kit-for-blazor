@@ -8,7 +8,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Modals.Modals9
     {
         public SfDialog? Dialog;
         public SfRichTextEditor? Rte;
-        public bool IsMobile;
+        public string DialogHeight = "auto";
 
         public List<ToolbarItemModel> ToolbarItems = new List<ToolbarItemModel>
         {
@@ -38,10 +38,10 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Modals.Modals9
         {
             if (message == "resizeAction" && Dialog != null)
             {
-                IsMobile = windowWidth <= 640;
-                await Dialog.HideAsync();
-                await Dialog.ShowAsync(IsMobile);
+                DialogHeight = windowWidth <= 640 ? "100%" : "auto";
+                await Dialog.RefreshPositionAsync();
             }
+            await InvokeAsync(StateHasChanged);
         }
     }
 }

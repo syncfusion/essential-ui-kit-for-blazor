@@ -8,7 +8,7 @@
 {
 	<section>
 		<div id="dialog-container" class="relative" style="min-height: 1370px !important;">
-			<SfDialog @ref="Dialog" CssClass="absolute" Target="#dialog-container" Visible="true" ShowCloseIcon="true" Width="662px" Height="100%" CloseOnEscape="true">
+			<SfDialog @ref="Dialog" CssClass="absolute" Target="#dialog-container" IsModal="true" Visible="true" ShowCloseIcon="true" Width="662px" Height="100%" CloseOnEscape="true">
 				<div class="max-w-2xl px-1 text-gray-700 dark:text-gray-300">
 					<DialogTemplates>
 						<Header>
@@ -188,8 +188,8 @@
 else if (CurrentTheme.Contains("bootstrap5.3"))
 {
 	<section>
-		<div id="dialog-container" class="position-relative" style="min-height: 1340px !important;">
-			<SfDialog @ref="Dialog" Target="#dialog-container" Visible="true" ShowCloseIcon="true" Width="662px" Height="100%" CloseOnEscape="true">
+		<div id="dialog-container" style="min-height: 1340px !important;">
+			<SfDialog @ref="Dialog" Target="#dialog-container" Visible="true" IsModal="true" ShowCloseIcon="true" Width="662px" Height="100%" CloseOnEscape="true">
 				<DialogTemplates>
 					<Header>
 						<span style="font-size: 18px;">My shopping cart</span>

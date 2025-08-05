@@ -13,6 +13,7 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Modals.Modals10
         public bool IsBackdropVisible = false;
         public SidebarType SidebarDisplayType = SidebarType.Auto;
         public bool IsSidebarOpen = true;
+        public string DialogHeight = "auto";
 
         public List<ListItem> NavigationMenu = new List<ListItem>
         {
@@ -32,9 +33,10 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Modals.Modals10
                 IsDockModeEnabled = !IsMobile;
                 IsBackdropVisible = IsMobile;
                 SidebarDisplayType = IsMobile ? SidebarType.Over : SidebarType.Auto;
-                await Dialog.HideAsync();
-                await Dialog.ShowAsync(IsMobile);
+                DialogHeight = IsMobile ? "100%" : "auto";
+                await Dialog.RefreshPositionAsync();
             }
+            await InvokeAsync(StateHasChanged);
         }
 
         public class ListItem

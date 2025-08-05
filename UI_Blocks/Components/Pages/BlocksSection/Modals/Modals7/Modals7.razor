@@ -8,7 +8,7 @@
 {
     <section>
         <div id="dialog-container" class="relative" style="min-height: 724px;">
-            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4 overflow-hidden" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="515px" aria-label="track new feature" role="dialog">
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4 overflow-hidden" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="515px" MinHeight="@DialogHeight" aria-label="track new feature" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
                     <Header>
@@ -79,7 +79,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="top-0 left-0 absolute w-full flex">
-        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Track New Feature" Type="button" aria-label="track new feature" role="button"></SfButton>
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="Track New Feature" Type="button" aria-label="track new feature" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -87,7 +87,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
         <div id="dialog-container" class="position-relative" style="min-height: 724px;">
-            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="515px" aria-label="track new feature" role="dialog">
+            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="515px" MinHeight="@DialogHeight" aria-label="track new feature" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
                     <Header>
@@ -158,7 +158,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="position-absolute top-0 start-0 d-flex w-100">
-        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Track New Feature" Type="button" aria-label="track new feature" role="button"></SfButton>
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="Track New Feature" Type="button" aria-label="track new feature" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
