@@ -8,7 +8,7 @@
 {
     <section>
         <div id="dialog-container" class="relative" style="min-height: 750px;">
-            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="644px" Height="645px" aria-label="manage my settings" role="dialog">
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg sm:m-4" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="644px" Height="645px" MinHeight="@DialogHeight" aria-label="manage my settings" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
                 <DialogTemplates>
                     <Header>
@@ -268,7 +268,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="top-0 left-0 absolute w-full flex">
-        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="My Settings" Type="button" aria-label="my settings" role="button"></SfButton>
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="My Settings" Type="button" aria-label="my settings" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -276,7 +276,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
         <div id="dialog-container" class="position-relative" style="min-height: 750px;">
-            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="644px" Height="660px" aria-label="manage my settings" role="dialog">
+            <SfDialog @ref="Dialog" class="rounded-3 m-sm-2" Target="#dialog-container" IsModal="true" ShowCloseIcon="true" Width="644px" Height="660px" MinHeight="@DialogHeight" aria-label="manage my settings" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@OnDialogOpenAsync"></DialogEvents>
                 <DialogTemplates>
                     <Header>
@@ -534,7 +534,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="position-absolute top-0 start-0 d-flex w-100">
-        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="My Settings" Type="button" aria-label="my settings" role="button"></SfButton>
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="My Settings" Type="button" aria-label="my settings" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

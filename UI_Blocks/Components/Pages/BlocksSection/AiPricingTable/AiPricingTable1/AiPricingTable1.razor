@@ -8,7 +8,7 @@
 {
     <section>
         <div id="dialog-container" class="relative flex items-center justify-center" style="min-height: 580px !important;">
-            <SfDialog @ref="Dialog" CssClass="absolute py-3" Target="#dialog-container" IsModal="true" Visible="true" ShowCloseIcon="true" Width="537px" Height="460" CloseOnEscape="true">
+            <SfDialog @ref="Dialog" CssClass="absolute" class="py-3" Target="#dialog-container" IsModal="true" Visible="true" ShowCloseIcon="true" Width="537px" Height="460" MinHeight="@DialogHeight" CloseOnEscape="true">
                 <div class="max-w-2xl px-1 text-gray-700 dark:text-gray-300">
                     <DialogTemplates>
                         <Header>
@@ -108,7 +108,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="top-0 flex w-full absolute">
-        <SfButton CssClass="mx-auto my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Content="Pricing Table" Type="button" aria-label="pricing table" role="button"></SfButton>
+        <SfButton CssClass="mx-auto my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="Pricing Table" Type="button" aria-label="pricing table" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -116,7 +116,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
         <div id="dialog-container" class="position-relative d-flex align-items-center justify-content-center" style="min-height: 580px !important;">
-            <SfDialog @ref="Dialog" Target="#dialog-container" Visible="true" IsModal="true" ShowCloseIcon="true" Width="537px" Height="480px" CloseOnEscape="true">
+            <SfDialog @ref="Dialog" Target="#dialog-container" Visible="true" IsModal="true" ShowCloseIcon="true" Width="537px" Height="480px" MinHeight="@DialogHeight" CloseOnEscape="true">
                 <div class="container px-1 rounded text-body-secondary">
                     <DialogTemplates>
                         <Header>
@@ -225,7 +225,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="position-absolute top-0 d-flex w-100">
-        <SfButton CssClass="mx-auto my-2" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Content="Pricing Table" Type="button" aria-label="pricing table" role="button"></SfButton>
+        <SfButton CssClass="mx-auto my-2" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="Pricing Table" Type="button" aria-label="pricing table" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

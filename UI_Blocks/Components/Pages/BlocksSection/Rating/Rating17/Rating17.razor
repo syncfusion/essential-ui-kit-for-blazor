@@ -8,7 +8,7 @@
 {
     <section>
         <div id="dialog-container" class="relative flex justify-center" style="min-height: 580px;">
-            <SfDialog @ref="Dialog" id="dialog" class="rounded-none sm:rounded-lg shadow-sm sm:m-4 py-3.5" Width="400px" IsModal="true" ShowCloseIcon="true" Visible="true" Target="#dialog-container" aria-label="update personal information" role="dialog">
+            <SfDialog @ref="Dialog" id="dialog" class="rounded-none sm:rounded-lg shadow-sm sm:m-4 py-3.5" Width="400px" MinHeight="@DialogHeight" IsModal="true" ShowCloseIcon="true" Visible="true" Target="#dialog-container" aria-label="update personal information" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
                     <Header>
@@ -64,7 +64,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="top-0 left-0 absolute w-full flex">
-        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Feedback Form" Type="button" aria-label="open feedback form" role="button"></SfButton>
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="Feedback Form" Type="button" aria-label="open feedback form" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -72,7 +72,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
         <div id="dialog-container" class="position-relative d-flex justify-content-center" style="min-height: 580px;">
-            <SfDialog @ref="Dialog" id="dialog" class="rounded-3 shadow-sm m-sm-4 py-2 border-0" Width="400px" IsModal="true" ShowCloseIcon="true" Visible="true" Target="#dialog-container" aria-label="update personal information" role="dialog">
+            <SfDialog @ref="Dialog" id="dialog" class="rounded-3 shadow-sm m-sm-4 py-2 border-0" Width="400px" MinHeight="@DialogHeight" IsModal="true" ShowCloseIcon="true" Visible="true" Target="#dialog-container" aria-label="update personal information" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
                     <Header>
@@ -130,7 +130,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="position-absolute top-0 start-0 d-flex w-100">
-        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Feedback Form" Type="button" aria-label="open feedback form" role="button"></SfButton>
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="Feedback Form" Type="button" aria-label="open feedback form" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

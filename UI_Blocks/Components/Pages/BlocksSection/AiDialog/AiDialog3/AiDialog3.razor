@@ -8,7 +8,7 @@
 {
     <section>
         <div id="dialog-container" class="relative" style="min-height: 580px;">
-            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg overflow-hidden" Target="#dialog-container" IsModal="true" Width="580px" MinHeight="238px" aria-label="create a public page" role="dialog">
+            <SfDialog @ref="Dialog" class="rounded-none sm:rounded-lg overflow-hidden" Target="#dialog-container" IsModal="true" Width="580px" MinHeight="@DialogHeight" aria-label="create a public page" role="dialog">
                 <DialogTemplates>
                     <Header>
                         <div class="flex justify-between items-center pt-3 mb-1 sm:px-1.5">
@@ -38,7 +38,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="top-0 left-0 absolute w-full flex">
-        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Content="Create Public Page" Type="button" aria-label="create public page" role="button"></SfButton>
+        <SfButton CssClass="my-5 mx-auto" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="Create Public Page" Type="button" aria-label="create public page" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -46,7 +46,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
         <div id="dialog-container" class="position-relative" style="min-height: 580px;">
-            <SfDialog @ref="Dialog" class="rounded-2" Target="#dialog-container" IsModal="true" Width="580px" MinHeight="238px" aria-label="create a public page" role="dialog">
+            <SfDialog @ref="Dialog" class="rounded-2" Target="#dialog-container" IsModal="true" Width="580px" MinHeight="@DialogHeight" aria-label="create a public page" role="dialog">
                 <DialogTemplates>
                     <Header>
                         <div class="d-flex justify-content-between align-items-center fs-5 px-sm-2 mx-1 pt-2">
@@ -76,7 +76,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="position-absolute top-0 start-0 d-flex w-100">
-        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobileView); })" Content="Create Public Page" Type="button" aria-label="create public page" role="button"></SfButton>
+        <SfButton CssClass="e-outline mx-auto my-3" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="Create Public Page" Type="button" aria-label="create public page" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

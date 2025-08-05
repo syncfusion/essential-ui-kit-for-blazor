@@ -8,7 +8,7 @@
 {
     <section>
         <div id="dialog-container" class="pt-4 relative" style="min-height:576px;">
-            <SfDialog @ref="Dialog" id="dialog" class="rounded-none sm:rounded-lg pt-3.5 sm:px-1.5 overflow-hidden shadow-sm" ShowCloseIcon="true" Visible="true" Target="#dialog-container" Width="400px" Height="380px" IsModal="true" MaxWidth="400px" aria-label="submit feedback" role="dialog">
+            <SfDialog @ref="Dialog" id="dialog" class="rounded-none sm:rounded-lg pt-3.5 sm:px-1.5 overflow-hidden shadow-sm" ShowCloseIcon="true" Visible="true" Target="#dialog-container" Width="400px" Height="380px" MinHeight="@DialogHeight" IsModal="true" MaxWidth="400px" aria-label="submit feedback" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
                     <Header>
@@ -79,7 +79,7 @@
     </section>
     <!-- SB Code - Start -->
     <div class="absolute top-0 w-full flex">
-        <SfButton CssClass="mx-auto my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Feedback Form" Type="Button" aria-label="open feedback form" role="button"></SfButton>
+        <SfButton CssClass="mx-auto my-5" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="Feedback Form" Type="Button" aria-label="open feedback form" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }
@@ -87,7 +87,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
 {
     <section>
         <div id="dialog-container" class="pt-4 position-relative" style="min-height:576px;">
-            <SfDialog @ref="Dialog" id="dialog" class="pt-sm-3 px-sm-2 overflow-hidden shadow-sm" ShowCloseIcon="true" Visible="true" Target="#dialog-container" Width="400px" Height="380px" IsModal="true" MaxWidth="400px" aria-label="submit feedback" role="dialog">
+            <SfDialog @ref="Dialog" id="dialog" class="pt-sm-3 px-sm-2 overflow-hidden shadow-sm" ShowCloseIcon="true" Visible="true" Target="#dialog-container" Width="400px" Height="380px" MinHeight="@DialogHeight" IsModal="true" MaxWidth="400px" aria-label="submit feedback" role="dialog">
                 <DialogEvents OnOpen="@(args => args.MaxHeight = "100%")" Opened="@(args => args.PreventFocus = true)"></DialogEvents>
                 <DialogTemplates>
                     <Header>
@@ -158,7 +158,7 @@ else if (CurrentTheme.Contains("bootstrap5.3"))
     </section>
     <!-- SB Code - Start -->
     <div class="position-absolute top-0 w-100 d-flex">
-        <SfButton class="mx-auto my-3" CssClass="e-outline" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(IsMobile); })" Content="Feedback Form" Type="Button" aria-label="open feedback form" role="button"></SfButton>
+        <SfButton class="mx-auto my-3" CssClass="e-outline" OnClick="@(async () => { if (Dialog != null) await Dialog.ShowAsync(); })" Content="Feedback Form" Type="Button" aria-label="open feedback form" role="button"></SfButton>
     </div>
     <!-- SB Code - End -->
 }

@@ -6,17 +6,17 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Modals.Modals1
     public partial class Modals1
     {
         public SfDialog? Dialog;
-        public bool IsMobile;
+        public string DialogHeight = "auto";
 
         [JSInvokable]
         public async Task ResizeHandler(string message, int windowWidth)
         {
             if (message == "resizeAction" && Dialog != null)
             {
-                IsMobile = windowWidth <= 640;
-                await Dialog.HideAsync();
-                await Dialog.ShowAsync(IsMobile);
+                DialogHeight = windowWidth <= 640 ? "100%" : "auto";
+                await Dialog.RefreshPositionAsync();
             }
+            await InvokeAsync(StateHasChanged);
         }
     }
 }

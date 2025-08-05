@@ -8,8 +8,9 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Modals.Modals3
     {
         public SfDialog? Dialog;
         public SfStepper? Stepper;
-        public bool IsMobile;
+        private bool IsMobile;
         public string StepperStyle = string.Empty;
+        public string DialogHeight = "auto";
         public StepperOrientation CurrentStepperOrientation = StepperOrientation.Horizontal;
         public StepperLabelPosition LabelPos = StepperLabelPosition.Bottom;
         public int ExpandedIndex = 0;
@@ -38,9 +39,10 @@ namespace UI_Blocks.Components.Pages.BlocksSection.Modals.Modals3
                 {
                     await Stepper.RefreshProgressbarAsync();
                 }
-                await Dialog.HideAsync();
-                await Dialog.ShowAsync(IsMobile);
+                DialogHeight = IsMobile ? "100%" : "auto";
+                await Dialog.RefreshPositionAsync();
             }
+            await InvokeAsync(StateHasChanged);
         }
     }
 }
